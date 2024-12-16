@@ -1,0 +1,17 @@
+{
+    "__TLDR" : "compile any .ts file and put it into tjs folder",
+    
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "ES6",
+        "outDir": "scripts/tjs",
+        "strict": true,
+        "sourceMap": false,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true
+    },
+    "exclude": [
+        "node_modules",
+        "**/node_modules/*"
+    ]
+}
