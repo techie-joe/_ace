@@ -18,7 +18,6 @@ const _gulp = {
 
 const { watch, series, parallel, src, dest } = require('gulp');
 const rename = require('gulp-rename');
-const pug = require("gulp-pug");
 const watchOpt = { ignoreInitial: false };
 
 function clean(callback) {
@@ -26,6 +25,10 @@ function clean(callback) {
 }
 exports.clean = clean;
 
+// pages: html and php
+// : task to take pug files from _src to _dest
+// : retain the same directory structure
+const pug = require("gulp-pug");
 function html() {
   return src(_src.html)
     .pipe(pug({ pretty: false }))
@@ -55,10 +58,12 @@ exports.pagesw = pagesw;
 // : task to take scss files from _src to _dest
 // : outputStyle: compressed | expanded
 const sass = require("gulp-sass")(require("sass"));
+const cleanCSS = require('gulp-clean-css');
 function css() {
   return src(_src.scss)
     .pipe(sass({ outputStyle: 'compressed' })
     .on("error", sass.logError))
+    .pipe(cleanCSS())
     .pipe(dest(_dest.css));
 }
 function cssw() {

@@ -11,15 +11,16 @@
   "license": "SEE LICENSE IN LICENSE.txt",
   "devDependencies": {
     "gulp": "^5.0.0",
-    "gulp-pug": "^5.0.0"
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^6.0.0",
+    "sass": "^1.83.0"
   },
   "repository": {
     "type": "git",
     "url": "_ace"
   },
   "dependencies": {
-    "gulp-rename": "^2.0.0",
-    "gulp-sass": "^6.0.0",
-    "sass": "^1.83.0"
+    "gulp-clean-css": "^4.3.0",
+    "gulp-rename": "^2.0.0"
   }
 }
