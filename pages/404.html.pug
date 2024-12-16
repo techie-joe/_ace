@@ -1,0 +1,11 @@
+extends ../_templates/error
+
+block append vars
+  - title = 'Page not found'
+  - description = 'Sorry, the page you were trying to view does not exist.'
+
+block main
+  main#_main
+    h1#_h1 #{title}
+    p#_p #{description}
+    nav#_nav: +backlink._btnlink Back

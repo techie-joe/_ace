@@ -1,0 +1,97 @@
+extends ../_templates/html
+
+block append vars
+  include _demo-vars
+  -
+    template    = 'full-screen'
+    title       = `HTML ${template}`
+    description = `HTML ${template} seamlessly stretches across the entire screen, for an exceptional first impression.`
+    url         = url+`/${template}.html`
+
+    og_title       = title
+    og_description = description
+    og_url         = url
+  //- 
+
+block append style
+  +css(homeUrl+'assets/css/demo.css?v='+version)
+  style.
+    #_main { margin-top:0; }
+
+    .fullscreen,
+    ._view ._layout{
+      display: block;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width:100%;
+      height:100%;
+      overflow: auto;
+      margin: 0;
+    }
+    ._view ._layout {
+      position: absolute;
+    }
+    .fullscreen {
+      position:relative;
+      display: table;
+    }
+    .fullscreen #_header {
+      display: table-cell;
+      vertical-align: middle;
+      margin: 0 auto;
+    }
+    #_header {
+      text-align: center;
+      padding: 1em;
+    }
+    #_header .h1 {
+      font-size:3em;
+      width:11em;
+      margin:2em auto;
+    }
+   
+    #_html .hero2 { margin:2em auto; max-width:640px; }
+
+    @media only screen and (max-width: 499px) {
+      #_html .hero2 { margin:2em 1em; }
+      #_main .h2 { font-size:1.4em; }
+      #_header h1 { width:100%; font-size:1.4em; }
+    }
+  //- 
+
+block header
+  //- include _editorbar
+  .fullscreen
+    header#_header
+      h1.h1 Full Screen Display of Awesomeness
+
+block main
+  main#_main
+    article
+      .g
+        .u-1-3
+          .gu: .o.o1-3
+        .u-1-3
+          .gu: .o.o1-3
+        .u-1-3
+          .gu: .o.o1-3
+
+      .hero2._text-center 
+        h2.h2 Featured Contents and Success Stories
+        p Show the incredible accomplishments that are shaping your world today.
+
+      .g
+        .u-2-3
+          .gu: .o.o2-3
+        .u-1-3
+          .gu: .o.o1-3
+          .gu: .o.o1-3
+      //-
+    //- 
+
+    p: hr
+
+    footer#_footer
+      p._text-center &copy; Copyright

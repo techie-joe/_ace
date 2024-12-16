@@ -1,0 +1,41 @@
+mixin repeat(x)
+	- var n = 0
+	while n < x
+		- n++
+		block
+
+mixin php(uri)
+	| <?php include "#{uri}" ?>
+
+mixin php_
+	| !{ '<?php ' }
+	block
+	| !{ ' ?>' }
+
+mixin css(href,media='all')
+	link(rel="stylesheet" media=media href=href)&attributes(attributes)/
+
+mixin js(src)
+	script(type="text/javascript" src=src)&attributes(attributes): block
+
+mixin img(src,alt,title)
+	img(src=src alt=alt title=title)&attributes(attributes)/
+
+mixin _
+	="\n"
+
+mixin a(href,title)
+	a(href=href title=title)&attributes(attributes): block
+
+mixin _a(href,title)
+	+_
+	a(href=href title=title)&attributes(attributes): block
+
+mixin la(href,title)
+	li: a(href=href title=title)&attributes(attributes): block
+
+mixin backlink(title='Back to previous page')
+	a(onclick="event.preventDefault();window.history.back()" title=title)&attributes(attributes): block
+
+mixin fa(name)
+	i(class="fab fa-"+name)

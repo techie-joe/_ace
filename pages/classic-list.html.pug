@@ -1,0 +1,100 @@
+extends ../_templates/html
+
+block append vars
+  include _demo-vars
+  -
+    template    = 'classic-list'
+    title       = `HTML ${template}`
+    description = `HTML ${template} is a good for displaying lists of articles and pages.`
+    url         = url+`/${template}.html`
+
+    og_title       = title
+    og_description = description
+    og_url         = url
+  //- 
+
+block append style
+  +css(homeUrl+'assets/css/demo.css?v='+version)
+  style.
+    #_html article.layout { margin:1em; }
+
+    #_html .list { max-width:500px; }
+
+    #_html .item { margin-bottom:1.5em; }
+    #_html .item a.title {
+      text-decoration:none;
+      font-size:1.2em;
+      padding:0.2em 0.3em;
+      border-radius:5px;
+      cursor:pointer;
+      display:inline-block;
+    }
+
+    #_html       .item a.title:hover { background:#bbb; color:#000; }
+    #_html._dark .item a.title:hover { background:#444; color:#fff; }
+
+    #_main .item .p { margin-top:.2em; margin-left:.5em;  }
+
+  //- 
+
+block nav
+  //- include _editorbar
+
+block main
+  main#_main
+    article.layout
+
+      h1 Classic List - for links and directories
+
+      p These are fabricated examples meant to serve as placeholder for your list to come. 
+
+      p: hr
+
+      .list
+        .item
+          +a('#1').title Tech Innovators Hub
+          .p Discover the latest in tech trends, product reviews, and industry news to stay ahead in the digital age.
+
+        .item
+          +a('#2').title Wanderlust Chronicles
+          .p Your ultimate travel guide, offering tips, destination reviews, and itineraries to inspire your next adventure.
+
+        .item
+          +a('#3').title Health &amp; Wellness Oasis
+          .p A resource for healthy living, featuring expert advice on fitness, nutrition, mental health, and overall well-being.
+
+        .item
+          +a('#4').title Home &amp; Garden Haven
+          .p Transform your living space with our home improvement ideas, gardening tips, and interior design inspiration.
+
+        .item
+          +a('#5').title Culinary Creations
+          .p Explore delicious recipes, cooking techniques, and culinary trends to elevate your home-cooked meals.
+
+        .item
+          +a('#6').title Finance Freedom Network
+          .p Empowering you with the tools and knowledge to take control of your finances, investments, and financial future.
+
+        .item
+          +a('#7').title Fashion Forward
+          .p Stay stylish with the latest fashion trends, outfit ideas, and beauty tips to enhance your personal style.
+
+        .item
+          +a('#8').title Educational Insights
+          .p A platform dedicated to lifelong learning, providing resources, courses, and tips for personal and professional development.
+
+        .item
+          +a('#9').title Eco-Friendly Living
+          .p Embrace sustainability with our eco-friendly tips, green product reviews, and environmental news to live a greener life.
+
+        .item
+          +a('#10').title Art &amp; Culture Collective
+          .p Dive into the world of arts and culture with news, interviews, and features on artists, exhibitions, and cultural events.
+
+      //- 
+
+      p &nbsp;
+      p: hr
+
+      footer#_footer
+        .layout: p._text-left| &copy; Copyright

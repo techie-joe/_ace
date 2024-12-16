@@ -1,0 +1,13 @@
+extends html
+
+block append vars
+  -
+    htmlClass = '_errorpage'
+  //- layout vars
+
+block seo
+  title #{title}
+  meta(name="description" content=description)/
+
+block append style
+  +css(homeUrl+'assets/css/errorpage.css?v='+version)

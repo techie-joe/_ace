@@ -1,0 +1,101 @@
+extends ../_templates/html
+
+block append vars
+  include _demo-vars
+  -
+    header      = `Theme`
+    title       = `${header} | ${name}`
+    description = `Theme for your reference.`
+    url         = url+`/theme.html`
+
+    og_title       = title
+    og_description = description
+    og_url         = url
+  //- 
+
+block style
+  +css(homeUrl+'assets/css/style.css?v='+version)
+  +css(homeUrl+'assets/pure/grid.css?v='+version)
+  style.
+  //- 
+
+block header
+  header#_header: .g._bg-1
+
+    .u: ._m(style="width:6.2rem")._text-center._numb
+      div(style="font-size:3em")._impact #[span._color LO]#[span._color-1 GO]
+      | 
+      div._small._uppercase(style="padding-bottom:0.4rem;") Your tagline
+
+block nav
+  //- include _editorbar
+  //- include _nav
+  //- nav: ul: +la
+
+block pre
+  //- aside: pre._pre.
+  //-
+
+block main
+  main#_main: article
+
+    .g._mv
+      .u-1-3._border-top-1
+      .u-1-3._border-top
+      .u-1-3
+
+    .g
+      .u-1-3: ._text-justify._mh
+
+        h3._h6._color Lorem ipsum dolor
+        p Sit amet, consectetur adipiscing elit. Praesent vehicula, justo vitae bibendum vestibulum, lacus elit luctus dolor, a aliquam massa elit at purus. Mauris vel magna et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros. Nullam vehicula arcu vitae ligula sollicitudin, sit amet viverra sapien consectetur.
+
+        h3._h6._color-1 Curabitur auctor
+        p Nunc nec sem pellentesque, ut facilisis justo dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae ac turpis egestas. Mauris vel magna et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros.
+        
+      .u-1-3: ._text-justify._mh
+
+        h3._h6._color-1 Curabitur auctor
+        p Nunc nec sem pellentesque, ut facilisis justo dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+        
+        h3._h6._color Proin scelerisque
+        p Lacus at sollicitudin sagittis, nunc eros cursus nulla, a venenatis nulla sapien non velit. Integer condimentum, odio nec tristique malesuada, metus ligula laoreet lorem, ut malesuada lectus sapien in lacus morbi tristique senectus et netus et fames.
+
+        p Praesent vehicula, justo vitae bibendum vestibulum, lacus elit luctus dolor, a aliquam massa elit at purus.
+
+      .u-1-3
+
+        ._m._fg._radius._pad
+          h3._h7 Mauris vel magna
+          p Et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros. Nullam vehicula arcu vitae ligula sollicitudin, sit amet viverra sapien consectetur.
+
+        ._m._fg-1._radius._pad
+          h3._h7 Mauris vel magna
+          p Et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros. Nullam vehicula arcu vitae ligula sollicitudin, sit amet viverra sapien consectetur.
+
+    .g: .u-1: hr._no-margin
+
+    .g
+      .u-1-3: ._mh._text-justify
+        p You can apply color to a text -- #[span._blue blue], #[span._purple purple], #[span._orange orange] and #[span._red red]. Write hyperlink in -- #[+a("#"+Math.random()) normal] and #[+a("") visited] or #[code._code _remove-color] to #[+a("")._remove-color blend a link].
+
+      .u-1-3
+      .u-1-3
+
+    .g._mv
+      .u-1-3
+      .u-1-3._border-top-1
+      .u-1-3._border-top
+
+block footer
+  footer#_footer: ._pad.g._bg-2.o2-4
+    ._impact # # # # #
+
+block aside
+  //- aside#_aside
+
+block widget
+  //- aside#_widget
+
+block script
+  +js(homeUrl+'assets/sjs/thm.js?v='+version)(defer)

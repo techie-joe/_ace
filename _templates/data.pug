@@ -1,0 +1,60 @@
+include _vars
+include _mixins
+
+block vars
+  -
+  //- layout vars
+
+block entry
+  //- entrypoint for variable setup & security check
+
+doctype html
+html(lang=lang)
+
+  | <!-- #{shortName}:layout -->
+
+  head
+    meta(charset=charset)/
+
+    block seo
+      title #{title||'(untitled)'}
+      meta(name="description" content=description||'(undescribed)')/
+
+    block style
+      +css(homeUrl+'assets/css/basic.css?v='+version)
+
+  body
+    block content
+      #_content(class=contentClass)
+
+        block view
+          ._view
+            ._layout
+
+              block header
+                //- header#_header
+
+              block nav
+                //- include _nav
+                //- nav: ul: +la
+
+              block pre
+                //- aside: pre._pre.
+                //-
+
+              block main
+                main#_main
+                  article
+                    | hello world
+  
+              block footer
+                //- footer#_footer
+              
+              block aside
+                //- aside#_aside
+
+    block widget
+      //- aside#_widget
+
+    block last
+      | <!-- IE needs 512+ bytes: https://techie-joe.github.io/library/html5/ie#ie-needs-512-bytes -->

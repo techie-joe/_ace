@@ -1,0 +1,65 @@
+include _vars
+include _mixins
+
+block vars
+  -
+  //- layout vars
+
+block entry
+  //- entrypoint for variable setup & security check
+
+doctype html
+html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
+
+  | <!-- #{shortName}:layout -->
+ 
+  head
+    meta(charset=charset)/
+    
+    block seo
+      include _seo
+
+    block meta
+      include _meta
+
+    block style
+      +css(homeUrl+'assets/css/style.css?v='+version)
+      +css(homeUrl+'assets/pure/grid.css?v='+version)
+
+  body#_body(class=bodyClass)
+
+    block content
+      #_content(class=contentClass)
+
+        block view
+          ._view
+            ._layout
+
+              block header
+                //- header#_header
+
+              block nav
+                //- include _nav
+                //- nav: ul: +la
+
+              block pre
+                //- aside: pre._pre.
+                //-
+
+              block main
+                main#_main: article main article
+  
+              block footer
+                //- footer#_footer
+              
+              block aside
+                //- aside#_aside
+
+    block widget
+      //- aside#_widget
+
+    block script
+      +js(homeUrl+'assets/cjs/thm.js?v='+version)(defer)
+
+    block last
+      | <!-- IE needs 512+ bytes: https://techie-joe.github.io/library/html5/ie#ie-needs-512-bytes -->

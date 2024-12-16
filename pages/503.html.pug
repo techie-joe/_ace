@@ -1,0 +1,11 @@
+extends ../_templates/error
+
+block entry
+  - title = 'Temporary close'
+  - description = 'Sorry, we are currently unavailable.'
+
+block main
+  main#_main
+    h1#_h1 #{title}
+    p#_p #{description}
+    nav#_nav: +backlink._btnlink Back

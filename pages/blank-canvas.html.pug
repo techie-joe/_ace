@@ -1,0 +1,26 @@
+extends ../_templates/html
+
+block append vars
+  include _demo-vars
+  -
+    template    = 'blank-canvas'
+    title       = `HTML ${template}`
+    description = `HTML ${template} helps create a website from scratch.`
+    url         = url+`/${template}.html`
+
+    og_title       = title
+    og_description = description
+    og_url         = url
+  //- 
+
+block append style
+  +css(homeUrl+'assets/css/demo.css?v='+version)
+  style.
+  //- 
+
+block nav
+  //- include _editorbar
+
+block main
+  main#_main
+    article This is a #{template}

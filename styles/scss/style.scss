@@ -1,5 +1,100 @@
-// do not appear
+/*! Techie Joe's Base v0.1.0 | Copyright 2024 Techie Joe | https://github.com/techie-joe/base */
+
 /* appear */
-._hide {
-  display: hidden;
+// do not appear
+
+@use "mixins" as mix;
+
+//   |  |
+// 01234567
+// fedcba98
+//   |  |
+
+$_light-color-1  : #288;
+$_light-color-2  : #bff;
+
+$_light-bg       : #ddd;
+$_light-tc       : #555;
+$_light-hc       : #222;
+
+$_light-bg-1     : #eee;
+$_light-tc-1     : #555;
+$_light-hc-1     : #077;
+
+$_light-bg-2     : #222;
+$_light-tc-2     : #555;
+$_light-hc-2     : #088;
+
+$_light-fg-1     : #288;
+$_light-fgtc-1   : #bdd;
+$_light-fghc-1   : #fff;
+
+$_dark-color-1   : #288;
+$_dark-color-2   : #bff;
+
+$_dark-bg        : #222;
+$_dark-tc        : #aaa;
+$_dark-hc        : #ddd;
+
+$_dark-bg-1      : #eee;
+$_dark-tc-1      : #555;
+$_dark-hc-1      : #077;
+
+$_dark-bg-2      : #222;
+$_dark-tc-2      : #555;
+$_dark-hc-2      : #088;
+
+$_dark-fg-1      : #288;
+$_dark-fgtc-1    : #bdd;
+$_dark-fghc-1    : #fff;
+
+$light-button-bg-1 : #bbb;
+$light-button-fg-1 : #222;
+
+$light-button-bg-2 : #ccc;
+$light-button-fg-2 : #333;
+
+$dark-button-bg-1  : #444;
+$dark-button-fg-1  : #ddd;
+
+$dark-button-bg-2  : #333;
+$dark-button-fg-2  : #ccc;
+
+$light-link-color         : $_light-color-1;
+$light-link-color-visited : #929;
+$light-link-color-hover   : #d60;
+$light-link-color-active  : #c33;
+
+$dark-link-color         : $_dark-color-1;
+$dark-link-color-visited : #c6c;
+$dark-link-color-hover   : #e93;
+$dark-link-color-active  : #f44;
+
+@use "base";
+
+/* mark red if you include but don't use */
+html { box-shadow: 0 3px red inset; }
+#_html { box-shadow: none; } /* remove mark when in use */
+
+#_html,
+#_body { @extend ._sans; }
+
+@media only screen and (max-width: 499px) {
 }
+
+.gu { padding: 3px; }
+.o { background: $_light-bg-1; }
+._dark .o { background: $_dark-bg-1; }
+
+.o1-1 { height:300px; }
+.o1-2 { height:300px; }
+.o2-2 { height:606px; }
+
+.o1-3 { height:150px; }
+.o2-3 { height:306px; }
+.o3-3 { height:462px; }
+
+.o1-4 { height:100px; }
+.o2-4 { height:206px; }
+.o3-4 { height:312px; }
+.o4-4 { height:418px; }

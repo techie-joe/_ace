@@ -1,0 +1,20 @@
+@mixin border-radius($v) {
+  -webkit-border-radius: $v;
+     -moz-border-radius: $v;
+      -ms-border-radius: $v;
+          border-radius: $v;
+}
+
+@mixin text-size-adjust($v) {
+  -webkit-text-size-adjust: $v;
+     -moz-text-size-adjust: $v;
+      -ms-text-size-adjust: $v;
+          text-size-adjust: $v;
+}
+
+@mixin numb {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}

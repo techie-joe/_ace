@@ -1,0 +1,47 @@
+/*! Techie Joe's Base v0.1.0 | Copyright 2024 Techie Joe | https://github.com/techie-joe/base */
+
+._errorpage {
+  
+  & ._layout {
+    font-family: sans-serif;
+    position: absolute;
+    display: table;
+    width: 100%;
+    height: 100%;
+    margin:0;
+    text-align: center;
+  }
+  
+  #_main {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  #_h1 {
+    font-size: 2rem;
+    font-weight: 400;
+  }
+  
+  #_p {
+    margin: 1rem auto 2.3rem auto;
+    width: 280px;
+  }
+
+} // _errorpage
+
+@media only screen and (max-width: 280px) {
+
+  ._errorpage {
+
+    #_main { width: 95%; }
+
+    #_h1 {
+      font-size: 1.5rem;
+      margin: 0 0 0.3rem;
+    }
+
+  } // _errorpage
+
+}
