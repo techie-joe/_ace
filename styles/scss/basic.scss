@@ -1,23 +1,15 @@
 /*! Techie Joe's Base v0.1.0 | Copyright 2024 Techie Joe | https://github.com/techie-joe/base */
 
-$_light-bg       : #ddd;
-$_light-tc       : #555;
-$_light-hc       : #222;
-
-$_dark-bg        : #222;
-$_dark-tc        : #aaa;
-$_dark-hc        : #ddd;
-
-/* Default (light theme) */
+/* light theme - (default) */
 html {
-  background-color: $_light-bg;
-  color: $_light-tc;
+  background-color: #ddd;
+  color: #555;
 }
 
-/* Dark theme */
+/* dark theme */
 @media (prefers-color-scheme: dark) {
   html {
-    background-color: $_dark-bg;
-    color: $_dark-tc;
+    background-color: #222;
+    color: #aaa;
   }
 }
