@@ -1,10 +1,9 @@
-const root = '/ace/';
-
 const _src = {
   root: "_ace",
   html: ["pages/**/*.html.pug"],
   php : ["pages/**/*.php.pug"],
   txt : ["pages/**/*.txt.pug"],
+  md  : ["pages/**/*.md.pug"],
   js  : ["scripts/gjs/**/*.js"],
   scss: ["styles/scss/**/*.scss"]
 };
@@ -15,8 +14,14 @@ const _dest = {
   js  : "../ace/assets/gjs",
 };
 
+const htaccessData = require('./htaccess.js');
+
+const manifestData = require('./manifest.js');
+const manifestFile = 'manifest.json';
+
 const { watch, series, parallel, src, dest } = require('gulp');
 const rename = require('gulp-rename');
+const file = require('gulp-file');
 const watchOpt = { ignoreInitial: false };
 
 // pages: html, php and txt
@@ -45,7 +50,16 @@ function txt() {
   .pipe(pug())
   .pipe(rename(function (path) {
     path.basename = path.basename.substring(0, path.basename.lastIndexOf('.'));
-    path.extname = '';
+    path.extname = '.txt';
+  }))
+  .pipe(dest(_dest.root));
+}
+function md() {
+  return src(_src.md)
+  .pipe(pug())
+  .pipe(rename(function (path) {
+    path.basename = path.basename.substring(0, path.basename.lastIndexOf('.'));
+    path.extname = '.md';
   }))
   .pipe(dest(_dest.root));
 }
@@ -53,25 +67,33 @@ function pagesw() {
   watch(_src.html, watchOpt, html);
   watch(_src.php,  watchOpt, php);
   watch(_src.txt,  watchOpt, txt);
+  watch(_src.md,   watchOpt, md);
 }
 
-exports.pages  = parallel( html, php );
+exports.pages  = parallel( html, php, txt, md );
 exports.pagesw = pagesw;
 
 // .htaccess
-const file = require('gulp-file');
 function htaccess() {
   return file(
     '.htaccess',
-    `ErrorDocument 404 ${root}404.html\n`+
-    `ErrorDocument 500 ${root}500.html\n`+
-    `ErrorDocument 503 ${root}503.html`,
+    htaccessData.errDocs.join('\n'),
     { src: true } // indicates that the string provided as the second argument should be treated as file contents rather than a file path
   )
   .pipe(dest(_dest.root));
 }
 
-exports.files = parallel( txt, htaccess );
+// manifest.json
+function manifest() {
+  return file(
+    manifestFile,
+    JSON.stringify(manifestData,null,2),
+    { src: true } // indicates that the string provided as the second argument should be treated as file contents rather than a file path
+  )
+  .pipe(dest(_dest.root));
+}
+
+exports.files = parallel( htaccess, manifest );
 
 // sass
 // : task to take scss files from _src to _dest
@@ -99,5 +121,5 @@ function jsw() { watch(_src.js, watchOpt, js) }
 exports.js  = js;
 exports.jsw = jsw;
 
-exports.default = parallel( html, php, txt, htaccess, css, js );
+exports.default = parallel( html, php, txt, md, htaccess, manifest, css, js );
 exports.watch   = parallel( pagesw, cssw, jsw );
