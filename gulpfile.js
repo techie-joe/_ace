@@ -1,7 +1,10 @@
+const root = '/ace/';
+
 const _src = {
   root: "_ace",
   html: ["pages/**/*.html.pug"],
   php : ["pages/**/*.php.pug"],
+  txt : ["pages/**/*.txt.pug"],
   js  : ["scripts/gjs_/**/*.js"],
   scss: ["styles/scss/**/*.scss"]
 };
@@ -20,12 +23,7 @@ const { watch, series, parallel, src, dest } = require('gulp');
 const rename = require('gulp-rename');
 const watchOpt = { ignoreInitial: false };
 
-function clean(callback) {
-  callback(); // place code for your task here
-}
-exports.clean = clean;
-
-// pages: html and php
+// pages: html, php and txt
 // : task to take pug files from _src to _dest
 // : retain the same directory structure
 const pug = require("gulp-pug");
@@ -46,52 +44,64 @@ function php() {
     }))
     .pipe(dest(_dest.root));
 }
+function txt() {
+  return src(_src.txt)
+  .pipe(pug())
+  .pipe(rename(function (path) {
+    path.basename = path.basename.substring(0, path.basename.lastIndexOf('.'));
+    path.extname = '';
+  }))
+  .pipe(dest(_dest.root));
+}
 function pagesw() {
   watch(_src.html, watchOpt, html);
-  watch(_src.php, watchOpt, php);
+  watch(_src.php,  watchOpt, php);
+  watch(_src.txt,  watchOpt, txt);
 }
 
-exports.pages = parallel(html, php);
+exports.pages  = parallel( html, php );
 exports.pagesw = pagesw;
+
+// .htaccess
+const file = require('gulp-file');
+function htaccess() {
+  return file(
+    '.htaccess',
+    `ErrorDocument 404 ${root}404.html\n`+
+    `ErrorDocument 500 ${root}500.html\n`+
+    `ErrorDocument 503 ${root}503.html`,
+    { src: true } // indicates that the string provided as the second argument should be treated as file contents rather than a file path
+  )
+  .pipe(dest(_dest.root));
+}
+
+exports.files = parallel( txt, htaccess );
 
 // sass
 // : task to take scss files from _src to _dest
 // : outputStyle: compressed | expanded
+const sassOpt = { outputStyle: 'compressed' };
 const sass = require("gulp-sass")(require("sass"));
 const cleanCSS = require('gulp-clean-css');
 function css() {
   return src(_src.scss)
-    .pipe(sass({ outputStyle: 'compressed' })
-    .on("error", sass.logError))
+    .pipe(sass(sassOpt).on("error", sass.logError))
     .pipe(cleanCSS())
     .pipe(dest(_dest.css));
 }
-function cssw() {
-  watch(_src.scss, watchOpt, css);
-}
-exports.css = css;
+function cssw() { watch(_src.scss, watchOpt, css); }
+exports.css  = css;
 exports.cssw = cssw;
 
+// js
+// : task to take js files from _src to _dest
 function js() {
   return src(_src.js)
     .pipe(dest(_dest.js));
 }
-exports.js = js;
+function jsw() { watch(_src.js, watchOpt, js) }
+exports.js  = js;
+exports.jsw = jsw;
 
-function build(callback) {
-  callback(); // place code for your task here
-}
-exports.build = build;
-
-
-exports.default = series(
-  clean,
-  parallel( html, php, css, js ),
-  build
-);
-
-exports.watch = function () {
-  pagesw();
-  cssw();
-  watch(_src.js, watchOpt, js);
-};
+exports.default = parallel( html, php, txt, htaccess, css, js );
+exports.watch   = parallel( pagesw, cssw, jsw );
