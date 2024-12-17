@@ -58,14 +58,49 @@ block append style
       background-image: url('data:image/svg+xml;utf8,<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"><rect width="9" height="9" fill="none" stroke="none" /><line x1="10" y1="0" x2="10" y2="10" stroke="%23222" stroke-width="1" /><line x1="0" y1="10" x2="10" y2="10" stroke="%23222" stroke-width="1" /></svg>');
     }
 
-    #_main .section { width:960px;padding: 1em 0; } 
+    #_main .section { width:960px;padding: 1em 0; }
+    .grid { display: grid; }
+    #table .i { padding: .5rem 1rem; }
+    #table .c { font-size: .8em; border-radius: .5rem }
 
   //- 
+
+mixin table
+  -
+    //-   |  |
+    //- 01234567
+    //- fedcba98
+    //-   |  |
+    var bgs = [
+      ['111111','222222','333333','cccccc','dddddd','eeeeee'],
+      ['222222','063063','0055BB','0055BB','59a5ff','dddddd'],
+      ['222222','782424','CC4444','CC4444','ee7878','dddddd'],
+    ];
+    var tcs = [
+      ['888888','999999','dddddd','222222','666666','777777'],
+      ['0088FF','59a5ff','59a5ff','063063','063063','0055DD'],
+      ['DD4444','ee7878','ee7878','782424','782424','DD3333'],
+    ];
+  #table._text-center._uppercase
+    - var r = 0
+    while r < bgs.length
+      - var cols = bgs[r].length
+      .grid(style=`grid-template-columns: repeat(${cols}, 1fr);`)
+        - var c = 0;
+        while c < cols
+          - var bg = bgs[r][c]
+          - var tc = tcs[r][c]
+          .i(style=`background:#${bg};color:#${tc};`): .c(style=`border:1px solid #${tc}`) #[b #{tc}]#[br]#{bg}
+          - c++
+      - r++
+
 
 block main
 
   main#_main
     article(style="overflow-x:scroll")
+      .section
+        +table(7)
       .section
         div: +img(homeUrl+"/images/grayscale.svg","grayscale.svg","Gray Scale")(style="width:100%")
         .bg0: .gridlines
