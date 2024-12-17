@@ -17,15 +17,21 @@ block style
   +css(homeUrl+'assets/css/style.css?v='+version)
   +css(homeUrl+'assets/pure/grid.css?v='+version)
   style.
+    ._layout { max-width:960px;margin:0 auto }
+    #logo { width: 6.2rem; cursor: pointer; transition: background-color 0.5s; }
+           #logo:hover { background:#ccc; transition: none; }
+    ._dark #logo:hover { background:#333 }
+    #logos { font-size: 3em }
+    #tagline { padding-bottom: 0.4rem; letter-spacing: 0.05em; margin-top: -0.6em; }
   //- 
 
 block header
   header#_header: .g._bg-1
 
-    .u: ._m(style="width:6.2rem")._text-center._numb
-      div(style="font-size:3em")._impact #[span._color LO]#[span._color-1 GO]
+    .u: #logo._m._text-center._numb()
+      #logos._impact #[span._color LO]#[span._color-1 GO]
       | 
-      div._small._uppercase(style="padding-bottom:0.4rem;") Your tagline
+      #tagline._small._uppercase._b Your tagline
 
 block nav
   //- include _editorbar
@@ -76,11 +82,10 @@ block main
     .g: .u-1: hr._no-margin
 
     .g
-      .u-1-3: ._mh._text-justify
-        p You can apply color to a text -- #[span._blue blue], #[span._purple purple], #[span._orange orange] and #[span._red red]. Write hyperlink in -- #[+a("#") normal] and #[+a("") visited] or #[code._code _remove-color] to #[+a("")._remove-color blend a link].
+      .u-1-2: ._mh._text-justify
+        p You can apply color to a text -- #[span._blue blue], #[span._purple purple], #[span._orange orange] and #[span._red red]. Write hyperlink in -- #[+a("#xxxx") normal] and #[+a("") visited] or #[code._code _remove-color] to #[+a("")._remove-color blend a link].
 
-      .u-1-3
-      .u-1-3
+      .u-1-2
 
     .g._mv
       .u-1-3

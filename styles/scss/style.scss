@@ -15,10 +15,8 @@ $light-bg        : #ddd;
 $light-tc        : #555;
 $light-hc        : #222;
 
-$light-bg-shade  : #aaa;
-$light-bg-shine  : #fff;
-
-$light-bg-1      : #ccc;
+$light-shade     : #aaa;
+$light-shine     : #fff;
 
 $light-select-bg : #92d;
 $light-select-tc : #fff;
@@ -35,21 +33,19 @@ $dark-bg         : #222;
 $dark-tc         : #aaa;
 $dark-hc         : #ddd;
 
-$dark-bg-shade  : #000;
-$dark-bg-shine  : #444;
+$dark-shade      : #000;
+$dark-shine      : #444;
 
-$dark-bg-1      : #333;
+$dark-select-bg  : #92d;
+$dark-select-tc  : #fff;
 
-$dark-select-bg : #92d;
-$dark-select-tc : #fff;
+$dark-link-tc    : #48f;
+$dark-link-tcv   : #c6c;
+$dark-link-tch   : #d84;
+$dark-link-tca   : #d44;
 
-$dark-link-tc   : #48f;
-$dark-link-tcv  : #c6c;
-$dark-link-tch  : #d84;
-$dark-link-tca  : #d44;
-
-$dark-button-bg : #444;
-$dark-button-tc : #ddd;
+$dark-button-bg  : #444;
+$dark-button-tc  : #ddd;
 
 ._blue   { color: #04d }
 ._purple { color: #929 }
@@ -77,8 +73,9 @@ $dark-button-tc : #ddd;
 html { box-shadow: 0 3px red inset; }
 #_html { box-shadow: none; } /* remove mark when in use */
 
-* { line-height: 1.2; margin: 0; }
+* { line-height: 1.25; margin: 0; }
 
+._b,
 ._h7 { font-weight:bold }
 
 h1,h2,h3,h4,h5,h6,._h7,
@@ -91,7 +88,7 @@ li { margin: .3em 0; }
 #_body { /* doc */
   @extend ._sans;
   @include mix.text-size-adjust(100%);
-  font-size:1.021rem;
+  font-size:1em;
   display: block;
   position: absolute;
   top: 0;
@@ -105,34 +102,36 @@ li { margin: .3em 0; }
 }
 
 ._hero { font-size:6rem }
-._h1,._text-1 { font-size:4.403rem }
-._h2,._text-2 { font-size:3.310rem }
-._h3,._text-3 { font-size:2.652rem }
-._h4,._text-4 { font-size:2.214rem }
-._h5,._text-5 { font-size:1.658rem }
-._h6,._text-6 { font-size:1.327rem }
-._h7,._text-7 { font-size:1.021rem }
+._h1,._text-1 { font-size:4.334rem }
+._h2,._text-2 { font-size:3.255rem }
+._h3,._text-3 { font-size:2.593rem }
+._h4,._text-4 { font-size:2.163rem }
+._h5,._text-5 { font-size:1.623rem }
+._h6,._text-6 { font-size:1.298rem }
+._h7,._text-7 { font-size:1rem }
 
 ._small { font-size: .7em }
 
 ._sub,
 ._sup { line-height: 0.6em; font-size: 0.55em; }
 
+._code { font-size: 1.021rem }
+
 hr {
-  border: 1px solid $light-bg-shade;
-  border-bottom-color: $light-bg-shine;
+  border: 1px solid $light-shade;
+  border-bottom-color: $light-shine;
 }
 ._dark hr {
-  border: 1px solid $dark-bg-shade;
-  border-bottom-color: $dark-bg-shine;
+  border: 1px solid $dark-shade;
+  border-bottom-color: $dark-shine;
 }
 
 @media only screen and (max-width: 499px) {
 }
 
 .gu { padding: 3px; }
-.o { background: $light-bg-1; }
-._dark .o { background: $dark-bg-1; }
+.o { background: #ccc; }
+._dark .o { background: #333; }
 
 .o1-1 { height:300px; }
 .o1-2 { height:300px; }
