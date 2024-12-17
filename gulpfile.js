@@ -5,19 +5,15 @@ const _src = {
   html: ["pages/**/*.html.pug"],
   php : ["pages/**/*.php.pug"],
   txt : ["pages/**/*.txt.pug"],
-  js  : ["scripts/gjs_/**/*.js"],
+  js  : ["scripts/gjs/**/*.js"],
   scss: ["styles/scss/**/*.scss"]
 };
 
 const _dest = {
   root: "../ace",
   css : "../ace/assets/css",
-  js  : "scripts/gjs"
+  js  : "../ace/assets/gjs",
 };
-
-const _gulp = {
-  js : "gulp.js"
-}
 
 const { watch, series, parallel, src, dest } = require('gulp');
 const rename = require('gulp-rename');
