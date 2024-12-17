@@ -26,6 +26,20 @@ block append style
       linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
     }
 
+    .cg1 {
+      margin:0 auto;
+      height: 300px;
+      background:
+      linear-gradient(to right, #ff0000, #ffff00, #00ffff, #ff00ff, #ff0000);
+    }
+
+    .cg2 {
+      margin:0 auto;
+      height: 300px;
+      background:
+      linear-gradient(to right, #ff8800, #ffff00, #00ffff, #8800FF, #ff0088);
+    }
+
     .bg0 {
       height:10px;
       background:
@@ -42,6 +56,12 @@ block append style
       height:100%;
       background:
       linear-gradient(to top, #ffffffff, #ffffff00);
+    }
+
+    .bg3 {
+      height:100%;
+      background:
+      linear-gradient(to bottom, #000000FF, #00000000 45%, #ffffff00 55%, #ffffffff);
     }
 
     .line { border-top:1px solid #808080 }
@@ -110,6 +130,10 @@ block main
         .cg: .bg1: .gridlines
         div: +img(homeUrl+"/images/colorscale.svg","colorscale.svg","Color Scale")(style="width:100%")
         .cg: .bg2: .gridlines
+        div(style="height:1rem")
+        .cg1: .bg3: .gridlines
+        div(style="height:1rem")
+        .cg2: .bg3: .gridlines
 
     p: hr
 
