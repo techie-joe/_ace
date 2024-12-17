@@ -1,18 +1,25 @@
 // manifest.js to gulp as manifest.json
-module.exports = {
+const manifest = {
   "short_name": "Ace",
   "name": "Ace",
   "description": "Ace Web Application Template",
-  "display": "standalone",
   "background_color": "#222222",
   "theme_color": "#222222",
+}
+module.exports = {
+  "short_name": manifest.short_name,
+  "name": manifest.name,
+  "description": manifest.description,
+  "background_color": manifest.background_color,
+  "theme_color": manifest.theme_color,
+  "display": "standalone",
   "scope": "./",
   "start_url": "./?utm_source=homescreen",
   "shortcuts": [
     {
-      "short_name": "Ace",
-      "name": "Ace",
-      "description": "Ace Web Application Template",
+      "short_name": manifest.short_name,
+      "name": manifest.name,
+      "description": manifest.description,
       "url": "./?source=pwa",
       "icons": [
         {

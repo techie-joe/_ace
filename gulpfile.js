@@ -1,13 +1,14 @@
 const root = '/ace/';
 
 const _src = {
-  root: "_ace",
-  html: ["pages/**/*.html.pug"],
-  php : ["pages/**/*.php.pug"],
-  txt : ["pages/**/*.txt.pug"],
-  md  : ["pages/**/*.md.pug"],
-  js  : ["scripts/gjs/**/*.js"],
-  scss: ["styles/scss/**/*.scss"]
+  root  : "_ace",
+  files : ['.gitattributes','.editorconfig','robots.txt'],
+  html  : ["pages/**/*.html.pug"],
+  php   : ["pages/**/*.php.pug"],
+  txt   : ["pages/**/*.txt.pug"],
+  md    : ["pages/**/*.md.pug"],
+  js    : ["scripts/gjs/**/*.js"],
+  scss  : ["styles/scss/**/*.scss"]
 };
 
 const _dest = {
@@ -89,7 +90,7 @@ function htaccess() {
   .pipe(dest(_dest.root));
 }
 
-// manifest.json
+// manifest
 function manifest() {
   return file(
     manifestFile,
@@ -99,7 +100,14 @@ function manifest() {
   .pipe(dest(_dest.root));
 }
 
-exports.files = parallel( htaccess, manifest );
+// files: gitattribute
+// : task to copy files from _src to _dest
+function files() {
+  return src(_src.files)
+  .pipe(dest(_dest.root));
+}
+
+exports.files = parallel( htaccess, manifest, files );
 
 // sass
 // : task to take scss files from _src to _dest
@@ -127,5 +135,12 @@ function jsw() { watch(_src.js, watchOpt, js) }
 exports.js  = js;
 exports.jsw = jsw;
 
-exports.default = parallel( html, php, txt, md, htaccess, manifest, css, js );
-exports.watch   = parallel( pagesw, cssw, jsw );
+exports.default = parallel(
+  html, php, txt, md,
+  htaccess, manifest, files,
+  css, js
+);
+
+exports.watch = parallel(
+  pagesw, cssw, jsw
+);
