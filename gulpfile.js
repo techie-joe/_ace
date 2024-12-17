@@ -1,3 +1,5 @@
+const root = '/ace/';
+
 const _src = {
   root: "_ace",
   html: ["pages/**/*.html.pug"],
@@ -13,8 +15,6 @@ const _dest = {
   css : "../ace/assets/css",
   js  : "../ace/assets/gjs",
 };
-
-const htaccessData = require('./htaccess.js');
 
 const manifestData = require('./manifest.js');
 const manifestFile = 'manifest.json';
@@ -75,9 +75,15 @@ exports.pagesw = pagesw;
 
 // .htaccess
 function htaccess() {
+
+  const errDocs = [];
+  ['404', '500', '503'].forEach(function (code) {
+    errDocs.push(`ErrorDocument ${code} ${root}${code}.html`);
+  });
+
   return file(
     '.htaccess',
-    htaccessData.errDocs.join('\n'),
+    errDocs.join('\n'),
     { src: true } // indicates that the string provided as the second argument should be treated as file contents rather than a file path
   )
   .pipe(dest(_dest.root));
