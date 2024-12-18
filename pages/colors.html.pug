@@ -14,31 +14,14 @@ block append vars
   //- 
 
 block append style
+  //-   |  |
+  //- 01234567
+  //- fedcba98
+  //-   |  |
   style.
     #_header { max-width:960px }
     #_header,
     #_main { margin:0 auto; padding:0 1rem; }
-
-    .cg {
-      margin:0 auto;
-      height: 250px;
-      background:
-      linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
-    }
-
-    .cg1 {
-      margin:0 auto;
-      height: 300px;
-      background:
-      linear-gradient(to right, #ff0000, #ffff00, #00ffff, #ff00ff, #ff0000);
-    }
-
-    .cg2 {
-      margin:0 auto;
-      height: 300px;
-      background:
-      linear-gradient(to right, #ff8800, #ffff00, #00ffff, #8800FF, #ff0088);
-    }
 
     .bg0 {
       height:10px;
@@ -56,12 +39,6 @@ block append style
       height:100%;
       background:
       linear-gradient(to top, #ffffffff, #ffffff00);
-    }
-
-    .bg3 {
-      height:100%;
-      background:
-      linear-gradient(to bottom, #000000FF, #00000000 45%, #ffffff00 55%, #ffffffff);
     }
 
     .line { border-top:1px solid #808080 }
@@ -92,16 +69,18 @@ mixin table
     //- fedcba98
     //-   |  |
     var bgs = [
-      ['111111','222222','333333','cccccc','dddddd','eeeeee'],
-      ['222222','134219','247c2f','42a14e','8dc593','dddddd'],
-      ['222222','063063','174f93','3782dc','59a5ff','dddddd'],
-      ['222222','782424','a83030','ec5e5e','ee7878','dddddd'],
+      ['111111','222222','444444','bbbbbb','dddddd','eeeeee'],
+      ['222222','174F1E','247c2f','42a14e','84C28B','dddddd'],
+      ['222222','0F335E','174f93','3782dc','7CADE8','dddddd'],
+      ['222222','6A1E1E','a83030','ec5e5e','F39999','dddddd'],
+      ['222222','7F5A00','c88e00','daa300','E7C45D','dddddd'],
     ];
     var tcs = [
-      ['888888','999999','dddddd','222222','666666','777777'],
-      ['45b554','8dc593','adf3b5','004b0a','134219','009D11'],
-      ['0088FF','59a5ff','84bcff','001938','063063','0055DD'],
-      ['DD4444','ee7878','ffb1b1','4a0000','782424','DD3333'],
+      ['555555','888888','dddddd','222222','888888','aaaaaa'],
+      ['42a14e','84C28B','C2E1C6','0B260F','174F1E','247c2f'],
+      ['3782dc','7CADE8','BED7F4','07192F','0F335E','174f93'],
+      ['ec5e5e','F39999','F9CBCB','330F0F','6A1E1E','a83030'],
+      ['daa300','E7C45D','F4E3B2','3C2A00','7F5A00','c88e00'],
     ];
   #table._text-center._uppercase
     - var r = 0
@@ -114,6 +93,24 @@ mixin table
           - var tc = tcs[r][c]
           .i(style=`background:#${bg};color:#${tc};`): .c(style=`border:1px solid #${tc}`) #[b #{tc}]#[br]#{bg}
           - c++
+        //- while
+      //- grid
+      - var bggClass = `bgg-${r}`
+      style
+        .
+          .#{bggClass} {
+            margin:0 auto;
+            height: 30px;
+          }
+          .#{bggClass} .gc {
+            height:100%;
+            background:
+            linear-gradient(to right, #000000, ##{bgs[r][2]} 50%, ##{bgs[r][3]} 50%, #ffffff);
+          }
+        //- 
+
+      div(class=bggClass): .gc: .gridlines
+
       - r++
 
 
@@ -124,16 +121,22 @@ block main
       .section
         +table(7)
       .section
+
+        div(style="height:1rem")
         div: +img(homeUrl+"/images/grayscale.svg","grayscale.svg","Gray Scale")(style="width:100%")
         .bg0: .gridlines
+
+        style.
+          .cg {
+            margin:0 auto;
+            height: 250px;
+            background:
+            linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+          }
         div(style="height:1rem")
         .cg: .bg1: .gridlines
         div: +img(homeUrl+"/images/colorscale.svg","colorscale.svg","Color Scale")(style="width:100%")
         .cg: .bg2: .gridlines
-        div(style="height:1rem")
-        .cg1: .bg3: .gridlines
-        div(style="height:1rem")
-        .cg2: .bg3: .gridlines
 
     p: hr
 
