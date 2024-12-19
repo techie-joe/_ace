@@ -37,7 +37,7 @@ block append style
       background-image: url('data:image/svg+xml;utf8,<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"><rect width="9" height="9" fill="none" stroke="none" /><line x1="10" y1="0" x2="10" y2="10" stroke="%23222" stroke-width="1" /><line x1="0" y1="10" x2="10" y2="10" stroke="%23222" stroke-width="1" /></svg>');
     }
 
-    #_main .section { width:960px;padding: 1em 0; }
+    #_main .section { width:960px;margin: 1em 0; }
 
   //- 
 
@@ -47,21 +47,23 @@ block append vars
     //- 01234567
     //- fedcba98
     //-   |  |
-    function getColors(e,c,a,b,d,f,x='222222',y='dddddd') {
+    function hexToInt(hex) { return parseInt(hex, 16); }
+    function intToHex(int) { return (int).toString(16); }
+    function getColors(e,c,a,i,b,d,f,x='ffffff',y='222222',z='dddddd') {
       return [
-        [x,d,f,e,c,y],
-        [e,c,a,b,d,f]
+        [y,d,f,i,e,c,z],
+        [e,c,a,x,b,d,f]
       ];
     }
     var colors = [
       [
-        ['111111','222222','333333','cccccc','dddddd','eeeeee'],
-        ['555555','aaaaaa','cccccc','333333','555555','aaaaaa']
+        ['111111','222222','333333','808080','cccccc','dddddd','eeeeee'],
+        ['555555','aaaaaa','cccccc','000000','333333','555555','aaaaaa']
       ],
-      getColors('D86D6A','E8A9A8','410C0B','7F1916','AE2623','C43C39'),
-      getColors('F4BA6C','F8D6A8','492D05','8D570A','D38610','EFA32D'),
-      getColors('84C28B','C2E1C6','0B260F','174F1E','247c2f','42a14e'),
-      getColors('5A88D5','B3CFF1','071A31','1A3E87','2448AE','3964C3'),
+      getColors('D86D6A','E8A9A8','410C0B','CC0000','7F1916','AE2623','C43C39'),
+      getColors('F4BA6C','F8D6A8','492D05','FF9900','8D570A','D38610','EFA32D'),
+      getColors('84C28B','C2E1C6','0B260F','009900','174F1E','247c2f','42a14e'),
+      getColors('5A88D5','B3CFF1','071A31','0066CC','1A3E87','2448AE','3964C3'),
     ];
 
 mixin tables
@@ -69,9 +71,9 @@ mixin tables
     #table .i { padding: .5rem 1rem; }
     #table .c { font-size: .8em; border-radius: .5rem }
   #table._text-center._uppercase
-    - var r = 0
+    - var r = 0;
     while r < colors.length
-      ._mv: +table(r++)
+      div: +table(r++)
 
 mixin table(r)
   - var cols = colors[r][0].length
@@ -79,32 +81,29 @@ mixin table(r)
   .grid(style=`display:grid;grid-template-columns: repeat(${cols}, 1fr);`)
     - var c = 0;
     while c < cols
-      - var bg = colors[r][0][c]
-      - var tc = colors[r][1][c]
+      - var bg = colors[r][0][c];
+      - var tc = colors[r][1][c];
       .i(style=`background:#${bg};color:#${tc};`): .c(style=`border:1px solid #${tc}`) #[b #{tc}]#[br]#{bg}
-      - c++
+      - c++;
     //- while
   //- grid
 
-  - var bgc          = `bgc-${r}`
-  style
-    .
-      .#{bgc} {
-        margin:0 auto;
-        height: 10px;
-      }
-      .#{bgc} .gc {
-        height:100%;
-        background:
-        linear-gradient(to right
-          , #000
-          , ##{colors[r][0][1]} 15%
-          , ##{colors[r][0][2]} 50%
-          , ##{colors[r][0][3]} 50%
-          , ##{colors[r][0][4]} 85%
-          , #fff
-        );
-      }
+  -
+    var bgc = `bgc-${r}`;
+  style.
+    .#{bgc} {
+      margin:0 auto;
+      height: 10px;
+    }
+    .#{bgc} .gc {
+      height:100%;
+      background:
+      linear-gradient(to right
+        , #000
+        , ##{colors[r][0][3]}
+        , #fff
+      );
+    }
   //- 
   div(class=bgc): .gc: .gridlines
 
@@ -113,65 +112,101 @@ block main
 
   main#_main
     article(style="overflow-x:scroll")
+
       .section
         +tables
+
       .section
-        style
-          .
-            .bg0 {
-              height:10px;
-              background:
-              linear-gradient(to right
-                , #000
-                , #fff
-              );
+        -
+          var rainbowx =
+            [ 'CC0000'
+            , 'FF9900'
+            , 'DDDD00'
+            , '55AA00'
+            , '009900'
+            , '009955'
+            , '009999'
+            , '0066CC'
+            , '0033DD'
+            , '7700DD'
+            , 'AA00AA'
+            , 'DD0077'
+            ];
+        style.
+          #_html .colorlink {
+            font-size:13px;
+            color:#fff;
+            text-shadow: 1px 1px 1px #00000099;
+            padding:.2em .5em;
+            margin:1em .5em;
+            text-decoration:none;
+            border-radius:3px;
             }
+        ._mv._b._text-center._uppercase
+          each c in rainbowx
+            +a('')(style=`background-color:#${c}`).colorlink #{c}
+
+      .section
+        style.
+          .bg0 {
+            height:10px;
+            background:
+            linear-gradient(to right
+              , #000
+              , #fff
+            );
+          }
         div: +img(homeUrl+"images/grayscale.svg","grayscale.svg","Gray Scale")(style="width:100%")
         .bg0: .gridlines
 
-        div(style="height:1rem")
-
-        style
+      .section
+        //- 
           - var darken            = '60'
           - var lighten           = '60'
-          - var darkness          = '20'
-          - var lightness         = '20'
-          .
-            .cg {
-              display:block;
-              height: 960px;
-              background:
-              linear-gradient(to right
-                , #00000000
-                , ##{darken+darken+darken+darken} 50%
-                , ##{lighten+lighten+lighten+lighten} 50%
-                , #ffffff00
-              ),
-              linear-gradient(to right
-                , #000000ff
-                , #000000#{darkness} 50%
-                , #ffffff#{lightness} 50%
-                , #ffffffff
-              ),
-              linear-gradient(to bottom
-                , #ff0000
-                , #ff8000
-                , #ffff00
-                , #80ff00
-                , #00ff00
-                , #00ff80
-                , #00ffff
-                , #0080ff
-                , #0000ff
-                , #8000ff
-                , #ff00ff
-                , #ff0080
-                , #ff0000
-              );
-            }
+          linear-gradient(to right
+            , #00000000
+            , ##{darken+darken+darken+darken} 50%
+            , ##{lighten+lighten+lighten+lighten} 50%
+            , #ffffff00
+          ),
+        -
+          var rainbow =
+            [ '#ff0000'
+            , '#ff8000'
+            , '#ffff00'
+            , '#80ff00'
+            , '#00ff00'
+            , '#00ff80'
+            , '#00ffff'
+            , '#0080ff'
+            , '#0000ff'
+            , '#8000ff'
+            , '#ff00ff'
+            , '#ff0080'
+            , '#ff0000'
+            ];
+          var darkline  = 49;
+          var lightline = 100-darkline+.1;
+          var darkness  = (64).toString(16);
+          var lightness = (64).toString(16);
+        style.
+          .cg {
+            display:block;
+            height: 960px;
+            background:
+            linear-gradient(to right
+              , #000000ff
+              , #000000#{darkness} #{darkline}%
+              , #00000000 #{darkline}%
+              , #ffffff00 #{lightline}%
+              , #ffffff#{lightness} #{lightline}%
+              , #ffffffff
+            ),
+            linear-gradient(to bottom,#{rainbow.join(',')});
+          }
         ._relative
           .cg: .gridlines
-          ._absolute(style="left:50%;margin-left:-15px;")
+          ._absolute(style="left:50%;margin-left:-14px;")
             +img(homeUrl+"images/colorscale-v.svg","colorscale-v.svg","Color Scale")
 
     p: hr
