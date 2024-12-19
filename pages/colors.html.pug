@@ -48,18 +48,18 @@ mixin table
     //- fedcba98
     //-   |  |
     var bgs = [
-      ['111111','222222','444444','bbbbbb','dddddd','eeeeee'],
-      ['222222','174F1E','247c2f','42a14e','84C28B','dddddd'],
-      ['222222','0F335E','174f93','3782dc','7CADE8','dddddd'],
+      ['111111','222222','333333','cccccc','dddddd','eeeeee'],
       ['222222','6A1E1E','a83030','ec5e5e','F39999','dddddd'],
       ['222222','7F5A00','c88e00','daa300','E7C45D','dddddd'],
+      ['222222','174F1E','247c2f','42a14e','84C28B','dddddd'],
+      ['222222','0F335E','174f93','3782dc','7CADE8','dddddd'],
     ];
     var tcs = [
-      ['555555','888888','dddddd','222222','888888','aaaaaa'],
-      ['42a14e','84C28B','C2E1C6','0B260F','174F1E','247c2f'],
-      ['3782dc','7CADE8','BED7F4','07192F','0F335E','174f93'],
+      ['444444','888888','dddddd','222222','888888','bbbbbb'],
       ['ec5e5e','F39999','F9CBCB','330F0F','6A1E1E','a83030'],
       ['daa300','E7C45D','F4E3B2','3C2A00','7F5A00','c88e00'],
+      ['42a14e','84C28B','C2E1C6','0B260F','174F1E','247c2f'],
+      ['3782dc','7CADE8','BED7F4','07192F','0F335E','174f93'],
     ];
   style.
     #table .i { padding: .5rem 1rem; }
@@ -80,16 +80,24 @@ mixin table
       //- grid
 
       - var bggClass = `bgg-${r}`
-      style.
-        .#{bggClass} {
-          margin:0 auto;
-          height: 10px;
-        }
-        .#{bggClass} .gc {
-          height:100%;
-          background:
-          linear-gradient(to right, #000, ##{bgs[r][0]} 3%, ##{bgs[r][2]} 50%, ##{bgs[r][3]} 50%, ##{bgs[r][5]} 97%, #fff);
-        }
+      style
+        .
+          .#{bggClass} {
+            margin:0 auto;
+            height: 10px;
+          }
+          .#{bggClass} .gc {
+            height:100%;
+            background:
+            linear-gradient(to right
+              , #000
+              , ##{bgs[r][1]} 15%
+              , ##{bgs[r][2]} 50%
+              , ##{bgs[r][3]} 50%
+              , ##{bgs[r][4]} 85%
+              , #fff
+            );
+          }
       //- 
 
       div(class=bggClass): .gc: .gridlines
@@ -106,43 +114,62 @@ block main
       .section
         +table(7)
       .section
-
-        style.
-          .bg0 {
-            height:10px;
-            background:
-            linear-gradient(to right, #000000, #ffffff);
-          }
+        - var saturation  = '40'
+        - var difference  = '20'
+        style
+          .
+            .bg0 {
+              height:10px;
+              background:
+              linear-gradient(to right
+                , #000
+                , #fff
+              );
+            }
         div: +img(homeUrl+"images/grayscale.svg","grayscale.svg","Gray Scale")(style="width:100%")
         .bg0: .gridlines
 
         div(style="height:1rem")
 
-        style.
-          .cg1 {
-            display:block;
-            height: 960px;
-            background:
-            linear-gradient(to right, #000000ff, #00000020 50%, #ffffff20 50%, #ffffffff),
-            linear-gradient(to bottom
-              , #ff0000
-              , #ff8000
-              , #ffff00
-              , #80ff00
-              , #00ff00
-              , #00ff80
-              , #00ffff
-              , #0080ff
-              , #0000ff
-              , #8000ff
-              , #ff00ff
-              , #ff0080
-              , #ff0000
-            );
-          }
+        style
+          //- 
+          .
+            .cg {
+              display:block;
+              height: 960px;
+              background:
+              linear-gradient(to right
+                , #00000000
+                , #7f7f7f#{saturation} 50%
+                , #808080#{saturation} 50%
+                , #ffffff00
+              ),
+              linear-gradient(to right
+                , #000000ff
+                , #000000#{difference} 50%
+                , #ffffff#{difference} 50%
+                , #ffffffff
+              ),
+              linear-gradient(to bottom
+                , #ff0000
+                , #ff8000
+                , #ffff00
+                , #80ff00
+                , #00ff00
+                , #00ff80
+                , #00ffff
+                , #0080ff
+                , #0000ff
+                , #8000ff
+                , #ff00ff
+                , #ff0080
+                , #ff0000
+              );
+            }
         ._relative
-          .cg1: .gridlines
-          ._absolute(style="left:50%;margin-left:-15px;"): +img(homeUrl+"images/colorscale-v.svg","colorscale-v.svg","Color Scale")
+          .cg: .gridlines
+          ._absolute(style="left:50%;margin-left:-15px;")
+            +img(homeUrl+"images/colorscale-v.svg","colorscale-v.svg","Color Scale")
 
     p: hr
 
