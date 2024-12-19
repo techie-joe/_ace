@@ -23,24 +23,6 @@ block append style
     #_header,
     #_main { margin:0 auto; padding:0 1rem; }
 
-    .bg0 {
-      height:10px;
-      background:
-      linear-gradient(to right, #000000, #ffffff);
-    }
-
-    .bg1 {
-      height:100%;
-      background:
-      linear-gradient(to bottom, #000000ff, #00000000);
-    }
-
-    .bg2 {
-      height:100%;
-      background:
-      linear-gradient(to top, #ffffffff, #ffffff00);
-    }
-
     .line { border-top:1px solid #808080 }
 
     .gridlines {
@@ -56,9 +38,6 @@ block append style
     }
 
     #_main .section { width:960px;padding: 1em 0; }
-    .grid { display: grid; }
-    #table .i { padding: .5rem 1rem; }
-    #table .c { font-size: .8em; border-radius: .5rem }
 
   //- 
 
@@ -82,11 +61,15 @@ mixin table
       ['ec5e5e','F39999','F9CBCB','330F0F','6A1E1E','a83030'],
       ['daa300','E7C45D','F4E3B2','3C2A00','7F5A00','c88e00'],
     ];
+  style.
+    #table .i { padding: .5rem 1rem; }
+    #table .c { font-size: .8em; border-radius: .5rem }
   #table._text-center._uppercase
     - var r = 0
     while r < bgs.length
       - var cols = bgs[r].length
-      .grid(style=`grid-template-columns: repeat(${cols}, 1fr);`)
+
+      .grid(style=`display:grid;grid-template-columns: repeat(${cols}, 1fr);`)
         - var c = 0;
         while c < cols
           - var bg = bgs[r][c]
@@ -95,23 +78,25 @@ mixin table
           - c++
         //- while
       //- grid
+
       - var bggClass = `bgg-${r}`
-      style
-        .
-          .#{bggClass} {
-            margin:0 auto;
-            height: 30px;
-          }
-          .#{bggClass} .gc {
-            height:100%;
-            background:
-            linear-gradient(to right, #000000, ##{bgs[r][2]} 50%, ##{bgs[r][3]} 50%, #ffffff);
-          }
-        //- 
+      style.
+        .#{bggClass} {
+          margin:0 auto;
+          height: 10px;
+        }
+        .#{bggClass} .gc {
+          height:100%;
+          background:
+          linear-gradient(to right, #000, ##{bgs[r][0]} 3%, ##{bgs[r][2]} 50%, ##{bgs[r][3]} 50%, ##{bgs[r][5]} 97%, #fff);
+        }
+      //- 
 
       div(class=bggClass): .gc: .gridlines
 
       - r++
+
+    //- while
 
 
 block main
@@ -122,23 +107,44 @@ block main
         +table(7)
       .section
 
-        div(style="height:1rem")
-        div: +img(homeUrl+"/images/grayscale.svg","grayscale.svg","Gray Scale")(style="width:100%")
+        style.
+          .bg0 {
+            height:10px;
+            background:
+            linear-gradient(to right, #000000, #ffffff);
+          }
+        div: +img(homeUrl+"images/grayscale.svg","grayscale.svg","Gray Scale")(style="width:100%")
         .bg0: .gridlines
 
-        style.
-          .cg {
-            margin:0 auto;
-            height: 250px;
-            background:
-            linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
-          }
         div(style="height:1rem")
-        .cg: .bg1: .gridlines
-        div: +img(homeUrl+"/images/colorscale.svg","colorscale.svg","Color Scale")(style="width:100%")
-        .cg: .bg2: .gridlines
+
+        style.
+          .cg1 {
+            display:block;
+            height: 960px;
+            background:
+            linear-gradient(to right, #000000ff, #00000020 50%, #ffffff20 50%, #ffffffff),
+            linear-gradient(to bottom
+              , #ff0000
+              , #ff8000
+              , #ffff00
+              , #80ff00
+              , #00ff00
+              , #00ff80
+              , #00ffff
+              , #0080ff
+              , #0000ff
+              , #8000ff
+              , #ff00ff
+              , #ff0080
+              , #ff0000
+            );
+          }
+        ._relative
+          .cg1: .gridlines
+          ._absolute(style="left:50%;margin-left:-15px;"): +img(homeUrl+"images/colorscale-v.svg","colorscale-v.svg","Color Scale")
 
     p: hr
 
     footer#_footer
-      p._text-centerx &copy; Copyright
+      p._text-centerx !{copyright}

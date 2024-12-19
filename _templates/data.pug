@@ -17,7 +17,7 @@ html(lang=lang)
     meta(charset=charset)/
 
     block seo
-      title #{title||'(untitled)'}
+      title !{title||'(untitled)'}
       meta(name="description" content=description||'(undescribed)')/
 
     block style

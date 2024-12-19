@@ -78,8 +78,8 @@ block main
 
     header#_header
       .p
-        h1 #{header}
-        p #{description}
+        h1 !{header}
+        p !{description}
       .startNow
         +a("blank-canvas.html")#startNow._btnlink| Start Now
     //- 
@@ -132,4 +132,4 @@ block main
 
     p: hr
     footer#_footer
-      .layout: p._text-left| &copy; Copyright
+      .layout: p._text-left| !{copyright}

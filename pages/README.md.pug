@@ -9,16 +9,16 @@ block append vars
  
 block main
   .
-    # #{title}
-    > #{description}
+    # !{title}
+    > !{description}
     ---
     
-    Template : #{name}  
+    Template : !{name}  
     Codename : #{shortName} - v#{version}  
-    Author   : #{author}  
+    Author   : !{author}  
 
     URL      : #{url}  
 
     ---
 
-    Copyright © #{thisYear} #{publisher}
+    Copyright (c) #{thisYear} !{publisher}

@@ -210,9 +210,9 @@ a._btnlink {
 
 ._inblock { display: inline-block }
 
-._fixed    { position: fixed }
-._absolute { position: absolute }
 ._relative { position: relative }
+._absolute { position: absolute;top:0;left:0; }
+._fixed    { position: fixed;top:0;left:0; }
 
 ._indent { text-indent: 2em }
 
