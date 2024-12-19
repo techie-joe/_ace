@@ -41,44 +41,46 @@ block append style
 
   //- 
 
-mixin tables
-  style.
-    #table .i { padding: .5rem 1rem; }
-    #table .c { font-size: .8em; border-radius: .5rem }
-  #table._text-center._uppercase
-    - var r = 0
-    while r < bgs.length
-      ._mv: +table(r++)
-
 block append vars
   -
     //-   |  |
     //- 01234567
     //- fedcba98
     //-   |  |
-    var bgs = [
-      ['111111','222222','333333','cccccc','dddddd','eeeeee'],
-      ['222222','6A1E1E','a83030','ec5e5e','F39999','dddddd'],
-      ['222222','8D570A','D38610','EFA32D','F4BA6C','dddddd'],
-      ['222222','174F1E','247c2f','42a14e','84C28B','dddddd'],
-      ['222222','0F335E','174f93','3782dc','7CADE8','dddddd'],
-    ];
-    var tcs = [
-      ['555555','aaaaaa','cccccc','333333','555555','aaaaaa'],
-      ['ec5e5e','F39999','F9CBCB','330F0F','6A1E1E','a83030'],
-      ['EFA32D','F4BA6C','F8D6A8','492D05','8D570A','D38610'],
-      ['42a14e','84C28B','C2E1C6','0B260F','174F1E','247c2f'],
-      ['3782dc','7CADE8','BED7F4','07192F','0F335E','174f93'],
+    function getColors(e,c,a,b,d,f,x='222222',y='dddddd') {
+      return [
+        [x,d,f,e,c,y],
+        [e,c,a,b,d,f]
+      ];
+    }
+    var colors = [
+      [
+        ['111111','222222','333333','cccccc','dddddd','eeeeee'],
+        ['555555','aaaaaa','cccccc','333333','555555','aaaaaa']
+      ],
+      getColors('D86D6A','E8A9A8','410C0B','7F1916','AE2623','C43C39'),
+      getColors('F4BA6C','F8D6A8','492D05','8D570A','D38610','EFA32D'),
+      getColors('84C28B','C2E1C6','0B260F','174F1E','247c2f','42a14e'),
+      getColors('5A88D5','B3CFF1','071A31','1A3E87','2448AE','3964C3'),
     ];
 
+mixin tables
+  style.
+    #table .i { padding: .5rem 1rem; }
+    #table .c { font-size: .8em; border-radius: .5rem }
+  #table._text-center._uppercase
+    - var r = 0
+    while r < colors.length
+      ._mv: +table(r++)
+
 mixin table(r)
-  - var cols = bgs[r].length
+  - var cols = colors[r][0].length
 
   .grid(style=`display:grid;grid-template-columns: repeat(${cols}, 1fr);`)
     - var c = 0;
     while c < cols
-      - var bg = bgs[r][c]
-      - var tc = tcs[r][c]
+      - var bg = colors[r][0][c]
+      - var tc = colors[r][1][c]
       .i(style=`background:#${bg};color:#${tc};`): .c(style=`border:1px solid #${tc}`) #[b #{tc}]#[br]#{bg}
       - c++
     //- while
@@ -96,10 +98,10 @@ mixin table(r)
         background:
         linear-gradient(to right
           , #000
-          , ##{bgs[r][1]} 15%
-          , ##{bgs[r][2]} 50%
-          , ##{bgs[r][3]} 50%
-          , ##{bgs[r][4]} 85%
+          , ##{colors[r][0][1]} 15%
+          , ##{colors[r][0][2]} 50%
+          , ##{colors[r][0][3]} 50%
+          , ##{colors[r][0][4]} 85%
           , #fff
         );
       }
@@ -130,6 +132,8 @@ block main
         div(style="height:1rem")
 
         style
+          - var darken            = '60'
+          - var lighten           = '60'
           - var darkness          = '20'
           - var lightness         = '20'
           .
@@ -137,6 +141,12 @@ block main
               display:block;
               height: 960px;
               background:
+              linear-gradient(to right
+                , #00000000
+                , ##{darken+darken+darken+darken} 50%
+                , ##{lighten+lighten+lighten+lighten} 50%
+                , #ffffff00
+              ),
               linear-gradient(to right
                 , #000000ff
                 , #000000#{darkness} 50%
