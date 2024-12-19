@@ -41,7 +41,16 @@ block append style
 
   //- 
 
-mixin table
+mixin tables
+  style.
+    #table .i { padding: .5rem 1rem; }
+    #table .c { font-size: .8em; border-radius: .5rem }
+  #table._text-center._uppercase
+    - var r = 0
+    while r < bgs.length
+      ._mv: +table(r++)
+
+block append vars
   -
     //-   |  |
     //- 01234567
@@ -50,61 +59,76 @@ mixin table
     var bgs = [
       ['111111','222222','333333','cccccc','dddddd','eeeeee'],
       ['222222','6A1E1E','a83030','ec5e5e','F39999','dddddd'],
-      ['222222','7F5A00','c88e00','daa300','E7C45D','dddddd'],
+      ['222222','8D570A','D38610','EFA32D','F4BA6C','dddddd'],
       ['222222','174F1E','247c2f','42a14e','84C28B','dddddd'],
       ['222222','0F335E','174f93','3782dc','7CADE8','dddddd'],
     ];
     var tcs = [
       ['444444','888888','dddddd','222222','888888','bbbbbb'],
       ['ec5e5e','F39999','F9CBCB','330F0F','6A1E1E','a83030'],
-      ['daa300','E7C45D','F4E3B2','3C2A00','7F5A00','c88e00'],
+      ['EFA32D','F4BA6C','F8D6A8','492D05','8D570A','D38610'],
       ['42a14e','84C28B','C2E1C6','0B260F','174F1E','247c2f'],
       ['3782dc','7CADE8','BED7F4','07192F','0F335E','174f93'],
     ];
-  style.
-    #table .i { padding: .5rem 1rem; }
-    #table .c { font-size: .8em; border-radius: .5rem }
-  #table._text-center._uppercase
-    - var r = 0
-    while r < bgs.length
-      - var cols = bgs[r].length
 
-      .grid(style=`display:grid;grid-template-columns: repeat(${cols}, 1fr);`)
-        - var c = 0;
-        while c < cols
-          - var bg = bgs[r][c]
-          - var tc = tcs[r][c]
-          .i(style=`background:#${bg};color:#${tc};`): .c(style=`border:1px solid #${tc}`) #[b #{tc}]#[br]#{bg}
-          - c++
-        //- while
-      //- grid
+mixin table(r)
+  - var cols = bgs[r].length
 
-      - var bggClass = `bgg-${r}`
-      style
-        .
-          .#{bggClass} {
-            margin:0 auto;
-            height: 10px;
-          }
-          .#{bggClass} .gc {
-            height:100%;
-            background:
-            linear-gradient(to right
-              , #000
-              , ##{bgs[r][1]} 15%
-              , ##{bgs[r][2]} 50%
-              , ##{bgs[r][3]} 50%
-              , ##{bgs[r][4]} 85%
-              , #fff
-            );
-          }
-      //- 
-
-      div(class=bggClass): .gc: .gridlines
-
-      - r++
-
+  .grid(style=`display:grid;grid-template-columns: repeat(${cols}, 1fr);`)
+    - var c = 0;
+    while c < cols
+      - var bg = bgs[r][c]
+      - var tc = tcs[r][c]
+      .i(style=`background:#${bg};color:#${tc};`): .c(style=`border:1px solid #${tc}`) #[b #{tc}]#[br]#{bg}
+      - c++
     //- while
+  //- grid
+
+  - var bgc          = `bgc-${r}`
+  style
+    .
+      .#{bgc} {
+        margin:0 auto;
+        height: 10px;
+      }
+      .#{bgc} .gc {
+        height:100%;
+        background:
+        linear-gradient(to right
+          , #000
+          , ##{bgs[r][1]} 15%
+          , ##{bgs[r][2]} 50%
+          , ##{bgs[r][3]} 50%
+          , ##{bgs[r][4]} 85%
+          , #fff
+        );
+      }
+  //- 
+  - var bgx          = `bgx-${r}`
+  - var saturation   = (255).toString(16)
+  style
+    .
+      .#{bgx} {
+        margin:0 auto;
+        height: 10px;
+      }
+      .#{bgx} .gc {
+        height:100%;
+        background:
+        linear-gradient(to right
+          , #222222#{saturation}
+          , #22222200 50%
+          , #dddddd00 50%
+          , #dddddd#{saturation}
+        ),
+        linear-gradient(to right
+          , ##{bgs[r][2]} 50%
+          , ##{bgs[r][3]} 50%
+        );
+      }
+  //- 
+  div(class=bgc): .gc: .gridlines
+  div(class=bgx): .gc: .gridlines
 
 
 block main
@@ -112,10 +136,8 @@ block main
   main#_main
     article(style="overflow-x:scroll")
       .section
-        +table(7)
+        +tables
       .section
-        - var saturation  = '40'
-        - var difference  = '20'
         style
           .
             .bg0 {
@@ -132,22 +154,17 @@ block main
         div(style="height:1rem")
 
         style
-          //- 
+          - var darkness          = '20'
+          - var lightness         = '20'
           .
             .cg {
               display:block;
               height: 960px;
               background:
               linear-gradient(to right
-                , #00000000
-                , #7f7f7f#{saturation} 50%
-                , #808080#{saturation} 50%
-                , #ffffff00
-              ),
-              linear-gradient(to right
                 , #000000ff
-                , #000000#{difference} 50%
-                , #ffffff#{difference} 50%
+                , #000000#{darkness} 50%
+                , #ffffff#{lightness} 50%
                 , #ffffffff
               ),
               linear-gradient(to bottom
