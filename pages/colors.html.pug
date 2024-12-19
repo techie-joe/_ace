@@ -48,11 +48,35 @@ block append vars
     //- fedcba98
     //-   |  |
     function hexToInt(hex) { return parseInt(hex, 16); }
-    function intToHex(int) { return (int).toString(16); }
+    function intToHex(int) { return Math.min(Math.max(int, 0),255).toString(16).padStart(2, '0'); }
+    function changeHexColor(hex,int1,int2) {
+      var r = _changeHexColor(hex,int1);
+      if(int2){ r = _changeHexColor(r,int2); }
+      return r
+    }
+    function _changeHexColor(hex,int) {
+      var r = parseInt(hex.substring(0, 2), 16) + int;
+      var g = parseInt(hex.substring(2, 4), 16) + int;
+      var b = parseInt(hex.substring(4, 6), 16) + int;
+      return intToHex(r) + intToHex(g) + intToHex(b);
+    }
     function getColors(e,c,a,i,b,d,f,x='ffffff',y='222222',z='dddddd') {
       return [
-        [y,d,f,i,e,c,z],
-        [e,c,a,x,b,d,f]
+        [y,d,f,e,c,z],
+        [e,c,a,b,d,f]
+      ];
+    }
+    function _getColors(i,x='ffffff',y='222222',z='dddddd') {
+
+      var _a = changeHexColor(i,20,-40);
+      var _b = changeHexColor(i,-30,40);
+
+      var _d = changeHexColor(i,-130,40);
+      var _c = changeHexColor(i,130,-40);
+
+      return [
+        [y,_d,i,_c,z],
+        [_a,_c,x,_d,_b]
       ];
     }
     var colors = [
@@ -60,6 +84,12 @@ block append vars
         ['111111','222222','333333','808080','cccccc','dddddd','eeeeee'],
         ['555555','aaaaaa','cccccc','000000','333333','555555','aaaaaa']
       ],
+
+      _getColors('CC0000'),
+      _getColors('FF9900'),
+      _getColors('009900'),
+      _getColors('0066CC'),
+
       getColors('D86D6A','E8A9A8','410C0B','CC0000','7F1916','AE2623','C43C39'),
       getColors('F4BA6C','F8D6A8','492D05','FF9900','8D570A','D38610','EFA32D'),
       getColors('84C28B','C2E1C6','0B260F','009900','174F1E','247c2f','42a14e'),
@@ -100,7 +130,9 @@ mixin table(r)
       background:
       linear-gradient(to right
         , #000
-        , ##{colors[r][0][3]}
+        , ##{colors[r][0][1]} 35%
+        , ##{colors[r][0][2]}
+        , ##{colors[r][0][3]} 65%
         , #fff
       );
     }
