@@ -43,46 +43,70 @@ block append style
 
 block append vars
   -
-    //-   |  |
-    //- 01234567
-    //- fedcba98
-    //-   |  |
-    function clipColor(int) { return Math.min(Math.max(int, 0),255) }
-    function hexToInt(hex) { return parseInt(hex, 16); }
-    function intToHex(int) { return clipColor(int).toString(16).padStart(2, '0'); }
-    function changeHexColor(hex,int=0,sat=0) {
-      var c = [
-        parseInt(hex.substring(0, 2), 16),
-        parseInt(hex.substring(2, 4), 16),
-        parseInt(hex.substring(4, 6), 16)
+    function range(int,min,max) { return Math.min(Math.max(int, min),max) }
+    function colorRange(int,min=0,max=255) { return range(int,min,max) }
+
+    function hexToInt(hex) { return colorRange(parseInt(hex, 16)); }
+
+    function intToHex(int) { return colorRange(int).toString(16).padStart(2, '0'); }
+
+    function getRGB(hex) {
+      var rgb = [
+        hexToInt(hex.substring(0, 2)),
+        hexToInt(hex.substring(2, 4)),
+        hexToInt(hex.substring(4, 6))
       ];
-      //- var s = (c[0] + c[1] + c[2]) / 3;
-      for (let i = 0; i < c.length; i++) {
-        c[i] = clipColor( ( c[i] +int ) );
+      return rgb
+    }
+
+    function changeHex(hex,saturation=100,lighten=0,grayscale=0) {
+      var rgb = getRGB(hex);
+      var sat = Math.floor( 255 *saturation /100 );
+      var _grayscale = Math.floor( (rgb[0] + rgb[1] + rgb[2]) / 3 );
+      var gra = Math.floor( ( 765-_grayscale ) *grayscale /1000 );
+      var c = [];
+      for (let i = 0; i < 3; i++) {
+        var lit = Math.floor( ( 255-rgb[i] ) *lighten /100 );
+        c[i] = colorRange( rgb[i] +sat +lit +gra );
       }
       return intToHex(c[0]) + intToHex(c[1]) + intToHex(c[2]);
     }
+
+    function _getColors(i,n,w='ffffff',x='000000',y='222222',z='dddddd') {
+
+      var ic = [i];
+      var bg = [
+        y,
+        changeHex( i, -1, -40, -100 ),
+        i,
+        changeHex( i,  1,  40,  100 ),
+        z
+      ];
+      var tc = [
+        i,
+        bg[3],
+        w,
+        bg[1],
+        i
+      ];
+
+      return [ ic, bg, tc ];
+    }
+
     function getColors(e,c,a,i,b,d,f,x='ffffff',y='222222',z='dddddd') {
       return [
+        [i],
         [y,d,f,e,c,z],
         [e,c,a,b,d,f]
       ];
     }
-    function _getColors(i,x='ffffff',y='222222',z='dddddd') {
-
-      var _a = changeHexColor(i,-20);
-      var _b = changeHexColor(i,20);
-
-      var _d = changeHexColor(i,-70,0.5);
-      var _c = changeHexColor(i,140,0.5);
-
-      return [
-        [y,_d,i,_c,z],
-        [_a,_c,x,_d,_b]
-      ];
-    }
+    //-   |  |
+    //- 01234567
+    //- fedcba98
+    //-   |  |
     var colors = [
       [
+        ['808080'],
         ['111111','222222','333333','808080','cccccc','dddddd','eeeeee'],
         ['555555','aaaaaa','cccccc','000000','333333','555555','aaaaaa']
       ],
@@ -92,14 +116,15 @@ block append vars
       _getColors('009900'),
       _getColors('0066CC'),
 
-      getColors('D86D6A','E8A9A8','410C0B','CC0000','7F1916','AE2623','C43C39'),
-      getColors('F4BA6C','F8D6A8','492D05','FF9900','8D570A','D38610','EFA32D'),
-      getColors('84C28B','C2E1C6','0B260F','009900','174F1E','247c2f','42a14e'),
-      getColors('5A88D5','B3CFF1','071A31','0066CC','1A3E87','2448AE','3964C3'),
+      //- getColors('D86D6A','E8A9A8','410C0B','CC0000','7F1916','AE2623','C43C39'),
+      //- getColors('F4BA6C','F8D6A8','492D05','FF9900','8D570A','D38610','EFA32D'),
+      //- getColors('84C28B','C2E1C6','0B260F','009900','174F1E','247c2f','42a14e'),
+      //- getColors('5A88D5','B3CFF1','071A31','0066CC','1A3E87','2448AE','3964C3'),
     ];
 
 mixin tables
   style.
+    #table .grid { display:grid; }
     #table .i { padding: .5rem 1rem; }
     #table .c { font-size: .8em; border-radius: .5rem }
   #table._text-center._uppercase
@@ -108,19 +133,24 @@ mixin tables
       div: +table(r++)
 
 mixin table(r)
-  - var cols = colors[r][0].length
+  -
+    var cols = colors[r][1].length;
 
-  .grid(style=`display:grid;grid-template-columns: repeat(${cols}, 1fr);`)
+  .grid(style=`grid-template-columns: repeat(${cols}, 1fr);`)
     - var c = 0;
     while c < cols
-      - var bg = colors[r][0][c];
-      - var tc = colors[r][1][c];
+      - var bg = colors[r][1][c];
+      - var tc = colors[r][2][c];
       .i(style=`background:#${bg};color:#${tc};`): .c(style=`border:1px solid #${tc}`) #[b #{tc}]#[br]#{bg}
       - c++;
     //- while
   //- grid
 
   -
+    var _darkline  = 49;
+    var _lightline = 100-_darkline+.1;
+    var _darkness  = intToHex(32);
+    var _lightness = intToHex(32);
     var bgc = `bgc-${r}`;
   style.
     .#{bgc} {
@@ -131,10 +161,16 @@ mixin table(r)
       height:100%;
       background:
       linear-gradient(to right
+        , #000000#{_darkness}
+        , #000000#{_darkness} #{_darkline}%
+        , #00000000 #{_darkline}%
+        , #ffffff00 #{_lightline}%
+        , #ffffff#{_lightness} #{_lightline}%
+        , #ffffff#{_darkness}
+      ),
+      linear-gradient(to right
         , #000
-        , ##{colors[r][0][1]} 35%
-        , ##{colors[r][0][2]}
-        , ##{colors[r][0][3]} 65%
+        , ##{colors[r][0][0]}
         , #fff
       );
     }
@@ -147,25 +183,9 @@ block main
   main#_main
     article(style="overflow-x:scroll")
 
-      .section
-        +tables
+      .section.-tables: +tables
 
-      .section
-        -
-          var rainbowx =
-            [ 'CC0000'
-            , 'FF9900'
-            , 'DDDD00'
-            , '55AA00'
-            , '009900'
-            , '009955'
-            , '009999'
-            , '0066CC'
-            , '0033DD'
-            , '7700DD'
-            , 'AA00AA'
-            , 'DD0077'
-            ];
+      .section.-rainbow-link
         style.
           #_html .colorlink {
             font-size:13px;
@@ -177,10 +197,25 @@ block main
             border-radius:3px;
             }
         ._mv._b._text-center._uppercase
-          each c in rainbowx
+          -
+            var rainbow_links =
+              [ 'CC0000'
+              , 'FF9900'
+              , 'DDDD00'
+              , '55AA00'
+              , '009900'
+              , '009955'
+              , '009999'
+              , '0066CC'
+              , '0033DD'
+              , '7700DD'
+              , 'AA00AA'
+              , 'DD0077'
+              ];
+          each c in rainbow_links
             +a('')(style=`background-color:#${c}`).colorlink #{c}
 
-      .section
+      .section.-grayscale
         style.
           .bg0 {
             height:10px;
@@ -193,7 +228,7 @@ block main
         div: +img(homeUrl+"images/grayscale.svg","grayscale.svg","Gray Scale")(style="width:100%")
         .bg0: .gridlines
 
-      .section
+      .section.-rainbow
         //- 
           - var darken            = '60'
           - var lighten           = '60'
@@ -221,8 +256,8 @@ block main
             ];
           var darkline  = 49;
           var lightline = 100-darkline+.1;
-          var darkness  = (64).toString(16);
-          var lightness = (64).toString(16);
+          var darkness  = intToHex(64);
+          var lightness = intToHex(64);
         style.
           .cg {
             display:block;

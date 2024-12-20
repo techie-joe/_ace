@@ -24,6 +24,7 @@ const { watch, series, parallel, src, dest } = require('gulp');
 const rename = require('gulp-rename');
 const file = require('gulp-file');
 const watchOpt = { ignoreInitial: false };
+const pagesOpt = { pretty: false }
 
 // pages: html, php and txt
 // : task to take pug files from _src to _dest
@@ -31,7 +32,7 @@ const watchOpt = { ignoreInitial: false };
 const pug = require("gulp-pug");
 function html() {
   return src(_src.html)
-    .pipe(pug({ pretty: false }))
+    .pipe(pug(pagesOpt))
     .pipe(rename(function (path) {
       path.basename = path.basename.substring(0, path.basename.lastIndexOf('.'));
     }))
@@ -39,7 +40,7 @@ function html() {
 }
 function php() {
   return src(_src.php)
-    .pipe(pug({ pretty: false }))
+    .pipe(pug(pagesOpt))
     .pipe(rename(function (path) {
       path.basename = path.basename.substring(0, path.basename.lastIndexOf('.'));
       path.extname = '.php';
