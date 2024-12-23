@@ -43,12 +43,10 @@ block append style
 
 block append vars
   -
-    function range(int,min,max) { return Math.min(Math.max(int, min),max) }
-    function colorRange(int,min=0,max=255) { return range(int,min,max) }
-
+    function range(n,min,max) { return Math.min(Math.max(n, min),max) }
+    function colorRange(n,min=0,max=255) { return range(n,min,max) }
     function hexToInt(hex) { return colorRange(parseInt(hex, 16)); }
-
-    function intToHex(int) { return colorRange(int).toString(16).padStart(2, '0'); }
+    function intToHex(int) { return colorRange(Math.floor(int)).toString(16).padStart(2, '0'); }
 
     function getRGB(hex) {
       var rgb = [
@@ -59,67 +57,61 @@ block append vars
       return rgb
     }
 
-    function changeHex(hex,saturation=100,lighten=0,grayscale=0) {
-      var rgb = getRGB(hex);
-      var sat = Math.floor( 255 *saturation /100 );
-      var _grayscale = Math.floor( (rgb[0] + rgb[1] + rgb[2]) / 3 );
-      var gra = Math.floor( ( 765-_grayscale ) *grayscale /1000 );
+    function changeHex(hex,lighten=0) {
+      var rgb  = getRGB(hex);
+      var lit  = range( lighten, 0, 100 )/100;
       var c = [];
-      for (let i = 0; i < 3; i++) {
-        var lit = Math.floor( ( 255-rgb[i] ) *lighten /100 );
-        c[i] = colorRange( rgb[i] +sat +lit +gra );
-      }
-      return intToHex(c[0]) + intToHex(c[1]) + intToHex(c[2]);
+      rgb.forEach(function(v, i, a) {
+        if (lit < 0.5) {
+          v = v *( 2 * lit )
+        } else {
+          v = v +( 255 - v ) * ( 2 * ( lit - 0.5 ) )
+        }
+        c[i] = intToHex ( colorRange(v) )
+      });
+      return c.join('');
     }
 
-    function _getColors(i,n,w='ffffff',x='000000',y='222222',z='dddddd') {
+    function getColors(i,y='222222',z='dddddd',w='ffffff') {
 
       var ic = [i];
       var bg = [
         y,
-        changeHex( i, -1, -40, -100 ),
+        changeHex( i, 25 ),
+        changeHex( i, 35 ),
         i,
-        changeHex( i,  1,  40,  100 ),
+        changeHex( i, 75 ),
+        changeHex( i, 85 ),
         z
       ];
       var tc = [
         i,
-        bg[3],
+        bg[4],
+        bg[5],
         w,
         bg[1],
+        bg[2],
         i
       ];
 
       return [ ic, bg, tc ];
     }
 
-    function getColors(e,c,a,i,b,d,f,x='ffffff',y='222222',z='dddddd') {
-      return [
-        [i],
-        [y,d,f,e,c,z],
-        [e,c,a,b,d,f]
-      ];
-    }
     //-   |  |
     //- 01234567
     //- fedcba98
     //-   |  |
     var colors = [
-      [
-        ['808080'],
-        ['111111','222222','333333','808080','cccccc','dddddd','eeeeee'],
-        ['555555','aaaaaa','cccccc','000000','333333','555555','aaaaaa']
-      ],
-
-      _getColors('CC0000'),
-      _getColors('FF9900'),
-      _getColors('009900'),
-      _getColors('0066CC'),
-
-      getColors('D86D6A','E8A9A8','410C0B','CC0000','7F1916','AE2623','C43C39'),
-      getColors('F4BA6C','F8D6A8','492D05','FF9900','8D570A','D38610','EFA32D'),
-      getColors('84C28B','C2E1C6','0B260F','009900','174F1E','247c2f','42a14e'),
-      getColors('5A88D5','B3CFF1','071A31','0066CC','1A3E87','2448AE','3964C3'),
+      getColors('808080','111111','eeeeee'),
+      getColors('CC0000'),
+      getColors('FF8800'),
+      getColors('FFCC00','222222','dddddd','000000'),
+      getColors('009900'),
+      getColors('0088AA'),
+      getColors('0066CC'),
+      getColors('6600cc'),
+      getColors('880088'),
+      getColors('CC0066'),
     ];
 
 mixin tables
@@ -200,17 +192,17 @@ block main
           -
             var rainbow_links =
               [ 'CC0000'
-              , 'FF9900'
-              , 'DDDD00'
-              , '55AA00'
+              , 'FF8800'
+              , 'FFCC00'
+              , '88AA00'
               , '009900'
               , '009955'
-              , '009999'
+              , '0088AA'
               , '0066CC'
               , '0033DD'
-              , '7700DD'
-              , 'AA00AA'
-              , 'DD0077'
+              , '6600cc'
+              , '880088'
+              , 'CC0066'
               ];
           each c in rainbow_links
             +a('')(style=`background-color:#${c}`).colorlink #{c}

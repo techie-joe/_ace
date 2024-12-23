@@ -28,3 +28,20 @@
       [_a,_c,x,_d,_b]
     ];
   }
+
+  //- var sat = Math.floor( 255 *saturation /100 );
+  //- var _grayscale = Math.floor( (rgb[0] + rgb[1] + rgb[2]) / 3 );
+  //- var gra = Math.floor( ( 765-_grayscale ) *grayscale /1000 );
+  //- for (var i = 0; i < 3; i++) {
+  //-   //- var lit = Math.floor( ( 255-rgb[i] ) *lighten /100 );
+  //-   //- c[i] = colorRange( rgb[i] +sat +lit +gra );
+  //-   c[i] = colorRange( rgb[i] /= 255 );
+  //- }
+
+  // Find the maximum and minimum values among r, g, and b
+  var max = Math.max(r, g, b);
+  var min = Math.min(r, g, b);
+  // Calculate lightness
+  var lit = Math.floor( (max + min) / 2 );
+
+
