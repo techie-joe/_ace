@@ -85,6 +85,98 @@
     colors.push( getColors(v) );
   });
 
+mixin colorCodes(r)
+  -
+    var bg = colors[r][0];
+    var tc = colors[r][1];
+    var cbg = bg[ Math.ceil(bg.length/2)-1 ];
+    var ctc = tc[ Math.ceil(tc.length/2)-1 ];
+  .codecolor._mt-2._small(style=`background: #${cbg}; color:#${ctc}`) ##{cbg}
+  .g
+    .u-1-3: ._mr
+      pre.colorcode._radius._pad._mv-f1
+        each v,i in bg
+          = `$bg-${r+1}-${i+1} : #${v};`
+          +_
+      pre.colorcode._radius._pad._mv-f1
+        each v,i in bg
+          = `.bg-${r+1}-${i+1} { background-color: #${v} }`
+          +_
+    .u-1-3: ._
+      pre.colorcode._radius._pad._mv-f1
+        each v,i in bg
+          | 
+          +_
+      pre.colorcode._radius._pad._mv-f1
+        each v,i in bg
+          = `.bc-${r+1}-${i+1} { border-color: #${v} }`
+          +_
+    .u-1-3: ._ml
+      pre.colorcode._radius._pad._mv-f1
+        each v,i in tc
+          = `$tc-${r+1}-${i+1} : #${v};`
+          +_
+      pre.colorcode._radius._pad._mv-f1
+        each v,i in tc
+          = `.tc-${r+1}-${i+1} { color: #${v} }`
+          +_
+
+mixin tables
+  style.
+    #table .grid { display:grid; }
+    #table .i { padding: .5rem 1rem; }
+    #table .c { font-size: .8em; border-radius: .5rem }
+  #table._text-center._uppercase
+    - var r = 0;
+    while r < colors.length
+      div: +table(r++)
+
+mixin table(r)
+  -
+    var cols = colors[r][0].length;
+
+  .grid(style=`grid-template-columns: repeat(${cols}, 1fr);`)
+    - var c = 0;
+    while c < cols
+      - var bg = colors[r][0][c];
+      - var tc = colors[r][1][c];
+      .i(style=`background:#${bg};color:#${tc};`): .c(style=`border:1px solid #${tc}`) #[b #{tc}]#[br]#{bg}
+      - c++;
+    //- while
+  //- grid
+
+  -
+    var _darkline  = 49;
+    var _lightline = 100-_darkline+.1;
+    var _darkness  = intToHex(32);
+    var _lightness = intToHex(32);
+    var bgc = `bgc-${r}`;
+  style.
+    .#{bgc} {
+      margin:0 auto;
+      height: 10px;
+    }
+    .#{bgc} .gc {
+      height:100%;
+      background:
+      linear-gradient(to right
+        , #000000#{_darkness}
+        , #000000#{_darkness} #{_darkline}%
+        , #00000000 #{_darkline}%
+        , #ffffff00 #{_lightline}%
+        , #ffffff#{_lightness} #{_lightline}%
+        , #ffffff#{_darkness}
+      ),
+      linear-gradient(to right
+        , #000
+        , ##{colors[r][0][ Math.ceil(cols/2)-1 ]} #{_darkline}%
+        , ##{colors[r][0][ Math.floor(cols/2)  ]} #{_lightline}%
+        , #fff
+      );
+    }
+  //- 
+  div(class=bgc): .gc: .gridlines
+
 //- var sat = Math.floor( 255 *saturation /100 );
 //- var _grayscale = Math.floor( (rgb[0] + rgb[1] + rgb[2]) / 3 );
 //- var gra = Math.floor( ( 765-_grayscale ) *grayscale /1000 );

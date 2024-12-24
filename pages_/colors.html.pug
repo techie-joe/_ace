@@ -42,62 +42,6 @@ block append style
 
   //- 
 
-mixin tables
-  style.
-    #table .grid { display:grid; }
-    #table .i { padding: .5rem 1rem; }
-    #table .c { font-size: .8em; border-radius: .5rem }
-  #table._text-center._uppercase
-    - var r = 0;
-    while r < colors.length
-      div: +table(r++)
-
-mixin table(r)
-  -
-    var cols = colors[r][0].length;
-
-  .grid(style=`grid-template-columns: repeat(${cols}, 1fr);`)
-    - var c = 0;
-    while c < cols
-      - var bg = colors[r][0][c];
-      - var tc = colors[r][1][c];
-      .i(style=`background:#${bg};color:#${tc};`): .c(style=`border:1px solid #${tc}`) #[b #{tc}]#[br]#{bg}
-      - c++;
-    //- while
-  //- grid
-
-  -
-    var _darkline  = 49;
-    var _lightline = 100-_darkline+.1;
-    var _darkness  = intToHex(32);
-    var _lightness = intToHex(32);
-    var bgc = `bgc-${r}`;
-  style.
-    .#{bgc} {
-      margin:0 auto;
-      height: 10px;
-    }
-    .#{bgc} .gc {
-      height:100%;
-      background:
-      linear-gradient(to right
-        , #000000#{_darkness}
-        , #000000#{_darkness} #{_darkline}%
-        , #00000000 #{_darkline}%
-        , #ffffff00 #{_lightline}%
-        , #ffffff#{_lightness} #{_lightline}%
-        , #ffffff#{_darkness}
-      ),
-      linear-gradient(to right
-        , #000
-        , ##{colors[r][0][ Math.ceil(cols/2)-1 ]} #{_darkline}%
-        , ##{colors[r][0][ Math.floor(cols/2)  ]} #{_lightline}%
-        , #fff
-      );
-    }
-  //- 
-  div(class=bgc): .gc: .gridlines
-
 block header
   header#_header
     .layout
@@ -126,6 +70,26 @@ block main
         ._mv._b._text-center._uppercase
           each c in rainbow
             +a('')(style=`background-color:#${c}`).colorlink #{c}
+
+      .section.-rainbow-code
+        -
+          var primary_color   = 8; // blue 0066CC
+          var secondary_color = 3; // orange DD8811
+
+          var bg = colors[primary_color][0];
+          var tc = colors[primary_color][1];
+          var cbg = bg[ Math.ceil(bg.length/2)-1 ];
+          var ctc = tc[ Math.ceil(tc.length/2)-1 ];
+
+        style.
+          #_html .colorcode       { background:#ccc; }
+          #_html._dark .colorcode { background:#111; }
+          .codecolor { padding:.1rem 1em }
+        +colorCodes(primary_color)
+        +colorCodes(secondary_color)
+        +colorCodes(2)
+        +colorCodes(1)
+        +colorCodes(0)
 
       .section.-tables: +tables
 
