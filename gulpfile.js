@@ -1,14 +1,18 @@
+const _folder = {
+  pages  : 'pages_',
+};
+
 const root = '/ace/';
 
 const _src = {
   root  : "_ace",
   files : ['.gitattributes','.editorconfig','robots.txt'],
-  html  : ["pages/**/*.html.pug"],
-  php   : ["pages/**/*.php.pug"],
-  txt   : ["pages/**/*.txt.pug"],
-  md    : ["pages/**/*.md.pug"],
+  html  : [_folder.pages+"/**/*.html.pug"],
+  php   : [_folder.pages+"/**/*.php.pug"],
+  txt   : [_folder.pages+"/**/*.txt.pug"],
+  md    : [_folder.pages+"/**/*.md.pug"],
   js    : ["scripts/gjs/**/*.js"],
-  scss  : ["styles/scss/**/*.scss"]
+  scss  : ["styles/scss/**/*.scss"],
 };
 
 const _dest = {
