@@ -26,10 +26,10 @@ $bg-2-7 : #b2b2b2;
 $bg-2-8 : #cccccc;
 $bg-2-9 : #dddddd;
 
-$tc-1-1 : #333333;
-$tc-1-2 : #666666;
-$tc-1-3 : #666666;
-$tc-1-4 : #999999;
+$tc-1-1 : #444444;
+$tc-1-2 : #555555;
+$tc-1-3 : #999999;
+$tc-1-4 : #bbbbbb;
 
 $tc-2-1 : #999999;
 $tc-2-2 : #b2b2b2;
@@ -41,11 +41,11 @@ $tc-2-7 : #4c4c4c;
 $tc-2-8 : #666666;
 $tc-2-9 : #808080;
 
-$light-shade     : $bg-2-7;
+$light-shade     : $tc-1-4;
 $light-shine     : $bg-1-4;
 
 $dark-shade      : $bg-1-1;
-$dark-shine      : $bg-2-2;
+$dark-shine      : $tc-1-1;
 
 $light-button-bg : $bg-2-3;
 $light-button-tc : $tc-2-3;
@@ -93,10 +93,10 @@ $dark-link-tca   : #e34040;
 .bc-1-3 { border-color: #eeeeee }
 .bc-1-4 { border-color: #ffffff }
 
-.tc-1-1 { color: #333333 }
-.tc-1-2 { color: #666666 }
-.tc-1-3 { color: #666666 }
-.tc-1-4 { color: #999999 }
+.tc-1-1 { color: #444444 }
+.tc-1-2 { color: #555555 }
+.tc-1-3 { color: #999999 }
+.tc-1-4 { color: #bbbbbb }
 
 .bg-2-1 { background-color: #222222 }
 .bg-2-2 { background-color: #333333 }
@@ -185,6 +185,7 @@ li { margin: .3em 0; }
 ._code { @extend ._mono; font-weight:bold; }
 
 hr {
+  height: 0;
   border: 1px solid $light-shade;
   border-bottom-color: $light-shine;
 }
