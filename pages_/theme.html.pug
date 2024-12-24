@@ -56,9 +56,6 @@ block pre
   //-
 
 block main
-  style.
-    .buttons ._btnlink { margin:.2rem }
-
   main#_main: article
 
     .g
@@ -91,19 +88,27 @@ block main
           p Et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros. Nullam vehicula arcu vitae ligula sollicitudin, sit amet viverra sapien consectetur.
 
     .g
+
       .u-1-2: ._pad
+        style.
+          .buttons ._btnlink { width: 5rem; margin: .2rem; text-align: center; }
         h3 Button
-        .section.buttons: p
-          +a._btnlink Primary
-          +a._btnlink Secondary
-          +a._btnlink Ordinary
-          +a._btnlink Disabled
+        .section.buttons
+          p
+            +a._btnlink Primary
+            +a._btnlink Disabled
+          p
+            +a._btnlink Secondary
+            +a._btnlink Disabled
+          p
+            +a._btnlink Ordinary
+            +a._btnlink Disabled
 
       .u-1-2: ._pad._text-justify
         h3 Texts and Hyperlinks
         .section.links
           p Texts may appear in #[span._blue blue], #[span._purple purple], #[span._orange orange] or #[span._red red].
-          p A #[+a("#xxxx") normal hyperlink] and #[+a("") visited link] were colored standard yet you can  #[code._code _remove-color] to #[+a("")._remove-color blend it] with the rest.
+          p A #[+a("#xxxx") normal hyperlink] and #[+a("") visited link] were colored standard, yet you can use #[code._code _no-color] to #[+a("")._no-color blend it] with the rest.
 
     hr._no-margin
 
@@ -121,8 +126,16 @@ block footer
           email@domain.com#[br]
       .u-1-3: ._pad
         h6._h7._no-margin Primary Segment
+        div.
+          #[+a('#')._no-visited._no-u Put some links]#[br]
+          #[+a('#')._no-visited._no-u To your posts]#[br]
+          #[+a('#')._no-visited._no-u And pages]#[br]
       .u-1-3: ._pad
         h6._h7._no-margin Secondary Segment
+        div.
+          #[+a('#')._no-visited._no-u Put some links]#[br]
+          #[+a('#')._no-visited._no-u To your posts]#[br]
+          #[+a('#')._no-visited._no-u And pages]#[br]
     ._pad !{copyright}
 
 block aside

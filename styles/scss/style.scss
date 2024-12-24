@@ -212,14 +212,17 @@ h1,h2,h3,h4,h5,h6,._h7 { color: $tc-2-6; }
 ._a a {
   & {
     transition: color 0.5s, background-color 0.5s;
-    color: $light-link-tc;
   }
+  &._no-visited:visited,
+  & { color: $light-link-tc; }
   &:hover { transition:none; }
   &:visited { color: $light-link-tcv; }
 }
 
 a._btnlink {
-  &,&:visited,&:active { color: inherit; }
+  &,
+  &:visited,
+  &:active { color: inherit; }
   &:hover {
     background-color: $light-button-bg;
     color: $light-button-tc;
@@ -238,12 +241,15 @@ a._btnlink {
   h1,h2,h3,h4,h5,h6,._h7 { color: $tc-2-4; }
 
   &._a a {
+    &._no-visited:visited,
     & { color: $dark-link-tc; }
     &:visited { color: $dark-link-tcv; }
   }
   
   a._btnlink {
-    &,&:visited,&:active { color: inherit; }
+    &,
+    &:visited,
+    &:active { color: inherit; }
     &:hover {
       background-color: $dark-button-bg;
       color: $dark-button-tc;
@@ -392,7 +398,7 @@ a._btnlink {
 
 ._no-margin { margin:0 !important }
 
-._remove-color { color: inherit !important }
+._no-color { color: inherit !important }
 
 a._no-u,
 u._no-u { text-decoration: none !important }
