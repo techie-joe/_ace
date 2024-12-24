@@ -72,10 +72,9 @@ block append vars
       return c.join('');
     }
 
-    function getColors(i,w='ffffff',y='222222',z='dddddd') {
-      var ic = [i];
+    function getColors(i,z=['222222','dddddd']) {
       var bg = [
-        y,
+        z[0],
         changeHex( i, 20 ),
         changeHex( i, 30 ),
         changeHex( i, 40 ),
@@ -83,21 +82,21 @@ block append vars
         changeHex( i, 60 ),
         changeHex( i, 70 ),
         changeHex( i, 80 ),
-        z
+        z[1],
       ];
       var tc = [
-        bg[4],
         bg[5],
         bg[6],
         bg[7],
-        w,
+        changeHex( i, 90 ),
+        changeHex( i, 100 ),
         bg[1],
         bg[2],
         bg[3],
         bg[4],
       ];
 
-      return [ ic, bg, tc ];
+      return [ bg, tc ];
     }
 
     //-   |  |
@@ -119,11 +118,11 @@ block append vars
       ];
     
     var colors = [
-      getColors('222222','b6b6b6'),
-      getColors('555555','dddddd'),
-      getColors('aaaaaa','eeeeee'),
-      getColors('dddddd','2c2c2c'),
-      //- getColors('808080'),
+      [
+        ['000000','111111','eeeeee','ffffff'],
+        ['333333','666666','666666','999999']
+      ],
+      getColors('808080'),
     ];
 
     rainbow.forEach(function(v, i, a) {
@@ -142,13 +141,13 @@ mixin tables
 
 mixin table(r)
   -
-    var cols = colors[r][1].length;
+    var cols = colors[r][0].length;
 
   .grid(style=`grid-template-columns: repeat(${cols}, 1fr);`)
     - var c = 0;
     while c < cols
-      - var bg = colors[r][1][c];
-      - var tc = colors[r][2][c];
+      - var bg = colors[r][0][c];
+      - var tc = colors[r][1][c];
       .i(style=`background:#${bg};color:#${tc};`): .c(style=`border:1px solid #${tc}`) #[b #{tc}]#[br]#{bg}
       - c++;
     //- while
@@ -178,7 +177,8 @@ mixin table(r)
       ),
       linear-gradient(to right
         , #000
-        , ##{colors[r][0][0]}
+        , ##{colors[r][0][ Math.ceil(cols/2)-1 ]} #{_darkline}%
+        , ##{colors[r][0][ Math.floor(cols/2)  ]} #{_lightline}%
         , #fff
       );
     }
