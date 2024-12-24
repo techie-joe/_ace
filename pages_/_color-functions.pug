@@ -1,0 +1,47 @@
+-
+
+//-
+
+  function changeHexColor(hex,int=0,sat=0) {
+    var c = [
+      parseInt(hex.substring(0, 2), 16),
+      parseInt(hex.substring(2, 4), 16),
+      parseInt(hex.substring(4, 6), 16)
+    ];
+    //- var s = (c[0] + c[1] + c[2]) / 3;
+    for (let i = 0; i < c.length; i++) {
+      c[i] = clipColor( ( c[i] +int ) );
+    }
+    return intToHex(c[0]) + intToHex(c[1]) + intToHex(c[2]);
+  }
+
+  function _getColors(i,x='ffffff',y='222222',z='dddddd') {
+
+    var _a = changeHexColor(i,-20);
+    var _b = changeHexColor(i,20);
+
+    var _d = changeHexColor(i,-70,0.5);
+    var _c = changeHexColor(i,140,0.5);
+
+    return [
+      [y,_d,i,_c,z],
+      [_a,_c,x,_d,_b]
+    ];
+  }
+
+  //- var sat = Math.floor( 255 *saturation /100 );
+  //- var _grayscale = Math.floor( (rgb[0] + rgb[1] + rgb[2]) / 3 );
+  //- var gra = Math.floor( ( 765-_grayscale ) *grayscale /1000 );
+  //- for (var i = 0; i < 3; i++) {
+  //-   //- var lit = Math.floor( ( 255-rgb[i] ) *lighten /100 );
+  //-   //- c[i] = colorRange( rgb[i] +sat +lit +gra );
+  //-   c[i] = colorRange( rgb[i] /= 255 );
+  //- }
+
+  // Find the maximum and minimum values among r, g, and b
+  var max = Math.max(r, g, b);
+  var min = Math.min(r, g, b);
+  // Calculate lightness
+  var lit = Math.floor( (max + min) / 2 );
+
+
