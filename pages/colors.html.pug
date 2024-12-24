@@ -72,26 +72,29 @@ block append vars
       return c.join('');
     }
 
-    function getColors(i,y='222222',z='dddddd',w='ffffff') {
-
+    function getColors(i,w='ffffff',y='222222',z='dddddd') {
       var ic = [i];
       var bg = [
         y,
-        changeHex( i, 25 ),
-        changeHex( i, 35 ),
+        changeHex( i, 20 ),
+        changeHex( i, 30 ),
+        changeHex( i, 40 ),
         i,
-        changeHex( i, 75 ),
-        changeHex( i, 85 ),
+        changeHex( i, 60 ),
+        changeHex( i, 70 ),
+        changeHex( i, 80 ),
         z
       ];
       var tc = [
-        i,
         bg[4],
         bg[5],
+        bg[6],
+        bg[7],
         w,
         bg[1],
         bg[2],
-        i
+        bg[3],
+        bg[4],
       ];
 
       return [ ic, bg, tc ];
@@ -101,19 +104,31 @@ block append vars
     //- 01234567
     //- fedcba98
     //-   |  |
+    var rainbow =
+      [ 'DD1111'
+      , 'DD8811'
+      , 'DDBB00'
+      , '88AA00'
+      , '009900'
+      , '0088AA'
+      , '0066CC'
+      , '2244DD'
+      , '8822ee'
+      , '992299'
+      , 'CC0066'
+      ];
+    
     var colors = [
-      getColors('808080','111111','eeeeee'),
-      getColors('CC0000'),
-      getColors('FF8800'),
-      getColors('FFCC00','222222','dddddd','000000'),
-      getColors('88AA00'),
-      getColors('009900'),
-      getColors('0088AA'),
-      getColors('0066CC'),
-      getColors('6600cc'),
-      getColors('880088'),
-      getColors('CC0066'),
+      getColors('222222','b6b6b6'),
+      getColors('555555','dddddd'),
+      getColors('aaaaaa','eeeeee'),
+      getColors('dddddd','2c2c2c'),
+      //- getColors('808080'),
     ];
+
+    rainbow.forEach(function(v, i, a) {
+      colors.push( getColors(v) );
+    });
 
 mixin tables
   style.
@@ -170,13 +185,10 @@ mixin table(r)
   //- 
   div(class=bgc): .gc: .gridlines
 
-
 block main
 
   main#_main
     article(style="overflow-x:scroll")
-
-      .section.-tables: +tables
 
       .section.-rainbow-link
         style.
@@ -190,22 +202,10 @@ block main
             border-radius:3px;
             }
         ._mv._b._text-center._uppercase
-          -
-            var rainbow_links =
-              [ 'CC0000'
-              , 'FF8800'
-              , 'FFCC00'
-              , '88AA00'
-              , '009900'
-              , '0088AA'
-              , '0066CC'
-              , '0033DD'
-              , '6600cc'
-              , '880088'
-              , 'CC0066'
-              ];
-          each c in rainbow_links
+          each c in rainbow
             +a('')(style=`background-color:#${c}`).colorlink #{c}
+
+      .section.-tables: +tables
 
       .section.-grayscale
         style.
@@ -220,18 +220,9 @@ block main
         div: +img(homeUrl+"images/grayscale.svg","grayscale.svg","Gray Scale")(style="width:100%")
         .bg0: .gridlines
 
-      .section.-rainbow
-        //- 
-          - var darken            = '60'
-          - var lighten           = '60'
-          linear-gradient(to right
-            , #00000000
-            , ##{darken+darken+darken+darken} 50%
-            , ##{lighten+lighten+lighten+lighten} 50%
-            , #ffffff00
-          ),
+      .section.-grainbow
         -
-          var rainbow =
+          var grainbow =
             [ '#ff0000'
             , '#ff8000'
             , '#ffff00'
@@ -263,7 +254,7 @@ block main
               , #ffffff#{lightness} #{lightline}%
               , #ffffffff
             ),
-            linear-gradient(to bottom,#{rainbow.join(',')});
+            linear-gradient(to bottom,#{grainbow.join(',')});
           }
         ._relative
           .cg: .gridlines
