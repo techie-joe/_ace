@@ -75,7 +75,7 @@
    * Hide visually and from screen readers
    */
   
-  .hidden,
+  ._hidden,
   [hidden] {
     display: none !important;
   }
@@ -89,7 +89,7 @@
    *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
    */
   
-  .visually-hidden {
+  ._visually-hidden {
     border: 0;
     clip: rect(0, 0, 0, 0);
     height: 1px;
@@ -108,8 +108,8 @@
    * https://www.drupal.org/node/897638
    */
   
-  .visually-hidden.focusable:active,
-  .visually-hidden.focusable:focus {
+  ._visually-hidden.focusable:active,
+  ._visually-hidden.focusable:focus {
     clip: auto;
     height: auto;
     margin: 0;
@@ -123,7 +123,7 @@
    * Hide visually and from screen readers, but maintain layout
    */
   
-  .invisible {
+  ._invisible {
     visibility: hidden;
   }
   
@@ -134,13 +134,13 @@
    * `::before` to contain the top-margins of child elements.
    */
   
-  .clearfix::before,
-  .clearfix::after {
+  ._clearfix::before,
+  ._clearfix::after {
     content: "";
     display: table;
   }
   
-  .clearfix::after {
+  ._clearfix::after {
     clear: both;
   }
   

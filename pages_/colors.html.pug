@@ -2,6 +2,7 @@ extends ../_templates/demo
 
 block append vars
   include _demo-vars
+  include _color-functions
   -
     header      = `Colors`
     title       = `${header} | ${name}`
@@ -40,94 +41,6 @@ block append style
     #_main .section { width:960px;margin: 1em 0; }
 
   //- 
-
-block append vars
-  -
-    function range(n,min,max) { return Math.min(Math.max(n, min),max) }
-    function colorRange(n,min=0,max=255) { return range(n,min,max) }
-    function hexToInt(hex) { return colorRange(parseInt(hex, 16)); }
-    function intToHex(int) { return colorRange(Math.floor(int)).toString(16).padStart(2, '0'); }
-
-    function getRGB(hex) {
-      var rgb = [
-        hexToInt(hex.substring(0, 2)),
-        hexToInt(hex.substring(2, 4)),
-        hexToInt(hex.substring(4, 6))
-      ];
-      return rgb
-    }
-
-    function changeHex(hex,lighten=0) {
-      var rgb  = getRGB(hex);
-      var lit  = range( lighten, 0, 100 )/100;
-      var c = [];
-      rgb.forEach(function(v, i, a) {
-        if (lit < 0.5) {
-          v = v *( 2 * lit )
-        } else {
-          v = v +( 255 - v ) * ( 2 * ( lit - 0.5 ) )
-        }
-        c[i] = intToHex ( colorRange(v) )
-      });
-      return c.join('');
-    }
-
-    function getColors(i,z=['222222','dddddd']) {
-      var bg = [
-        z[0],
-        changeHex( i, 20 ),
-        changeHex( i, 30 ),
-        changeHex( i, 40 ),
-        i,
-        changeHex( i, 60 ),
-        changeHex( i, 70 ),
-        changeHex( i, 80 ),
-        z[1],
-      ];
-      var tc = [
-        bg[5],
-        bg[6],
-        bg[7],
-        changeHex( i, 90 ),
-        'FFFFFF',
-        bg[1],
-        bg[2],
-        bg[3],
-        bg[4],
-      ];
-
-      return [ bg, tc ];
-    }
-
-    //-   |  |
-    //- 01234567
-    //- fedcba98
-    //-   |  |
-    var rainbow =
-      [ 'DD1111'
-      , 'DD8811'
-      , 'DDBB00'
-      , '88AA00'
-      , '009900'
-      , '0088AA'
-      , '0066CC'
-      , '2244DD'
-      , '8822ee'
-      , '992299'
-      , 'CC0066'
-      ];
-    
-    var colors = [
-      [
-        ['000000','111111','eeeeee','ffffff'],
-        ['333333','666666','666666','999999']
-      ],
-      getColors('808080'),
-    ];
-
-    rainbow.forEach(function(v, i, a) {
-      colors.push( getColors(v) );
-    });
 
 mixin tables
   style.
@@ -185,36 +98,14 @@ mixin table(r)
   //- 
   div(class=bgc): .gc: .gridlines
 
-mixin colorCodes(r)
-  -
-    var bg = colors[r][0];
-    var tc = colors[r][1];
-    var cbg = bg[ Math.ceil(bg.length/2)-1 ];
-    var ctc = tc[ Math.ceil(tc.length/2)-1 ];
-  .codecolor._mt-2._small._mono(style=`background: #${cbg}; color:#${ctc}`) ##{cbg}
-  .g
-    .u-1-3: pre.colorcode._radius._pad._mr._mv-f1
-      each v,i in bg
-        = `.bg-${r+1}-${i+1} { background-color: #${v} }`
-        +_
-    .u-1-3: pre.colorcode._radius._pad._mh._mv-f1
-      each v,i in bg
-        = `.bc-${r+1}-${i+1} { border-color: #${v} }`
-        +_
-    .u-1-3: pre.colorcode._radius._pad._ml._mv-f1
-      each v,i in tc
-        = `.tc-${r+1}-${i+1} { color: #${v} }`
-        +_
-  .g
-    .u-1-2: pre.colorcode._radius._pad._mr._mv-f1
-      each v,i in bg
-        = `$bg-${r+1}-${i+1} : #${v};`
-        +_
-    .u-1-2: pre.colorcode._radius._pad._ml._mv-f1
-      each v,i in tc
-        = `$tc-${r+1}-${i+1} : #${v};`
-        +_
-
+block header
+  header#_header
+    .layout
+      h1 !{header}
+      p
+        | !{description}
+        | See colors being applied in #[+a('theme.html') theme].
+    hr._no-margin
 
 block main
 
@@ -235,17 +126,6 @@ block main
         ._mv._b._text-center._uppercase
           each c in rainbow
             +a('')(style=`background-color:#${c}`).colorlink #{c}
-
-      .section.-rainbow-code
-        style.
-          #_html .colorcode       { background:#ccc; }
-          #_html._dark .colorcode { background:#111; }
-          .codecolor { padding:.1rem 1em }
-        +colorCodes(0)
-        +colorCodes(1)
-        +colorCodes(2)
-        +colorCodes(3)
-        +colorCodes(8)
 
       .section.-tables: +tables
 

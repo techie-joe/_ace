@@ -1,0 +1,162 @@
+extends ../_templates/html
+
+block append vars
+  include _demo-vars
+  include _color-functions
+  -
+    header      = `Theme`
+    title       = `${header} | ${name}`
+    description = `Theme for your reference.`
+    url         = url+`/theme.html`
+
+    og_title       = title
+    og_description = description
+    og_url         = url
+  //- 
+
+block style
+  +css(homeUrl+'assets/css/style.css?v='+version)
+  +css(homeUrl+'assets/pure/grid.css?v='+version)
+  style.
+    ._layout { max-width:960px;margin:0 auto }
+    #logo { width: 6.2rem; cursor: pointer; transition: background-color 0.5s; }
+           #logo:hover { background:#ccc; transition: none; }
+    ._dark #logo:hover { background:#333 }
+    #logos { font-size: 3em }
+    #tagline { padding-bottom: 0.4rem; letter-spacing: 0.05em; margin-top: -0.6em; }
+  //- 
+
+block header
+  header#_header: .g._bg-1
+
+    .u: #logo._m._text-center._numb()
+      #logos._impact #[span._color LO]#[span._color-1 GO]
+      | 
+      #tagline._small._uppercase._b Your tagline
+
+block nav
+  //- include _editorbar
+  //- include _nav
+  //- nav: ul: +la
+
+block pre
+  //- aside: pre._pre.
+  //-
+
+mixin colorCodes(r)
+  -
+    var bg = colors[r][0];
+    var tc = colors[r][1];
+    var cbg = bg[ Math.ceil(bg.length/2)-1 ];
+    var ctc = tc[ Math.ceil(tc.length/2)-1 ];
+  .codecolor._mt-2._small._mono(style=`background: #${cbg}; color:#${ctc}`) ##{cbg}
+  .g
+    .u-1-3: pre.colorcode._radius._pad._mr._mv-f1
+      each v,i in bg
+        = `.bg-${r+1}-${i+1} { background-color: #${v} }`
+        +_
+    .u-1-3: pre.colorcode._radius._pad._mh._mv-f1
+      each v,i in bg
+        = `.bc-${r+1}-${i+1} { border-color: #${v} }`
+        +_
+    .u-1-3: pre.colorcode._radius._pad._ml._mv-f1
+      each v,i in tc
+        = `.tc-${r+1}-${i+1} { color: #${v} }`
+        +_
+  .g
+    .u-1-2: pre.colorcode._radius._pad._mr._mv-f1
+      each v,i in bg
+        = `$bg-${r+1}-${i+1} : #${v};`
+        +_
+    .u-1-2: pre.colorcode._radius._pad._ml._mv-f1
+      each v,i in tc
+        = `$tc-${r+1}-${i+1} : #${v};`
+        +_
+
+block main
+  main#_main: article
+
+    .section.-rainbow-link
+      style.
+        #_html .colorlink {
+          font-size:14px;
+          color:#fff;
+          text-shadow: 1px 1px 1px #00000099;
+          padding:.2em .5em;
+          margin:1em .5em;
+          text-decoration:none;
+          border-radius:3px;
+          }
+      ._mv._b._text-center._uppercase
+        each c in rainbow
+          +a('')(style=`background-color:#${c}`).colorlink #{c}
+
+    .section.-rainbow-code
+      style.
+        #_html .colorcode       { background:#ccc; }
+        #_html._dark .colorcode { background:#111; }
+        .codecolor { padding:.1rem 1em }
+      +colorCodes(8)
+      +colorCodes(3)
+      +colorCodes(2)
+      +colorCodes(1)
+      +colorCodes(0)
+
+    .g._mv
+      .u-1-3._border-top-1
+      .u-1-3._border-top
+      .u-1-3
+
+    .g
+      .u-1-3: ._text-justify._mh
+
+        h3._h6._color Lorem ipsum dolor
+        p Sit amet, consectetur adipiscing elit. Praesent vehicula, justo vitae bibendum vestibulum, lacus elit luctus dolor, a aliquam massa elit at purus. Mauris vel magna et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros. Nullam vehicula arcu vitae ligula sollicitudin, sit amet viverra sapien consectetur.
+
+        h3._h6._color-1 Curabitur auctor
+        p Nunc nec sem pellentesque, ut facilisis justo dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae ac turpis egestas. Mauris vel magna et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros.
+        
+      .u-1-3: ._text-justify._mh
+
+        h3._h6._color-1 Curabitur auctor
+        p Nunc nec sem pellentesque, ut facilisis justo dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+        
+        h3._h6._color Proin scelerisque
+        p Lacus at sollicitudin sagittis, nunc eros cursus nulla, a venenatis nulla sapien non velit. Integer condimentum, odio nec tristique malesuada, metus ligula laoreet lorem, ut malesuada lectus sapien in lacus morbi tristique senectus et netus et fames.
+
+        p Praesent vehicula, justo vitae bibendum vestibulum, lacus elit luctus dolor, a aliquam massa elit at purus.
+
+      .u-1-3
+
+        ._m._fg._radius._pad
+          h3._h7 Mauris vel magna
+          p Et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros. Nullam vehicula arcu vitae ligula sollicitudin, sit amet viverra sapien consectetur.
+
+        ._m._fg-1._radius._pad
+          h3._h7 Mauris vel magna
+          p Et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros. Nullam vehicula arcu vitae ligula sollicitudin, sit amet viverra sapien consectetur.
+
+    .g: .u-1: hr._no-margin
+
+    .g
+      .u-1-2: ._mh._text-justify
+        p You can apply color to a text -- #[span._blue blue], #[span._purple purple], #[span._orange orange] and #[span._red red]. Write hyperlink in -- #[+a("#xxxx") normal] and #[+a("") visited] or #[code._code _remove-color] to #[+a("")._remove-color blend a link].
+
+      .u-1-2
+
+    .g._mv
+      .u-1-3
+      .u-1-3._border-top-1
+      .u-1-3._border-top
+
+block footer
+  footer#_footer: ._pad.g._bg-2.o2-4
+    ._impact # # # # #
+
+block aside
+  //- aside#_aside
+
+block widget
+  //- aside#_widget
+
+block append script

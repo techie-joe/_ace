@@ -11,55 +11,122 @@
 // fedcba98
 //   |  |
 
-$light-bg        : #ddd;
-$light-tc        : #555;
-$light-hc        : #222;
+$bg-1-1 : #000000;
+$bg-1-2 : #111111;
+$bg-1-3 : #eeeeee;
+$bg-1-4 : #ffffff;
 
-$light-shade     : #aaa;
-$light-shine     : #fff;
+$bg-2-1 : #222222;
+$bg-2-2 : #333333;
+$bg-2-3 : #4c4c4c;
+$bg-2-4 : #666666;
+$bg-2-5 : #808080;
+$bg-2-6 : #999999;
+$bg-2-7 : #b2b2b2;
+$bg-2-8 : #cccccc;
+$bg-2-9 : #dddddd;
 
-$light-select-bg : #A0A;
+$tc-1-1 : #333333;
+$tc-1-2 : #666666;
+$tc-1-3 : #666666;
+$tc-1-4 : #999999;
+
+$tc-2-1 : #999999;
+$tc-2-2 : #b2b2b2;
+$tc-2-3 : #cccccc;
+$tc-2-4 : #e5e5e5;
+$tc-2-5 : #FFFFFF;
+$tc-2-6 : #333333;
+$tc-2-7 : #4c4c4c;
+$tc-2-8 : #666666;
+$tc-2-9 : #808080;
+
+$light-shade     : $bg-2-7;
+$light-shine     : $bg-1-4;
+
+$dark-shade      : $bg-1-1;
+$dark-shine      : $bg-2-2;
+
+$light-button-bg : $bg-2-3;
+$light-button-tc : $tc-2-3;
+
+$dark-button-bg  : $bg-2-7;
+$dark-button-tc  : $tc-2-7;
+
+$light-select-bg : #929;
 $light-select-tc : #fff;
 
-$light-link-tc   : #04d;
-$light-link-tcv  : #929;
-$light-link-tch  : #d60;
-$light-link-tca  : #c33;
+$light-link-tc   : #2244DD;
+$light-link-tcv  : #992299;
+$light-link-tch  : #DD8811;
+$light-link-tca  : #DD1111;
 
-$light-button-bg : #bbb;
-$light-button-tc : #222;
-
-$dark-bg         : #222;
-$dark-tc         : #aaa;
-$dark-hc         : #ddd;
-
-$dark-shade      : #000;
-$dark-shine      : #444;
-
-$dark-select-bg  : #92d;
+$dark-select-bg  : #929;
 $dark-select-tc  : #fff;
 
-$dark-link-tc    : #48f;
-$dark-link-tcv   : #c6c;
-$dark-link-tch   : #d84;
-$dark-link-tca   : #d44;
+$dark-link-tc    : #4e69e3;
+$dark-link-tcv   : #9f4ef1;
+$dark-link-tch   : #e39f40;
+$dark-link-tca   : #e34040;
 
-$dark-button-bg  : #444;
-$dark-button-tc  : #ddd;
-
-._blue   { color: #04d }
-._purple { color: #929 }
-._orange { color: #d60 }
-._red    { color: #c33 }
+._blue   { color: #2244DD }
+._purple { color: #992299 }
+._orange { color: #DD8811 }
+._red    { color: #DD1111 }
 
 ._dark {
 
-  ._blue   { color: #48f }
-  ._purple { color: #c6c }
-  ._orange { color: #d84 }
-  ._red    { color: #d44 }
+  ._blue   { color: #4e69e3 }
+  ._purple { color: #9f4ef1 }
+  ._orange { color: #e39f40 }
+  ._red    { color: #e34040 }
 
 }
+
+.bg-1-1 { background-color: #000000 }
+.bg-1-2 { background-color: #111111 }
+.bg-1-3 { background-color: #eeeeee }
+.bg-1-4 { background-color: #ffffff }
+
+.bc-1-1 { border-color: #000000 }
+.bc-1-2 { border-color: #111111 }
+.bc-1-3 { border-color: #eeeeee }
+.bc-1-4 { border-color: #ffffff }
+
+.tc-1-1 { color: #333333 }
+.tc-1-2 { color: #666666 }
+.tc-1-3 { color: #666666 }
+.tc-1-4 { color: #999999 }
+
+.bg-2-1 { background-color: #222222 }
+.bg-2-2 { background-color: #333333 }
+.bg-2-3 { background-color: #4c4c4c }
+.bg-2-4 { background-color: #666666 }
+.bg-2-5 { background-color: #808080 }
+.bg-2-6 { background-color: #999999 }
+.bg-2-7 { background-color: #b2b2b2 }
+.bg-2-8 { background-color: #cccccc }
+.bg-2-9 { background-color: #dddddd }
+
+.bc-2-1 { border-color: #222222 }
+.bc-2-2 { border-color: #333333 }
+.bc-2-3 { border-color: #4c4c4c }
+.bc-2-4 { border-color: #666666 }
+.bc-2-5 { border-color: #808080 }
+.bc-2-6 { border-color: #999999 }
+.bc-2-7 { border-color: #b2b2b2 }
+.bc-2-8 { border-color: #cccccc }
+.bc-2-9 { border-color: #dddddd }
+
+.tc-2-1 { color: #999999 }
+.tc-2-2 { color: #b2b2b2 }
+.tc-2-3 { color: #cccccc }
+.tc-2-4 { color: #e5e5e5 }
+.tc-2-5 { color: #FFFFFF }
+.tc-2-6 { color: #333333 }
+.tc-2-7 { color: #4c4c4c }
+.tc-2-8 { color: #666666 }
+.tc-2-9 { color: #808080 }
 
 /* ------------------------------------------ base helper */
 
@@ -115,7 +182,7 @@ li { margin: .3em 0; }
 ._sub,
 ._sup { line-height: 0.6em; font-size: 0.55em; }
 
-._code { font-size: 1.021rem }
+._code { @extend ._mono; font-weight:bold; }
 
 hr {
   border: 1px solid $light-shade;
@@ -130,8 +197,8 @@ hr {
 }
 
 .gu { padding: 3px; }
-.o { background: #ccc; }
-._dark .o { background: #333; }
+.o { @extend .bg-2-8; }
+._dark .o { @extend .bg-2-2; }
 
 .o1-1 { height:300px; }
 .o1-2 { height:300px; }
@@ -155,11 +222,11 @@ hr {
 }
 
 #_html {
-  background-color: $light-bg;
-  color: $light-tc;
+  background-color: $bg-2-9;
+  color: $tc-2-9;
 }
 
-h1,h2,h3,h4,h5,h6,._h7 { color: $light-hc; }
+h1,h2,h3,h4,h5,h6,._h7 { color: $tc-2-6; }
 
 ._a a {
   & {
@@ -183,11 +250,11 @@ a._btnlink {
 ._dark {
 
   &#_html {
-    background-color: $dark-bg;
-    color: $dark-tc;
+    background-color: $bg-2-1;
+    color: $tc-2-1;
   }
 
-  h1,h2,h3,h4,h5,h6,._h7 { color: $dark-hc; }
+  h1,h2,h3,h4,h5,h6,._h7 { color: $tc-2-4; }
 
   &._a a {
     & { color: $dark-link-tc; }
@@ -303,14 +370,16 @@ a._btnlink {
 ._pv-2,
 ._pb-2 { padding-bottom: 2em }
 
+._radius-2r { @include mix.border-radius(.25rem) }
+._radius-1r { @include mix.border-radius(.5rem) }
 ._radius { @include mix.border-radius(1em) }
 
 #_html ._btnlink {
   @extend ._numb;
+  @extend ._radius-2r;
   cursor: pointer;
   display: inline-block;
   padding: .5em 1em;
-  border-radius: .25em;
   border: 1px solid #888;
   text-decoration: none;
   &:hover {
