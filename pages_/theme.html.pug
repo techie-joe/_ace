@@ -92,17 +92,16 @@ block main
       .u-1-2: ._pad
         style.
           .buttons ._btnlink { width: 5rem; margin: .2rem; text-align: center; }
-        h3 Button
+        h3 Buttons
         .section.buttons
-          p
+          div
             +a._btnlink Primary
-            +a._btnlink Disabled
-          p
             +a._btnlink Secondary
-            +a._btnlink Disabled
-          p
             +a._btnlink Ordinary
-            +a._btnlink Disabled
+          div
+            +a._btnlink Primary
+            +a._btnlink Secondary
+            +a._btnlink Ordinary
 
       .u-1-2: ._pad._text-justify
         h3 Texts and Hyperlinks
