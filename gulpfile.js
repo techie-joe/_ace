@@ -1,12 +1,23 @@
 const _folder = {
   pages  : 'pages_',
+  files  : '_files',
 };
 
 const root = '/ace/';
 
+const _builder = {
+  root  : "./",
+  txt   : [_folder.files+"/**/*.txt.pug"],
+  md    : [_folder.files+"/**/*.md.pug"],
+};
+
 const _src = {
   root  : "_ace",
-  files : ['.gitattributes','.editorconfig','robots.txt'],
+  files: [
+    '.gitattributes',
+    '.editorconfig',
+    'robots.txt'
+  ],
   html  : [_folder.pages+"/**/*.html.pug"],
   php   : [_folder.pages+"/**/*.php.pug"],
   txt   : [_folder.pages+"/**/*.txt.pug"],
@@ -29,6 +40,26 @@ const rename = require('gulp-rename');
 const file = require('gulp-file');
 const watchOpt = { ignoreInitial: false };
 const pagesOpt = { pretty: false }
+
+function builder_txt() {
+  return src(_builder.txt)
+  .pipe(pug())
+  .pipe(rename(function (path) {
+    path.basename = path.basename.substring(0, path.basename.lastIndexOf('.'));
+    path.extname = '.txt';
+  }))
+  .pipe(dest(_builder.root));
+}
+function builder_md() {
+  return src(_builder.md)
+  .pipe(pug())
+  .pipe(rename(function (path) {
+    path.basename = path.basename.substring(0, path.basename.lastIndexOf('.'));
+    path.extname = '.md';
+  }))
+  .pipe(dest(_builder.root));
+}
+exports.builder = parallel( builder_txt, builder_md );
 
 // pages: html, php and txt
 // : task to take pug files from _src to _dest

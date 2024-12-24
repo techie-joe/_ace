@@ -1,13 +1,13 @@
-# Ace Web Application Framework
-> Fundamental base for websites and apps
+# Ace Builder
+> A solid framework for building websites and application
 ---
 
-Template : Ace Web Application Framework  
-Codename : ace - v0.1.0  
+Template : Ace Builder  
+Codename : ace - v0.1.2  
 Author   : Techie Joe  
 
 URL      : https://github.com/techie-joe/_ace  
 
 ---
 
-Copyright © 2024 Tidloo.com
+Copyright (c) 2024 Tidloo.com

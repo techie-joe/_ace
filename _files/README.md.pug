@@ -1,0 +1,21 @@
+extends ../_templates/text
+
+block append vars
+  include _builder-vars
+  //- 
+ 
+block main
+  .
+    # !{name}
+    > !{description}
+    ---
+    
+    Template : !{name}  
+    Codename : #{shortName} - v#{version}  
+    Author   : !{author}  
+
+    URL      : #{url}  
+
+    ---
+
+    Copyright (c) #{thisYear} !{publisher}
