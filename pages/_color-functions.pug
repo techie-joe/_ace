@@ -28,7 +28,7 @@
     return c.join('');
   }
 
-  function getColors(i,z=['222222','dddddd']) {
+  function getColors(i,tc=0,z=['222222','dddddd']) {
     var bg = [
       z[0],
       changeHex( i, 20 ),
@@ -46,10 +46,10 @@
       bg[7],
       changeHex( i, 90 ),
       'FFFFFF',
-      bg[1],
-      bg[2],
-      bg[3],
-      bg[4],
+      changeHex( i, 20 +tc ),
+      changeHex( i, 30 +tc ),
+      changeHex( i, 40 +tc ),
+      changeHex( i, 50 +tc ),
     ];
 
     return [ bg, tc ];
@@ -77,9 +77,9 @@
   var colors = [
     [
       ['000000','111111','eeeeee','ffffff'],
-      ['333333','444444','999999','aaaaaa']
+      ['444444','5d5d5d','919191','aaaaaa']
     ],
-    getColors('808080'),
+    getColors('808080',-7),
   ];
 
   rainbow.forEach(function(v, i, a) {
@@ -106,15 +106,6 @@ mixin colorCodes(r)
           +_
     .u-1-3: ._
       pre.colorcode._radius._pad._mv-f1
-        each v,i in bg
-          | 
-          +_
-      pre.colorcode._radius._pad._mv-f1
-        each v,i in bg
-          = `.bc-${r+1}-${i+1} { border-color: #${v} }`
-          +_
-    .u-1-3: ._ml
-      pre.colorcode._radius._pad._mv-f1
         each v,i in tc
           = `$tc-${r+1}-${i+1} : #${v};`
           +_
@@ -122,34 +113,44 @@ mixin colorCodes(r)
         each v,i in tc
           = `.tc-${r+1}-${i+1} { color: #${v} }`
           +_
+    .u-1-3: ._ml
+      pre.colorcode._radius._pad._mv-f1
+        each v,i in bg
+          = `.bc-${r+1}-${i+1} { border-color: #${v} }`
+          +_
 
 //- ============================================================================
 mixin tables
   style.
     #table .grid { display:grid; }
-    #table .i { padding: .5rem 1rem; }
-    #table .c { font-size: .8em; border-radius: .5rem }
+    #table .i { padding: .4rem .5rem; font-size: .8em; }
+    #table .c { border-radius: .5rem; }
   #table._text-center._uppercase
     - var r = 0;
     while r < colors.length
-      div: +table(r++)
+      div
+        +table(r)
+        +gradientColor(r)
+      - r++
 
 //- ============================================================================
 mixin table(r)
-  -
-    var cols = colors[r][0].length;
-
+  - var cols = colors[r][0].length;
   .grid(style=`grid-template-columns: repeat(${cols}, 1fr);`)
     - var c = 0;
     while c < cols
       - var bg = colors[r][0][c];
       - var tc = colors[r][1][c];
-      .i(style=`background:#${bg};color:#${tc};`): .c(style=`border:1px solid #${tc}`) #[b #{tc}]#[br]#{bg}
+      .i(style=`background:#${bg};color:#${tc};`)
+        .c(style=`border:1px solid #${tc}`) #[b #{bg}]#[br]#{tc}
       - c++;
     //- while
   //- grid
 
+//- ============================================================================
+mixin gradientColor(r)
   -
+    var cols = colors[r][0].length;
     var _darkline  = 49;
     var _lightline = 100-_darkline+.1;
     var _darkness  = intToHex(32);
