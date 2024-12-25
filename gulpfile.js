@@ -1,5 +1,5 @@
 const _folder = {
-  pages  : 'pages_',
+  pages  : 'pages',
   files  : '_files',
 };
 
