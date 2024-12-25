@@ -18,6 +18,7 @@ block append vars
 block style
   +css(homeUrl+'assets/css/style.css?v='+version)
   +css(homeUrl+'assets/pure/grid.css?v='+version)
+  +css(homeUrl+'assets/css/demo.css?v='+version)
   style.
     ._layout #_header,
     ._layout #_footer,
@@ -38,6 +39,7 @@ block style
   //- 
 
 block header
+  include _editorbar
   header#_header
     .g._bg-1
       .u: h1#logo._radius-1r._text-center._numb
@@ -47,7 +49,6 @@ block header
     hr._no-margin
 
 block nav
-  //- include _editorbar
   //- include _nav
   //- nav: ul: +la
 
@@ -92,23 +93,23 @@ block main
       .u-1-2: ._pad
         style.
           .buttons ._btnlink { width: 5rem; margin: .2rem; text-align: center; }
-        h3 Button
+        h3 Buttons
         .section.buttons
-          p
+          div
             +a._btnlink Primary
-            +a._btnlink Disabled
-          p
             +a._btnlink Secondary
-            +a._btnlink Disabled
-          p
             +a._btnlink Ordinary
-            +a._btnlink Disabled
+          div
+            +a._btnlink Primary
+            +a._btnlink Secondary
+            +a._btnlink Ordinary
 
       .u-1-2: ._pad._text-justify
         h3 Texts and Hyperlinks
         .section.links
           p Texts may appear in #[span._blue blue], #[span._purple purple], #[span._orange orange] or #[span._red red].
-          p A #[+a("#xxxx") normal hyperlink] and #[+a("") visited link] were colored standard, yet you can use #[code._code _no-color] to #[+a("")._no-color blend it] with the rest.
+          p A #[+a("#xxxx") normal hyperlink] and #[+a("") visited link] were colored standard.
+          p Use #[code._code _no-color] to remove color from #[+a("")._no-color a link].
 
     hr._no-margin
 

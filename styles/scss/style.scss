@@ -56,32 +56,8 @@ $dark-button-tc  : $tc-2-7;
 $light-select-bg : #929;
 $light-select-tc : #fff;
 
-$light-link-tc   : #2244DD;
-$light-link-tcv  : #992299;
-$light-link-tch  : #DD8811;
-$light-link-tca  : #DD1111;
-
 $dark-select-bg  : #929;
 $dark-select-tc  : #fff;
-
-$dark-link-tc    : #4e69e3;
-$dark-link-tcv   : #9f4ef1;
-$dark-link-tch   : #e39f40;
-$dark-link-tca   : #e34040;
-
-._blue   { color: #2244DD }
-._purple { color: #992299 }
-._orange { color: #DD8811 }
-._red    { color: #DD1111 }
-
-._dark {
-
-  ._blue   { color: #4e69e3 }
-  ._purple { color: #9f4ef1 }
-  ._orange { color: #e39f40 }
-  ._red    { color: #e34040 }
-
-}
 
 .bg-1-1 { background-color: #000000 }
 .bg-1-2 { background-color: #111111 }
@@ -128,71 +104,136 @@ $dark-link-tca   : #e34040;
 .tc-2-8 { color: #666666 }
 .tc-2-9 { color: #808080 }
 
-/* ------------------------------------------ base helper */
+$light-link-tc   : #2244DD;
+$light-link-tcv  : #992299;
+$light-link-tch  : #DD8811;
+$light-link-tca  : #DD1111;
+
+._blue   { color: #2244DD }
+._purple { color: #992299 }
+._orange { color: #DD8811 }
+._red    { color: #DD1111 }
+
+$dark-link-tc    : #4e69e3;
+$dark-link-tcv   : #9f4ef1;
+$dark-link-tch   : #e39f40;
+$dark-link-tca   : #e34040;
+
+._dark {
+
+  ._blue   { color: #4e69e3 }
+  ._purple { color: #9f4ef1 }
+  ._orange { color: #e39f40 }
+  ._red    { color: #e34040 }
+
+}
+
+/* ----------------------------------------------- helper */
 
 ._sans   { font-family: Arial, sans-serif; }
 ._mono   { font-family: "Courier New", Courier, monospace; }
 
+._b { font-weight: bold }
+._u { text-decoration: underline }
+
+._numb { @include mix.numb; }
+
+._inblock { display: inline-block }
+
+._relative { position: relative }
+._absolute { position: absolute;top:0;left:0; }
+._fixed    { position: fixed;top:0;left:0; }
+
+._radius-2r { @include mix.border-radius(.25rem) }
+._radius-1r { @include mix.border-radius(.5rem) }
+._radius    { @include mix.border-radius(1em) }
+
+
 /* ------------------------------------------------- base */
 
-/* mark red if you include but don't use */
-html { box-shadow: 0 3px red inset; }
-#_html { box-shadow: none; } /* remove mark when in use */
+html   { box-shadow: 0 3px red inset; } /* mark red if you include but don't use */
+#_html { box-shadow: none } /* remove mark when in use */
 
 * { line-height: 1.25; margin: 0; }
 
-._b,
-._h7 { font-weight:bold }
-
+._p { margin-top: 1rem; margin-bottom: 1rem; }
 h1,h2,h3,h4,h5,h6,._h7,
 ul,ol,
-p,pre { margin-top: 1rem; margin-bottom: 1rem; }
+p,pre { @extend ._p; }
 
 li { margin: .3em 0; }
 
+._h7 { @extend ._b; }
+
+._view {
+  display  : block;
+  position : absolute;
+  top    : 0;
+  bottom : 0;
+  right  : 0;
+  left   : 0;
+  width  : 100%;
+  height : 100%;
+  margin : 0;
+  overflow : auto;
+} 
+
 #_html,
-#_body { /* doc */
+#_body {
+  @extend ._view;
   @extend ._sans;
   @include mix.text-size-adjust(100%);
   font-size:1em;
-  display: block;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  overflow: auto;
 }
 
-._hero { font-size:6rem }
-._h1,._text-1 { font-size:4.334rem }
-._h2,._text-2 { font-size:3.255rem }
-._h3,._text-3 { font-size:2.593rem }
-._h4,._text-4 { font-size:2.163rem }
-._h5,._text-5 { font-size:1.623rem }
-._h6,._text-6 { font-size:1.298rem }
-._h7,._text-7 { font-size:1rem }
+._hero        { font-size: 6rem }
+._h1,._text-1 { font-size: 4.334rem }
+._h2,._text-2 { font-size: 3.255rem }
+._h3,._text-3 { font-size: 2.593rem }
+._h4,._text-4 { font-size: 2.163rem }
+._h5,._text-5 { font-size: 1.623rem }
+._h6,._text-6 { font-size: 1.298rem }
+._h7,._text-7 { font-size: 1rem }
 
-._small   { font-size: .8em }
-._smaller { font-size: .6em }
+._small       { font-size: .8em }
+._smaller     { font-size: .6em }
 
 ._sub,
 ._sup { line-height: 0.6em; font-size: 0.55em; }
 
-._code { @extend ._mono; font-weight:bold; }
+._code {
+  @extend ._mono;
+  @extend .tc-2-8;
+  font-weight: bold;
+  padding: 0 .3em;
+  vertical-align: 0.07em;
+}
+
+._dark ._code {
+  @extend .tc-2-3;
+}
 
 hr {
   height: 0;
-  border-top: 1px solid $light-shade;
-  border-bottom: 1px solid $light-shine;
+  border-top    : 1px solid $light-shade;
+  border-bottom : 1px solid $light-shine;
 }
 ._dark hr {
-  border-top: 1px solid $dark-shade;
-  border-bottom: 1px solid $dark-shine;
+  border-top    : 1px solid $dark-shade;
+  border-bottom : 1px solid $dark-shine;
 }
+
+#_html ._btnlink {
+  @extend ._numb;
+  @extend ._radius-2r;
+  cursor: pointer;
+  display: inline-block;
+  padding: .5em 1em;
+  border: 1px solid $tc-2-9;
+  text-decoration: none;
+  &:hover { text-decoration: none; }
+}
+
 
 /* ---------------------------------- default light theme */
 
@@ -210,9 +251,7 @@ hr {
 h1,h2,h3,h4,h5,h6,._h7 { color: $tc-2-6; }
 
 ._a a {
-  & {
-    transition: color 0.5s, background-color 0.5s;
-  }
+  & { transition: color 0.5s, background-color 0.5s; }
   &._no-visited:visited,
   & { color: $light-link-tc; }
   &:hover { transition:none; }
@@ -220,9 +259,9 @@ h1,h2,h3,h4,h5,h6,._h7 { color: $tc-2-6; }
 }
 
 a._btnlink {
-  &,
   &:visited,
-  &:active { color: inherit; }
+  &:active,
+  & { color: inherit; }
   &:hover {
     background-color: $light-button-bg;
     color: $light-button-tc;
@@ -247,9 +286,9 @@ a._btnlink {
   }
   
   a._btnlink {
-    &,
     &:visited,
-    &:active { color: inherit; }
+    &:active,
+    & { color: inherit; }
     &:hover {
       background-color: $dark-button-bg;
       color: $dark-button-tc;
@@ -260,11 +299,10 @@ a._btnlink {
 
 /* ----------------------------------------- custom styles */
 
-@media only screen and (max-width: 499px) {
-}
+// @media only screen and (max-width: 499px) {}
 
 .gu { padding: 3px; }
-.o { @extend .bg-2-8; }
+       .o { @extend .bg-2-8; }
 ._dark .o { @extend .bg-2-2; }
 
 .o1-1 { height:300px; }
@@ -282,17 +320,9 @@ a._btnlink {
 
 /* ------------------------------------------ main helper */
 
-._numb { @include mix.numb; }
-
-._inblock { display: inline-block }
-
-._relative { position: relative }
-._absolute { position: absolute;top:0;left:0; }
-._fixed    { position: fixed;top:0;left:0; }
-
 ._indent { text-indent: 2em }
 
-._uppercase { text-transform: uppercase; }
+._uppercase { text-transform: uppercase }
 
 ._text-left    { text-align: left }
 ._text-center  { text-align: center }
@@ -301,100 +331,83 @@ a._btnlink {
 
 ._m-f1,
 ._mh-f1,
-._ml-f1 { margin-left: .5rem; }
+._ml-f1 { margin-left: .5rem }
 ._m,
 ._mh,
-._ml   { margin-left: 1em; }
+._ml    { margin-left: 1em }
 ._m-2,
 ._mh-2,
-._ml-2 { margin-left: 2em; }
+._ml-2  { margin-left: 2em }
 
 ._m-f1,
 ._mh-f1,
-._mr-f1 { margin-right: .5rem; }
+._mr-f1 { margin-right: .5rem }
 ._m,
 ._mh,
-._mr   { margin-right: 1em; }
+._mr    { margin-right: 1em }
 ._m-2,
 ._mh-2,
-._mr-2 { margin-right: 2em; }
+._mr-2  { margin-right: 2em }
 
 ._m-f1,
 ._mv-f1,
 ._mt-f1 { margin-top: .5rem }
 ._m,
 ._mv,
-._mt   { margin-top: 1em }
+._mt    { margin-top: 1em }
 ._m-2,
 ._mv-2,
-._mt-2 { margin-top: 2em }
+._mt-2  { margin-top: 2em }
 
 ._m-f1,
 ._mv-f1,
 ._mb-f1 { margin-bottom: .5rem }
 ._m,
 ._mv,
-._mb   { margin-bottom: 1em }
+._mb    { margin-bottom: 1em }
 ._m-2,
 ._mv-2,
-._mb-2 { margin-bottom: 2em }
+._mb-2  { margin-bottom: 2em }
 
 ._pad-f1,
 ._ph-f1,
-._pl-f1 { padding-left: .5rem; }
+._pl-f1 { padding-left: .5rem }
 ._pad,
 ._ph,
-._pl   { padding-left: 1em; }
+._pl    { padding-left: 1em }
 ._pad-2,
 ._ph-2,
-._pl-2 { padding-left: 2em; }
+._pl-2  { padding-left: 2em }
 
 ._pad-f1,
 ._ph-f1,
-._pr-f1 { padding-right: .5rem; }
+._pr-f1 { padding-right: .5rem }
 ._pad,
 ._ph,
-._pr   { padding-right: 1em; }
+._pr    { padding-right: 1em }
 ._pad-2,
 ._ph-2,
-._pr-2 { padding-right: 2em; }
+._pr-2  { padding-right: 2em }
 
 ._pad-f1,
 ._pv-f1,
 ._pt-f1 { padding-top: .5rem }
 ._pad,
 ._pv,
-._pt   { padding-top: 1em }
+._pt    { padding-top: 1em }
 ._pad-2,
 ._pv-2,
-._pt-2 { padding-top: 2em }
+._pt-2  { padding-top: 2em }
 
 ._pad-f1,
 ._pv-f1,
-._pb-f1 { padding-bottom: .5rem }
+._pb-f1  { padding-bottom: .5rem }
 ._pad,
 ._pv,
-._pb   { padding-bottom: 1em }
+._pb     { padding-bottom: 1em }
 ._pad-2,
 ._pv-2,
-._pb-2 { padding-bottom: 2em }
-
-._radius-2r { @include mix.border-radius(.25rem) }
-._radius-1r { @include mix.border-radius(.5rem) }
-._radius { @include mix.border-radius(1em) }
-
-#_html ._btnlink {
-  @extend ._numb;
-  @extend ._radius-2r;
-  cursor: pointer;
-  display: inline-block;
-  padding: .5em 1em;
-  border: 1px solid #888;
-  text-decoration: none;
-  &:hover {
-    text-decoration: none;
-  }
-}
+._pb-2   { padding-bottom: 2em }
 
 ._no-margin { margin:0 !important }
 

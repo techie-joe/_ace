@@ -4,8 +4,8 @@ block append vars
   include _demo-vars
   -
     template    = 'blank-canvas'
-    title       = `HTML ${template}`
-    description = `HTML ${template} helps create a website from scratch.`
+    title       = `${template} | ${name}`
+    description = `${template} helps create a website from scratch.`
     url         = url+`/${template}.html`
 
     og_title       = title
@@ -14,12 +14,9 @@ block append vars
   //- 
 
 block append style
-  +css(homeUrl+'assets/css/demo.css?v='+version)
   style.
+    ._layout { margin:1em }
   //- 
-
-block nav
-  //- include _editorbar
 
 block main
   main#_main

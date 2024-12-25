@@ -86,6 +86,14 @@ block main
 
     article.layout
 
+      h2 Available in light and dark
+
+      p Use #[code._code='Ctrl + Alt + T'] or #[code._code='base.theme.change()'] to swap between light and dark.
+
+      p: +a()(onclick="base.theme.change()")._btnlink._small Change Theme
+
+      ._mv &nbsp;
+
       h2 Quick start templates
 
       nav.pages: .g
@@ -107,23 +115,25 @@ block main
             +a("500.html")| 500
             +a("503.html")| 503
 
-      h2 Easy website creation with pre-made building blocks
+      h2 Helpers and pre-made building components
       
-      p Our website builder is designed with pre-made building components, ensuring an intuitive and easy website creation experience. We simplify website creation and makes it accessible even for those who may not have technical expertise. No lengthy manual or confusing rules -- just dive in and start building. And for those who are curious or need a bit more guidance, we have comprehensive demos and articles to help you out.
+      p Our website builder is equipped with helpers and pre-made building components, ensuring an intuitive and easy website creation experience. We simplify website creation and makes it accessible even for those who may not have technical expertise. No lengthy manual or confusing rules -- just dive in and start building. And for those who are curious or need a bit more guidance, we have comprehensive demos and articles to help you out.
 
       nav.pages
+        +_a("helpers.html")| Helpers
         +_a("views.html")| Views
+        +_a("layout.html")| Layout
         +_a("grid.html")| Grid
-        +_a("containers.html")| Containers
-        +_a("mods.html")| Modifiers
-        +_a("texts.html")| Texts
         +_a("colors.html")| Colors
-        +_a("image.html")| Image
-        +_a("icons.html")| Icons
-        +_a("videos.html")| Videos
+        +_a("containers.html")| Containers
+        +_a("texts.html")| Texts
+        +_a("fonticons.html")| Fonticons
+        +_a("images.html")| Image
+        +_a("video.html")| Video
         +_a("buttons.html")| Buttons
         +_a("background.html")| Background
         +_a("form.html")| Form
+        +_a("transitions.html")| Transitions
         +_a("animations.html")| Animations
         +_a("menu.html")| Menu
         +_a("popups.html")| Popups
