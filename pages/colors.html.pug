@@ -71,26 +71,6 @@ block main
           each c in rainbow
             +a('')(style=`background-color:#${c}`).colorlink #{c}
 
-      .section.-rainbow-code
-        -
-          var primary_color   = 8; // blue 0066CC
-          var secondary_color = 3; // orange DD8811
-
-          var bg = colors[primary_color][0];
-          var tc = colors[primary_color][1];
-          var cbg = bg[ Math.ceil(bg.length/2)-1 ];
-          var ctc = tc[ Math.ceil(tc.length/2)-1 ];
-
-        style.
-          #_html .colorcode       { background:#ccc; }
-          #_html._dark .colorcode { background:#111; }
-          .codecolor { padding:.1rem 1em }
-        +colorCodes(primary_color)
-        +colorCodes(secondary_color)
-        +colorCodes(2)
-        +colorCodes(1)
-        +colorCodes(0)
-
       .section.-tables: +tables
 
       .section.-grayscale
@@ -146,6 +126,26 @@ block main
           .cg: .gridlines
           ._absolute(style="left:50%;margin-left:-14px;")
             +img(homeUrl+"images/colorscale-v.svg","colorscale-v.svg","Color Scale")
+
+      .section.-rainbow-code
+        -
+          var primary_color   = 8; // blue 0066CC
+          var secondary_color = 3; // orange DD8811
+
+          var bg = colors[primary_color][0];
+          var tc = colors[primary_color][1];
+          var cbg = bg[ Math.ceil(bg.length/2)-1 ];
+          var ctc = tc[ Math.ceil(tc.length/2)-1 ];
+
+        style.
+          #_html .colorcode       { background:#ccc; }
+          #_html._dark .colorcode { background:#111; }
+          .codecolor { padding:.1rem 1em }
+        +colorCodes(primary_color)
+        +colorCodes(secondary_color)
+        +colorCodes(2)
+        +colorCodes(1)
+        +colorCodes(0)
 
     p: hr
 

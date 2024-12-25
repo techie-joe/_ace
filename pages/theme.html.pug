@@ -18,7 +18,6 @@ block append vars
 block style
   +css(homeUrl+'assets/css/style.css?v='+version)
   +css(homeUrl+'assets/pure/grid.css?v='+version)
-  +css(homeUrl+'assets/css/demo.css?v='+version)
   style.
     ._layout #_header,
     ._layout #_footer,
@@ -39,7 +38,6 @@ block style
   //- 
 
 block header
-  include _editorbar
   header#_header
     .g._bg-1
       .u: h1#logo._radius-1r._text-center._numb
