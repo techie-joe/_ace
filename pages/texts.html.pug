@@ -3,9 +3,9 @@ extends ../_templates/demo
 block append vars
   include _demo-vars
   -
-    header      = `Texts`
+    header      = `Texts &amp; Icons`
     title       = `${header} | ${name}`
-    description = `Texts sizes and spacings were meticulously adjusted to pixel precision, ensuring optimal adaptability.`
+    description = `Font sizes and spacings were meticulously adjusted to pixel precision, ensuring optimal adaptability.`
     url         = url+`/texts.html`
 
     og_title       = title
@@ -29,20 +29,116 @@ block append style
     .io1  { background: #66668844; box-shadow:0 1px orange; }
     .io2  { background: #66886644; box-shadow:0 1px orange; }
 
+    ._fit { margin:1px; border:1px solid #888; border-radius: .25rem; }
+
   //- 
 
 block main
 
-  mixin rag(x)
-    - var n = 0
-    while n < x
-      if(n%2==0)
-        .io2 H#[sup._sup H]g#[sub._sub #{n+1}]
-      else
-        .io1 &nbsp;
-      - n++
-
   main#_main
+
+    section
+      h2._sans Font Icons Text
+      ._mv
+        +fit|≡
+        +fit|×
+        +fit|☚
+        +fit|☛
+      ._mv
+        ._mb-2._fits.
+          ≡ « » ☚ ☛ × ∗ - + ÷
+          ≠ ≈ ~
+          ∞ π ψ ρ ƒ ∂ α
+          ! @ # % &amp; ? *
+          ∿ ∡ ← → ↑ ↓
+          № § $ ¢ £ ¥ € ₩ ฿ Φ µ μ η
+          ⋅ · • ∴
+          ¤ ☼ ☀ ☸ ❊ ⁂ ※ ✰
+          ۩ ♫ ⌂ ♀ ♂ ☄ ◊ ♦ ♥ ☁ ✈ ☎ ✂ ✎ ☒ ✉
+          ⊝ ⊘ ⊗ ⊕ ☯ ◍ ☢ ✆ © ℗ ☺ ☻
+
+    //- https://fontawesome.com/v6/search?q=
+    section
+      h2._sans Font Awesome Icons
+
+      ._mv._fai
+        +fas.fa-bars
+        +fas.fa-list
+        +fas.fa-house
+        +fas.fa-adjust
+        +far.fa-circle-user
+        +fas.fa-angle-left
+        +fas.fa-angles-left
+        +fas.fa-arrow-left
+        +fas.fa-caret-left
+        +fas.fa-rotate-left
+        +fas.fa-share.fa-flip-horizontal
+        +fas.fa-hand-point-left
+        +fas.fa-magnifying-glass
+        +far.fa-comment
+        +far.fa-message
+        +fas.fa-inbox
+        +fas.fa-question
+        +fas.fa-circle-info
+        +fas.fa-location-dot
+        +fas.fa-phone
+        +far.fa-envelope
+        +far.fa-credit-card
+        +far.fa-image
+        +far.fa-address-card
+        +fas.fa-border-all
+        +far.fa-square
+        +far.fa-square-minus
+        +far.fa-square-check._contra
+        +far.fa-star
+        +fas.fa-star._orange
+        +far.fa-heart
+        +fas.fa-heart._red
+        +far.fa-thumbs-up
+        +fas.fa-thumbs-up._blue
+        +fas.fa-pen
+        +fas.fa-arrow-right-to-bracket.fa-rotate-90
+        +fas.fa-download
+        +fas.fa-print
+        +far.fa-floppy-disk
+        +fas.fa-code
+        +fas.fa-plus
+        +fas.fa-minus
+        +fas.fa-minus.fa-rotate-90
+        +fas.fa-check._green
+        +fas.fa-xmark._red
+        +fas.fa-asterisk
+        +fas.fa-gear
+        +fas.fa-ellipsis
+        +fas.fa-ellipsis-vertical
+        +fat|txt
+
+      p._text-right._small: +a('https://fontawesome.com/v6/search?q=')._no-u More icons at Font-Awesome ...
+
+    mixin fag(x)
+      - var n = 0
+      while n < x
+        if(n%2==0)
+          .io2
+            +fas.fa-bars
+        else
+          .io1 &nbsp;
+        - n++
+
+    section.g.demo.gridlines
+      .u._text-7: +fag(13)
+      .u._text-6: +fag(12)
+      .u._text-5: +fag(11)
+      .u._text-4: +fag(10)
+      .u._text-3: +fag(9)
+      .u._text-2: +fag(8)
+      .u._text-1: +fag(7)
+
+      .u._hero:   +fag(9)
+      .u._hero-1: +fag(8)
+      .u._hero-2: +fag(7)
+
+    hr
 
     section
 
@@ -65,14 +161,23 @@ block main
 
     hr
 
+    mixin rag(x)
+      - var n = 0
+      while n < x
+        if(n%2==0)
+          .io2 H#[sup._sup H]g#[sub._sub #{n+1}]
+        else
+          .io1 &nbsp;
+        - n++
+
     section.g.demo.gridlines
-      .u._text-7: +rag(14)
-      .u._text-6: +rag(13)
-      .u._text-5: +rag(12)
-      .u._text-4: +rag(11)
-      .u._text-3: +rag(10)
-      .u._text-2: +rag(9)
-      .u._text-1: +rag(8)
+      .u._text-7: +rag(13)
+      .u._text-6: +rag(12)
+      .u._text-5: +rag(11)
+      .u._text-4: +rag(10)
+      .u._text-3: +rag(9)
+      .u._text-2: +rag(8)
+      .u._text-1: +rag(7)
 
       .u._hero:   +rag(9)
       .u._hero-1: +rag(8)
@@ -83,22 +188,22 @@ block main
     section.gridlinesx._text-center
       - var hero    = 'Text Sample';
       - var heading = 'Text Sample';
-      p._hero-2 #{hero} 3
-      p._hero-1 #{hero} 2
-      p._hero #{hero} 1
-      h1._h1 #{heading} 1
-      h2._h2 #{heading} 2
-      h3._h3 #{heading} 3
-      h4._h4 #{heading} 4
-      h5._h5 #{heading} 5
-      h6._h6 #{heading} 6
+      p._hero-2  #{hero} 3
+      p._hero-1  #{hero} 2
+      p._hero    #{hero} 1
+      h1._h1  #{heading} 1
+      h2._h2  #{heading} 2
+      h3._h3  #{heading} 3
+      h4._h4  #{heading} 4
+      h5._h5  #{heading} 5
+      h6._h6  #{heading} 6
       div._h7 #{heading} 7
       p Normal Text
       p
         span Normal
-        | &nbsp;
+        +_
         span._small Small
-        | &nbsp;
+        +_
         span._smaller Smaller
 
     p: hr

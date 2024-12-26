@@ -86,10 +86,12 @@ $light-link-tcv  : #992299;
 $light-link-tch  : #DD8811;
 $light-link-tca  : #DD1111;
 
+._contra { color: #000000 }
 ._blue   { color: #2244DD }
 ._purple { color: #992299 }
 ._orange { color: #DD8811 }
 ._red    { color: #DD1111 }
+._green  { color: #32ad32 }
 
 $dark-link-tc    : #4e69e3;
 $dark-link-tcv   : #9f4ef1;
@@ -98,10 +100,12 @@ $dark-link-tca   : #e34040;
 
 ._dark {
 
+  ._contra { color: #ffffff }
   ._blue   { color: #4e69e3 }
   ._purple { color: #9f4ef1 }
   ._orange { color: #e39f40 }
   ._red    { color: #e34040 }
+  ._green  { color: #009900 }
 
 }
 
@@ -228,6 +232,34 @@ li { margin: .3em 0; }
 
 ._dark ._code {
   @extend .tc-2-3;
+}
+
+.fas { line-height: 0.875em }
+
+._fa {
+  display: inline-block;
+  height: 1.5em;
+  min-width : 1.5em;
+  text-align: center;
+}
+
+._fat { @extend ._fa; }
+
+._fai { @extend ._text-4; }
+
+._fits { font: normal 1.857rem / 1 "Consolas", monospace; }
+
+._fit { @extend ._fits;
+  display: inline-block;
+  height: 1.0503em;
+  min-width : 1.0503em;
+  text-align: center;
+}
+
+.fit {
+  font-style: normal;
+  display: inline-block;
+  line-height: 0.55;
 }
 
 hr {

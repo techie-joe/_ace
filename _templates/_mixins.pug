@@ -5,12 +5,12 @@ mixin repeat(x)
 		block
 
 mixin php(uri)
-	| <?php include "#{uri}" ?>
+	|!{ `<?php include "${uri}" ?>` }
 
 mixin php_
-	| !{ '<?php ' }
+	|!{ `<?php ` }
 	block
-	| !{ ' ?>' }
+	|!{ ` ?>` }
 
 mixin css(href,media='all')
 	link(rel="stylesheet" media=media href=href)&attributes(attributes)/
@@ -22,7 +22,10 @@ mixin img(src,alt,title)
 	img(src=src alt=alt title=title)&attributes(attributes)/
 
 mixin _
-	="\n"
+	=` `
+
+mixin __
+	=`\n`
 
 mixin a(href,title)
 	a(href=href title=title)&attributes(attributes): block
@@ -37,5 +40,17 @@ mixin la(href,title)
 mixin backlink(title='Back to previous page')
 	a(onclick="event.preventDefault();window.history.back()" title=title)&attributes(attributes): block
 
-mixin fa(name)
-	i(class="fab fa-"+name)
+mixin fit
+	i._fit: i.fit&attributes(attributes): block
+
+mixin fat
+	i._fat: i.fas&attributes(attributes): block
+
+mixin fas
+	i._fa: i.fas&attributes(attributes)
+
+mixin far
+	i._fa: i.far&attributes(attributes)
+
+mixin fab
+	i._fa: i.fab&attributes(attributes)
