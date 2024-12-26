@@ -149,6 +149,8 @@ $select-tc : #000;
 ::selection         { @include selection; }
 
 * { line-height: 1.5; margin: 0; }
+._line-spacing-1 { line-height: 1 }
+._line-spacing-2 { line-height: 2 }
 
 ._p { margin-top: 1rem; margin-bottom: 1rem; }
 h1,h2,h3,h4,h5,h6,._h7,
@@ -245,9 +247,10 @@ h1,h2,h3,h4,h5,h6,._h7 { color: $tc-2-6; }
 ._a a {
   & { transition: color 0.5s, background-color 0.5s; }
   &._no-visited:visited,
-  & { color: $light-link-tc; }
-  &:hover { transition:none; }
+  &         { color: $light-link-tc; }
   &:visited { color: $light-link-tcv; }
+  // &._no-visited:hover,
+  &:hover   { transition:none; }
 }
 
 a._btnlink {
@@ -273,8 +276,10 @@ a._btnlink {
 
   &._a a {
     &._no-visited:visited,
-    & { color: $dark-link-tc; }
+    &         { color: $dark-link-tc; }
     &:visited { color: $dark-link-tcv; }
+    // &._no-visited:hover,
+    // &:hover   {  }
   }
   
   a._btnlink {
