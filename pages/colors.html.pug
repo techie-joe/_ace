@@ -7,7 +7,7 @@ block append vars
     header      = `Colors`
     title       = `${header} | ${name}`
     description = `These colors are made for your reference.`
-    url         = url+`/texts.html`
+    url         = url+`/colors.html`
 
     og_title       = title
     og_description = description
@@ -31,7 +31,7 @@ block append style
       height:100%;
       background-image: url('data:image/svg+xml;utf8,<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"><rect width="9" height="9" fill="none" stroke="none" /><line x1="10" y1="0" x2="10" y2="10" stroke="%23ddd" stroke-width="1" /><line x1="0" y1="10" x2="10" y2="10" stroke="%23ddd" stroke-width="1" /></svg>');
       background-repeat: repeat;
-      background-position: 1px 1px;
+      background-position: .1px .1px;
     }
     ._dark 
     .gridlines {
@@ -124,7 +124,7 @@ block main
           }
         ._relative
           .cg: .gridlines
-          ._absolute(style="left:50%;margin-left:-14px;")
+          ._absolute(style="left:50%;margin-left:-15px;")
             +img(homeUrl+"images/colorscale-v.svg","colorscale-v.svg","Color Scale")
 
       .section.-rainbow-code

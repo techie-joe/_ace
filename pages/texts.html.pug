@@ -5,7 +5,7 @@ block append vars
   -
     header      = `Texts`
     title       = `${header} | ${name}`
-    description = `Text sizes and spacing have been carefully taken care of.`
+    description = `Text sizes and spacing were meticulously adjusted to ensure optimal readability and a clean, professional appearance.`
     url         = url+`/texts.html`
 
     og_title       = title
@@ -18,7 +18,7 @@ block append style
     .gridlines {
       min-height: 100px;
       padding-bottom: 1px;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1px" height="10px"><rect width="1px" height="0.75px" fill="%23A9790655" /></svg>');
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="12"><rect width="1" height="1" fill="%23A9790688" /></svg>');
       background-repeat: repeat;
     }
     #_header { max-width:960px }
@@ -26,7 +26,8 @@ block append style
     #_main { margin:0 auto; padding:0 1rem; }
     .demo .u { margin: 0 2px; }
 
-    .io  { background:#88888844; padding:0 2px; }
+    .io1  { background: #66668844; box-shadow:0 1px orange; }
+    .io2  { background: #66886644; box-shadow:0 1px orange; }
 
   //- 
 
@@ -35,41 +36,41 @@ block main
   mixin rag(x)
     - var n = 0
     while n < x
-      - n++
       if(n%2==0)
-        span.io &nbsp;
+        .io2 H#[sup._sup H]g#[sub._sub #{n+1}]
       else
-        span.io H#[sup._sup 2]g#[sub._sub 2]
-      br
+        .io1 &nbsp;
+      - n++
 
   main#_main
-    .gridlinesx._text-center
-      section
-        p._hero Superhero text
-        h1._h1 Heading Example #1
-        h2._h2 Heading Example #2
-        h3._h3 Heading Example #3
-        h4._h4 Heading Example #4
-        h5._h5 Heading Example #5
-        h6._h6 Heading Example #6
-        div._h7 Heading Example #7
-        p Normal Example
-        p
-          span Normal
-          | &nbsp;
-          span._small Small
-          | &nbsp;
-          span._smaller Smaller
+
+    .g.demo.gridlines
+      .u._text-7: +rag(14)
+      .u._text-6: +rag(12)
+      .u._text-5: +rag(10)
+      .u._text-4: +rag(8)
+      .u._text-3: +rag(6)
+      .u._text-2: +rag(5)
+      .u._text-1: +rag(4)
+
     hr(style="margin:1rem auto")
-    .gridlines
-      .g.demo
-        .u._text-7: +rag(14)
-        .u._text-6: +rag(11)
-        .u._text-5: +rag(9)
-        .u._text-4: +rag(7)
-        .u._text-3: +rag(6)
-        .u._text-2: +rag(5)
-        .u._text-1: +rag(4)
+
+    section.gridlinesx._text-center
+      p._hero Superhero text
+      h1._h1 Heading Example #1
+      h2._h2 Heading Example #2
+      h3._h3 Heading Example #3
+      h4._h4 Heading Example #4
+      h5._h5 Heading Example #5
+      h6._h6 Heading Example #6
+      div._h7 Heading Example #7
+      p Normal Example
+      p
+        span Normal
+        | &nbsp;
+        span._small Small
+        | &nbsp;
+        span._smaller Smaller
 
     p: hr
 

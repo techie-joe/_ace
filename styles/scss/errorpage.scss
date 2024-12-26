@@ -1,9 +1,10 @@
 /*! Techie Joe's Base v0.1.0 | Copyright 2024 Techie Joe | https://github.com/techie-joe/base */
 
 ._errorpage {
-  
-  & ._layout {
-    font-family: sans-serif;
+
+  font-family: sans-serif;
+
+  ._layout {
     position: absolute;
     display: table;
     width: 100%;

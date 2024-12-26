@@ -128,6 +128,7 @@ $dark-link-tca   : #e34040;
 
 /* ------------------------------------------------- base */
 
+._outline,
 html   { box-shadow: 0 3px red inset; } /* mark red if you include but don't use */
 #_html { box-shadow: none } /* remove mark when in use */
 
@@ -147,7 +148,7 @@ $select-tc : #000;
 // ::-ms-selection     { @include selection; }
 ::selection         { @include selection; }
 
-* { line-height: 1.25; margin: 0; }
+* { line-height: 1.5; margin: 0; }
 
 ._p { margin-top: 1rem; margin-bottom: 1rem; }
 h1,h2,h3,h4,h5,h6,._h7,
@@ -158,9 +159,14 @@ li { margin: .3em 0; }
 
 ._h7 { @extend ._b; }
 
-._view {
-  display  : block;
-  position : absolute;
+#_content,
+#_body,
+#_html {
+  @extend ._sans;
+  @include mix.text-size-adjust(100%);
+  font-size:1em;
+  display: block;
+  position: absolute;
   top    : 0;
   bottom : 0;
   right  : 0;
@@ -168,38 +174,37 @@ li { margin: .3em 0; }
   width  : 100%;
   height : 100%;
   margin : 0;
-  overflow : auto;
-} 
+  overflow: auto;
+}
 
-#_html,
-#_body {
-  @extend ._view;
-  @extend ._sans;
-  @include mix.text-size-adjust(100%);
-  font-size:1em;
+._view {
+  width  : 100%;
+  height : 100%;
+  margin : 0;
+  overflow: auto;
 }
 
 ._hero        { font-size: 6rem }
-._h1,._text-1 { font-size: 4.334rem }
-._h2,._text-2 { font-size: 3.255rem }
-._h3,._text-3 { font-size: 2.593rem }
-._h4,._text-4 { font-size: 2.163rem }
-._h5,._text-5 { font-size: 1.623rem }
-._h6,._text-6 { font-size: 1.298rem }
+._h1,._text-1 { font-size: 4.335rem }
+._h2,._text-2 { font-size: 3.250rem }
+._h3,._text-3 { font-size: 2.600rem }
+._h4,._text-4 { font-size: 1.857rem }
+._h5,._text-5 { font-size: 1.444rem }
+._h6,._text-6 { font-size: 1.182rem }
 ._h7,._text-7 { font-size: 1rem }
 
 ._small       { font-size: .8em }
 ._smaller     { font-size: .6em }
 
 ._sub,
-._sup { line-height: 0.6em; font-size: 0.55em; }
+._sup { line-height: 0.6em; font-size: 0.53em; }
 
 ._code {
   @extend ._mono;
   @extend .tc-2-8;
   font-weight: bold;
-  padding: 0 .3em;
-  vertical-align: 0.07em;
+  padding: 0 .25em;
+  vertical-align: 0.05em;
 }
 
 ._dark ._code {
@@ -221,7 +226,7 @@ hr {
   @extend ._radius-2r;
   cursor: pointer;
   display: inline-block;
-  padding: .5em 1em;
+  padding: .25em 1em;
   border: 1px solid $tc-2-9;
   text-decoration: none;
   &:hover { text-decoration: none; }
