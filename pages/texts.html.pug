@@ -5,7 +5,7 @@ block append vars
   -
     header      = `Texts`
     title       = `${header} | ${name}`
-    description = `Text sizes and spacing were meticulously adjusted to ensure optimal readability and a clean, professional appearance.`
+    description = `Texts sizes and spacings were meticulously adjusted to pixel precision, ensuring optimal adaptability.`
     url         = url+`/texts.html`
 
     og_title       = title
@@ -24,7 +24,7 @@ block append style
     #_header { max-width:960px }
     #_header,
     #_main { margin:0 auto; padding:0 1rem; }
-    .demo .u { margin: 0 2px; }
+    .demo .u { margin: 0 2px; padding-bottom: 10px; }
 
     .io1  { background: #66668844; box-shadow:0 1px orange; }
     .io2  { background: #66886644; box-shadow:0 1px orange; }
@@ -44,27 +44,56 @@ block main
 
   main#_main
 
-    .g.demo.gridlines
-      .u._text-7: +rag(14)
-      .u._text-6: +rag(12)
-      .u._text-5: +rag(10)
-      .u._text-4: +rag(8)
-      .u._text-3: +rag(6)
-      .u._text-2: +rag(5)
-      .u._text-1: +rag(4)
+    section
 
-    hr(style="margin:1rem auto")
+      .g
+        .u-1-3: ._pr
+          h2._sans Sans Serif
+          p._sans._text-justify.
+            Sans serif fonts, such as Arial and Helvetica, are known for their clean and modern look, lacking the small decorative strokes at the ends of letters. They are widely used for digital media due to their readability on screens.
+
+        .u-1-3: ._ph
+          h2._serif Serif Font
+          p._serif._text-justify.
+            Serif fonts, like Times New Roman and Garamond, feature small lines or strokes attached to the ends of letters, giving a more traditional and formal appearance. These fonts are often used in print media for their elegant, stylish and classic look.
+
+        .u-1-3: ._pl
+          h2._mono Monospace
+          p._mono._text-justify.
+            Monospace fonts, such as Courier New and Consolas, have characters that occupy the same horizontal space. This uniform spacing makes them ideal for coding, as they enhance readability.
+      //- g
+
+    hr
+
+    section.g.demo.gridlines
+      .u._text-7: +rag(14)
+      .u._text-6: +rag(13)
+      .u._text-5: +rag(12)
+      .u._text-4: +rag(11)
+      .u._text-3: +rag(10)
+      .u._text-2: +rag(9)
+      .u._text-1: +rag(8)
+
+      .u._hero:   +rag(9)
+      .u._hero-1: +rag(8)
+      .u._hero-2: +rag(7)
+
+    hr
 
     section.gridlinesx._text-center
-      p._hero Superhero text
-      h1._h1 Heading Example #1
-      h2._h2 Heading Example #2
-      h3._h3 Heading Example #3
-      h4._h4 Heading Example #4
-      h5._h5 Heading Example #5
-      h6._h6 Heading Example #6
-      div._h7 Heading Example #7
-      p Normal Example
+      - var hero    = 'Text Sample';
+      - var heading = 'Text Sample';
+      p._hero-2 #{hero} 3
+      p._hero-1 #{hero} 2
+      p._hero #{hero} 1
+      h1._h1 #{heading} 1
+      h2._h2 #{heading} 2
+      h3._h3 #{heading} 3
+      h4._h4 #{heading} 4
+      h5._h5 #{heading} 5
+      h6._h6 #{heading} 6
+      div._h7 #{heading} 7
+      p Normal Text
       p
         span Normal
         | &nbsp;
