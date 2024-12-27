@@ -40,12 +40,6 @@ mixin la(href,title)
 mixin backlink(title='Back to previous page')
 	a(onclick="event.preventDefault();window.history.back()" title=title)&attributes(attributes): block
 
-mixin fit
-	i._fit: i.fit&attributes(attributes): block
-
-mixin fat
-	i._fat: i.fas&attributes(attributes): block
-
 mixin fas
 	i._fa: i.fas&attributes(attributes)
 
@@ -54,3 +48,9 @@ mixin far
 
 mixin fab
 	i._fa: i.fab&attributes(attributes)
+
+mixin fat
+	i._fa: i.fat.fas&attributes(attributes): block
+
+mixin fit
+	i._fit: i.fit&attributes(attributes): block
