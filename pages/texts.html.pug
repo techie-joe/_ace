@@ -34,31 +34,32 @@ block append style
 
 mixin ichars
   .
-    ≡ « » ☚ ☛ ← → ↑ ↓
+    ≡ ☚ ☛ « » ← → ↑ ↓
     ! @ # % &amp; ? *
     ∗ × – — - + ÷ ≠ ≈ ~
     ∿ ∡
     ∞ π ψ ƒ ∂ α ρ
-    № § $ ¢ £ ¥ € ₩ ฿ Φ µ μ η
+    № § $ ￠ ¢ £ ¥ € ₩ ฿ Φ µ μ η
     ⋅ · • ∴
     ¤ ☼ ☀ ☸ ❊ ⁂ ※ ✰
     ۩ ♫ ⌂ ♀ ♂ ☄
     ✉ ☒ ◊ ♦ ♥ ☁ ✈ ☎ ✂ ✎
-    ⊝ ⊘ ⊗ ⊕ ☯ ◍ ☢ ✆ © ℗ ☺ ☻
+    ⊝ ⊘ ⊗ ⊕ ◍ ✆ ☯ ☢ © ℗
 
 block main
 
   main#_main
 
-    section
+    section._mb-2
       h2._sans Font Icons Text
+      ._mv: ._fits: +ichars
       ._mv: ._fits
         +fit|≡
-        +fit|×
         +fit|☚
         +fit|☛
-      ._mv._mb-2: ._fits
-        +ichars
+        +fit|×
+
+    hr
 
     //- https://fontawesome.com/v6/search?q=
     section
@@ -115,9 +116,6 @@ block main
         +fas.fa-ellipsis
         +fas.fa-ellipsis-vertical
         +fat|txt
-
-      ._mv._fa-icons
-        ._fat: .fat.fas: +ichars
 
       p._text-right._small: +a('https://fontawesome.com/v6/search?q=')(target="fontawesome")._no-u More icons at Font-Awesome ...
 

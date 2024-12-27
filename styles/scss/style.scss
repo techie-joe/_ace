@@ -255,44 +255,37 @@ hr {
   @extend .tc-2-3;
 }
 
-._fa-icons ._fat,
-._fa-icons ._fa { font-size: 1.3338rem }
-
 ._fa {
   display: inline-block;
-  height    : 1.5em;
-  min-width : 1.5em;
+  height   : 1.5em;
+  min-width: 1.5em;
   text-align: center;
-  .fab, .far, .fas { line-height: 0.875em }
 }
 
+._fa-icons ._fa { font-size: 1.3em }
+
 .fit {
-  font-family: monospace;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  display: inline-block;
+  font-family: sans-serif;
+  font-size: 1.8em;
   font-style: normal;
   font-variant: normal;
   line-height: 1;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
   text-rendering: auto;
 }
 
-._fits { font-size: 2em; line-height: 1 }
-
 ._fit {
   display: inline-block;
-  height    : 1em;
-  min-width : 1em;
+  height   : 1.548em;
+  min-width: 1.548em;
   text-align: center;
-  line-height: 0.077;
-  .fit {
-    line-height: 0.55;
-    position: relative;
-    top: 0.09em;
-    font-size: 1.54em;
-  }
+  .fit { line-height: 0.86 }
 }
 
+._fits       { font-size: 1.8em; line-height: 0.89 }
+._fits ._fit { font-size: 0.7em }
 
 /* ---------------------------------- default light theme */
 
