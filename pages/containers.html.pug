@@ -21,12 +21,27 @@ block append style
     #_main { max-width:none }
     #_main { padding:0 }
 
+    .o { height:5rem; margin:1px }
+
+    ._grid { max-width:60em }
+
   //- 
 
 block main
-  main#_main: .layout
-    article._ph
-      ._h7._small This is about #{header}
-    .g
-      .u-1
-        .gu: .o.o1-1
+  main#_main: article._grid.layout
+    ._g: .o
+
+    +repeat(2):  ._g10-5: .o
+    +repeat(5):  ._g10-2: .o
+    +repeat(10): ._g10-1: .o
+
+    +repeat(2):  ._g12-6: .o
+    +repeat(3):  ._g12-4: .o
+    +repeat(4):  ._g12-3: .o
+    +repeat(6):  ._g12-2: .o
+    +repeat(12): ._g12-1: .o
+
+    +repeat(2):  ._g16-8: .o
+    +repeat(4):  ._g16-4: .o
+    +repeat(8):  ._g16-2: .o
+    +repeat(16): ._g16-1: .o

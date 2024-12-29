@@ -1,0 +1,45 @@
+extends ../_templates/demo
+
+block append vars
+  include _demo-vars
+  -
+    header      = `Grid`
+    url         = url+`/grid.html`
+    title       = `${header} | ${name}`
+    description = `${header} are used to align contents.`
+
+    og_title       = title
+    og_description = description
+    og_url         = url
+  //- 
+
+block append style
+  style.
+    .o { height:5rem; margin:1px }
+    ._grid { max-width:60em }
+  //- 
+
+block main
+  main#_main: article._grid.layout
+    ._g: .o _g
+
+    //- +repeat(2):  ._g10-5: .o._outline
+    //- +repeat(5):  ._g10-2: .o._outline
+    //- +repeat(10): ._g10-1: .o._outline
+
+    mixin gengrid(k)
+      - var k2 = k/2;
+      - var n = 0;
+      while n < k2
+        div(class=`_g${k}-${n+1}`): .o _g#{k}-#{n+1}
+        div(class=`_g${k}-${k-n-1}`): .o _g#{k}-#{k-n-1}
+        - n++;
+
+    +gengrid(10)
+    +gengrid(12)
+    +gengrid(16)
+
+    //- +repeat(2):  ._g16-8: .o._outline
+    //- +repeat(4):  ._g16-4: .o._outline
+    //- +repeat(8):  ._g16-2: .o._outline
+    //- +repeat(16): ._g16-1: .o._outline

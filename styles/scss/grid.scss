@@ -1,0 +1,41 @@
+/*! Techie Joe's Base v0.1.0 | Copyright 2024 Techie Joe | https://github.com/techie-joe/base */
+
+// @media screen and (min-width: 20em)    ≥ 320px   ._g-ms-*   Mobile S
+// @media screen and (min-width: 23.4em)  ≥ 425px   ._g-mm-*   Mobile M
+// @media screen and (min-width: 26.6em)  ≥ 425px   ._g-ml-*   Mobile L
+// @media screen and (min-width: 35.5em)  ≥ 568px   ._g-s-*
+// @media screen and (min-width: 48em)    ≥ 768px   ._g-m-*    Laptop S
+// @media screen and (min-width: 60em)    ≥ 960px   ._g-r-*    Regular PC / 960gs
+// @media screen and (min-width: 64em)    ≥ 1024px  ._g-l-*    Laptop M
+// @media screen and (min-width: 80em)    ≥ 1280px  ._g-2l-*
+// @media screen and (min-width: 90em)    ≥ 1440px  ._g-3l-*   Laptop L
+// @media screen and (min-width: 120em)   ≥ 1920px  ._g-4l-*
+// @media screen and (min-width: 160em)   ≥ 2560px  ._g-4k-*   4K
+// @media screen and (min-width: 240em)   ≥ 3840px  ._g-5k-*
+
+._grid {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start; /* prevents distributing space between rows */
+  margin: 0 auto;
+}
+
+._g {
+  display: inline-block;
+  vertical-align: top;
+  letter-spacing:normal;
+  word-spacing:normal;
+  text-rendering:auto;
+  width:100%;
+}
+
+// 18,16,14,12,10,*9,8,*7,6,5,4,3,2,1
+
+._g10 { @extend ._g; }
+@for $i from 1 through 10-1 { ._g10-#{$i} { @extend ._g; width: (100% /10) *$i } }
+
+._g12 { @extend ._g; }
+@for $i from 1 through 12-1 { ._g12-#{$i} { @extend ._g; width: (100% /12) *$i } }
+
+._g16 { @extend ._g; }
+@for $i from 1 through 16-1 { ._g16-#{$i} { @extend ._g; width: (100% /16) *$i } }
