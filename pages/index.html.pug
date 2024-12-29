@@ -15,8 +15,8 @@ block append style
   style.
 
     #_footer .layout,
-    #_main .layout   { padding: 0 3rem; }
-    #_header .layout { padding: 1rem 3rem 3rem; }
+    #_main .layout   { padding: 0; }
+    #_header .layout { padding: 1rem 1rem 2rem; }
 
     #_header { padding: 1px 0; }
 
@@ -36,32 +36,24 @@ block append style
     #_header    { position:relative; }
     #_header .p { max-width: 490px; }
 
-    #_html .startNow {
-      display: block;
-      float: right;
-      text-align: right;
-      width: 120px;
-      position: absolute;
-      top: 2em;
-      right: 2em;
-      margin: 1em;
-      text-align: center;
-    }
-
+    #_header .startNow { text-align: center; width:100%; margin: 1.5em auto 0; }
     #_header .startNow ._btnlink:hover { background:#777;color:#fff; }
 
-    @media only screen and (max-width: 599px) {
+    @media only screen and (min-width: 530px) {
 
       #_footer .layout,
-      #_main .layout   { padding: 0; }
-      #_header .layout { padding: 1rem 1rem 2rem; }
-      #_header .startNow {
-        float: none;
-        top: auto;
-        position: relative;
-        right: auto;
-        width: 100%;
-        margin: 1.5em auto 0;
+      #_main .layout   { padding: 0 3rem; }
+      #_header .layout { padding: 1rem 3rem 3rem; }
+
+      #_html .startNow {
+        display: block;
+        float: right;
+        text-align: right;
+        width: 120px;
+        position: absolute;
+        top: 2em;
+        right: 2em;
+        margin: 1em;
       }
 
     }
