@@ -15,8 +15,18 @@ block append vars
 
 block append style
   style.
-    ._layout { margin:1em }
+
+    #_footer,
+    #_header,
+    #_main { max-width:none }
+    #_main { padding:0 }
+
   //- 
 
 block main
-  main#_main: article|This is #{header}
+  main#_main: .layout
+    article._ph
+      ._h7._small This is about #{header}
+    .g
+      .u-1
+        .gu: .o.o1-1

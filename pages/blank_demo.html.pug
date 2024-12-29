@@ -6,7 +6,7 @@ block append vars
     header      = `blank_demo`
     url         = url+`/blank_demo.html`
     title       = `${header} | ${name}`
-    description = `${header} - (undescribed)`
+    description = `This is about ${header}.`
 
     og_title       = title
     og_description = description
@@ -15,7 +15,6 @@ block append vars
 
 block append style
   style.
-    ._layout { margin:1em }
   //- 
 
 block main
