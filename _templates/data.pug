@@ -25,36 +25,35 @@ html(lang=lang)
 
   body
     block content
-      #_content(class=contentClass)
+      #_contents(class=contentClass)
 
         block view
-          ._view
-            ._layout
+          ._view: ._layout
 
-              block header
-                //- header#_header
+            block header
+              //- header#_header
 
-              block nav
-                //- include _nav
-                //- nav: ul: +la
+            block nav
+              //- include _nav
+              //- nav: ul: +la
 
-              block pre
-                //- aside: pre._pre.
-                //-
+            block pre
+              //- aside: pre._pre.
+              //-
 
-              block main
-                main#_main
-                  article
-                    | hello world
-  
-              block footer
-                //- footer#_footer
-              
-              block aside
-                //- aside#_aside
+            block main
+              main#_main
+                article
+                  | hello world
+
+            block footer
+              //- footer#_footer
+            
+            block aside
+              //- aside#_aside
 
     block widget
-      //- aside#_widget
+      //- aside#_widgets
 
     block last
       | <!-- IE needs 512+ bytes: https://techie-joe.github.io/library/html5/ie#ie-needs-512-bytes -->

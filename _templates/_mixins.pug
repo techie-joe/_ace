@@ -1,8 +1,9 @@
-mixin repeat(x)
-	- var n = 0
-	while n < x
-		- n++
+mixin repeat(a,b=0)
+	- var diff = Math.abs(a-b)+(b?1:0);
+	- var n = 0;
+	while n < diff
 		block
+		- n++
 
 mixin php(uri)
 	|!{ `<?php include "${uri}" ?>` }
@@ -54,3 +55,6 @@ mixin fat
 
 mixin fit
 	i._fit: i.fit&attributes(attributes): block
+
+mixin view
+	._view&attributes(attributes): ._layout: block

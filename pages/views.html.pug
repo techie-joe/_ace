@@ -15,56 +15,64 @@ block append vars
 
 block append style
   style.
-
-    #_widget ._layout {
-      position: absolute;
-      display: table;
-      width: 100%;
-      height: 100%;
-      margin:0;
-      text-align: center;
-      z-index:1000;
-    }
-    
-    #_nav {
-      display: table-cell;
-      vertical-align: middle;
-      margin: 0 auto;
-      padding: 1rem;
-    }
-
-    ._layout h1 { text-align: center }
-
-    ._view { box-shadow: 0 3px red inset; }
-
+    ._view { box-shadow: 0 0 1px 1px red inset; }
+    ._view h1 { text-align: center }
   //- 
+
+block widget
+  aside#_widgets
+
+    #nav-position
+
+      style.
+        #nav-position {
+          display: block;
+          position: absolute;
+          top : 50%;
+          left: 50%;
+        }
+
+        #nav {
+          box-shadow: 0 0 1px 1px #888 inset;
+          position:relative;
+          z-index:1000;
+          left: -50%;
+          top : -70px;
+          width: 108px;
+          padding: 1rem;
+        }
+
+        #nav a {
+          margin:1px;
+        }
+
+        #view-2 {
+          background: #020;
+          position: absolute;
+          top: 0;
+          left: 100%;
+        }
+
+        #view-3 {
+          background: #200;
+        }
+
+        #view-4 {
+          background: #002;
+          position: absolute;
+          top: 100%;
+          left: 100%;
+        }
+
+      nav#nav.bg-2-2.tc-2-2._radius-2r
+        +a('./')(style="width:71px")._btnlink 👈 Back
+        +a('#view-1')._btnlink #1
+        +a('#view-2')._btnlink #2
+        +a('#view-3')._btnlink #3
+        +a('#view-4')._btnlink #4
 
 block view
 
-  aside#_widget: ._layout
-    nav#_nav
-      +_a('./')._btnlink 👈
-      +_a('#view-1')._btnlink #1
-      +_a('#view-2')._btnlink #2
-      +_a('#view-3')._btnlink #3
-      +_a('#view-4')._btnlink #4
-
-  ._view#view-1
-    ._layout
-      section: h1 View #1
-  //- view
-
-  ._view#view-2
-    ._layout
-      section: h1 View #2
-  //- view
-
-  ._view#view-3
-    ._layout
-      section: h1 View #3
-  //- view
-
-  ._view#view-4
-    ._layout
-      section: h1 View #4
-  //- view
+  each v in [1,2,3,4]
+    ._view(id=`view-${v}`): ._layout
+      section: h1._h7 View ##{v}

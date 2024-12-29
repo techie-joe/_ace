@@ -32,25 +32,25 @@ block append style
   //- 
     ._fit { margin:2px; outline:1px solid #888; border-radius: .25rem; }
 
-mixin ichars
-  .
-    ≡ ☚ ☛ « » ← → ↑ ↓
-    ! @ # % &amp; ? *
-    ∗ × – — - + ÷ ≠ ≈ ~
-    ∿ ∡
-    ∞ π ψ ƒ ∂ α ρ
-    № § $ ￠ ¢ £ ¥ € ₩ ฿ Φ µ μ η
-    ⋅ · • ∴
-    ¤ ☼ ☀ ☸ ❊ ⁂ ※ ✰
-    ۩ ♫ ⌂ ♀ ♂ ☄
-    ✉ ☒ ◊ ♦ ♥ ☁ ✈ ☎ ✂ ✎
-    ⊝ ⊘ ⊗ ⊕ ◍ ✆ ☯ ☢ © ℗
 
 block main
 
-  main#_main
+  main#_main: article
 
     section._mb-2
+      mixin ichars
+        .
+          ≡ ☚ ☛ « » ← → ↑ ↓
+          ! @ # % &amp; ? *
+          ∗ × – — - + ÷ ≠ ≈ ~
+          ∿ ∡
+          ∞ π ψ ƒ ∂ α ρ
+          № § $ ￠ ¢ £ ¥ € ₩ ฿ Φ µ μ η
+          ⋅ · • ∴
+          ¤ ☼ ☀ ☸ ❊ ⁂ ※ ✰
+          ۩ ♫ ⌂ ♀ ♂ ☄
+          ✉ ☒ ◊ ♦ ♥ ☁ ✈ ☎ ✂ ✎
+          ⊝ ⊘ ⊗ ⊕ ◍ ✆ ☯ ☢ © ℗
       h2._sans Font Icons Text
       ._mv: ._fits: +ichars
       ._mv: ._fits
@@ -119,17 +119,18 @@ block main
 
       p._text-right._small: +a('https://fontawesome.com/v6/search?q=')(target="fontawesome")._no-u More icons at Font-Awesome ...
 
-    mixin fag(x)
-      - var n = 0
-      while n < x
-        if(n%2==0)
-          .io2
-            +fas.fa-bars
-        else
-          .io1 &nbsp;
-        - n++
-
     section.g.demo.gridlines
+
+      mixin fag(x)
+        - var n = 0
+        while n < x
+          if(n%2==0)
+            .io2
+              +fas.fa-bars
+          else
+            .io1 &nbsp;
+          - n++
+
       .u._text-1: +fag(13)
       .u._text-2: +fag(12)
       .u._text-3: +fag(11)
@@ -142,7 +143,7 @@ block main
       .u._hero-1: +fag(8)
       .u._hero-2: +fag(7)
 
-    hr
+      hr
 
     section
 
@@ -163,18 +164,20 @@ block main
             Monospace fonts, such as Courier New and Consolas, have characters that occupy the same horizontal space. This uniform spacing makes them ideal for coding, as they enhance readability.
       //- g
 
-    hr
+      hr
 
-    mixin rag(x)
-      - var n = 0
-      while n < x
-        if(n%2==0)
-          .io2 H#[sup._sup H]g#[sub._sub #{n+1}]
-        else
-          .io1 &nbsp;
-        - n++
 
     section.g.demo.gridlines
+
+      mixin rag(x)
+        - var n = 0
+        while n < x
+          if(n%2==0)
+            .io2 H#[sup._sup H]g#[sub._sub #{n+1}]
+          else
+            .io1 &nbsp;
+          - n++
+
       .u._text-1: +rag(13)
       .u._text-2: +rag(12)
       .u._text-3: +rag(11)
@@ -210,7 +213,7 @@ block main
         +_
         span._smaller Smaller
 
-    p: hr
+      p: hr
 
     footer#_footer
       p._text-centerx !{copyright}

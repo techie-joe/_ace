@@ -137,8 +137,9 @@ $dark-link-tca   : #e34040;
 
 /* ------------------------------------------------- base */
 
-._outline,
-html   { box-shadow: 0 3px red inset; } /* mark red if you include but don't use */
+._outline { box-shadow: 0 0 0 1px #f80; }
+
+html   { box-shadow: 0 0 0 5px #f00 inset; } /* mark red if you include but don't use */
 #_html { box-shadow: none } /* remove mark when in use */
 
 // ::selection must follow this format. will not work otherwise
@@ -198,7 +199,7 @@ p,pre { @extend ._p; }
 
 li { margin: .3em 0; }
 
-#_content,
+#_contents,
 #_body,
 #_html {
   @extend ._font-1;
@@ -214,6 +215,7 @@ li { margin: .3em 0; }
   height : 100%;
   margin : 0;
   overflow: auto;
+  scroll-behavior: smooth;
 }
 
 ._view {
