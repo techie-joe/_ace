@@ -14,6 +14,8 @@ block append vars
 block append style
   style.
 
+    #_html { min-width:320px }
+
     #_footer .layout,
     #_main .layout   { padding: 0; }
     #_header .layout { padding: 1rem 1rem 2rem; }
@@ -33,6 +35,8 @@ block append style
     #_html       .pages a:hover { background:#bbb; color:#000; }
     #_html._dark .pages a:hover { background:#444; color:#fff; }
 
+    #_html .pages ul { list-style-type: none; padding-inline-start: 0; }
+
     #_header    { position:relative; }
     #_header .p { max-width: 490px; }
 
@@ -43,7 +47,7 @@ block append style
 
       #_footer .layout,
       #_main .layout   { padding: 0 3rem; }
-      #_header .layout { padding: 1rem 3rem 3rem; }
+      #_header .layout { padding: 1rem 4rem 3rem; }
 
       #_html .startNow {
         display: block;
@@ -55,6 +59,13 @@ block append style
         right: 2em;
         margin: 1em;
       }
+
+    }
+
+    @media only screen and (min-width: 970px) {
+      
+      #_header         { max-width: none; }
+      #_header .layout { max-width: 860px; margin: 0 auto; padding: 1rem 3rem 3rem; position:relative; }
 
     }
 
