@@ -3,10 +3,10 @@ extends ../_templates/html
 block append vars
   include _demo-vars
   -
-    template    = 'full-screen'
-    title       = `HTML ${template}`
-    description = `HTML ${template} seamlessly stretches across the entire screen, for an exceptional first impression.`
-    url         = url+`/${template}.html`
+    _template   = 'full_screen'
+    url         = url+`/${_template}.html`
+    title       = `${_template} | ${name}`
+    description = `${_template} seamlessly stretches across the entire screen, for an exceptional first impression.`
 
     og_title       = title
     og_description = description

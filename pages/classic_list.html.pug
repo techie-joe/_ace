@@ -3,10 +3,10 @@ extends ../_templates/html
 block append vars
   include _demo-vars
   -
-    template    = 'classic-list'
-    title       = `HTML ${template}`
-    description = `HTML ${template} is a good for displaying lists of articles and pages.`
-    url         = url+`/${template}.html`
+    _template   = 'classic_list'
+    url         = url+`/${_template}.html`
+    title       = `${_template} | ${name}`
+    description = `${_template} is good for displaying lists of articles and pages.`
 
     og_title       = title
     og_description = description

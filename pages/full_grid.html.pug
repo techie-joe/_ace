@@ -3,10 +3,10 @@ extends ../_templates/html
 block append vars
   include _demo-vars
   -
-    template    = 'full-grid'
-    title       = `HTML ${template}`
-    description = `HTML ${template} helps you create an impressive gallery to showcase your collection.`
-    url         = url+`/${template}.html`
+    _template   = 'full_grid'
+    url         = url+`/${_template}.html`
+    title       = `${_template} | ${name}`
+    description = `${_template} helps you create an impressive gallery to showcase your collection.`
 
     og_title       = title
     og_description = description

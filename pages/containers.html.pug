@@ -3,10 +3,10 @@ extends ../_templates/html
 block append vars
   include _demo-vars
   -
-    _template    = 'blank-canvas'
-    title       = `${_template} | ${name}`
-    description = `${_template} helps create a website from scratch.`
-    url         = url+`/${_template}.html`
+    header      = `Containers`
+    title       = `${header} | ${name}`
+    description = `Containers are used to group contents together.`
+    url         = url+`/containers.html`
 
     og_title       = title
     og_description = description
@@ -19,5 +19,4 @@ block append style
   //- 
 
 block main
-  main#_main
-    article This is a #{_template}
+  main#_main: article|This is a #{header}

@@ -1,0 +1,23 @@
+extends ../_templates/html
+
+block append vars
+  include _demo-vars
+  -
+    _template   = 'blank'
+    url         = url+`/${_template}.html`
+    title       = `${_template} | ${name}`
+    description = `${_template} helps create a website from scratch.`
+
+    og_title       = title
+    og_description = description
+    og_url         = url
+  //- 
+
+block append style
+  style.
+    ._layout { margin:1em }
+  //- 
+
+block main
+  main#_main
+    article This is a #{_template}

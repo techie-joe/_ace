@@ -1,0 +1,22 @@
+extends ../_templates/demo
+
+block append vars
+  include _demo-vars
+  -
+    header      = `blank_demo`
+    title       = `${header} | ${name}`
+    description = `(undescribed)`
+    url         = url+`/blank_demo.html`
+
+    og_title       = title
+    og_description = description
+    og_url         = url
+  //- 
+
+block append style
+  style.
+    ._layout { margin:1em }
+  //- 
+
+block main
+  main#_main: article|This is a #{header}
