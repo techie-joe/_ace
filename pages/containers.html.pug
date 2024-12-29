@@ -1,12 +1,12 @@
-extends ../_templates/html
+extends ../_templates/demo
 
 block append vars
   include _demo-vars
   -
     header      = `Containers`
-    title       = `${header} | ${name}`
-    description = `Containers are used to group contents together.`
     url         = url+`/containers.html`
+    title       = `${header} | ${name}`
+    description = `${header} are used to group contents together.`
 
     og_title       = title
     og_description = description
@@ -19,4 +19,4 @@ block append style
   //- 
 
 block main
-  main#_main: article|This is a #{header}
+  main#_main: article|This is #{header}

@@ -5,9 +5,9 @@ block append vars
   include _color-functions
   -
     header      = `Colors`
+    url         = url+`/colors.html`
     title       = `${header} | ${name}`
     description = `These colors are made for your reference.`
-    url         = url+`/colors.html`
 
     og_title       = title
     og_description = description
@@ -20,10 +20,6 @@ block append style
   //- fedcba98
   //-   |  |
   style.
-    #_header { max-width:960px }
-    #_header,
-    #_main { margin:0 auto; padding:0 1rem; }
-
     .line { border-top:1px solid #808080 }
 
     .gridlines {
@@ -146,8 +142,3 @@ block main
         +colorCodes(2)
         +colorCodes(1)
         +colorCodes(0)
-
-    p: hr
-
-    footer#_footer
-      p._text-centerx !{copyright}

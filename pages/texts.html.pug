@@ -4,9 +4,9 @@ block append vars
   include _demo-vars
   -
     header      = `Texts &amp; Icons`
+    url         = url+`/texts.html`
     title       = `${header} | ${name}`
     description = `Font sizes and spacings were meticulously adjusted to pixel precision, ensuring optimal adaptability.`
-    url         = url+`/texts.html`
 
     og_title       = title
     og_description = description
@@ -21,9 +21,6 @@ block append style
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="12"><rect width="1" height="1" fill="%23A9790688" /></svg>');
       background-repeat: repeat;
     }
-    #_header { max-width:960px }
-    #_header,
-    #_main { margin:0 auto; padding:0 1rem; }
     .demo .u { margin: 0 2px; padding-bottom: 10px; }
 
     .io1  { background: #66668844; box-shadow:0 1px orange; }
@@ -212,8 +209,3 @@ block main
         span._small Small
         +_
         span._smaller Smaller
-
-      p: hr
-
-    footer#_footer
-      p._text-centerx !{copyright}

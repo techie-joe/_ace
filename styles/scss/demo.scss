@@ -1,8 +1,12 @@
 /*! Techie Joe's Base v0.1.0 | Copyright 2024 Techie Joe | https://github.com/techie-joe/base */
 
-#_main { max-width:960px; }
+#_footer,
+#_header,
+#_main { max-width:960px }
 
-#_main { margin:1em auto; }
+#_footer,
+#_header,
+#_main { margin:0 auto; padding:0 1rem; }
 
 ._editorbar {
   p {

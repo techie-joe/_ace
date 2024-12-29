@@ -1,4 +1,4 @@
-extends ../_templates/html
+extends ../_templates/demo
 
 block append vars
   include _demo-vars
@@ -12,21 +12,13 @@ block append vars
   //- 
 
 block append style
-  +css(homeUrl+'assets/css/demo.css?v='+version)
   style.
-    #_main { margin-top:0; }
-    #_html .pages    { margin:1.5em 0 3em 0; }
-    #_html .pages  a { text-decoration:none; padding:0.2em 0.3em; border-radius:5px; cursor:pointer; white-space: nowrap }
-    #_html .pages .a { padding:0.2em 0.3em; font-weight:bold; }
 
-    #_html       .pages a       { color:inherit; }
-    #_html       .pages a:hover { background:#bbb; color:#000; }
-    #_html._dark .pages a:hover { background:#444; color:#fff; }
+    #_footer .layout,
+    #_main .layout   { padding: 0 3rem; }
+    #_header .layout { padding: 1rem 3rem 3rem; }
 
-    #_header    { position:relative; padding:3em 4em; margin-bottom:2em; }
-    #_header .p { max-width: 550px; }
-    #_header h1 { max-width:13.5em; }
-    #_header .startNow ._btnlink:hover { background:#777;color:#fff; }
+    #_header { padding: 1px 0; }
 
     #_header    { color: #333; background: #ccc; }
     #_header h1 { color: #000; }
@@ -34,51 +26,59 @@ block append style
     ._dark #_header    { color: #aaa; background: #111; }
     ._dark #_header h1 { color: #fff; }
 
+    #_html .pages    { margin:1.5em 0 3em 0; }
+    #_html .pages  a { text-decoration:none; padding:0.2em 0.3em; border-radius:5px; cursor:pointer; white-space: nowrap }
+    #_html .pages .a { padding:0.2em 0.3em; font-weight:bold; }
+    #_html       .pages a       { color:inherit; }
+    #_html       .pages a:hover { background:#bbb; color:#000; }
+    #_html._dark .pages a:hover { background:#444; color:#fff; }
 
-    #_html .layout { margin:2em 4em; }
+    #_header    { position:relative; }
+    #_header .p { max-width: 490px; }
 
-    @media only screen and (max-width: 499px) {
-      #_main { margin:0; }
-      #_html .layout { margin:2em 1em; }
-      #_header { padding:3em 1em; margin:0; }
-      #_html .pages ul {
-        list-style-type: none;
-        padding-inline-start: 0;
-      }
+    #_html .startNow {
+      display: block;
+      float: right;
+      text-align: right;
+      width: 120px;
+      position: absolute;
+      top: 2em;
+      right: 2em;
+      margin: 1em;
+      text-align: center;
     }
 
-    @media only screen and (min-width: 600px) {
-      #_html .startNow {
-        display:block;
-        float:right;
-        text-align:right;
-        width:120px;
-        height:109px;
-        padding:2em 3em;
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 1em;
+    #_header .startNow ._btnlink:hover { background:#777;color:#fff; }
+
+    @media only screen and (max-width: 599px) {
+
+      #_footer .layout,
+      #_main .layout   { padding: 0; }
+      #_header .layout { padding: 1rem 1rem 2rem; }
+      #_header .startNow {
+        float: none;
+        top: auto;
+        position: relative;
+        right: auto;
+        width: 100%;
+        margin: 1.5em auto 0;
       }
+
     }
-  //-
+
+block header
+  header#_header: .layout
+    .p
+      h1 !{header}
+      p._text-justify !{description}
+    .startNow
+      +a("blank.html")#startNow._btnlink| Start Now
+  //- 
 
 block nav
 
-mixin _demo(href)
-  +_
-  a(href='demo_'+href title=title)&attributes(attributes): block
-
 block main
   main#_main
-
-    header#_header
-      .p
-        h1 !{header}
-        p !{description}
-      .startNow
-        +a("blank.html")#startNow._btnlink| Start Now
-    //- 
 
     article.layout
 
@@ -101,6 +101,7 @@ block main
         +_a("dialogs.html")| Dialogs
         +_a("theme.html")| Theme
         +_a("helpers.html")| Helpers
+        +_a("blank_demo.html")| Blank
 
       h2 Available in light and dark
 
@@ -133,7 +134,7 @@ block main
 
       h2 Pre-made building components
 
-      p Our web builder is equipped with helpers and pre-made building components, ensuring an intuitive and easy building experience. We simplify web creation and makes it accessible even for those who may not have technical expertise. No lengthy manual or confusing rules -- just dive in and start building. And for those who are curious or need a bit more guidance, we have comprehensive demos and articles to help you out.
+      p._text-justify Our web builder is equipped with helpers and pre-made building components, ensuring an intuitive and easy building experience. We simplify web creation and makes it accessible even for those who may not have technical expertise. No lengthy manual or confusing rules -- just dive in and start building. And for those who are curious or need a bit more guidance, we have comprehensive demos and articles to help you out.
 
       nav.pages
         +_a("views.html")| Views
@@ -154,7 +155,4 @@ block main
         +_a("dialogs.html")| Dialogs
         +_a("theme.html")| Theme
         +_a("helpers.html")| Helpers
-
-    p: hr
-    footer#_footer
-      .layout: p._text-left| !{copyright}
+        +_a("blank_demo.html")| Blank

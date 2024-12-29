@@ -1,13 +1,13 @@
-extends ../_templates/html
+extends ../_templates/demo
 
 block append vars
   include _demo-vars
   include _color-functions
   -
     header      = `Theme`
-    title       = `${header} | ${name}`
-    description = `Theme for your reference.`
     url         = url+`/theme.html`
+    title       = `${header} | ${name}`
+    description = `${header} for your reference.`
 
     og_title       = title
     og_description = description
@@ -15,14 +15,8 @@ block append vars
 
   //- 
 
-block style
-  +css(homeUrl+'assets/css/style.css?v='+version)
-  +css(homeUrl+'assets/pure/grid.css?v='+version)
+block append style
   style.
-    ._layout #_header,
-    ._layout #_footer,
-    ._layout #_main
-    { max-width:960px;margin:0 auto }
     #logo {
       width: 6.2rem;
       margin: 0.8rem;
@@ -112,7 +106,7 @@ block main
     hr._no-margin
 
 block footer
-  footer#_footer
+  footer#_footer: .layout
     .g
       .u-1-3: ._pad
         h6._h7._no-margin Company Name
