@@ -29,64 +29,16 @@
   width:100%;
 }
 
-// 2,3,5,7
-$grids:2,3;
+// 1,3,5,7
+// 2,4,6,8
+// 10,12,14,16
+
+$grids:10,12;
 @each $g in $grids {
   ._#{$g} { @extend ._1; }
   @for $i from 1 through $g {
     @if( $i != $g ){
       ._#{$g}-#{$i} { @extend ._1; width: calc(100% /$g *$i) }
     }
-  }
-}
-
-// 4,6,8,10,12,14,16
-
-$g:4;
-._#{$g}-2 { @extend ._2-1; }
-._#{$g}   { @extend ._1; }
-@for $i from 1 through $g {
-  @if( $i != $g and $i != 2 ){
-    ._#{$g}-#{$i} { @extend ._1; width: calc(100% /$g *$i) }
-  }
-}
-
-$g:6;
-._#{$g}-2 { @extend ._3-1; }
-._#{$g}-3 { @extend ._2-1; }
-._#{$g}   { @extend ._1; }
-@for $i from 1 through $g {
-  @if( $i != $g and $i != 3 and $i != 2 ){
-    ._#{$g}-#{$i} { @extend ._1; width: calc(100% /$g *$i) }
-  }
-}
-
-$g:8;
-._#{$g}-2 { @extend ._4-1; }
-._#{$g}-4 { @extend ._2-1; }
-._#{$g}   { @extend ._1; }
-@for $i from 1 through $g {
-  @if( $i != $g and $i != 4 and $i != 2 ){
-    ._#{$g}-#{$i} { @extend ._1; width: calc(100% /$g *$i) }
-  }
-}
-
-$g:12;
-._#{$g}-4 { @extend ._6-2; }
-._#{$g}-6 { @extend ._2-1; }
-._#{$g}-8 { @extend ._3-2; }
-._#{$g}   { @extend ._1; }
-@for $i from 1 through $g {
-  @if( $i != $g and $i != 8 and $i != 6 and $i != 4 ){
-    ._#{$g}-#{$i} { @extend ._1; width: calc(100% /$g *$i) }
-  }
-}
-
-$g:16;
-._#{$g}-8 { @extend ._2-1; }
-._#{$g}   { @extend ._1; }
-@for $i from 1 through $g {
-  @if( $i != $g and $i != 8 ){
-    ._#{$g}-#{$i} { @extend ._1; width: calc(100% /$g *$i) }
   }
 }
