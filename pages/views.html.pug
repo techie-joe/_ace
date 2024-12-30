@@ -38,7 +38,6 @@ block widget
           z-index:1000;
           left: 50%;
           top : 70px;
-          width: 108px;
           padding: 1rem;
         }
 
@@ -64,12 +63,15 @@ block widget
           left: 100%;
         }
 
-      nav#nav.bg-2-2.tc-2-2._radius-2r
-        +a('./')(style="width:71px")._btnlink 👈 Back
-        +a('#view-1')._btnlink #1
-        +a('#view-2')._btnlink #2
-        +a('#view-3')._btnlink #3
-        +a('#view-4')._btnlink #4
+      nav#nav.bg-2-2.tc-2-2._radius-2r(style="width:116px")
+        table: tbody
+          tr: td(colspan=2): +a('./')(style="width:75px")._btnlink 👈 Back
+          tr
+            td: +a('#view-1')._btnlink #1
+            td: +a('#view-2')._btnlink #2
+          tr
+            td: +a('#view-3')._btnlink #3
+            td: +a('#view-4')._btnlink #4
 
 block view
 

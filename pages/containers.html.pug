@@ -21,27 +21,36 @@ block append style
     #_main { max-width:none }
     #_main { padding:0 }
 
-    .o { height:5rem; margin:1px }
-
     ._grid { max-width:60em }
+
+    .c .o { box-shadow: 0 0 0 1px #f803 inset; }
+
+    .o { height:5rem; }
+
+    .border { border:1px solid #f803 }
 
   //- 
 
 block main
-  main#_main: article._grid.layout
-    ._1: .o
+  main#_main: article.layout
 
-    +repeat(2):  ._10-5: .o
-    +repeat(5):  ._10-2: .o
-    +repeat(10): ._10-1: .o
+    ._mv: ._grid
+      ._10-1: .o
+      ._10-1: .o.border
+      ._10-1: .o(style="margin:1em").border
+      ._10-1: .o(style="padding:1em").border
+      ._10-1: .o(style="margin:1em;padding:1em").border
 
-    +repeat(2):  ._12-6: .o
-    +repeat(3):  ._12-4: .o
-    +repeat(4):  ._12-3: .o
-    +repeat(6):  ._12-2: .o
-    +repeat(12): ._12-1: .o
+    ._mv: ._grid.c: ._1: .o 1
 
-    +repeat(2):  ._16-8: .o
-    +repeat(4):  ._16-4: .o
-    +repeat(8):  ._16-2: .o
-    +repeat(16): ._16-1: .o
+    ._mv: ._grid.c
+      +repeat(2):  ._10-5: .o 2
+      +repeat(5):  ._10-2: .o 5
+      +repeat(10): ._10-1: .o 10
+
+    ._mv: ._grid.c
+      +repeat(2):  ._12-6: .o 2
+      +repeat(3):  ._12-4: .o 3
+      +repeat(4):  ._12-3: .o 4
+      +repeat(6):  ._12-2: .o 6
+      +repeat(12): ._12-1: .o 12
