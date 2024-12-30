@@ -14,32 +14,62 @@ block append vars
   //- 
 
 block append style
+  +css(homeUrl+'assets/css/grid.css?v='+version)
   style.
-    .o { height:5rem; margin:1px }
+    .o { font-size:.8em; font-weight:bold; height:1.5em; margin:1px; padding:2px 5px; }
     ._grid { max-width:60em }
   //- 
 
 block main
-  main#_main: article._grid.layout
-    ._g: .o _g
+  main#_main: article.layout
 
-    //- +repeat(2):  ._g10-5: .o._outline
-    //- +repeat(5):  ._g10-2: .o._outline
-    //- +repeat(10): ._g10-1: .o._outline
-
-    mixin gengrid(k)
-      - var k2 = k/2;
+    mixin gen_grid(k)
+      div(class=`_${k}`): .o _#{k}
+      - var k2 = Math.floor(k/2);
       - var n = 0;
       while n < k2
-        div(class=`_g${k}-${n+1}`): .o _g#{k}-#{n+1}
-        div(class=`_g${k}-${k-n-1}`): .o _g#{k}-#{k-n-1}
+        div(class=`_${k}-${n+1}`): .o _#{k}-#{n+1}
+        div(class=`_${k}-${k-n-1}`): .o _#{k}-#{k-n-1}
         - n++;
 
-    +gengrid(10)
-    +gengrid(12)
-    +gengrid(16)
+    mixin gen_g(a)
+      each g in a
+        ._mv: ._grid: +gen_grid(g)
 
-    //- +repeat(2):  ._g16-8: .o._outline
-    //- +repeat(4):  ._g16-4: .o._outline
-    //- +repeat(8):  ._g16-2: .o._outline
-    //- +repeat(16): ._g16-1: .o._outline
+    +gen_g([1,2,3])
+
+    ._mv: ._grid
+      +gen_grid(4)
+      +repeat(2): ._2-1: .o._orange _2-1
+
+    ._mv: ._grid
+      +gen_grid(6)
+      +repeat(2): ._2-1: .o._orange _2-1
+      +repeat(3): ._6-2: .o _6-2
+      +repeat(3): ._3-1: .o._orange _3-1
+
+    ._mv: ._grid
+      +gen_grid(8)
+      +repeat(2): ._2-1: .o._orange _2-1
+      +repeat(4): ._8-2: .o _8-2
+      +repeat(4): ._4-1: .o._orange _4-1
+
+    ._mv: ._grid
+      +gen_grid(12)
+      +repeat(2): ._2-1: .o._orange _2-1
+      +repeat(12): ._12-1: .o _12-1
+      +repeat(6):  ._12-2: .o _12-2
+      +repeat(6):   ._6-1: .o._orange _6-1
+      +repeat(4):  ._12-3: .o _12-3
+      +repeat(4):   ._4-1: .o._orange _4-1
+      +repeat(3):  ._12-4: .o _12-4
+      +repeat(3):   ._3-1: .o._orange _3-1
+
+    ._mv: ._grid
+      +gen_grid(16)
+      +repeat(2): ._2-1: .o._orange _2-1
+      +repeat(16): ._16-1: .o _16-1
+      +repeat(8):  ._16-2: .o _16-2
+      +repeat(8):   ._8-1: .o._orange _8-1
+      +repeat(4):  ._16-4: .o _16-4
+      +repeat(4):   ._4-1: .o._orange _4-1

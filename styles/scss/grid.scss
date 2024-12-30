@@ -20,7 +20,7 @@
   margin: 0 auto;
 }
 
-._g {
+._1 {
   display: inline-block;
   vertical-align: top;
   letter-spacing:normal;
@@ -29,13 +29,64 @@
   width:100%;
 }
 
-// 18,16,14,12,10,*9,8,*7,6,5,4,3,2,1
+// 2,3,5,7
+$grids:2,3;
+@each $g in $grids {
+  ._#{$g} { @extend ._1; }
+  @for $i from 1 through $g {
+    @if( $i != $g ){
+      ._#{$g}-#{$i} { @extend ._1; width: calc(100% /$g *$i) }
+    }
+  }
+}
 
-._g10 { @extend ._g; }
-@for $i from 1 through 10-1 { ._g10-#{$i} { @extend ._g; width: (100% /10) *$i } }
+// 4,6,8,10,12,14,16
 
-._g12 { @extend ._g; }
-@for $i from 1 through 12-1 { ._g12-#{$i} { @extend ._g; width: (100% /12) *$i } }
+$g:4;
+._#{$g}-2 { @extend ._2-1; }
+._#{$g}   { @extend ._1; }
+@for $i from 1 through $g {
+  @if( $i != $g and $i != 2 ){
+    ._#{$g}-#{$i} { @extend ._1; width: calc(100% /$g *$i) }
+  }
+}
 
-._g16 { @extend ._g; }
-@for $i from 1 through 16-1 { ._g16-#{$i} { @extend ._g; width: (100% /16) *$i } }
+$g:6;
+._#{$g}-2 { @extend ._3-1; }
+._#{$g}-3 { @extend ._2-1; }
+._#{$g}   { @extend ._1; }
+@for $i from 1 through $g {
+  @if( $i != $g and $i != 3 and $i != 2 ){
+    ._#{$g}-#{$i} { @extend ._1; width: calc(100% /$g *$i) }
+  }
+}
+
+$g:8;
+._#{$g}-2 { @extend ._4-1; }
+._#{$g}-4 { @extend ._2-1; }
+._#{$g}   { @extend ._1; }
+@for $i from 1 through $g {
+  @if( $i != $g and $i != 4 and $i != 2 ){
+    ._#{$g}-#{$i} { @extend ._1; width: calc(100% /$g *$i) }
+  }
+}
+
+$g:12;
+._#{$g}-4 { @extend ._6-2; }
+._#{$g}-6 { @extend ._2-1; }
+._#{$g}-8 { @extend ._3-2; }
+._#{$g}   { @extend ._1; }
+@for $i from 1 through $g {
+  @if( $i != $g and $i != 8 and $i != 6 and $i != 4 ){
+    ._#{$g}-#{$i} { @extend ._1; width: calc(100% /$g *$i) }
+  }
+}
+
+$g:16;
+._#{$g}-8 { @extend ._2-1; }
+._#{$g}   { @extend ._1; }
+@for $i from 1 through $g {
+  @if( $i != $g and $i != 8 ){
+    ._#{$g}-#{$i} { @extend ._1; width: calc(100% /$g *$i) }
+  }
+}
