@@ -16,7 +16,7 @@ block append vars
 block append style
   +css(homeUrl+'assets/css/grid.css?v='+version)
   style.
-    .o { font-size:.8em; font-weight:bold; height:1.5em; box-shadow: 0 0 0 1px #f803 inset; padding:2px 5px; }
+    .o { font-size:.8em; font-weight:bold; height:1.5em; box-shadow: 0 0 0 1px #f804 inset; padding:2px 5px; }
     ._grid { max-width:60em }
   //- 
 
@@ -36,10 +36,33 @@ block main
       each g in a
         ._mv: ._grid: +gen_grid(g)
 
+    ._mv: ._grid: +gen_grid(1)
+    ._mv: ._grid: +gen_grid(2)
+
+    ._mv: ._grid
+      +gen_grid(3)
+      +repeat(3):  ._3-1: .o _3-1
+
+    ._mv: ._grid
+      +gen_grid(4)
+      +repeat(4):  ._4-1: .o _4-1
+      +repeat(2):  ._2-1: .o._orange _2-1
+
+    ._mv: ._grid
+      +gen_grid(5)
+      +repeat(5):  ._5-1: .o _5-1
+
+    ._mv: ._grid
+      +gen_grid(6)
+      +repeat(6):  ._6-1: .o _6-1
+      +repeat(3):  ._3-1: .o._orange _3-1
+
     ._mv: ._grid
       +gen_grid(10)
       +repeat(5):  ._10-2: .o _10-2
       +repeat(10): ._10-1: .o _10-1
+      +repeat(5):  ._5-1: .o._orange _5-1
+      +repeat(2):  ._2-1: .o._orange _2-1
 
     ._mv: ._grid
       +gen_grid(12)
@@ -47,6 +70,10 @@ block main
       +repeat(4):  ._12-3: .o _12-3
       +repeat(6):  ._12-2: .o _12-2
       +repeat(12): ._12-1: .o _12-1
+      +repeat(6):  ._6-1: .o._orange _6-1
+      +repeat(4):  ._4-1: .o._orange _4-1
+      +repeat(3):  ._3-1: .o._orange _3-1
+      +repeat(2):  ._2-1: .o._orange _2-1
 
     //- ._mv: ._grid
       +gen_grid(16)

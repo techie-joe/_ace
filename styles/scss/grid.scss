@@ -33,12 +33,42 @@
 // 2,4,6,8
 // 10,12,14,16
 
-$grids:10,12;
-@each $g in $grids {
-  ._#{$g} { @extend ._1; }
-  @for $i from 1 through $g {
-    @if( $i != $g ){
-      ._#{$g}-#{$i} { @extend ._1; width: calc(100% /$g *$i) }
-    }
+$g:12;
+._#{$g}   { @extend ._1; }
+@for $i from 1 through $g {
+  @if( $i != $g ){
+    ._#{$g}-#{$i} { @extend ._1; width: calc(100% / $g * $i) }
   }
 }
+
+$g:10;
+._#{$g}   { @extend ._1; }
+._#{$g}-5 { @extend ._12-6; }
+@for $i from 1 through $g {
+  @if( $i != $g and $i != 5 ){
+    ._#{$g}-#{$i} { @extend ._1; width: calc(100% / $g * $i) }
+  }
+}
+
+$g:6;
+._#{$g}   { @extend ._1; }
+$f:2; @for $i from 1 through $g - 1 { ._#{$g}-#{$i} { @extend ._#{$g * $f}-#{$i * $f}; } }
+
+$g:5;
+._#{$g}   { @extend ._1; }
+$f:2; @for $i from 1 through $g - 1 { ._#{$g}-#{$i} { @extend ._#{$g * $f2}-#{$i * $f}; } }
+
+$g:4;
+._#{$g}   { @extend ._1; }
+._#{$g}-1 { @extend ._12-3; }
+._#{$g}-2 { @extend ._12-6; }
+._#{$g}-3 { @extend ._12-9; }
+
+$g:3;
+._#{$g}   { @extend ._1; }
+._#{$g}-1 { @extend ._12-4; }
+._#{$g}-2 { @extend ._12-8; }
+
+$g:2;
+._#{$g}   { @extend ._1; }
+._#{$g}-1 { @extend ._12-6; }
