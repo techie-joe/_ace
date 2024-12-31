@@ -56,7 +56,7 @@ $f:2; @for $i from 1 through $g - 1 { ._#{$g}-#{$i} { @extend ._#{$g * $f}-#{$i 
 
 $g:5;
 ._#{$g}   { @extend ._1; }
-$f:2; @for $i from 1 through $g - 1 { ._#{$g}-#{$i} { @extend ._#{$g * $f2}-#{$i * $f}; } }
+$f:2; @for $i from 1 through $g - 1 { ._#{$g}-#{$i} { @extend ._#{$g * $f}-#{$i * $f}; } }
 
 $g:4;
 ._#{$g}   { @extend ._1; }
