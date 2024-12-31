@@ -1,7 +1,7 @@
-extends ../_templates/demo
+extends demo/_template
 
 block append vars
-  include _demo-vars
+  include demo/_vars-demo
   -
     title       = `${name}`
     header      = `${name}`
@@ -75,87 +75,89 @@ block header
       h1 !{header}
       p._text-justify !{description}
     .startNow
-      +a("blank.html")#startNow._btnlink| Start Now
+      +a("demo")#startNow._btnlink| Start Now
   //- 
 
 block nav
 
 block main
-  main#_main
+  main#_main: article.layout
 
-    article.layout
+    mixin demo(ref='')
+      +_a('demo/'+ref): block
 
-      nav.pages
-        +_a("views.html")| Views
-        +_a("layout.html")| Layout
-        +_a("grid.html")| Grid
-        +_a("colors.html")| Colors
-        +_a("containers.html")| Containers
-        +_a("texts.html")| Texts
-        +_a("images.html")| Image
-        +_a("video.html")| Video
-        +_a("buttons.html")| Buttons
-        +_a("background.html")| Background
-        +_a("form.html")| Form
-        +_a("transitions.html")| Transitions
-        +_a("animations.html")| Animations
-        +_a("menu.html")| Menu
-        +_a("popups.html")| Popups
-        +_a("dialogs.html")| Dialogs
-        +_a("theme.html")| Theme
-        +_a("helpers.html")| Helpers
-        +_a("blank_demo.html")| Blank
+    nav.pages
+      +demo("")| Demo
+      +demo("views.html")| Views
+      +demo("layout.html")| Layout
+      +demo("grid.html")| Grid
+      +demo("colors.html")| Colors
+      +demo("containers.html")| Containers
+      +demo("texts.html")| Texts
+      +demo("images.html")| Image
+      +demo("video.html")| Video
+      +demo("buttons.html")| Buttons
+      +demo("background.html")| Background
+      +demo("form.html")| Form
+      +demo("transitions.html")| Transitions
+      +demo("animations.html")| Animations
+      +demo("menu.html")| Menu
+      +demo("popups.html")| Popups
+      +demo("dialogs.html")| Dialogs
+      +demo("theme.html")| Theme
+      +demo("helpers.html")| Helpers
+      +demo("blank_demo.html")| Blank
 
-      h2 Available in light and dark
+    h2 Available in light and dark
 
-      p Use #[code._code='Ctrl + Alt + T'] or #[code._code='base.theme.change()'] to swap between light and dark.
+    p Use #[code._code='Ctrl + Alt + T'] or #[code._code='base.theme.change()'] to swap between light and dark.
 
-      p: +a()(onclick="base.theme.change()")._btnlink._small Change Theme
+    p: +a()(onclick="base.theme.change()")._btnlink._small Change Theme
 
-      ._mv &nbsp;
+    ._mv &nbsp;
 
-      h2 Quick start templates
+    h2 Quick start templates
 
-      nav.pages: .g
-        .u-1-2
-          ul
-            +la('blank.html')| Blank Canvas
-            +la('full_screen.html')| Full Screen
-            +la('split_screen.html')| Split Screen
-        .u-1-2
-          ul
-            +la('full_grid.html')| Full Grid
-            +la('classic_page.html')| Classic Page
-            +la('classic_list.html')| Classic List
-        .u-1
-          ul: li
-            span.a Error pages :
-            +a("---","Simulate Real 404")| ---
-            +a("404.html")| 404
-            +a("500.html")| 500
-            +a("503.html")| 503
+    nav.pages: .g
+      .u-1-2
+        ul
+          +la('blank.html')| Blank Canvas
+          +la('full_screen.html')| Full Screen
+          +la('split_screen.html')| Split Screen
+      .u-1-2
+        ul
+          +la('full_grid.html')| Full Grid
+          +la('classic_page.html')| Classic Page
+          +la('classic_list.html')| Classic List
+      .u-1
+        ul: li
+          span.a Error pages :
+          +a("---","Simulate Real 404")| ---
+          +a("404.html")| 404
+          +a("500.html")| 500
+          +a("503.html")| 503
 
-      h2 Pre-made building components
+    h2 Pre-made building components
 
-      p._text-justify Our web builder is equipped with helpers and pre-made building components, ensuring an intuitive and easy building experience. We simplify web creation and makes it accessible even for those who may not have technical expertise. No lengthy manual or confusing rules -- just dive in and start building. And for those who are curious or need a bit more guidance, we have comprehensive demos and articles to help you out.
+    p._text-justify Our web builder is equipped with helpers and pre-made building components, ensuring an intuitive and easy building experience. We simplify web creation and makes it accessible even for those who may not have technical expertise. No lengthy manual or confusing rules -- just dive in and start building. And for those who are curious or need a bit more guidance, we have comprehensive demos and articles to help you out.
 
-      nav.pages
-        +_a("views.html")| Views
-        +_a("layout.html")| Layout
-        +_a("grid.html")| Grid
-        +_a("colors.html")| Colors
-        +_a("containers.html")| Containers
-        +_a("texts.html")| Texts
-        +_a("images.html")| Image
-        +_a("video.html")| Video
-        +_a("buttons.html")| Buttons
-        +_a("background.html")| Background
-        +_a("form.html")| Form
-        +_a("transitions.html")| Transitions
-        +_a("animations.html")| Animations
-        +_a("menu.html")| Menu
-        +_a("popups.html")| Popups
-        +_a("dialogs.html")| Dialogs
-        +_a("theme.html")| Theme
-        +_a("helpers.html")| Helpers
-        +_a("blank_demo.html")| Blank
+    nav.pages
+      +demo("views.html")| Views
+      +demo("layout.html")| Layout
+      +demo("grid.html")| Grid
+      +demo("colors.html")| Colors
+      +demo("containers.html")| Containers
+      +demo("texts.html")| Texts
+      +demo("images.html")| Image
+      +demo("video.html")| Video
+      +demo("buttons.html")| Buttons
+      +demo("background.html")| Background
+      +demo("form.html")| Form
+      +demo("transitions.html")| Transitions
+      +demo("animations.html")| Animations
+      +demo("menu.html")| Menu
+      +demo("popups.html")| Popups
+      +demo("dialogs.html")| Dialogs
+      +demo("theme.html")| Theme
+      +demo("helpers.html")| Helpers
+      +demo("blank_demo.html")| Blank

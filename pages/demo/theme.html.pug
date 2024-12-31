@@ -1,7 +1,7 @@
-extends ../_templates/demo
+extends _template
 
 block append vars
-  include _demo-vars
+  include _vars-demo
   include _color-functions
   -
     header      = `Theme`
@@ -39,10 +39,6 @@ block header
         | 
         #tagline._uppercase._b Your tagline
     hr._no-margin
-
-block nav
-  //- include _nav
-  //- nav: ul: +la
 
 block pre
   //- aside: pre._pre.

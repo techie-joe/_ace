@@ -1,0 +1,21 @@
+extends _template
+
+block append vars
+  include _vars-demo
+  -
+    title       = `${name} Demo`
+    header      = `${name} Demo`
+    description = `A solid foundation to start building your website and application. Our minimalistic approach ensures full control from the very beginning.`
+
+    og_title       = title
+    og_description = description
+
+block nav
+
+block main
+  main#_main: article.layout
+
+    include _nav-demo
+
+    nav._mv._small
+      +a(homeUrl)._btnlink| 👈 Back

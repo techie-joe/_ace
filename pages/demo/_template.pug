@@ -1,0 +1,34 @@
+extends ../../_templates/html
+
+block append style
+  +css(homeUrl+'assets/css/demo.css?v='+version)
+  +css(homeUrl+'assets/css/grid.css?v='+version)
+  //- style.
+  //- 
+
+block view
+  ._view: ._layout
+
+    block nav
+      ._pad.bg-1-2.tc-1-2: include _nav-demo
+      //- nav: ul: +la
+
+    block header
+      header#_header: .layout
+        h1 !{header}
+        p !{description}
+        hr
+
+    block pre
+      //- aside: pre._pre
+
+    block main
+      main#_main: .layout: article| main article
+
+    block footer
+      footer#_footer: .layout
+        p: hr
+        p._text-centerx !{copyright}
+
+    block aside
+      //- aside#_aside
