@@ -15,7 +15,12 @@ block append vars
 
 block append style
   style.
+    ._main_layout { margin:1em }
   //- 
 
+block header
+
 block main
-  +main#_main: article|This is #{header}
+  +main#_main: article|This is a #{header}
+
+block footer
