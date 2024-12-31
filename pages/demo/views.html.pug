@@ -4,7 +4,7 @@ block append vars
   include _vars-demo
   -
     header      = `Views`
-    url         = url+`/views.html`
+    url         = demoUrl+`/views.html`
     title       = `${header} | ${name}`
     description = `${header} controls how a page behave.`
 
@@ -15,6 +15,7 @@ block append vars
 
 block append style
   style.
+    #nav table td { line-height:0 }
     ._view h1 { text-align: center }
   //- 
     ._view { box-shadow: 0 0 1px 1px red inset; }
@@ -65,7 +66,7 @@ block widgets
 
       nav#nav.bg-2-2.tc-2-2._radius-2r(style="width:116px")
         table: tbody
-          tr: td(colspan=2): +a('./')(style="width:75px")._btnlink 👈 Back
+          tr: td(colspan=2): +a('./')(style="width:75px")._btnlink #[+fit ☚] Back
           tr
             td: +a('#view-1')._btnlink #1
             td: +a('#view-2')._btnlink #2
@@ -77,7 +78,9 @@ block view
 
   - var v = 1;
   +view(id=`view-${v}`)
-    ._pad.bg-1-2.tc-1-2: include _nav-demo
+    ._pad.bg-1-2.tc-1-2: ._grid
+      ._10-1: +a(demoUrl)._btnlink._small ✨ Demo
+      ._10-9: include _nav-demo
     +main#_main: article
       h1._h7 View ##{v}
       p._text-center main article

@@ -233,6 +233,9 @@ li { margin: .3em 0; }
   padding: .25em 1em;
   border: 1px solid $tc-2-9;
   text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
   &:hover { text-decoration: none; }
 }
 
@@ -284,6 +287,7 @@ hr {
   height   : 1.548em;
   min-width: 1.548em;
   text-align: center;
+  vertical-align: top;
   .fit { line-height: 0.86 }
 }
 
@@ -444,6 +448,8 @@ a._btnlink {
 ._pad-2,
 ._pv-2,
 ._pb-2   { padding-bottom: 2em }
+
+._no-wrap { white-space: nowrap !important }
 
 ._no-margin { margin:0 !important }
 

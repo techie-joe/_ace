@@ -4,8 +4,8 @@ block append vars
   include _vars-demo
   -
     title       = `${name} Demo`
-    header      = `${name} Demo`
-    description = `This is a comprehensive demo of all features and components of our web builder.`
+    header      = `✨ ${name} Demo`
+    description = `This is a comprehensive demo of all features and components of our template.`
 
     og_title       = title
     og_description = description
@@ -15,7 +15,6 @@ block nav
 block main
   +main#_main: article.layout
 
-    include _nav-demo
-
-    nav._mv._small
-      +a(homeUrl)._btnlink| 👈 Back
+    ._grid
+      ._10-1: +a(homeUrl)._btnlink._small 🏠 Home
+      ._10-9: include _nav-demo
