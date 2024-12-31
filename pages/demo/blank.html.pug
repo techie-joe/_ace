@@ -15,9 +15,12 @@ block append vars
 
 block append style
   style.
-    ._layout { margin:1em }
+    ._view_layout { margin:1em }
   //- 
 
+block nav
+  //- include _editorbar
+
 block main
-  main#_main
+  +main#_main
     article This is #{_template}

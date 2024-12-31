@@ -1,7 +1,9 @@
+//- +nav#_nav: ul: +la
+
 mixin demo(ref='')
   +_a(demoUrl+ref): block
 
-nav.pages
++nav#_nav.pages
   +demo("views.html")| Views
   +demo("layout.html")| Layout
   +demo("grid.html")| Grid

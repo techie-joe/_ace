@@ -39,7 +39,7 @@ block append style
   //- 
 
 block header
-  header#_header
+  +header#_header
     .layout
       h1 !{header}
       p
@@ -48,97 +48,96 @@ block header
     hr._no-margin
 
 block main
+  +main#_main: article(style="overflow-x:scroll")
 
-  main#_main
-    article(style="overflow-x:scroll")
-
-      .section.-rainbow-link
-        style.
-          #_html .colorlink {
-            font-size:14px;
-            color:#fff;
-            text-shadow: 1px 1px 1px #00000099;
-            padding:.2em .5em;
-            margin:1em .5em;
-            text-decoration:none;
-            border-radius:3px;
-            }
-        ._mv._b._text-center._uppercase
-          each c in rainbow
-            +a('')(style=`background-color:#${c}`).colorlink #{c}
-
-      .section.-tables: +tables
-
-      .section.-grayscale
-        style.
-          .bg0 {
-            height:10px;
-            background:
-            linear-gradient(to right
-              , #000
-              , #fff
-            );
+    .section.-rainbow-link
+      style.
+        #_html .colorlink {
+          font-size:14px;
+          color:#fff;
+          text-shadow: 1px 1px 1px #00000099;
+          padding:.2em .5em;
+          margin:1em .5em;
+          text-decoration:none;
+          border-radius:3px;
           }
-        div: +img(homeUrl+"images/grayscale.svg","grayscale.svg","Gray Scale")(style="width:100%")
-        .bg0: .gridlines
+      ._mv._b._text-center._uppercase
+        each c in rainbow
+          +a('')(style=`background-color:#${c}`).colorlink #{c}
 
-      .section.-grainbow
-        -
-          var grainbow =
-            [ '#ff0000'
-            , '#ff8000'
-            , '#ffff00'
-            , '#80ff00'
-            , '#00ff00'
-            , '#00ff80'
-            , '#00ffff'
-            , '#0080ff'
-            , '#0000ff'
-            , '#8000ff'
-            , '#ff00ff'
-            , '#ff0080'
-            , '#ff0000'
-            ];
-          var darkline  = 49;
-          var lightline = 100-darkline+.1;
-          var darkness  = intToHex(64);
-          var lightness = intToHex(64);
-        style.
-          .cg {
-            display:block;
-            height: 960px;
-            background:
-            linear-gradient(to right
-              , #000000ff
-              , #000000#{darkness} #{darkline}%
-              , #00000000 #{darkline}%
-              , #ffffff00 #{lightline}%
-              , #ffffff#{lightness} #{lightline}%
-              , #ffffffff
-            ),
-            linear-gradient(to bottom,#{grainbow.join(',')});
-          }
-        ._relative
-          .cg: .gridlines
-          ._absolute(style="left:50%;margin-left:-15px;")
-            +img(homeUrl+"images/colorscale-v.svg","colorscale-v.svg","Color Scale")
+    .section.-tables: +tables
 
-      .section.-rainbow-code
-        -
-          var primary_color   = 8; // blue 0066CC
-          var secondary_color = 3; // orange DD8811
+    .section.-grayscale
+      style.
+        .bg0 {
+          height:10px;
+          background:
+          linear-gradient(to right
+            , #000
+            , #fff
+          );
+        }
+      div: +img(homeUrl+"images/grayscale.svg","grayscale.svg","Gray Scale")(style="width:100%")
+      .bg0: .gridlines
 
-          var bg = colors[primary_color][0];
-          var tc = colors[primary_color][1];
-          var cbg = bg[ Math.ceil(bg.length/2)-1 ];
-          var ctc = tc[ Math.ceil(tc.length/2)-1 ];
+    .section.-grainbow
+      -
+        var grainbow =
+          [ '#ff0000'
+          , '#ff8000'
+          , '#ffff00'
+          , '#80ff00'
+          , '#00ff00'
+          , '#00ff80'
+          , '#00ffff'
+          , '#0080ff'
+          , '#0000ff'
+          , '#8000ff'
+          , '#ff00ff'
+          , '#ff0080'
+          , '#ff0000'
+          ];
+        var darkline  = 49;
+        var lightline = 100-darkline+.1;
+        var darkness  = intToHex(64);
+        var lightness = intToHex(64);
+      style.
+        .cg {
+          display:block;
+          height: 960px;
+          background:
+          linear-gradient(to right
+            , #000000ff
+            , #000000#{darkness} #{darkline}%
+            , #00000000 #{darkline}%
+            , #ffffff00 #{lightline}%
+            , #ffffff#{lightness} #{lightline}%
+            , #ffffffff
+          ),
+          linear-gradient(to bottom,#{grainbow.join(',')});
+        }
+      ._relative
+        .cg: .gridlines
+        ._absolute(style="left:50%;margin-left:-15px;")
+          +img(homeUrl+"images/colorscale-v.svg","colorscale-v.svg","Color Scale")
 
-        style.
-          #_html .colorcode       { background:#ccc; }
-          #_html._dark .colorcode { background:#111; }
-          .codecolor { padding:0 1em }
-        +colorCodes(primary_color)
-        +colorCodes(secondary_color)
-        +colorCodes(2)
-        +colorCodes(1)
-        +colorCodes(0)
+    .section.-rainbow-code
+      -
+        var primary_color   = 8; // blue 0066CC
+        var secondary_color = 3; // orange DD8811
+
+        var bg = colors[primary_color][0];
+        var tc = colors[primary_color][1];
+        var cbg = bg[ Math.ceil(bg.length/2)-1 ];
+        var ctc = tc[ Math.ceil(tc.length/2)-1 ];
+
+      style.
+        #_html .colorcode       { background:#ccc; }
+        #_html._dark .colorcode { background:#111; }
+        .codecolor { padding:0 1em }
+      +colorCodes(primary_color)
+      +colorCodes(secondary_color)
+      +colorCodes(2)
+      +colorCodes(1)
+      +colorCodes(0)
+

@@ -23,37 +23,36 @@ html(lang=lang)
     block style
       +css(homeUrl+'assets/css/basic.css?v='+version)
 
-  body
+  body#_body(class=bodyClass)
+
     block content
       #_contents(class=contentClass)
 
         block view
-          ._view: ._layout
+          +view
 
             block header
-              //- header#_header
+              //- +header#_header
 
             block nav
+              //- +nav#_nav: ul: +la
               //- include _nav
-              //- nav: ul: +la
 
             block pre
-              //- aside: pre._pre.
-              //-
+              //- +pre#_pre: pre._pre
 
             block main
-              main#_main
-                article
-                  | hello world
+              //- +main#_main: article| main article
+              +main#_main: article| main article
 
             block footer
-              //- footer#_footer
+              //- +footer#_footer
             
             block aside
-              //- aside#_aside
+              //- +aside#_aside
 
-    block widget
-      //- aside#_widgets
+    block widgets
+      //- +widgets#_widgets: +widget#_widget
 
     block last
       | <!-- IE needs 512+ bytes: https://techie-joe.github.io/library/html5/ie#ie-needs-512-bytes -->

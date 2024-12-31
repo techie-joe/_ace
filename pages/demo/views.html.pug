@@ -1,4 +1,4 @@
-extends ../../_templates/html
+extends _template
 
 block append vars
   include _vars-demo
@@ -15,14 +15,14 @@ block append vars
 
 block append style
   style.
-    ._view { box-shadow: 0 0 1px 1px red inset; }
     ._view h1 { text-align: center }
   //- 
+    ._view { box-shadow: 0 0 1px 1px red inset; }
 
-block widget
-  aside#_widgets
+block widgets
+  +widgets#_widgets
 
-    #nav-position
+    +widget#nav-position
 
       style.
         #nav-position {
@@ -46,18 +46,18 @@ block widget
         }
 
         #view-2 {
-          background: #020;
+          background: #0205;
           position: absolute;
           top: 0;
           left: 100%;
         }
 
         #view-3 {
-          background: #200;
+          background: #2005;
         }
 
         #view-4 {
-          background: #002;
+          background: #0025;
           position: absolute;
           top: 100%;
           left: 100%;
@@ -75,6 +75,13 @@ block widget
 
 block view
 
-  each v in [1,2,3,4]
-    ._view(id=`view-${v}`): ._layout
-      section: h1._h7 View ##{v}
+  - var v = 1;
+  +view(id=`view-${v}`)
+    ._pad.bg-1-2.tc-1-2: include _nav-demo
+    +main#_main: article
+      h1._h7 View ##{v}
+      p._text-center main article
+
+  each v in [2,3,4]
+    +view(id=`view-${v}`)
+      h1._h7 View ##{v}

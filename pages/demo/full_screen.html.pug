@@ -19,7 +19,7 @@ block append style
     #_main { margin-top:0; }
 
     .fullscreen,
-    ._view ._layout{
+    #_main ._view_layout {
       display: block;
       top: 0;
       bottom: 0;
@@ -30,7 +30,7 @@ block append style
       overflow: auto;
       margin: 0;
     }
-    ._view ._layout {
+    #_main ._view_layout {
       position: absolute;
     }
     .fullscreen {
@@ -68,27 +68,26 @@ block header
       h1.h1 Full Screen Display of Awesomeness
 
 block main
-  main#_main
-    article
-      .g
-        .u-1-3
-          .gu: .o.o1-3
-        .u-1-3
-          .gu: .o.o1-3
-        .u-1-3
-          .gu: .o.o1-3
+  +main#_main: article
+    .g
+      .u-1-3
+        .gu: .o.o1-3
+      .u-1-3
+        .gu: .o.o1-3
+      .u-1-3
+        .gu: .o.o1-3
 
-      .hero2._text-center 
-        h2.h2 Featured Contents and Success Stories
-        p Show the incredible accomplishments that are shaping your world today.
+    .hero2._text-center 
+      h2.h2 Featured Contents and Success Stories
+      p Show the incredible accomplishments that are shaping your world today.
 
-      .g
-        .u-2-3
-          .gu: .o.o2-3
-        .u-1-3
-          .gu: .o.o1-3
-          .gu: .o.o1-3
-      //-
+    .g
+      .u-2-3
+        .gu: .o.o2-3
+      .u-1-3
+        .gu: .o.o1-3
+        .gu: .o.o1-3
+    //-
     //- 
 
     p: hr

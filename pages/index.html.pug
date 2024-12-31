@@ -16,9 +16,9 @@ block append style
 
     #_html { min-width:320px }
 
-    #_footer .layout,
-    #_main .layout   { padding: 0; }
-    #_header .layout { padding: 1rem 1rem 2rem; }
+    #_footer ._footer_layout,
+    #_main ._main_layout   { padding: 1em; }
+    #_header ._header_layout { padding: 2rem 1rem 2rem; }
 
     #_header { padding: 1px 0; }
 
@@ -37,23 +37,24 @@ block append style
 
     #_html .pages ul { list-style-type: none; padding-inline-start: 0; }
 
-    #_header    { position:relative; }
+    #_header ._header_layout { position:relative; }
     #_header .p { max-width: 490px; }
 
+    #startNow._btnlink { padding: .5em 1.5em }
     #_header .startNow { text-align: center; width:100%; margin: 1.5em auto 0; }
     #_header .startNow ._btnlink:hover { background:#777;color:#fff; }
 
     @media screen and (min-width: 530px) {
 
-      #_footer .layout,
-      #_main .layout   { padding: 0 3rem; }
-      #_header .layout { padding: 1rem 4rem 3rem; }
+      #_footer ._footer_layout,
+      #_main ._main_layout   { padding: 0 3rem; }
+      #_header ._header_layout { padding: 2rem 3rem 3rem; max-width: 960px; margin: 0 auto; position:relative; }
 
       #_html .startNow {
         display: block;
         float: right;
         text-align: right;
-        width: 120px;
+        width: 123px;
         position: absolute;
         top: 2em;
         right: 2em;
@@ -62,15 +63,8 @@ block append style
 
     }
 
-    @media screen and (min-width: 960px) {
-      
-      #_header         { max-width: none; }
-      #_header .layout { max-width: 860px; margin: 0 auto; padding: 1rem 3rem 3rem; position:relative; }
-
-    }
-
 block header
-  header#_header: .layout
+  +header#_header
     .p
       h1 !{header}
       p._text-justify !{description}
@@ -81,7 +75,7 @@ block header
 block nav
 
 block main
-  main#_main: article.layout
+  +main#_main: article
 
     section: include demo/_nav-demo
 
@@ -95,17 +89,20 @@ block main
     section
       h2 Quick start templates
 
+      mixin la_demo(ref='')
+        +la(demoUrl+ref): block
+
       nav.pages: .g
         .u-1-2
           ul
-            +la('blank.html')| Blank Canvas
-            +la('full_screen.html')| Full Screen
-            +la('split_screen.html')| Split Screen
+            +la_demo('blank.html')| Blank Canvas
+            +la_demo('full_screen.html')| Full Screen
+            +la_demo('split_screen.html')| Split Screen
         .u-1-2
           ul
-            +la('full_grid.html')| Full Grid
-            +la('classic_page.html')| Classic Page
-            +la('classic_list.html')| Classic List
+            +la_demo('full_grid.html')| Full Grid
+            +la_demo('classic_page.html')| Classic Page
+            +la_demo('classic_list.html')| Classic List
         .u-1
           ul: li
             span.a Error pages :

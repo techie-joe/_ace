@@ -32,7 +32,7 @@ block append style
   //- 
 
 block header
-  header#_header
+  +header#_header
     .g._bg-1
       .u: h1#logo._radius-1r._text-center._numb
         #logos #[span._color LO]#[span._color-1 GO]
@@ -40,12 +40,8 @@ block header
         #tagline._uppercase._b Your tagline
     hr._no-margin
 
-block pre
-  //- aside: pre._pre.
-  //-
-
 block main
-  main#_main: article
+  +main#_main: article
 
     .g
       .u-1-3: ._text-justify._mh
@@ -102,7 +98,7 @@ block main
     hr._no-margin
 
 block footer
-  footer#_footer: .layout
+  +footer#_footer
     .g
       .u-1-3: ._pad
         h6._h7._no-margin Company Name
@@ -127,11 +123,3 @@ block footer
           #[+a('#')._no-visited._no-u To your posts]#[br]
           #[+a('#')._no-visited._no-u And pages]#[br]
     ._pad !{copyright}
-
-block aside
-  //- aside#_aside
-
-block widget
-  //- aside#_widget
-
-block append script

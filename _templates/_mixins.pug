@@ -57,4 +57,28 @@ mixin fit
 	i._fit: i.fit&attributes(attributes): block
 
 mixin view
-	._view&attributes(attributes): ._layout: block
+	._view&attributes(attributes): ._view_layout: block
+
+mixin main
+	main&attributes(attributes): ._main_layout: block
+
+mixin header
+	header&attributes(attributes): ._header_layout: block
+
+mixin footer
+	footer&attributes(attributes): ._footer_layout: block
+
+mixin nav
+	nav&attributes(attributes): ._nav_layout: block
+
+mixin pre
+	aside&attributes(attributes): ._pre_layout: pre._pre: block
+
+mixin aside
+	aside&attributes(attributes): ._aside_layout: block
+
+mixin widgets
+	aside&attributes(attributes): block
+
+mixin widget
+	aside&attributes(attributes): ._widget_layout: block

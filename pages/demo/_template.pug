@@ -7,28 +7,30 @@ block append style
   //- 
 
 block view
-  ._view: ._layout
+  +view
 
     block nav
-      ._pad.bg-1-2.tc-1-2: include _nav-demo
-      //- nav: ul: +la
+      //- nav#_nav: ._nav_layout: ul: +la
+      ._pad.bg-1-2.tc-1-: include _nav-demo
 
     block header
-      header#_header: .layout
+      //- header#_header: ._header_layout
+      header#_header: ._header_layout
         h1 !{header}
         p !{description}
         hr
 
     block pre
-      //- aside: pre._pre
+      //- aside#_pre: ._pre_layout: pre._pre
 
     block main
-      main#_main: .layout: article| main article
+      //- +main#_main: article| main article
+      +main#_main: article| main article
 
     block footer
-      footer#_footer: .layout
+      footer#_footer: ._footer_layout
         p: hr
         p._text-centerx !{copyright}
-
+    
     block aside
-      //- aside#_aside
+      //- aside#_aside: ._aside_layout
