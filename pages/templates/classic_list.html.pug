@@ -1,12 +1,12 @@
-extends ../../_templates/html
+extends _template
 
 block append vars
-  include _vars-demo
+  include _vars
   -
-    _template   = 'classic_list'
-    url         = demoUrl+`/${_template}.html`
-    title       = `${_template} | ${name}`
-    description = `${_template} is good for displaying lists of articles and pages.`
+    file           = 'classic_list'
+    url            = url+`${file}.html`
+    title          = `${file}`
+    description    = `A ${file} is good for displaying lists of articles and pages.`
 
     og_title       = title
     og_description = description
@@ -36,9 +36,6 @@ block append style
     #_main .item .p { margin-top:.2em; margin-left:.5em;  }
 
   //- 
-
-block nav
-  //- include _editorbar
 
 block main
   +main#_main: article.layout
@@ -93,8 +90,3 @@ block main
     //- 
 
     p &nbsp;
-
-    p: hr
-
-    footer#_footer
-      p._text-center !{copyright}

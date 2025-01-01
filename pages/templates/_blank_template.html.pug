@@ -1,10 +1,11 @@
 extends _template
 
 block append vars
+  include _vars
   -
     file           = '_blank_template'
-    url            = url+`/${file}.html`
-    title          = `${file} | ${name}`
+    url            = url+`${file}.html`
+    title          = `${file}`
     description    = `A ${file} helps create website from scratch.`
 
     og_title       = title

@@ -1,10 +1,10 @@
 extends _template
 
 block append vars
-  include _vars-demo
+  include _vars
   -
     header      = `Views`
-    url         = demoUrl+`/views.html`
+    url         = url+`views.html`
     title       = `${header} | ${name}`
     description = `${header} controls how a page behave.`
 

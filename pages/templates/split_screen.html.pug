@@ -1,12 +1,12 @@
-extends ../../_templates/html
+extends _template
 
 block append vars
-  include _vars-demo
+  include _vars
   -
-    _template   = 'split_screen'
-    url         = demoUrl+`/${_template}.html`
-    title       = `${_template} | ${name}`
-    description = `${_template} helps create your next homepage.`
+    file           = 'split_screen'
+    url            = url+`${file}.html`
+    title          = `${file}`
+    description    = `A ${file} helps create your next homepage.`
 
     og_title       = title
     og_description = description
@@ -24,9 +24,6 @@ block append style
     }
 
   //- 
-
-block nav
-  //- include _editorbar
 
 block main
   +main#_main: article
@@ -62,10 +59,3 @@ block main
       .u-2-3
         .gu: .o.o3-3
     //-
-
-  //- 
-
-  p: hr
-
-  footer#_footer
-    p._text-center !{copyright}

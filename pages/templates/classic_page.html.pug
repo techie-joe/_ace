@@ -1,12 +1,12 @@
-extends ../../_templates/html
+extends _template
 
 block append vars
-  include _vars-demo
+  include _vars
   -
-    _template   = 'classic_list'
-    url         = demoUrl+`/${_template}.html`
-    title       = `${_template} | ${name}`
-    description = `${_template} is a good example of a full page article.`
+    file           = 'classic_page'
+    url            = url+`${file}.html`
+    title          = `${file}`
+    description    = `A ${file} is a good example of a full page article.`
 
     og_title       = title
     og_description = description
@@ -26,9 +26,6 @@ block append style
     #_html .o { background: #ccc; padding:5px; height:300px; margin:1em 0; }
     #_html._dark .o { background: #333; }
   //- 
-
-block nav
-  //- include _editorbar
 
 block main
   +main#_main: article
@@ -81,8 +78,3 @@ block main
 
       p Writing about yourself can be daunting, but by structuring your narrative and focusing on what makes you unique, you can create an article that is both compelling and authentic. Remember to be genuine, highlight your strengths, and invite your readers to be a part of your journey.
 
-
-    p: hr
-
-    footer#_footer
-      p._text-center !{copyright}

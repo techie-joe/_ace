@@ -1,6 +1,6 @@
 const _builder = {
-  txt   : ["_files/**/*.txt.pug"],
-  md    : ["_files/**/*.md.pug"],
+  txt   : ["_builder/**/*.txt.pug"],
+  md    : ["_builder/**/*.md.pug"],
   dest  : "./",
 };
 
@@ -55,6 +55,40 @@ function builder_md() {
 }
 exports.builder = parallel( builder_txt, builder_md );
 
+// files: .htaccess
+// : task to generate file to _dest
+function htaccess() {
+
+  const errDocs = []; ['404', '500', '503'].forEach(function (code) {
+    errDocs.push(`ErrorDocument ${code} ${_dest.url}${code}.html`);
+  });
+
+  return file(
+    '.htaccess', errDocs.join('\n'),
+    { src: true } // indicates that the string provided as the second argument should be treated as file contents rather than a file path
+  )
+  .pipe(dest(_dest.root));
+}
+
+// files: manifest
+// : task to generate file from _src to _dest
+function manifest() {
+  return file(
+    'manifest.json', JSON.stringify(require(_src.manifest),null,2),
+    { src: true } // indicates that the string provided as the second argument should be treated as file contents rather than a file path
+  )
+  .pipe(dest(_dest.root));
+}
+
+// files: (others)
+// : task to copy files from _src to _dest
+function files() {
+  return src(_src.files)
+  .pipe(dest(_dest.root));
+}
+
+exports.files = parallel( htaccess, manifest, files );
+
 // pages: html, php and txt
 // : retain the same directory structure
 // : task to take pug files from _src to _dest
@@ -98,38 +132,6 @@ function pagesw() {
 exports.pages = parallel( html, php, txt, md );
 exports.pagesw = pagesw;
 
-// files: .htaccess
-function htaccess() {
-
-  const errDocs = []; ['404', '500', '503'].forEach(function (code) {
-    errDocs.push(`ErrorDocument ${code} ${_dest.url}${code}.html`);
-  });
-
-  return file(
-    '.htaccess', errDocs.join('\n'),
-    { src: true } // indicates that the string provided as the second argument should be treated as file contents rather than a file path
-  )
-  .pipe(dest(_dest.root));
-}
-
-// files: manifest
-function manifest() {
-  return file(
-    'manifest.json', JSON.stringify(require(_src.manifest),null,2),
-    { src: true } // indicates that the string provided as the second argument should be treated as file contents rather than a file path
-  )
-  .pipe(dest(_dest.root));
-}
-
-// files: (others)
-// : task to copy files from _src to _dest
-function files() {
-  return src(_src.files)
-  .pipe(dest(_dest.root));
-}
-
-exports.files = parallel( htaccess, manifest, files );
-
 // sass
 // : task to take scss files from _src to _dest
 const sass = require("gulp-sass")(require("sass"));
@@ -162,8 +164,8 @@ exports.jsw = jsw;
 
 exports.default = parallel(
   builder_txt, builder_md,
-  html, php, txt, md,
   htaccess, manifest, files,
+  html, php, txt, md,
   css, js
 );
 

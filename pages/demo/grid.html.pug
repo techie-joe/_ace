@@ -1,10 +1,10 @@
 extends _template
 
 block append vars
-  include _vars-demo
+  include _vars
   -
     header      = `Grid`
-    url         = demoUrl+`/grid.html`
+    url         = url+`grid.html`
     title       = `${header} | ${name}`
     description = `${header} are used to align contents.`
 

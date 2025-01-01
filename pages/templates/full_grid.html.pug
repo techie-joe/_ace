@@ -1,12 +1,12 @@
-extends ../../_templates/html
+extends _template
 
 block append vars
-  include _vars-demo
+  include _vars
   -
-    _template   = 'full_grid'
-    url         = demoUrl+`/${_template}.html`
-    title       = `${_template} | ${name}`
-    description = `${_template} helps you create an impressive gallery to showcase your collection.`
+    file           = 'full_grid'
+    url            = url+`${file}.html`
+    title          = `${file}`
+    description    = `A ${file} helps you create an impressive gallery to showcase your collection.`
 
     og_title       = title
     og_description = description
@@ -18,9 +18,6 @@ block append style
   style.
     #_html article .header{ text-align:center; margin:1em; }
   //- 
-
-block nav
-  //- include _editorbar
 
 block main
   +main#_main: article
@@ -68,7 +65,3 @@ block main
         .gu: .o.o1-4
     //-
 
-    p: hr
-
-    footer#_footer
-      p._text-center !{copyright}

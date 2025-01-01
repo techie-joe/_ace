@@ -1,11 +1,7 @@
 extends ../_templates/text
 
 block append vars
-  include demo/_vars-demo
-  -
-    title       = `${name}`
-    description = 'A solid template for building websites and application'
-  //- 
+  include _vars
  
 block main
   .
@@ -13,7 +9,7 @@ block main
     > !{description}
     ---
     
-    Template : !{name}  
+    Project  : !{name}  
     Codename : #{shortName} - v#{version}  
     Author   : !{author}  
 

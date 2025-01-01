@@ -1,11 +1,11 @@
 extends _template
 
 block append vars
-  include _vars-demo
+  include _vars
   include _color-functions
   -
     header      = `Theme`
-    url         = demoUrl+`/theme.html`
+    url         = url+`theme.html`
     title       = `${header} | ${name}`
     description = `This is about ${header}.`
 

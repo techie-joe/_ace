@@ -1,12 +1,12 @@
-extends ../../_templates/html
+extends _template
 
 block append vars
-  include _vars-demo
+  include _vars
   -
-    _template   = 'full_screen'
-    url         = demoUrl+`/${_template}.html`
-    title       = `${_template} | ${name}`
-    description = `${_template} seamlessly stretches across the entire screen, for an exceptional first impression.`
+    file           = 'full_screen'
+    url            = url+`${file}.html`
+    title          = `${file}`
+    description    = `A ${file} seamlessly stretches across the entire screen, for an exceptional first impression.`
 
     og_title       = title
     og_description = description
@@ -46,7 +46,7 @@ block append style
       text-align: center;
       padding: 1em;
     }
-    #_header .h1 {
+    #_header .hero {
       font-size:3em;
       width:11em;
       margin:2em auto;
@@ -56,16 +56,16 @@ block append style
 
     @media only screen and (max-width: 499px) {
       #_html .hero2 { margin:2em 1em; }
+      #_header .hero { width:100%; font-size:1.4em; }
       #_main .h2 { font-size:1.4em; }
-      #_header h1 { width:100%; font-size:1.4em; }
     }
   //- 
 
 block header
-  //- include _editorbar
   .fullscreen
-    header#_header
-      h1.h1 Full Screen Display of Awesomeness
+    +header#_header
+      h1._h1.hero Full Screen Display of Awesomeness
+      p #{description}
 
 block main
   +main#_main: article
@@ -88,9 +88,3 @@ block main
         .gu: .o.o1-3
         .gu: .o.o1-3
     //-
-    //- 
-
-    p: hr
-
-    footer#_footer
-      p._text-center !{copyright}
