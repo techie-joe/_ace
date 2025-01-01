@@ -77,7 +77,7 @@ block nav
 block main
   +main#_main: article
 
-    section: include demo/_nav-demo
+    section: include demo/_nav
 
     section
       h2 Available in light and dark
@@ -89,20 +89,20 @@ block main
     section
       h2 Quick start templates
 
-      mixin la_demo(ref='')
-        +la(demoUrl+ref): block
+      mixin la_template(ref='')
+        +la(templateUrl+ref): block
 
       nav.pages: .g
         .u-1-2
           ul
-            +la_demo('blank.html')| Blank Canvas
-            +la_demo('full_screen.html')| Full Screen
-            +la_demo('split_screen.html')| Split Screen
+            +la_template('_blank_template.html')| Blank Template
+            +la_template('full_screen.html')| Full Screen
+            +la_template('split_screen.html')| Split Screen
         .u-1-2
           ul
-            +la_demo('full_grid.html')| Full Grid
-            +la_demo('classic_page.html')| Classic Page
-            +la_demo('classic_list.html')| Classic List
+            +la_template('full_grid.html')| Full Grid
+            +la_template('classic_page.html')| Classic Page
+            +la_template('classic_list.html')| Classic List
         .u-1
           ul: li
             span.a Error pages :

@@ -1,12 +1,12 @@
 extends _template
 
 block append vars
-  include _vars-demo
+  include _vars
   -
-    header      = `blank_demo`
-    url         = demoUrl+`/blank_demo.html`
-    title       = `${header} | ${name}`
-    description = `This is about ${header}.`
+    file           = `_blank_demo`
+    url            = url+`/${file}.html`
+    title          = `${file} | ${name}`
+    description    = `This is about a ${file}.`
 
     og_title       = title
     og_description = description
@@ -21,6 +21,6 @@ block append style
 block header
 
 block main
-  +main#_main: article|This is a #{header}
+  +main#_main: article| This is a #{file}
 
 block footer

@@ -1,5 +1,9 @@
 extends ../../_templates/html
 
+block prepend vars
+  include _vars
+  - url += '/templates'
+
 block append style
   +css(homeUrl+'assets/css/demo.css?v='+version)
   +css(homeUrl+'assets/css/grid.css?v='+version)
@@ -11,9 +15,8 @@ block view
 
     block nav
       //- +nav#_nav: ul: +la
-      ._pad.bg-1-2.tc-1-2: ._grid
-        ._10-1: +a(demoUrl)._btnlink._small ≡ Demo
-        ._10-9: include _nav
+      //- include _nav
+      ._pad.bg-1-2.tc-1-2: include _nav
 
     block header
       //- +header#_header

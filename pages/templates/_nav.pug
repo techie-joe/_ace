@@ -1,0 +1,8 @@
+//- +nav#_nav: ul: +la
+
+mixin link(ref='')
+  +_a(ref): block
+
++nav#_nav.pages
+  +link("./")| Home
+  +link("_blank_template.html")| Blank
