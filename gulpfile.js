@@ -59,12 +59,17 @@ exports.builder = parallel( builder_txt, builder_md );
 // : task to generate file to _dest
 function htaccess() {
 
-  const errDocs = []; ['404', '500', '503'].forEach(function (code) {
-    errDocs.push(`ErrorDocument ${code} ${_dest.url}${code}.html`);
+  const ErrorDocuments = [];  
+  [
+    ['400','400.html'],
+    ['500','500.html'],
+    ['503','e503.html'],
+  ].forEach(function addErrorDocument(code) {
+    ErrorDocuments.push(`ErrorDocument ${code[0]} ${_dest.url}${code[1]}`);
   });
 
   return file(
-    '.htaccess', errDocs.join('\n'),
+    '.htaccess', ErrorDocuments.join('\n'),
     { src: true } // indicates that the string provided as the second argument should be treated as file contents rather than a file path
   )
   .pipe(dest(_dest.root));
