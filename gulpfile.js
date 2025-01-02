@@ -63,7 +63,6 @@ function htaccess() {
   [
     ['400','400.html'],
     ['500','500.html'],
-    ['503','e503.html'],
   ].forEach(function addErrorDocument(code) {
     ErrorDocuments.push(`ErrorDocument ${code[0]} ${_dest.url}${code[1]}`);
   });
