@@ -61,7 +61,7 @@ function htaccess() {
 
   const ErrorDocuments = [];  
   [
-    ['400','400.html'],
+    ['404','404.html'],
     ['500','500.html'],
   ].forEach(function addErrorDocument(code) {
     ErrorDocuments.push(`ErrorDocument ${code[0]} ${_dest.url}${code[1]}`);
