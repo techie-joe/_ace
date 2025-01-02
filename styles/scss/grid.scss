@@ -20,16 +20,18 @@
   margin: 0 auto;
 }
 
-._1 {
+._g {
   display: inline-block;
   vertical-align: top;
   letter-spacing:normal;
   word-spacing:normal;
   text-rendering:auto;
-  width:100%;
 }
 
-._g { @extend ._1; width:auto }
+._f { flex:1 }
+
+._1 { @extend ._g; width:100%; }
+
 
 // 1,3,5,7
 // 2,4,6,8
@@ -39,7 +41,7 @@ $g:12;
 ._#{$g}   { @extend ._1; }
 @for $i from 1 through $g {
   @if( $i != $g ){
-    ._#{$g}-#{$i} { @extend ._1; width: calc(100% / $g * $i) }
+    ._#{$g}-#{$i} { @extend ._g; width: calc(100% / $g * $i) }
   }
 }
 
@@ -48,7 +50,17 @@ $g:10;
 ._#{$g}-5 { @extend ._12-6; }
 @for $i from 1 through $g {
   @if( $i != $g and $i != 5 ){
-    ._#{$g}-#{$i} { @extend ._1; width: calc(100% / $g * $i) }
+    ._#{$g}-#{$i} { @extend ._g; width: calc(100% / $g * $i) }
+  }
+}
+
+$g:8;
+._#{$g}   { @extend ._1; }
+._#{$g}-2 { @extend ._12-3; }
+._#{$g}-4 { @extend ._12-6; }
+@for $i from 1 through $g {
+  @if( $i != $g and $i != 4 and $i != 2 ){
+    ._#{$g}-#{$i} { @extend ._g; width: calc(100% / $g * $i) }
   }
 }
 

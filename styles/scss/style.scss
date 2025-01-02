@@ -3,6 +3,7 @@
 @use "mixins" as mix;
 
 @use "_html5.css";
+// @use "_scrollbar";
 
 /* ----------------------------------------------- colors */
 
@@ -167,30 +168,6 @@ $select-tc : #000;
 // ::-ms-selection     { @include selection; }
 ::selection         { @include selection; }
 
-// ._scrollbar {
-//   ::-webkit-scrollbar {
-//     cursor:default;
-//     background:none;
-//     height:14px;
-//     width:14px;
-//   }
-//   ::-webkit-scrollbar-corner { background:none }
-//   ::-webkit-resizer {
-//     background:none;
-//     border:3px solid rgba(128,128,128,0);
-//     border-right-color:rgba(128,128,128,0.5);
-//     border-bottom-color:rgba(128,128,128,0.5);
-//   }
-//   ::-webkit-scrollbar-thumb {
-//     background:none;
-//     border-radius:7px;
-//     border:4px solid rgba(128,128,128,0);
-//     box-shadow:0 0 0 5px rgba(128,128,128,0.5) inset;
-//     &:hover  { border-width:3px; box-shadow:0 0 0 5px rgba(128,128,128,1) inset; }
-//     &:active { border-width:4px; box-shadow:0 0 0 5px rgba(128,128,128,1) inset; }
-//   }
-// }
-
 * { line-height: 1.5; margin: 0; }
 ._line-spacing-1 { line-height: 1 }
 ._line-spacing-2 { line-height: 2 }
@@ -255,8 +232,7 @@ li { margin: .3em 0; }
   width  : 100%;
   height : 100%;
   margin : 0;
-  overflow-x: scroll;
-  overflow-y: scroll;
+  overflow: auto;
 }
 
 #_html ._btnlink {
