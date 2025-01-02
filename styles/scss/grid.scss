@@ -54,15 +54,15 @@ $g:10;
   }
 }
 
-$g:8;
-._#{$g}   { @extend ._1; }
-._#{$g}-2 { @extend ._12-3; }
-._#{$g}-4 { @extend ._12-6; }
-@for $i from 1 through $g {
-  @if( $i != $g and $i != 4 and $i != 2 ){
-    ._#{$g}-#{$i} { @extend ._g; width: calc(100% / $g * $i) }
-  }
-}
+// $g:8;
+// ._#{$g}   { @extend ._1; }
+// ._#{$g}-2 { @extend ._12-3; }
+// ._#{$g}-4 { @extend ._12-6; }
+// @for $i from 1 through $g {
+//   @if( $i != $g and $i != 4 and $i != 2 ){
+//     ._#{$g}-#{$i} { @extend ._g; width: calc(100% / $g * $i) }
+//   }
+// }
 
 $g:6;
 ._#{$g}   { @extend ._1; }
