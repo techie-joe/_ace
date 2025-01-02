@@ -15,8 +15,11 @@ block nav
 block main
   +main#_main: article.layout
 
-    ._grid
-      ._10-1: +a(homeUrl)._btnlink._small 🏠 Home
-      ._10-9: include _nav
+    p: +a(homeUrl)._btnlink._small 🏠 Home
+
+    hr
     
-    p._small Live @ #[+a(url)(target="techie-joes-github") #{url}]
+    ._p: include _nav
+
+    p._small| Live @ #[+a(url)(target="techie-joes-github") #{url}]
+    

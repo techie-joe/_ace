@@ -28,7 +28,6 @@ block append style
     ._dark #_header    { color: #aaa; background: #111; }
     ._dark #_header h1 { color: #fff; }
 
-    #_html .pages    { margin:1.5em 0 3em 0; }
     #_html .pages  a { text-decoration:none; padding:0.2em 0.3em; border-radius:5px; cursor:pointer; white-space: nowrap }
     #_html .pages .a { padding:0.2em 0.3em; font-weight:bold; }
     #_html       .pages a       { color:inherit; }
@@ -77,16 +76,9 @@ block nav
 block main
   +main#_main: article
 
-    section: include demo/_nav
+    section._mv: include demo/_nav
 
-    section
-      h2 Available in light and dark
-
-      ._mb-2: ._grid
-        ._6-1: p: +a()(onclick="base.theme.change()")._btnlink._small Change Theme
-        ._6-5: p Use #[code._code._no-wrap='Ctrl + Alt + T'] or #[code._code._no-wrap='base.theme.change()'] to swap between light and dark.
-
-    section
+    section._mv-2
       h2 Quick start templates
 
       mixin la_template(ref='')
@@ -111,9 +103,16 @@ block main
             +a("404.html")| 404
             +a("500.html")| 500
 
+    section._mv-2
+      h2 Available in light and dark
+
+      p._text-justify Both light and dark themes are readily available. You can easily switch between the two by using the keyboard shortcut #[code._code._no-wrap='Ctrl + Alt + T'] or click a button that execute #[code._code._no-wrap='base.theme.change()'], like this one:
+
+      p: +a()(onclick="base.theme.change()")._btnlink._small Change Theme
+
     section
       h2 Pre-made building components
 
       p._text-justify Our web template is equipped with helpers and pre-made building components to ensure an intuitive and easy building experience. We simplify web creation to make it accessible to everyone, even for those who may not have technical expertise. No lengthy manuals or confusing rules -- just dive in and start building. And if you're curious or need a bit more guidance, we have comprehensive #[+a('demo')._no-wrap demo articles] to help you out.
 
-      ._mb-2._text-right: +a('demo')._btnlink View Demo
+      p._mb-2._text-right: +a('demo')._btnlink View Demo
