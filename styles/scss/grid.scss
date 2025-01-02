@@ -28,7 +28,9 @@
   text-rendering:auto;
 }
 
-._f { flex:1 }
+._f { @extend ._g; flex:1 }
+
+._f_1 { @extend ._g; flex:1 1 100% }
 
 ._1 { @extend ._g; width:100%; }
 
