@@ -235,10 +235,6 @@ li { margin: .3em 0; }
   overflow: auto;
 }
 
-._footer_layout,
-._header_layout,
-._main_layout { margin:0 auto; padding:1px; }
-
 #_html ._btnlink {
   @extend ._numb;
   @extend ._radius-2r;
@@ -307,6 +303,21 @@ hr {
 
 ._fits       { font-size: 1.8em; line-height: 0.89 }
 ._fits ._fit { font-size: 0.7em }
+
+._layout { margin:0 auto; padding:1px; max-width: 18rem; }
+
+@media screen and (min-width: 20em)   { ._layout { max-width: 18rem; } }
+@media screen and (min-width: 23.4em) { ._layout { max-width: 21.4rem; } }
+@media screen and (min-width: 26.6em) { ._layout { max-width: 24.6rem; } }
+@media screen and (min-width: 35.5em) { ._layout { max-width: 33.5rem; } }
+@media screen and (min-width: 48em)   { ._layout { max-width: 46rem; } }
+@media screen and (min-width: 60em)   { ._layout { max-width: 58rem; } }
+@media screen and (min-width: 64em)   { ._layout { max-width: 62rem; } }
+@media screen and (min-width: 80em)   { ._layout { max-width: 78rem; } }
+@media screen and (min-width: 90em)   { ._layout { max-width: 88rem; } }
+@media screen and (min-width: 120em)  { ._layout { max-width: 118rem; } }
+@media screen and (min-width: 160em)  { ._layout { max-width: 158rem; } }
+@media screen and (min-width: 240em)  { ._layout { max-width: 238rem; } }
 
 /* ---------------------------------- default light theme */
 

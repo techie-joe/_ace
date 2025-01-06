@@ -1,18 +1,5 @@
 /*! Techie Joe's Base v0.1.0 | Copyright 2024 Techie Joe | https://github.com/techie-joe/base */
 
-// @media screen and (min-width: 20em)    ≥ 320px   ._g-ms-*   Mobile S
-// @media screen and (min-width: 23.4em)  ≥ 425px   ._g-mm-*   Mobile M
-// @media screen and (min-width: 26.6em)  ≥ 425px   ._g-ml-*   Mobile L
-// @media screen and (min-width: 35.5em)  ≥ 568px   ._g-s-*
-// @media screen and (min-width: 48em)    ≥ 768px   ._g-m-*    Laptop S
-// @media screen and (min-width: 60em)    ≥ 960px   ._g-r-*    Regular PC / 960gs
-// @media screen and (min-width: 64em)    ≥ 1024px  ._g-l-*    Laptop M
-// @media screen and (min-width: 80em)    ≥ 1280px  ._g-2l-*
-// @media screen and (min-width: 90em)    ≥ 1440px  ._g-3l-*   Laptop L
-// @media screen and (min-width: 120em)   ≥ 1920px  ._g-4l-*
-// @media screen and (min-width: 160em)   ≥ 2560px  ._g-4k-*   4K
-// @media screen and (min-width: 240em)   ≥ 3840px  ._g-5k-*
-
 ._grid {
   display: flex;
   flex-flow: row wrap;
@@ -88,3 +75,16 @@ $g:3;
 $g:2;
 ._#{$g}   { @extend ._1; }
 ._#{$g}-1 { @extend ._12-6; }
+
+// @media screen and (min-width: 20em){} //    ≥ 320px   ._g-ms-*   Mobile S
+// @media screen and (min-width: 23.4em){} //  ≥ 375px   ._g-mm-*   Mobile M
+// @media screen and (min-width: 26.6em){} //  ≥ 425px   ._g-ml-*   Mobile L
+// @media screen and (min-width: 35.5em){} //  ≥ 568px   ._g-s-*
+// @media screen and (min-width: 48em){} //    ≥ 768px   ._g-m-*    Laptop S
+// @media screen and (min-width: 60em){} //    ≥ 960px   ._g-r-*    Regular PC / 960gs
+// @media screen and (min-width: 64em){} //    ≥ 1024px  ._g-l-*    Laptop M
+// @media screen and (min-width: 80em){} //    ≥ 1280px  ._g-2l-*
+// @media screen and (min-width: 90em){} //    ≥ 1440px  ._g-3l-*   Laptop L
+// @media screen and (min-width: 120em){} //   ≥ 1920px  ._g-4l-*
+// @media screen and (min-width: 160em){} //   ≥ 2560px  ._g-4k-*   4K
+// @media screen and (min-width: 240em){} //   ≥ 3840px  ._g-5k-*

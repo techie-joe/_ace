@@ -60,16 +60,16 @@ mixin view
 	._view&attributes(attributes): ._view_layout: block
 
 mixin main
-	main&attributes(attributes): ._main_layout: block
+	main&attributes(attributes): ._main_layout._layout: block
 
 mixin header
-	header&attributes(attributes): ._header_layout: block
+	header&attributes(attributes): ._header_layout._layout: block
 
 mixin footer
-	footer&attributes(attributes): ._footer_layout: block
+	footer&attributes(attributes): ._footer_layout._layout: block
 
 mixin nav
-	nav&attributes(attributes): ._nav_layout: block
+	nav&attributes(attributes): ._nav_layout._layout: block
 
 mixin pre
 	aside&attributes(attributes): ._pre_layout: pre._pre: block
