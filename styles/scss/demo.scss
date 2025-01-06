@@ -2,7 +2,9 @@
 
 ._header_layout,
 ._footer_layout,
-._main_layout { max-width:60rem }
+._main_layout { max-width:60rem; margin:0 auto; padding:1px; }
+
+#_nav a { line-height: 1.7; }
 
 ._editorbar {
 
