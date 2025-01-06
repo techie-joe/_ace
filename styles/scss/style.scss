@@ -235,6 +235,10 @@ li { margin: .3em 0; }
   overflow: auto;
 }
 
+._footer_layout,
+._header_layout,
+._main_layout { margin:0 auto; padding:1px; }
+
 #_html ._btnlink {
   @extend ._numb;
   @extend ._radius-2r;

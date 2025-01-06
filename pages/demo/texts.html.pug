@@ -56,7 +56,6 @@ block main
         +fit|×
 
     hr
-
     //- https://fontawesome.com/v6/search?q=
     section
       h2._sans Font Awesome Icons
@@ -115,32 +114,31 @@ block main
 
       p._text-right._small: +a('https://fontawesome.com/v6/search?q=')(target="fontawesome")._no-u More icons at Font-Awesome ...
 
-    section.g.demo.gridlines
+      .g.demo.gridlines
 
-      mixin fag(x)
-        - var n = 0
-        while n < x
-          if(n%2==0)
-            .io2
-              +fas.fa-bars
-          else
-            .io1 &nbsp;
-          - n++
+        mixin fag(x)
+          - var n = 0
+          while n < x
+            if(n%2==0)
+              .io2
+                +fas.fa-bars
+            else
+              .io1 &nbsp;
+            - n++
 
-      .u._text-1: +fag(13)
-      .u._text-2: +fag(12)
-      .u._text-3: +fag(11)
-      .u._text-4: +fag(10)
-      .u._text-5: +fag(9)
-      .u._text-6: +fag(8)
-      .u._text-7: +fag(7)
+        .u._text-1: +fag(13)
+        .u._text-2: +fag(12)
+        .u._text-3: +fag(11)
+        .u._text-4: +fag(10)
+        .u._text-5: +fag(9)
+        .u._text-6: +fag(8)
+        .u._text-7: +fag(7)
 
-      .u._hero:   +fag(9)
-      .u._hero-1: +fag(8)
-      .u._hero-2: +fag(7)
+        .u._hero:   +fag(9)
+        .u._hero-1: +fag(8)
+        .u._hero-2: +fag(7)
 
-      hr
-
+    hr
     section
 
       .g
@@ -160,9 +158,7 @@ block main
             Monospace fonts, such as Courier New and Consolas, have characters that occupy the same horizontal space. This uniform spacing makes them ideal for coding, as they enhance readability.
       //- g
 
-      hr
-
-
+    hr
     section.g.demo.gridlines
 
       mixin rag(x)
@@ -187,7 +183,6 @@ block main
       .u._hero-2: +rag(7)
 
     hr
-
     section.gridlinesx._text-center
       - var hero    = 'Text Sample';
       - var heading = 'Text Sample';
@@ -208,4 +203,4 @@ block main
         span._small Small
         +_
         span._smaller Smaller
-      p Sizing classes from #[code._code _h1] to #[code._code _h7] separate HTML semantics from visual appearance, giving you more control over both worlds.
+      p Sizing classes from #[code._code _h1] to #[code._code _h7] separates visual appearance from semantic, for better control over both: content and design.
