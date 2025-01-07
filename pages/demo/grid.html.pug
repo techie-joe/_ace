@@ -33,11 +33,8 @@ block main
         div(class=`_${k}-${k-n-1}`): .o _#{k}-#{k-n-1}
         - n++;
 
-    mixin gen_g(a)
-      each g in a
-        ._mv: ._grid: +gen_grid(g)
-
     ._mv: ._grid: +gen_grid(1)
+
     ._mv: ._grid: +gen_grid(2)
 
     ._mv: ._grid
