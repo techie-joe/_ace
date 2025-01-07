@@ -1,10 +1,13 @@
 /*! Techie Joe's Base v0.1.0 | Copyright 2024 Techie Joe | https://github.com/techie-joe/base */
 
+@use "colors" as *;
+
 ._header_layout,
 ._footer_layout,
 ._main_layout { max-width:60rem; margin:0 auto; padding:1px; }
 
-#_nav a { line-height: 1.7; }
+#_nav { padding: 1em }
+#_nav a { line-height: 1.7 }
 
 ._editorbar {
 
@@ -12,8 +15,6 @@
     margin:0;
     font-size:.75em;
     padding:.75em;
-    background:#111;
-    color:#888;
     font-weight: bold;
   }
 
@@ -43,3 +44,23 @@
 #_html       .pages a       { color:inherit; }
 #_html       .pages a:hover { background:#bbb; color:#000; }
 #_html._dark .pages a:hover { background:#444; color:#fff; }
+
+/* ---------------------------------- default light theme */
+
+#_nav,
+._editorbar p {
+  background: $bg-2-8;
+  color: $tc-2-8;
+}
+
+/* ------------------------------------------- dark theme */
+
+._dark {
+
+  #_nav,
+  ._editorbar p {
+    background: $bg-1-2;
+    color: $tc-1-2;
+  }
+
+}

@@ -16,41 +16,35 @@ block append vars
 block append style
   style.
     ._header_layout,
-    #_header,
-    .fullscreen,
-    ._view_layout { height:100% }
+    ._view_layout,
+    ._fullscreen { height:100% }
+
+    ._fullscreen { margin-top: -3.7em }
+
     ._header_layout {
       text-align: center;
-      align-items: center;
-      display: grid;
+      display: flex;
+      flex-direction: column;
     }
 
-    #_header .hero { font-size:3em; width:11em; margin:2em auto; }
+    #_header .hero { font-size:3em; width:10em; margin:28% auto; }
     #_header .hero2 { margin:2em auto; max-width:640px; }
 
     @media only screen and (max-width: 499px) {
       #_header .hero { width:100%; font-size:1.4em; }
       #_header .hero2 { margin:2em 1em; }
     }
-
-block nav
+  //- 
 
 block header
-  .fullscreen._bg-2-2._tc-2-2
-    ._pad._bg-1-2._tc-1-2: include _nav
-    +header#_header
-      h1._h1.hero Full Screen Display of Awesomeness
-      p #{description}
+  +header#_header._fullscreen._bg-1-2._tc-1-2
+    h1._h1.hero._tc-2-2 Full Screen Display of Awesomeness
+    p #{description}
 
 block main
   +main#_main: article._mv
     .g
-      .u-1-3
-        .gu: .o.o1-3
-      .u-1-3
-        .gu: .o.o1-3
-      .u-1-3
-        .gu: .o.o1-3
+      +repeat(3): .u-1-3: .gu: .o.o2-4
 
     .hero2._text-center 
       h2._h2 Featured Contents and Success Stories

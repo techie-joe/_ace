@@ -4,7 +4,7 @@ block append vars
   include _vars
   -
     title       = `${name} Demo`
-    header      = `≡ ${name} ≡ Demo`
+    header      = `${name} ≡ Demo`
     description = `Showing all features and components of our template.`
 
     og_title       = title
@@ -15,11 +15,9 @@ block nav
 block main
   +main#_main: article.layout
 
-    p: +a(homeUrl)._btnlink._small 🏠 Home
-
-    hr
-    
-    ._p: include _nav
+    ._grid
+      ._g._pad: +a(homeUrl)._btnlink._small 🏠 Home
+      ._f: include _nav
 
     p._small| Live @ #[+a(url)(target="techie-joes-github") #{url}]
     
