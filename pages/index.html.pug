@@ -84,19 +84,19 @@ block main
       mixin la_template(ref='')
         +la(templateUrl+ref): block
 
-      nav.pages: .g
-        .u-1-2
+      nav.pages: ._flex
+        ._1-2
           ul
             +la_template('blank_template.html')| Blank template
             +la_template('full_screen.html')| Full Screen
             +la_template('split_screen.html')| Split Screen
-            +la_template('full_grid.html')| Full Grid
-        .u-1-2
+            +la_template('full_flex.html')| Full Flex
+        ._1-2
           ul
             +la_template('classic_page.html')| Classic Page
             +la_template('classic_list.html')| Classic List
             +la_template('closed.html')| Temporary closed
-        .u-1
+        ._1
           ul: li
             span.a Error pages:
             +a("---","Simulate Real 404")| ---

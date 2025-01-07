@@ -3,7 +3,7 @@ extends _template
 block append vars
   include _vars
   -
-    file           = 'full_grid'
+    file           = 'full_flex'
     url            = url+`${file}.html`
     title          = `${file}`
     description    = `A ${file} helps you create an impressive gallery to showcase your collection.`
@@ -22,7 +22,7 @@ block append style
 block main
   +main#_main: article
     .header
-      h1.h2 Create a Full Grid Gallery
+      h1.h2 Create a Full Flex Gallery
       p Showcase your collection to evoke emotion and inspire awe.
     //- 
     a#1

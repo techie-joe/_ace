@@ -1,9 +1,10 @@
 /*! Techie Joe's Base v0.1.0 | Copyright 2024 Techie Joe | https://github.com/techie-joe/base */
 
-._grid {
+._flex {
   display: flex;
-  flex-flow: row wrap;
-  align-content: flex-start; /* prevents distributing space between rows */
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
   margin: 0 auto;
 }
 
@@ -14,24 +15,30 @@
   word-spacing:normal;
   text-rendering:auto;
   line-height:0;
+  margin:0 auto;
 }
 
-._f { @extend ._g; flex:1 }
-
-._f_1 { @extend ._g; flex:1 1 100% }
+._flex-1 { @extend ._g; flex:1 }
 
 ._1 { @extend ._g; width:100%; }
-
 
 // 1,3,5,7
 // 2,4,6,8
 // 10,12,14,16
 
+$flex_base:60;
+
 $g:12;
 ._#{$g}   { @extend ._1; }
 @for $i from 1 through $g {
   @if( $i != $g ){
-    ._#{$g}-#{$i} { @extend ._g; width: calc(100% / $g * $i) }
+    $width: calc(100 / $g * $i);
+    // $basis: calc($width / 100 * $flex_base);
+    ._#{$g}-#{$i} {
+      @extend ._g;
+      width: $width * 1%;
+      // flex: 1 1 ($basis * 1em);
+    }
   }
 }
 
@@ -40,7 +47,13 @@ $g:10;
 ._#{$g}-5 { @extend ._12-6; }
 @for $i from 1 through $g {
   @if( $i != $g and $i != 5 ){
-    ._#{$g}-#{$i} { @extend ._g; width: calc(100% / $g * $i) }
+    $width: calc(100 / $g * $i);
+    // $basis: calc($width / 100 * $flex_base);
+    ._#{$g}-#{$i} {
+      @extend ._g;
+      width: $width * 1%;
+      // flex: 1 1 ($basis * 1em);
+    }
   }
 }
 
@@ -82,7 +95,7 @@ $g:2;
 // @media screen and (min-width: 26.6em){} //  ≥ 425px   ._g-ml-*   Mobile L
 // @media screen and (min-width: 35.5em){} //  ≥ 568px   ._g-s-*
 // @media screen and (min-width: 48em){} //    ≥ 768px   ._g-m-*    Laptop S
-// @media screen and (min-width: 60em){} //    ≥ 960px   ._g-r-*    Regular PC / 960gs
+// @media screen and (min-width: 60em){} //    ≥ 960px   ._g-r-*    960gs
 // @media screen and (min-width: 64em){} //    ≥ 1024px  ._g-l-*    Laptop M
 // @media screen and (min-width: 80em){} //    ≥ 1280px  ._g-2l-*
 // @media screen and (min-width: 90em){} //    ≥ 1440px  ._g-3l-*   Laptop L
@@ -103,8 +116,9 @@ $g:2;
 // @media screen and (min-width: 160em)  {}
 // @media screen and (min-width: 240em)  {}
 
-// ._2-1-r { width:100% }
-
-// @media screen and (min-width: 60em)   {
-//   ._2-1-r { width:50% }
-// }
+// @media screen and (max-width: 20em)   {}
+// @media screen and (max-width: 23.4em) {}
+// @media screen and (max-width: 26.6em) {}
+// @media screen and (max-width: 35.5em) {}
+// @media screen and (max-width: 48em)   {}
+// @media screen and (max-width: 60em)   {}

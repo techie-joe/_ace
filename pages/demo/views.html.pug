@@ -79,9 +79,9 @@ block view
   - var v = 1;
   +view(id=`view-${v}`)
 
-    ._grid
+    ._flex
       ._g._pad: +a(demoUrl)._btnlink._small ≡ Demo
-      ._f: include _nav
+      ._flex-1: include _nav
 
     +main#_main: article
       h1._h7 View ##{v}
