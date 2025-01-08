@@ -1,0 +1,91 @@
+extends _template
+
+block append vars
+  include _vars
+  -
+    file           = 'classic_page'
+    url            = url+`${file}_2.html`
+    title          = `${file}`
+    description    = `A ${file} template is designed to display a full page article.`
+
+    og_title       = title
+    og_description = description
+    og_url         = url
+  //- 
+
+block append style
+  +css(homeUrl+'assets/css/demo.css?v='+version)
+  style.
+    #_main p { text-indent:2em; text-align:justify; }
+    #_main p.ni { text-indent:0; }
+
+    #_main .sec h3 { margin-top: 2em }
+    #_main .sec h3.flat { margin-top: 0 }
+
+    #_html .o { background: #ccc; padding:5px; height:300px; margin:1em 0; }
+    #_html._dark .o { background: #333; }
+  //- 
+
+block main
+  +main#_main: article
+
+    section.sec
+
+      h1._h1 How to write an article about anything.
+
+      p.ni._small These fabricated examples are meant to serve as placeholder for your content.
+      
+      p Writing can often feel daunting, especially when the subject matter seems elusive or unfamiliar. However, with the right approach, you can master the art of writing about any topic. Here are some strategies to help you craft compelling content on any subject.
+
+      p This article provides a comprehensive guide to crafting engaging content on any topic. It emphasizes the importance of thorough research, understanding the audience, and organizing the article with a clear structure. The piece also highlights the need for a captivating introduction, maintaining clarity and conciseness, incorporating your unique voice, and the essential steps of revising and seeking feedback. By practicing these strategies, writers can confidently tackle any subject and improve their writing skills.
+
+    section.sec._flex
+      ._12-3: ._mr
+
+
+        h3 Research Thoroughly
+
+        p Begin by immersing yourself in the topic. Use reliable sources such as academic journals, reputable websites, and expert opinions to gather comprehensive information. The more you know, the more confidently you can write. Take notes, highlight key points, and make sure to understand the nuances of the subject.
+
+        h3 Identify Your Audience
+
+        p Understanding who will read your work is crucial. Tailor your content to meet the expectations and knowledge level of your audience. Are they beginners needing a broad overview or experts looking for in-depth analysis? Adjust your tone, vocabulary, and depth accordingly.
+
+        h3 Create a Clear Structure
+
+        p A well-organized article is easier to read and understand. Start with an introduction that outlines the main points you will cover. Follow with body paragraphs that delve into each point in detail. Conclude with a summary that reinforces the key takeaways. Use headings and subheadings to guide your readers through the content.
+
+        h3 Engage with a Strong Hook
+
+        p The beginning of your article should grab the reader's attention. Use a compelling quote, an intriguing fact, or a thought-provoking question to draw them in. An engaging opening sets the tone for the rest of the piece and encourages readers to continue.
+
+      ._12-3: ._ml
+
+        h3 Maintain Clarity and Conciseness
+
+        p Avoid jargon and overly complex sentences. Your goal is to communicate ideas clearly and effectively. Break down complex concepts into simpler terms and use examples to illustrate your points. This makes your writing accessible and enjoyable to a broader audience.
+
+        h3 Incorporate Your Voice
+
+        p Your unique perspective and voice make your writing stand out. Don't be afraid to infuse your personality into the article. Whether through humor, anecdotes, or insightful commentary, your voice adds authenticity and relatability to your work.
+
+        h3 Revise and Edit
+
+        p Writing is a process of refinement. After drafting your article, take time to revise and edit. Look for areas where you can improve clarity, coherence, and flow. Check for grammatical errors, and ensure that your facts are accurate. A polished piece reflects your commitment to quality.
+
+        h3 Seek Feedback
+
+        p Don't hesitate to ask others for their input. Fresh eyes can spot mistakes and offer valuable perspectives. Consider their feedback and make necessary adjustments to enhance your article. Constructive criticism helps you grow as a writer and produce better content. 
+
+    section.sec
+
+      h3 Practice Regularly
+
+      p Like any skill, writing improves with practice. Challenge yourself to write on a variety of topics. The more you write, the more comfortable you'll become with different subjects and writing styles. Set aside time each day to hone your craft and explore new ideas.
+
+      h3 Conclusion
+
+      p Writing about anything requires a blend of research, audience awareness, organization, and personal touch. By following these strategies, you can develop the confidence and skills to tackle any topic with ease. Remember, every piece you write is an opportunity to learn and grow as a writer.
+
+    div._p._mb-2._text-right: +a('classic_page.html')._btnlink Previous Article
+
