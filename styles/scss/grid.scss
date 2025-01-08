@@ -8,6 +8,11 @@
   margin: 0 auto;
 }
 
+._space-evenly { justify-content: space-evenly }
+
+._gap   { gap:1rem }
+._gap-2 { gap:2rem }
+
 ._g {
   display: inline-block;
   vertical-align: top;
@@ -18,41 +23,30 @@
   margin:0 auto;
 }
 
-._flex-1 { @extend ._g; flex:1 }
+._f { @extend ._g; flex-grow: 1 }
 
-._1 { @extend ._g; width:100%; }
+._flex-1 { @extend ._g; flex: 1 }
+
+._1 { @extend ._f; flex: 1 1 100% }
 
 // 1,3,5,7
 // 2,4,6,8
 // 10,12,14,16
 
-$flex_base:60;
+$flex_base: 60em;
 
-$g:12;
-._#{$g}   { @extend ._1; }
-@for $i from 1 through $g {
-  @if( $i != $g ){
-    $width: calc(100 / $g * $i);
-    // $basis: calc($width / 100 * $flex_base);
-    ._#{$g}-#{$i} {
-      @extend ._g;
-      width: $width * 1%;
-      // flex: 1 1 ($basis * 1em);
-    }
-  }
-}
-
-$g:10;
-._#{$g}   { @extend ._1; }
-._#{$g}-5 { @extend ._12-6; }
-@for $i from 1 through $g {
-  @if( $i != $g and $i != 5 ){
-    $width: calc(100 / $g * $i);
-    // $basis: calc($width / 100 * $flex_base);
-    ._#{$g}-#{$i} {
-      @extend ._g;
-      width: $width * 1%;
-      // flex: 1 1 ($basis * 1em);
+$gs: 12,10;
+@each $g in $gs {
+  ._#{$g}   { @extend ._1; }
+  @for $i from 1 through $g {
+    @if( $i != $g ){
+      $width: calc(1 / $g * $i);
+      $basis: $width * $flex_base;
+      ._#{$g}-#{$i} {
+        @extend ._f;
+        // width: $width * 100%;
+        flex: 1 1 $basis;
+      }
     }
   }
 }
@@ -63,19 +57,17 @@ $g:10;
 // ._#{$g}-4 { @extend ._12-6; }
 // @for $i from 1 through $g {
 //   @if( $i != $g and $i != 4 and $i != 2 ){
-//     ._#{$g}-#{$i} { @extend ._g; width: calc(100% / $g * $i) }
+//     ._#{$g}-#{$i} { @extend ._f; width: calc(100% / $g * $i) }
 //   }
 // }
 
-$g:6;
-._#{$g}   { @extend ._1; }
-$f:2; @for $i from 1 through $g - 1 { ._#{$g}-#{$i} { @extend ._#{$g * $f}-#{$i * $f}; } }
+$gs: 6,5;
+@each $g in $gs {
+  ._#{$g}   { @extend ._1; }
+  $f:2; @for $i from 1 through $g - 1 { ._#{$g}-#{$i} { @extend ._#{$g * $f}-#{$i * $f}; } }
+}
 
-$g:5;
-._#{$g}   { @extend ._1; }
-$f:2; @for $i from 1 through $g - 1 { ._#{$g}-#{$i} { @extend ._#{$g * $f}-#{$i * $f}; } }
-
-$g:4;
+$g: 4;
 ._#{$g}   { @extend ._1; }
 ._#{$g}-1 { @extend ._12-3; }
 ._#{$g}-2 { @extend ._12-6; }
