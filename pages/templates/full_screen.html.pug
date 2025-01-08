@@ -19,7 +19,7 @@ block append style
     ._view_layout,
     ._fullscreen { height:100% }
 
-    ._fullscreen { margin-top: -3.7em }
+    ._fullscreen { margin-top: -3.7em; background-color: rgba(0,0,0,0.2) }
 
     ._header_layout {
       text-align: center;
@@ -37,8 +37,8 @@ block append style
   //- 
 
 block header
-  +header#_header._fullscreen._bg-1-2._tc-1-2
-    h1._h1.hero._tc-2-2 Full Screen Display of Awesomeness
+  +header#_header._fullscreen
+    h1._h1.hero Full Screen Display of Awesomeness
     p #{description}
 
 block main
