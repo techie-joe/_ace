@@ -1,5 +1,9 @@
 /*! Techie Joe's Base v0.1.0 | Copyright 2024 Techie Joe | https://github.com/techie-joe/base */
 
+$min_base: 5rem;
+$flex_base: 60rem;
+$f_base: 12;
+
 ._flex {
   display: flex;
   flex-direction: row;
@@ -21,37 +25,47 @@
   text-rendering:auto;
   line-height:0;
   margin:0 auto;
-  min-width:5em;
 }
 
-$mg: 12;
+._f { @extend ._g; flex: $f_base; min-width: $min_base; }
 
-._f { @extend ._g; flex: ($mg * 100) 1 0%; }
+._1 { @extend ._g; flex: $f_base 1 100%; min-width: $min_base; }
 
-._flex-1 { @extend ._g; flex: $mg }
-
-._1 { @extend ._f; flex: $mg 1 100% }
 
 // 1,3,5,7
 // 2,4,6,8
 // 10,12,14,16
 
-$flex_base: 60em;
+$min_width: 15rem;
 
 $gs: 12,10;
 @each $g in $gs {
-  ._#{$g}   { @extend ._1; }
-  @for $i from 1 through $g {
-    @if( $i != $g ){
+  @for $i from 1 through $g - 1 {
+    @if ( $g == 10 and $i == 5 ){ ._#{$g}-#{$i} { @extend ._12-6; } }
+    @else {
       $width: calc(1 / $g * $i);
-      $basis: $width * $flex_base;
+      // $basis: calc($width * $flex_base);
       ._#{$g}-#{$i} {
         @extend ._f;
         // width: $width * 100%;
-        flex: $i 1 $basis;
+        flex: $i 1 ($width * 100%);
+        @if( $width >= 0.25 ){ @extend ._g_max; }
       }
     }
   }
+}
+
+._g_max { min-width: 100% }
+
+@media screen and (min-width: 20em) {
+  ._g_min { min-width: $min_width }
+  $gs: 12,10;
+  @each $g in $gs {
+    @for $i from 1 through $g - 1 {
+      $width: calc(1 / $g * $i);
+      ._#{$g}-#{$i} { @if( $width >= 0.25 ){ @extend ._g_min; } }
+    }
+  }  
 }
 
 // $g:8;
@@ -66,23 +80,19 @@ $gs: 12,10;
 
 $gs: 6,5;
 @each $g in $gs {
-  ._#{$g}   { @extend ._1; }
   $f:2; @for $i from 1 through $g - 1 { ._#{$g}-#{$i} { @extend ._#{$g * $f}-#{$i * $f}; } }
 }
 
 $g: 4;
-._#{$g}   { @extend ._1; }
 ._#{$g}-1 { @extend ._12-3; }
 ._#{$g}-2 { @extend ._12-6; }
 ._#{$g}-3 { @extend ._12-9; }
 
 $g:3;
-._#{$g}   { @extend ._1; }
 ._#{$g}-1 { @extend ._12-4; }
 ._#{$g}-2 { @extend ._12-8; }
 
 $g:2;
-._#{$g}   { @extend ._1; }
 ._#{$g}-1 { @extend ._12-6; }
 
 // @media screen and (min-width: 20em){} //    ≥ 320px   ._g-ms-*   Mobile S
