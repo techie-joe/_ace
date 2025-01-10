@@ -1,9 +1,5 @@
 /*! Techie Joe's Base v0.1.0 | Copyright 2024 Techie Joe | https://github.com/techie-joe/base */
 
-$min_base: 5rem;
-$flex_base: 60rem;
-$f_base: 12;
-
 ._flex {
   display: flex;
   flex-direction: row;
@@ -27,6 +23,10 @@ $f_base: 12;
   margin:0 auto;
 }
 
+$min_base: 5rem;
+$flex_base: 60rem;
+$f_base: 12;
+
 ._f { @extend ._g; flex: $f_base; min-width: $min_base; }
 
 ._1 { @extend ._g; flex: $f_base 1 100%; min-width: $min_base; }
@@ -36,37 +36,34 @@ $f_base: 12;
 // 2,4,6,8
 // 10,12,14,16
 
-$min_width: 15rem;
-
 $gs: 12,10;
 @each $g in $gs {
   @for $i from 1 through $g - 1 {
     @if ( $g == 10 and $i == 5 ){ ._#{$g}-#{$i} { @extend ._12-6; } }
     @else {
-      $width: calc(1 / $g * $i);
-      // $basis: calc($width * $flex_base);
       ._#{$g}-#{$i} {
         @extend ._f;
-        // width: $width * 100%;
-        flex: $i 1 ($width * 100%);
-        @if( $width >= 0.25 ){ @extend ._g_max; }
+        // width: calc($i / $g * 100%);
+        flex: $i;
+        @if( $i > 1 ){ min-width: calc($min_base + $i / $g * $flex_base / 2); }
       }
     }
   }
 }
 
-._g_max { min-width: 100% }
+// $min_width: 15rem;
+// ._g_max { min-width: $min_width }
 
-@media screen and (min-width: 20em) {
-  ._g_min { min-width: $min_width }
-  $gs: 12,10;
-  @each $g in $gs {
-    @for $i from 1 through $g - 1 {
-      $width: calc(1 / $g * $i);
-      ._#{$g}-#{$i} { @if( $width >= 0.25 ){ @extend ._g_min; } }
-    }
-  }  
-}
+// @media screen and (min-width: 20em) {
+//   ._g_min { min-width: $min_width }
+//   $gs: 12,10;
+//   @each $g in $gs {
+//     @for $i from 1 through $g - 1 {
+//       $width: calc(1 / $g * $i);
+//       ._#{$g}-#{$i} { @if( $width >= 0.25 ){ @extend ._g_min; } }
+//     }
+//   }  
+// }
 
 // $g:8;
 // ._#{$g}   { @extend ._1; }
