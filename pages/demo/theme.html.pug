@@ -27,6 +27,8 @@ block header
 block main
   +main#_main: article
 
+    ._m
+
     ._flex
 
       ._f-3-1: ._mh._text-justify
@@ -56,10 +58,12 @@ block main
         ._radius._pad._bg-2-2._tc-2-2._mv
           h3._h7 Mauris vel magna
           p Et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros. Nullam vehicula arcu vitae ligula sollicitudin, sit amet viverra sapien consectetur.
+    
+    hr
 
     ._flex
 
-      ._fill(style="flex-basis:410px"): ._pad
+      ._fill(style="flex-basis:410px"): ._m
         style.
           .buttons ._btnlink { width: 5rem; margin: .2rem; text-align: center; }
         h3 Buttons
@@ -73,14 +77,14 @@ block main
             +a._btnlink Secondary
             +a._btnlink Ordinary
 
-      ._fill(style="flex-basis:450px"): ._pad._text-justify
+      ._fill(style="flex-basis:450px"): ._m._text-justify
         h3 Texts and Hyperlinks
         .section.links
           p Texts may appear in #[span._blue blue], #[span._purple purple], #[span._orange orange] or #[span._red red].
           p A #[+a("#xxxx")._no-visited normal hyperlink] and #[+a("") visited link] were colored standard.
           p Use #[code._code _no-color] to remove color from #[+a("")._no-color a link].
 
-    hr._no-margin
+    ._m
 
 block footer
   +footer#_footer._bg-1-2._tc-1-2
