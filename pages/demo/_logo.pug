@@ -1,20 +1,25 @@
 style.
-  #logo {
+  #_logo {
     display:block;
     width: 6.2rem;
-    margin: 0;
-    padding: 0.8rem;
+    margin: 0 auto;
+    padding:.8rem;
     cursor: pointer;
     transition: background-color 0.5s;
+    color:inherit !important;
+    text-decoration:none !important;
+    text-align:center !important;
   }
-          #logo:hover { background:#ccc; transition: none; }
-  ._dark #logo:hover { background:#333 }
-  #logos   { font-size: 32px; font-weight: bold; }
-  #tagline { font-size:11px; padding-bottom: 0.4rem; letter-spacing: 0.05em; margin-top: -0.6em; }
+          #_logo:hover { background:#ccc; transition: none; }
+  ._dark  #_logo:hover { background:#333 }
+  #_text_logo   { font-size: 2rem; font-weight: 600; }
+  #_text_logo,
+  #_text_logo ._part_1,
+  #_text_logo ._part_2 { line-height:1; }
+  #_tagline { font-size:.7rem; letter-spacing: 0.05em; }
 //-
   #logo ._color { color: ##{cbg} }
 
-+a(homeUrl)._text-center._numb._no-color._no-u#logo
-    #logos #[span._color LO]#[span._color-1 GO]
-    +_
-    #tagline._uppercase._b Your tagline
++a(homeUrl)._numb#_logo
+    #_text_logo #[span._part_1 LO]#[span._part_2 GO]
+    #_tagline._uppercase._b Your tagline

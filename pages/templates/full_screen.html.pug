@@ -15,25 +15,31 @@ block append vars
 
 block append style
   style.
+    ._nav_layout,
     ._header_layout { max-width:none; padding:0; }
-    ._view_layout, #_header, ._header_layout, ._fullscreen { height:100% }
+
+    #_header { height:0 }
+    ._fullscreen { margin-top:0 }
+
+    #_header { position:relative; z-index:1 }
+
+    #_header #_logo { margin:0; position:absolute; }
+    ._nav_layout { padding-left: 8rem }
+
+            #_nav { background-color: rgba(100, 100, 100, 0.2); }
+    ._dark  #_nav { background-color: rgba(0,0,0,0.2); }
+
+    ._nav_layout { overflow: hidden; height: 1.5em; }
+
+    ._view_layout, ._fullscreen { height:100% }
     ._fullscreen {
       text-align: center;
       display: flex;
       flex-direction: column;
       background-color: rgba(0,0,0,0.2);
-      margin-top: -3.7em;
     }
 
-    #logo { position:absolute;z-index:2 }
-
-    #_nav { position:relative; z-index:1; }
-    #_nav { background-color: rgba(100, 100, 100, 0.2); }
-    ._dark #_nav { background-color: rgba(0,0,0,0.2); }
-
-    ._nav_layout { overflow: hidden; height: 1.5em; }
-
-    ._fullscreen .hero { font-size:1.6em; margin:31vh auto; width:10em; padding-top: 10vh; }
+    ._fullscreen .hero { font-size:1.6em; margin:31vh auto; width:10em; padding-top: 10vh }
     ._fullscreen .hero2 { margin:2em 1em; max-width:640px; }
 
     @media only screen and (min-width: 540px) {
@@ -49,9 +55,9 @@ block header
   +header#_header
     include _logo
     include _nav
-    ._fullscreen
-      h1._h1.hero Full Screen Display of Awesomeness
-      p._m #{description}
+  article._fullscreen
+    h1._h1.hero Full Screen Display of Awesomeness
+    p._m #{description}
 
 block main
   +main#_main: article._mv
