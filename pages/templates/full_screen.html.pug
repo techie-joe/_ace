@@ -18,18 +18,21 @@ block append style
     ._nav_layout,
     ._header_layout { max-width:none; padding:0; }
 
-    #_header { height:0 }
-    ._fullscreen { margin-top:0 }
+    #_header { height:7rem }
+    ._fullscreen { margin-top:-7rem }
 
     #_header { position:relative; z-index:1 }
 
     #_header #_logo { margin:0; position:absolute; }
     ._nav_layout { padding-left: 8rem }
 
-            #_nav { background-color: rgba(100, 100, 100, 0.2); }
-    ._dark  #_nav { background-color: rgba(0,0,0,0.2); }
+           #_header a#_logo { color: #444 }
+    ._dark #_header a#_logo { color: #888 }
 
-    ._nav_layout { overflow: hidden; height: 1.5em; }
+           #_nav { background-color: rgba(100, 100, 100, 0.2); }
+    ._dark #_nav { background-color: rgba(0,0,0,0.2); }
+
+    ._nav_layout { overflow: hidden; height: 1.6em; }
 
     ._view_layout, ._fullscreen { height:100% }
     ._fullscreen {

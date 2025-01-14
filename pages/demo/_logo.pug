@@ -6,20 +6,21 @@ style.
     padding:.8rem;
     cursor: pointer;
     transition: background-color 0.5s;
-    color:inherit !important;
     text-decoration:none !important;
     text-align:center !important;
   }
+  a#_logo { color:inherit }
+
           #_logo:hover { background:#ccc; transition: none; }
   ._dark  #_logo:hover { background:#333 }
   #_text_logo   { font-size: 2rem; font-weight: 600; }
   #_text_logo,
   #_text_logo ._part_1,
   #_text_logo ._part_2 { line-height:1; }
-  #_tagline { font-size:.7rem; letter-spacing: 0.05em; }
 //-
+  #_tagline { font-size:.7rem; letter-spacing: 0.05em; }
   #logo ._color { color: ##{cbg} }
 
 +a(homeUrl)._numb#_logo
     #_text_logo #[span._part_1 LO]#[span._part_2 GO]
-    #_tagline._uppercase._b Your tagline
+    //- #_tagline._uppercase._b Your tagline
