@@ -1,7 +1,7 @@
 /*! Techie Joe's Base v0.1.0 | Copyright 2024 Techie Joe | https://github.com/techie-joe/base */
 
-$min_base: 4rem;
-$flex_base: 60rem;
+$f_min: 4rem;
+$f_max: calc(60rem / 4);
 $f_base: 12;
 
 ._flex {
@@ -10,7 +10,7 @@ $f_base: 12;
   flex-wrap: wrap;
   align-content: flex-start;
   margin: 0 auto;
-  min-width: $min_base;
+  min-width: $f_min;
 }
 
 ._space-evenly { justify-content: space-evenly }
@@ -18,7 +18,7 @@ $f_base: 12;
 ._gap   { gap:1rem }
 ._gap-2 { gap:2rem }
 
-._g {
+._f {
   display: inline-block;
   vertical-align: top;
   letter-spacing:normal;
@@ -28,82 +28,82 @@ $f_base: 12;
   margin:0 auto;
 }
 
-._f { @extend ._g; flex: $f_base; min-width: $min_base; }
+._fill { @extend ._f; flex: $f_base; min-width: $f_min; }
 
-._1 { @extend ._g; flex: $f_base 1 100%; min-width: $min_base; }
+._f-1 { @extend ._f; flex: $f_base 1 100%; min-width: $f_min; }
 
 
 // 1,3,5,7
 // 2,4,6,8
 // 10,12,14,16
 
-._g_max { min-width: calc($flex_base / 4) }
+._f_max { min-width: $f_max }
 
 $gs: 12,10;
 @each $g in $gs {
   @for $i from 1 through $g - 1 {
     $width: calc($i / $g);
-    @if ( $g == 10 and $i == 5 ){ ._#{$g}-#{$i} { @extend ._12-6; } }
+    @if ( $g == 10 and $i == 5 ){ ._f-#{$g}-#{$i} { @extend ._f-12-6; } }
     @else {
-      ._#{$g}-#{$i} {
-        @extend ._f;
+      ._f-#{$g}-#{$i} {
+        @extend ._fill;
         flex: $i;
-        @if( $width >= 0.25 ){ @extend ._g_max; }
+        @if( $width >= 0.25 ){ @extend ._f_max; }
       }
     }
   }
 }
 
 @media screen and (max-width: 20em) {
-  ._g_min { min-width: 100% }
+  ._f_min { min-width: 100% }
   $gs: 12,10;
   @each $g in $gs {
     @for $i from 1 through $g - 1 {
       $width: calc($i / $g);
-      @if( $width >= 0.25 ){ ._#{$g}-#{$i} { @extend ._g_min; } }
+      @if( $width >= 0.25 ){ ._f-#{$g}-#{$i} { @extend ._f_min; } }
     }
   }
 }
 
 // $g:8;
-// ._#{$g}   { @extend ._1; }
-// ._#{$g}-2 { @extend ._12-3; }
-// ._#{$g}-4 { @extend ._12-6; }
+// ._f-#{$g}   { @extend ._f-1; }
+// ._f-#{$g}-2 { @extend ._f-12-3; }
+// ._f-#{$g}-4 { @extend ._f-12-6; }
 // @for $i from 1 through $g {
 //   @if( $i != $g and $i != 4 and $i != 2 ){
-//     ._#{$g}-#{$i} { @extend ._f; width: calc(100% / $g * $i) }
+//     ._f-#{$g}-#{$i} { @extend ._fill; width: calc(100% / $g * $i) }
 //   }
 // }
 
 $gs: 6,5;
 @each $g in $gs {
-  $f:2; @for $i from 1 through $g - 1 { ._#{$g}-#{$i} { @extend ._#{$g * $f}-#{$i * $f}; } }
+  $f:2; @for $i from 1 through $g - 1 { ._f-#{$g}-#{$i} { @extend ._f-#{$g * $f}-#{$i * $f}; } }
 }
 
 $g: 4;
-._#{$g}-1 { @extend ._12-3; }
-._#{$g}-2 { @extend ._12-6; }
-._#{$g}-3 { @extend ._12-9; }
+._f-#{$g}-1 { @extend ._f-12-3; }
+._f-#{$g}-2 { @extend ._f-12-6; }
+._f-#{$g}-3 { @extend ._f-12-9; }
 
 $g:3;
-._#{$g}-1 { @extend ._12-4; }
-._#{$g}-2 { @extend ._12-8; }
+._f-#{$g}-1 { @extend ._f-12-4; }
+._f-#{$g}-2 { @extend ._f-12-8; }
 
 $g:2;
-._#{$g}-1 { @extend ._12-6; }
+._f-#{$g}-1 { @extend ._f-12-6; }
 
-// @media screen and (min-width: 20em){} //    ≥ 320px   ._g-ms-*   Mobile S
-// @media screen and (min-width: 23.4em){} //  ≥ 375px   ._g-mm-*   Mobile M
-// @media screen and (min-width: 26.6em){} //  ≥ 425px   ._g-ml-*   Mobile L
-// @media screen and (min-width: 35.5em){} //  ≥ 568px   ._g-s-*
-// @media screen and (min-width: 48em){} //    ≥ 768px   ._g-m-*    Laptop S
-// @media screen and (min-width: 60em){} //    ≥ 960px   ._g-r-*    960gs
-// @media screen and (min-width: 64em){} //    ≥ 1024px  ._g-l-*    Laptop M
-// @media screen and (min-width: 80em){} //    ≥ 1280px  ._g-2l-*
-// @media screen and (min-width: 90em){} //    ≥ 1440px  ._g-3l-*   Laptop L
-// @media screen and (min-width: 120em){} //   ≥ 1920px  ._g-4l-*
-// @media screen and (min-width: 160em){} //   ≥ 2560px  ._g-4k-*   4K
-// @media screen and (min-width: 240em){} //   ≥ 3840px  ._g-5k-*
+// @media screen and (min-width: 20em){} //    ≥ 320px   ._f-ms-*   Mobile S
+// @media screen and (min-width: 23.4em){} //  ≥ 375px   ._f-mm-*   Mobile M
+// @media screen and (min-width: 26.6em){} //  ≥ 425px   ._f-ml-*   Mobile L
+// @media screen and (min-width: 35.5em){} //  ≥ 568px   ._f-s-*
+// @media screen and (min-width: 48em){} //    ≥ 768px   ._f-m-*    Laptop S
+// @media screen and (min-width: 60em){} //    ≥ 960px   ._f-r-*    960gs
+// @media screen and (min-width: 64em){} //    ≥ 1024px  ._f-l-*    Laptop M
+// @media screen and (min-width: 80em){} //    ≥ 1280px  ._f-2l-*
+// @media screen and (min-width: 90em){} //    ≥ 1440px  ._f-3l-*   Laptop L
+// @media screen and (min-width: 120em){} //   ≥ 1920px  ._f-4l-*
+// @media screen and (min-width: 160em){} //   ≥ 2560px  ._f-4k-*   4K
+// @media screen and (min-width: 240em){} //   ≥ 3840px  ._f-5k-*
 
 // @media screen and (min-width: 20em)   {}
 // @media screen and (min-width: 23.4em) {}

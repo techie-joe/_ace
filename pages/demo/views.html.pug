@@ -16,6 +16,7 @@ block append vars
 block append style
   style.
     #nav table td { line-height:0 }
+    ._view { overflow: auto }
     ._view h1 { text-align: center }
   //- 
     ._view { box-shadow: 0 0 1px 1px red inset; }
@@ -80,8 +81,8 @@ block view
   +view(id=`view-${v}`)
 
     ._flex
-      ._g._pad: +a(homeUrl)._btnlink._small Home
-      ._f: include _nav
+      ._f._pad: +a(homeUrl)._btnlink._small Home
+      ._fill: include _nav
 
     +main#_main: article
       h1._h7 View ##{v}

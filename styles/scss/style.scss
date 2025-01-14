@@ -56,8 +56,10 @@ $select-tc : #000;
 ::selection         { @include selection; }
 
 * { line-height: 1.5; margin: 0; }
-._line-spacing-1 { line-height: 1 }
-._line-spacing-2 { line-height: 2 }
+._line-height-1 { line-height: 1 }
+._line-height-2 { line-height: 2 }
+._line-height-0 { line-height: 0 }
+._div { @extend ._line-height-0; }
 
 ._h7,._text-1 { font-size: 1rem; line-height: 1.5 }
 ._h6,._text-2 { font-size: 1.083rem; line-height: 1.5 }
@@ -85,7 +87,7 @@ $select-tc : #000;
 
 ._p { margin-top: 1rem; margin-bottom: 1rem; }
 h1,h2,h3,h4,h5,h6,._h7,
-ul,ol,
+ul,ol,li,
 p,pre { @extend ._p; }
 
 ._pre, pre {
@@ -121,7 +123,8 @@ td { line-height: 0 }
   width  : 100%;
   height : 100%;
   margin : 0;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: scroll;
 }
 
 ._nav_layout,

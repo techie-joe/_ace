@@ -30,9 +30,78 @@ block append style
   //- 
     ._fit { margin:2px; outline:1px solid #888; border-radius: .25rem; }
 
-
 block main
   +main#_main: article
+
+    section.g.demo.gridlines
+
+      mixin rag(x)
+        - var n = 0
+        while n < x
+          if(n%2==0)
+            .io2 H#[sup._sup H]g#[sub._sub #{n+1}]
+          else
+            .io1 &nbsp;
+          - n++
+
+      .u._text-1: +rag(13)
+      .u._text-2: +rag(12)
+      .u._text-3: +rag(11)
+      .u._text-4: +rag(10)
+      .u._text-5: +rag(9)
+      .u._text-6: +rag(8)
+      .u._text-7: +rag(7)
+
+      .u._hero:   +rag(9)
+      .u._hero-1: +rag(8)
+      .u._hero-2: +rag(7)
+
+
+    section.gridlinesx._text-center
+      hr
+
+      - var hero    = 'Text Sample';
+      - var heading = 'Text Sample';
+      p._hero-2  #{hero} 3
+      p._hero-1  #{hero} 2
+      p._hero    #{hero} 1
+      h1._h1  #{heading} 1
+      h2._h2  #{heading} 2
+      h3._h3  #{heading} 3
+      h4._h4  #{heading} 4
+      h5._h5  #{heading} 5
+      h6._h6  #{heading} 6
+      div._h7 #{heading} 7
+      p Normal Text
+      p
+        span Normal
+        +_
+        span._small Small
+        +_
+        span._smaller Smaller
+      p Sizing classes from #[code._code _h1] to #[code._code _h7] separates visual appearance from semantic, giving you better control over both: content and design.
+
+    section
+      hr
+
+      ._flex
+        .u-1-3: ._pr
+          h2._sans Sans Serif
+          p._sans._text-justify.
+            Sans serif fonts, such as Arial and Helvetica, are known for their clean and modern look, lacking the small decorative strokes at the ends of letters. They are widely used for digital media due to their readability on screens.
+
+        .u-1-3: ._ph
+          h2._serif Serif Font
+          p._serif._text-justify.
+            Serif fonts, like Times New Roman and Garamond, feature small lines or strokes attached to the ends of letters, giving a more traditional and formal appearance. These fonts are often used in print media for their elegant, stylish and classic look.
+
+        .u-1-3: ._pl
+          h2._mono Monospace
+          p._mono._text-justify.
+            Monospace fonts, such as Courier New and Consolas, have characters that occupy the same horizontal space. This uniform spacing makes them ideal for coding, as they enhance readability.
+      //- g
+      
+      hr
 
     section._mb-2
       mixin ichars
@@ -56,7 +125,8 @@ block main
         +fit|☛
         +fit|×
 
-    hr
+      hr
+    
     //- https://fontawesome.com/v6/search?q=
     section
       h2._sans Font Awesome Icons
@@ -139,69 +209,3 @@ block main
         .u._hero-1: +fag(8)
         .u._hero-2: +fag(7)
 
-    hr
-    section
-
-      ._flex
-        .u-1-3: ._pr
-          h2._sans Sans Serif
-          p._sans._text-justify.
-            Sans serif fonts, such as Arial and Helvetica, are known for their clean and modern look, lacking the small decorative strokes at the ends of letters. They are widely used for digital media due to their readability on screens.
-
-        .u-1-3: ._ph
-          h2._serif Serif Font
-          p._serif._text-justify.
-            Serif fonts, like Times New Roman and Garamond, feature small lines or strokes attached to the ends of letters, giving a more traditional and formal appearance. These fonts are often used in print media for their elegant, stylish and classic look.
-
-        .u-1-3: ._pl
-          h2._mono Monospace
-          p._mono._text-justify.
-            Monospace fonts, such as Courier New and Consolas, have characters that occupy the same horizontal space. This uniform spacing makes them ideal for coding, as they enhance readability.
-      //- g
-
-    hr
-    section.g.demo.gridlines
-
-      mixin rag(x)
-        - var n = 0
-        while n < x
-          if(n%2==0)
-            .io2 H#[sup._sup H]g#[sub._sub #{n+1}]
-          else
-            .io1 &nbsp;
-          - n++
-
-      .u._text-1: +rag(13)
-      .u._text-2: +rag(12)
-      .u._text-3: +rag(11)
-      .u._text-4: +rag(10)
-      .u._text-5: +rag(9)
-      .u._text-6: +rag(8)
-      .u._text-7: +rag(7)
-
-      .u._hero:   +rag(9)
-      .u._hero-1: +rag(8)
-      .u._hero-2: +rag(7)
-
-    hr
-    section.gridlinesx._text-center
-      - var hero    = 'Text Sample';
-      - var heading = 'Text Sample';
-      p._hero-2  #{hero} 3
-      p._hero-1  #{hero} 2
-      p._hero    #{hero} 1
-      h1._h1  #{heading} 1
-      h2._h2  #{heading} 2
-      h3._h3  #{heading} 3
-      h4._h4  #{heading} 4
-      h5._h5  #{heading} 5
-      h6._h6  #{heading} 6
-      div._h7 #{heading} 7
-      p Normal Text
-      p
-        span Normal
-        +_
-        span._small Small
-        +_
-        span._smaller Smaller
-      p Sizing classes from #[code._code _h1] to #[code._code _h7] separates visual appearance from semantic, giving you better control over both: content and design.

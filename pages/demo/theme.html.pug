@@ -17,28 +17,11 @@ block append vars
 
 block append style
   style.
-    #logo {
-      width: 6.2rem;
-      margin: 0;
-      padding: 0.8rem;
-      cursor: pointer;
-      transition: background-color 0.5s;
-    }
-           #logo:hover { background:#ccc; transition: none; }
-    ._dark #logo:hover { background:#333 }
-    #logos   { font-size: 32px; font-weight: bold; }
-    #tagline { font-size:11px; padding-bottom: 0.4rem; letter-spacing: 0.05em; margin-top: -0.6em; }
-    #logo ._color { color: ##{cbg} }
-    
   //- 
 
 block header
   +header#_header
-    ._flex._bg-1
-      h1#logo._text-center._numb
-        #logos #[span._color LO]#[span._color-1 GO]
-        | 
-        #tagline._uppercase._b Your tagline
+    ._flex: include _logo
     hr._no-margin
 
 block main
@@ -46,7 +29,7 @@ block main
 
     ._flex
 
-      ._3-1: ._mh._text-justify
+      ._f-3-1: ._mh._text-justify
 
         h3._h6._color Lorem ipsum dolor
         p Sit amet, consectetur adipiscing elit. Praesent vehicula, justo vitae bibendum vestibulum, lacus elit luctus dolor, a aliquam massa elit at purus. Mauris vel magna et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros. Nullam vehicula arcu vitae ligula sollicitudin, sit amet viverra sapien consectetur.
@@ -54,7 +37,7 @@ block main
         h3._h6._color-1._mt-2 Curabitur auctor
         p Nunc nec sem pellentesque, ut facilisis justo dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae ac turpis egestas. Mauris vel magna et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros.
         
-      ._3-1: ._mh._text-justify
+      ._f-3-1: ._mh._text-justify
 
         h3._h6._color-1 Curabitur auctor
         p Nunc nec sem pellentesque, ut facilisis justo dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
@@ -64,7 +47,7 @@ block main
 
         p Praesent vehicula, justo vitae bibendum vestibulum, lacus elit luctus dolor, a aliquam massa elit at purus.
 
-      ._3-1: ._mh._text-justify
+      ._f-3-1: ._mh._text-justify
 
         ._radius._pad._bg-2-2._tc-2-2._mv
           h3._h7 Mauris vel magna
@@ -76,7 +59,7 @@ block main
 
     ._flex
 
-      ._f(style="flex-basis:410px"): ._pad
+      ._fill(style="flex-basis:410px"): ._pad
         style.
           .buttons ._btnlink { width: 5rem; margin: .2rem; text-align: center; }
         h3 Buttons
@@ -90,7 +73,7 @@ block main
             +a._btnlink Secondary
             +a._btnlink Ordinary
 
-      ._f(style="flex-basis:450px"): ._pad._text-justify
+      ._fill(style="flex-basis:450px"): ._pad._text-justify
         h3 Texts and Hyperlinks
         .section.links
           p Texts may appear in #[span._blue blue], #[span._purple purple], #[span._orange orange] or #[span._red red].
@@ -104,7 +87,7 @@ block footer
 
     ._flex
 
-      ._12-4: ._pad
+      ._f-12-4: ._pad
         h6._h7._no-margin Company Name
         div.
           Street Address,#[br]
@@ -115,14 +98,14 @@ block footer
           +PHONE 123 4567#[br]
           email@domain.com#[br]
 
-      ._12-3: ._pad
+      ._f-12-3: ._pad
         h6._h7._no-margin Primary Segment
         div.
           #[+a('#')._no-visited._no-u Put some links]#[br]
           #[+a('#')._no-visited._no-u To your posts]#[br]
           #[+a('#')._no-visited._no-u And pages]#[br]
 
-      ._12-3: ._pad
+      ._f-12-3: ._pad
         h6._h7._no-margin Secondary Segment
         div.
           #[+a('#')._no-visited._no-u Put some links]#[br]
