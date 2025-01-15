@@ -16,7 +16,11 @@
 ._font-2 { @extend ._serif; }
 ._font-3 { @extend ._mono; }
 
-._b { font-weight: bold }
+._b   { font-weight: bold }
+._b-1 { font-weight: 100 }
+._b-6 { font-weight: 600 }
+._b-9 { font-weight: 900 }
+
 ._u { text-decoration: underline }
 
 ._numb { @include mix.numb; }
@@ -267,6 +271,8 @@ a._btnlink {
 
 /* ------------------------------------------ main helper */
 
+._inline { display: inline }
+
 ._indent { text-indent: 2em }
 
 ._uppercase { text-transform: uppercase }
@@ -336,11 +342,15 @@ a._btnlink {
 
 ._no-margin { margin:0 !important }
 
+._no-pad { padding:0 !important }
+
 ._no-color { color: inherit !important }
 
 a._no-u,
 u._no-u { text-decoration: none !important }
 
 ._no-b { font-weight: normal !important }
+
+._no-bullet { list-style-type: none !important }
 
 ._hide { display: none !important; }

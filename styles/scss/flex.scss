@@ -15,8 +15,9 @@ $f_base: 12;
 
 ._space-evenly { justify-content: space-evenly }
 
-._gap   { gap:1rem }
-._gap-2 { gap:2rem }
+._gap     { gap:1em }
+._gap-1_5 { gap:1.5em }
+._gap-2   { gap:2em }
 
 ._f {
   display: inline-block;

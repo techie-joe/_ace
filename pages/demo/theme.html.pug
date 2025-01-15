@@ -28,47 +28,71 @@ block header
 block main
   +main#_main: article
 
-    ._m
+    mixin block_1(title)
+      div&attributes(attributes)._text-justify
+        h3._inline._h7 !{title}
+        p._inline: block
 
-    ._flex
+    mixin block_2(title)
+      h3._h6._color !{title}
+      p._text-justify: block
 
-      ._f-3-1: ._mh._text-justify
+    mixin block_3(title)
+      h3._h6._color-1 !{title}
+      p._text-justify: block
 
-        h3._h6._color Lorem ipsum dolor
-        p Sit amet, consectetur adipiscing elit. Praesent vehicula, justo vitae bibendum vestibulum, lacus elit luctus dolor, a aliquam massa elit at purus. Mauris vel magna et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros. Nullam vehicula arcu vitae ligula sollicitudin, sit amet viverra sapien consectetur.
+    mixin block_4(title)
+      ._radius._pad._bg-2-2._tc-2-2._mv
+        h3._h6 !{title}
+        p._text-justify: block
 
-        h3._h6._color-1._mt-2 Curabitur auctor
-        p Nunc nec sem pellentesque, ut facilisis justo dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae ac turpis egestas. Mauris vel magna et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros.
+    section._m
+
+      +block_1('Building a Good Theme for a Website')._p| : Creating a cohesive and visually appealing theme for your website is crucial for attracting and retaining visitors. A well-designed theme enhances user experience, reflects your brand's identity, and helps convey your message effectively. Here is a comprehensive guide on how to build a good theme for your website.
+
+      +block_1('Define Your Purpose and Audience')._p| : Before diving into design, clarify the purpose of your website. Is it a blog, an e-commerce site, a portfolio, or a corporate page? Understanding your target audience's preferences and needs will guide your design choices and help you create a theme that resonates with them.
+
+    section._m: ._flex._gap-2
+
+      ._f-3-1
+
+        +block_2('Choose the Right Color Palette')| Colors evoke emotions and set the tone for your website. Select a color palette that aligns with your brand's identity and appeals to your audience. Use tools like Adobe Color or Coolors to experiment with different color schemes. Ensure your chosen colors provide enough contrast for readability and accessibility.
         
-      ._f-3-1: ._mh._text-justify
+        +block_3('Typography Matters')| Fonts play a significant role in your website's readability and aesthetic appeal. Choose fonts that complement your brand’s personality and maintain consistency throughout the site. Use a combination of a primary font for headings and a secondary font for body text. Tools like Google Fonts offer a wide range of web-safe fonts to choose from.
 
-        h3._h6._color-1 Curabitur auctor
-        p Nunc nec sem pellentesque, ut facilisis justo dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+      ._f-3-1
         
-        h3._h6._color._mt-2 Proin scelerisque
-        p Lacus at sollicitudin sagittis, nunc eros cursus nulla, a venenatis nulla sapien non velit. Integer condimentum, odio nec tristique malesuada, metus ligula laoreet lorem, ut malesuada lectus sapien in lacus morbi tristique senectus et netus et fames.
+        +block_2('Create a Layout Grid')| A layout grid helps organize your content and ensures a balanced and structured design. It provides a framework for placing elements like text, images, and buttons in a visually appealing way. Tools like Sketch or Figma can help you create and implement a layout grid.
 
-        p Praesent vehicula, justo vitae bibendum vestibulum, lacus elit luctus dolor, a aliquam massa elit at purus.
+        +block_3('Focus on Navigation')| User-friendly navigation is essential for a positive user experience. Design a clear and intuitive navigation menu that allows visitors to find information easily. Use descriptive labels and consider implementing a sticky menu that remains visible as users scroll down the page.
 
-      ._f-3-1: ._mh._text-justify
+      ._f-3-1
 
-        ._radius._pad._bg-2-2._tc-2-2._mv
-          h3._h7 Mauris vel magna
-          p Et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros. Nullam vehicula arcu vitae ligula sollicitudin, sit amet viverra sapien consectetur.
+        +block_4('Optimize for Responsiveness')| Your website should look and function well on all devices, including desktops, tablets, and smartphones. Use responsive design techniques to ensure your theme adapts seamlessly to different screen sizes. Test your design on multiple devices to identify and fix any issues.
 
-        ._radius._pad._bg-2-2._tc-2-2._mv
-          h3._h7 Mauris vel magna
-          p Et felis pharetra pretium. Donec bibendum scelerisque metus, in tincidunt eros. Nullam vehicula arcu vitae ligula sollicitudin, sit amet viverra sapien consectetur.
-    
+        +block_4('Use High-Quality Images and Graphics')| Visual elements like images, icons, and graphics add depth and interest to your theme. Invest in high-quality visuals that align with your brand’s style. Use tools like Unsplash or Pexels for free stock photos, and tools like Canva for creating custom graphics.
+
+    section._m
+
+      +block_1('Consistent Branding')._p| : Maintain consistency in your branding elements, such as logos, colors, fonts, and styles. Consistent branding helps build brand recognition and trust. Create a style guide that outlines your brand’s visual identity and design principles.
+
+      +block_1('Ensure Fast Loading Times')._p| : A slow website can frustrate visitors and lead to high bounce rates. Optimize your theme for speed by minimizing the use of large images, leveraging browser caching, and using a content delivery network (CDN). Tools like GTmetrix or Google PageSpeed Insights can help you identify and fix performance issues.
+
+      +block_1('Incorporate Interactive Elements')._p| : Interactive elements like animations, hover effects, and micro-interactions enhance user engagement. Use them sparingly to draw attention to important elements and improve the overall user experience. Ensure that these interactions are smooth and don't hinder usability.
+
+      +block_1('Test and Iterate')._p| : Once your theme is designed, test it thoroughly to identify any issues or areas for improvement. Gather feedback from users and make necessary adjustments. Regularly update your theme to keep it fresh and aligned with current design trends.
+
+      +block_1('Conclusion')._p| : Building a good theme for your website involves a blend of creativity, strategic planning, and technical know-how. By focusing on elements like color, typography, layout, navigation, and responsiveness, you can create a theme that not only looks great but also provides an exceptional user experience. Remember to stay consistent with your branding, optimize for performance, and continuously test and improve your design. With these steps, you'll be well on your way to creating a visually appealing and highly functional website theme. Happy designing!
+
     hr
 
-    ._flex
+    section._m: ._flex._gap
 
-      ._fill(style="flex-basis:410px"): ._m
+      ._fill(style="min-width:370px")
         style.
           .buttons ._btnlink { width: 5rem; margin: .2rem; text-align: center; }
         h3 Buttons
-        .section.buttons
+        .buttons
           div
             +a._btnlink Primary
             +a._btnlink Secondary
@@ -78,14 +102,15 @@ block main
             +a._btnlink Secondary
             +a._btnlink Ordinary
 
-      ._fill(style="flex-basis:450px"): ._m._text-justify
+      ._f-12-11
         h3 Texts and Hyperlinks
-        .section.links
-          p Texts may appear in #[span._blue blue], #[span._purple purple], #[span._orange orange] or #[span._red red].
-          p A #[+a("#xxxx")._no-visited normal hyperlink] and #[+a("") visited link] were colored standard.
-          p Use #[code._code _no-color] to remove color from #[+a("")._no-color a link].
+        .links
+          p._text-justify
+            | Texts may appear in #[span._blue blue], #[span._purple purple], #[span._orange orange] or #[span._red red].
+            | Standard color were used on #[+a("#xxxx")._no-visited._no-wrap normal hyperlinks] and #[+a("")._no-wrap visited links].
+            | You can remove color from a hyperlink using the #[code._code._no-wrap _no-color] class, to make a #[+a("")._no-color._no-wrap plain hyperlinks].
 
-    ._m
+    ._m._pad
 
 block footer
   +footer#_footer._bg-1-2._tc-1-2
@@ -93,28 +118,28 @@ block footer
     ._flex
 
       ._f-12-4: ._pad
-        h6._h7._no-margin Company Name
-        div.
-          Street Address,#[br]
-          City, State, ZIP,#[br]
-          Country, CODE#[br]
-          #[br]
-        div._small.
-          +PHONE 123 4567#[br]
-          email@domain.com#[br]
+        h6._h7._no-margin Official Address
+        //-
+          #[b Company Name]#[br]
+        div._mb.
+          Suite, Street,#[br]
+          ZIP County, State,#[br]
+          Country, AB#[br]
+        div #[b CALL] #[b._b-9 +012 345 6789]
+        div._small official-email@your-domain.com
 
       ._f-12-3: ._pad
         h6._h7._no-margin Primary Segment
-        div.
-          #[+a('#')._no-visited._no-u Put some links]#[br]
-          #[+a('#')._no-visited._no-u To your posts]#[br]
-          #[+a('#')._no-visited._no-u And pages]#[br]
+        ul._no-bullet._no-pad
+          +la('#')._no-visited._no-u Put some links
+          +la('#')._no-visited._no-u To some posts
+          +la('#')._no-visited._no-u Or some pages
 
       ._f-12-3: ._pad
         h6._h7._no-margin Secondary Segment
-        div.
-          #[+a('#')._no-visited._no-u Put some links]#[br]
-          #[+a('#')._no-visited._no-u To your posts]#[br]
-          #[+a('#')._no-visited._no-u And pages]#[br]
+        ul._no-bullet._no-pad
+          +la('#')._no-visited._no-u Put some links
+          +la('#')._no-visited._no-u To some posts
+          +la('#')._no-visited._no-u Or some pages
 
-    ._pad._small !{copyright}
+    ._pad !{copyright}

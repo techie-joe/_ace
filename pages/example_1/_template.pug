@@ -1,0 +1,41 @@
+extends ../../_templates/html
+
+block prepend vars
+  include _vars
+
+block append style
+  +css(homeUrl+'assets/css/flex.css?v='+version)
+  +css(homeUrl+'assets/css/demo.css?v='+version)
+  //- style.
+  //- 
+
+block view
+  +view
+
+    block nav
+      //- +nav#_nav: ul: +la
+      //- include _nav
+      include _nav
+
+    block header
+      //- +header#_header
+      +header#_header
+        h1 !{header}
+        p !{description}
+        hr
+
+    block pre
+      //- +pre#_pre
+
+    block main
+      //- +main#_main: article| main article
+      +main#_main: article| main article
+
+    block footer
+      //- +footer#_footer
+      +footer#_footer
+        hr
+        p._text-centerx !{copyright}
+    
+    block aside
+      //- +aside#_aside
