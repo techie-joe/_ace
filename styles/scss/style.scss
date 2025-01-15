@@ -8,9 +8,9 @@
 
 /* ----------------------------------------------- helper */
 
-._sans   { font-family: "Arial", system-ui, sans-serif; }
-._serif  { font-family: "Times New Roman", "Georgia", serif; }
-._mono   { font-family: "Consolas", "Courier New", Courier, monospace; }
+._sans    { font-family: sans-serif; }
+._serif   { font-family: serif; }
+._mono    { font-family: monospace; }
 
 ._font-1 { @extend ._sans; }
 ._font-2 { @extend ._serif; }
@@ -96,8 +96,7 @@ p,pre { @extend ._p; }
 
 ._pre, pre {
   @extend ._mono;
-  font-size: 0.8em;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 li { margin: .3em 0; }
