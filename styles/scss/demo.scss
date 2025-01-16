@@ -7,6 +7,14 @@
 ._footer_layout,
 ._main_layout { max-width:60rem }
 
+#_navbar { position:relative; z-index:1 }
+
+#_navbar #_logo { position:absolute;top:0;left:0;z-index:1 }
+       #_navbar a#_logo { color: #444 }
+._dark #_navbar a#_logo { color: #888 }
+
+._nav_layout { padding-left:8rem }
+
 #_nav { padding: 1em; }
 #_nav a { line-height: 1.7 }
 
@@ -19,9 +27,7 @@
     font-weight: bold;
   }
 
-  ._btnlink {
-    padding: .25em .75em;
-  }
+  ._btnlink { padding: .25em .75em; }
 
 }
 
@@ -49,19 +55,13 @@
 /* ---------------------------------- default light theme */
 
 #_nav,
-._editorbar p {
-  background: $bg-2-8;
-  color: $tc-2-8;
-}
+._editorbar p { background: $bg-2-8; color: $tc-2-8; }
 
 /* ------------------------------------------- dark theme */
 
 ._dark {
 
   #_nav,
-  ._editorbar p {
-    background: $bg-1-2;
-    color: $tc-1-2;
-  }
+  ._editorbar p { background: $bg-1-2; color: $tc-1-2; }
 
 }
