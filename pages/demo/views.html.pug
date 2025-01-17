@@ -6,7 +6,7 @@ block append vars
     header      = `Views`
     url         = url+`views.html`
     title       = `${header} | ${name}`
-    description = `${header} controls how a page behave.`
+    description = `${header} controls how user perceive a page.`
 
     og_title       = title
     og_description = description
@@ -14,57 +14,33 @@ block append vars
   //- 
 
 block append style
-  style.
-    #nav table td { line-height:0 }
-    ._view { overflow: auto }
-    ._view h1 { text-align: center }
-  //- 
-    ._view { box-shadow: 0 0 1px 1px red inset; }
 
 block widgets
+
   +widgets#_widgets
 
+    style.
+      #nav-position {
+        display: block;
+        position: absolute;
+        bottom : 50%;
+        right: 50%;
+      }
+
+      #nav {
+        box-shadow: 0 0 1px 1px #888 inset;
+        position:relative;
+        z-index:1000;
+        left: 50%;
+        top : 70px;
+        padding: 1rem;
+      }
+
+      #nav a {
+        margin:1px;
+      }
+
     +widget#nav-position
-
-      style.
-        #nav-position {
-          display: block;
-          position: absolute;
-          bottom : 50%;
-          right: 50%;
-        }
-
-        #nav {
-          box-shadow: 0 0 1px 1px #888 inset;
-          position:relative;
-          z-index:1000;
-          left: 50%;
-          top : 70px;
-          padding: 1rem;
-        }
-
-        #nav a {
-          margin:1px;
-        }
-
-        #view-2 {
-          background: #0205;
-          position: absolute;
-          top: 0;
-          left: 100%;
-        }
-
-        #view-3 {
-          background: #2005;
-        }
-
-        #view-4 {
-          background: #0025;
-          position: absolute;
-          top: 100%;
-          left: 100%;
-        }
-
       nav#nav._bg-2-2._tc-2-2._radius-2r(style="width:116px")
         table: tbody
           tr: td(colspan=2): +a(homeUrl)(style="width:75px")._btnlink ⬅️ Back
@@ -77,6 +53,32 @@ block widgets
 
 block view
 
+  style.
+    #nav table td { line-height:0 }
+    ._view { overflow: auto }
+    ._view h2 { text-align: center }
+
+    #view-2 {
+      background: #0205;
+      position: absolute;
+      top: 0;
+      left: 100%;
+    }
+
+    #view-3 {
+      background: #2005;
+    }
+
+    #view-4 {
+      background: #0025;
+      position: absolute;
+      top: 100%;
+      left: 100%;
+    }
+
+  //- 
+    ._view { box-shadow: 0 0 1px 1px red inset; }
+
   - var v = 1;
   +view(id=`view-${v}`)
 
@@ -84,10 +86,13 @@ block view
       ._f._pad: +a(homeUrl)._btnlink._small Home
       ._fill: include _nav
 
-    +main#_main: article
-      h1._h7 View ##{v}
-      p._text-center main article
+    h2._h7 View ##{v}
+    hr
+
+    +main#_main._text-center
+      p !{description}
+
 
   each v in [2,3,4]
     +view(id=`view-${v}`)
-      h1._h7 View ##{v}
+      h2._h7 View ##{v}

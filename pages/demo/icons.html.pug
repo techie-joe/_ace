@@ -15,6 +15,7 @@ block append vars
 
 block append style
   +css(homeUrl+'assets/pure/grid.css?v='+version)
+  +css('//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css')
   style.
     .gridlines {
       min-height: 100px;
@@ -94,6 +95,9 @@ block main
           |H
 
       ._mv
+        - let i = 0
+        while 8 >= i++
+          i._isvg(class="_rotate-"+(-45+i*45)): +isvg(svgs[5])
         i._isvg.__spin: +isvg(svgs[7])
         i._isvg.__spin: +isvg(svgs[8])
 
