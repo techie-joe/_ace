@@ -5,6 +5,15 @@ mixin repeat(a,b=0)
 		block
 		- n++
 
+mixin _
+	=` `
+
+mixin nbsp
+	|&nbsp;
+
+mixin nl
+	=`\n`
+
 mixin php(uri)
 	|!{ `<?php include "${uri}" ?>` }
 
@@ -12,21 +21,6 @@ mixin php_
 	|!{ `<?php ` }
 	block
 	|!{ ` ?>` }
-
-mixin css(href,media='all')
-	link(rel="stylesheet" media=media href=href)&attributes(attributes)/
-
-mixin js(src)
-	script(type="text/javascript" src=src)&attributes(attributes): block
-
-mixin img(src,alt,title)
-	img(src=src alt=alt title=title)&attributes(attributes)/
-
-mixin _
-	=` `
-
-mixin nl
-	=`\n`
 
 mixin a(href,title)
 	a(href=href title=title)&attributes(attributes): block
@@ -41,6 +35,18 @@ mixin la(href,title)
 mixin backlink(title='Back to previous page')
 	a(onclick="event.preventDefault();window.history.back()" title=title)&attributes(attributes): block
 
+mixin css(href,media='all')
+	link(rel="stylesheet" media=media href=href)&attributes(attributes)/
+
+mixin js(src)
+	script(type="text/javascript" src=src)&attributes(attributes): block
+
+mixin img(src,alt,title)
+	img(src=src alt=alt title=title)&attributes(attributes)/
+
+mixin isvg(d)
+	svg(viewBox="0 0 24 24")&attributes(attributes): path(fill="currentColor" fill-opacity="1" d=d)
+
 mixin fas
 	i._fa: i.fas&attributes(attributes)
 
@@ -53,8 +59,8 @@ mixin fab
 mixin fat
 	i._fa: i.fas&attributes(attributes): block
 
-mixin fit
-	i._fit: i.fit&attributes(attributes): block
+mixin itext
+	i._itext: i.itext&attributes(attributes): block
 
 mixin view
 	._view&attributes(attributes): ._view_layout: block
@@ -77,8 +83,8 @@ mixin pre
 mixin aside
 	aside&attributes(attributes): ._aside_layout: block
 
-mixin widgets
-	aside&attributes(attributes): block
-
 mixin widget
 	aside&attributes(attributes): ._widget_layout: block
+
+mixin widgets
+	aside&attributes(attributes): block

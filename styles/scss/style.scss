@@ -8,9 +8,9 @@
 
 /* ----------------------------------------------- helper */
 
-._sans    { font-family: sans-serif; }
-._serif   { font-family: serif; }
-._mono    { font-family: monospace; }
+._sans    { font-family: "Arial", sans-serif; }
+._serif   { font-family: "Georgia", serif; }
+._mono    { font-family: "Consolas", monospace; }
 
 ._font-1 { @extend ._sans; }
 ._font-2 { @extend ._serif; }
@@ -171,38 +171,48 @@ hr {
   @extend ._tc-2-3;
 }
 
-._fa {
+._icon {
   display: inline-block;
   height   : 1.5em;
   min-width: 1.5em;
   text-align: center;
 }
 
-._fa-icons ._fa { font-size: 1.3em }
+._fa { @extend ._icon; }
 
-.fit {
-  @extend ._font-1;
-  font-size: 1.8em;
+.itext {
+  @extend ._mono;
+  font-size: 1em;
+  line-height: 1;
+  font-weight: normal;
   font-style: normal;
   font-variant: normal;
-  line-height: 1;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
   text-rendering: auto;
 }
 
-._fit {
-  display: inline-block;
-  height   : 1.548em;
-  min-width: 1.548em;
-  text-align: center;
-  vertical-align: top;
-  .fit { line-height: 0.86 }
-}
+._itext { @extend ._icon; }
+._itext .itext { font-size: 1.5em; line-height: 0.9; } /* offset baseline for *most-icons */
 
-._fits       { font-size: 1.8em; line-height: 0.89 }
-._fits ._fit { font-size: 0.7em }
+._isvg { @extend ._icon; svg { vertical-align:top; } } /* fix spinning axis */
+
+._rotate-45 { transform: rotate(45deg) }
+._rotate-90 { transform: rotate(90deg) }
+._rotate-135 { transform: rotate(135deg) }
+._rotate-180 { transform: rotate(180deg) }
+._rotate-225 { transform: rotate(225deg) }
+._rotate-270 { transform: rotate(270deg) }
+._rotate-315 { transform: rotate(315deg) }
+
+/* -------------------------------------------- animation */
+
+@keyframes __spin {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+.__spin { animation: 2s linear infinite __spin }
 
 /* ---------------------------------- default light theme */
 
