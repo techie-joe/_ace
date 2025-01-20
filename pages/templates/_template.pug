@@ -7,7 +7,10 @@ block append style
   +css(homeUrl+'assets/css/flex.css?v='+version)
   +css(homeUrl+'assets/css/demo.css?v='+version)
   style.
-    ._nav_layout { margin-left:7rem }
+    ._nav_layout { padding-left:7rem }
+    @media only screen and (min-width: 1300px) {
+      ._nav_layout { padding-left:1rem }
+    }
   //- 
 
 block view

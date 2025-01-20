@@ -102,7 +102,7 @@ block main
           ul._no-margin
             +la_template('classic_page.html')| Classic Page
             +la_template('classic_list.html')| Classic List
-            +la_template('blank_template.html')| Blank Template
+            +la_template('blank.html')| Blank Template
         ._f-1
           ul._no-margin: li
             span.a Error pages:
@@ -126,6 +126,10 @@ block main
       ._mv: include demo/_nav
 
       p._mb-2._text-right: +a('demo')._btnlink View Demo
+
+    hr
+    
+    p._small| Some images on this website are courtesy of Matt at <a href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">svgbackgrounds.com</a>. Thank you for providing them for free.
 
     ._p._small| Live @ #[+a(url)(target="techie-joes-github") #{url}]
 
