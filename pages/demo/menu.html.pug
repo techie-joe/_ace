@@ -16,13 +16,28 @@ block append vars
 
 block append style
   style.
-    ._main_layout { max-width:none;padding:0 }
+    ._main_layout { max-width:none;padding:0; }
   //- 
 
 block main
 
   +main#_main: article
 
-    section._flex: ._fill: include _nav
+    section#t1._mb: ._flex: ._fill: include _nav
+
+    section#t2._mv: ._flex
+      ._f._pad
+        +a(href='index.html')._btnlink._small|Home
+      ._fill(style="min-width:10rem"): include _nav
+
+    section#t3._mv
+      style.
+        #t3 ._nav_layout { padding-left:7rem }
+        @media only screen and (min-width: 1300px) {
+          #t3 ._nav_layout { padding-left:1rem }
+        }
+      #_navbar._flex
+        ._f: include _logo
+        ._fill(style="min-width:10rem"): include _nav
 
 block footer
