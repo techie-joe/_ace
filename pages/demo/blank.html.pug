@@ -4,9 +4,10 @@ block append vars
   include _vars
   -
     header      = `Blank`
-    url         = url+`blank.html`
+    file        = `blank`
+    url         = url+`${file}.html`
     title       = `${header} | ${name}`
-    description = `This is about ${header}.`
+    description = `This is a ${file}.`
 
     og_title       = title
     og_description = description

@@ -5,9 +5,10 @@ block append vars
   include _color-functions
   -
     header      = `Theme`
-    url         = url+`theme.html`
+    file        = `theme`
+    url         = url+`${file}.html`
     title       = `${header} | ${name}`
-    description = `This is about ${header}.`
+    description = `This is about ${file}.`
 
     og_title       = title
     og_description = description

@@ -3,10 +3,11 @@ extends _template
 block append vars
   include _vars
   -
-    header      = `Flex`
-    url         = url+`flex.html`
-    title       = `${header} | ${name}`
-    description = `${header} are used to arrange contents.`
+    header         = `Flex`
+    file           = `flex`
+    url            = url+`${file}.html`
+    title          = `${header} | ${name}`
+    description    = `${header} arrange contents.`
 
     og_title       = title
     og_description = description

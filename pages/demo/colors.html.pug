@@ -5,9 +5,10 @@ block append vars
   include _color-functions
   -
     header      = `Colors`
-    url         = url+`colors.html`
+    file        = `colors`
+    url         = url+`${file}.html`
     title       = `${header} | ${name}`
-    description = `This is about ${header}.`
+    description = `This is your reference to ${file}.`
 
     og_title       = title
     og_description = description
@@ -44,7 +45,7 @@ block header
       h1._h1 !{header}
       p
         | !{description}
-        | See colors being applied in #[+a('theme.html') theme].
+        | See colors being applied to a #[+a('theme.html') theme].
     hr._no-margin
 
 block main

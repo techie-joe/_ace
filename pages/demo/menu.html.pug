@@ -5,9 +5,9 @@ block append vars
   -
     header         = `Menu`
     file           = `menu`
-    url            = url+`menu.html`
+    url            = url+`${file}.html`
     title          = `${header} | ${name}`
-    description    = `This is about ${header}.`
+    description    = `This is about ${file}.`
 
     og_title       = title
     og_description = description
@@ -15,15 +15,14 @@ block append vars
   //- 
 
 block append style
-  //- style.
+  style.
+    ._main_layout { max-width:none;padding:0 }
   //- 
-
-//- block header
 
 block main
 
-  section._flex: ._fill: include _nav
+  +main#_main: article
 
-  +main#_main: article._m| #{description}
+    section._flex: ._fill: include _nav
 
 block footer

@@ -3,10 +3,11 @@ extends _template
 block append vars
   include _vars
   -
-    header      = `Icons`
-    url         = url+`icons.html`
-    title       = `${header} | ${name}`
-    description = `Visual elements like images, icons, and graphics add depth and interest to your theme.`
+    header         = `Icons`
+    file           = `icons`
+    url            = url+`${file}.html`
+    title          = `${header} | ${name}`
+    description    = `Visual elements like images, icons, and graphics add depth and interest to your website.`
 
     og_title       = title
     og_description = description
@@ -36,8 +37,8 @@ block main
 
     section._mb-2
 
-      h2._h3._sans Matched size
-      p Match the size of icons with text.
+      h2._h3._sans Matching size
+      p Icon sizes perfectly matched the size of texts.
 
       style.
         .mbox,
@@ -100,6 +101,10 @@ block main
           i._isvg(class="_rotate-"+(-45+i*45)): +isvg(svgs[5])
         i._isvg.__spin: +isvg(svgs[7])
         i._isvg.__spin: +isvg(svgs[8])
+
+      //- https://pictogrammers.com/library/mdi/
+      p._text-right._small: +a('https://pictogrammers.com/library/mdi/')(target="pictogrammers")._no-u More icons at Pictogrammers ...
+
 
     section._mb-2
 

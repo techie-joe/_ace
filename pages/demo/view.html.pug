@@ -4,7 +4,8 @@ block append vars
   include _vars
   -
     header      = `View`
-    url         = url+`view.html`
+    file        = `view`
+    url         = url+`${file}.html`
     title       = `${header} | ${name}`
     description = `${header} controls how user perceive a page.`
 
@@ -43,7 +44,7 @@ block widgets
     +widget#nav-position
       nav#nav._bg-2-2._tc-2-2._radius-2r(style="width:116px")
         table: tbody
-          tr: td(colspan=2): +a(homeUrl)(style="width:75px")._btnlink ⬅️ Back
+          tr: td(colspan=2): +a(homeUrl)(style="width:75px")._btnlink #[+itext|←] Back #[+nbsp]
           tr
             td: +a('#view-1')._btnlink #1
             td: +a('#view-2')._btnlink #2
@@ -54,7 +55,6 @@ block widgets
 block view
 
   style.
-    #nav table td { line-height:0 }
     ._view { overflow: auto }
     ._view h2 { text-align: center }
 
