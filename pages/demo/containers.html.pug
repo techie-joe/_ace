@@ -32,7 +32,10 @@ block append style
 block main
   +main#_main: article.layout
 
-    ._mv: ._flex(style="gap:1em")
+    section._flex
+      ._fill: include _nav
+
+    section._flex(style="gap:1em")
       ._fill: .o
       ._fill: .o.border
       ._fill: .o(style="margin:1em").border

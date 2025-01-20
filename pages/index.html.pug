@@ -28,12 +28,6 @@ block append style
     ._dark #_header    { color: #aaa; background: #111; }
     ._dark #_header h1 { color: #fff; }
 
-    #_html .pages  a { text-decoration:none; padding:0.2em 0.3em; border-radius:5px; cursor:pointer; white-space: nowrap }
-    #_html .pages .a { padding:0.2em 0.3em; font-weight:bold; }
-    #_html       .pages a       { color:inherit; }
-    #_html       .pages a:hover { background:#bbb; color:#000; }
-    #_html._dark .pages a:hover { background:#444; color:#fff; }
-
     #_html .pages ul { list-style-type: none; padding-inline-start: 0; }
 
     #_header ._header_layout { position:relative; }
@@ -77,8 +71,7 @@ block nav
 block main
   +main#_main: article
 
-    section._mv-2
-      ._mv.pages: include demo/_nav
+    section._mv: include demo/_nav
 
     section._mv-2
       h2 Live Examples
@@ -90,13 +83,6 @@ block main
         ._f-12-2
           ul._no-margin
             +la_example_1('index.html')| Example #1 - Takaful
-        ._f-1
-          ul._no-margin: li
-            span.a Error pages:
-            +a("---","Simulate Real 404")| ---
-            +a("404.html")| 404
-            +a("500.html")| 500
-            +a(templateUrl+'closed.html')| Closed
 
     section._mv-2
       h2 Plain Templates
@@ -115,6 +101,13 @@ block main
             +la_template('classic_page.html')| Classic Page
             +la_template('classic_list.html')| Classic List
             +la_template('blank_template.html')| Blank Template
+        ._f-1
+          ul._no-margin: li
+            span.a Error pages:
+            +a("---","Simulate Real 404")| ---
+            +a("404.html")| 404
+            +a("500.html")| 500
+            +a(templateUrl+'closed.html')| Closed
 
     section._mv-2
       h2 Available in light and dark
@@ -128,7 +121,7 @@ block main
 
       p._text-justify Our web template is equipped with helpers and pre-made building components to ensure an intuitive and easy building experience. We simplify web creation to make it accessible to everyone, even for those who may not have technical expertise. No lengthy manuals or confusing rules -- just dive in and start building. And if you're curious or need a bit more guidance, we have comprehensive #[+a('demo')._no-wrap demo articles] to help you out.
       
-      ._mv.pages: include demo/_nav
+      ._mv: include demo/_nav
 
       p._mb-2._text-right: +a('demo')._btnlink View Demo
 

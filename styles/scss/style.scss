@@ -96,6 +96,7 @@ p,pre { @extend ._p; }
 
 ._pre, pre {
   @extend ._mono;
+  @extend ._small;
   line-height: 1.3;
 }
 
@@ -130,10 +131,10 @@ td { line-height: 0 }
   overflow-y: scroll;
 }
 
-._nav_layout,
 ._header_layout,
 ._footer_layout,
 ._main_layout { margin:0 auto; padding:1px 1rem; }
+._nav_layout  { margin:0 auto; padding:0 1rem; }
 
 #_html ._btnlink {
   @extend ._numb;

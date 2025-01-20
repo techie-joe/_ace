@@ -8,13 +8,31 @@
 ._main_layout { max-width:60rem }
 
 #_navbar { position:relative; z-index:1 }
-
 #_navbar #_logo { position:absolute;top:0;left:0;z-index:1 }
        #_navbar a#_logo { color: #444 }
 ._dark #_navbar a#_logo { color: #888 }
 
 #_nav { padding: 1em; }
 #_nav a { line-height: 1.7 }
+
+#_html .pages a {
+  color:inherit;
+  padding:0.2em 0.3em;
+  text-decoration:none;
+  border-radius:5px;
+  white-space:nowrap;
+  cursor:pointer;
+}
+#_html       .pages a:hover { background:#bbb; color:#000; }
+#_html._dark .pages a:hover { background:#444; color:#fff; }
+
+._editorbar {
+
+  p { margin:0; font-size:.75em; padding:.75em; font-weight: bold; }
+
+  ._btnlink { padding: .25em .75em; }
+
+}
 
 .gu { padding: 3px; }
 
@@ -30,25 +48,6 @@
 .o2-4 { height:206px; }
 .o3-4 { height:312px; }
 .o4-4 { height:418px; }
-
-#_html .pages  a { text-decoration:none; padding:0.2em 0.3em; border-radius:5px; cursor:pointer; white-space: nowrap }
-#_html .pages .a { padding:0.2em 0.3em; font-weight:bold; }
-#_html       .pages a       { color:inherit; }
-#_html       .pages a:hover { background:#bbb; color:#000; }
-#_html._dark .pages a:hover { background:#444; color:#fff; }
-
-._editorbar {
-
-  p {
-    margin:0;
-    font-size:.75em;
-    padding:.75em;
-    font-weight: bold;
-  }
-
-  ._btnlink { padding: .25em .75em; }
-
-}
 
 /* ---------------------------------- default light theme */
 
