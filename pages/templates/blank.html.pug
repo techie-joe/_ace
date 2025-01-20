@@ -3,10 +3,11 @@ extends _template
 block append vars
   include _vars
   -
-    file           = 'blank'
-    url            = url+`${file}.html`
-    title          = `${file}`
-    description    = `A ${file} helps create website from scratch.`
+    header      = `Blank`
+    file        = `blank`
+    url         = url+`${file}.html`
+    title       = `${header} | ${name}`
+    description    = `A ${file} helps create a website from scratch.`
 
     og_title       = title
     og_description = description
@@ -21,6 +22,6 @@ block append style
 block header
 
 block main
-  +main#_main: article._m| This is a #{file}
+  +main#_main: article._m| #{description}
 
 block footer
