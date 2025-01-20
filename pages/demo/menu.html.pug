@@ -1,0 +1,29 @@
+extends _template
+
+block append vars
+  include _vars
+  -
+    header         = `Menu`
+    file           = `menu`
+    url            = url+`menu.html`
+    title          = `${header} | ${name}`
+    description    = `This is about ${header}.`
+
+    og_title       = title
+    og_description = description
+    og_url         = url
+  //- 
+
+block append style
+  //- style.
+  //- 
+
+//- block header
+
+block main
+
+  section._flex: ._fill: include _nav
+
+  +main#_main: article._m| #{description}
+
+block footer

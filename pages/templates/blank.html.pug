@@ -3,10 +3,10 @@ extends _template
 block append vars
   include _vars
   -
-    file           = `blank_demo`
+    file           = 'blank'
     url            = url+`${file}.html`
-    title          = `${file} | ${name}`
-    description    = `This is about a ${file}.`
+    title          = `${file}`
+    description    = `A ${file} helps create website from scratch.`
 
     og_title       = title
     og_description = description
@@ -14,7 +14,8 @@ block append vars
   //- 
 
 block append style
-  //- style.
+  style.
+    ._main_layout { max-width:none }
   //- 
 
 block header

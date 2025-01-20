@@ -7,7 +7,7 @@ block append style
   +css(homeUrl+'assets/css/flex.css?v='+version)
   +css(homeUrl+'assets/css/demo.css?v='+version)
   style.
-    ._nav_layout { padding-left:8rem }
+    ._nav_layout { margin-left:7rem }
   //- 
 
 block view
@@ -16,9 +16,9 @@ block view
     block nav
       //- +nav#_nav: ul: +la
       //- include _nav
-      #_navbar
-        include _logo
-        include _nav
+      #_navbar._flex
+        ._f: include _logo
+        ._fill(style="min-width:10rem"): include _nav
 
     block header
       //- +header#_header
