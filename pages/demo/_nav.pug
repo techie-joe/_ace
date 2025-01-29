@@ -1,9 +1,9 @@
 //- +nav#_nav: ul: +la
 
 mixin demo(ref='')
-  +_a(demoUrl+ref): block
+  +_a(demoUrl+ref)._menu-item: block
 
-+nav#_nav.pages
++nav#_nav
   +demo("view.html")| View
   //- +demo("layout.html")| Layout
   +demo("flex.html")| Flex

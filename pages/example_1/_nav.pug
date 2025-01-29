@@ -1,9 +1,9 @@
 //- +nav#_nav: ul: +la
 
 mixin link(ref='')
-  +_a(ref): block
+  +_a(ref)._menu-item: block
 
-+nav#_nav.pages
++nav#_nav
   +link(homeUrl)| Home
   //- +link('full_screen.html')| Full
   //- +link('split_screen.html')| Split

@@ -7,7 +7,7 @@ block append vars
     file           = `menu`
     url            = url+`${file}.html`
     title          = `${header} | ${name}`
-    description    = `This is about navigation ${file}.`
+    description    = `This page shows multiple variations of navigation layout you can use.`
 
     og_title       = title
     og_description = description
@@ -19,16 +19,51 @@ block append style
     ._main_layout { max-width:none;padding:0; }
   //- 
 
+mixin menu
+  +nav#_nav
+    +menus
+
+mixin menus
+  +demo("view.html")| View
+  //- +demo("layout.html")| Layout
+  +demo("flex.html")| Flex
+  +demo("colors.html")| Colors
+  +demo("texts.html")| Texts
+  +demo("icons.html")| Icons
+  //- +demo("images.html")| Image
+  //- +demo("video.html")| Video
+  //- +demo("buttons.html")| Buttons
+  //- +demo("background.html")| Background
+  +demo("containers.html")| Containers
+  //- +demo("form.html")| Form
+  //- +demo("transitions.html")| Transitions
+  //- +demo("animations.html")| Animations
+  +demo("menu.html")| Menu
+  //- +demo("popups.html")| Popups
+  //- +demo("dialogs.html")| Dialogs
+  +demo("theme.html")| Theme
+  //- +demo("helpers.html")| Helpers
+  +demo("blank.html")| Blank
+
 block main
 
   +main#_main: article
 
-    section#t1._mb: ._flex: ._fill: include _nav
+    section#t1._mb: ._flex: ._fill: +nav#_nav
+      +a(homeUrl)._btnlink._small|Home
+      +_a()(onclick="base.theme.change()")._menu-item._menu-icon: i._isvg: +isvg(svgs[1])
+      +demo("view.html")| View
+      +demo("flex.html")| Flex
+      +_a()._menu-item._menu-icon._b: +middots
+      +demo("colors.html")| Colors
+      +demo("texts.html")| Texts
+      +_a()._menu-item._menu-icon: i._isvg: +isvg(svgs[3])
+
 
     section#t2._mv: ._flex
-      ._f._pad
-        +a(href='index.html')._btnlink._small|Home
-      ._fill(style="min-width:10rem"): include _nav
+      ._f._pad._nav-color
+        +a(homeUrl)._btnlink._small|Home
+      ._fill(style="min-width:10rem"): +menu
 
     section#t3._mv
       style.
@@ -38,6 +73,20 @@ block main
         }
       #_navbar._flex
         ._f: include _logo
-        ._fill(style="min-width:10rem"): include _nav
+        ._fill(style="min-width:10rem"): +menu
+    
+    section#t4._mv
+
+      style.
+        ._icons ._isvg { min-width:2.25em; height:2.25em; }
+
+      #_navbar._flex
+        ._f._icons: i._isvg: +isvg(svgs[0])
+        ._fill(style="min-width:10rem")
+          +nav#_nav
+            +menus
+        ._f._icons
+          i._isvg: +isvg(svgs[1])
+          i._isvg: +isvg(svgs[3])
 
 block footer
