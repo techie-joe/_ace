@@ -74,20 +74,20 @@ block main
 
       ._mv._icons
         each d in svgs
-          i._isvg: +isvg(d)
+          +isvg(d)
 
       ._mv
         .ibox
-          i._isvg: +isvg(svgs[0])
-          i._isvg: +isvg(svgs[1])
+          +isvg(svgs[0])
+          +isvg(svgs[1])
           |H
 
       ._mv
         - let i = 0
         while 8 >= i++
           i._isvg(class="_rotate-"+(-45+i*45)): +isvg(svgs[5])
-        i._isvg.__spin: +isvg(svgs[7])
-        i._isvg.__spin: +isvg(svgs[8])
+        +isvg.__spin(svgs[7])
+        +isvg.__spin(svgs[8])
 
       //- https://pictogrammers.com/library/mdi/
       p._text-right._small: +a('https://pictogrammers.com/library/mdi/')(target="pictogrammers")._no-u More icons at Pictogrammers ...

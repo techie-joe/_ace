@@ -6,11 +6,7 @@ block prepend vars
 block append style
   +css(homeUrl+'assets/css/flex.css?v='+version)
   +css(homeUrl+'assets/css/demo.css?v='+version)
-  style.
-    ._nav_layout { padding-left:7rem }
-    @media only screen and (min-width: 1300px) {
-      ._nav_layout { padding-left:1rem }
-    }
+  //- style.
   //- 
 
 block view
@@ -20,8 +16,9 @@ block view
       //- +nav#_nav: ul: +la
       //- include _nav
       #_navbar._flex
-        ._f: include _logo
+        ._f-12-1._nav-color#_logo-flex: include _logo
         ._fill(style="min-width:10rem"): include _nav
+        ._f-12-1._text-right._pad._nav-color: +_a()(onclick="base.theme.change()")._nav-item._nav-icon: +isvg(svgs[1])
 
     block header
       //- +header#_header

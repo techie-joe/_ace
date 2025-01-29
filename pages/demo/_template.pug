@@ -12,8 +12,9 @@ block view
     block nav
       //- +nav#_nav: ul: +la
       #_navbar._flex
-        ._f._pad._nav-color: +a(homeUrl)._btnlink._small Home
+        ._f-12-1._text-center._pad._nav-color: +a(homeUrl)._btnlink._small Home
         ._fill(style="min-width:10rem"): include _nav
+        ._f-12-1._text-right._pad._nav-color: +_a()(onclick="base.theme.change()")._nav-item._nav-icon: +isvg(svgs[1])
 
     block header
       //- +header#_header

@@ -19,31 +19,45 @@ block append style
     ._main_layout { max-width:none;padding:0; }
   //- 
 
-mixin menu
-  +nav#_nav
-    +menus
+mixin navlink(ref='')
+  +_a(templateUrl+ref)._nav-item: block
 
-mixin menus
-  +demo("view.html")| View
-  //- +demo("layout.html")| Layout
-  +demo("flex.html")| Flex
-  +demo("colors.html")| Colors
-  +demo("texts.html")| Texts
-  +demo("icons.html")| Icons
-  //- +demo("images.html")| Image
-  //- +demo("video.html")| Video
-  //- +demo("buttons.html")| Buttons
-  //- +demo("background.html")| Background
-  +demo("containers.html")| Containers
-  //- +demo("form.html")| Form
-  //- +demo("transitions.html")| Transitions
-  //- +demo("animations.html")| Animations
-  +demo("menu.html")| Menu
-  //- +demo("popups.html")| Popups
-  //- +demo("dialogs.html")| Dialogs
-  +demo("theme.html")| Theme
-  //- +demo("helpers.html")| Helpers
-  +demo("blank.html")| Blank
+mixin menu(x)
+  +nav#_nav
+    +menus(x)
+
+mixin menus(x)
+  if x == 'templates'
+    +navlink('full_screen.html')| Full
+    +navlink('split_screen.html')| Split
+    +navlink('flex_gallery.html')| Flex
+    +navlink('classic_page.html')| Page
+    +navlink('classic_list.html')| List
+    +navlink("blank.html")| Blank
+    +navlink('closed.html')| Closed
+    +_a(homeUrl+"404.html")._nav-item| 404
+    +_a(homeUrl+"500.html")._nav-item| 500
+  else
+    +demo("view.html")| View
+    //- +demo("layout.html")| Layout
+    +demo("flex.html")| Flex
+    +demo("colors.html")| Colors
+    +demo("texts.html")| Texts
+    +demo("icons.html")| Icons
+    //- +demo("images.html")| Image
+    //- +demo("video.html")| Video
+    //- +demo("buttons.html")| Buttons
+    //- +demo("background.html")| Background
+    +demo("containers.html")| Containers
+    //- +demo("form.html")| Form
+    //- +demo("transitions.html")| Transitions
+    //- +demo("animations.html")| Animations
+    +demo("menu.html")| Menu
+    //- +demo("popups.html")| Popups
+    //- +demo("dialogs.html")| Dialogs
+    +demo("theme.html")| Theme
+    //- +demo("helpers.html")| Helpers
+    +demo("blank.html")| Blank
 
 block main
 
@@ -51,29 +65,25 @@ block main
 
     section#t1._mb: ._flex: ._fill: +nav#_nav
       +a(homeUrl)._btnlink._small|Home
-      +_a()(onclick="base.theme.change()")._menu-item._menu-icon: i._isvg: +isvg(svgs[1])
+      +_a()(onclick="base.theme.change()")._nav-item._nav-icon: +isvg(svgs[1])
       +demo("view.html")| View
       +demo("flex.html")| Flex
-      +_a()._menu-item._menu-icon._b: +middots
+      +_a()._nav-item._nav-icon._b: +middots
       +demo("colors.html")| Colors
       +demo("texts.html")| Texts
-      +_a()._menu-item._menu-icon: i._isvg: +isvg(svgs[3])
+      +_a()._nav-item._nav-icon: +isvg(svgs[3])
 
 
     section#t2._mv: ._flex
-      ._f._pad._nav-color
-        +a(homeUrl)._btnlink._small|Home
+      ._f-12-1._text-center._pad._nav-color: +a(homeUrl)._btnlink._small|Home
       ._fill(style="min-width:10rem"): +menu
+      ._f-12-1._text-right._pad._nav-color: +_a()(onclick="base.theme.change()")._nav-item._nav-icon: +isvg(svgs[1])
 
     section#t3._mv
-      style.
-        #t3 ._nav_layout { padding-left:7rem }
-        @media only screen and (min-width: 1300px) {
-          #t3 ._nav_layout { padding-left:1rem }
-        }
       #_navbar._flex
-        ._f: include _logo
+        ._f-12-1._nav-color#_logo-flex: include _logo
         ._fill(style="min-width:10rem"): +menu
+        ._f-12-1._text-right._pad._nav-color: +_a()(onclick="base.theme.change()")._nav-item._nav-icon: +isvg(svgs[1])
     
     section#t4._mv
 
@@ -81,12 +91,12 @@ block main
         ._icons ._isvg { min-width:2.25em; height:2.25em; }
 
       #_navbar._flex
-        ._f._icons: i._isvg: +isvg(svgs[0])
+        ._f._icons: +isvg(svgs[0])
         ._fill(style="min-width:10rem")
           +nav#_nav
             +menus
         ._f._icons
-          i._isvg: +isvg(svgs[1])
-          i._isvg: +isvg(svgs[3])
+          +isvg(svgs[1])
+          +isvg(svgs[3])
 
 block footer

@@ -8,13 +8,12 @@
 ._main_layout { max-width:60rem }
 
 #_navbar { position:relative; z-index:1 }
-#_navbar #_logo { position:absolute;top:0;left:0;z-index:1 }
        #_navbar a#_logo { color: #444 }
 ._dark #_navbar a#_logo { color: #888 }
 
 #_nav { padding: 1em; }
 
-#_nav ._menu-item {
+#_html ._nav-item {
   display:inline-block;
   padding:0 .3em;
   line-height: 1.7;
@@ -24,10 +23,10 @@
   white-space:nowrap;
   cursor:pointer;
 }
-#_nav        a._menu-item:hover { background:#bbb; color:#000; }
-._dark #_nav a._menu-item:hover { background:#444; color:#fff; }
+#_html       a._nav-item:hover { background:#bbb; color:#000; }
+#_html._dark a._nav-item:hover { background:#444; color:#fff; }
 
-#_nav ._menu-icon {
+#_html ._nav-icon {
   padding: 0;
   min-width: 1.7em;
   text-align: center;
@@ -45,14 +44,6 @@
 #_html       .pages a:hover { background:#bbb; color:#000; }
 #_html._dark .pages a:hover { background:#444; color:#fff; }
 
-._editorbar {
-
-  p { margin:0; font-size:.75em; padding:.75em; font-weight: bold; }
-
-  ._btnlink { padding: .25em .75em; }
-
-}
-
 .gu { padding: 3px; }
 
 .o1-1 { height:300px; }
@@ -67,6 +58,14 @@
 .o2-4 { height:206px; }
 .o3-4 { height:312px; }
 .o4-4 { height:418px; }
+
+._editorbar {
+
+  p { margin:0; font-size:.75em; padding:.75em; font-weight: bold; }
+
+  ._btnlink { padding: .25em .75em; }
+
+}
 
 /* ---------------------------------- default light theme */
 
