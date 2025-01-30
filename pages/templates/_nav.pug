@@ -3,7 +3,7 @@
 mixin navlink(ref='')
   +_a(ref)._nav-item: block
 
-+nav#_nav
+mixin menus
   //- +navlink(homeUrl)| Home
   +navlink('full_screen.html')| Full
   +navlink('split_screen.html')| Split
@@ -14,3 +14,12 @@ mixin navlink(ref='')
   +navlink('closed.html')| Closed
   +_a(homeUrl+"404.html")._nav-item| 404
   +_a(homeUrl+"500.html")._nav-item| 500
+
+mixin menu
+  +nav#_nav: +menus
+
+mixin navbar
+  #_navbar._flex
+    ._f-12-1._nav-color#_logo-flex: include _logo
+    ._fill(style="min-width:10rem"): +menu
+    ._f-12-1._text-right._pad._nav-color: +_a()(onclick="base.theme.change()")._nav-item._nav-icon: +isvg(svgs[1])

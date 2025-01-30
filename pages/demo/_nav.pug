@@ -3,7 +3,7 @@
 mixin demo(ref='')
   +_a(demoUrl+ref)._nav-item: block
 
-+nav#_nav
+mixin menus
   +demo("view.html")| View
   //- +demo("layout.html")| Layout
   +demo("flex.html")| Flex
@@ -24,3 +24,12 @@ mixin demo(ref='')
   +demo("theme.html")| Theme
   //- +demo("helpers.html")| Helpers
   +demo("blank.html")| Blank
+
+mixin menu
+  +nav#_nav: +menus
+
+mixin navbar
+  #_navbar._flex
+    ._f-12-1._text-center._pad._nav-color: +a(homeUrl)._btnlink._small Home
+    ._fill(style="min-width:10rem"): +menu
+    ._f-12-1._text-right._pad._nav-color: +_a()(onclick="base.theme.change()")._nav-item._nav-icon: +isvg(svgs[1])

@@ -17,7 +17,9 @@ block main
 
     section._mb-2: ._flex
       ._f._pad: +a(homeUrl)._btnlink._small Home
-      ._fill: include _nav
+      ._fill
+        include _nav
+        +menu
 
     ._small| Live @ #[+a(url)(target="techie-joes-github") #{url}]
     

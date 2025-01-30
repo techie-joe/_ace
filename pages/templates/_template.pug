@@ -14,11 +14,8 @@ block view
 
     block nav
       //- +nav#_nav: ul: +la
-      //- include _nav
-      #_navbar._flex
-        ._f-12-1._nav-color#_logo-flex: include _logo
-        ._fill(style="min-width:10rem"): include _nav
-        ._f-12-1._text-right._pad._nav-color: +_a()(onclick="base.theme.change()")._nav-item._nav-icon: +isvg(svgs[1])
+      include _nav
+      +navbar
 
     block header
       //- +header#_header
