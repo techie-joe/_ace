@@ -1,7 +1,7 @@
 {
   "name": "ace",
-  "version": "0.1.0",
-  "description": "Web Application Template",
+  "version": "0.1.7",
+  "description": "Ace Web Application Template",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
