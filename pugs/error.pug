@@ -1,0 +1,12 @@
+extends html
+
+block append vars
+  -
+    htmlClass = htmlClass+' _errorpage'
+
+block seo
+  title !{title||'(untitled)'}
+  meta(name="description" content=description||'(undescribed)')/
+
+block append style
+  +css(assetsUrl+'css/errorpage.css?v='+version)

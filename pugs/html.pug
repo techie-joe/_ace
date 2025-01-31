@@ -2,8 +2,7 @@ include _vars
 include _mixins
 
 block vars
-  -
-  //- layout vars
+  //- variables for every html page
 
 block entry
   //- entrypoint for variable setup & security check
@@ -11,7 +10,7 @@ block entry
 doctype html
 html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
 
-  | <!-- #{shortName}:template -->
+  | <!-- layout:html/#{codeName} -->
  
   head
     meta(charset=charset)/
@@ -23,25 +22,26 @@ html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
       include _meta
 
     block style
+      //- +css(href,media='all')
       +css(assetsUrl+'css/style.css?v='+version)
 
   body#_body(class=bodyClass)
 
-    block content
-      #_contents(class=contentClass)
+    block contents
+      #_contents(class=contentsClass)
 
-        block view
+        block views
           +view
 
             block header
               //- +header#_header
 
             block nav
-              //- +nav#_nav: ul: +la
               //- include _nav
+              //- +nav#_nav: ul: +la
 
             block pre
-              //- +pre#_pre: pre._pre
+              //- +pre#_pre.
 
             block main
               //- +main#_main: article| main article
@@ -50,13 +50,14 @@ html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
             block footer
               //- +footer#_footer
             
-            block aside
+            block asides
               //- +aside#_aside
 
     block widgets
       //- +widgets#_widgets: +widget#_widget
 
     block script
+      //- +js(src)
       +js(assetsUrl+'cjs/thm.js?v='+version)(defer)
 
     block last

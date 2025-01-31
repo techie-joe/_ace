@@ -16,8 +16,8 @@ function ext(ext) {
 // ============================================================= builder gulper
 
 const _builder = {
-  txt   : ["_builder/**/*.txt.pug"],
-  md    : ["_builder/**/*.md.pug"],
+  txt   : ["builder/**/*.txt.pug"],
+  md    : ["builder/**/*.md.pug"],
   dest  : "./",
 };
 
