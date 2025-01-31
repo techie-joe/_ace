@@ -4,7 +4,7 @@ block append vars
   include _vars
   -
     header         = "Ace Template"
-    about          = `A solid foundation to start building your website and application. Our minimalistic approach ensures full control from the very beginning.`
+    about          = `A solid foundation to build your website and application. Our minimalistic approach ensures full control from the very beginning.`
 
     url            = "https://techie-joe.github.io/ace/"
 
@@ -33,7 +33,7 @@ block append style
     #_html .pages ul { list-style-type: none; padding-inline-start: 0; }
 
     #_header ._header_layout { position:relative; }
-    #_header .p { max-width: 490px; }
+    #_header .intro { max-width: 30em; }
 
     #startNow._btnlink { padding: .5em 1.5em }
     #_header .startNow { text-align: center; width:100%; margin: 1.5em auto 0; }
@@ -60,7 +60,7 @@ block append style
 
 block header
   +header#_header
-    .p
+    .intro
       h1._hero-1 !{header}
       p._small by #[+a(authorUrl) !{author}]
       p._text-justify !{about}
@@ -92,36 +92,40 @@ block main
       mixin la_template(ref='')
         +la(templateUrl+ref).a: block
 
-      nav.pages: ._flex
-        ._f-12-2
-          ul._no-margin
-            +la_template('full_screen.html')| Full Screen
-            +la_template('split_screen.html')| Split Screen
-            +la_template('flex_gallery.html')| Flex Gallery
-        ._f-12-2
-          ul._no-margin
-            +la_template('classic_page.html')| Classic Page
-            +la_template('classic_list.html')| Classic List
-            +la_template('blank.html')| Blank Template
-        ._f-1
-          ul._no-margin: li
-            span.a Error pages:
-            +_a("---","Simulate Real 404").a| ---
-            +_a("404.html").a| 404
-            +_a("500.html").a| 500
-            +_a(templateUrl+'closed.html').a| Closed
+      nav.pages
+        ._flex
+          ._f-12-4
+            ul._no-margin
+              +la_template('full_screen.html')| Full Screen
+              +la_template('split_screen.html')| Split Screen
+              +la_template('flex_gallery.html')| Flex Gallery
+          ._f-12-4
+            ul._no-margin
+              +la_template('classic_page.html')| Classic Page
+              +la_template('classic_list.html')| Classic List
+              +la_template('blank.html')| Blank Template
+        ._flex
+          ._f-12-4
+            ul._no-margin: li
+              span.a Error pages:
+              +_a("---","Simulate Real 404").a| ---
+              +_a("404.html").a| 404
+              +_a("500.html").a| 500
+              +_a(templateUrl+'closed.html').a| Closed
+          ._f-12-4
+            ul._no-margin
 
     section._mv-2
       h2 Available in light and dark
 
-      p._text-justify This template is made-to-be readily available in both light and dark theme. You can easily switch between the two by using the keyboard shortcut #[code._code._no-wrap='Ctrl + Alt + T'] or execute #[code._code._no-wrap='base.theme.change()'] with a button. Like this one:
+      p._text-justify This template is readily available in both light and dark theme. You can easily switch between the two by using the keyboard shortcut #[code._code._no-wrap='Ctrl + Alt + T'] or execute #[code._code._no-wrap='base.theme.change()'] with a button. Like this one:
 
       p: +a()(onclick="base.theme.change()")._btnlink._small Change Theme
 
     section._mv-2
       h2 Pre-made building components
 
-      p._text-justify Our web template is equipped with pre-made building components and helper classes to give you an easy building experience. We simplify web creation to make it accessible to everyone, even for those who may not have technical expertise. No lengthy manuals or confusing rules -- just dive in and start building. We have also prepared these comprehensive articles to guide you.
+      p._text-justify Our web template is equipped with pre-made building components and helper classes to give you an easy building experience. We simplify web creation to make it accessible to everyone, even for those who may not have technical expertise. No lengthy manuals or confusing rules -- just dive in and start building. We have also prepared #[+a("demo") demo articles] to help you.
       
       ._mv: +menu
 

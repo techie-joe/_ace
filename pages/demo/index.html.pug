@@ -3,19 +3,21 @@ extends _template
 block append vars
   include _vars
   -
-    title       = `${name} Demo`
-    header      = `${name} ≡ Demo`
-    description = `Showing all features and components of our template.`
+    title          = `Ace Template Demo`
+    description    = `These demo articles show the features of our templates and components.`
 
     og_title       = title
     og_description = description
+    og_url         = url+"?utm_source=homescreen"
+
+    let header     = title
 
 block nav
 
 block main
   +main#_main: article.layout
 
-    section._mb-2: ._flex
+    section._mb-2: ._flex._nav-color
       ._f._pa: +a(homeUrl)._btnlink._small Home
       ._fill
         include _nav
