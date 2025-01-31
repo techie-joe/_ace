@@ -1,0 +1,101 @@
+
+//- 
+	mixin repeat(a,b=0)
+		- var diff = Math.abs(a-b)+(b?1:0);
+		- var n = 0;
+		while n < diff
+			block
+			- n++
+
+	mixin _
+		=` `
+
+	mixin nbsp
+		|&nbsp;
+
+	mixin hellip
+		|&hellip;
+
+	mixin middots
+		|&middot;&middot;&middot;
+
+	mixin nl
+		=`\n`
+
+	mixin php(uri)
+		|!{ `<?php include "${uri}" ?>` }
+
+	mixin php_
+		|!{ `<?php ` }
+		block
+		|!{ ` ?>` }
+
+	mixin a(href,title)
+		a(href=href title=title)&attributes(attributes): block
+
+	mixin _a(href,title)
+		+_
+		a(href=href title=title)&attributes(attributes): block
+
+	mixin la(href,title)
+		li: a(href=href title=title)&attributes(attributes): block
+
+	mixin backlink(title='Back to previous page')
+		a(onclick="event.preventDefault();window.history.back()" title=title)&attributes(attributes): block
+
+	mixin css(href,media='all')
+		link(rel="stylesheet" media=media href=href)&attributes(attributes)/
+
+	mixin js(src)
+		script(type="text/javascript" src=src)&attributes(attributes): block
+
+	mixin img(src,alt,title)
+		img(src=src alt=alt title=title)&attributes(attributes)/
+
+	mixin svgd(d)
+		svg(viewBox="0 0 24 24")&attributes(attributes): path(fill="currentColor" fill-opacity="1" d=d)
+
+	mixin isvg(d)
+		i._isvg&attributes(attributes): +svgd(d)
+
+	mixin fas
+		i._fa: i.fas&attributes(attributes)
+
+	mixin far
+		i._fa: i.far&attributes(attributes)
+
+	mixin fab
+		i._fa: i.fab&attributes(attributes)
+
+	mixin fat
+		i._fa: i.fas&attributes(attributes): block
+
+	mixin itext
+		i._itext: i.itext&attributes(attributes): block
+
+	mixin view
+		._view&attributes(attributes): ._view_layout: block
+
+	mixin main
+		main&attributes(attributes): ._main_layout: block
+
+	mixin header
+		header&attributes(attributes): ._header_layout: block
+
+	mixin footer
+		footer&attributes(attributes): ._footer_layout: block
+
+	mixin nav
+		nav&attributes(attributes): ._nav_layout: block
+
+	mixin pre
+		aside&attributes(attributes): ._pre_layout: pre._pre: block
+
+	mixin aside
+		aside&attributes(attributes): ._aside_layout: block
+
+	mixin widget
+		aside&attributes(attributes): ._widget_layout: block
+
+	mixin widgets
+		aside&attributes(attributes): block

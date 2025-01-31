@@ -1,7 +1,7 @@
 // manifest.js to gulp as manifest.json
 const manifest = {
   "short_name": "Ace",
-  "name": "Ace",
+  "name": "Ace Template",
   "description": "Ace Web Application Template",
   "background_color": "#222222",
   "theme_color": "#222222",
