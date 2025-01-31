@@ -42,17 +42,17 @@ block main
       p._text-justify: block
 
     mixin block_4(title)
-      ._radius._pad._bg-2-2._tc-2-2._mv
+      ._radius._pa._bg-2-2._tc-2-2._mv
         h3._h6 !{title}
         p._text-justify: block
 
-    section._m
+    section
 
       +block_1('Building a Good Theme for a Website')._p| : Creating a cohesive and visually appealing theme for your website is crucial for attracting and retaining visitors. A well-designed theme enhances user experience, reflects your brand's identity, and helps convey your message effectively. Here is a comprehensive guide on how to build a good theme for your website.
 
       +block_1('Define Your Purpose and Audience')._p| : Before diving into design, clarify the purpose of your website. Is it a blog, an e-commerce site, a portfolio, or a corporate page? Understanding your target audience's preferences and needs will guide your design choices and help you create a theme that resonates with them.
 
-    section._m: ._flex._gap-2
+    section: ._flex._gap-2
 
       ._f-3-1
 
@@ -72,7 +72,7 @@ block main
 
         +block_4('Use High-Quality Images and Graphics')| Visual elements like images, icons, and graphics add depth and interest to your theme. Invest in high-quality visuals that align with your brand’s style. Use tools like Unsplash or Pexels for free stock photos, and tools like Canva for creating custom graphics.
 
-    section._m
+    section
 
       +block_1('Consistent Branding')._p| : Maintain consistency in your branding elements, such as logos, colors, fonts, and styles. Consistent branding helps build brand recognition and trust. Create a style guide that outlines your brand’s visual identity and design principles.
 
@@ -86,7 +86,7 @@ block main
 
     hr
 
-    section._m: ._flex._gap
+    section: ._flex._gap
 
       ._fill(style="min-width:370px")
         style.
@@ -110,14 +110,14 @@ block main
             | Standard color were used on #[+a("#xxxx")._no-visited._no-wrap normal hyperlinks] and #[+a("")._no-wrap visited links].
             | You can remove color from a hyperlink using the #[code._code._no-wrap _no-color] class, to make a #[+a("")._no-color._no-wrap plain hyperlinks].
 
-    ._m._pad
+    ._m._pa
 
 block footer
   +footer#_footer._bg-1-2._tc-1-2
 
-    ._flex
+    ._flex._mv
 
-      ._f-12-4: ._pad
+      ._f-12-4: ._pv
         h6._h7._no-margin Official Address
         //-
           #[b Company Name]#[br]
@@ -128,18 +128,18 @@ block footer
         div #[b CALL] #[b._b-9 +012 345 6789]
         div._small official-email@your-domain.com
 
-      ._f-12-3: ._pad
+      ._f-12-3: ._pv
         h6._h7._no-margin Primary Segment
         ul._no-bullet._no-pad
           +la('#')._no-visited._no-u Put some links
           +la('#')._no-visited._no-u To some posts
           +la('#')._no-visited._no-u Or some pages
 
-      ._f-12-3: ._pad
+      ._f-12-3: ._pv
         h6._h7._no-margin Secondary Segment
         ul._no-bullet._no-pad
           +la('#')._no-visited._no-u Put some links
           +la('#')._no-visited._no-u To some posts
           +la('#')._no-visited._no-u Or some pages
 
-    ._pad !{copyright}
+    ._mv !{copyright}

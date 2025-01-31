@@ -85,9 +85,9 @@ block main
       ._mv
         - let i = 0
         while 8 >= i++
-          i._isvg(class="_rotate-"+(-45+i*45)): +isvg(svgs[5])
-        +isvg.__spin(svgs[7])
-        +isvg.__spin(svgs[8])
+          +isvg(svgs[5])(class="_rotate-"+(-45+i*45))
+        +isvg(svgs[7]).__spin
+        +isvg(svgs[8]).__spin
 
       //- https://pictogrammers.com/library/mdi/
       p._text-right._small: +a('https://pictogrammers.com/library/mdi/')(target="pictogrammers")._no-u More icons at Pictogrammers ...
