@@ -45,7 +45,7 @@ $gs: 12,10;
     @else {
       ._f-#{$g}-#{$i} {
         @extend ._fill;
-        $basis: calc($i * 30 / $g * 1rem + 1rem);
+        $basis: calc($i * 30 / $g * 1rem);
         flex: $i 1 $basis;
       }
     }
