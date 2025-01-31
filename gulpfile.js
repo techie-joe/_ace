@@ -1,8 +1,42 @@
+// ============================================================== define gulper
+
+const { watch, series, parallel, src, dest } = require('gulp');
+const rename = require('gulp-rename');
+const file = require('gulp-file');
+const watchOpt = { ignoreInitial: false };
+const pagesOpt = { pretty: true };
+
+function ext(ext) {
+  return function (path) {
+    path.basename = path.basename.substring(0, path.basename.lastIndexOf('.'));
+    path.extname = ext;
+  }
+}
+
+// ============================================================= builder gulper
+
 const _builder = {
   txt   : ["_builder/**/*.txt.pug"],
   md    : ["_builder/**/*.md.pug"],
   dest  : "./",
 };
+
+function builder_txt() {
+  return src(_builder.txt)
+  .pipe(pug())
+  .pipe(rename(ext('.txt')))
+  .pipe(dest(_builder.dest));
+}
+
+function builder_md() {
+  return src(_builder.md)
+  .pipe(pug())
+  .pipe(rename(ext('.md')))
+  .pipe(dest(_builder.dest));
+}
+exports.builder = parallel( builder_txt, builder_md );
+
+// =============================================================== site gulper
 
 const _src = {
   root  : "_ace",
@@ -26,34 +60,6 @@ const _dest = {
   css  : "../ace/assets/css",
   js   : "../ace/assets/gjs",
 };
-
-const { watch, series, parallel, src, dest } = require('gulp');
-const rename = require('gulp-rename');
-const file = require('gulp-file');
-const watchOpt = { ignoreInitial: false };
-const pagesOpt = { pretty: true };
-
-function ext(ext) {
-  return function (path) {
-    path.basename = path.basename.substring(0, path.basename.lastIndexOf('.'));
-    path.extname = ext;
-  }
-}
-
-function builder_txt() {
-  return src(_builder.txt)
-  .pipe(pug())
-  .pipe(rename(ext('.txt')))
-  .pipe(dest(_builder.dest));
-}
-
-function builder_md() {
-  return src(_builder.md)
-  .pipe(pug())
-  .pipe(rename(ext('.md')))
-  .pipe(dest(_builder.dest));
-}
-exports.builder = parallel( builder_txt, builder_md );
 
 // files: .htaccess
 // : task to generate file to _dest
@@ -166,11 +172,21 @@ function jsw() { watch(_src.js, watchOpt, js); }
 exports.js = js;
 exports.jsw = jsw;
 
+// ===================================================================== gulper
+
 exports.default = parallel(
   builder_txt, builder_md,
   htaccess, manifest, files,
   html, php, txt, md,
-  css, js
+  css,
+  js,
+);
+
+exports.site = parallel(
+  htaccess, manifest, files,
+  html, php, txt, md,
+  css,
+  js,
 );
 
 exports.watch = parallel(

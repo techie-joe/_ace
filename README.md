@@ -1,9 +1,9 @@
-# Ace Builder
-> A solid framework for building websites and application.
+# Ace Template Builder
+> A solid framework to build your website and application
 ---
 
-Project  : Ace Builder  
-Codename : _ace - v0.1.6  
+Title    : Ace Template Builder  
+Version  : v0.1.7  
 Author   : Techie Joe  
 
 URL      : https://github.com/techie-joe/_ace  

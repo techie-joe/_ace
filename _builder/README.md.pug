@@ -1,8 +1,7 @@
-extends ../_templates/text
+extends ../pugs/text
 
 block append vars
   include _vars
-  //- 
  
 block main
   .
@@ -10,8 +9,8 @@ block main
     > !{description}
     ---
     
-    Project  : !{name}  
-    Codename : #{shortName} - v#{version}  
+    Title    : !{title}  
+    Version  : v#{version}  
     Author   : !{author}  
 
     URL      : #{url}  
