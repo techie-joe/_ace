@@ -4,7 +4,7 @@
     "compilerOptions": {
         "module": "CommonJS",
         "target": "ES6",
-        "outDir": "scripts/tjs",
+        "outDir": "scripts/ts_js",
         "strict": true,
         "sourceMap": false,
         "strictNullChecks": true,

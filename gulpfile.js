@@ -1,3 +1,6 @@
+// TLDR : This is the gulper tasks definition that builds your project.
+//      : Find more information about Gulp on http://gulpjs.com
+
 // ============================================================== define gulper
 
 const { watch, series, parallel, src, dest } = require('gulp');
@@ -50,8 +53,8 @@ const _src = {
   php   : ["pages/**/*.php.pug"],
   txt   : ["pages/**/*.txt.pug"],
   md    : ["pages/**/*.md.pug"],
-  js    : ["scripts/gjs/**/*.js"],
-  scss  : ["styles/scss/**/*.scss"],
+  js    : ["scripts/gulp_js/**/*.js"],
+  scss  : ["styles/gulp_css/**/*.scss"],
 };
 
 const _dest = {

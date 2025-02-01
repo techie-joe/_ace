@@ -1,4 +1,5 @@
 {
+  "__TLDR" : "This is a nodejs project metadata to define what your project is about.",
   "name": "ace",
   "version": "0.1.7",
   "description": "Ace Template Builder",
