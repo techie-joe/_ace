@@ -25,6 +25,7 @@
     &:active { border-width:4px; box-shadow:0 0 0 5px rgba(128,128,128,1) inset; }
   }
 
+  // force scrollbar to prevent jitter : layout shifts occur when scrollbars appear or disappear
   // ._view {
   //   overflow-x: auto;
   //   overflow-y: scroll;

@@ -108,7 +108,7 @@ block main
           ._f-12-4
             ul._no-margin: li
               span.a Error pages:
-              +_a("---","Simulate Real 404").a| ---
+              +_a("---","Simulate Real 404").a: +middots
               +_a("404.html").a| 404
               +_a("500.html").a| 500
               +_a(templateUrl+'closed.html').a| Closed
@@ -133,5 +133,7 @@ block main
     
     p._small| Some images on this website are courtesy of Matt at <a href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">svgbackgrounds.com</a>. Thank you for providing them for free.
 
-    ._p._small| Live @ #[+a(url)(target="techie-joes-github") #{url}]
+    ._p._small
+      | Version : #{version} &mdash;  
+      | Live @ #[+a(url)(target="techie-joes-github") #{url}]
 

@@ -126,6 +126,7 @@ block main
       -
         var primary_color   = 8; // blue 0066CC
         var secondary_color = 3; // orange DD8811
+        var red_color       = 2; // red DD1111
 
         var bg = colors[primary_color][0];
         var tc = colors[primary_color][1];
@@ -136,9 +137,10 @@ block main
         #_html .colorcode       { background:#ccc; }
         #_html._dark .colorcode { background:#111; }
         .codecolor { padding:0 1em }
+
       +colorCodes(primary_color)
       +colorCodes(secondary_color)
-      +colorCodes(2)
+      +colorCodes(red_color)
       +colorCodes(1)
       +colorCodes(0)
 

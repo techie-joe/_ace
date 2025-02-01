@@ -1,20 +1,97 @@
-@mixin border-radius($v) {
-  -webkit-border-radius: $v;
-     -moz-border-radius: $v;
-      -ms-border-radius: $v;
-          border-radius: $v;
+@mixin position-absolute($top: null, $left: null, $bottom: null, $right: null) {
+  position: absolute;
+  @if $top { top: $top; }
+  @if $bottom { bottom: $bottom; }
+  @if $right { right: $right; }
+  @if $left { left: $left; }
 }
 
-@mixin text-size-adjust($v) {
-  -webkit-text-size-adjust: $v;
-     -moz-text-size-adjust: $v;
-      -ms-text-size-adjust: $v;
-          text-size-adjust: $v;
+@mixin position-relative($top: null, $left: null, $bottom: null, $right: null) {
+  position: relative;
+  @if $top { top: $top; }
+  @if $bottom { bottom: $bottom; }
+  @if $right { right: $right; }
+  @if $left { left: $left; }
 }
 
-@mixin numb {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+@mixin position-fixed($top: null, $left: null, $bottom: null, $right: null) {
+  position: fixed;
+  @if $top { top: $top; }
+  @if $bottom { bottom: $bottom; }
+  @if $right { right: $right; }
+  @if $left { left: $left; }
 }
+
+@mixin color($color, $bg_color: null, $important: false) {
+  @if $important {
+    color: $color !important;
+    @if $bg_color { background-color: $bg_color !important; }
+  } @else {
+    color: $color;
+    @if $bg_color { background-color: $bg_color; }
+  }
+}
+
+@mixin mh($value) {
+  margin-left: $value;
+  margin-right: $value;
+}
+
+@mixin mv($value) {
+  margin-top: $value;
+  margin-bottom: $value;
+}
+
+@mixin ph($value) {
+  padding-left: $value;
+  padding-right: $value;
+}
+
+@mixin pv($value) {
+  padding-top: $value;
+  padding-bottom: $value;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin grid-layout($columns, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// @mixin button($bg-color, $text-color) {
+//   background-color: $bg-color;
+//   color: $text-color;
+//   padding: 10px 20px;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+
+//   &:hover {
+//     background-color: darken($bg-color, 10%);
+//   }
+// }
+
+// @media (min-width: 20em){/*    ≥ 320px   Mobile S   ._f-ms-* */}
+// @media (min-width: 23.4em){/*  ≥ 375px   Mobile M   ._f-mm-* */}
+// @media (min-width: 26.6em){/*  ≥ 425px   Mobile L   ._f-ml-* */}
+// @media (min-width: 35.5em){/*  ≥ 568px              ._f-s-*  */}
+// @media (min-width: 48em){/*    ≥ 768px    Laptop S  ._f-m-*  */}
+// @media (min-width: 60em){/*    ≥ 960px    960gs     ._f-r-*  */}
+// @media (min-width: 64em){/*    ≥ 1024px   Laptop M  ._f-l-*  */}
+// @media (min-width: 80em){/*    ≥ 1280px             ._f-2l-* */}
+// @media (min-width: 90em){/*    ≥ 1440px   Laptop L  ._f-3l-* */}
+// @media (min-width: 120em){/*   ≥ 1920px             ._f-4l-* */}
+// @media (min-width: 160em){/*   ≥ 2560px   4K        ._f-4k-* */}
+// @media (min-width: 240em){/*   ≥ 3840px             ._f-5k-* */}
+
+@mixin responsive-font($min-size, $max-size) {
+  font-size: $min-size;
+  @media (min-width: 48em) { font-size: $max-size; }
+}
+
