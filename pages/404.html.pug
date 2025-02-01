@@ -1,8 +1,8 @@
-extends ../_templates/error
+extends ../pugs/error
 
 block append vars
-  - title       = 'Not found'
-  - description = 'Sorry, the item you are trying to view does not exist.'
+  +updateTitle( `Not found` )
+  +updateDescription( `Sorry, the item you are trying to view does not exist.` )
 
 block main
   +main#_main

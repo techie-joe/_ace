@@ -1,8 +1,12 @@
 extends html
 
 block append vars
-  -
-    htmlClass = htmlClass+' _errorpage'
+  - codeName  = 'error'
+  - htmlClass = htmlClass+' _errorpage'
+
+//- block append vars
+  +updateTitle( `(untitled)` )
+  +updateDescription( `(undescribed)` )
 
 block seo
   title !{title||'(untitled)'}
