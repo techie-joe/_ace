@@ -64,20 +64,21 @@ block main
   +main#_main: article
 
     section#t1._mb: ._flex: ._fill: +nav#_nav
-      +a(homeUrl)._btnlink._small|Home
+      |You can : &nbsp;
+      +a()._btnlink._small|Combine
       +_a()(onclick="base.theme.change()")._nav-item._nav-icon: +isvg(svgs[1])
-      +demo("view.html")| View
-      +demo("flex.html")| Flex
+      +_a()._nav-item| Multiple
+      +_a()._nav-item| Kinds of
       +_a()._nav-item._nav-icon._b: +middots
-      +demo("colors.html")| Colors
-      +demo("texts.html")| Texts
+      +_a()._nav-item| Menu
       +_a()._nav-item._nav-icon: +isvg(svgs[3])
 
+    h3._m._h7 Examples :
 
     section#t2._mv: ._flex
-      ._f-12-1._pa._nav-color: +a(homeUrl)._btnlink._small|Home
+      ._f-12-1._pa._nav-color: +a()._btnlink._small|Home
       ._fill(style="min-width:10rem"): +menu
-      ._f-12-1._text-right._pa._nav-color: +_a()(onclick="base.theme.change()")._nav-item._nav-icon: +isvg(svgs[1])
+      ._f-12-1._text-right._pa._nav-color: +_a()()._nav-item._nav-icon: +isvg(svgs[1])
 
     section#t3._mv
       #_navbar._flex
