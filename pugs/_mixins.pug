@@ -5,6 +5,14 @@ mixin repeat(a,b=0)
 		block
 		- n++
 
+mixin join(what,seperator=`\n`)
+	!=what.join(seperator)
+
+mixin htmlColor
+	style.
+		html { background-color: #ddd; color: #555; } /* light theme - (default) */
+		@media (prefers-color-scheme: dark) { html { background-color: #222; color: #aaa; } } /* dark theme */
+
 mixin css(href,media='all')
 	link(rel="stylesheet" media=media href=href)&attributes(attributes)/
 
@@ -47,7 +55,7 @@ mixin _
 mixin middots
 	|&middot;&middot;&middot;
 
-mixin nl
+mixin l
 	=`\n`
 
 mixin a(href,title)
@@ -60,45 +68,37 @@ mixin _a(href,title)
 mixin la(href,title)
 	li: a(href=href title=title)&attributes(attributes): block
 
-//- 
+mixin backlink(title='Back to previous page')
+	a(onclick=js.goBack title=title)&attributes(attributes): block
 
-	mixin nbsp
-		|&nbsp;
+mixin php(uri)
+	!=`<?php include "${uri}" ?>`
 
-	mixin hellip
-		|&hellip;
+mixin php_
+	!=`<?php `
+	block
+	!=` ?>`
 
-	mixin php(uri)
-		|!{ `<?php include "${uri}" ?>` }
+mixin img(src,alt,title)
+	img(src=src alt=alt title=title)&attributes(attributes)/
 
-	mixin php_
-		|!{ `<?php ` }
-		block
-		|!{ ` ?>` }
+mixin svgd(d,fill="currentColor",opacity="1")
+	svg(viewBox="0 0 24 24")&attributes(attributes): path(fill=fill fill-opacity=opacity d=d)
 
-	mixin backlink(title='Back to previous page')
-		a(onclick="event.preventDefault();window.history.back()" title=title)&attributes(attributes): block
+mixin isvg(d)
+	i._isvg&attributes(attributes): +svgd(d)
 
-	mixin img(src,alt,title)
-		img(src=src alt=alt title=title)&attributes(attributes)/
+mixin fas
+	i._fa: i.fas&attributes(attributes)
 
-	mixin svgd(d)
-		svg(viewBox="0 0 24 24")&attributes(attributes): path(fill="currentColor" fill-opacity="1" d=d)
+mixin far
+	i._fa: i.far&attributes(attributes)
 
-	mixin isvg(d)
-		i._isvg&attributes(attributes): +svgd(d)
+mixin fab
+	i._fa: i.fab&attributes(attributes)
 
-	mixin fas
-		i._fa: i.fas&attributes(attributes)
+mixin fat
+	i._fa: i.fas&attributes(attributes): block
 
-	mixin far
-		i._fa: i.far&attributes(attributes)
-
-	mixin fab
-		i._fa: i.fab&attributes(attributes)
-
-	mixin fat
-		i._fa: i.fas&attributes(attributes): block
-
-	mixin itext
-		i._itext: i.itext&attributes(attributes): block
+mixin itext
+	i._itext: i.itext&attributes(attributes): block

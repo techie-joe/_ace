@@ -41,6 +41,11 @@ mixin la(href,title)
 mixin backlink(title='Back to previous page')
 	a(onclick="event.preventDefault();window.history.back()" title=title)&attributes(attributes): block
 
+mixin htmlColor
+	style.
+		html { background-color: #ddd; color: #555; } /* light theme - (default) */
+		@media (prefers-color-scheme: dark) { html { background-color: #222; color: #aaa; } } /* dark theme */
+
 mixin css(href,media='all')
 	link(rel="stylesheet" media=media href=href)&attributes(attributes)/
 

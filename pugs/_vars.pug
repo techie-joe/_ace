@@ -24,8 +24,8 @@
 
   let og_title       = title
   let og_description = description
-  let og_type        = "website"
   let og_url         = url+"?utm_source=homescreen"
+  let og_type        = "website"
   let og_image       = ""
   let og_imageAlt    = ""
 
@@ -33,9 +33,74 @@
   let lang           = "en"
   let charset        = "utf-8"
   let colorScheme    = "light dark"
-  let themeColor     = "#222"
-  let include_manifest = false
+  let themeColor     = "#222222"
 
   let htmlClass      = ''
   let bodyClass      = ''
   let contentsClass  = ''
+
+  let include_manifest = false
+
+mixin updateTitle(_title)
+  - title    = _title
+  - heading  = _title
+  - og_title = _title
+
+mixin updateDescription(_description)
+  - description    = _description
+  - og_description = _description
+
+mixin updateUrl(_value,_type='website')
+  -    url  = _value
+  - og_url  = _value+"?utm_source=homescreen"
+  - og_type = _type
+
+mixin updateImage(_image, _alt)
+  - og_image    = _image
+  - og_imageAlt = _alt
+
+mixin putDataTitle
+  +l
+  +join([
+    `title          = ${title}`,
+    `heading        = ${heading}`,
+    `description    = ${description}`,
+    `brandName      = ${brandName}`,
+    `codeName       = ${codeName}`,
+    `author         = ${author}`,
+    ``,
+    `output         = ${output}`,
+    `version        = ${version}`,
+    `publisher      = ${publisher}`
+  ])
+  +l
+
+mixin putDataUrl
+  +l
+  +join([
+    `url            = ${url}`,
+    `authorUrl      = ${authorUrl}`,
+  ])
+  +l
+
+mixin putDataOg
+  +l
+  +join([
+    `og_title       = ${og_title}`,
+    `og_description = ${og_description}`,
+    `og_type        = ${og_type}`,
+    `og_url         = ${og_url}`,
+    `og_image       = ${og_image}`,
+    `og_imageAlt    = ${og_imageAlt}`,
+  ])
+  +l
+
+mixin putData
+  +putDataTitle
+  +putDataUrl
+  +putDataOg
+
+mixin pageData
+  hr
+  +pre: +putData
+  hr

@@ -1,20 +1,12 @@
-extends demo/_template
+extends ../pugs/html
 
 block append vars
   include _vars
-  -
-    header         = "Ace Template"
-    about          = `A solid foundation to build your website and application. Our minimalistic approach ensures full control from the very beginning.`
-
-    url            = "https://techie-joe.github.io/ace/"
-
-    og_title       = title
-    og_description = description
-    og_url         = url+"?utm_source=homescreen"
-
-  //- 
+  +updateTitle( `Ace Template`)
+  - let about = `A solid foundation to build your website and application. Our minimalistic approach ensures full control from the very beginning.`
 
 block append style
+  +css(assetsUrl+'css/demo.css?v='+version)
   style.
     #_html { min-width:320px }
 
@@ -37,9 +29,9 @@ block append style
 
     #startNow._btnlink { padding: .5em 1.5em }
     #_header .startNow { text-align: center; width:100%; margin: 1.5em auto 0; }
-    #_header .startNow ._btnlink:hover { background:#777;color:#fff; }
+    #_header .startNow ._btnlink:hover { color:#fff;background:#777; }
 
-    @media screen and (min-width: 530px) {
+    @media (min-width: 530px) {
 
       #_footer ._footer_layout,
       #_main ._main_layout   { padding: 0 3rem; }
@@ -61,18 +53,15 @@ block append style
 block header
   +header#_header
     .intro
-      h1._hero-1 !{header}
+      h1._hero-1 !{heading}
       p._small by #[+a(authorUrl) !{author}]
       p._text-justify !{about}
     .startNow
       +a("demo")#startNow._btnlink| Get started
-  //- 
-
-block nav
 
 block main
   +main#_main: article
-
+  
     include demo/_nav
 
     section._mv-2
@@ -118,9 +107,9 @@ block main
     section._mv-2
       h2 Available in light and dark
 
-      p._text-justify Our template is readily available in both light and dark theme. You can easily switch between the two by using the keyboard shortcut #[code._code._no-wrap='Ctrl + Alt + T'] or execute #[code._code._no-wrap='base.theme.change()'] with a button. Like this one:
+      p._text-justify Our template is readily available in both light and dark theme. You can easily switch between the two by using the keyboard shortcut #[code._code._no-wrap='Ctrl + Alt + T'] or execute #[code._code._no-wrap=js.themeChange] with a button. Like this one:
 
-      p: +a()(onclick="base.theme.change()")._btnlink._small Change Theme
+      p: +a()(onclick=js.themeChange)._btnlink._small Change Theme
 
     section._mv-2
       h2 Pre-made building components
@@ -137,3 +126,8 @@ block main
       | Version : #{version} &mdash;  
       | Live @ #[+a(url)(target="techie-joes-github") #{url}]
 
+block footer
+  //- +footer#_footer
+  +footer#_footer
+    hr
+    p !{copyright}

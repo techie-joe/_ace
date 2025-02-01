@@ -1,4 +1,5 @@
 include _vars
+include _jss
 include _mixins
 
 block vars
@@ -22,6 +23,7 @@ html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
       include _meta
 
     block style
+      +htmlColor
       //- +css(href,media='all')
       +css(assetsUrl+'css/style.css?v='+version)
 

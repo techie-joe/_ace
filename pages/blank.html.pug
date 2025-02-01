@@ -1,0 +1,10 @@
+extends ../pugs/html
+
+block append vars
+  include _vars
+
+block main
+  +main#_main: article
+    ._mv: p| This is a blank page.  
+    +pageData
+    +backlink._btnlink._small OK

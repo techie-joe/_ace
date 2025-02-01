@@ -72,22 +72,37 @@ block main
       style.
         ._icons ._isvg { min-width:2.25em; height:2.25em; }
 
+      -
+        let svgds = [
+          svgd.bars,
+          svgd.compare,
+          svgd.home,
+          svgd.ellipsis,
+          svgd.caret,
+          svgd.angle,
+          svgd.arrow,
+          svgd.cross,
+          svgd.spin,
+          svgd.image,
+          svgd.download,
+        ]
+
       ._mv._icons
-        each d in svgs
+        each d in svgds
           +isvg(d)
 
       ._mv
         .ibox
-          +isvg(svgs[0])
-          +isvg(svgs[1])
+          +isvg(svgd.bars)
+          +isvg(svgd.compare)
           |H
 
       ._mv
         - let i = 0
         while 8 >= i++
-          +isvg(svgs[5])(class="_rotate-"+(-45+i*45))
-        +isvg(svgs[7]).__spin
-        +isvg(svgs[8]).__spin
+          +isvg(svgd.angle)(class="_rotate-"+(-45+i*45))
+        +isvg(svgd.cross).__spin
+        +isvg(svgd.spin).__spin
 
       //- https://pictogrammers.com/library/mdi/
       p._text-right._small: +a('https://pictogrammers.com/library/mdi/')(target="pictogrammers")._no-u More icons at Pictogrammers ...

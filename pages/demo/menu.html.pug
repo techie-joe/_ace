@@ -66,25 +66,25 @@ block main
     section#t1._mb: ._flex: ._fill: +nav#_nav
       |You can : &nbsp;
       +a()._btnlink._small|Combine
-      +_a()(onclick="base.theme.change()")._nav-item._nav-icon: +isvg(svgs[1])
+      +_a()(onclick="base.theme.change()")._nav-item._nav-icon: +isvg(svgd.compare)
       +_a()._nav-item| Multiple
       +_a()._nav-item| Kinds of
       +_a()._nav-item._nav-icon._b: +middots
       +_a()._nav-item| Menu
-      +_a()._nav-item._nav-icon: +isvg(svgs[3])
+      +_a()._nav-item._nav-icon: +isvg(svgd.ellipsis)
 
     h3._m._h7 Examples :
 
     section#t2._mv: ._flex
       ._f-12-1._pa._nav-color: +a()._btnlink._small|Home
       ._fill(style="min-width:10rem"): +menu
-      ._f-12-1._text-right._pa._nav-color: +_a()()._nav-item._nav-icon: +isvg(svgs[1])
+      ._f-12-1._text-right._pa._nav-color: +_a()()._nav-item._nav-icon: +isvg(svgd.compare)
 
     section#t3._mv
       #_navbar._flex
         ._f-12-1._nav-color#_logo-flex: include _logo
         ._fill(style="min-width:10rem"): +menu
-        ._f-12-1._text-right._pa._nav-color: +_a()(onclick="base.theme.change()")._nav-item._nav-icon: +isvg(svgs[1])
+        ._f-12-1._text-right._pa._nav-color: +_a()(onclick="base.theme.change()")._nav-item._nav-icon: +isvg(svgd.compare)
     
     //- section#t4._mv
 
@@ -92,12 +92,12 @@ block main
         ._icons ._isvg { min-width:2.25em; height:2.25em; }
 
       #_navbar._flex
-        ._f._icons: +isvg(svgs[0])
+        ._f._icons: +isvg(svgd.bars)
         ._fill(style="min-width:10rem")
           +nav#_nav
             +menus
         ._f._icons
-          +isvg(svgs[1])
-          +isvg(svgs[3])
+          +isvg(svgd.compare)
+          +isvg(svgd.ellipsis)
 
 block footer
