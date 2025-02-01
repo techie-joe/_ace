@@ -41,6 +41,9 @@ mixin la(href,title)
 mixin backlink(title='Back to previous page')
 	a(onclick="event.preventDefault();window.history.back()" title=title)&attributes(attributes): block
 
+mixin changeThemeLink(title='Change color scheme')
+	a(onclick="base.theme.change()" title=title)&attributes(attributes): block
+
 mixin htmlColor
 	style.
 		html { background-color: #ddd; color: #555; } /* light theme - (default) */

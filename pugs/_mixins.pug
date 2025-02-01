@@ -71,6 +71,9 @@ mixin la(href,title)
 mixin backlink(title='Back to previous page')
 	a(onclick=js.goBack title=title)&attributes(attributes): block
 
+mixin changeThemeLink(title='Change color scheme')
+	a(onclick=js.themeChange title=title)&attributes(attributes): block
+
 mixin php(uri)
 	!=`<?php include "${uri}" ?>`
 
