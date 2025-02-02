@@ -2,16 +2,12 @@ extends ../pugs/html
 
 block append vars
   include _vars
-  //- +updateTitle( `(untitled)` )
-  //- +updateDescription( `(undescribed)` )
+  +updateTitle( `Blank Page | ${title}` )
+  +updateDescription( `(undescribed)` )
 
 block main
   +main#_main: article
-    ._mv: h1._h7| This is a blank page
+    nav#_nav._mv: +backlink._btnlink._smaller Back
     hr
-    +pre
-      =`These are some data of this page:`
-      +l
-      +putData
+    +pre: +putData
     hr
-    nav#_nav: +backlink._btnlink._small Back

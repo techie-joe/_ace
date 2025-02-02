@@ -1,7 +1,7 @@
 extends ../pugs/error
 
 block append vars
-  +updateTitle( `Oops!` )
+  +updateTitle( `Oops! | ${title}` )
   +updateDescription( `Sorry, an error occured while processing your request.` )
 
 block main

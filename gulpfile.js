@@ -142,7 +142,12 @@ function pagesw() {
   watch(_src.md,   watchOpt, md);
 }
 
-exports.pages = parallel( html, php, txt, md );
+exports.html = html;
+exports.php  = php;
+exports.txt  = txt;
+exports.md   = md;
+
+exports.pages  = parallel( html, php, txt, md );
 exports.pagesw = pagesw;
 
 // sass
@@ -160,7 +165,7 @@ function css() {
 
 function cssw() { watch(_src.scss, watchOpt, css); } 
 
-exports.css = css;
+exports.css  = css;
 exports.cssw = cssw;
 
 // js
@@ -172,7 +177,7 @@ function js() {
 
 function jsw() { watch(_src.js, watchOpt, js); }
 
-exports.js = js;
+exports.js  = js;
 exports.jsw = jsw;
 
 // ===================================================================== gulper

@@ -1,5 +1,6 @@
 include _vars
 include _jss
+include _functions
 include _mixins
 
 block vars
@@ -7,7 +8,7 @@ block vars
 
 //- block append vars
   include _vars
-  +updateTitle( `(untitled)` )
+  +updateTitle( `(untitled) | ${title}` )
   +updateDescription( `(undescribed)` )
 
 block entry
@@ -29,8 +30,8 @@ html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
 
     block style
       +htmlColor
-      //- +css(href,media='all')
-      +css(assetsUrl+'css/style.css?v='+version)
+      //- +cssv(href,media='all')
+      +cssv(assetsUrl+'css/style.css')
 
   body#_body(class=bodyClass)
 
@@ -48,7 +49,8 @@ html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
               //- +nav#_nav: ul: +la
 
             block pre
-              //- +pre#_pre.
+              //- +pre._ma: +putData
+              //- +preData
 
             block main
               //- +main#_main: article| main article
@@ -64,8 +66,8 @@ html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
       //- +widgets#_widgets: +widget#_widget
 
     block script
-      //- +js(src)
-      +js(assetsUrl+'cjs/thm.js?v='+version)(defer)
+      //- +jsv(src)
+      +jsv(assetsUrl+'cjs/thm.js')(defer)
 
     block last
       | <!-- IE needs 512+ bytes: https://techie-joe.github.io/library/html5/ie#ie-needs-512-bytes -->

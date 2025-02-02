@@ -5,7 +5,7 @@ block append vars
   - htmlClass = htmlClass+' _errorpage'
 
 //- block append vars
-  +updateTitle( `(untitled)` )
+  +updateTitle( `(untitled) | ${title}` )
   +updateDescription( `(undescribed)` )
 
 block seo
@@ -13,4 +13,4 @@ block seo
   meta(name="description" content=description||'(undescribed)')/
 
 block append style
-  +css(assetsUrl+'css/errorpage.css?v='+version)
+  +cssv(assetsUrl+'css/errorpage.css')

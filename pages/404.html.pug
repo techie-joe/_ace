@@ -1,7 +1,7 @@
 extends ../pugs/error
 
 block append vars
-  +updateTitle( `Not found` )
+  +updateTitle( `Not found | ${title}` )
   +updateDescription( `Sorry, the item you are trying to view does not exist.` )
 
 block main

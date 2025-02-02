@@ -5,15 +5,19 @@
   let templateUrl    = "/ace/templates/"
 
   let title          = "(untitled)"
-  let heading        = "(untitled)"
   let description    = "(undescribed)"
+
+  let heading        = "(untitled)"
+  let about          = "(undescribed)"
+
   let brandName      = "(unknown)"
   let codeName       = "(unknown)"
   let author         = "(unknown)"
+  let publisher      = "Tidloo"
 
   let output         = "ace"
   let version        = "0.1.8"
-  let publisher      = "Tidloo"
+  let build          = "149.3"
 
   let url            = "https://techie-joe.github.io/ace/"
   let authorUrl      = "https://techie-joe.github.io/"
@@ -43,7 +47,6 @@
 
 mixin updateTitle(_title)
   - title    = _title
-  - heading  = _title
   - og_title = _title
 
 mixin updateDescription(_description)
@@ -63,15 +66,18 @@ mixin putDataTitle
   +l
   +join([
     `title          = ${title}`,
-    `heading        = ${heading}`,
     `description    = ${description}`,
+    ``,
+    `heading        = ${heading}`,
+    `about          = ${about}`,
+    ``,
     `brandName      = ${brandName}`,
     `codeName       = ${codeName}`,
     `author         = ${author}`,
+    `publisher      = ${publisher}`,
     ``,
     `output         = ${output}`,
     `version        = ${version}`,
-    `publisher      = ${publisher}`
   ])
   +l
 
@@ -99,3 +105,6 @@ mixin putData
   +putDataTitle
   +putDataUrl
   +putDataOg
+
+mixin preData
+  +pre._ma: +putData
