@@ -63,7 +63,7 @@ block main
 
   +main#_main: article
 
-    section#t1._mb: ._flex: ._fill: +nav#_nav
+    section#t1._mb: ._flex: ._fill._nav-color: +nav#_nav
       |You can : &nbsp;
       +a()._btnlink._small|Combine
       +_a()._nav-item._nav-icon: +isvg(svgd.compare)
@@ -75,13 +75,13 @@ block main
 
     section#t2._mv: ._flex
       ._f-12-1._pa._nav-color: +a()._btnlink._smaller|Home
-      ._fill(style="min-width:10rem"): +menu
+      ._fill._nav-color(style="min-width:10rem"): +menu
       ._f-12-1._text-right._pa._nav-color: +_a()()._nav-item._nav-icon: +isvg(svgd.compare)
 
     section#t3._mv
       #_navbar._flex
         ._f-12-1._nav-color#_logo-flex: include _logo
-        ._fill(style="min-width:10rem"): +menu
+        ._fill._nav-color(style="min-width:10rem"): +menu
         ._f-12-1._text-right._pa._nav-color: +_a()._nav-item._nav-icon: +isvg(svgd.compare)
     
     //- section#t4._mv

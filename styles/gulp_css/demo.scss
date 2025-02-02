@@ -70,7 +70,6 @@
 
 /* ---------------------------------- default light theme */
 
-#_nav,
 ._nav-color,
 ._editorbar p { @include color( $tc_2_8, $bg_2_8 ); }
 
@@ -78,7 +77,6 @@
 
 ._dark {
 
-  #_nav,
   ._nav-color,
   ._editorbar p { @include color( $tc_1_2, $bg_1_2 ); }
 
