@@ -1,8 +1,9 @@
 extends ../pugs/error
 
 block append vars
+  include _vars
   - heading = `Temporary closed`
-  +updateTitle( `${heading} | ${title}` )
+  +updateTitle( `${heading}` )
   +updateDescription( `Sorry, we are currently unavailable. Please come again later.` )
 
 block main

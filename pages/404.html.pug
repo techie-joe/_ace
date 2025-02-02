@@ -1,8 +1,9 @@
 extends ../pugs/error
 
 block append vars
+  include _vars
   - heading = `Not found`
-  +updateTitle( `${heading} | ${title}` )
+  +updateTitle( `${heading}` )
   +updateDescription( `Sorry, the item you are trying to view does not exist.` )
 
 block main

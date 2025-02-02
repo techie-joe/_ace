@@ -5,7 +5,8 @@ block append vars
   - htmlClass = htmlClass+' _errorpage'
 
 //- block append vars
-  +updateTitle( `(untitled) | ${title}` )
+  - heading = `(untitled)`
+  +updateTitle( `${heading}` )
   +updateDescription( `(undescribed)` )
 
 block seo
