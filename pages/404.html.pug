@@ -1,11 +1,12 @@
 extends ../pugs/error
 
 block append vars
-  +updateTitle( `Not found | ${title}` )
+  - heading = `Not found`
+  +updateTitle( `${heading} | ${title}` )
   +updateDescription( `Sorry, the item you are trying to view does not exist.` )
 
 block main
   +main#_main
-    h1#_h1 !{title}
+    h1#_h1 !{heading}
     p#_p !{description}
     nav#_nav: +backlink._btnlink Back

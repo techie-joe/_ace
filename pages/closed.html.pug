@@ -1,11 +1,12 @@
 extends ../pugs/error
 
 block append vars
-  +updateTitle( `Temporary closed | ${title}` )
+  - heading = `Temporary closed`
+  +updateTitle( `${heading} | ${title}` )
   +updateDescription( `Sorry, we are currently unavailable. Please come again later.` )
 
 block main
   +main#_main
-    h1#_h1 !{title}
+    h1#_h1 !{heading}
     p#_p !{description}
     nav#_nav: +backlink._btnlink Back
