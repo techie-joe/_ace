@@ -58,7 +58,7 @@ block header
   +header#_header
     .intro
       h1._hero-1 !{heading}
-      p._small by #[+a(authorUrl) !{author}]
+      p._smaller by #[+a(authorUrl) !{author}]
       p._text-justify !{about}
     .startNow
       +a("demo")#startNow._btnlink| Get started
@@ -125,10 +125,10 @@ block main
 
     hr
 
-    p._small| Some images on this website are courtesy of Matt at <a href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">svgbackgrounds.com</a>. Thank you for providing them for free.
+    p._smaller| Some images on this website are courtesy of Matt at <a href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">svgbackgrounds.com</a>. Thank you for providing them for free.
 
-    ._p._small
-      | Version : #{version} &mdash;  
+    ._p._smaller
+      | Version : #{version} &mdash; #{build} &mdash;  
       | Live @ #[+a(url)(target="techie-joes-github") #{url}]
 
 block footer

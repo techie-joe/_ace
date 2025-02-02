@@ -3,8 +3,8 @@ extends ../pugs/html
 block append vars
   include _vars
   - heading = `Blank Page`
-  +updateTitle( `${heading}` )
-  +updateDescription( `(undescribed)` )
+  +updateTitle( `${heading} | ${title}` )
+  //- +updateDescription( `(undescribed)` )
 
 block main
   +main#_main: article
