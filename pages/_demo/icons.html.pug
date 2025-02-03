@@ -1,21 +1,13 @@
-extends _template
+extends _html
 
 block append vars
-  include _vars
-  -
-    header         = `Icons`
-    file           = `icons`
-    url            = url+`${file}.html`
-    title          = `${header} | ${name}`
-    description    = `Visual elements like images, icons, and graphics add depth and interest to your website.`
-
-    og_title       = title
-    og_description = description
-    og_url         = url
-  //- 
+  - heading = `Icons`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `Visual elements like images, icons, and graphics add depth and interest to your website.` )
+  - updateUrl( url+"icons.html" )
 
 block append style
-  +css(assetsUrl+'pure/grid.css?v='+version)
+  +cssv(assetsUrl+'pure/grid.css')
   +css('//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css')
   style.
     .gridlines {
@@ -29,7 +21,7 @@ block append style
     .io1  { background: #66668844; box-shadow:0 1px orange; }
     .io2  { background: #66886644; box-shadow:0 1px orange; }
 
-  //- 
+  //- style.
     ._itext { margin:2px; outline:1px solid #888; border-radius: .25rem; }
 
 block main

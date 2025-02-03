@@ -107,7 +107,8 @@ li,._li { margin: .3em 0; }
 
 ._header_layout,
 ._footer_layout,
-._main_layout { margin: -1px auto; padding: 1px 1rem; }
+._main_layout,
+._page_layout { margin: -1px auto; padding: 1px 1rem; }
 ._nav_layout  { margin: 0 auto; padding: 0 1rem; }
 
 td { @extend ._lh-0; }
@@ -118,7 +119,7 @@ hr,._hr {
   display: block;
   border: 0;
   padding: 0;
-  height: 1px;
+  height: .05rem;
 }
 
 #_html ._btnlink {
@@ -339,6 +340,9 @@ $paddings: (
 // ._rotate
 $angles : 45, 90, 135, 180, 225, 270, 315;
 @each $angle in $angles { ._rotate-#{$angle} { transform: rotate(#{$angle}deg); } }
+
+._no-scroll,._no-scroll-x { overflow-x: hidden !important; }
+._no-scroll,._no-scroll-y { overflow-y: hidden !important; }
 
 ._no-pad { padding:0 !important }
 

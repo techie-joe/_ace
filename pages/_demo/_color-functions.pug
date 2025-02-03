@@ -99,29 +99,29 @@ mixin colorCodes(r)
       pre.colorcode._radius-x5r._pa._mv-x5r
         each v,i in bg
           = `$bg_${r+1}_${i+1} : #${v};`
-          +nl
+          +l
         +nbsp
       pre.colorcode._radius-x5r._pa._mv-x5r
         each v,i in tc
           = `$tc_${r+1}_${i+1} : #${v};`
-          +nl
+          +l
         +nbsp
     .u-1-3: ._
       pre.colorcode._radius-x5r._pa._mv-x5r
         each v,i in bg
           = `._bg_${r+1}_${i+1} { background-color: $bg_${r+1}_${i+1} }`
-          +nl
+          +l
         +nbsp
       pre.colorcode._radius-x5r._pa._mv-x5r
         each v,i in bg
           = `._bc_${r+1}_${i+1} { border-color: $bg_${r+1}_${i+1} }`
-          +nl
+          +l
         +nbsp
     .u-1-3: ._ml
       pre.colorcode._radius-x5r._pa._mv-x5r
         each v,i in tc
           = `._tc_${r+1}_${i+1} { color: $tc_${r+1}_${i+1} }`
-          +nl
+          +l
         +nbsp
 
 //- ============================================================================
@@ -157,7 +157,7 @@ mixin gradientColor(r)
   -
     var cols = colors[r][0].length;
     var _darkline  = 49;
-    var _lightline = 100-_darkline+.1;
+    var _lightline = 100-_darkline;
     var _darkness  = intToHex(32);
     var _lightness = intToHex(32);
     var bgc = `bgc-${r}`;

@@ -6,15 +6,14 @@ block append vars
 block append style
   +cssv(assetsUrl+'css/demo.css')
   //- style.
-  //- 
 
 block views
   +view
 
     block nav
-      //- include _nav
+      include _nav
       //- +nav#_nav: ul: +lia
-      //- +navbar
+      +navbar
 
     block header
       //- +header#_header: +heading#_heading
@@ -23,13 +22,9 @@ block views
         p !{description}
         hr
 
-    block pre
-      //- +pre._ma: +putData
-      //- +pageData
-
     block main
       //- +main#_main: article| main article
-      +main#_main: article| main article
+      #_pageData._page_layout: +pre: +putData
 
     block footer
       //- +footer#_footer

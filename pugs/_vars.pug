@@ -2,7 +2,6 @@
   let demoUrl        = "/ace/_demo/"
   let templateUrl    = "/ace/_templates/"
 
-  let demoUrlX        = "/ace/demo/"
   let templateUrlX    = "/ace/templates/"
 
   let homeUrl        = "/ace/"
@@ -50,23 +49,23 @@
   let include_manifest = false
 
   // data update functions
-  let updateTitle = function ( _title ){
+  function updateTitle( _title ){
     title    = _title
     og_title = _title
   }
 
-  let updateDescription = function ( _description ){
+  function updateDescription( _description ){
     description    = _description
     og_description = _description
   }
 
-  let updateUrl = function ( _value, _type='website' ){
+  function updateUrl( _value, _type='website' ){
        url  = _value
     og_url  = _value+"?utm_source=homescreen"
     og_type = _type
   }
 
-  let updateImage = function ( _image, _alt ){
+  function updateImage( _image, _alt ){
     og_image    = _image
     og_imageAlt = _alt
   }

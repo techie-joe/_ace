@@ -3,8 +3,8 @@ extends _html
 block append vars
   - heading = `View`
   - updateTitle( `${heading} | ${title}` )
-  - updateDescription( `View controls how user perceive a page.` )
-  - updateUrl( "https://techie-joe.github.io/ace/demo/view.html" )
+  - updateDescription( `${heading} controls how user perceive a page.` )
+  - updateUrl( url+"view.html" )
 
 block widgets
 
@@ -71,8 +71,9 @@ block views
       ._dark #view-#{v} { color:inherit }
 
     h2._h7 View ##{v}
-    
-    ._ma: +pageData
+    hr
+
+    +pre._ma: +putData
 
   style.
     #view-2 {

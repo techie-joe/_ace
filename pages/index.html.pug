@@ -5,9 +5,6 @@ block append vars
   - about   = `A solid foundation to build your website and application. By using our simple approach, you'll get full control from the very beginning.`
   - updateTitle( heading )
 
-//- block pre
-  +pageData
-
 block append style
   +cssv(assetsUrl+'css/demo.css')
   style.
@@ -47,7 +44,7 @@ block header
 block main
   +main#_main: article
 
-    include demo/_nav
+    include _demo/_nav
 
     section._mv-2
 

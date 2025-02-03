@@ -1,25 +1,18 @@
-extends _template
+extends _html
 
 block append vars
-  include _vars
-  -
-    header      = `Texts`
-    url         = url+`texts.html`
-    title       = `${header} | ${name}`
-    description = `Font sizes and spacings has been meticulously adjusted to pixel precision to ensure optimal adaptability.`
-
-    og_title       = title
-    og_description = description
-    og_url         = url
-  //- 
+  - heading = `Texts`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `Font sizes and spacings has been meticulously adjusted to pixel precision to ensure optimal adaptability.` )
+  - updateUrl( url+"texts.html" )
 
 block append style
-  +css(assetsUrl+'pure/grid.css?v='+version)
+  +cssv(assetsUrl+'pure/grid.css')
   style.
     .gridlines {
       min-height: 100px;
       padding-bottom: 1px;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="12"><rect width="1" height="1" fill="%23A9790688" /></svg>');
+      background-image: url('!{cssi.gridlines}');
       background-repeat: repeat;
     }
     .demo .u { margin: 0 2px; padding-bottom: 10px; }
@@ -27,7 +20,7 @@ block append style
     .io1  { background: #66668844; box-shadow:0 1px orange; }
     .io2  { background: #66886644; box-shadow:0 1px orange; }
 
-  //- 
+  //- style.
 
 block main
   +main#_main: article
@@ -58,18 +51,18 @@ block main
     section.gridlinesx._text-center
       hr
 
-      - var hero    = 'Text Sample';
-      - var heading = 'Text Sample';
-      p._hero-2  #{hero} 3
-      p._hero-1  #{hero} 2
-      p._hero    #{hero} 1
-      h1._h1  #{heading} 1
-      h2._h2  #{heading} 2
-      h3._h3  #{heading} 3
-      h4._h4  #{heading} 4
-      h5._h5  #{heading} 5
-      h6._h6  #{heading} 6
-      div._h7 #{heading} 7
+      - var heros     = 'Text Sample';
+      - var headings  = 'Text Sample';
+      p._hero-2  #{heros} 3
+      p._hero-1  #{heros} 2
+      p._hero    #{heros} 1
+      h1._h1  #{headings} 1
+      h2._h2  #{headings} 2
+      h3._h3  #{headings} 3
+      h4._h4  #{headings} 4
+      h5._h5  #{headings} 5
+      h6._h6  #{headings} 6
+      div._h7 #{headings} 7
       p Normal Text
       p
         span Normal
@@ -97,6 +90,7 @@ block main
           h2._mono._h2 Monospace
           p._mono._text-justify.
             Monospace fonts, such as Courier New and Consolas, have characters that occupy the same horizontal space. This uniform spacing makes them ideal for coding, as they enhance readability.
-      //- g
+
+      //- flex
 
 

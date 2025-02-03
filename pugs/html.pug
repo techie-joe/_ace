@@ -48,13 +48,11 @@ html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
               //- include _nav
               //- +nav#_nav: ul: +lia
 
-            block pre
-              //- +pre._ma: +putData
-              //- +pageData
-
             block main
               //- +main#_main: article| main article
-              +main#_main: article| main article
+              //- +pre._ma: +putData
+              //- +pageData#_pageData._page_layout._ma
+              +pageData#_pageData._page_layout
 
             block footer
               //- +footer#_footer

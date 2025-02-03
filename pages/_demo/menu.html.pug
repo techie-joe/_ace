@@ -1,23 +1,15 @@
-extends _template
+extends _html
 
 block append vars
-  include _vars
-  -
-    header         = `Menu`
-    file           = `menu`
-    url            = url+`${file}.html`
-    title          = `${header} | ${name}`
-    description    = `This page shows multiple variations of navigation layout you can use.`
-
-    og_title       = title
-    og_description = description
-    og_url         = url
-  //- 
+  - heading = `Menu`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `This page shows multiple variations of navigation layout you can use.` )
+  - updateUrl( url+"menu.html" )
 
 block append style
   style.
     ._main_layout { max-width:none;padding:0; }
-  //- 
+  //- style.
 
 mixin navlink(ref='')
   +_a(templateUrl+ref)._nav-item: block
@@ -110,5 +102,3 @@ block main
         ._f._icons
           +isvg(svgi.compare)
           +isvg(svgi.ellipsis)
-
-block footer

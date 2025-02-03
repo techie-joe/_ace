@@ -1,18 +1,10 @@
-extends _template
+extends _html
 
 block append vars
-  include _vars
-  -
-    header         = `Containers`
-    file           = `containers`
-    url            = url+`${file}.html`
-    title          = `${header} | ${name}`
-    description    = `${header} group contents together.`
-
-    og_title       = title
-    og_description = description
-    og_url         = url
-  //- 
+  - heading = `Containers`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `${heading} group contents together.` )
+  - updateUrl( url+"containers.html" )
 
 block append style
   style.
@@ -28,7 +20,7 @@ block append style
 
     .border { border:1px solid #f803 }
 
-  //- 
+  //- style.
 
 block main
   +main#_main: article.layout

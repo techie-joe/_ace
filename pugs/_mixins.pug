@@ -117,16 +117,13 @@ mixin itext
   i._itext: i.itext&attributes(attributes): block
 
 mixin pageData
-  +pre
-    span._h7 !{description}
-    +l
-    +putData
-
-mixin _pageData
-  aside._ma
+  aside&attributes(attributes)
     p: +backlink._btnlink._smaller Back
     hr
-    +pageData
+    +pre
+      span._h7 !{description}
+      +l
+      +putData
     hr
 
 mixin php(uri)

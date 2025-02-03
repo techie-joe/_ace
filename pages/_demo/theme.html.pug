@@ -1,24 +1,14 @@
-extends _template
+extends _html
 
 block append vars
-  include _vars
   include _color-functions
-  -
-    header      = `Theme`
-    file        = `theme`
-    url         = url+`${file}.html`
-    title       = `${header} | ${name}`
-    description = `This is about ${file}.`
-
-    og_title       = title
-    og_description = description
-    og_url         = url
-
-  //- 
+  - heading = `Theme`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `This is an example on how theme are implemented.` )
+  - updateUrl( url+"theme.html" )
 
 block append style
-  style.
-  //- 
+  //- style.
 
 block header
   +header#_header
@@ -119,8 +109,7 @@ block footer
 
       ._f-12-4: ._pv
         h6._h7._no-margin Official Address
-        //-
-          #[b Company Name]#[br]
+        //- |#[b Company Name]#[br]
         div._mb.
           Suite, Street,#[br]
           ZIP County, State,#[br]

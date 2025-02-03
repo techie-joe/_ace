@@ -1,32 +1,29 @@
 //- +nav#_nav: ul: +lia
 
-mixin demoX(ref='')
-  +_a(demoUrlX+ref)._nav-item: block
-
 mixin demo(ref='')
   +_a(demoUrl+ref)._nav-item: block
 
 mixin menu
-  //- +demoX("blank.html")| Blank
+  +demo("blank.html")| Blank
   +demo("view.html")| View
-  //- +demoX("layout.html")| Layout
-  +demoX("texts.html")| Texts
-  +demoX("icons.html")| Icons
-  //- +demoX("images.html")| Image
-  //- +demoX("background.html")| Background
-  //- +demoX("video.html")| Video
-  +demoX("colors.html")| Colors
-  +demoX("flex.html")| Flex
-  +demoX("containers.html")| Containers
-  //- +demoX("buttons.html")| Buttons
-  //- +demoX("form.html")| Form
-  //- +demoX("transitions.html")| Transitions
-  //- +demoX("animations.html")| Animations
-  +demoX("menu.html")| Menu
-  //- +demoX("popups.html")| Popups
-  //- +demoX("dialogs.html")| Dialogs
-  //- +demoX("helpers.html")| Helpers
-  +demoX("theme.html")| Theme
+  //- +demo("layout.html")| Layout
+  +demo("texts.html")| Texts
+  +demo("icons.html")| Icons
+  //- +demo("images.html")| Image
+  //- +demo("background.html")| Background
+  //- +demo("video.html")| Video
+  +demo("flex.html")| Flex
+  +demo("containers.html")| Containers
+  +demo("colors.html")| Colors
+  //- +demo("buttons.html")| Buttons
+  //- +demo("form.html")| Form
+  //- +demo("transitions.html")| Transitions
+  //- +demo("animations.html")| Animations
+  +demo("menu.html")| Menu
+  //- +demo("popups.html")| Popups
+  //- +demo("dialogs.html")| Dialogs
+  //- +demo("helpers.html")| Helpers
+  +demo("theme.html")| Theme
 
 mixin navbar
   #_navbar._flex
