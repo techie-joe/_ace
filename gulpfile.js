@@ -1,6 +1,24 @@
 // TLDR : This is the gulper tasks definition that builds your project.
 //      : Find more information about Gulp on http://gulpjs.com
 
+/*
+
+> gulp
+> gulp site
+
+> gulp builder
+> gulp files
+> gulp pages
+> gulp css
+> gulp js
+
+> gulp watch
+> gulp pagesw
+> gulp cssw
+> gulp jsw
+
+*/
+
 // ============================================================== define gulper
 
 const { watch, series, parallel, src, dest } = require('gulp');
@@ -182,7 +200,7 @@ exports.jsw = jsw;
 
 // ===================================================================== gulper
 
-exports.default = parallel(
+exports.all = parallel(
   builder_txt, builder_md,
   htaccess, manifest, files,
   html, php, txt, md,
@@ -202,3 +220,5 @@ exports.watch = parallel(
   cssw,
   jsw,
 );
+
+exports.default = exports.site;

@@ -74,17 +74,17 @@ block main
 
       -
         let svgds = [
-          svgd.bars,
-          svgd.compare,
-          svgd.home,
-          svgd.ellipsis,
-          svgd.caret,
-          svgd.angle,
-          svgd.arrow,
-          svgd.cross,
-          svgd.spin,
-          svgd.image,
-          svgd.download,
+          svgi.bars,
+          svgi.compare,
+          svgi.home,
+          svgi.ellipsis,
+          svgi.caret,
+          svgi.angle,
+          svgi.arrow,
+          svgi.cross,
+          svgi.spin,
+          svgi.image,
+          svgi.download,
         ]
 
       ._mv._icons
@@ -93,16 +93,16 @@ block main
 
       ._mv
         .ibox
-          +isvg(svgd.bars)
-          +isvg(svgd.compare)
+          +isvg(svgi.bars)
+          +isvg(svgi.compare)
           |H
 
       ._mv
         - let i = 0
         while 8 >= i++
-          +isvg(svgd.angle)(class="_rotate-"+(-45+i*45))
-        +isvg(svgd.cross).__spin
-        +isvg(svgd.spin).__spin
+          +isvg(svgi.angle)(class="_rotate-"+(-45+i*45))
+        +isvg(svgi.cross).__spin
+        +isvg(svgi.spin).__spin
 
       //- https://pictogrammers.com/library/mdi/
       p._text-right._small: +a('https://pictogrammers.com/library/mdi/')(target="pictogrammers")._no-u More icons at Pictogrammers ...

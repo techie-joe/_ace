@@ -66,23 +66,36 @@ block main
     section#t1._mb: ._flex: ._fill._nav-color: +nav#_nav
       |You can : &nbsp;
       +a()._btnlink._smaller|Combine
-      +_a()._nav-item._nav-icon: +isvg(svgd.compare)
-      +_a()._nav-item| Multiple
-      +_a()._nav-item| Kinds of
+      +_a()._nav-item._nav-icon: +isvg(svgi.compare)
+      +_a()._nav-item| All
+      +_a()._nav-item| Sorts of
       +_a()._nav-item._nav-icon._b: +middots
       +_a()._nav-item| Menu
-      +_a()._nav-item._nav-icon: +isvg(svgd.ellipsis)
+      +_a()._nav-item| Items
+      +_a()._nav-item._nav-icon: +isvg(svgi.ellipsis)
+
+    mixin sampleMenu_1
+      +_a()._nav-item| Blog
+      +_a()._nav-item| Articles
+      +_a()._nav-item| Gallery
+      +_a()._nav-item| Contact
+
+    mixin sampleMenu_2
+      +_a()._nav-item| Product
+      +_a()._nav-item| Services
+      +_a()._nav-item| About us
+      +_a()._nav-item| Support
 
     section#t2._mv: ._flex
       ._f-12-1._pa._nav-color: +a()._btnlink._smaller|Home
-      ._fill._nav-color(style="min-width:10rem"): +menu
-      ._f-12-1._text-right._pa._nav-color: +_a()()._nav-item._nav-icon: +isvg(svgd.compare)
+      ._fill._nav-color(style="min-width:10rem"): +nav#_nav: +sampleMenu_1
+      ._f-12-1._text-right._pa._nav-color: +_a()()._nav-item._nav-icon: +isvg(svgi.compare)
 
     section#t3._mv
       #_navbar._flex
         ._f-12-1._nav-color#_logo-flex: include _logo
-        ._fill._nav-color(style="min-width:10rem"): +menu
-        ._f-12-1._text-right._pa._nav-color: +_a()._nav-item._nav-icon: +isvg(svgd.compare)
+        ._fill._nav-color(style="min-width:10rem"): +nav#_nav: +sampleMenu_2
+        ._f-12-1._text-right._pa._nav-color: +_a()._nav-item._nav-icon: +isvg(svgi.compare)
     
     //- section#t4._mv
 
@@ -90,12 +103,12 @@ block main
         ._icons ._isvg { min-width:2.25em; height:2.25em; }
 
       #_navbar._flex
-        ._f._icons: +isvg(svgd.bars)
+        ._f._icons: +isvg(svgi.bars)
         ._fill(style="min-width:10rem")
           +nav#_nav
             +menus
         ._f._icons
-          +isvg(svgd.compare)
-          +isvg(svgd.ellipsis)
+          +isvg(svgi.compare)
+          +isvg(svgi.ellipsis)
 
 block footer

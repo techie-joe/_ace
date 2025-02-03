@@ -1,119 +1,119 @@
-mixin join(a,s=`\n`)
-	!=a.join(s)
+mixin join(a,s)
+  !=a.join(s||`\n`)
 
-mixin repeat(a,b=0)
-	- var diff = Math.abs(a-b)+(b?1:0);
-	- var n = 0;
-	while n < diff
-		block
-		- n++
+mixin repeat(a,b)
+  - var diff = Math.abs(a-b)+(b?1:0);
+  - var n = 0;
+  while n < diff
+    block
+    - n++
 
 mixin htmlColor
-	style.
-		html { background-color: #ddd; color: #666; } /* light theme - (default) */
-		@media (prefers-color-scheme: dark) { html { background-color: #222; color: #999; } } /* dark theme */
+  style.
+    html { background-color: #ddd; color: #666; } /* light theme - (default) */
+    @media (prefers-color-scheme: dark) { html { background-color: #222; color: #999; } } /* dark theme */
 
 mixin manifest(href)
-	link(rel="manifest" href=href)&attributes(attributes)/
+  link(rel="manifest" href=href)&attributes(attributes)/
 
 mixin manifestv(href)
-	link(rel="manifest" href=f_appendVersion(href))&attributes(attributes)/
+  link(rel="manifest" href=f_appendVersion(href))&attributes(attributes)/
 
-mixin css(href,media='all')
-	link(rel="stylesheet" media=media href=href)&attributes(attributes)/
+mixin css(href,media)
+  link(rel="stylesheet" media=media||'all' href=href)&attributes(attributes)/
 
-mixin cssv(href,media='all')
-	link(rel="stylesheet" media=media href=f_appendVersion(href))&attributes(attributes)/
+mixin cssv(href,media)
+  link(rel="stylesheet" media=media||'all' href=f_appendVersion(href))&attributes(attributes)/
 
 mixin js(src)
-	script(type="text/javascript" src=src)&attributes(attributes): block
+  script(type="text/javascript" src=src)&attributes(attributes): block
 
 mixin jsv(src)
-	script(type="text/javascript" src=f_appendVersion(src))&attributes(attributes): block
+  script(type="text/javascript" src=f_appendVersion(src))&attributes(attributes): block
 
 mixin view
-	._view&attributes(attributes): ._view_layout: block
+  ._view&attributes(attributes): ._view_layout: block
 
 mixin main
-	main&attributes(attributes): ._main_layout: block
+  main&attributes(attributes): ._main_layout: block
 
 mixin header
-	header&attributes(attributes): ._header_layout: block
+  header&attributes(attributes): ._header_layout: block
 
 mixin footer
-	footer&attributes(attributes): ._footer_layout: block
+  footer&attributes(attributes): ._footer_layout: block
 
 mixin nav
-	nav&attributes(attributes): ._nav_layout: block
+  nav&attributes(attributes): ._nav_layout: block
 
 mixin pre
-	aside&attributes(attributes): ._pre_layout: pre._pre: block
+  aside&attributes(attributes): ._pre_layout: pre._pre: block
 
 mixin aside
-	aside&attributes(attributes): ._aside_layout: block
+  aside&attributes(attributes): ._aside_layout: block
 
 mixin widgets
-	aside&attributes(attributes): block
+  aside&attributes(attributes): block
 
 mixin widget
-	aside&attributes(attributes): ._widget_layout: block
+  aside&attributes(attributes): ._widget_layout: block
 
 mixin heading
-	h1._h1&attributes(attributes): block
+  h1._h1&attributes(attributes): block
 
 mixin _
-	=` `
+  =` `
 
 mixin middots
-	|&middot;&middot;&middot;
+  |&middot;&middot;&middot;
 
 mixin l
-	=`\n`
+  =`\n`
 
 mixin a(href,title)
-	a(href=href title=title)&attributes(attributes): block
+  a(href=href title=title)&attributes(attributes): block
 
 mixin _a(href,title)
-	+_
-	a(href=href title=title)&attributes(attributes): block
+  +_
+  a(href=href title=title)&attributes(attributes): block
 
 mixin la(href,title)
-	li: a(href=href title=title)&attributes(attributes): block
+  li: a(href=href title=title)&attributes(attributes): block
 
 mixin backlink(title='Back to previous page')
-	a(onclick=js.goBack title=title)&attributes(attributes): block
+  a(onclick=js.goBack title=title)&attributes(attributes): block
 
 mixin changeThemeLink(title='Change color scheme')
-	a(onclick=js.themeChange title=title)&attributes(attributes): block
-
-mixin php(uri)
-	!=`<?php include "${uri}" ?>`
-
-mixin php_
-	!=`<?php `
-	block
-	!=` ?>`
+  a(onclick=js.themeChange title=title)&attributes(attributes): block
 
 mixin img(src,alt,title)
-	img(src=src alt=alt title=title)&attributes(attributes)/
+  img(src=src alt=alt title=title)&attributes(attributes)/
 
-mixin svgd(d,fill="currentColor",opacity="1")
-	svg(viewBox="0 0 24 24")&attributes(attributes): path(fill=fill fill-opacity=opacity d=d)
+mixin svgi(d,viewBox,opacity,fill)
+  svg(viewBox=viewBox||"0 0 24 24")&attributes(attributes): path(d=d fill=fill||'currentColor' fill-opacity=opacity||'1')
 
 mixin isvg(d)
-	i._isvg&attributes(attributes): +svgd(d)
+  i._isvg&attributes(attributes): +svgi(d)
 
 mixin fas
-	i._fa: i.fas&attributes(attributes)
+  i._fa: i.fas&attributes(attributes)
 
 mixin far
-	i._fa: i.far&attributes(attributes)
+  i._fa: i.far&attributes(attributes)
 
 mixin fab
-	i._fa: i.fab&attributes(attributes)
+  i._fa: i.fab&attributes(attributes)
 
 mixin fat
-	i._fa: i.fas&attributes(attributes): block
+  i._fa: i.fas&attributes(attributes): block
 
 mixin itext
-	i._itext: i.itext&attributes(attributes): block
+  i._itext: i.itext&attributes(attributes): block
+
+mixin php(uri)
+  !=`<?php include "${uri}" ?>`
+
+mixin php_
+  !=`<?php `
+  block
+  !=` ?>`

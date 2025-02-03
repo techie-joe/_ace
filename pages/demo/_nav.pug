@@ -4,26 +4,26 @@ mixin demo(ref='')
   +_a(demoUrl+ref)._nav-item: block
 
 mixin menus
+  //- +demo("blank.html")| Blank
   +demo("view.html")| View
   //- +demo("layout.html")| Layout
-  +demo("flex.html")| Flex
-  +demo("colors.html")| Colors
   +demo("texts.html")| Texts
   +demo("icons.html")| Icons
   //- +demo("images.html")| Image
-  //- +demo("video.html")| Video
-  //- +demo("buttons.html")| Buttons
   //- +demo("background.html")| Background
+  //- +demo("video.html")| Video
+  +demo("colors.html")| Colors
+  +demo("flex.html")| Flex
   +demo("containers.html")| Containers
+  //- +demo("buttons.html")| Buttons
   //- +demo("form.html")| Form
   //- +demo("transitions.html")| Transitions
   //- +demo("animations.html")| Animations
   +demo("menu.html")| Menu
   //- +demo("popups.html")| Popups
   //- +demo("dialogs.html")| Dialogs
-  +demo("theme.html")| Theme
   //- +demo("helpers.html")| Helpers
-  //- +demo("blank.html")| Blank
+  +demo("theme.html")| Theme
 
 mixin menu
   +nav#_nav: +menus
@@ -32,4 +32,4 @@ mixin navbar
   #_navbar._flex
     ._f-12-1._pa._nav-color: +a(homeUrl)._btnlink._smaller Home
     ._fill._nav-color(style="min-width:10rem"): +menu
-    ._f-12-1._text-right._pa._nav-color: +changeThemeLink._nav-item._nav-icon: +isvg(svgd.compare)
+    ._f-12-1._text-right._pa._nav-color: +changeThemeLink._nav-item._nav-icon: +isvg(svgi.compare)

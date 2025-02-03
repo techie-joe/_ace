@@ -28,29 +28,13 @@ block append style
 
     #_html .pages ul { list-style-type: none; padding-inline-start: 0; }
 
-    #_header ._header_layout { position:relative; }
     #_header .intro { max-width: 30em; }
-
-    #startNow._btnlink { padding: .5em 1.5em }
-    #_header .startNow { text-align: center; width:100%; margin: 1.5em auto 0; }
-    #_header .startNow ._btnlink:hover { color:#fff;background:#777; }
 
     @media (min-width: 530px) {
 
       #_footer ._footer_layout,
       #_main ._main_layout   { padding: 0 3rem; }
       #_header ._header_layout { padding: 2rem 3rem 3rem; }
-
-      #_html .startNow {
-        display: block;
-        float: right;
-        text-align: right;
-        width: 10em;
-        position: absolute;
-        top: 2em;
-        right: 3rem;
-        margin: 1.5em 1em;
-      }
 
     }
 
@@ -60,13 +44,13 @@ block header
       h1._hero-1 !{heading}
       p._smaller by #[+a(authorUrl) !{author}]
       p._text-justify !{about}
-    .startNow
-      +a("demo")#startNow._btnlink| Get started
 
 block main
   +main#_main: article
 
     include demo/_nav
+
+    section._mv._nav-color: +menu
 
     section._mv-2
       h2 Live Examples
@@ -121,7 +105,7 @@ block main
 
       p._text-justify Our web template is equipped with pre-made building components and helper classes to give you an easy building experience. We simplify web creation to make it accessible to everyone, even for those who may not have technical expertise. No lengthy manuals or confusing rules -- just dive in and start building. We have also prepared some #[+a("demo")._no-wrap demo articles] to help you out.
 
-      ._mv._nav-color: +menu
+      //- ._mv._nav-color: +menu
 
     hr
 
