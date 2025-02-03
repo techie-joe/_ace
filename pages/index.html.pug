@@ -109,9 +109,12 @@ block main
 
     p._smaller| Some images on this website are courtesy of Matt at <a href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">svgbackgrounds.com</a>. Thank you for providing them for free.
 
-    p._smaller| Version : v#{version} : b#{build}
+    p._smaller| Version : v#{version} | b#{build}
 
-    p._smaller| Live @ #[+a(url)(target="techie-joes-github") #{url}]
+    p._smaller
+      - source_url = 'https://github.com/techie-joe/ace'
+      | Live @ #[+a(url)(target="techie-joes-github") #{url}]#[br]
+      | Source @ #[+a(source_url)(target="techie-joes-github") #{source_url}]
 
 block footer
   +footer#_footer
