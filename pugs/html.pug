@@ -8,8 +8,8 @@ block vars
 
 //- block append vars
   include _vars
-  +updateTitle( `(untitled) | ${title}` )
-  +updateDescription( `(undescribed)` )
+  - updateTitle( `(untitled) | ${title}` )
+  - updateDescription( `(undescribed)` )
 
 block entry
   //- entrypoint for variable setup & security check

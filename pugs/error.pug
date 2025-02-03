@@ -6,8 +6,8 @@ block append vars
 
 //- block append vars
   - heading = `(untitled)`
-  +updateTitle( `${heading}` )
-  +updateDescription( `(undescribed)` )
+  - updateTitle( `${heading}` )
+  - updateDescription( `(undescribed)` )
 
 block seo
   title !{title||'(untitled)'}

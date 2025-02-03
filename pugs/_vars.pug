@@ -49,22 +49,27 @@
 
   let include_manifest = false
 
-mixin updateTitle(_title)
-  - title    = _title
-  - og_title = _title
+  // data update functions
+  let updateTitle = function ( _title ){
+    title    = _title
+    og_title = _title
+  }
 
-mixin updateDescription(_description)
-  - description    = _description
-  - og_description = _description
+  let updateDescription = function ( _description ){
+    description    = _description
+    og_description = _description
+  }
 
-mixin updateUrl(_value,_type='website')
-  -    url  = _value
-  - og_url  = _value+"?utm_source=homescreen"
-  - og_type = _type
+  let updateUrl = function ( _value, _type='website' ){
+       url  = _value
+    og_url  = _value+"?utm_source=homescreen"
+    og_type = _type
+  }
 
-mixin updateImage(_image, _alt)
-  - og_image    = _image
-  - og_imageAlt = _alt
+  let updateImage = function ( _image, _alt ){
+    og_image    = _image
+    og_imageAlt = _alt
+  }
 
 mixin putDataTitle
   +l

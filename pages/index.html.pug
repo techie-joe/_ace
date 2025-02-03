@@ -1,10 +1,9 @@
-extends ../pugs/html
+extends _html
 
 block append vars
-  include _vars
   - heading = `Ace Template`
   - about   = `A solid foundation to build your website and application. By using our simple approach, you'll get full control from the very beginning.`
-  +updateTitle( heading )
+  - updateTitle( heading )
 
 //- block pre
   +pageData

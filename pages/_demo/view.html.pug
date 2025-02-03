@@ -1,22 +1,17 @@
-extends _template
+extends _html
 
 block append vars
   - heading = `View`
-  +updateTitle( `${heading} | ${title}` )
-  +updateDescription( `View controls how user perceive a page.` )
-  +updateUrl( "https://techie-joe.github.io/ace/demo/view.html" )
-  //- 
-
-block append style
-  //- style.
-  //- 
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `View controls how user perceive a page.` )
+  - updateUrl( "https://techie-joe.github.io/ace/demo/view.html" )
 
 block widgets
 
   +widgets#_widgets
 
     style.
-      #nav-position {
+      #nav-box {
         display: block;
         position: absolute;
         bottom : 50%;
@@ -32,11 +27,9 @@ block widgets
         padding: 1rem;
       }
 
-      #nav a {
-        margin:1px;
-      }
+      #nav a { margin:1px }
 
-    +widget#nav-position
+    +widget#nav-box
       nav#nav._bg_2_2._tc_2_2._radius-x25r(style="width:116px")
         table: tbody
           tr: td(colspan=2): +a(homeUrl)(style="width:75px")._btnlink #[+itext|←] Back #[+nbsp]
@@ -52,7 +45,6 @@ block views
   style.
     ._view { overflow: auto }
     ._view h2 { text-align: center }
-
   //- 
     ._view { box-shadow: 0 0 1px 1px red inset; }
 
@@ -69,16 +61,17 @@ block views
       p !{description}
 
   - v = 3;
-  style.
-    #view-3 {
-      background-color: #20002255;
-      color:#222;
-    }
-    ._dark #view-3 { color:inherit }
-    #view-3 hr { opacity:.3 }
   +view(id=`view-${v}`)
+
+    style.
+      #view-#{v} {
+        background-color: #20002255;
+        color:#222;
+      }
+      ._dark #view-#{v} { color:inherit }
+
     h2._h7 View ##{v}
-    hr
+    
     ._ma: +pageData
 
   style.
@@ -88,7 +81,6 @@ block views
       top: 0;
       left: 100%;
     }
-
     #view-4 {
       background-color: #00153d55;
       position: absolute;

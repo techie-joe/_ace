@@ -1,10 +1,9 @@
-extends ../pugs/error
+extends _error
 
 block append vars
-  include _vars
   - heading = `Oops!`
-  +updateTitle( `${heading}` )
-  +updateDescription( `Sorry, an error occured while processing your request.` )
+  - updateTitle( `${heading}` )
+  - updateDescription( `Sorry, an error occured while processing your request.` )
 
 block main
   +main#_main
