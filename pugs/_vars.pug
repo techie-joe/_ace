@@ -1,8 +1,12 @@
 -
+  let demoUrl        = "/ace/_demo/"
+  let templateUrl    = "/ace/_templates/"
+
+  let demoUrlX        = "/ace/demo/"
+  let templateUrlX    = "/ace/templates/"
+
   let homeUrl        = "/ace/"
   let assetsUrl      = "/ace/assets/"
-  let demoUrl        = "/ace/demo/"
-  let templateUrl    = "/ace/templates/"
 
   let title          = "(untitled)"
   let description    = "(undescribed)"
@@ -16,8 +20,8 @@
   let publisher      = "Tidloo"
 
   let output         = "ace"
-  let version        = "v0.1.9"
-  let build          = "b170.0"
+  let version        = "0.1.10"
+  let build          = "170.10"
 
   let url            = "https://techie-joe.github.io/ace/"
   let authorUrl      = "https://techie-joe.github.io/"
@@ -105,9 +109,3 @@ mixin putData
   +putDataTitle
   +putDataUrl
   +putDataOg
-
-mixin preData
-  +pre
-    span._h7 !{description}
-    +l
-    +putData

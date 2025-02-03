@@ -7,7 +7,7 @@ block append vars
   +updateTitle( heading )
 
 //- block pre
-  +preData
+  +pageData
 
 block append style
   +cssv(assetsUrl+'css/demo.css')
@@ -72,6 +72,9 @@ block main
     section._mv-2
       h2 Basic Templates
 
+      mixin lia_templateX(ref='')
+        +lia(templateUrlX+ref)._nav-item: block
+
       mixin lia_template(ref='')
         +lia(templateUrl+ref)._nav-item: block
 
@@ -79,13 +82,13 @@ block main
         ._flex
           ._f-12-4
             ul._no-margin
-              +lia_template('full_screen.html')| Full Screen
-              +lia_template('split_screen.html')| Split Screen
-              +lia_template('flex_gallery.html')| Flex Gallery
+              +lia_templateX('full_screen.html')| Full Screen
+              +lia_templateX('split_screen.html')| Split Screen
+              +lia_templateX('flex_gallery.html')| Flex Gallery
           ._f-12-4
             ul._no-margin
-              +lia_template('classic_page.html')| Classic Page
-              +lia_template('classic_list.html')| Classic List
+              +lia_templateX('classic_page.html')| Classic Page
+              +lia_templateX('classic_list.html')| Classic List
               +lia("blank.html","Just a blank page to start building.")._nav-item| Blank Page
           ._f-12-4
             ul._no-margin
@@ -106,7 +109,7 @@ block main
 
     p._smaller| Some images on this website are courtesy of Matt at <a href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">svgbackgrounds.com</a>. Thank you for providing them for free.
 
-    p._smaller| Version : #{version} : #{build}
+    p._smaller| Version : v#{version} : b#{build}
 
     p._smaller| Live @ #[+a(url)(target="techie-joes-github") #{url}]
 

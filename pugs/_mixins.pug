@@ -116,6 +116,19 @@ mixin fat
 mixin itext
   i._itext: i.itext&attributes(attributes): block
 
+mixin pageData
+  +pre
+    span._h7 !{description}
+    +l
+    +putData
+
+mixin _pageData
+  aside._ma
+    p: +backlink._btnlink._smaller Back
+    hr
+    +pageData
+    hr
+
 mixin php(uri)
   !=`<?php include "${uri}" ?>`
 
