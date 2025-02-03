@@ -3,7 +3,7 @@ extends ../pugs/html
 block append vars
   include _vars
   - heading = `Ace Template`
-  - about   = `A solid foundation to build your website and application. Our minimalistic approach ensures full control from the very beginning.`
+  - about   = `A solid foundation to build your website and application. By using our simple approach, you'll get full control from the very beginning.`
   +updateTitle( heading )
 
 //- block pre
@@ -52,7 +52,7 @@ block main
 
     section._mv-2
 
-      p._text-justify Our web template is equipped with #[b._h7 pre-made building components] and #[b._h7 helper classes] to give you an easy building experience. We simplify web creation to make it accessible to everyone, even for those who may not have technical expertise. Dive in and start building your website.
+      p._text-justify This web template is equipped with #[b._h7 pre-made building components] and #[b._h7 helper classes] to give you an easy building experience. We have simplified web creation to make it accessible to everyone, even for those who may not have technical expertise. Dive in and start building your website straight away.
 
       ._mv._nav-color: +nav#_nav
         b| Template Components : &nbsp;
@@ -86,7 +86,7 @@ block main
             ul._no-margin
               +lia_template('classic_page.html')| Classic Page
               +lia_template('classic_list.html')| Classic List
-              //- +lia_template('blank.html')| Blank Template
+              +lia("blank.html","Just a blank page to start building.")._nav-item| Blank Page
           ._f-12-4
             ul._no-margin
               li
@@ -94,12 +94,11 @@ block main
                 +_a("---","Simulate Real 404")._nav-item._nav-icon: +middots
               +lia("500.html","When server encounters an error.")._nav-item| 500 -- Oops!
               +lia("closed.html","When you decide to temporarily disable your website.")._nav-item| Temporary closed
-              +lia("blank.html","Just a blank page to start building.")._nav-item| Blank Page
 
     section._mv-2
       h2 Available in light and dark
 
-      p._text-justify Our template is readily available for both light and dark color-scheme. You can easily switch between the two by using the keyboard shortcut #[code._code._no-wrap='Ctrl + Alt + T'] or execute #[code._code._no-wrap=js.themeChange] with a button like this one:
+      p._text-justify Our template is readily available on both light and dark preference. User can easily switch between the two by using the keyboard shortcut #[code._code._no-wrap='Ctrl + Alt + T'] or you can programatically execute #[code._code._no-wrap=js.themeChange] with a button like this one:
 
       p: +changeThemeLink._btnlink._small Change Theme
 

@@ -9,8 +9,11 @@
 ._main_layout { max-width:60rem }
 
 #_navbar { position:relative; z-index:1 }
-       #_navbar a#_logo { @include color( #444 ) }
-._dark #_navbar a#_logo { @include color( #888 ) }
+
+#_navbar a#_logo { @include color( #444 ) }
+._dark {
+#_navbar a#_logo { @include color( #888 ) }
+}
 
 #_nav { padding: 1em; }
 
@@ -39,14 +42,10 @@
 
 /* ---------------------------------- default light theme */
 
-._nav-color,
-._editorbar p { @include color( $tc_2_8, $bg_2_8 ); }
-
-/* ------------------------------------------- dark theme */
+._editorbar p,
+._nav-color { @include color( $tc_2_8, $bg_2_8 ); }
 
 ._dark {
-
-  ._nav-color,
-  ._editorbar p { @include color( $tc_1_2, $bg_1_2 ); }
-
+._editorbar p,
+._nav-color { @include color( $tc_1_2, $bg_1_2 ); }
 }
