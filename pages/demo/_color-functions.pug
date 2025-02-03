@@ -93,31 +93,36 @@ mixin colorCodes(r)
     var tc = colors[r][1];
     var cbg = bg[ Math.ceil(bg.length/2)-1 ];
     var ctc = tc[ Math.ceil(tc.length/2)-1 ];
-  .codecolor._mt-2._small(style=`background: #${cbg}; color:#${ctc}`)|//##{cbg}
+  .codecolor._b._mt-2._small(style=`background: #${cbg}; color:#${ctc}`)|// ##{cbg}
   ._flex
     .u-1-3: ._mr
       pre.colorcode._radius-x5r._pa._mv-x5r
         each v,i in bg
           = `$bg_${r+1}_${i+1} : #${v};`
           +nl
-      pre.colorcode._radius-x5r._pa._mv-x5r
-        each v,i in bg
-          = `._bg_${r+1}_${i+1} { background-color: $bg_${r+1}_${i+1} }`
-          +nl
-    .u-1-3: ._
+        +nbsp
       pre.colorcode._radius-x5r._pa._mv-x5r
         each v,i in tc
           = `$tc_${r+1}_${i+1} : #${v};`
           +nl
+        +nbsp
+    .u-1-3: ._
       pre.colorcode._radius-x5r._pa._mv-x5r
-        each v,i in tc
-          = `._tc_${r+1}_${i+1} { color: $tc_${r+1}_${i+1} }`
+        each v,i in bg
+          = `._bg_${r+1}_${i+1} { background-color: $bg_${r+1}_${i+1} }`
           +nl
-    .u-1-3: ._ml
+        +nbsp
       pre.colorcode._radius-x5r._pa._mv-x5r
         each v,i in bg
           = `._bc_${r+1}_${i+1} { border-color: $bg_${r+1}_${i+1} }`
           +nl
+        +nbsp
+    .u-1-3: ._ml
+      pre.colorcode._radius-x5r._pa._mv-x5r
+        each v,i in tc
+          = `._tc_${r+1}_${i+1} { color: $tc_${r+1}_${i+1} }`
+          +nl
+        +nbsp
 
 //- ============================================================================
 mixin tables

@@ -18,7 +18,10 @@ mixin middots
 	|&middot;&middot;&middot;
 
 mixin nl
-	=`\n`
+	!=`\n`
+
+mixin l_
+	!=`\n&nbsp;`
 
 mixin php(uri)
 	|!{ `<?php include "${uri}" ?>` }
@@ -35,7 +38,7 @@ mixin _a(href,title)
 	+_
 	a(href=href title=title)&attributes(attributes): block
 
-mixin la(href,title)
+mixin lia(href,title)
 	li: a(href=href title=title)&attributes(attributes): block
 
 mixin backlink(title='Back to previous page')

@@ -1,9 +1,9 @@
-//- +nav#_nav: ul: +la
+//- +nav#_nav: ul: +lia
 
 mixin navlink(ref='')
   +_a(ref)._nav-item: block
 
-mixin menus
+mixin menu
   //- +navlink(homeUrl)| Home
   +navlink('full_screen.html')| Full
   +navlink('split_screen.html')| Split
@@ -15,11 +15,8 @@ mixin menus
   //- +_a(homeUrl+"404.html")._nav-item| 404
   //- +_a(homeUrl+"500.html")._nav-item| 500
 
-mixin menu
-  +nav#_nav: +menus
-
 mixin navbar
   #_navbar._flex
     ._f-12-1._nav-color#_logo-flex: include _logo
-    ._fill._nav-color(style="min-width:10rem"): +menu
+    ._fill._nav-color(style="min-width:10rem"): +nav#_nav: +menu
     ._f-12-1._text-right._pa._nav-color: +changeThemeLink._nav-item._nav-icon: +isvg(svgi.compare)

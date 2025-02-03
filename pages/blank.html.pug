@@ -4,11 +4,11 @@ block append vars
   include _vars
   - heading = `Blank Page`
   +updateTitle( `${heading} | ${title}` )
-  //- +updateDescription( `(undescribed)` )
+  +updateDescription( `Just a blank page to start building.` )
 
 block main
   +main#_main: article
     nav#_nav._mv: +backlink._btnlink._smaller Back
     hr
-    +pre: +putData
+    +preData
     hr

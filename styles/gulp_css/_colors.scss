@@ -1,23 +1,26 @@
-/* ----------------------------------------------- colors */
+@use "colors-values" as *;
 
-/*
-              |   |
-            0123-4567
-            fedc-ba98
-              | - |
+._bg_1_1 { background-color: $bg_1_1 }
+._bg_1_2 { background-color: $bg_1_2 }
+._bg_1_3 { background-color: $bg_1_3 }
+._bg_1_4 { background-color: $bg_1_4 }
+._bg_1_5 { background-color: $bg_1_5 }
+._bg_1_6 { background-color: $bg_1_6 }
 
-*/
+._tc_1_1 { color: $tc_1_1 }
+._tc_1_2 { color: $tc_1_2 }
+._tc_1_3 { color: $tc_1_3 }
+._tc_1_4 { color: $tc_1_4 }
+._tc_1_5 { color: $tc_1_5 }
+._tc_1_6 { color: $tc_1_6 }
 
-//#808080
-$bg_2_1 : #222222;
-$bg_2_2 : #333333;
-$bg_2_3 : #4c4c4c;
-$bg_2_4 : #666666;
-$bg_2_5 : #808080;
-$bg_2_6 : #999999;
-$bg_2_7 : #b2b2b2;
-$bg_2_8 : #cccccc;
-$bg_2_9 : #dddddd;
+._bc_1_1 { border-color: $bg_1_1 }
+._bc_1_2 { border-color: $bg_1_2 }
+._bc_1_3 { border-color: $bg_1_3 }
+._bc_1_4 { border-color: $bg_1_4 }
+._bc_1_5 { border-color: $bg_1_5 }
+._bc_1_6 { border-color: $bg_1_6 }
+
 ._bg_2_1 { background-color: $bg_2_1 }
 ._bg_2_2 { background-color: $bg_2_2 }
 ._bg_2_3 { background-color: $bg_2_3 }
@@ -27,15 +30,7 @@ $bg_2_9 : #dddddd;
 ._bg_2_7 { background-color: $bg_2_7 }
 ._bg_2_8 { background-color: $bg_2_8 }
 ._bg_2_9 { background-color: $bg_2_9 }
-$tc_2_1 : #999999;
-$tc_2_2 : #b2b2b2;
-$tc_2_3 : #cccccc;
-$tc_2_4 : #e5e5e5;
-$tc_2_5 : #FFFFFF;
-$tc_2_6 : #191919;
-$tc_2_7 : #333333;
-$tc_2_8 : #4c4c4c;
-$tc_2_9 : #666666;
+
 ._tc_2_1 { color: $tc_2_1 }
 ._tc_2_2 { color: $tc_2_2 }
 ._tc_2_3 { color: $tc_2_3 }
@@ -45,6 +40,7 @@ $tc_2_9 : #666666;
 ._tc_2_7 { color: $tc_2_7 }
 ._tc_2_8 { color: $tc_2_8 }
 ._tc_2_9 { color: $tc_2_9 }
+
 ._bc_2_1 { border-color: $bg_2_1 }
 ._bc_2_2 { border-color: $bg_2_2 }
 ._bc_2_3 { border-color: $bg_2_3 }
@@ -54,74 +50,21 @@ $tc_2_9 : #666666;
 ._bc_2_7 { border-color: $bg_2_7 }
 ._bc_2_8 { border-color: $bg_2_8 }
 ._bc_2_9 { border-color: $bg_2_9 }
-//#222222
-$bg_1_1 : #000000;
-$bg_1_2 : #111111;
-$bg_1_3 : #222222;
-$bg_1_4 : #dddddd;
-$bg_1_5 : #eeeeee;
-$bg_1_6 : #ffffff;
-._bg_1_1 { background-color: $bg_1_1 }
-._bg_1_2 { background-color: $bg_1_2 }
-._bg_1_3 { background-color: $bg_1_3 }
-._bg_1_4 { background-color: $bg_1_4 }
-._bg_1_5 { background-color: $bg_1_5 }
-._bg_1_6 { background-color: $bg_1_6 }
-$tc_1_1 : #444444;
-$tc_1_2 : #686868;
-$tc_1_3 : #999999;
-$tc_1_4 : #666666;
-$tc_1_5 : #777777;
-$tc_1_6 : #888888;
-._tc_1_1 { color: $tc_1_1 }
-._tc_1_2 { color: $tc_1_2 }
-._tc_1_3 { color: $tc_1_3 }
-._tc_1_4 { color: $tc_1_4 }
-._tc_1_5 { color: $tc_1_5 }
-._tc_1_6 { color: $tc_1_6 }
-._bc_1_1 { border-color: $bg_1_1 }
-._bc_1_2 { border-color: $bg_1_2 }
-._bc_1_3 { border-color: $bg_1_3 }
-._bc_1_4 { border-color: $bg_1_4 }
-._bc_1_5 { border-color: $bg_1_5 }
-._bc_1_6 { border-color: $bg_1_6 }
 
-$light-shade     : $tc_1_6;
-$light-shine     : $bg_1_6;
-
-$dark-shade      : $bg_1_1;
-$dark-shine      : $tc_1_1;
-
-$light-button-bg : $bg_2_7;
-$light-button-tc : $tc_2_7;
-
-$dark-button-bg  : $bg_2_3;
-$dark-button-tc  : $tc_2_3;
-
-$light-link-tc   : #1b36b0;
-$light-link-tcv  : #7a1b7a;
-$light-link-tch  : #DD8811;
-$light-link-tca  : #DD1111;
-
-._blue   { color: #1b36b0 }
-._purple { color: #7a1b7a }
-._orange { color: #DD8811 }
-._red    { color: #DD1111 }
-._green  { color: #32ad32 }
-._contra { color: #000000 }
-
-$dark-link-tc    : #7a8eea;
-$dark-link-tcv   : #c17ac1;
-$dark-link-tch   : #e39f40;
-$dark-link-tca   : #e34040;
+._blue   { color: $light_blue   }
+._purple { color: $light_purple }
+._orange { color: $light_orange }
+._red    { color: $light_red    }
+._green  { color: $light_green  }
+._contra { color: $light_contra }
 
 ._dark {
 
-  ._blue   { color: #7a8eea }
-  ._purple { color: #c17ac1 }
-  ._orange { color: #e39f40 }
-  ._red    { color: #e34040 }
-  ._green  { color: #009900 }
-  ._contra { color: #ffffff }
+  ._blue   { color: $dark_blue   }
+  ._purple { color: $dark_purple }
+  ._orange { color: $dark_orange }
+  ._red    { color: $dark_red    }
+  ._green  { color: $dark_green  }
+  ._contra { color: $dark_contra }
 
 }

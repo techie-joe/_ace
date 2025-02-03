@@ -64,11 +64,17 @@ mixin heading
 mixin _
   =` `
 
+mixin nbsp
+  !=`&nbsp;`
+
 mixin middots
-  |&middot;&middot;&middot;
+  !=`&middot;&middot;&middot;`
 
 mixin l
-  =`\n`
+  !=`\n`
+
+mixin l_
+  !=`\n&nbsp;`
 
 mixin a(href,title)
   a(href=href title=title)&attributes(attributes): block
@@ -77,7 +83,7 @@ mixin _a(href,title)
   +_
   a(href=href title=title)&attributes(attributes): block
 
-mixin la(href,title)
+mixin lia(href,title)
   li: a(href=href title=title)&attributes(attributes): block
 
 mixin backlink(title='Back to previous page')

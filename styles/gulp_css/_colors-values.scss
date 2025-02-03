@@ -1,0 +1,94 @@
+/* ======== REFERENCE ===========
+              |   |
+            0123-4567
+            fedc-ba98
+              | - |
+============================== */
+
+// #808080
+$bg_2_1 : #222222;
+$bg_2_2 : #333333;
+$bg_2_3 : #4c4c4c;
+$bg_2_4 : #666666;
+$bg_2_5 : #808080;
+$bg_2_6 : #999999;
+$bg_2_7 : #b2b2b2;
+$bg_2_8 : #cccccc;
+$bg_2_9 : #dddddd;
+
+$tc_2_1 : #999999;
+$tc_2_2 : #b2b2b2;
+$tc_2_3 : #cccccc;
+$tc_2_4 : #e5e5e5;
+$tc_2_5 : #FFFFFF;
+$tc_2_6 : #191919;
+$tc_2_7 : #333333;
+$tc_2_8 : #4c4c4c;
+$tc_2_9 : #666666;
+
+// #222222
+$bg_1_1 : #000000;
+$bg_1_2 : #111111;
+$bg_1_3 : #222222;
+$bg_1_4 : #dddddd;
+$bg_1_5 : #eeeeee;
+$bg_1_6 : #ffffff;
+
+$tc_1_1 : #444444;
+$tc_1_2 : #686868;
+$tc_1_3 : #999999;
+$tc_1_4 : #666666;
+$tc_1_5 : #777777;
+$tc_1_6 : #888888;
+
+// color accents
+
+$light_blue   : #1b36b0;
+$light_purple : #7a1b7a;
+$light_orange : #DD8811;
+$light_red    : #DD1111;
+$light_green  : #32ad32;
+$light_contra : #000000;
+
+$dark_blue   : #7a8eea;
+$dark_purple : #c17ac1;
+$dark_orange : #e39f40;
+$dark_red    : #e34040;
+$dark_green  : #009900;
+$dark_contra : #ffffff;
+
+// colors names
+
+$light_link_tci  : $light_blue;
+$light_link_tcv  : $light_purple;
+$light_link_tch  : $light_orange;
+$light_link_tca  : $light_red;
+
+$dark_link_tci   : $dark_blue;
+$dark_link_tcv   : $dark_purple;
+$dark_link_tch   : $dark_orange;
+$dark_link_tca   : $dark_red;
+
+// base
+
+$light_tc        : $tc_1_6;
+$light_bg        : $bg_1_6;
+
+$dark_tc         : $tc_1_1;
+$dark_bg         : $bg_1_1;
+
+// groove
+
+$light_shine     : $bg_1_6;
+$light_shade     : $tc_1_6;
+
+$dark_shine      : $tc_1_1;
+$dark_shade      : $bg_1_1;
+
+// button
+
+$light_button_tc : $tc_2_7;
+$light_button_bg : $bg_2_7;
+
+$dark_button_tc  : $tc_2_3;
+$dark_button_bg  : $bg_2_3;

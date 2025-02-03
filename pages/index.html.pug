@@ -18,6 +18,14 @@ block append style
     #_main ._main_layout   { padding: 1em; }
     #_header ._header_layout { padding: 2rem 1rem 2rem; }
 
+    @media (min-width: 530px) {
+
+      #_footer ._footer_layout,
+      #_main ._main_layout   { padding: 0 3rem; }
+      #_header ._header_layout { padding: 2rem 3rem 3rem; }
+
+    }
+
     #_header { padding: 1px 0; }
 
     #_header    { color: #333; background: #ccc; }
@@ -29,14 +37,6 @@ block append style
     #_html .pages ul { list-style-type: none; padding-inline-start: 0; }
 
     #_header .intro { max-width: 30em; }
-
-    @media (min-width: 530px) {
-
-      #_footer ._footer_layout,
-      #_main ._main_layout   { padding: 0 3rem; }
-      #_header ._header_layout { padding: 2rem 3rem 3rem; }
-
-    }
 
 block header
   +header#_header
@@ -50,48 +50,51 @@ block main
 
     include demo/_nav
 
-    section._mv._nav-color: +menu
+    section._mv-2
+
+      p._text-justify Our web template is equipped with #[b._h7 pre-made building components] and #[b._h7 helper classes] to give you an easy building experience. We simplify web creation to make it accessible to everyone, even for those who may not have technical expertise. Dive in and start building your website.
+
+      ._mv._nav-color: +nav#_nav
+        b| Template Components : &nbsp;
+        +menu
 
     section._mv-2
-      h2 Live Examples
+      h2 Examples
 
-      mixin la_example_1(ref='')
-        +la("/ace/example_1/"+ref).a: block
+      mixin lia_example_1(ref='')
+        +lia("/ace/example_1/"+ref)._nav-item: block
 
       nav.pages: ._flex
         ._f-12-2
           ul._no-margin
-            +la_example_1('index.html')| Example #1
+            +lia_example_1('index.html')| Example #1
 
     section._mv-2
       h2 Basic Templates
 
-      mixin la_template(ref='')
-        +la(templateUrl+ref).a: block
+      mixin lia_template(ref='')
+        +lia(templateUrl+ref)._nav-item: block
 
       nav.pages
         ._flex
           ._f-12-4
             ul._no-margin
-              +la_template('full_screen.html')| Full Screen
-              +la_template('split_screen.html')| Split Screen
-              +la_template('flex_gallery.html')| Flex Gallery
+              +lia_template('full_screen.html')| Full Screen
+              +lia_template('split_screen.html')| Split Screen
+              +lia_template('flex_gallery.html')| Flex Gallery
           ._f-12-4
             ul._no-margin
-              +la_template('classic_page.html')| Classic Page
-              +la_template('classic_list.html')| Classic List
-              //- +la_template('blank.html')| Blank Template
-        ._flex
-          ._f-12-4
-            ul._no-margin: li
-              span.a Error pages:
-              +_a("---","Simulate Real 404").a: +middots
-              +_a("404.html").a| 404
-              +_a("500.html").a| 500
-              +_a("closed.html").a| Closed
+              +lia_template('classic_page.html')| Classic Page
+              +lia_template('classic_list.html')| Classic List
+              //- +lia_template('blank.html')| Blank Template
           ._f-12-4
             ul._no-margin
-              li: +_a("blank.html").a| Blank Page
+              li
+                +a("404.html","When browser lands on a missing page.")._nav-item| 404 -- Not found
+                +_a("---","Simulate Real 404")._nav-item._nav-icon: +middots
+              +lia("500.html","When server encounters an error.")._nav-item| 500 -- Oops!
+              +lia("closed.html","When you decide to temporarily disable your website.")._nav-item| Temporary closed
+              +lia("blank.html","Just a blank page to start building.")._nav-item| Blank Page
 
     section._mv-2
       h2 Available in light and dark
@@ -100,20 +103,13 @@ block main
 
       p: +changeThemeLink._btnlink._small Change Theme
 
-    section._mv-2
-      h2 Pre-made building components
-
-      p._text-justify Our web template is equipped with pre-made building components and helper classes to give you an easy building experience. We simplify web creation to make it accessible to everyone, even for those who may not have technical expertise. No lengthy manuals or confusing rules -- just dive in and start building. We have also prepared some #[+a("demo")._no-wrap demo articles] to help you out.
-
-      //- ._mv._nav-color: +menu
-
     hr
 
     p._smaller| Some images on this website are courtesy of Matt at <a href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">svgbackgrounds.com</a>. Thank you for providing them for free.
 
-    ._p._smaller
-      | Version : #{version} &mdash; #{build} &mdash;  
-      | Live @ #[+a(url)(target="techie-joes-github") #{url}]
+    p._smaller| Version : #{version} : #{build}
+
+    p._smaller| Live @ #[+a(url)(target="techie-joes-github") #{url}]
 
 block footer
   +footer#_footer
