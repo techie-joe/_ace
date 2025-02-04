@@ -1,27 +1,17 @@
-extends _template
+extends _html
 
 block append vars
-  include _vars
-  -
-    header      = `Blank`
-    file        = `blank`
-    url         = url+`${file}.html`
-    title       = `${header} | ${name}`
-    description    = `A ${file} helps create a website from scratch.`
-
-    og_title       = title
-    og_description = description
-    og_url         = url
-  //- 
+  - heading = `Welcome`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `An example of a new website.` )
+  - updateUrl( url+"index.html" )
 
 block append style
-  style.
-    ._main_layout { max-width:none }
-  //- 
-
-block header
+  //- style.
 
 block main
-  +main#_main: article._ma| #{description}
-
-block footer
+  +main#_main: article
+    +pre: +putData
+    hr
+    p: +a(homeUrl)._btnlink._smaller Back
+  

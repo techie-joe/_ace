@@ -1,22 +1,17 @@
 extends _html
 
 block append vars
-  -
-    file           = 'flex_gallery'
-    url            = url+`${file}.html`
-    title          = `${file}`
-    description    = `A ${file} template helps create a full page gallery to showcase your collection.`
-
-    og_title       = title
-    og_description = description
-    og_url         = url
-  //- 
+  - heading = `Flex Gallery`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `This template helps create a full page gallery to showcase your collection` )
+  - updateUrl( url+"flex_gallery.html" )
 
 block append style
-  +css(assetsUrl+'css/demo.css?v='+version)
   style.
+
     #_html article .header{ text-align:center; margin:1em; }
-  //- 
+
+  //- style.
 
 block main
   +main#_main: article
@@ -24,11 +19,13 @@ block main
       h1._h1 Create a Flex Gallery
       p Showcase your collection to evoke emotion and inspire awe.
     //- 
+
     a#1
     ._flex
       ._f-1
         .gu: .o.o1-1
     //-
+
     a#2
     ._flex
       ._fill
@@ -37,6 +34,7 @@ block main
         .gu: .o.o1-2
         .gu: .o.o1-2
     //-
+
     a#3
     ._flex
       ._fill
@@ -48,6 +46,7 @@ block main
         .gu: .o.o1-3
         .gu: .o.o2-3
     //-
+
     a#4
     ._flex
       ._fill

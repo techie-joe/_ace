@@ -211,6 +211,19 @@ hr,._hr {
 }
 .__spin { animation: 2s linear infinite __spin }
 
+// ======================================================= transition */
+
+._a a {
+  &       { transition: color 0.5s, background-color 0.5s; }
+  &:hover { transition:none }
+}
+
+._a a._hover-scale,
+._a ._a_hover-scale a       {
+  &       { transition: color 0.5s, background-color 0.5s, scale 0.2s; }
+  &:hover { transition: scale 0.3s; scale:1.1; }
+}
+
 // =========================================================== theme */
 
 #_html       { @include color( $tc_2_9, $bg_2_9 ); }
@@ -225,12 +238,11 @@ h1,h2,h3,h4,h5,h6,
 }
 
 ._a a {
-  & { transition: color 0.5s, background-color 0.5s; }
   &._stay-fresh:visited,
   &         { @include color( $light_link_tci ); }
   &:visited { @include color( $light_link_tcv ); }
   // &._stay-fresh:hover,
-  &:hover   { @include color( $light_link_tci ); transition:none; }
+  &:hover   { @include color( $light_link_tci ); }
 }
 
 ._dark._a a {

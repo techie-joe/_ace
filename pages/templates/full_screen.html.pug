@@ -1,19 +1,14 @@
 extends _html
 
 block append vars
-  -
-    file           = 'full_screen'
-    url            = url+`${file}.html`
-    title          = `${file}`
-    description    = `A ${file} template stretches across the entire screen, for an exceptional first impression.`
-
-    og_title       = title
-    og_description = description
-    og_url         = url
-  //- 
+  - heading = `Full Screen`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `This template stretches across the entire screen, for an exceptional first impression.` )
+  - updateUrl( url+"full_screen.html" )
 
 block append style
   style.
+
     ._fullscreen { margin-top:-10rem } #_navbar { height:10rem }
     ._fullscreen, ._view_layout { height:100% }
     ._fullscreen {
@@ -31,7 +26,8 @@ block append style
       ._fullscreen .hero2 { margin:2em auto; }
     }
 
-  //-
+  //- style.
+
   - let _nav_layout = 'clipped';
   if _nav_layout == 'autoscroll'
     style.
@@ -40,7 +36,7 @@ block append style
     style.
       ._nav_layout { height:1.7em; overflow:hidden }
   
-  //-
+  //- style.
 
 block header
   +header#_header._fullscreen
@@ -57,6 +53,7 @@ block main
       p Show the incredible accomplishments that are shaping your world today.
 
     ._flex
+
       ._fill
         .gu: .o.o2-3
         
@@ -64,4 +61,4 @@ block main
         .gu: .o.o1-3
         .gu: .o.o1-3
     
-    //-
+    //- flex

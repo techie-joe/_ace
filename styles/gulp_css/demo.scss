@@ -11,7 +11,8 @@
 ._main_layout,
 ._page_layout { max-width:60rem }
 
-#_navbar { position:relative; z-index:1 }
+#_navbar { position: relative; z-index: 1 }
+#_html ._navChangeThemeLink { padding: .5rem }
 
 html   #_navbar a#_logo { @include color( #444 ) }
 ._dark #_navbar a#_logo { @include color( #888 ) }

@@ -1,20 +1,14 @@
 extends _html
 
 block append vars
-  -
-    file           = 'classic_list'
-    url            = url+`${file}.html`
-    title          = `${file}`
-    description    = `A ${file} template is designed to display lists of articles and pages.`
-
-    og_title       = title
-    og_description = description
-    og_url         = url
-  //- 
+  - heading = `Classic List`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `This template is designed to display lists of articles and pages.` )
+  - updateUrl( url+"classic_list.html" )
 
 block append style
-  +css(assetsUrl+'css/demo.css?v='+version)
   style.
+
     #_html .list { max-width:500px; }
 
     #_html .item { margin-bottom:1.5em; }
@@ -31,14 +25,18 @@ block append style
     #_html       .item a.title:hover { background:#ccc; color:#000; }
     #_html._dark .item a.title:hover { background:#333; color:#fff; }
 
-  //- 
+  //- style.
+
+block header
+  +header#_header
+    +heading#_heading !{heading} &mdash; links to articles and pages
+    p !{description}
+    hr._no-margin
 
 block main
-  +main#_main: article.layout
+  +main#_main: article
 
-    h1._h1 Classic List &mdash; links to articles and pages
-
-    p.ni._smaller These fabricated examples are meant to serve as placeholder for your list. 
+    p.ni._smaller Articles written here are abricated examples, meant to serve as placeholder for your content. 
 
     hr
 
@@ -83,4 +81,4 @@ block main
         +a('#10'+build).title Art &amp; Culture Collective
         .p Dive into the world of arts and culture with news, interviews, and features on artists, exhibitions, and cultural events.
 
-    //- 
+    //- list

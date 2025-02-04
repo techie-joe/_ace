@@ -1,17 +1,20 @@
 //- +nav#_nav: ul: +lia
 
-mixin link(ref='')
+mixin example_link(ref='')
   +_a(ref)._nav-item: block
 
 mixin menu
-  +nav#_nav
-    +link(homeUrl)| Home
-    //- +link('full_screen.html')| Full
-    //- +link('split_screen.html')| Split
-    //- +link('full_flex.html')| Flex
-    //- +link('classic_page.html')| Page
-    //- +link('classic_list.html')| List
-    +link("blank.html")| Blank
-    //- +link('closed.html')| Closed
-    //- +_a(homeUrl+"404.html")| 404
-    //- +_a(homeUrl+"500.html")| 500
+  +example_link('./')| Home
+  //- +example_link('full_screen.html')| Full
+  //- +example_link('split_screen.html')| Split
+  //- +example_link('full_flex.html')| Flex
+  //- +example_link('classic_page.html')| Page
+  //- +example_link('classic_list.html')| List
+  +example_link("blank.html")| Blank
+  +example_link(homeUrl)| Ace
+
+mixin navbar
+  #_navbar._flex
+    ._nav-color#_logo-flex: include _logo
+    ._fill._nav-color(style="min-width:10rem"): +nav#_nav: +menu
+    ._f-12-1._text-right._pa-x5r._nav-color: +changeThemeLink._navChangeThemeLink._nav-item._nav-icon: +isvg(svgi.compare)

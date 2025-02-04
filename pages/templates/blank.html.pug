@@ -1,26 +1,13 @@
 extends _html
 
 block append vars
-  -
-    header      = `Blank`
-    file        = `blank`
-    url         = url+`${file}.html`
-    title       = `${file}`
-    description    = `A ${file} helps create a page from scratch.`
-
-    og_title       = title
-    og_description = description
-    og_url         = url
-  //- 
+  - heading = `Blank Page`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `Just a blank page to start building.` )
+  - updateUrl( url+"blank.html" )
 
 block append style
-  style.
-    ._main_layout { max-width:none }
-  //- 
-
-block header
+  //- style.
 
 block main
-  +main#_main: article._ma| #{description}
-
-block footer
+  +main#_main: article._ma| Write your content here.

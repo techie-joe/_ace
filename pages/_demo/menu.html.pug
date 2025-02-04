@@ -8,7 +8,9 @@ block append vars
 
 block append style
   style.
+
     ._main_layout { max-width:none;padding:0; }
+
   //- style.
 
 mixin navlink(ref='')
@@ -81,13 +83,13 @@ block main
     section#t2._mv: ._flex
       ._f-12-1._pa._nav-color: +a()._btnlink._smaller|Home
       ._fill._nav-color(style="min-width:10rem"): +nav#_nav: +sampleMenu_1
-      ._f-12-1._text-right._pa._nav-color: +_a()()._nav-item._nav-icon: +isvg(svgi.compare)
+      ._f-12-1._text-right._pa-x5r._nav-color: +_a()()._navChangeThemeLink._nav-item._nav-icon: +isvg(svgi.compare)
 
     section#t3._mv
       #_navbar._flex
         ._f-12-1._nav-color#_logo-flex: include _logo
         ._fill._nav-color(style="min-width:10rem"): +nav#_nav: +sampleMenu_2
-        ._f-12-1._text-right._pa._nav-color: +_a()._nav-item._nav-icon: +isvg(svgi.compare)
+        ._f-12-1._text-right._pa-x5r._nav-color: +_a()._navChangeThemeLink._nav-item._nav-icon: +isvg(svgi.compare)
     
     //- section#t4._mv
 

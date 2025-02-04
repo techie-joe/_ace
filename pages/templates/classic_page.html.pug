@@ -1,19 +1,14 @@
 extends _html
 
 block append vars
-  -
-    file           = 'classic_page'
-    url            = url+`${file}.html`
-    title          = `${file}`
-    description    = `A ${file} template is designed to display a full page article.`
-
-    og_title       = title
-    og_description = description
-    og_url         = url
-  //- 
+  - heading = `Classic Page`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `This template is designed to display a full page article.` )
+  - updateUrl( url+"classic_page_2.html" )
 
 block append style
   style.
+
     #_main p { text-indent:2em; text-align:justify; }
     #_main p.ni { text-indent:0; }
 
@@ -22,16 +17,21 @@ block append style
 
     #_html .o { background: #ccc; padding:5px; height:300px; margin:1em 0; }
     #_html._dark .o { background: #333; }
-  //- 
+
+  //- style.
+
+block header
+  +header#_header
+    +heading#_heading !{heading} &mdash; an article about yourself
+    p !{description}
+    hr._no-margin
 
 block main
   +main#_main: article
 
     section.sec
 
-      h1._h1 Classic Page &mdash; an article about yourself
-
-      p.ni._smaller These fabricated examples are meant to serve as placeholder for your content.
+      p.ni._smaller Articles written here are abricated examples, meant to serve as placeholder for your content.
 
       hr
       

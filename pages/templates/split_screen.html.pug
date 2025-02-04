@@ -1,28 +1,20 @@
 extends _html
 
 block append vars
-  -
-    file           = 'split_screen'
-    url            = url+`${file}.html`
-    title          = `${file}`
-    description    = `A ${file} template helps create an impressive page.`
-
-    og_title       = title
-    og_description = description
-    og_url         = url
-  //- 
+  - heading = `Split Screen`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `This template helps create an impressive page.` )
+  - updateUrl( url+"split_screen.html" )
 
 block append style
-  +css(assetsUrl+'css/demo.css?v='+version)
   style.
 
     #_html .hero2 { margin:2em auto; max-width:640px; }
-
-    @media only screen and (max-width: 499px) {
+    @media (max-width: 500px) {
       #_html .hero2 { margin:2em 1em; }
     }
 
-  //- 
+  //- style.
 
 block main
   +main#_main: article
@@ -31,7 +23,7 @@ block main
         .gu: .o.o4-4
       ._fill
         .gu: .o.o4-4
-    //- 
+    //- flex
 
     .hero2._text-center 
       h2._h1 Featured Contents and Success Stories
@@ -44,7 +36,7 @@ block main
         .gu: .o.o1-3
         .gu: .o.o1-3
         .gu: .o.o1-3
-    //-
+    //- flex
 
     .hero2._text-center 
       h2._h2 Multiple variation to choose from
@@ -57,4 +49,4 @@ block main
         .gu: .o.o1-3
       ._fill
         .gu: .o.o3-3
-    //-
+    //- flex
