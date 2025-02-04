@@ -83,13 +83,10 @@ block main
       nav.pages: ._flex
         ._f-12-2
           ul._no-margin
-            +lia_example_1('index.html')| Example #1
+            +lia_example_1()| Example #1 - Simple Home
 
     section._mv-2
       h2 Basic Templates
-
-      mixin lia_templateX(ref='')
-        +lia(templateUrlX+ref)._nav-item: block
 
       mixin lia_template(ref='')
         +lia(templateUrl+ref)._nav-item: block
@@ -98,14 +95,14 @@ block main
         ._flex
           ._f-12-4
             ul._no-margin
-              +lia_templateX('full_screen.html')| Full Screen
-              +lia_templateX('split_screen.html')| Split Screen
-              +lia_templateX('flex_gallery.html')| Flex Gallery
+              +lia_template('full_screen.html')| Full Screen
+              +lia_template('split_screen.html')| Split Screen
+              +lia_template('flex_gallery.html')| Flex Gallery
           ._f-12-4
             ul._no-margin
-              +lia_templateX('classic_page.html')| Classic Page
-              +lia_templateX('classic_list.html')| Classic List
-              +lia("blank.html","Just a blank page to start building.")._nav-item| Blank Page
+              +lia_template('classic_page.html')| Classic Page
+              +lia_template('classic_list.html')| Classic List
+              +lia_template("blank.html")| Blank Page
           ._f-12-4
             ul._no-margin
               li
@@ -113,6 +110,10 @@ block main
                 +_a("---","Simulate Real 404")._nav-item._nav-icon: +middots
               +lia("500.html","When server encounters an error.")._nav-item| 500 -- Oops!
               +lia("closed.html","When you decide to temporarily disable your website.")._nav-item| Temporary closed
+        //- ._flex
+          ._f-12-4
+            ul._no-margin
+              +lia('blank.html')._nav-item| Bare Blank Page
 
     section._mv-2
       h2 Available in light and dark
@@ -123,14 +124,15 @@ block main
 
     hr
 
-    p._smaller| Some images on this website are courtesy of Matt at <a href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">svgbackgrounds.com</a>. Thank you for providing them for free.
-
-    p._smaller| Version : v#{version} -- b#{build}
+    p._smaller
+      | Version : v#{version} -- b#{build}
 
     p._smaller
       - source_url = 'https://github.com/techie-joe/ace'
-      | Live __ @ #[+a(url)(target="techie-joes-github") #{url}]#[br]
-      | Source @ #[+a(source_url)(target="techie-joes-github") #{source_url}]
+      | Live __ @ #[+a(url)(target="ace-at-github") #{url}]#[br]
+      | Source @ #[+a(source_url)(target="ace-source") #{source_url}]
+
+    p._smaller| Some images on this website are courtesy of Matt at <a href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">svgbackgrounds.com</a>. Thank you for providing them for free.
 
 block footer
   +footer#_footer

@@ -1,9 +1,9 @@
 extends _html
 
 block append vars
-  - heading = `Welcome`
+  - heading = `Simple Home`
   - updateTitle( `${heading} | ${title}` )
-  - updateDescription( `An example of a new website.` )
+  - updateDescription( `A little example of a new website.` )
   - updateUrl( url+"index.html" )
 
 block append style
@@ -11,7 +11,5 @@ block append style
 
 block main
   +main#_main: article
-    +pre: +putData
-    hr
-    p: +a(homeUrl)._btnlink._smaller Back
+    p Write your interesting content here. #[+a(homeUrl)._btnlink._smaller Ok]
   
