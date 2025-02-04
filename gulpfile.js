@@ -21,52 +21,25 @@
 
 // ============================================================== define gulper
 
-const { watch, series, parallel, src, dest } = require('gulp');
-const rename = require('gulp-rename');
-const file = require('gulp-file');
-const watchOpt = { ignoreInitial: false };
-const pagesOpt = { pretty: true };
+const { watch, parallel, src, dest } = require('gulp');
+const gulp_rename = require('gulp-rename');
+const gulp_file   = require('gulp-file');
 
-function ext(ext) {
-  return function (path) {
-    path.basename = path.basename.substring(0, path.basename.lastIndexOf('.'));
-    path.extname = ext;
-  }
-}
-
-// ============================================================= builder gulper
-
-const _builder = {
-  txt   : ["builder/**/*.txt.pug"],
-  md    : ["builder/**/*.md.pug"],
-  dest  : "./",
+const _dest_root = "/ace/";
+const _dest = {
+  builder : "./",
+  root    : "../ace",
+  css     : "../ace/assets/css",
+  js      : "../ace/assets/gjs",
 };
 
-function builder_txt() {
-  return src(_builder.txt)
-  .pipe(pug())
-  .pipe(rename(ext('.txt')))
-  .pipe(dest(_builder.dest));
-}
-
-function builder_md() {
-  return src(_builder.md)
-  .pipe(pug())
-  .pipe(rename(ext('.md')))
-  .pipe(dest(_builder.dest));
-}
-exports.builder = parallel( builder_txt, builder_md );
-
-// =============================================================== site gulper
-
+const _src_manifest = './manifest.js';
 const _src = {
-  root  : "_ace",
-  files : [
-    '.gitattributes',
-    '.editorconfig',
-    'robots.txt'
-  ],
-  manifest : './manifest.js',
+  builder : {
+    txt : ["builder/**/*.txt.pug"],
+    md  : ["builder/**/*.md.pug"],
+  },
+  files : ["files/**/*"],
   html  : ["pages/**/*.html.pug"],
   php   : ["pages/**/*.php.pug"],
   txt   : ["pages/**/*.txt.pug"],
@@ -75,46 +48,55 @@ const _src = {
   scss  : ["styles/gulp_css/**/*.scss"],
 };
 
-const _dest = {
-  url  : "/ace/",
-  root : "../ace",
-  css  : "../ace/assets/css",
-  js   : "../ace/assets/gjs",
-};
+const watchOpt = { ignoreInitial: false };
+const pagesOpt = { pretty: true };
 
-// files: .htaccess
-// : task to generate file to _dest
+function ext(extname) {
+  return gulp_rename( function (path) {
+    path.basename = path.basename.substring(0, path.basename.lastIndexOf('.'));
+    path.extname  = extname;
+  })
+}
+
+// ============================================================= builder gulper
+
+function builder_txt() { return src(_src.builder.txt)
+  .pipe(pug())
+  .pipe(ext('.txt'))
+  .pipe(dest(_dest.builder));
+}
+
+function builder_md() { return src(_src.builder.md)
+  .pipe(pug())
+  .pipe(ext('.md'))
+  .pipe(dest(_dest.builder));
+}
+
+exports.builder = parallel( builder_txt, builder_md );
+
+// =============================================================== site gulper
+
+// { src: true } indicates that the string provided as the second argument should be treated as file contents rather than a file path
+const gulp_as_file = { src: true };
+
+// : task to generate .htaccess file to _dest
 function htaccess() {
-
-  const ErrorDocuments = [];  
-  [
-    ['404','404.html'],
-    ['500','500.html'],
-  ].forEach(function addErrorDocument(code) {
-    ErrorDocuments.push(`ErrorDocument ${code[0]} ${_dest.url}${code[1]}`);
-  });
-
-  return file(
-    '.htaccess', ErrorDocuments.join('\n'),
-    { src: true } // indicates that the string provided as the second argument should be treated as file contents rather than a file path
-  )
+  const _htaccess = [
+    `ErrorDocument 404 ${_dest_root}404.html`,
+    `ErrorDocument 500 ${_dest_root}500.html`,
+  ].join(`\n`);  
+  return gulp_file( '.htaccess', _htaccess, gulp_as_file )
   .pipe(dest(_dest.root));
 }
 
-// files: manifest
-// : task to generate file from _src to _dest
-function manifest() {
-  return file(
-    'manifest.json', JSON.stringify(require(_src.manifest),null,2),
-    { src: true } // indicates that the string provided as the second argument should be treated as file contents rather than a file path
-  )
+function manifest() { // : task to generate manifest file from _src to _dest
+  const _manifest = JSON.stringify(require(_src_manifest), null, 2);
+  return gulp_file( 'manifest.json', _manifest, gulp_as_file )
   .pipe(dest(_dest.root));
 }
 
-// files: (others)
-// : task to copy files from _src to _dest
-function files() {
-  return src(_src.files)
+function files() { // task to copy files from _src to _dest
+  return src(_src.files, { dot: true })
   .pipe(dest(_dest.root));
 }
 
@@ -128,28 +110,28 @@ const pug = require("gulp-pug");
 function html() {
   return src(_src.html)
   .pipe(pug(pagesOpt))
-  .pipe(rename(ext('.html')))
+  .pipe(ext('.html'))
   .pipe(dest(_dest.root));
 }
 
 function php() {
   return src(_src.php)
   .pipe(pug(pagesOpt))
-  .pipe(rename(ext('.php')))
+  .pipe(ext('.php'))
   .pipe(dest(_dest.root));
 }
 
 function txt() {
   return src(_src.txt)
   .pipe(pug())
-  .pipe(rename(ext('.txt')))
+  .pipe(ext('.txt'))
   .pipe(dest(_dest.root));
 }
 
 function md() {
   return src(_src.md)
   .pipe(pug())
-  .pipe(rename(ext('.md')))
+  .pipe(ext('.md'))
   .pipe(dest(_dest.root));
 }
 
@@ -170,13 +152,13 @@ exports.pagesw = pagesw;
 
 // sass
 // : task to take scss files from _src to _dest
-const sass = require("gulp-sass")(require("sass"));
+// : outputStyle: compressed | expanded
+const sass     = require("gulp-sass")(require("sass"));
 const cleanCSS = require('gulp-clean-css');
+const sassOpt  = { outputStyle: 'compressed' };
 
-function css() {
-  return src(_src.scss)
-  // : outputStyle: compressed | expanded
-  .pipe(sass({ outputStyle: 'compressed' }).on("error", sass.logError))
+function css() { return src(_src.scss)
+  .pipe(sass(sassOpt).on("error", sass.logError))
   .pipe(cleanCSS())
   .pipe(dest(_dest.css));
 }
@@ -188,8 +170,7 @@ exports.cssw = cssw;
 
 // js
 // : task to take js files from _src to _dest
-function js() {
-  return src(_src.js)
+function js() { return src(_src.js)
   .pipe(dest(_dest.js));
 }
 

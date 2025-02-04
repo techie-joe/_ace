@@ -62,7 +62,7 @@ block header
 block main
   +main#_main: article
 
-    include _demo/_nav
+    include demo/_nav
 
     section._mv-2
 
@@ -88,6 +88,7 @@ block main
     section._mv-2
       h2 Basic Templates
 
+      - let templateUrl    = "/ace/templates/";
       mixin lia_template(ref='')
         +lia(templateUrl+ref)._nav-item: block
 

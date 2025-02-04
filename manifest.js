@@ -44,7 +44,7 @@ const manifest = {
   ]
 };
 
-const _shortcuts = [
+manifest.shortcuts = [
   {
     short_name    : manifest.short_name,
     name          : manifest.name,
@@ -53,7 +53,5 @@ const _shortcuts = [
     icons         : manifest.icons
   }
 ];
-
-manifest.shortcuts = _shortcuts;
 
 module.exports = manifest;

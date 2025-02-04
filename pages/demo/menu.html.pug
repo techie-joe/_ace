@@ -13,46 +13,6 @@ block append style
 
   //- style.
 
-mixin navlink(ref='')
-  +_a(templateUrl+ref)._nav-item: block
-
-mixin menu(x)
-  +nav#_nav
-    +menus(x)
-
-mixin menus(x)
-  if x == 'templates'
-    +navlink('full_screen.html')| Full
-    +navlink('split_screen.html')| Split
-    +navlink('flex_gallery.html')| Flex
-    +navlink('classic_page.html')| Page
-    +navlink('classic_list.html')| List
-    +navlink("blank.html")| Blank
-    +navlink('closed.html')| Closed
-    +_a(homeUrl+"404.html")._nav-item| 404
-    +_a(homeUrl+"500.html")._nav-item| 500
-  else
-    +demo("view.html")| View
-    //- +demo("layout.html")| Layout
-    +demo("flex.html")| Flex
-    +demo("colors.html")| Colors
-    +demo("texts.html")| Texts
-    +demo("icons.html")| Icons
-    //- +demo("images.html")| Image
-    //- +demo("video.html")| Video
-    //- +demo("buttons.html")| Buttons
-    //- +demo("background.html")| Background
-    +demo("containers.html")| Containers
-    //- +demo("form.html")| Form
-    //- +demo("transitions.html")| Transitions
-    //- +demo("animations.html")| Animations
-    +demo("menu.html")| Menu
-    //- +demo("popups.html")| Popups
-    //- +demo("dialogs.html")| Dialogs
-    +demo("theme.html")| Theme
-    //- +demo("helpers.html")| Helpers
-    +demo("blank.html")| Blank
-
 block main
 
   +main#_main: article

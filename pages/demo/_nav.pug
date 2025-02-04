@@ -1,7 +1,7 @@
 //- +nav#_nav: ul: +lia
 
 mixin demo_link(ref='')
-  +_a(demoUrl+ref)._nav-item: block
+  +_a(ref)._nav-item: block
 
 mixin menu
   +demo_link("view.html")| View
