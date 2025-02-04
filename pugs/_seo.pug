@@ -1,13 +1,14 @@
 //- Basic SEO
 title !{title||'(untitled)'}
-meta(name="description"         content=description||'(undescribed)')/
-meta(name="author"              content=author||'(unknown)')/
-meta(name="publisher"           content=publisher||'(unknown)')/
+
++metaName("description",description||'(undescribed)')
++metaName("author",author||'(unknown)')
++metaName("publisher",publisher||'(unknown)')
 
 //- Open Graph protocol to optimize your web page for social media sharing.
-meta(property="og:title"        content=og_title||'(untitled)')/
-meta(property="og:description"  content=og_description||'(undescribed)')/
-meta(property="og:type"         content=og_type)/
-meta(property="og:url"          content=og_url)/
-meta(property="og:image"        content=og_image)/
-meta(property="og:image:alt"    content=og_imageAlt)/
++metaProperty("og:title",og_title||'(untitled)')
++metaProperty("og:description",og_description||'(undescribed)')
++metaProperty("og:type",og_type)
++metaProperty("og:url",og_url)
++metaProperty("og:image",og_image)
++metaProperty("og:image:alt",og_imageAlt)

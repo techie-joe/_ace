@@ -14,23 +14,29 @@ mixin htmlColor
     html { background-color: #ddd; color: #666; } /* light theme - (default) */
     @media (prefers-color-scheme: dark) { html { background-color: #222; color: #999; } } /* dark theme */
 
+mixin metaName(name,content)
+  meta(name=name content=content)/
+
+mixin metaProperty(property,content)
+  meta(property=property content=content)/
+
 mixin manifest(href)
   link(rel="manifest" href=href)&attributes(attributes)/
 
 mixin manifestv(href)
-  link(rel="manifest" href=appendVersion(href))&attributes(attributes)/
+  link(rel="manifest" href!=appendVersion(href))&attributes(attributes)/
 
 mixin css(href,media)
   link(rel="stylesheet" media=media||'all' href=href)&attributes(attributes)/
 
 mixin cssv(href,media)
-  link(rel="stylesheet" media=media||'all' href=appendVersion(href))&attributes(attributes)/
+  link(rel="stylesheet" media=media||'all' href!=appendVersion(href))&attributes(attributes)/
 
 mixin js(src)
   script(type="text/javascript" src=src)&attributes(attributes): block
 
 mixin jsv(src)
-  script(type="text/javascript" src=appendVersion(src))&attributes(attributes): block
+  script(type="text/javascript" src!=appendVersion(href))&attributes(attributes): block
 
 mixin view
   ._view&attributes(attributes): ._view_layout: block
