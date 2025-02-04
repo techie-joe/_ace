@@ -1,8 +1,10 @@
 -
-  let halt = 'event.preventDefault();'
+  function halt(script){
+    return 'event.preventDefault();'+script;
+  }
 
   let js = {
-    themeChange : 'base.theme.change()',
-    goBack : halt+"window.history.back()",
-    halt : halt
+    themeChange : halt('base.theme.change()'),
+    goBack : halt("window.history.back()"),
+    halt : halt()
   }
