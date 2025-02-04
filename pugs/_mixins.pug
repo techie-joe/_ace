@@ -36,7 +36,7 @@ mixin js(src)
   script(type="text/javascript" src=src)&attributes(attributes): block
 
 mixin jsv(src)
-  script(type="text/javascript" src!=appendVersion(href))&attributes(attributes): block
+  script(type="text/javascript" src!=appendVersion(src))&attributes(attributes): block
 
 mixin view
   ._view&attributes(attributes): ._view_layout: block
