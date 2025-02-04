@@ -7,36 +7,43 @@ block append vars
 
 block append style
   +cssv(assetsUrl+'css/demo.css')
+  //- style.
   style.
-    #_html { min-width:320px }
-
-    #_footer ._footer_layout,
-    #_main ._main_layout   { padding: 1em; }
-    #_header ._header_layout { padding: 2rem 1rem 2rem; }
-
+    #_header ._header_layout { padding: 2rem 1rem; }
     @media (min-width: 530px) {
-
-      #_footer ._footer_layout,
-      #_main ._main_layout   { padding: 0 3rem; }
-      #_header ._header_layout { padding: 2rem 3rem 3rem; }
-
+    #_header ._header_layout { padding: 2rem 3rem; }
     }
 
-    #_header { padding: 1px 0; }
+    #_header ._header_layout { position:relative }
+    #_header ._header_layout:before {
+      content: 'A';
+      font-family: serif;
+      font-weight: bold;
+      font-size: 40rem;
+      display: block;
+      line-height: 0.7;
+      position: absolute;
+      top: -55%;
+      right: 4%;
+      opacity: 0.1;
+      user-select: none;
+    }
+    #_main,
+    #intro { position:relative; z-index:1 }
 
-    #_header    { color: #333; background: #ccc; }
-    #_header h1 { color: #000; }
+    #intro { max-width: 30rem; }
 
-    ._dark #_header    { color: #aaa; background: #111; }
+    html   #_header { background: #ccc; }
+    ._dark #_header { background: #111; }
+
+    html   #_header h1 { color: #000; }
     ._dark #_header h1 { color: #fff; }
 
     #_html .pages ul { list-style-type: none; padding-inline-start: 0; }
 
-    #_header .intro { max-width: 30em; }
-
 block header
   +header#_header
-    .intro
+    #intro
       h1._hero-1 !{heading}
       p._smaller by #[+a(authorUrl) !{author}]
       p._text-justify !{about}
@@ -50,9 +57,11 @@ block main
 
       p._text-justify This web template is equipped with #[b._h7 pre-made building components] and #[b._h7 helper classes] to give you an easy building experience. We have simplified web creation to make it accessible to everyone, even for those who may not have technical expertise. Dive in and start building your website straight away.
 
-      ._mv._nav-color: +nav#_nav
-        b| Template Components : &nbsp;
+      ._mv._nav-color._radius-x5r: +nav#_nav
+        b._nav-label| Template Components : &nbsp;
         +menu
+
+      hr
 
     section._mv-2
       h2 Examples

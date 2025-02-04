@@ -97,8 +97,10 @@ block main
         .links
           p._text-justify
             | Texts may appear in #[span._blue blue], #[span._purple purple], #[span._orange orange] or #[span._red red].
-            | Standard color were used on #[+a("#xxxx")._no-visited._no-wrap normal hyperlinks] and #[+a("")._no-wrap visited links].
+            | Standard color were used on #[+a("#xt")#normalink._no-visited._no-wrap normal hyperlinks] and #[+a("")._no-wrap visited links].
             | You can remove color from a hyperlink using the #[code._code._no-wrap _no-color] class, to make a #[+a("")._no-color._no-wrap plain hyperlinks].
+          //- script.
+            document.getElementById('normalink').href+=(new Date().getTime());
 
     ._ma._pa
 

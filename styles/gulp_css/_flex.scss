@@ -1,3 +1,16 @@
+// @media (min-width: 20rem){/*    ≥ 320px   Mobile S   ._f-ms-* */}
+// @media (min-width: 23.4rem){/*  ≥ 375px   Mobile M   ._f-mm-* */}
+// @media (min-width: 26.6rem){/*  ≥ 425px   Mobile L   ._f-ml-* */}
+// @media (min-width: 35.5rem){/*  ≥ 568px              ._f-s-*  */}
+// @media (min-width: 48rem){/*    ≥ 768px    Laptop S  ._f-m-*  */}
+// @media (min-width: 60rem){/*    ≥ 960px    960gs     ._f-r-*  */}
+// @media (min-width: 64rem){/*    ≥ 1024px   Laptop M  ._f-l-*  */}
+// @media (min-width: 80rem){/*    ≥ 1280px             ._f-2l-* */}
+// @media (min-width: 90rem){/*    ≥ 1440px   Laptop L  ._f-3l-* */}
+// @media (min-width: 120rem){/*   ≥ 1920px             ._f-4l-* */}
+// @media (min-width: 160rem){/*   ≥ 2560px   4K        ._f-4k-* */}
+// @media (min-width: 240rem){/*   ≥ 3840px             ._f-5k-* */}
+
 $f_min: 4rem;
 $f_base: 12;
 
@@ -74,16 +87,3 @@ $g:3;
 
 $g:2;
 ._f-#{$g}-1 { @extend ._f-12-6; }
-
-// @media (min-width: 20em){/*    ≥ 320px   Mobile S   ._f-ms-* */}
-// @media (min-width: 23.4em){/*  ≥ 375px   Mobile M   ._f-mm-* */}
-// @media (min-width: 26.6em){/*  ≥ 425px   Mobile L   ._f-ml-* */}
-// @media (min-width: 35.5em){/*  ≥ 568px              ._f-s-*  */}
-// @media (min-width: 48em){/*    ≥ 768px    Laptop S  ._f-m-*  */}
-// @media (min-width: 60em){/*    ≥ 960px    960gs     ._f-r-*  */}
-// @media (min-width: 64em){/*    ≥ 1024px   Laptop M  ._f-l-*  */}
-// @media (min-width: 80em){/*    ≥ 1280px             ._f-2l-* */}
-// @media (min-width: 90em){/*    ≥ 1440px   Laptop L  ._f-3l-* */}
-// @media (min-width: 120em){/*   ≥ 1920px             ._f-4l-* */}
-// @media (min-width: 160em){/*   ≥ 2560px   4K        ._f-4k-* */}
-// @media (min-width: 240em){/*   ≥ 3840px             ._f-5k-* */}

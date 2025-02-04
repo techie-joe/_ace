@@ -3,6 +3,8 @@
 @use "mixins" as *;
 @use "colors-values" as *;
 
+#_html { min-width:20rem }
+
 ._nav_layout,
 ._header_layout,
 ._footer_layout,
@@ -11,14 +13,15 @@
 
 #_navbar { position:relative; z-index:1 }
 
-#_navbar a#_logo { @include color( #444 ) }
-._dark {
-#_navbar a#_logo { @include color( #888 ) }
-}
+html   #_navbar a#_logo { @include color( #444 ) }
+._dark #_navbar a#_logo { @include color( #888 ) }
 
 #_nav { padding: 1em; }
 
 .gu { padding: 3px; }
+
+html   .o { background-color: $bg_2_8; }
+._dark .o { background-color: $bg_2_2; }
 
 .o1-1 { height:300px; }
 .o1-2 { height:300px; }

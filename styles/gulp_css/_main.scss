@@ -137,13 +137,17 @@ hr,._hr {
   &:hover { text-decoration: none; }
 }
 
-#_html ._nav-item {
+._nav-label {
   display:inline-block;
   padding:0 .3em;
   line-height: 1.7;
+  border-radius:.3rem;
+}
+
+#_html ._nav-item {
+  @extend ._nav-label;
   color:inherit;
   text-decoration:none;
-  border-radius:5px;
   white-space:nowrap;
   cursor:pointer;
 }
@@ -219,7 +223,7 @@ h1,h2,h3,h4,h5,h6,
   &         { @include color( $light_link_tci ); }
   &:visited { @include color( $light_link_tcv ); }
   // &._no-visited:hover,
-  &:hover   { transition:none; }
+  &:hover   { @include color( $light_link_tci ); transition:none; }
 }
 
 ._dark._a a {
@@ -227,7 +231,7 @@ h1,h2,h3,h4,h5,h6,
   &         { @include color( $dark_link_tci ); }
   &:visited { @include color( $dark_link_tcv ); }
   // &._no-visited:hover,
-  // &:hover   {  }
+  &:hover   { @include color( $dark_link_tci ); }
 }
 
 ._hrt { border-top    : 1px solid $light_shade; }
@@ -255,9 +259,6 @@ a._btnlink {
 
 #_html       ._nav-item:hover { @include color( $light_contra, $light_button_bg ); }
 #_html._dark ._nav-item:hover { @include color( $dark_contra, $dark_button_bg); }
-
-.o { @extend ._bg_2_8; }
-._dark .o { @extend ._bg_2_2; }
 
 /* ======================================================== helper */
 
@@ -354,4 +355,5 @@ $angles : 45, 90, 135, 180, 225, 270, 315;
 
 ._no-b { font-weight: normal !important }
 
-._no-bullet { list-style-type: none !important }
+._no-bullet { list-style-type: none !important; }
+._no-bullet-pad { padding-inline-start: 0 !important; }
