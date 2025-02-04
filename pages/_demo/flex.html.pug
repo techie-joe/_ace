@@ -8,13 +8,14 @@ block append vars
 
 block append style
   style.
+    #_html { min-width:0 }
     .o { height:3em; font-size:.8em; font-weight:bold; box-shadow: 0 0 0 1px #f804 inset; padding:2px 5px; }
     .o:hover { background-color: #8886 }
 
   //- style.
 
 block main
-  +main#_main: article.layout
+  +main#_main: article
 
     mixin gen_grid(k)
       - var k2 = Math.floor(k/2);

@@ -1,7 +1,6 @@
-extends _template
+extends _html
 
 block append vars
-  include _vars
   -
     file           = 'classic_page'
     url            = url+`${file}_2.html`
@@ -14,7 +13,6 @@ block append vars
   //- 
 
 block append style
-  +css(assetsUrl+'css/demo.css?v='+version)
   style.
     #_main p { text-indent:2em; text-align:justify; }
     #_main p.ni { text-indent:0; }
@@ -90,5 +88,5 @@ block main
       p Writing about anything requires a blend of research, audience awareness, organization, and personal touch. By following these strategies, you can develop the confidence and skills to tackle any topic with ease. Remember, every piece you write is an opportunity to learn and grow as a writer.
 
     ._mt-2: hr
-    div._p._mb-2: +a('classic_page.html')._btnlink Previous Article
+    div._p._mb-2: +backButton('classic_page.html','Previous Article')(title="Classic Page — an article about yourself")
 

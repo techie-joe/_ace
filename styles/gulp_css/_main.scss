@@ -18,12 +18,18 @@ html   { box-shadow: 0 0 0 5px #f00 inset; }
 // - each vendor specific must be seperately declared. - cant combine.
 // - use background-color not background.
 // - dont append or include other class.
-$select_bg : #FFFF00C8;
-$select_tc : #000;
+$select_color : #FFFF00;
+$select_bg    : #FFFF00CC;
+$select_tc    : #000;
 ::selection {
   background-color: $select_bg !important;
   color: $select_tc !important;
   text-shadow: none !important;
+}
+._select {
+  background-color: $select_color;
+  color: $select_tc;
+  text-shadow: none;
 }
 
 * { margin: 0; line-height: 1.5 }
@@ -155,8 +161,8 @@ hr,._hr {
 #_html ._nav-icon {
   padding: 0;
   min-width: 1.7em;
+  min-height: 1.7em;
   text-align: center;
-  height: 1.7em;
 }
 
 ._code {
@@ -170,6 +176,7 @@ hr,._hr {
 ._dark ._code { @extend ._tc_2_3; }
 
 ._icon {
+  @extend ._numb;
   display: inline-block;
   height   : 1.5em;
   min-width: 1.5em;
@@ -219,18 +226,18 @@ h1,h2,h3,h4,h5,h6,
 
 ._a a {
   & { transition: color 0.5s, background-color 0.5s; }
-  &._no-visited:visited,
+  &._stay-fresh:visited,
   &         { @include color( $light_link_tci ); }
   &:visited { @include color( $light_link_tcv ); }
-  // &._no-visited:hover,
+  // &._stay-fresh:hover,
   &:hover   { @include color( $light_link_tci ); transition:none; }
 }
 
 ._dark._a a {
-  &._no-visited:visited,
+  &._stay-fresh:visited,
   &         { @include color( $dark_link_tci ); }
   &:visited { @include color( $dark_link_tcv ); }
-  // &._no-visited:hover,
+  // &._stay-fresh:hover,
   &:hover   { @include color( $dark_link_tci ); }
 }
 
@@ -255,6 +262,18 @@ a._btnlink {
   &:hover {
     @include color( $dark_button_tc, $dark_button_bg );
   }
+}
+
+._btnlabel {
+  display: inline-block;
+  vertical-align: top;
+}
+
+._btnpad {
+  display: inline-block;
+  height: 1.5em;
+  min-width: .75em;
+  vertical-align: top;
 }
 
 #_html       ._nav-item:hover { @include color( $light_contra, $light_button_bg ); }

@@ -2,11 +2,12 @@ mixin join(a,s)
   !=a.join(s||`\n`)
 
 mixin repeat(a,b)
-  - var diff = Math.abs(a-b)+(b?1:0);
-  - var n = 0;
+  - b = b||0;
+  - let diff = Math.abs(a-b)+(b?1:0);
+  - let n = 0;
   while n < diff
     block
-    - n++
+    - n++;
 
 mixin htmlColor
   style.
@@ -89,7 +90,7 @@ mixin lia(href,title)
 mixin backlink(title='Back to previous page')
   a(onclick=js.goBack title=title)&attributes(attributes): block
 
-mixin changeThemeLink(title='Change color scheme')
+mixin changeThemeLink(title='Change Theme (Ctrl+Alt+T)')
   a(onclick=js.themeChange title=title)&attributes(attributes): block
 
 mixin img(src,alt,title)
@@ -115,6 +116,12 @@ mixin fat
 
 mixin itext
   i._itext: i.itext&attributes(attributes): block
+
+mixin backButton(href, label)
+  +a(href).nav-button._btnlink&attributes(attributes) #[+itext|←] #[span._btnlabel !{label}] #[i._btnpad]
+
+mixin nextButton(href, label)
+  +a(href).nav-button._btnlink&attributes(attributes) #[i._btnpad] #[span._btnlabel !{label}] #[+itext|→]
 
 mixin pageData
   aside&attributes(attributes)

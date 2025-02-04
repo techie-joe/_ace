@@ -24,11 +24,11 @@ block main
         p._inline: block
 
     mixin block_2(title)
-      h3._h6._color !{title}
+      h3._h6 !{title}
       p._text-justify: block
 
     mixin block_3(title)
-      h3._h6._color-1 !{title}
+      h3._h6 !{title}
       p._text-justify: block
 
     mixin block_4(title)
@@ -96,8 +96,8 @@ block main
         h3 Texts and Hyperlinks
         .links
           p._text-justify
-            | Texts may appear in #[span._blue blue], #[span._purple purple], #[span._orange orange] or #[span._red red].
-            | Standard color were used on #[+a("#xt")#normalink._no-visited._no-wrap normal hyperlinks] and #[+a("")._no-wrap visited links].
+            | Texts may appear in #[span._tc_blue blue], #[span._tc_purple purple], #[span._tc_orange orange] or #[span._tc_red red].
+            | Standard color were used on #[+a("#xt")#normalink._stay-fresh._no-wrap normal hyperlinks] and #[+a("")._no-wrap visited links].
             | You can remove color from a hyperlink using the #[code._code._no-wrap _no-color] class, to make a #[+a("")._no-color._no-wrap plain hyperlinks].
           //- script.
             document.getElementById('normalink').href+=(new Date().getTime());
@@ -122,15 +122,15 @@ block footer
       ._f-12-3: ._pv
         h6._h7._no-margin Primary Segment
         ul._no-bullet._no-pad
-          +lia('#')._no-visited._no-u Put some links
-          +lia('#')._no-visited._no-u To some posts
-          +lia('#')._no-visited._no-u Or some pages
+          +lia('#')._stay-fresh._no-u Put some links
+          +lia('#')._stay-fresh._no-u To some posts
+          +lia('#')._stay-fresh._no-u Or some pages
 
       ._f-12-3: ._pv
         h6._h7._no-margin Secondary Segment
         ul._no-bullet._no-pad
-          +lia('#')._no-visited._no-u Put some links
-          +lia('#')._no-visited._no-u To some posts
-          +lia('#')._no-visited._no-u Or some pages
+          +lia('#')._stay-fresh._no-u Put some links
+          +lia('#')._stay-fresh._no-u To some posts
+          +lia('#')._stay-fresh._no-u Or some pages
 
     ._mv !{copyright}

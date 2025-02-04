@@ -1,7 +1,6 @@
-extends _template
+extends _html
 
 block append vars
-  include _vars
   -
     file           = 'classic_page'
     url            = url+`${file}.html`
@@ -14,7 +13,6 @@ block append vars
   //- 
 
 block append style
-  +css(assetsUrl+'css/demo.css?v='+version)
   style.
     #_main p { text-indent:2em; text-align:justify; }
     #_main p.ni { text-indent:0; }
@@ -83,5 +81,5 @@ block main
       p Writing about yourself can be daunting, but by structuring your narrative and focusing on what makes you unique, you can create an article that is both compelling and authentic. Remember to be genuine, highlight your strengths, and invite your readers to be a part of your journey.
 
     ._mt-2: hr
-    div._p._text-right: +a('classic_page_2.html')._btnlink Next Article
+    div._p._text-right: +nextButton('classic_page_2.html','Next Article')(title="How to write an article about anything")
 

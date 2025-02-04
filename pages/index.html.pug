@@ -7,11 +7,10 @@ block append vars
 
 block append style
   +cssv(assetsUrl+'css/demo.css')
-  //- style.
   style.
-    #_header ._header_layout { padding: 2rem 1rem; }
-    @media (min-width: 530px) {
     #_header ._header_layout { padding: 2rem 3rem; }
+    @media (max-width: 530px) {
+    #_header ._header_layout { padding: 3rem 1rem 2rem; }
     }
 
     #_header ._header_layout { position:relative }
@@ -33,6 +32,15 @@ block append style
 
     #intro { max-width: 30rem; }
 
+    #intro ._hero-1 span { line-height:1 }
+
+    #topi { position: absolute; top: 3.3rem; right: 5rem; }
+    #topi ._isvg { height: 2.5em; min-width: 2.5em; }
+    @media (max-width: 530px) {
+    #topi { top: 1rem; right: 1rem; }
+    #topi ._isvg { height: 1.5em; min-width: 1.5em; }
+    }
+
     html   #_header { background: #ccc; }
     ._dark #_header { background: #111; }
 
@@ -44,9 +52,11 @@ block append style
 block header
   +header#_header
     #intro
-      h1._hero-1 !{heading}
-      p._smaller by #[+a(authorUrl) !{author}]
+      h1._hero-1 #[span.t1 Ace] #[span.t2._tc_primary Template]
+      p._smaller by #[+a(authorUrl)._stay-fresh !{author}]
       p._text-justify !{about}
+    #topi
+      +changeThemeLink._nav-item._nav-icon: +isvg(svgi.compare)
 
 block main
   +main#_main: article
@@ -108,17 +118,17 @@ block main
 
       p._text-justify Our template is readily available on both light and dark preference. User can easily switch between the two by using the keyboard shortcut #[code._code._no-wrap='Ctrl + Alt + T'] or you can programatically execute #[code._code._no-wrap=js.themeChange] with a button like this one:
 
-      p: +changeThemeLink._btnlink._small Change Theme
+      p: +changeThemeLink._btnlink._small #[+isvg(svgi.compare)] #[i._btnpad] #[span._btnlabel Change Theme ] #[i._btnpad]
 
     hr
 
     p._smaller| Some images on this website are courtesy of Matt at <a href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">svgbackgrounds.com</a>. Thank you for providing them for free.
 
-    p._smaller| Version : v#{version} | b#{build}
+    p._smaller| Version : v#{version} -- b#{build}
 
     p._smaller
       - source_url = 'https://github.com/techie-joe/ace'
-      | Live @ #[+a(url)(target="techie-joes-github") #{url}]#[br]
+      | Live __ @ #[+a(url)(target="techie-joes-github") #{url}]#[br]
       | Source @ #[+a(source_url)(target="techie-joes-github") #{source_url}]
 
 block footer

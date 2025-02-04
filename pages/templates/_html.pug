@@ -1,13 +1,15 @@
-extends ../../_templates/html
+extends ../../pugs/html
 
-block prepend vars
+block append vars
   include _vars
 
 block append style
-  +css(assetsUrl+'css/demo.css?v='+version)
+  +cssv(assetsUrl+'css/demo.css')
+  style.
+    .nav-button { min-width: 10rem; }
   //- style.
 
-block view
+block views
   +view
 
     block nav

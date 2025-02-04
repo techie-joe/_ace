@@ -44,7 +44,26 @@ html   .o { background-color: $bg_2_8; }
 
 }
 
-/* ---------------------------------- default light theme */
+/* ---------------------------------- theme */
+
+$light_primary_tc : #1b36b0;
+$dark_primary_tc  : #7a8eea;
+html   ._tc_primary  { color: $light_primary_tc  }
+._dark ._tc_primary  { color: $dark_primary_tc  }
+
+$light_select_primary_bg : #1b36b0CC;
+$light_select_primary_tc : #eee;
+$dark_select_primary_bg  : #7a8eeaCC;
+$dark_select_primary_tc  : #111;
+._select-primary {
+  background-color: $light_select_primary_bg;
+  color: $light_select_primary_tc;
+  text-shadow: none;
+}
+._dark ._select-primary {
+  background-color: $dark_select_primary_bg;
+  color: $dark_select_primary_tc;
+}
 
 ._editorbar p,
 ._nav-color { @include color( $tc_2_8, $bg_2_8 ); }

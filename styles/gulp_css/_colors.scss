@@ -51,20 +51,20 @@
 ._bc_2_8 { border-color: $bg_2_8 }
 ._bc_2_9 { border-color: $bg_2_9 }
 
-._blue   { color: $light_blue   }
-._purple { color: $light_purple }
-._orange { color: $light_orange }
-._red    { color: $light_red    }
-._green  { color: $light_green  }
-._contra { color: $light_contra }
+._tc_blue   { color: $light_blue   }
+._tc_purple { color: $light_purple }
+._tc_orange { color: $light_orange }
+._tc_red    { color: $light_red    }
+._tc_green  { color: $light_green  }
+._tc_contra { color: $light_contra }
 
 ._dark {
 
-  ._blue   { color: $dark_blue   }
-  ._purple { color: $dark_purple }
-  ._orange { color: $dark_orange }
-  ._red    { color: $dark_red    }
-  ._green  { color: $dark_green  }
-  ._contra { color: $dark_contra }
+  ._tc_blue   { color: $dark_blue   }
+  ._tc_purple { color: $dark_purple }
+  ._tc_orange { color: $dark_orange }
+  ._tc_red    { color: $dark_red    }
+  ._tc_green  { color: $dark_green  }
+  ._tc_contra { color: $dark_contra }
 
 }
