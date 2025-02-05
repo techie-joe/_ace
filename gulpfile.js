@@ -1,31 +1,19 @@
-// TLDR : This is the gulper tasks definition that builds your project.
-//      : Find more information about Gulp on http://gulpjs.com
+/* =============================================================
 
-/*
+This is the gulper commands definition.
+Files that tells gulper how to build your project.
+Find more information about Gulp on http://gulpjs.com
 
-> gulp
-> gulp site
+============================================================= */
 
-> gulp builder
-> gulp files
-> gulp pages
-> gulp css
-> gulp js
 
-> gulp watch
-> gulp pagesw
-> gulp cssw
-> gulp jsw
+// CONFIGS
+// =============================================================
 
-*/
+const _src_site = '_site/**/*';
+const _dep_site = '../';
 
-// ============================================================== define gulper
-
-const { watch, parallel, src, dest } = require('gulp');
-const gulp_rename = require('gulp-rename');
-const gulp_file   = require('gulp-file');
-
-const _dest_root = "/ace/";
+const _dest_url = "/ace/";
 const _dest = {
   builder : "./",
   root    : "../ace",
@@ -51,6 +39,19 @@ const _src = {
 const watchOpt = { ignoreInitial: false };
 const pagesOpt = { pretty: true };
 
+// IMPORTS
+// =============================================================
+
+const { src, dest, series, parallel, watch } = require('gulp');
+const log = console.log;
+
+const pug         = require("gulp-pug");
+const gulp_rename = require('gulp-rename');
+const gulp_file   = require('gulp-file');
+
+// FUNCTIONS
+// =============================================================
+
 function ext(extname) {
   return gulp_rename( function (path) {
     path.basename = path.basename.substring(0, path.basename.lastIndexOf('.'));
@@ -58,9 +59,15 @@ function ext(extname) {
   })
 }
 
-// ============================================================= builder gulper
+// TASKS
+// =============================================================
 
-function builder_txt() { return src(_src.builder.txt)
+// builder
+// -------------------------------------------------------------
+// gulp builder files
+
+function builder_txt() {
+  return src(_src.builder.txt)
   .pipe(pug())
   .pipe(ext('.txt'))
   .pipe(dest(_dest.builder));
@@ -72,40 +79,40 @@ function builder_md() { return src(_src.builder.md)
   .pipe(dest(_dest.builder));
 }
 
-exports.builder = parallel( builder_txt, builder_md );
-
-// =============================================================== site gulper
+// site files
+// -------------------------------------------------------------
+// gulp site files
 
 // { src: true } indicates that the string provided as the second argument should be treated as file contents rather than a file path
 const gulp_as_file = { src: true };
 
-// : task to generate .htaccess file to _dest
+// generate .htaccess file to _dest
 function htaccess() {
   const _htaccess = [
-    `ErrorDocument 404 ${_dest_root}404.html`,
-    `ErrorDocument 500 ${_dest_root}500.html`,
+    `ErrorDocument 404 ${_dest_url}404.html`,
+    `ErrorDocument 500 ${_dest_url}500.html`,
   ].join(`\n`);  
   return gulp_file( '.htaccess', _htaccess, gulp_as_file )
   .pipe(dest(_dest.root));
 }
 
-function manifest() { // : task to generate manifest file from _src to _dest
+// generate manifest file from _src to _dest
+function manifest() {
   const _manifest = JSON.stringify(require(_src_manifest), null, 2);
   return gulp_file( 'manifest.json', _manifest, gulp_as_file )
   .pipe(dest(_dest.root));
 }
 
-function files() { // task to copy files from _src to _dest
+// copy files from _src to _dest
+function files() {
   return src(_src.files, { dot: true })
   .pipe(dest(_dest.root));
 }
 
-exports.files = parallel( htaccess, manifest, files );
-
 // pages: html, php and txt
+// -------------------------------------------------------------
+// : to take pug files from _src to _dest
 // : retain the same directory structure
-// : task to take pug files from _src to _dest
-const pug = require("gulp-pug");
 
 function html() {
   return src(_src.html)
@@ -142,18 +149,12 @@ function pagesw() {
   watch(_src.md,   watchOpt, md);
 }
 
-exports.html = html;
-exports.php  = php;
-exports.txt  = txt;
-exports.md   = md;
-
-exports.pages  = parallel( html, php, txt, md );
-exports.pagesw = pagesw;
-
 // sass
-// : task to take scss files from _src to _dest
-// : outputStyle: compressed | expanded
-const sass     = require("gulp-sass")(require("sass"));
+// -------------------------------------------------------------
+// to take scss files from _src to _dest
+// - outputStyle: compressed | expanded
+
+const sass = require("gulp-sass")(require("sass"));
 const cleanCSS = require('gulp-clean-css');
 const sassOpt  = { outputStyle: 'compressed' };
 
@@ -165,41 +166,98 @@ function css() { return src(_src.scss)
 
 function cssw() { watch(_src.scss, watchOpt, css); } 
 
-exports.css  = css;
-exports.cssw = cssw;
-
 // js
-// : task to take js files from _src to _dest
+// -------------------------------------------------------------
+// to take js files from _src to _dest
+
 function js() { return src(_src.js)
   .pipe(dest(_dest.js));
 }
 
 function jsw() { watch(_src.js, watchOpt, js); }
 
-exports.js  = js;
-exports.jsw = jsw;
+// deployment
+// -------------------------------------------------------------
+// to copy every files from _src to _dest
 
-// ===================================================================== gulper
+function deploy() {
+  log(`Deploying site to : ${_dep_site}`);
+  return src(_src_site, { dot: true })
+  .pipe(dest(_dep_site));
+}
 
-exports.all = parallel(
-  builder_txt, builder_md,
-  htaccess, manifest, files,
-  html, php, txt, md,
-  css,
-  js,
+/* =============================================================
+
+List of available commands:
+
+// > gulp deploy
+// > gulp
+// > gulp all
+// > gulp site
+
+// > gulp builder
+// > gulp files
+// > gulp pages
+// > gulp css
+// > gulp js
+
+// > gulp watch
+// > gulp pagesw
+// > gulp cssw
+// > gulp jsw
+
+To list available tasks, try running: > gulp --tasks
+
+============================================================= */
+
+exports.html   = series( html );
+exports.php    = series( php );
+exports.txt    = series( txt );
+exports.md     = series( md );
+exports.pages  = parallel( html, php, txt, md );
+exports.css    = series( css );
+exports.js     = series( js );
+
+exports.builder = parallel(
+
+  builder_txt, builder_md
+
+);
+
+exports.files = parallel(
+  
+  htaccess, manifest, files
+
 );
 
 exports.site = parallel(
+
   htaccess, manifest, files,
-  html, php, txt, md,
-  css,
-  js,
+
+  html, php, txt, md, css, js,
+
 );
 
-exports.watch = parallel(
-  pagesw,
-  cssw,
-  jsw,
+exports.all = parallel(
+
+  builder_txt, builder_md,
+
+  htaccess, manifest, files,
+
+  html, php, txt, md, css, js,
+
 );
+
+exports.pagesw = parallel( pagesw );
+exports.cssw   = parallel( cssw );
+exports.jsw    = parallel( jsw );
+
+exports.watch = parallel(
+
+  pagesw, cssw, jsw,
+
+);
+
+exports.deploy = series( deploy );
 
 exports.default = exports.site;
