@@ -3,7 +3,7 @@
 
   "name"        : "ace",
   "description" : "Ace Template Builder",
-  "version"     : "0.1.7",
+  "version"     : "0.1.14",
   "author"      : "Techie Joe",
   "license"     : "SEE LICENSE IN LICENSE.txt",
   "main"        : "gulpfile.js",
