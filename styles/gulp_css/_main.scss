@@ -59,13 +59,13 @@ li,._li { margin: 0; } // improve responsive consistency
 
 // ------------------------------------------------- headings */
 
-._h7,._text-1 { font-size: 1.000rem; line-height: 1.5 }
-._h6,._text-2 { font-size: 1.083rem; line-height: 1.5 }
-._h5,._text-3 { font-size: 1.182rem; line-height: 1.4 }
-._h4,._text-4 { font-size: 1.300rem; line-height: 1.3 }
-._h3,._text-5 { font-size: 1.445rem; line-height: 1.2 }
-._h2,._text-6 { font-size: 1.625rem; line-height: 1.1 }
-._h1,._text-7 { font-size: 1.857rem; line-height: 1.0 }
+._h7,._text_1 { font-size: 1.000rem; line-height: 1.5 }
+._h6,._text_2 { font-size: 1.083rem; line-height: 1.5 }
+._h5,._text_3 { font-size: 1.182rem; line-height: 1.4 }
+._h4,._text_4 { font-size: 1.300rem; line-height: 1.3 }
+._h3,._text_5 { font-size: 1.445rem; line-height: 1.2 }
+._h2,._text_6 { font-size: 1.625rem; line-height: 1.1 }
+._h1,._text_7 { font-size: 1.857rem; line-height: 1.0 }
 
 ._hero        { font-size: 2.000rem }
 ._hero-1      { font-size: 2.250rem }
@@ -163,7 +163,7 @@ hr,._hr {
   border-radius: .3rem;
 }
 
-#_html ._nav-item {
+#_html ._nav_item {
   @extend ._hover-link;
   @extend ._nav-label;
 }
@@ -335,10 +335,10 @@ a._btnlink {
 
 ._uppercase { text-transform: uppercase }
 
-._text-left    { text-align: left    }
-._text-center  { text-align: center  }
-._text-right   { text-align: right   }
-._text-justify { text-align: justify }
+._text_left    { text-align: left    }
+._text_center  { text-align: center  }
+._text_right   { text-align: right   }
+._text_justify { text-align: justify }
 
 // ._radius
 $radiuses: (
@@ -365,7 +365,7 @@ $margins: (
 }
 
 ._m0,
-._no-margin { margin:0 !important }
+._no_margin { margin:0 !important }
 ._mt0 { margin-top: 0 !important }
 ._mb0 { margin-bottom: 0 !important }
 
@@ -386,26 +386,26 @@ $paddings: (
 }
 
 ._p0,
-._no-pad { padding:0 !important }
+._no_pad { padding:0 !important }
 ._pt0 { padding-top: 0 !important }
 ._pb0 { padding-bottom: 0 !important }
 
-._no-spad { padding-inline-start: 1em !important }
+._no_spad { padding-inline-start: 1em !important }
 
 // ._rotate
 $angles : 45, 90, 135, 180, 225, 270, 315;
 @each $angle in $angles { ._rotate-#{$angle} { transform: rotate(#{$angle}deg); } }
 
-._no-scroll,._no-scroll-x { overflow-x: hidden !important; }
-._no-scroll,._no-scroll-y { overflow-y: hidden !important; }
+._no_scroll,._no_scroll-x { overflow-x: hidden !important; }
+._no_scroll,._no_scroll-y { overflow-y: hidden !important; }
 
-._no-wrap { white-space: nowrap !important }
+._no_wrap { white-space: nowrap !important }
 
-._no-color { color: inherit !important }
+._no_color { color: inherit !important }
 
-._no-u { text-decoration: none !important }
+._no_u { text-decoration: none !important }
 
-._no-b { font-weight: normal !important }
+._no_b { font-weight: normal !important }
 
-._no-bullet { list-style-type: none !important; }
-._no-bullet-pad { padding-inline-start: 0 !important; }
+._no_bullet { list-style-type: none !important; }
+._no_bullet-pad { padding-inline-start: 0 !important; }

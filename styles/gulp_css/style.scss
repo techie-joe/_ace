@@ -1,7 +1,83 @@
+/*! Techie Joe's Ace v0.1.17 - b174.8 | Copyright 2025 Techie Joe | https://github.com/techie-joe/ace */
+
 @use "mixins" as *;
+@use "colors-values" as *;
 
-/* ==========================================================================
-    Author's custom styles
-========================================================================== */
+// your custom styles
+// =============================================================
 
-// your styles
+.nav_button { min-width: 10rem; }
+
+// demo styles
+// =============================================================
+
+#_html { min-width:20rem }
+
+._nav_layout,
+._header_layout,
+._footer_layout,
+._main_layout,
+._page_layout { max-width:60rem }
+
+#_navbar { position: relative; z-index: 1 }
+#_html ._navChangeThemeLink { padding: .5rem }
+
+html   #_navbar a#_logo { @include color( #444 ) }
+._dark #_navbar a#_logo { @include color( #888 ) }
+
+#_nav { padding: 1em; }
+
+.gu { padding: 3px; }
+
+html   .o { background-color: $bg_2_8; }
+._dark .o { background-color: $bg_2_2; }
+
+.o1-1 { height:300px; }
+.o1-2 { height:300px; }
+.o2-2 { height:606px; }
+
+.o1-3 { height:150px; }
+.o2-3 { height:306px; }
+.o3-3 { height:462px; }
+
+.o1-4 { height:100px; }
+.o2-4 { height:206px; }
+.o3-4 { height:312px; }
+.o4-4 { height:418px; }
+
+._editorbar {
+
+  p { margin:0; font-size:.75em; padding:.75em; font-weight: bold; }
+
+  ._btnlink { padding: .25em .75em; }
+
+}
+
+/* ---------------------------------- theme */
+
+$light_primary_tc : #1b36b0;
+$dark_primary_tc  : #7a8eea;
+html   ._tc_primary  { color: $light_primary_tc  }
+._dark ._tc_primary  { color: $dark_primary_tc  }
+
+$light_select_primary_bg : #1b36b0CC;
+$light_select_primary_tc : #eee;
+$dark_select_primary_bg  : #7a8eeaCC;
+$dark_select_primary_tc  : #111;
+._select-primary {
+  background-color: $light_select_primary_bg;
+  color: $light_select_primary_tc;
+  text-shadow: none;
+}
+._dark ._select-primary {
+  background-color: $dark_select_primary_bg;
+  color: $dark_select_primary_tc;
+}
+
+._editorbar p,
+._nav-color { @include color( $tc_2_8, $bg_2_8 ); }
+
+._dark {
+._editorbar p,
+._nav-color { @include color( $tc_1_2, $bg_1_2 ); }
+}

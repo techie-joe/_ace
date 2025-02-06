@@ -77,18 +77,18 @@
 //   }
 // }
 
-// @media (min-width: 20em){/*    ≥ 320px   Mobile S   ._f_ms-* */}
-// @media (min-width: 23.4em){/*  ≥ 375px   Mobile M   ._f_mm-* */}
-// @media (min-width: 26.6em){/*  ≥ 425px   Mobile L   ._f_ml-* */}
-// @media (min-width: 35.5em){/*  ≥ 568px              ._f_s-*  */}
-// @media (min-width: 48em){/*    ≥ 768px    Laptop S  ._f_m-*  */}
-// @media (min-width: 60em){/*    ≥ 960px    960gs     ._f_r-*  */}
-// @media (min-width: 64em){/*    ≥ 1024px   Laptop M  ._f_l-*  */}
-// @media (min-width: 80em){/*    ≥ 1280px             ._f_2l-* */}
-// @media (min-width: 90em){/*    ≥ 1440px   Laptop L  ._f_3l-* */}
-// @media (min-width: 120em){/*   ≥ 1920px             ._f_4l-* */}
-// @media (min-width: 160em){/*   ≥ 2560px   4K        ._f_4k-* */}
-// @media (min-width: 240em){/*   ≥ 3840px             ._f_5k-* */}
+// @media (min-width: 20rem){/*    ≥ 320px   Mobile S   ._f_ms_* */}
+// @media (min-width: 23.4rem){/*  ≥ 375px   Mobile M   ._f_mm_* */}
+// @media (min-width: 26.6rem){/*  ≥ 425px   Mobile L   ._f_ml_* */}
+// @media (min-width: 35.5rem){/*  ≥ 568px              ._f_s_*  */}
+// @media (min-width: 48rem){/*    ≥ 768px    Laptop S  ._f_m_*  */}
+// @media (min-width: 60rem){/*    ≥ 960px    960gs     ._f_r_*  */}
+// @media (min-width: 64rem){/*    ≥ 1024px   Laptop M  ._f_l_*  */}
+// @media (min-width: 80rem){/*    ≥ 1280px             ._f_2l_* */}
+// @media (min-width: 90rem){/*    ≥ 1440px   Laptop L  ._f_3l_* */}
+// @media (min-width: 120rem){/*   ≥ 1920px             ._f_4l_* */}
+// @media (min-width: 160rem){/*   ≥ 2560px   4K        ._f_4k_* */}
+// @media (min-width: 240rem){/*   ≥ 3840px             ._f_5k_* */}
 
 @mixin responsive-font($min-size, $max-size) {
   font-size: $min-size;
