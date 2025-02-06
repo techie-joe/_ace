@@ -1,5 +1,9 @@
 ## To do
 
+  - To improve template
+
+  - To use pug filters on mixins and all
+
   - To add CSS Norm
 
   - To add autoprefixer to gulp
