@@ -93,32 +93,32 @@ mixin colorCodes(r)
     var tc = colors[r][1];
     var cbg = bg[ Math.ceil(bg.length/2)-1 ];
     var ctc = tc[ Math.ceil(tc.length/2)-1 ];
-  .codecolor._b._mt-2._small(style=`background: #${cbg}; color:#${ctc}`)|// ##{cbg}
+  .codecolor._b._mt_2._small(style=`background: #${cbg}; color:#${ctc}`)|// ##{cbg}
   ._flex
     .u-1-3: ._mr
-      pre.colorcode._radius-x5r._pa._mv-x5r
+      pre.colorcode._radius_x5r._pa._mv_x5r
         each v,i in bg
           = `$bg_${r+1}_${i+1} : #${v};`
           +l
         +nbsp
-      pre.colorcode._radius-x5r._pa._mv-x5r
+      pre.colorcode._radius_x5r._pa._mv_x5r
         each v,i in tc
           = `$tc_${r+1}_${i+1} : #${v};`
           +l
         +nbsp
     .u-1-3: ._
-      pre.colorcode._radius-x5r._pa._mv-x5r
+      pre.colorcode._radius_x5r._pa._mv_x5r
         each v,i in bg
           = `._bg_${r+1}_${i+1} { background-color: $bg_${r+1}_${i+1} }`
           +l
         +nbsp
-      pre.colorcode._radius-x5r._pa._mv-x5r
+      pre.colorcode._radius_x5r._pa._mv_x5r
         each v,i in bg
           = `._bc_${r+1}_${i+1} { border-color: $bg_${r+1}_${i+1} }`
           +l
         +nbsp
     .u-1-3: ._ml
-      pre.colorcode._radius-x5r._pa._mv-x5r
+      pre.colorcode._radius_x5r._pa._mv_x5r
         each v,i in tc
           = `._tc_${r+1}_${i+1} { color: $tc_${r+1}_${i+1} }`
           +l

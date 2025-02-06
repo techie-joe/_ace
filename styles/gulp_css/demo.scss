@@ -67,9 +67,9 @@ $dark_select_primary_tc  : #111;
 }
 
 ._editorbar p,
-._nav-color { @include color( $tc_2_8, $bg_2_8 ); }
+._nav_color { @include color( $tc_2_8, $bg_2_8 ); }
 
 ._dark {
 ._editorbar p,
-._nav-color { @include color( $tc_1_2, $bg_1_2 ); }
+._nav_color { @include color( $tc_1_2, $bg_1_2 ); }
 }

@@ -17,16 +17,16 @@ block main
 
   +main#_main: article
 
-    section#t1._mb: ._flex: ._fill._nav-color: +nav#_nav
-      |You can : &nbsp;
-      +a()._btnlink._small|Combine
-      +_a()._nav_item._nav-icon: +isvg(svgi.compare)
+    section#t1._mb: ._flex: ._fill._nav_color: +nav#_nav
+      span._nav_label| You can :
+      +a()._btnlink._small| Combine
+      +_a()._nav_item._nav_icon: +isvg(svgi.compare)
       +_a()._nav_item| All
       +_a()._nav_item| Sorts of
-      +_a()._nav_item._nav-icon._b: +middots
+      +_a()._nav_item._nav_icon._b: +middots
       +_a()._nav_item| Menu
       +_a()._nav_item| Items
-      +_a()._nav_item._nav-icon: +isvg(svgi.ellipsis)
+      +_a()._nav_item._nav_icon: +isvg(svgi.ellipsis)
 
     mixin sampleMenu_1
       +_a()._nav_item| Blog
@@ -41,15 +41,15 @@ block main
       +_a()._nav_item| Support
 
     section#t2._mv: ._flex
-      ._f_12_1._pa._nav-color._text_center(style="flex-basis:5rem"): +a()._btnlink._small|Home
-      ._fill._nav-color(style="flex-basis:20rem"): +nav#_nav: +sampleMenu_1
-      ._f_12_1._text_right._pa-x5r._nav-color: +_a()()._navChangeThemeLink._nav_item._nav-icon: +isvg(svgi.compare)
+      ._f_12_1._pa._nav_color._text_center: +a()._btnlink._small|Home
+      ._fill._nav_color(style="flex-basis:20rem"): +nav#_nav: +sampleMenu_1
+      ._f_12_1._text_right._pa_x5r._nav_color: +_a()()._navChangeThemeLink._nav_item._nav_icon: +isvg(svgi.compare)
 
     section#t3._mv
       #_navbar._flex
-        ._f_12_1._nav-color._text_center(style="flex-basis:8rem"): include _logo
-        ._fill._nav-color(style="flex-basis:20rem"): +nav#_nav: +sampleMenu_2
-        ._f_12_1._text_right._pa-x5r._nav-color: +_a()._navChangeThemeLink._nav_item._nav-icon: +isvg(svgi.compare)
+        ._f_12_1._nav_color._text_center: include _logo
+        ._fill._nav_color(style="flex-basis:20rem"): +nav#_nav: +sampleMenu_2
+        ._f_12_1._text_right._pa_x5r._nav_color: +_a()._navChangeThemeLink._nav_item._nav_icon: +isvg(svgi.compare)
     
     //- section#t4._mv
 
