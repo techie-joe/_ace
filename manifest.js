@@ -1,4 +1,4 @@
-// TLDR: this manifest.js will be gulped to generate manifest.json
+// TLDR: this manifest.js will be gulped into manifest.json
 
 const manifest = {
   __TLDR            : "This is the PWA metadata for this project.",
