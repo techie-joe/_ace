@@ -2,7 +2,7 @@ extends _html
 
 block append vars
   - heading = `Ace Template`
-  - about   = `A solid foundation to build your website and application. By using our simple approach, you'll get full control from the very beginning.`
+  - about   = `A solid foundation to build your website and application. Our simple approach lets you build with confidence.`
   - updateTitle( heading )
 
 block append style
@@ -30,7 +30,7 @@ block append style
     #_main,
     #intro { position:relative; z-index:1 }
 
-    #intro { max-width: 30rem; }
+    #intro { max-width: 25em; }
 
     #intro ._hero-1 span { line-height:1 }
 
@@ -66,7 +66,7 @@ block main
 
     section._mv-2
 
-      p._text-justify This web template is equipped with #[b._h7 pre-made building components] and #[b._h7 helper classes] to give you an easy building experience. We have simplified web creation to make it accessible to everyone, even for those who may not have technical expertise. Dive in and start building your website straight away.
+      p._text-justify This template is equipped with #[b._h7 pre-made building components] and #[b._h7 helper classes] to give you an easy building experience. We have simplified web creation to make it accessible to everyone, even for those who may not have technical expertise. Dive in and start building your website straight away.
 
       ._mv._nav-color._radius-x5r: +nav#_nav
         b._nav-label| Template Components : &nbsp;
@@ -81,7 +81,7 @@ block main
         +lia("/ace/example_1/"+ref)._nav-item: block
 
       nav.pages: ._flex
-        ._f-12-2
+        ._f_12_2
           ul._no-margin
             +lia_example_1()| Example #1 - Simple Home
 
@@ -93,17 +93,17 @@ block main
 
       nav.pages
         ._flex
-          ._f-12-4
+          ._f_12_4
             ul._no-margin
               +lia_template('full_screen.html')| Full Screen
               +lia_template('split_screen.html')| Split Screen
               +lia_template('flex_gallery.html')| Flex Gallery
-          ._f-12-4
+          ._f_12_4
             ul._no-margin
               +lia_template('classic_page.html')| Classic Page
               +lia_template('classic_list.html')| Classic List
               +lia_template("blank.html")| Blank Page
-          ._f-12-4
+          ._f_12_4
             ul._no-margin
               li
                 +a("404.html","When browser lands on a missing page.")._nav-item| 404 -- Not found
@@ -111,30 +111,39 @@ block main
               +lia("500.html","When server encounters an error.")._nav-item| 500 -- Oops!
               +lia("closed.html","When you decide to temporarily disable your website.")._nav-item| Temporary closed
         //- ._flex
-          ._f-12-4
+          ._f_12_4
             ul._no-margin
               +lia('blank.html')._nav-item| Bare Blank Page
 
     section._mv-2
       h2 Available in light and dark
 
-      p._text-justify Our template is readily available on both light and dark preference. User can easily switch between the two by using the keyboard shortcut #[code._code._no-wrap='Ctrl + Alt + T'] or you can programatically execute #[code._code._no-wrap=js.themeChange] with a button like this one:
+      p._text-justify Our template is readily available in both light and dark preference. You can easily switch between the two by using the keyboard shortcut #[code._code._no-wrap='Ctrl + Alt + T'] or programatically execute #[code._code._no-wrap='base.theme.change()'] with a button.
 
       p: +changeThemeLink._btnlink._small #[+isvg(svgi.compare)] #[i._btnpad] #[span._btnlabel Change Theme ] #[i._btnpad]
 
     hr
 
-    p._smaller
-      | Version : v#{version} -- b#{build}
-
-    p._smaller
-      - source_url = 'https://github.com/techie-joe/ace'
-      | Live __ @ #[+a(url)(target="ace-at-github") #{url}]#[br]
-      | Source @ #[+a(source_url)(target="ace-source") #{source_url}]
-
-    p._smaller| Some images on this website are courtesy of Matt at <a href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">svgbackgrounds.com</a>. Thank you for providing them for free.
-
 block footer
   +footer#_footer
+    ._pa._nav-color._radius-x5r
+
+      p._smaller._mono._mt0
+        | Version : v#{version} -- b#{build}
+
+      p._smaller._mono
+        - local_url  = 'http://localhost/ace'
+        - source_url = 'https://github.com/techie-joe/ace'
+        | Local __ @ #[+a(local_url) #{local_url}]#[br]
+        | Live ___ @ #[+a(url)(target="ace-at-github") #{url}]#[br]
+        | Source _ @ #[+a(source_url)(target="ace-source") #{source_url}]#[br]
+
+      div._p._smaller._mb0
+        div Images on this demo site came from several eligible sources.
+        ul._no-margin._no-spad
+          li Special thanks to Matt at <a href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">svgbackgrounds.com</a>. For providing free SVG images.
+        div Some images are #[b._tc_contra NOT INCLUDED] in the distributed packages.
+
+    //- _pa
     hr
     p !{copyright}

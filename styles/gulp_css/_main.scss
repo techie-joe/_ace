@@ -55,7 +55,7 @@ pre,._pre {
   @extend ._small;
 }
 
-li,._li { margin: .3em 0; }
+li,._li { margin: 0; } // improve responsive consistency
 
 // ------------------------------------------------- headings */
 
@@ -129,14 +129,14 @@ hr,._hr {
   height: .05rem;
 }
 
-#_heading .__a { margin: 0 -.25em; line-height: 1; }
+#_heading .__a { margin: 0 -.3em; line-height: 1; }
 
 #_html ._btnlink {
   @extend ._numb;
   @extend ._radius-x25r;
   cursor: pointer;
   display: inline-block;
-  padding: .25em 1em;
+  padding: .3em 1em;
   border: 1px solid $tc_2_9;
   text-decoration: none;
   text-align: center;
@@ -147,7 +147,7 @@ hr,._hr {
 }
 
 #_html ._hover-link {
-  padding: 0 .25em;
+  padding: 0 .3em;
   border-radius: .3rem;
   color: inherit;
   text-decoration:none;
@@ -158,8 +158,8 @@ hr,._hr {
 ._nav-label {
   display: inline-block;
   line-height: 1.7;
-  padding: 0 .25em;
-  margin: 0;
+  padding: 0 .3em;
+  margin: 0.25em 0;
   border-radius: .3rem;
 }
 
@@ -237,8 +237,10 @@ hr,._hr {
 
 // =========================================================== theme */
 
-#_html       { @include color( $tc_2_9, $bg_2_9 ); }
-._dark#_html { @include color( $tc_2_1, $bg_2_1 ); }
+#_html,
+#_html       ._color_base { @include color( $tc_2_9, $bg_2_9 ); }
+#_html._dark,
+#_html._dark ._color_base { @include color( $tc_2_1, $bg_2_1 ); }
 
 h1,h2,h3,h4,h5,h6,
 ._h1,._h2,._h3,._h4,._h5,._h6,._h7 { @include color( $tc_2_6 ); }
@@ -362,7 +364,10 @@ $margins: (
   ._mb#{$x} { margin-bottom: $value; }
 }
 
+._m0,
 ._no-margin { margin:0 !important }
+._mt0 { margin-top: 0 !important }
+._mb0 { margin-bottom: 0 !important }
 
 // ._paddings
 $paddings: (
@@ -380,14 +385,19 @@ $paddings: (
   ._pb#{$x} { padding-bottom: $value; }
 }
 
+._p0,
+._no-pad { padding:0 !important }
+._pt0 { padding-top: 0 !important }
+._pb0 { padding-bottom: 0 !important }
+
+._no-spad { padding-inline-start: 1em !important }
+
 // ._rotate
 $angles : 45, 90, 135, 180, 225, 270, 315;
 @each $angle in $angles { ._rotate-#{$angle} { transform: rotate(#{$angle}deg); } }
 
 ._no-scroll,._no-scroll-x { overflow-x: hidden !important; }
 ._no-scroll,._no-scroll-y { overflow-y: hidden !important; }
-
-._no-pad { padding:0 !important }
 
 ._no-wrap { white-space: nowrap !important }
 
