@@ -20,36 +20,36 @@ block main
     section#t1._mb: ._flex: ._fill._nav-color: +nav#_nav
       |You can : &nbsp;
       +a()._btnlink._small|Combine
-      +_a()._nav-item._nav-icon: +isvg(svgi.compare)
-      +_a()._nav-item| All
-      +_a()._nav-item| Sorts of
-      +_a()._nav-item._nav-icon._b: +middots
-      +_a()._nav-item| Menu
-      +_a()._nav-item| Items
-      +_a()._nav-item._nav-icon: +isvg(svgi.ellipsis)
+      +_a()._nav_item._nav-icon: +isvg(svgi.compare)
+      +_a()._nav_item| All
+      +_a()._nav_item| Sorts of
+      +_a()._nav_item._nav-icon._b: +middots
+      +_a()._nav_item| Menu
+      +_a()._nav_item| Items
+      +_a()._nav_item._nav-icon: +isvg(svgi.ellipsis)
 
     mixin sampleMenu_1
-      +_a()._nav-item| Blog
-      +_a()._nav-item| Articles
-      +_a()._nav-item| Gallery
-      +_a()._nav-item| Contact
+      +_a()._nav_item| Blog
+      +_a()._nav_item| Articles
+      +_a()._nav_item| Gallery
+      +_a()._nav_item| Contact
 
     mixin sampleMenu_2
-      +_a()._nav-item| Product
-      +_a()._nav-item| Services
-      +_a()._nav-item| About us
-      +_a()._nav-item| Support
+      +_a()._nav_item| Product
+      +_a()._nav_item| Services
+      +_a()._nav_item| About us
+      +_a()._nav_item| Support
 
     section#t2._mv: ._flex
-      ._f_12_1._pa._nav-color._text-center(style="flex-basis:5rem"): +a()._btnlink._small|Home
+      ._f_12_1._pa._nav-color._text_center(style="flex-basis:5rem"): +a()._btnlink._small|Home
       ._fill._nav-color(style="flex-basis:20rem"): +nav#_nav: +sampleMenu_1
-      ._f_12_1._text-right._pa-x5r._nav-color: +_a()()._navChangeThemeLink._nav-item._nav-icon: +isvg(svgi.compare)
+      ._f_12_1._text_right._pa-x5r._nav-color: +_a()()._navChangeThemeLink._nav_item._nav-icon: +isvg(svgi.compare)
 
     section#t3._mv
       #_navbar._flex
-        ._f_12_1._nav-color._text-center(style="flex-basis:8rem"): include _logo
+        ._f_12_1._nav-color._text_center(style="flex-basis:8rem"): include _logo
         ._fill._nav-color(style="flex-basis:20rem"): +nav#_nav: +sampleMenu_2
-        ._f_12_1._text-right._pa-x5r._nav-color: +_a()._navChangeThemeLink._nav-item._nav-icon: +isvg(svgi.compare)
+        ._f_12_1._text_right._pa-x5r._nav-color: +_a()._navChangeThemeLink._nav_item._nav-icon: +isvg(svgi.compare)
     
     //- section#t4._mv
 

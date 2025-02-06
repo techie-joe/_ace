@@ -13,28 +13,28 @@ block append style
 block header
   +header#_header
     ._flex: include _logo
-    hr._no-margin
+    hr._no_margin
 
 block main
   +main#_main: article
 
     mixin block_1(title)
-      div&attributes(attributes)._text-justify
+      div&attributes(attributes)._text_justify
         h3._inline._h7 !{title}
         p._inline: block
 
     mixin block_2(title)
       h3._h6 !{title}
-      p._text-justify: block
+      p._text_justify: block
 
     mixin block_3(title)
       h3._h6 !{title}
-      p._text-justify: block
+      p._text_justify: block
 
     mixin block_4(title)
       ._radius._pa._bg_2_2._tc_2_2._mv
         h3._h6 !{title}
-        p._text-justify: block
+        p._text_justify: block
 
     section
 
@@ -95,10 +95,10 @@ block main
       ._f_12_11
         h3 Texts and Hyperlinks
         .links
-          p._text-justify
+          p._text_justify
             | Texts may appear in #[span._tc_blue blue], #[span._tc_purple purple], #[span._tc_orange orange] or #[span._tc_red red].
-            | Standard color were used on #[+a("#xt")#normalink._stay-fresh._no-wrap normal hyperlinks] and #[+a("")._no-wrap visited links].
-            | You can remove color from a hyperlink using the #[code._code._no-wrap _no-color] class, to make a #[+a("")._no-color._no-wrap plain hyperlinks].
+            | Standard color were used on #[+a("#xt")#normalink._stay-fresh._no_wrap normal hyperlinks] and #[+a("")._no_wrap visited links].
+            | You can remove color from a hyperlink using the #[code._code._no_wrap _no_color] class, to make a #[+a("")._no_color._no_wrap plain hyperlinks].
           //- script.
             document.getElementById('normalink').href+=(new Date().getTime());
 
@@ -110,7 +110,7 @@ block footer
     ._flex._mv
 
       ._f_12_4: ._pv
-        h6._h7._no-margin Official Address
+        h6._h7._no_margin Official Address
         //- |#[b Company Name]#[br]
         div._mb.
           Suite, Street,#[br]
@@ -120,17 +120,17 @@ block footer
         div._small official-email@your-domain.com
 
       ._f_12_3: ._pv
-        h6._h7._no-margin Primary Segment
-        ul._no-bullet._no-pad
-          +lia('#')._stay-fresh._no-u Put some links
-          +lia('#')._stay-fresh._no-u To some posts
-          +lia('#')._stay-fresh._no-u Or some pages
+        h6._h7._no_margin Primary Segment
+        ul._no_bullet._no_pad
+          +lia('#')._stay-fresh._no_u Put some links
+          +lia('#')._stay-fresh._no_u To some posts
+          +lia('#')._stay-fresh._no_u Or some pages
 
       ._f_12_3: ._pv
-        h6._h7._no-margin Secondary Segment
-        ul._no-bullet._no-pad
-          +lia('#')._stay-fresh._no-u Put some links
-          +lia('#')._stay-fresh._no-u To some posts
-          +lia('#')._stay-fresh._no-u Or some pages
+        h6._h7._no_margin Secondary Segment
+        ul._no_bullet._no_pad
+          +lia('#')._stay-fresh._no_u Put some links
+          +lia('#')._stay-fresh._no_u To some posts
+          +lia('#')._stay-fresh._no_u Or some pages
 
     ._mv !{copyright}
