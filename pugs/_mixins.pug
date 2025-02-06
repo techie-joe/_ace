@@ -15,10 +15,10 @@ mixin htmlColor
     @media (prefers-color-scheme: dark) { html { background-color: #222; color: #999; } } /* dark theme */
 
 mixin metaName(name,content)
-  meta(name=name content=content)/
+  meta(name=name content=content)&attributes(attributes)/
 
 mixin metaProperty(property,content)
-  meta(property=property content=content)/
+  meta(property=property content=content)&attributes(attributes)/
 
 mixin manifest(href)
   link(rel="manifest" href=href)&attributes(attributes)/
@@ -124,10 +124,10 @@ mixin itext
   i._itext: i.itext&attributes(attributes): block
 
 mixin backButton(href, label)
-  +a(href).nav-button._btnlink&attributes(attributes) #[+itext|←] #[span._btnlabel !{label}] #[i._btnpad]
+  +a(href).nav_button._btnlink&attributes(attributes) #[+itext|←] #[span._btnlabel !{label}] #[i._btnpad]
 
 mixin nextButton(href, label)
-  +a(href).nav-button._btnlink&attributes(attributes) #[i._btnpad] #[span._btnlabel !{label}] #[+itext|→]
+  +a(href).nav_button._btnlink&attributes(attributes) #[i._btnpad] #[span._btnlabel !{label}] #[+itext|→]
 
 mixin pageData
   aside&attributes(attributes)
@@ -139,10 +139,20 @@ mixin pageData
       +putData
     hr
 
-mixin php(uri)
+mixin include_php(uri)
   !=`<?php include "${uri}" ?>`
 
-mixin php_
+mixin php
   !=`<?php `
   block
   !=` ?>`
+
+//- try this filter
+//- see : https://pugjs.org/language/filters.html
+
+//- mixin include_php(file)
+  include:php #{file}
+
+//- mixin php(file)
+  :php
+    include #{file}
