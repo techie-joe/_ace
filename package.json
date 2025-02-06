@@ -3,18 +3,26 @@
 
   "name"        : "ace",
   "description" : "Ace Template Builder",
-  "version"     : "0.1.14",
+  "version"     : "0.1.17",
   "author"      : "Techie Joe",
   "license"     : "SEE LICENSE IN LICENSE.txt",
   "main"        : "gulpfile.js",
 
+  "keywords": [
+    "website",
+    "web",
+    "template"
+  ],
+
+  "homepage": "https://github.com/techie-joe/_ace#readme",
+
   "repository": {
     "type": "git",
-    "url": "_ace"
+    "url": "git+https://github.com/techie-joe/_ace.git"
   },
 
   "bugs": {
-    "url": "https://github.com/techie-joe/local2025/issues"
+    "url": "https://github.com/techie-joe/_ace/issues"
   },
 
   "scripts": {
