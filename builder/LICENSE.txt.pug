@@ -1,12 +1,7 @@
-extends _text
+extends ../pugs/text
+
+block append vars
+  include ../_BUILDER_vars
 
 block main
-  .
-    Copyright (c) #{thisYear} -- !{publisher}
-    #{''}
-    SOFTWARE : !{title} - v!{version}
-    AUTHOR   : Developed and owned by !{author}
-    #{''}
-    LICENSE AGREEMENT for !{title}
-    #{''}
-  include ../pugs/_LICENSE.txt
+  include ../_LICENSE
