@@ -1,10 +1,10 @@
 // TLDR: this manifest.js will be gulped into manifest.json
 
 const manifest = {
-  __TLDR            : "This is the PWA metadata for this project.",
+  __TLDR            : "This PWA metadata are used when user install your web application on their devices.",
   short_name        : "Ace",
-  name              : "Ace Template",
-  description       : "Ace Web Application Template",
+  name              : "Ace",
+  description       : "Ace Web Application",
   background_color  : "#222222",
   theme_color       : "#222222",
   display           : "standalone",
