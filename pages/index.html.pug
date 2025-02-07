@@ -2,11 +2,11 @@ extends _html
 
 block append vars
   - heading = `Ace Template`
-  - about   = `A solid foundation to build your website and application. Our simple approach lets you build with confidence.`
+  - about   = `A solid foundation to build upon your website and application. Our simple approach lets you build with confidence.`
   - updateTitle( heading )
 
 block append style
-  +cssv(assetsUrl+'css/demo.css')
+  +cssv(assetsUrl+'css/style.css')
   style.
     #_header ._header_layout { padding: 2rem 3rem; }
     @media (max-width: 530px) {
@@ -54,7 +54,7 @@ block header
   +header#_header
     #intro
       h1._hero_1 #[span.t1 Ace] #[span.t2._tc_primary Template]
-      p._smaller by #[+a(authorUrl)._stay_fresh !{author}]
+      p._smaller by #[+a(authorUrl)(target="ace_author")._stay_fresh !{author}]
       p._text_justify !{about}
     #topi
       +changeThemeLink._nav_item._nav_icon._hover_scale: +isvg(svgi.compare)
