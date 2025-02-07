@@ -2,8 +2,10 @@
 
 ### Install software
 - Visual Studio Code (VsCode) or any suitable code editor.
-- Node.js JavaScript runtime and NPM package manager. Visit `https://nodejs.org/`.
-- GitHub or any suitable git for version control. Visit `https://desktop.github.com/download/`.
+- Node.js JavaScript runtime and NPM package manager.  
+  Visit `https://nodejs.org/`.
+- GitHub or any suitable git for version control.  
+  Visit `https://desktop.github.com/download/`.
 - VsCode Extension : HTML CSS Support.
 - VsCode Extension : pug (jade) formatter.
 - VsCode Extension : Pug beautify.
