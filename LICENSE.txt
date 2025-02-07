@@ -1,9 +1,9 @@
 Copyright (c) 2025 -- Tidloo
 
-SOFTWARE : Ace Template Builder - v0.1.18
+SOFTWARE : Ace Web Builder - v0.1.20
 AUTHOR   : Developed and owned by Techie Joe
 
-LICENSE AGREEMENT for Ace Template Builder
+LICENSE AGREEMENT for Ace Web Builder
 ----------------------------------------------------------------------------
 
 This software and its contents are exclusively owned by the author. By using
@@ -41,6 +41,7 @@ USERS ARE NOT ALLOWED
   
   2. To remove or change attribution links, backlinks, copyright notices and
   attributions of third-party contents present within the software.
+
 
 ----------------------------------------------------------------------------
 
