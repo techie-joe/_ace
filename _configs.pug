@@ -1,35 +1,37 @@
 -
   //- project data
-  let version        = "0.1.23" // please update package.json too
-  let build          = "217.188.2" // check README to verify changes
+  let version        = '0.1.24' // please update package.json too
+  let build          = '218.189.3' // check README to verify changes
 
-  let title          = "(untitled)"
-  let description    = "(undescribed)"
+  let title          = '(untitled)'
+  let description    = '(undescribed)'
 
-  let heading        = "(untitled)"
-  let about          = "(undescribed)"
+  let heading        = '(untitled)'
+  let about          = '(undescribed)'
 
-  let brandName      = "(unknown)"
-  let codeName       = "(unknown)"
-  let author         = "(unknown)"
-  let publisher      = "Tidloo"
+  let brandName      = '(unknown)'
+  let codeName       = '(unknown)'
+  let author         = '(unknown)'
+  let publisher      = 'Tidloo'
 
-  let homeUrl        = "/ace/"
-  let assetsUrl      = "/ace/assets/"
+  let homeUrl        = '/ace/'
+  let assetsUrl      = '/ace/assets/'
 
-  let demoUrl        = "/ace/demo/";
-  let templateUrl    = "/ace/templates/";
+  let demoUrl        = '/ace/demo/';
+  let templateUrl    = '/ace/templates/';
 
-  let url            = "https://techie-joe.github.io/ace/"
-  let authorUrl      = "https://techie-joe.github.io/"
+  let url            = 'https://techie-joe.github.io/ace/'
+  let authorUrl      = 'https://techie-joe.github.io/'
+  let sourceUrl      = 'https://github.com/techie-joe/ace'
+  let localUrl       = 'http://localhost/ace'
 
   // en or en-US following the BCP 47 language tag standard
-  let lang           = "en"
-  let charset        = "utf-8"
+  let lang           = 'en'
+  let charset        = 'utf-8'
 
   //- styling
-  let colorScheme    = "light dark"
-  let themeColor     = "#222222"
+  let colorScheme    = 'light dark'
+  let themeColor     = '#222222'
   let htmlClass      = ''
   let bodyClass      = ''
   let contentsClass  = ''
@@ -46,10 +48,10 @@
 
   let og_title       = title
   let og_description = description
-  let og_url         = url+"?utm_source=homescreen"
-  let og_type        = "website"
-  let og_image       = ""
-  let og_imageAlt    = ""
+  let og_url         = url+'?utm_source=homescreen'
+  let og_type        = 'website'
+  let og_image       = ''
+  let og_imageAlt    = ''
 
 -
   //- data update functions
@@ -66,7 +68,7 @@
 
   function updateUrl( _value, _type='website' ){
        url  = _value
-    og_url  = _value+"?utm_source=homescreen"
+    og_url  = _value+'?utm_source=homescreen'
     og_type = _type
   }
 
