@@ -137,7 +137,7 @@ li,._li { margin: 0; } // improve responsive consistency
 ._page_layout { margin: -1px auto; padding: 1px 1rem; }
 ._nav_layout  { margin: 0 auto; padding: 0 1rem; }
 
-td { @extend ._lh_0; }
+td { @extend ._lh_1; }
 
 // ------------------------------------------------- components */
 
@@ -325,13 +325,10 @@ a._btnlink {
 
 /* ======================================================== helper */
 
-._sans    { font-family: "Arial", sans-serif; }
-._serif   { font-family: "Georgia", serif; }
-._mono    { font-family: "Consolas", monospace; }
-
-._font_1 { @extend ._sans;  }
-._font_2 { @extend ._serif; }
-._font_3 { @extend ._mono;  }
+._font_0,._system  { font-family: system-ui, sans-serif; }
+._font_1,._sans    { font-family: "Arial", sans-serif; }
+._font_2,._serif   { font-family: "Georgia", serif; }
+._font_3,._mono    { font-family: "Consolas", monospace; }
 
 ._b   { font-weight: bold }
 @for $i from 1 through 9 { ._b-#{$i} { font-weight: $i * 100; } }
