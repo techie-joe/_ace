@@ -2,7 +2,11 @@
 
 ._errorpage {
 
-  font-family: sans-serif;
+  & { font-family: sans-serif; }
+
+  ._view {
+    overflow: auto;
+  }
 
   ._view_layout {
     position: absolute;

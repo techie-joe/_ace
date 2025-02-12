@@ -120,10 +120,13 @@ pre,._pre {
   scroll-behavior: smooth;
 }
 
-._view,
-._scrollable {
+._view {
   overflow-x: auto;
   overflow-y: scroll;
+}
+
+._scrollable {
+  overflow: auto;
 }
 
 @media print {
