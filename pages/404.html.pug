@@ -3,7 +3,10 @@ extends _error
 block append vars
   - heading = `Not found`
   - updateTitle( `${heading}` )
-  - updateDescription( `Sorry, the item you are trying to view does not exist.` )
+  - updateDescription( `Sorry, you are looking for something that does not exist.` )
+  //- - updateDescription( `Sorry, the thing you are trying to view does not exist.` )
+  //- - updateDescription( `Sorry, are you looking for something that does not exist?` )
+  //- - updateDescription( `We can't find what you're looking for.` )
 
 block main
   +main#_main

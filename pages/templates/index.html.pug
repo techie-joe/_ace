@@ -1,0 +1,64 @@
+extends _html
+
+block append vars
+  - heading = `Home Page`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `This template stretches across the entire screen, for an exceptional first impression.` )
+  - updateUrl( url+"full_screen.html" )
+
+block append style
+  style.
+
+    ._fullscreen { margin-top:-10rem } #_navbar { height:10rem }
+    ._fullscreen, ._view_layout { height:100% }
+    ._fullscreen {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      background-color: rgba(0,0,0,0.2);
+    }
+
+    ._fullscreen .hero { font-size:1.6em; margin:31vh auto; width:10em; padding-top:10vh; }
+    ._fullscreen .hero2 { margin:2em 1em; max-width:640px; }
+
+    @media only screen and (min-width: 540px) {
+      ._fullscreen .hero { font-size:3em; }
+      ._fullscreen .hero2 { margin:2em auto; }
+    }
+
+  //- style.
+
+  - let _nav_layout = 'clipped';
+  if _nav_layout == 'autoscroll'
+    style.
+      #_navbar { height:10rem } #_nav { max-height: 100%; overflow-y: auto; overflow-x:hidden; }
+  else if _nav_layout == 'clipped'
+    style.
+      ._nav_layout { height:1.8em; overflow:hidden }
+  
+  //- style.
+
+block header
+  +header#_header._fullscreen
+    h1._h1.hero Full Screen Display of Awesomeness
+    p #{description}
+
+block main
+  +main#_main: article._mv
+    ._flex
+      +repeat(3): ._fill: .gu: .o.o2-4
+
+    .hero2._text_center 
+      h2._h2 Featured Contents and Success Stories
+      p Show the incredible accomplishments that are shaping your world today.
+
+    ._flex
+
+      ._fill
+        .gu: .o.o2-3
+        
+      ._fill(style="max-width:20em")
+        .gu: .o.o1-3
+        .gu: .o.o1-3
+    
+    //- flex

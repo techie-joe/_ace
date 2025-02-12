@@ -4,6 +4,7 @@ mixin demo_link(ref='')
   +_a(demoUrl+ref)._link._nav_item: block
 
 mixin menu
+  +demo_link("starter.html")| Starter
   +demo_link("view.html")| View
   //- +demo_link("layout.html")| Layout
   +demo_link("texts.html")| Texts
@@ -12,7 +13,7 @@ mixin menu
   //- +demo_link("background.html")| Background
   //- +demo_link("video.html")| Video
   +demo_link("flex.html")| Flex
-  +demo_link("containers.html")| Containers
+  //- +demo_link("containers.html")| Containers
   +demo_link("colors.html")| Colors
   //- +demo_link("buttons.html")| Buttons
   //- +demo_link("form.html")| Form
@@ -23,7 +24,6 @@ mixin menu
   //- +demo_link("dialogs.html")| Dialogs
   //- +demo_link("helpers.html")| Helpers
   +demo_link("theme.html")| Theme
-  +demo_link("blank.html")| Blank
 
 mixin navbar
   #_navbar._flex

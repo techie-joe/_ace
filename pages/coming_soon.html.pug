@@ -1,0 +1,13 @@
+extends _error
+
+block append vars
+  - heading = `Coming soon`
+  - updateTitle( `${heading}` )
+  - updateDescription( `We are opening our website soon. Please check again later.` )
+  //- - updateDescription( `We are putting the final touches. Please check again later.` )
+
+block main
+  +main#_main
+    h1#_h1 !{heading}
+    p#_p !{description}
+    nav#_nav: +backlink._btnlink Back

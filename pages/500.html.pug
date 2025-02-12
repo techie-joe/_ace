@@ -3,7 +3,8 @@ extends _error
 block append vars
   - heading = `Oops!`
   - updateTitle( `${heading}` )
-  - updateDescription( `Sorry, an error occured while processing your request.` )
+  - updateDescription( `Sorry, we have encountered an error while processing your request.` )
+  //- - updateDescription( `Sorry, an error occured while processing your request.` )
 
 block main
   +main#_main

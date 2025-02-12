@@ -75,50 +75,58 @@ block main
       hr
 
     section._mv_2
-      h2 Examples
+      h2 Samples
 
-      mixin lia_example_1(ref='')
-        +lia("/ace/example_1/"+ref)._link: block
+      mixin lia_sample_1(ref='')
+        +lia("/ace/sample_1/"+ref)._link: block
 
       nav.pages: ._flex
         ._f_12_2
           ul._no_margin
-            +lia_example_1()| Example #1 - Simple Home
+            +lia_sample_1()| Sample #1 - Simple Home
+
+    mixin lia_template(ref='')
+      +lia(templateUrl+ref)._link: block
 
     section._mv_2
-      h2 Basic Templates
-
-      mixin lia_template(ref='')
-        +lia(templateUrl+ref)._link: block
-
+      h2 Starter Templates
       nav.pages
         ._flex
           ._f_12_4
             ul._no_margin
+              +lia_template("starter.html")| Home Page
+              +lia_template("starter.html")| Starter Page
               +lia_template('full_screen.html')| Full Screen
               +lia_template('split_screen.html')| Split Screen
-              +lia_template('flex_gallery.html')| Flex Gallery
           ._f_12_4
             ul._no_margin
+              +lia_template('flex_gallery.html')| Flex Gallery
               +lia_template('classic_page.html')| Classic Page
               +lia_template('classic_list.html')| Classic List
-              +lia_template("blank.html")| Blank Page
+
+    section._mv_2
+      h2 Basic Templates
+      nav.pages
+        ._flex
+          ._f_12_4
+            ul._no_margin
+              +lia("coming_soon.html","Quickly setup a page to go live real soon.")._link| Coming soon
+              +lia("closed.html","When you decide to temporarily close your website.")._link| Temporary closed
           ._f_12_4
             ul._no_margin
               li
-                +a("404.html","When browser lands on a missing page.")._link| 404 -- Not found
+                +a("404.html","When a browser lands on a missing page.")._link| 404 -- Not found
                 +_a("---","Simulate Real 404")._link._nav_icon: +middots
-              +lia("500.html","When server encounters an error.")._link| 500 -- Oops!
-              +lia("closed.html","When you decide to temporarily disable your website.")._link| Temporary closed
-        //- ._flex
+              +lia("500.html","When your server encounters an error.")._link| 500 -- Oops!
           ._f_12_4
             ul._no_margin
-              +lia('blank.html')._link| Bare Blank Page
+              +lia("blank.html","Just a blank page to start building.")._link| Blank Page
+
 
     section._mv_2
       h2 Available in light and dark
 
-      p._text_justify Our template is readily available in both light and dark preference. You can easily switch between the two by using the keyboard shortcut #[code._code._no_wrap='Ctrl + Alt + T'] or programatically execute #[code._code._no_wrap='base.theme.change()'] with a button.
+      p._text_justify Our template is readily available in both light and dark color preference. You can easily switch between the two by using the keyboard shortcut #[code._code._no_wrap='Ctrl + Alt + T'] or use a button or script to programatically execute #[code._code._no_wrap='base.theme.change()'].
 
       p: +changeThemeLink._btnlink._small #[+isvg(svgi.compare)] #[i._btnpad] #[span._btnlabel Change Theme ] #[i._btnpad]
 

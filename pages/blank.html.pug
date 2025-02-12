@@ -1,6 +1,8 @@
-extends _html
+extends ../pugs/html
 
 block append vars
+  include _vars
+
   - heading = `Blank Page`
   - updateTitle( `${heading} | ${title}` )
   - updateDescription( `Just a blank page to start building.` )

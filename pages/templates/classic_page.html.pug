@@ -3,7 +3,7 @@ extends _html
 block append vars
   - heading = `Classic Page`
   - updateTitle( `${heading} | ${title}` )
-  - updateDescription( `This template is designed to display a full page article.` )
+  - updateDescription( `A good template for a full page article.` )
   - updateUrl( url+"classic_page_2.html" )
 
 block append style
@@ -22,7 +22,7 @@ block append style
 
 block header
   +header#_header
-    +heading#_heading !{heading} &mdash; An article about yourself
+    +heading#_heading !{heading}
     p !{description}
     hr._no_margin
 
