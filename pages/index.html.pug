@@ -8,7 +8,7 @@ block append vars
 block append style
   +cssv(assetsUrl+'css/style.css')
   style.
-    #_header ._header_layout { padding: 2rem 3rem; }
+    #_header ._header_layout { padding: 2rem 3rem; margin-top:0; }
     @media (max-width: 530px) {
     #_header ._header_layout { padding: 3rem 1rem 2rem; }
     }
@@ -22,7 +22,7 @@ block append style
       display: block;
       line-height: 0.7;
       position: absolute;
-      top: -55%;
+      top: -50%;
       right: 4%;
       opacity: 0.1;
       user-select: none;
@@ -40,7 +40,7 @@ block append style
     #topi { top: 1rem; right: 1rem; }
     #topi ._isvg { height: 1.5em; min-width: 1.5em; }
     }
-    #topi ._nav_item { padding:.5em }
+    #topi ._link { padding:.5em }
 
     html   #_header { background: #ccc; }
     ._dark #_header { background: #111; }
@@ -53,11 +53,11 @@ block append style
 block header
   +header#_header
     #intro
-      h1._hero_1 #[span.t1 Ace] #[span.t2._tc_primary Template]
-      p._smaller by #[+a(authorUrl)(target="page_author")._stay_fresh !{author}]
+      h1._hero_2 #[span.t1 Ace] #[span.t2._tc_primary Template]
+      p._smaller._system by #[+a(authorUrl)(target="page_author")._stay_fresh !{author}]
       p._text_justify !{about}
     #topi
-      +changeThemeLink._nav_item._nav_icon._hover_scale: +isvg(svgi.compare)
+      +changeThemeLink._link._nav_icon._hover_scale: +isvg(svgi.compare)
 
 block main
   +main#_main: article
@@ -69,7 +69,7 @@ block main
       p._text_justify This template is equipped with #[b._h7 pre-made building components] and #[b._h7 helper classes] to give you an easy building experience. We have simplified web creation to make it accessible to everyone, even for those who may not have technical expertise. Dive in and start building your website straight away.
 
       ._mv._nav_color._radius_x5r: +nav#_nav
-        b._nav_label| Template Components : &nbsp;
+        b._nav_label._system| Template Components : &nbsp;
         +menu
 
       hr
@@ -78,7 +78,7 @@ block main
       h2 Examples
 
       mixin lia_example_1(ref='')
-        +lia("/ace/example_1/"+ref)._nav_item: block
+        +lia("/ace/example_1/"+ref)._link: block
 
       nav.pages: ._flex
         ._f_12_2
@@ -89,7 +89,7 @@ block main
       h2 Basic Templates
 
       mixin lia_template(ref='')
-        +lia(templateUrl+ref)._nav_item: block
+        +lia(templateUrl+ref)._link: block
 
       nav.pages
         ._flex
@@ -106,14 +106,14 @@ block main
           ._f_12_4
             ul._no_margin
               li
-                +a("404.html","When browser lands on a missing page.")._nav_item| 404 -- Not found
-                +_a("---","Simulate Real 404")._nav_item._nav_icon: +middots
-              +lia("500.html","When server encounters an error.")._nav_item| 500 -- Oops!
-              +lia("closed.html","When you decide to temporarily disable your website.")._nav_item| Temporary closed
+                +a("404.html","When browser lands on a missing page.")._link| 404 -- Not found
+                +_a("---","Simulate Real 404")._link._nav_icon: +middots
+              +lia("500.html","When server encounters an error.")._link| 500 -- Oops!
+              +lia("closed.html","When you decide to temporarily disable your website.")._link| Temporary closed
         //- ._flex
           ._f_12_4
             ul._no_margin
-              +lia('blank.html')._nav_item| Bare Blank Page
+              +lia('blank.html')._link| Bare Blank Page
 
     section._mv_2
       h2 Available in light and dark
@@ -124,26 +124,30 @@ block main
 
     hr
 
+    section._mv_2
+      h2 Good design, even in print
+      p._text_justify Ever experience a template that looks bad when printed? Our templates shine on paper. Enjoy good design and functionality, whether viewed digitally or in print. Elevate your professionalism with templates that excel in every medium.
+
+
 block footer
   +footer#_footer
     ._pa._nav_color._radius_x5r
 
       p._small._mono._m0
-        +a(url)._nav_item._b|LIVE
+        +a(url)._link._b|LIVE
         ||
-        +a(localUrl)._nav_item._b|LOCAL
+        +a(localUrl)._link._b|LOCAL
         ||
-        +a(sourceUrl)(target="page_source")._nav_item._b|SOURCE
+        +a(sourceUrl)(target="page_source")._link._b|SOURCE
 
       p._smaller._mono| Version: #{version} - #[span._no_wrap b#{build}]
 
       div._p._smaller._mb0
         div
-          | Images on this demo site came from several eligible sources.
-          | Some images are #[b._tc_contra NOT INCLUDED] in the distributed packages.
-        ul._no_margin._no_spad
-          li Special thanks to Matt at <a href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/">svgbackgrounds.com</a>. For providing free SVG images.
+          | Some images and resources you find here may originate from eligible outside sources.
+          | • Few #[b._tc_contra may not be included] in the distributed packages due to the terms of the original author. You'll be provided with references to get them directly from the author.
+          | • Our special thanks goes to Matt at #[a._no_color(href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/") svgbackgrounds.com] for providing us with free SVG images.
 
     //- _pa
     hr
-    p !{copyright}
+    p._small._system !{copyright}

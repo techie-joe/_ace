@@ -1,7 +1,7 @@
 //- +nav#_nav: ul: +lia
 
 mixin demo_link(ref='')
-  +_a(demoUrl+ref)._nav_item: block
+  +_a(demoUrl+ref)._link._nav_item: block
 
 mixin menu
   +demo_link("view.html")| View
@@ -28,5 +28,5 @@ mixin menu
 mixin navbar
   #_navbar._flex
     ._f_12_1._pa._nav_color._text_center: +a(homeUrl)._btnlink._smaller|Home
-    ._fill._nav_color(style="flex-basis:20rem"): +nav#_nav: +menu
-    ._f_12_1._text_right._pa_x5r._nav_color: +changeThemeLink._navChangeThemeLink._nav_item._nav_icon: +isvg(svgi.compare)
+    ._fill._nav_color(style="flex-basis:20rem"): +nav#_nav._no_print_href: +menu
+    ._f_12_1._text_right._pa_x5r._nav_color._no_print: +changeThemeLink._navChangeThemeLink._link._nav_icon: +isvg(svgi.compare)
