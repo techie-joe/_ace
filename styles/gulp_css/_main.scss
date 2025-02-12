@@ -1,23 +1,24 @@
 @use "mixins" as *;
-@use "colors-values" as *;
-@use "colors" as *;
+@use "color-values" as *;
 
-// ======================================================== base */
-
-$outline_color: #f80;
-._outline   { box-shadow: 0 0 0 1px $outline_color; }
-._outline_1 { box-shadow: 0 0 0 2px $outline_color; }
-._outline_2 { box-shadow: 0 0 0 4px $outline_color; }
+// ======================================================= base */
 
 /* mark red if you include ace.css but don't use #_html */
 html   { box-shadow: 0 0 0 5px #f00 inset; }
 #_html { box-shadow: none } /* remove mark when #_html is in use */
 
-// ::selection - for text selection
+// ----------------------------------------------------- outline */
+$outline_color: #f80;
+._outline   { box-shadow: 0 0 0 1px $outline_color; }
+._outline_1 { box-shadow: 0 0 0 2px $outline_color; }
+._outline_2 { box-shadow: 0 0 0 4px $outline_color; }
+
+// ------------------------------------------------- ::selection */
 // - must follow this format. - will not work otherwise.
 // - each vendor specific must be seperately declared. - cant combine.
 // - use background-color not background.
 // - dont append or include other class.
+
 $select_color : #FFFF00;
 $select_bg    : #FFFF00CC;
 $select_tc    : #000;
@@ -32,32 +33,38 @@ $select_tc    : #000;
   text-shadow: none;
 }
 
-* { margin: 0; line-height: 1.5 }
+// ------------------------------------------------ line-height */
+
+* { line-height: 1.5 }
 ._lh_0    { line-height: 0 }
 ._lh_1    { line-height: 1 }
 ._lh_2    { line-height: 2 }
 ._lh_1x5  { line-height: 1.5 }
 pre,._pre { line-height: 1.3 }
 
+td { @extend ._lh_1; }
+
 // ------------------------------------------------- paragraphs */
 
-p,._p { margin-top: 1rem; margin-bottom: 1rem; }
+*       { margin: 0; }
+p,._p   { margin: 1rem 0; }
+hr,._hr { margin: .5rem 0; }
+li,._li { margin: 0; } // improve responsive consistency
 
-hr,._hr,
-._h1,._h2,._h3,._h4,._h5,._h6,._h7,
 h1,h2,h3,h4,h5,h6,
+._h1,._h2,._h3,._h4,._h5,._h6,._h7,
 ul,ol,
 li,._li,
 pre,._pre { @extend ._p; }
+
+// ------------------------------------------------------ fonts */
 
 pre,._pre {
   @extend ._mono;
   @extend ._small;
 }
 
-li,._li { margin: 0; } // improve responsive consistency
-
-// ------------------------------------------------- headings */
+// --------------------------------------------------- headings */
 
 ._h7,._text_1 { font-size: 1.000rem; line-height: 1.5 }
 ._h6,._text_2 { font-size: 1.083rem; line-height: 1.5 }
@@ -71,6 +78,13 @@ li,._li { margin: 0; } // improve responsive consistency
 ._hero_1      { font-size: 2.250rem }
 ._hero_2      { font-size: 2.572rem }
 
+._small       { font-size: .9em }
+._smaller     { font-size: .8em }
+._smallest    { font-size: .7em }
+
+._sup,
+._sub { font-size: 0.53em; line-height: 0.6em }
+
 ._hero_2,
 ._hero_1,
 ._hero,
@@ -80,49 +94,62 @@ li,._li { margin: 0; } // improve responsive consistency
 ._hero_1,
 ._hero { @extend ._lh_1; }
 
-._small       { font-size: .9em }
-._smaller     { font-size: .8em }
-._smallest    { font-size: .7em }
-
-._sub,
-._sup { font-size: 0.53em; line-height: 0.6em }
-
 // ------------------------------------------------- containers */
 
-._full_view {
+#_html,
+#_body,
+#_contents,
+._view,
+._full_view {  // all parents of full view must also be full.
   display: block;
   width  : 100%;
   height : 100%;
   margin : 0;
 }
 
-#_html,
-#_body,
 #_contents {
-  @extend ._full_view;
+  @include position-absolute(0);
   overflow: auto;
-  scroll-behavior: smooth;
-  @include position-absolute(0,0,0,0);
 }
 
-._view {
-  @extend ._full_view;
+#_html,
+#_body,
+#_contents,
+._view,
+._scrollable {
+  scroll-behavior: smooth;
+}
+
+._view,
+._scrollable {
   overflow-x: auto;
   overflow-y: scroll;
-  scroll-behavior: smooth;
 }
 
 @media print {
+  ._no_print { display: none !important; }
+  ._btnlink,
+  ._no_print_href a,
+  ._no_print_href {
+    &[href]::after { content: none !important; }
+  }
+  #_contents,
   ._view {
     position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
   }
+  #_contents,
   ._view,
-  #_body,
-  #_contents { overflow: visible !important; }
-  ._no_print { display: none !important; }
+  ._scrollable {
+    overflow: visible !important;
+  }
+  pre {
+    padding: 1em !important;
+    overflow: visible !important;
+  }
 }
 
 #_html {
@@ -131,13 +158,13 @@ li,._li { margin: 0; } // improve responsive consistency
   font-size: 1em;
 }
 
+._main_layout,
 ._header_layout,
 ._footer_layout,
-._main_layout,
 ._page_layout { margin: -1px auto; padding: 1px 1rem; }
 ._nav_layout  { margin: 0 auto; padding: 0 1rem; }
 
-td { @extend ._lh_1; }
+._footer_layout { margin-bottom: 1rem } /* make way for browser status bar */
 
 // ------------------------------------------------- components */
 
@@ -182,7 +209,7 @@ hr,._hr {
   border-radius: .3rem;
 }
 
-#_html ._nav_item {
+#_html ._link {
   @extend ._hover_link;
   @extend ._nav_label;
 }
@@ -233,7 +260,7 @@ hr,._hr {
 
 ._isvg { @extend ._icon; svg { vertical-align:top; } } /* fix spinning axis */
 
-// ======================================================= animation */
+// ================================================== animation */
 
 @keyframes __spin {
   0%   { transform: rotate(0deg) }
@@ -241,7 +268,7 @@ hr,._hr {
 }
 .__spin { animation: 2s linear infinite __spin }
 
-// ======================================================= transition */
+// ================================================= transition */
 
 ._a a {
   &       { transition: color 0.5s, background-color 0.5s; }
@@ -254,7 +281,7 @@ hr,._hr {
   &:hover { transition: scale 0.3s; scale:1.1; }
 }
 
-// =========================================================== theme */
+// ====================================================== theme */
 
 #_html,
 #_html       ._color_base { @include color( $tc_2_9, $bg_2_9 ); }
@@ -323,7 +350,78 @@ a._btnlink {
 #_html       ._hover_link:hover { @include color( $light_contra, $light_button_bg ); }
 #_html._dark ._hover_link:hover { @include color( $dark_contra, $dark_button_bg); }
 
-/* ======================================================== helper */
+/* ============================================== color helpers */
+
+._bg_1_1 { background-color: $bg_1_1 }
+._bg_1_2 { background-color: $bg_1_2 }
+._bg_1_3 { background-color: $bg_1_3 }
+._bg_1_4 { background-color: $bg_1_4 }
+._bg_1_5 { background-color: $bg_1_5 }
+._bg_1_6 { background-color: $bg_1_6 }
+
+._tc_1_1 { color: $tc_1_1 }
+._tc_1_2 { color: $tc_1_2 }
+._tc_1_3 { color: $tc_1_3 }
+._tc_1_4 { color: $tc_1_4 }
+._tc_1_5 { color: $tc_1_5 }
+._tc_1_6 { color: $tc_1_6 }
+
+._bc_1_1 { border-color: $bg_1_1 }
+._bc_1_2 { border-color: $bg_1_2 }
+._bc_1_3 { border-color: $bg_1_3 }
+._bc_1_4 { border-color: $bg_1_4 }
+._bc_1_5 { border-color: $bg_1_5 }
+._bc_1_6 { border-color: $bg_1_6 }
+
+._bg_2_1 { background-color: $bg_2_1 }
+._bg_2_2 { background-color: $bg_2_2 }
+._bg_2_3 { background-color: $bg_2_3 }
+._bg_2_4 { background-color: $bg_2_4 }
+._bg_2_5 { background-color: $bg_2_5 }
+._bg_2_6 { background-color: $bg_2_6 }
+._bg_2_7 { background-color: $bg_2_7 }
+._bg_2_8 { background-color: $bg_2_8 }
+._bg_2_9 { background-color: $bg_2_9 }
+
+._tc_2_1 { color: $tc_2_1 }
+._tc_2_2 { color: $tc_2_2 }
+._tc_2_3 { color: $tc_2_3 }
+._tc_2_4 { color: $tc_2_4 }
+._tc_2_5 { color: $tc_2_5 }
+._tc_2_6 { color: $tc_2_6 }
+._tc_2_7 { color: $tc_2_7 }
+._tc_2_8 { color: $tc_2_8 }
+._tc_2_9 { color: $tc_2_9 }
+
+._bc_2_1 { border-color: $bg_2_1 }
+._bc_2_2 { border-color: $bg_2_2 }
+._bc_2_3 { border-color: $bg_2_3 }
+._bc_2_4 { border-color: $bg_2_4 }
+._bc_2_5 { border-color: $bg_2_5 }
+._bc_2_6 { border-color: $bg_2_6 }
+._bc_2_7 { border-color: $bg_2_7 }
+._bc_2_8 { border-color: $bg_2_8 }
+._bc_2_9 { border-color: $bg_2_9 }
+
+._tc_blue   { color: $light_blue   }
+._tc_purple { color: $light_purple }
+._tc_orange { color: $light_orange }
+._tc_red    { color: $light_red    }
+._tc_green  { color: $light_green  }
+._tc_contra { color: $light_contra }
+
+._dark {
+
+  ._tc_blue   { color: $dark_blue   }
+  ._tc_purple { color: $dark_purple }
+  ._tc_orange { color: $dark_orange }
+  ._tc_red    { color: $dark_red    }
+  ._tc_green  { color: $dark_green  }
+  ._tc_contra { color: $dark_contra }
+
+}
+
+/* ==================================================== helpers */
 
 ._font_0,._system  { font-family: system-ui, sans-serif; }
 ._font_1,._sans    { font-family: "Arial", sans-serif; }
