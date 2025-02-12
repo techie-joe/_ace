@@ -12,8 +12,9 @@ mixin menu
   +template_link('classic_page.html')| Page
   +template_link('classic_list.html')| List
 
+include _logo
 mixin navbar
   #_navbar._flex
-    ._f_12_1._nav_color._text_center: include _logo
+    ._f_12_1._nav_color._text_center: +logo
     ._fill._nav_color(style="flex-basis:20rem"): +nav#_nav: +menu
     ._f_12_1._text_right._pa_x5r._nav_color: +changeThemeLink._navChangeThemeLink._link._nav_icon: +isvg(svgi.compare)

@@ -1,4 +1,4 @@
-// TLDR: this manifest.js will be gulped into manifest.json
+// __TLDR: this manifest.js will be gulped into manifest.json
 // manifest.json file are PWA metadata used to install your web application on users devices.
 
 const manifest = {

@@ -18,7 +18,7 @@ block append style
       content: 'A';
       font-family: serif;
       font-weight: bold;
-      font-size: 40rem;
+      font-size: 45rem;
       display: block;
       line-height: 0.7;
       position: absolute;
@@ -56,7 +56,7 @@ block header
       h1._hero_2 #[span.t1 Ace] #[span.t2._tc_primary Template]
       p._smaller._system by #[+a(authorUrl)(target="page_author")._stay_fresh !{author}]
       p._text_justify !{about}
-    #topi
+    #topi._no_print
       +changeThemeLink._link._nav_icon._hover_scale: +isvg(svgi.compare)
 
 block main
@@ -66,13 +66,13 @@ block main
 
     section._mv_2
 
-      p._text_justify This template is equipped with #[b._h7 pre-made building components] and #[b._h7 helper classes] to give you an easy building experience. We have simplified web creation to make it accessible to everyone, even for those who may not have technical expertise. Dive in and start building your website straight away.
+      p._text_justify This template is equipped with #[b._h7 pre-made components] and #[b._h7 helper classes] to give you an easy building experience. We have simplified web creation to make it accessible to everyone, even for those who may not have technical expertise. Dive in and start building your website straight away.
 
       ._mv._nav_color._radius_x5r: +nav#_nav
         b._nav_label._system| Template Components : &nbsp;
         +menu
 
-      hr
+    hr
 
     section._mv_2
       h2 Samples
@@ -94,7 +94,7 @@ block main
         ._flex
           ._f_12_4
             ul._no_margin
-              +lia_template("starter.html")| Home Page
+              +lia_template("index.html")| Home Page
               +lia_template("starter.html")| Starter Page
               +lia_template('full_screen.html')| Full Screen
               +lia_template('split_screen.html')| Split Screen
@@ -116,19 +116,20 @@ block main
             ul._no_margin
               li
                 +a("404.html","When a browser lands on a missing page.")._link| 404 -- Not found
-                +_a("---","Simulate Real 404")._link._nav_icon: +middots
+                +_a("---","Simulate Real 404")._link._nav_icon._no_print: +middots
               +lia("500.html","When your server encounters an error.")._link| 500 -- Oops!
           ._f_12_4
             ul._no_margin
               +lia("blank.html","Just a blank page to start building.")._link| Blank Page
 
+    hr
 
     section._mv_2
       h2 Available in light and dark
 
       p._text_justify Our template is readily available in both light and dark color preference. You can easily switch between the two by using the keyboard shortcut #[code._code._no_wrap='Ctrl + Alt + T'] or use a button or script to programatically execute #[code._code._no_wrap='base.theme.change()'].
 
-      p: +changeThemeLink._btnlink._small #[+isvg(svgi.compare)] #[i._btnpad] #[span._btnlabel Change Theme ] #[i._btnpad]
+      p._no_print: +changeThemeLink._btnlink._small #[+isvg(svgi.compare)] #[i._btnpad] #[span._btnlabel Change Theme ] #[i._btnpad]
 
     hr
 
@@ -136,6 +137,7 @@ block main
       h2 Good design, even in print
       p._text_justify Ever experience a template that looks bad when printed? Our templates shine on paper. Enjoy good design and functionality, whether viewed digitally or in print. Elevate your professionalism with templates that excel in every medium.
 
+    hr
 
 block footer
   +footer#_footer
@@ -156,6 +158,5 @@ block footer
           | • Few #[b._tc_contra may not be included] in the distributed packages due to the terms of the original author. You'll be provided with references to get them directly from the author.
           | • Our special thanks goes to Matt at #[a._no_color(href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/") svgbackgrounds.com] for providing us with free SVG images.
 
-    //- _pa
     hr
     p._small._system !{copyright}

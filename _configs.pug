@@ -1,3 +1,6 @@
+//- __TLDR: Site configuration defaults.
+//- Defaults will be overriden by pages as necessary.
+//- =================================================================
 -
   //- project data
   let version        = '0.1.24' // please update package.json too
@@ -43,7 +46,6 @@
   let thisYear       = now.getFullYear()
   let copyright      = `&copy; Copyright ${thisYear} ${publisher}`
 
--
   //- open graph metadata for social media sharing
 
   let og_title       = title
@@ -53,9 +55,9 @@
   let og_image       = ''
   let og_imageAlt    = ''
 
+//- =================================================================
+//- data update functions
 -
-  //- data update functions
-
   function updateTitle( _title ){
     title    = _title
     og_title = _title
@@ -77,6 +79,7 @@
     og_imageAlt = _alt
   }
 
+//- =================================================================
 //- data mixins
 
 mixin putDataTitle

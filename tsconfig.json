@@ -1,5 +1,5 @@
 {
-    "__TLDR" : "compile any .ts file and put it into tjs folder",
+    "__TLDR" : "compile any .ts file and put it into outDir",
     
     "compilerOptions": {
         "module": "CommonJS",

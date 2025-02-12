@@ -4,8 +4,9 @@ block append vars
   include _vars
 
   - heading = `Blank Page`
+  - about   = `Just a blank page to start building.`
   - updateTitle( `${heading} | ${title}` )
-  - updateDescription( `Just a blank page to start building.` )
+  - updateDescription( `${about}` )
   - updateUrl( url+"blank.html" )
 
 //- block main

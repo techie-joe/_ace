@@ -1,1 +1,27 @@
-extends ../../pugs/_logo
+mixin logo
+  style.
+    #_logo {
+      display:block;
+      padding:.9rem;
+      cursor: pointer;
+      transition: background-color 0.5s;
+      text-decoration:none !important;
+    }
+    a#_logo { color:inherit }
+
+    #_html       a#_logo:hover { background:#bbb; color:#000; transition: none }
+    #_html._dark a#_logo:hover { background:#444; color:#fff; }
+
+    #_text_logo   { font-size: 2rem; font-weight: 600; }
+    #_text_logo,
+    #_text_logo ._part_1,
+    #_text_logo ._part_2 { line-height:1 }
+
+  //-
+    #_tagline { font-size:.7rem; letter-spacing: 0.05em; }
+
+  //-
+
+  +a(homeUrl)#_logo._numb
+      #_text_logo #[span._part_1 LO]#[span._part_2 GO]
+      //- #_tagline._uppercase._b Your tagline

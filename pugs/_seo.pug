@@ -1,14 +1,24 @@
 //- Basic SEO
 title !{title||'(untitled)'}
 
-+metaName("description",description||'(undescribed)')
-+metaName("author",author||'(unknown)')
-+metaName("publisher",publisher||'(unknown)')
+-
+  temp = [
+    ["description",description||'(undescribed)'],
+    ["author",author||'(unknown)'],
+    ["publisher",publisher||'(unknown)'],
+  ];
+each v in temp
+  meta(name=v[0] content=v[1])/
 
 //- Open Graph protocol to optimize your web page for social media sharing.
-+metaProperty("og:title",og_title||'(untitled)')
-+metaProperty("og:description",og_description||'(undescribed)')
-+metaProperty("og:type",og_type)
-+metaProperty("og:url",og_url)
-+metaProperty("og:image",og_image)
-+metaProperty("og:image:alt",og_imageAlt)
+-
+  temp = [
+    ["og:title",og_title||'(untitled)'],
+    ["og:description",og_description||'(undescribed)'],
+    ["og:type",og_type],
+    ["og:url",og_url],
+    ["og:image",og_image],
+    ["og:image:alt",og_imageAlt],
+  ];
+each v in temp
+  meta(property=v[0] content=v[1])/

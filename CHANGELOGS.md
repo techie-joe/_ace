@@ -1,7 +1,17 @@
 ## Change logs
 
-Builder notes to track changes made to the template.
+Developer notes to track changes made to the template.
 
-### v0.1.22
-- b217.188.3 - refactor builder files and its references.
+### Update files
+
+[INDEX_](pages/index.html.pug)
+[TODO__](TODO.md)
+[CONFIG](_configs.pug)
+
+### v0.1.24 - Feb 12, 2025
+
+- b218.189.3
+- - improve: styles, readbility.
+- - housekeep: all files.
+
 - ...

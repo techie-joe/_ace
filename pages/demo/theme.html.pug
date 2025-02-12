@@ -11,8 +11,9 @@ block append style
   //- style.
 
 block header
+  include _logo
   +header#_header
-    ._flex: include _logo
+    ._flex: +logo
     hr._no_margin
 
 block main
@@ -113,11 +114,11 @@ block footer
         h6._h7._no_margin Official Address
         //- |#[b Company Name]#[br]
         div._mb.
-          Suite, Street,#[br]
+          101 Suite, ABC Street,#[br]
           ZIP County, State,#[br]
-          Country, AB#[br]
-        div #[b CALL] #[b._b-9 +012 345 6789]
-        div._small official-email@your-domain.com
+          Country, CC#[br]
+        div._tc_contra #[span ✆] #[b._b-9 +012 345 6789]
+        div._small #[span ✉] #[span official-email@your-domain.com]
 
       ._f_12_3: ._pv
         h6._h7._no_margin Primary Segment
@@ -133,4 +134,4 @@ block footer
           +lia('#')._stay_fresh._no_u To some posts
           +lia('#')._stay_fresh._no_u Or some pages
 
-    ._mv !{copyright}
+    p._small._system !{copyright}

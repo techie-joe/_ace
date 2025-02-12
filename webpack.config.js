@@ -1,4 +1,4 @@
-// TLDR: pack all entry to output folder
+// __TLDR: pack all entry to output folder.
 
 const path = require('path');
 
