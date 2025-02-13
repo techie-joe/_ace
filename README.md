@@ -1,5 +1,5 @@
 # Ace Builder
-> A nice toolkit to build websites and web applications
+> A nice toolkit for building websites and web applications
 ---
 
 Title    : Ace Builder  
