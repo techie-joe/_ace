@@ -67,7 +67,7 @@ block main
 
     section._mv_2
 
-      p._text_justify This template is equipped with #[b._h7 pre-made components] and #[b._h7 helper classes] to give you an easy building experience. We have simplified web creation to make it accessible to everyone, even for those who may not have technical expertise. Dive in and start building your website straight away.
+      p._text_justify This template comes with #[b._h7 pre-made components] and #[b._h7 helper classes], giving you an easy building experience. We have simplified web creation to make it accessible to everyone, even those without technical expertise. Dive in and start building your website right away. With a variety of customization options, you can create a professional and unique website tailored to your needs.
 
       ._mv._nav_color._radius_x5r: +nav#_nav
         b._nav_label._system| Template Components : &nbsp;
@@ -96,7 +96,6 @@ block main
           ._f_12_4
             ul._no_margin
               +lia_template("index.html")| Home Page
-              +lia_template("starter.html")| Starter Page
               +lia_template('full_screen.html')| Full Screen
               +lia_template('split_screen.html')| Split Screen
           ._f_12_4
@@ -104,6 +103,9 @@ block main
               +lia_template('flex_gallery.html')| Flex Gallery
               +lia_template('classic_page.html')| Classic Page
               +lia_template('classic_list.html')| Classic List
+          ._f_12_4
+            ul._no_margin
+              +lia_template("starter.html")| Starter Page
 
     section._mv_2
       h2 Basic Templates
@@ -131,14 +133,14 @@ block main
         section._mb_2
           h2 Available in light and dark
 
-          p._text_justify Our template is readily available in both light and dark color preference. You can easily switch between the two by using the keyboard shortcut #[code._code._no_wrap='Ctrl + Alt + T'] or use a button or script to programatically execute #[code._code._no_wrap='base.theme.change()'].
+          p._text_justify Our template is readily available in both light and dark color schemes. You can easily switch between the two by using the keyboard shortcut #[code._code._no_wrap='Ctrl + Alt + T']. You may also use a button or a script to programmatically execute #[code._code._no_wrap='base.theme.change()'].
 
           p._no_print: +changeThemeLink._btnlink._small #[+isvg(svgi.compare)] #[span._btnlabel._btnpad Change Theme]
 
       ._f_2_1
         section._mb_2
           h2 Good design, even in print
-          p._text_justify You'll want a website that looks great when printed. Our templates excel on paper. Enjoy good design and functionality, viewed digitally or in print. Elevate your professionalism with templates that stand out in every medium.
+          p._text_justify You will want a website that looks great when printed. Our templates excel on paper. Enjoy good design and functionality, viewed digitally or in print. Elevate your professionalism with templates that stand out in every medium.
 
           p._no_print: +a()(onclick='window.print();')._btnlink._small #[+isvg(svgi.print)] #[span._btnlabel._btnpad Print Page]
 
@@ -161,8 +163,8 @@ block footer
 
       div._p._smaller._mb0
         div
-          | Some images and resources you find here may originate from eligible outside sources.
-          | • Few #[b._tc_contra may not be included] in the distributed packages due to the terms of the original author. You'll be provided with references to get them directly from the author.
+          | Some images and resources found here may come from external sources.
+          | • Certain images and resources #[b._tc_contra may not be included] in the distributed packages due to the original author's terms. References to obtain them directly from the author will be provided.
           | • Our special thanks goes to Matt at #[a._no_color(href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/") svgbackgrounds.com] for providing us with free SVG images.
 
     hr
