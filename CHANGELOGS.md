@@ -4,14 +4,19 @@ Developer notes to track changes made to the template.
 
 ### Update files
 
-[INDEX_](pages/index.html.pug)
-[TODO__](TODO.md)
-[CONFIG](_configs.pug)
+[CONFIG___](_configs.pug)  
+[PACKAGE__](package.json)  
+[PACKAGE_C](package-copy.json)  
+[CSS_COPY_](styles\gulp_css\_copyright.scss)  
 
-### v0.1.24 - Feb 12, 2025
+[TODO__](todos/TODO.md)  
+[INDEX_](pages/index.html.pug)  
 
-- b218.189.3
+
+### Feb 13, 2025 - v0.1.24 b320.5
+
 - - improve: styles, readbility.
 - - housekeep: all files.
+- - update demo content, improve flex, button.
 
 - ...
