@@ -27,6 +27,6 @@ mixin menu
 
 mixin navbar
   #_navbar._flex
-    ._f_12_1._pa._nav_color._text_center: +a(homeUrl)._btnlink._smaller|Home
+    ._f_min._pa._nav_color._text_center: +a(homeUrl)(style="width:80%;")._btnlink._smaller|Home
     ._fill._nav_color(style="flex-basis:20rem"): +nav#_nav._no_print_href: +menu
-    ._f_12_1._text_right._pa_x5r._nav_color._no_print: +changeThemeLink._navChangeThemeLink._link._nav_icon: +isvg(svgi.compare)
+    ._f_min._text_right._pa_x5r._nav_color._no_print: +changeThemeLink._navChangeThemeLink._link._nav_icon: +isvg(svgi.compare)
