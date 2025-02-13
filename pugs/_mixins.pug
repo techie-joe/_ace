@@ -112,10 +112,10 @@ mixin itext
   i._itext: i.itext&attributes(attributes): block
 
 mixin backButton(href, label)
-  +a(href).nav_button._btnlink&attributes(attributes) #[+itext|←] #[span._btnlabel !{label}] #[i._btnpad]
+  +a(href).nav_button._btnlink&attributes(attributes) #[+itext|←] #[span._btnlabel._btnpad !{label}]
 
 mixin nextButton(href, label)
-  +a(href).nav_button._btnlink&attributes(attributes) #[i._btnpad] #[span._btnlabel !{label}] #[+itext|→]
+  +a(href).nav_button._btnlink&attributes(attributes) #[span._btnlabel._btnpad !{label}] #[+itext|→]
 
 mixin pageData
   aside&attributes(attributes)
