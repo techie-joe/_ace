@@ -127,6 +127,12 @@ mixin pageData
       +putData
     hr
 
+mixin needjs
+  style#_need_js.
+    ._need_js { display: none !important; }
+  script.
+      document.getElementById('_need_js').innerHTML='';
+
 mixin include_php(uri)
   !=`<?php include "${uri}" ?>`
 
