@@ -34,7 +34,7 @@ block main
 
     mixin block_4(title)
       ._radius._pa._bg_2_2._tc_2_2._mv
-        h3._h6 !{title}
+        h3._h6._tc_2_4 !{title}
         p._text_justify: block
 
     section
@@ -57,7 +57,7 @@ block main
 
         +block_3('Focus on Navigation')| User-friendly navigation is essential for a positive user experience. Design a clear and intuitive navigation menu that allows visitors to find information easily. Use descriptive labels and consider implementing a sticky menu that remains visible as users scroll down the page.
 
-      ._f_3_1
+      ._f_12_5
 
         +block_4('Optimize for Responsiveness')| Your website should look and function well on all devices, including desktops, tablets, and smartphones. Use responsive design techniques to ensure your theme adapts seamlessly to different screen sizes. Test your design on multiple devices to identify and fix any issues.
 
@@ -77,13 +77,13 @@ block main
 
     hr
 
-    section: ._flex._gap
+    section: ._flex._gap_2
 
-      ._fill(style="min-width:370px")
+      ._fill._f_max: ._mb_2
         style.
-          .buttons ._btnlink { width: 5rem; margin: .2rem; text-align: center; }
+          .buttons ._btnlink { min-width:5em; margin: .2rem; }
         h3 Buttons
-        .buttons
+        .buttons._small
           div
             +a._btnlink Primary
             +a._btnlink Secondary
@@ -93,41 +93,39 @@ block main
             +a._btnlink Secondary
             +a._btnlink Ordinary
 
-      ._f_12_11
+      ._f_12_11: ._mb_2
         h3 Texts and Hyperlinks
-        .links
-          p._text_justify
-            | Texts may appear in #[span._tc_blue blue], #[span._tc_purple purple], #[span._tc_orange orange] or #[span._tc_red red].
-            | Standard color were used on #[+a("#xt")#normalink._stay_fresh._no_wrap normal hyperlinks] and #[+a("")._no_wrap visited links].
-            | You can remove color from a hyperlink using the #[code._code._no_wrap _no_color] class, to make a #[+a("")._no_color._no_wrap plain hyperlinks].
-          //- script.
-            document.getElementById('normalink').href+=(new Date().getTime());
-
-    ._ma._pa
+        .links: p._text_justify
+          | Texts may appear in #[span._tc_blue blue], #[span._tc_purple purple], #[span._tc_orange orange] or #[span._tc_red red].
+          | Standard color were used on #[+a("#xt")#normalink._stay_fresh._no_wrap normal hyperlinks] and #[+a("")._no_wrap visited links].
+          | You can remove color from a hyperlink using the #[code._code._no_wrap _no_color] class, to make a #[+a("")._no_color._no_wrap plain hyperlinks].
+        //- script.
+          document.getElementById('normalink').href+=(new Date().getTime());
 
 block footer
   +footer#_footer._bg_1_2._tc_1_2
 
-    ._flex._mv
+    ._flex._gap_2
 
-      ._f_12_4: ._pv
+      ._f_12_5: ._mv
         h6._h7._no_margin Official Address
         //- |#[b Company Name]#[br]
-        div._mb.
-          101 Suite, ABC Street,#[br]
-          ZIP County, State,#[br]
-          Country, CC#[br]
-        div._tc_contra #[span ✆] #[b._b-9 +012 345 6789]
-        div._small #[span ✉] #[span official-email@your-domain.com]
+        div._mv
+          .
+            101 Suite, ABC Street,#[br]
+            ZIP County, State,#[br]
+            Country, CC#[br]
+        div._tc_contra._no_wrap #[+itext|✆] #[b._nav_label._b-9 +012 345 6789]
+        div._small._no_wrap #[+itext|✉] #[span official-email@your-domain.com]
 
-      ._f_12_3: ._pv
+      ._f_12_5: ._mv
         h6._h7._no_margin Primary Segment
         ul._no_bullet._no_pad
           +lia('#')._stay_fresh._no_u Put some links
           +lia('#')._stay_fresh._no_u To some posts
           +lia('#')._stay_fresh._no_u Or some pages
 
-      ._f_12_3: ._pv
+      ._f_12_5: ._mv
         h6._h7._no_margin Secondary Segment
         ul._no_bullet._no_pad
           +lia('#')._stay_fresh._no_u Put some links

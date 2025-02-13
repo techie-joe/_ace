@@ -19,21 +19,22 @@ block widgets
         left: 50%;
         top: 20rem;
         padding: 1rem;
-        margin: -6rem -4.5rem 0;
+        margin: -6rem -6.05rem 0;
       }
 
       #nav a { margin:1px }
+      #nav .backbtn { width: 98%; padding: .2em 0; }
 
     +widget#nav-box._no_print
-      nav#nav._bg_2_2._tc_2_2._radius_x25r(style="width:116px")
+      nav#nav._bg_2_2._tc_2_2._radius_x25r
         table: tbody
-          tr: td(colspan=2): +a(homeUrl)(style="width:75px")._btnlink #[+itext|←] Back #[+nbsp]
+          tr: td(colspan=2): +a(homeUrl).backbtn._btnlink #[+itext|←] #[span._btnlabel._btnpad Back]
           tr
-            td: +a('#view-1')._btnlink #1
-            td: +a('#view-2')._btnlink #2
+            td: +a('#view-1')._btnlink 1
+            td: +a('#view-2')._btnlink 2
           tr
-            td: +a('#view-3')._btnlink #3
-            td: +a('#view-4')._btnlink #4
+            td: +a('#view-3')._btnlink 3
+            td: +a('#view-4')._btnlink 4
 
 block views
 
