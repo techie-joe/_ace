@@ -5,10 +5,7 @@ block append vars
   - updateTitle( `${heading} | ${title}` )
   - updateDescription( `Font sizes and spacings has been meticulously adjusted to pixel precision to ensure optimal adaptability.` )
   - updateUrl( url+"texts.html" )
-  - 
-    cssi = {
-      gridlines:'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="12"><rect width="1" height="1" fill="%23A9790688" /></svg>',
-    }
+  - cssi.gridlines = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="12"><rect width="1" height="1" fill="%23A9790688" /></svg>';
 
 block append style
   +cssv(assetsUrl+'pure/grid.css')
