@@ -1,29 +1,33 @@
 //- +nav#_nav: ul: +lia
 
-mixin demo_link(ref='')
-  +_a(demoUrl+ref)._link._nav_item: block
+mixin menu_link(ref='')
+  +_a(demoUrl+ref)._link: block
 
-mixin menu
-  +demo_link("starter.html")| Starter
-  +demo_link("view.html")| View
-  //- +demo_link("layout.html")| Layout
-  +demo_link("texts.html")| Texts
-  +demo_link("icons.html")| Icons
-  //- +demo_link("images.html")| Image
-  //- +demo_link("background.html")| Background
-  //- +demo_link("video.html")| Video
-  +demo_link("flex.html")| Flex
-  //- +demo_link("containers.html")| Containers
-  +demo_link("colors.html")| Colors
-  //- +demo_link("buttons.html")| Buttons
-  //- +demo_link("form.html")| Form
-  //- +demo_link("transitions.html")| Transitions
-  //- +demo_link("animations.html")| Animations
-  +demo_link("menu.html")| Menu
-  //- +demo_link("popups.html")| Popups
-  //- +demo_link("dialogs.html")| Dialogs
-  //- +demo_link("helpers.html")| Helpers
-  +demo_link("theme.html")| Theme
+mixin menu(n)
+  -
+    temp = [
+      ['view.html','View'],
+      ['texts.html','Texts'],
+      ['icons.html','Icons'],
+      //- ['images.html','Image'],
+      //- ['background.html','Background'],
+      //- ['video.html','Video'],
+      //- ['flex.html','Flex'],
+      //- ['containers.html','Containers'],
+      ['colors.html','Colors'],
+      //- ['buttons.html','Buttons'],
+      //- ['form.html','Form'],
+      //- ['transitions.html','Transitions'],
+      //- ['animations.html','Animations'],
+      ['menu.html','Menu'],
+      //- ['popups.html','Popups'],
+      //- ['dialogs.html','Dialogs'],
+      //- ['helpers.html','Helpers'],
+      ['theme.html','Theme'],
+      ['starter.html','Starter'],
+    ];
+  each v in temp
+    +menu_link(v[0])=`${v[1]}`
 
 mixin navbar
   #_navbar._flex

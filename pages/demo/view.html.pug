@@ -23,12 +23,10 @@ block widgets
       }
 
       #nav a { margin:1px }
-      #nav .backbtn { width: 98%; padding: .2em 0; }
 
     +widget#nav-box._no_print
       nav#nav._bg_2_2._tc_2_2._radius_x25r
         table: tbody
-          tr: td(colspan=2): +a(homeUrl).backbtn._btnlink #[+itext|←] #[span._btnlabel._btnpad Back]
           tr
             td: +a('#view-1')._btnlink 1
             td: +a('#view-2')._btnlink 2

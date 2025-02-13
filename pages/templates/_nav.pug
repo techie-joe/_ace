@@ -1,16 +1,21 @@
 //- +nav#_nav: ul: +lia
 
-mixin template_link(ref='')
+mixin menu_link(ref='')
   +_a(templateUrl+ref)._link: block
 
-mixin menu
-  +template_link('index.html')| Home
-  +template_link('full_screen.html')| Full
-  +template_link('split_screen.html')| Split
-  +template_link('flex_gallery.html')| Flex
-  +template_link('classic_page.html')| Page
-  +template_link('classic_list.html')| List
-  +template_link("starter.html")| Starter
+mixin menu(n)
+  -
+    temp = [
+      ['index.html','Home'],
+      ['full_screen.html','Full'],
+      ['split_screen.html','Split'],
+      ['flex_gallery.html','Flex'],
+      ['classic_page.html','Page'],
+      ['classic_list.html','List'],
+      ["starter.html",'Starter'],
+    ];
+  each v in temp
+    +menu_link(v[0])=`${v[1]}`
 
 include _logo
 mixin navbar
