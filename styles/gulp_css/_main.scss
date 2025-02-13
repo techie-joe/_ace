@@ -174,18 +174,20 @@ hr,._hr {
 
 #_heading .__a { margin: 0 -.3em; line-height: 1; }
 
-#_html ._btnlink {
+// #_html
+._btnlink {
   @extend ._numb;
   @extend ._radius_x25r;
   cursor: pointer;
   display: inline-block;
-  padding: .3em 1em;
+  padding: .3em .5em;
   border: 1px solid $tc_2_9;
   text-decoration: none;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   vertical-align: middle;
+  min-width: 3em;
   &:hover { text-decoration: none; }
 }
 
@@ -317,14 +319,14 @@ h1,h2,h3,h4,h5,h6,
 
 hr { @extend ._hrt; @extend ._hrb; }
 
-a._btnlink {
+._a ._btnlink {
   &:visited,
   &:active,
   & { color: inherit; }
   &:hover { @include color( $light_button_tc, $light_button_bg ); }
 }
 
-._dark a._btnlink {
+._dark._a ._btnlink {
   &:visited,
   &:active,
   & { color: inherit; }
@@ -338,15 +340,112 @@ a._btnlink {
   vertical-align: top;
 }
 
-._btnpad {
-  display: inline-block;
-  height: 1.5em;
-  min-width: .75em;
-  vertical-align: top;
-}
+._btnpad { padding: 0 .5em; }
 
 #_html       ._hover_link:hover { @include color( $light_contra, $light_button_bg ); }
 #_html._dark ._hover_link:hover { @include color( $dark_contra, $dark_button_bg); }
+
+/* ======================================================= flex */
+
+// @media (min-width: 20rem){/*    ≥ 320px   Mobile S   ._f_ms_* */}
+// @media (min-width: 23.4rem){/*  ≥ 375px   Mobile M   ._f_mm_* */}
+// @media (min-width: 26.6rem){/*  ≥ 425px   Mobile L   ._f_ml_* */}
+// @media (min-width: 35.5rem){/*  ≥ 568px              ._f_s_*  */}
+// @media (min-width: 48rem){/*    ≥ 768px    Laptop S  ._f_m_*  */}
+// @media (min-width: 60rem){/*    ≥ 960px    960gs     ._f_r_*  */}
+// @media (min-width: 64rem){/*    ≥ 1024px   Laptop M  ._f_l_*  */}
+// @media (min-width: 80rem){/*    ≥ 1280px             ._f_2l_* */}
+// @media (min-width: 90rem){/*    ≥ 1440px   Laptop L  ._f_3l_* */}
+// @media (min-width: 120rem){/*   ≥ 1920px             ._f_4l_* */}
+// @media (min-width: 160rem){/*   ≥ 2560px   4K        ._f_4k_* */}
+// @media (min-width: 240rem){/*   ≥ 3840px             ._f_5k_* */}
+
+$f_min: 4rem;
+$f_base: 12;
+
+._flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  margin: 0 auto;
+  min-width: $f_min;
+}
+
+._space-evenly { justify-content: space-evenly }
+
+// ._gaps
+$gaps: (
+  "_x5" : .5rem,
+  ""     : 1rem,
+  "_1x5" : 1.5rem,
+  "_2"   : 2rem
+);
+@each $x, $value in $gaps {
+  ._gap#{$x},
+  ._gap_h#{$x} { column-gap: $value; }
+  ._gap_v#{$x} { row-gap: $value; }
+  ._gap_a#{$x}   { gap: $value; }
+}
+
+._f {
+  display: inline-block;
+  vertical-align: top;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-rendering: auto;
+  line-height: 0;
+  margin: 0 auto;
+}
+
+// 1,3,5,7
+// 2,4,6,8
+// 10,12,14,16
+
+$gs: 12,10;
+@each $g in $gs {
+  @for $i from 1 through $g - 1 {
+    $width: calc($i / $g);
+    @if ( $g == 10 and $i == 5 ){ ._f_#{$g}_#{$i} { @extend ._f_12_6; } }
+    @else {
+      ._f_#{$g}_#{$i} {
+        flex: $i 1 calc($i * 30 / $g * 1rem);
+      }
+    }
+  }
+}
+
+// $g:8;
+// ._f_#{$g}   { @extend ._fill; }
+// ._f_#{$g}_2 { @extend ._f_12_3; }
+// ._f_#{$g}_4 { @extend ._f_12_6; }
+// @for $i from 1 through $g {
+//   @if( $i != $g and $i != 4 and $i != 2 ){
+//     ._f_#{$g}_#{$i} { @extend ._fill; width: calc(100% / $g * $i) }
+//   }
+// }
+
+$gs: 6,5;
+@each $g in $gs { @for $i from 1 through $g - 1 { ._f_#{$g}_#{$i} { @extend ._f_#{$g * 2}_#{$i * 2}; } } }
+
+$g: 4;
+._f_#{$g}_1 { @extend ._f_12_3; }
+._f_#{$g}_2 { @extend ._f_12_6; }
+._f_#{$g}_3 { @extend ._f_12_9; }
+
+$g:3;
+._f_#{$g}_1 { @extend ._f_12_4; }
+._f_#{$g}_2 { @extend ._f_12_8; }
+
+$g:2;
+._f_#{$g}_1 { @extend ._f_12_6; }
+
+._fill  { @extend ._f; flex: $f_base 1 $f_min; }
+._full  { @extend ._f; flex: $f_base 1 100%; }
+._f_fit { @extend ._f; flex: 1 1 fit-content; }
+._f_max { @extend ._f; flex: $f_base 1 max-content; }
+._f_min { @extend ._f; flex: 1 1 min-content; }
+._f_content { @extend ._f; flex: 1 1 content; }
 
 /* ============================================== color helpers */
 
