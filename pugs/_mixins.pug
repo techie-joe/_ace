@@ -1,3 +1,7 @@
+//- ==============================================================
+//- mixers
+//- ==============================================================
+
 mixin join(a,s)
   !=a.join(s||`\n`)
 
@@ -8,6 +12,29 @@ mixin repeat(a,b)
   while n < diff
     block
     - n++;
+
+//- ==============================================================
+//- spaces
+//- ==============================================================
+
+mixin _
+  =` `
+
+mixin nbsp
+  !=`&nbsp;`
+
+mixin middots
+  !=`&middot;&middot;&middot;`
+
+mixin l
+  !=`\n`
+
+mixin l_
+  !=`\n&nbsp;`
+
+//- ==============================================================
+//- css
+//- ==============================================================
 
 mixin htmlColor
   style.
@@ -20,11 +47,31 @@ mixin css(href,media)
 mixin cssv(href,media)
   link(rel="stylesheet" media=media||'all' href!=appendVersion(href))&attributes(attributes)/
 
+//- ==============================================================
+//- javascripts
+//- ==============================================================
+
 mixin js(src)
   script(type="text/javascript" src=src)&attributes(attributes): block
 
 mixin jsv(src)
   script(type="text/javascript" src!=appendVersion(src))&attributes(attributes): block
+
+mixin needjs
+  style#_needjs.
+    ._needjs { display: none !important; }
+  script.
+      document.getElementById('_needjs').innerHTML='';
+
+mixin backlink(title='Back to previous page')
+  a(onclick=js.goBack title=title)._needjs&attributes(attributes): block
+
+mixin changeThemeLink(title='Change Theme (Ctrl+Alt+T)')
+  a(onclick=js.themeChange title=title)._needjs&attributes(attributes): block
+
+//- ==============================================================
+//- blocks
+//- ==============================================================
 
 mixin view
   ._view&attributes(attributes): ._view_layout: block
@@ -56,20 +103,9 @@ mixin widget
 mixin heading
   h1._h1&attributes(attributes): block
 
-mixin _
-  =` `
-
-mixin nbsp
-  !=`&nbsp;`
-
-mixin middots
-  !=`&middot;&middot;&middot;`
-
-mixin l
-  !=`\n`
-
-mixin l_
-  !=`\n&nbsp;`
+//- ==============================================================
+//- navigations
+//- ==============================================================
 
 mixin a(href,title)
   a(href=href title=title)&attributes(attributes): block
@@ -81,17 +117,25 @@ mixin _a(href,title)
 mixin lia(href,title)
   li: a(href=href title=title)&attributes(attributes): block
 
-mixin backlink(title='Back to previous page')
-  a(onclick=js.goBack title=title)&attributes(attributes): block
+mixin backButton(href, label)
+  +a(href).nav_button._btnlink&attributes(attributes) #[+itext|←] #[span._btnlabel._btnpad !{label}]
 
-mixin changeThemeLink(title='Change Theme (Ctrl+Alt+T)')
-  a(onclick=js.themeChange title=title)&attributes(attributes): block
+mixin nextButton(href, label)
+  +a(href).nav_button._btnlink&attributes(attributes) #[span._btnlabel._btnpad !{label}] #[+itext|→]
+
+//- ==============================================================
+//- images
+//- ==============================================================
 
 mixin img(src,alt,title)
   img(src=src alt=alt title=title)&attributes(attributes)/
 
 mixin svgi(d,viewBox,opacity,fill)
   svg(viewBox=viewBox||"0 0 24 24")&attributes(attributes): path(d=d fill=fill||'currentColor' fill-opacity=opacity||'1')
+
+//- ==============================================================
+//- icons
+//- ==============================================================
 
 mixin isvg(d)
   i._isvg&attributes(attributes): +svgi(d)
@@ -111,11 +155,9 @@ mixin fat
 mixin itext
   i._itext: i.itext&attributes(attributes): block
 
-mixin backButton(href, label)
-  +a(href).nav_button._btnlink&attributes(attributes) #[+itext|←] #[span._btnlabel._btnpad !{label}]
-
-mixin nextButton(href, label)
-  +a(href).nav_button._btnlink&attributes(attributes) #[span._btnlabel._btnpad !{label}] #[+itext|→]
+//- ==============================================================
+//- data
+//- ==============================================================
 
 mixin pageData
   aside&attributes(attributes)
@@ -127,11 +169,9 @@ mixin pageData
       +putData
     hr
 
-mixin needjs
-  style#_need_js.
-    ._need_js { display: none !important; }
-  script.
-      document.getElementById('_need_js').innerHTML='';
+//- ==============================================================
+//- php
+//- ==============================================================
 
 mixin include_php(uri)
   !=`<?php include "${uri}" ?>`

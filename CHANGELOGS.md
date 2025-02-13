@@ -18,7 +18,8 @@ update : content
 
 ### Feb 14, 2025 - v0.1.24 b320.6
 - improve: pug vars, content fluency.
-- add: needjs.
+- housekeep: mixins.
+- add: _needjs.
 
 ### Feb 13, 2025 - v0.1.24 b320.5
 - improve: styles, readbility.
