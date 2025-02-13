@@ -121,10 +121,10 @@ mixin lia(href,title)
   li: a(href=href title=title)&attributes(attributes): block
 
 mixin backButton(href, label)
-  +a(href).nav_button._btnlink&attributes(attributes) #[+itext|←] #[span._btnlabel._btnpad !{label}]
+  +a(href).nav_button._btnlink&attributes(attributes) #[+itext|←]#[span._btnlabel !{label}]
 
 mixin nextButton(href, label)
-  +a(href).nav_button._btnlink&attributes(attributes) #[span._btnlabel._btnpad !{label}] #[+itext|→]
+  +a(href).nav_button._btnlink&attributes(attributes) #[span._btnlabel !{label}]#[+itext|→]
 
 //- ==============================================================
 //- images
@@ -164,7 +164,7 @@ mixin itext
 
 mixin pageData
   aside&attributes(attributes)
-    p: +backlink._btnlink._smaller #[+itext|←]#[span._btnlabel._btnpad Back]
+    p: +backlink._btnlink #[+itext|←]#[span._btnlabel Back]
     hr
     +pre
       span._h7 !{description}

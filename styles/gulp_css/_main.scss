@@ -191,7 +191,7 @@ hr,._hr {
   white-space: nowrap;
   overflow: hidden;
   vertical-align: middle;
-  min-width: 2em;
+  min-width: 1em;
   line-height: 1;
   margin: .05rem 0;
   &:hover { text-decoration: none; }
@@ -348,9 +348,8 @@ hr { @extend ._hrt; @extend ._hrb; }
 ._btnlabel {
   display: inline-block;
   vertical-align: top;
+  padding: 0 .5em;
 }
-
-._btnpad { padding: 0 .5em; }
 
 #_html       ._hover_link:hover { @include color( $light_contra, $light_button_bg ); }
 #_html._dark ._hover_link:hover { @include color( $dark_contra, $dark_button_bg); }
