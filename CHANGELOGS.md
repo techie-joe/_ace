@@ -17,7 +17,9 @@ update : content
 [INDEX_](pages/index.html.pug)  
 
 ### Feb 14, 2025 - v0.1.24 b320.6
-- improve: pug vars, content fluency, nav builder.
+- improve: pug vars, nav builder.
+- fine-tune: css, buttons styles, links styles, layouts.
+- refine: content descriptions.
 - housekeep: mixins.
 - add: _needjs.
 

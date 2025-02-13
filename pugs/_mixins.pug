@@ -26,6 +26,9 @@ mixin nbsp
 mixin middots
   !=`&middot;&middot;&middot;`
 
+mixin bullets
+  !=`&bull;&bull;&bull;`
+
 mixin l
   !=`\n`
 
@@ -161,7 +164,7 @@ mixin itext
 
 mixin pageData
   aside&attributes(attributes)
-    p: +backlink._btnlink._smaller Back
+    p: +backlink._btnlink._smaller #[+itext|←]#[span._btnlabel._btnpad Back]
     hr
     +pre
       span._h7 !{description}
