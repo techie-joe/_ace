@@ -12,7 +12,7 @@
 
   - To add more icons.
 
-  - To improve manifest setup process. ?? tak ingat dah nak buat apa.
+  - To add PWA installation process. create install.js.
 
   - ~~Edit Builder readme and add builder link.~~
 
