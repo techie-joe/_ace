@@ -140,8 +140,9 @@ block main
         #_html._dark .colorcode { background:#111; }
         .codecolor { padding:0 1em }
 
-      +colorCodes(primary_color)
-      +colorCodes(secondary_color)
-      +colorCodes(red_color)
-      +colorCodes(1)
-      +colorCodes(0)
+      ._flex._gap
+        ._f_content: +colorCodes(primary_color)
+        ._f_content: +colorCodes(secondary_color)
+        ._f_content: +colorCodes(red_color)
+        ._f_content: +colorCodes(1)
+        ._f_content: +colorCodes(0)

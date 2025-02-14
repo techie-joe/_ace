@@ -76,9 +76,9 @@ pre,._pre {
 ._h2,._text_6 { font-size: 1.625rem; line-height: 1.1 }
 ._h1,._text_7 { font-size: 1.857rem; line-height: 1.0 }
 
-._hero        { font-size: 2.000rem }
-._hero_1      { font-size: 2.250rem }
-._hero_2      { font-size: 2.572rem }
+._hero_1        { font-size: 2.000rem }
+._hero_2      { font-size: 2.250rem }
+._hero_3      { font-size: 2.572rem }
 
 ._small       { font-size: .9em }
 ._smaller     { font-size: .8em }
@@ -87,16 +87,18 @@ pre,._pre {
 ._sup,
 ._sub { font-size: 0.53em; line-height: 0.6em }
 
+._hero_3,
 ._hero_2,
 ._hero_1,
-._hero,
 ._h7 { @extend ._b; }
 
+._hero_3,
 ._hero_2,
-._hero_1,
-._hero { @extend ._lh_1; }
+._hero_1 { @extend ._lh_1; }
 
 // ------------------------------------------------- containers */
+
+._full_width { width:100%; }
 
 #_html,
 #_body,
@@ -376,8 +378,7 @@ $f_base: 12;
 
 ._flex {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow:row wrap;
   align-content: flex-start;
   margin: 0 auto;
   min-width: $f_min;
