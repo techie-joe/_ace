@@ -1,0 +1,14 @@
+extends _html
+
+block append vars
+  - heading = `Demo for Ace Template`
+  - updateTitle( `Demo | ${title}` )
+  - updateDescription( `Lets see the basic structure and features of our template.` )
+  - updateUrl( url )
+
+block main
+  +main#_main: article
+    ._mv._nav_color._radius_x5r: +nav#_nav
+      b._label._system| Template Components : &nbsp;
+      +menu
+      +_a(demoUrl+'starter.html')._link| Starter

@@ -24,7 +24,9 @@ block views
 
     block main
       //- +main#_main: article| main article
-      #_pageData._page_layout: +pre: +putData
+      //- +pre._ma: +putData
+      //- +pageData#_pageData._page_layout
+      +pageData#_pageData._page_layout
 
     block footer
       //- +footer#_footer

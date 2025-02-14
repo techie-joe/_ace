@@ -48,8 +48,15 @@ html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
             block main
               //- +main#_main: article| main article
               //- +pre._ma: +putData
-              //- +pageData#_pageData._page_layout._ma
-              +pageData#_pageData._page_layout
+              //- +pageData#_pageData._page_layout
+              #_pageData._page_layout
+                p: +backlink._btnlink #[+itext|←]#[span._btnlabel Back]
+                hr
+                +pre._scrollable._full_width
+                  span._h7 !{description}
+                  +l
+                  +putData
+                hr
 
             block footer
               //- +footer#_footer

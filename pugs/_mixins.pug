@@ -101,7 +101,7 @@ mixin widgets
   aside&attributes(attributes): block
 
 mixin widget
-  aside&attributes(attributes): ._widget_layout: block
+  aside&attributes(attributes): block
 
 mixin heading
   h1._h1&attributes(attributes): block
@@ -164,13 +164,8 @@ mixin itext
 
 mixin pageData
   aside&attributes(attributes)
-    p: +backlink._btnlink #[+itext|←]#[span._btnlabel Back]
-    hr
-    +pre
-      span._h7 !{description}
-      +l
+    +pre._scrollable._full_width
       +putData
-    hr
 
 //- ==============================================================
 //- php

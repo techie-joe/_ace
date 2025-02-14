@@ -25,13 +25,16 @@ mixin menu(n)
       //- ['dialogs.html','Dialogs'],
       //- ['helpers.html','Helpers'],
       ['theme.html','Theme'],
-      ['starter.html','Starter'],
+      //- ['starter.html','Starter'],
     ];
   each v in temp
     +menu_link(v[0])=`${v[1]}`
 
 mixin navbar
   #_navbar._flex
-    ._f_min._pa._nav_color._text_center: +a(homeUrl)._btnlink|Home
+    ._f_min._pa._nav_color._text_center._no_wrap
+      +a(homeUrl,'Back to Ace Template')._link Home
+      !=` | `
+      +a(demoUrl,'View Demo')._link Demo
     ._fill._nav_color(style="flex-basis:20rem"): +nav#_nav._no_print_href: +menu
     ._f_min._pa_x5r._nav_color._text_right._no_print: +changeThemeLink._navChangeThemeLink._link._nav_icon: +isvg(svgi.compare)

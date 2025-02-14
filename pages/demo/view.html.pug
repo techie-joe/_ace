@@ -12,14 +12,18 @@ block widgets
 
     style.
 
+      #nav-box {
+        position:absolute;
+        top:50%;
+        left:50%;
+      }
+
       #nav {
         box-shadow: 0 0 1px 1px #888 inset;
         position: absolute;
         z-index: 1000;
-        left: 50%;
-        top: 20rem;
         padding: .5rem;
-        margin: -6rem -4.7rem 0;
+        margin: -7em 0 0 -4.3em;
       }
 
       #nav a { margin:1px }
@@ -28,11 +32,11 @@ block widgets
       nav#nav._bg_2_2._tc_2_2._radius_x25r
         table: tbody
           tr
-            td: +a('#view-1')._btnlink 1
-            td: +a('#view-2')._btnlink 2
+            td: +a('#view-1')._btnlink #[span._btnlabel 1]
+            td: +a('#view-2')._btnlink #[span._btnlabel 2]
           tr
-            td: +a('#view-3')._btnlink 3
-            td: +a('#view-4')._btnlink 4
+            td: +a('#view-3')._btnlink #[span._btnlabel 3]
+            td: +a('#view-4')._btnlink #[span._btnlabel 4]
 
 block views
 
