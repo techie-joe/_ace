@@ -67,10 +67,10 @@ mixin needjs
       document.getElementById('_needjs').innerHTML='';
 
 mixin backlink(title='Back to previous page')
-  a(onclick=js.goBack title=title)._needjs&attributes(attributes): block
+  a(href='' onclick=onclick(js.goBack) title=title)._needjs&attributes(attributes): block
 
 mixin changeThemeLink(title='Change Theme (Ctrl+Alt+T)')
-  a(onclick=js.themeChange title=title)._needjs&attributes(attributes): block
+  a(href='' onclick=onclick(js.themeChange) title=title)._needjs&attributes(attributes): block
 
 //- ==============================================================
 //- blocks
@@ -111,20 +111,20 @@ mixin heading
 //- ==============================================================
 
 mixin a(href,title)
-  a(href=href title=title)&attributes(attributes): block
+  a(href=href||'' title=title)&attributes(attributes): block
 
 mixin _a(href,title)
   +_
-  a(href=href title=title)&attributes(attributes): block
+  a(href=href||'' title=title)&attributes(attributes): block
 
 mixin lia(href,title)
-  li: a(href=href title=title)&attributes(attributes): block
+  li: a(href=href||'' title=title)&attributes(attributes): block
 
 mixin backButton(href, label)
-  +a(href).nav_button._btnlink&attributes(attributes) #[+itext|←]#[span._btnlabel !{label}]
+  +a(href||'').nav_button._btnlink&attributes(attributes) #[+itext|←]#[span._btnlabel !{label}]
 
 mixin nextButton(href, label)
-  +a(href).nav_button._btnlink&attributes(attributes) #[span._btnlabel !{label}]#[+itext|→]
+  +a(href||'').nav_button._btnlink&attributes(attributes) #[span._btnlabel !{label}]#[+itext|→]
 
 //- ==============================================================
 //- images

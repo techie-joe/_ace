@@ -13,8 +13,13 @@ update : version
 [PACKAGE_C](package-copy.json)  
 
 update : content  
-[TODO__](todos/TODO.md)  
-[INDEX_](pages/index.html.pug)  
+[TODO_____](todos/TODO.md)  
+[INDEX____](pages/index.html.pug)  
+[BUILDER__](_BUILDER_vars.pug)  
+
+check : content  
+[BUILDER__](README.md)  
+[SITE_____](../ace/README.md)  
 
 ### Feb 14, 2025 - v0.1.24 b320.6
 - improve: pug vars, nav builder.

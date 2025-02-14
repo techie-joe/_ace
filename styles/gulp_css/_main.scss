@@ -294,7 +294,7 @@ hr,._hr {
 // ====================================================== theme */
 
 #_html,
-#_html       ._color_base { @include color( $tc_2_9, $bg_2_9 ); }
+#_html       ._color_base { @include color( $tc_2_8, $bg_2_9 ); }
 #_html._dark,
 #_html._dark ._color_base { @include color( $tc_2_1, $bg_2_1 ); }
 

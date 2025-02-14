@@ -142,7 +142,7 @@ block main
           h2 Good design, even in print
           p._text_justify You will want a website that looks great when printed. Our templates excel on paper. Enjoy good design and functionality, viewed digitally or in print. Elevate your professionalism with templates that stand out in every medium.
 
-          p._no_print._needjs: +a()(onclick='window.print();')._btnlink #[+isvg(svgi.print)] #[span._btnlabel Print Page]
+          p._no_print._needjs: +a()(onclick=onclick(js.print))._btnlink #[+isvg(svgi.print)] #[span._btnlabel Print Page]
 
     //- flex
 
@@ -158,6 +158,8 @@ block footer
         +a(localUrl)._link._b|LOCAL
         ||
         +a(sourceUrl)(target="page_source")._link._b|SOURCE
+        ||
+        +a(builderUrl)(target="page_builder")._link._b|BUILDER
 
       p._smaller._mono| Version: #{version} - #[span._no_wrap b#{build}]
 

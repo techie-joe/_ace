@@ -1,5 +1,5 @@
 # Ace Builder
-> A nice toolkit for building websites and web applications
+> A power-tool for building websites and web applications
 ---
 
 Title    : Ace Builder  
@@ -7,7 +7,9 @@ Version  : 0.1.24
 Build    : 320.6  
 Author   : Techie Joe  
 
-URL      : https://techie-joe.github.io/_ace/  
+BUILDER  : https://techie-joe.github.io/_ace/  
+
+AUTHOR   : https://github.com/techie-joe/  
 
 ---
 
