@@ -13,9 +13,9 @@ update : version
 [PACKAGE_C](package-copy.json)  
 
 update : content  
-[TODO_____](todos/TODO.md)  
-[INDEX____](pages/index.html.pug)  
 [BUILDER__](_BUILDER_vars.pug)  
+[INDEX____](pages/index.html.pug)  
+[TODO_____](todos/TODO.md)  
 
 check : content  
 [BUILDER__](README.md)  
