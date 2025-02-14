@@ -24,7 +24,7 @@ mixin menu(n)
       //- ['popups.html','Popups'],
       //- ['dialogs.html','Dialogs'],
       //- ['helpers.html','Helpers'],
-      ['theme.html','Theme'],
+      //- ['theme.html','Theme'],
       //- ['starter.html','Starter'],
     ];
   each v in temp
@@ -35,6 +35,6 @@ mixin navbar
     ._f_min._pa._nav_color._text_center._no_wrap
       +a(homeUrl,'Back to Ace Template')._link Home
       !=` | `
-      +a(demoUrl,'View Demo')._link Demo
+      +a(demoUrl,'Demo for Ace Template')._link Demo
     ._fill._nav_color(style="flex-basis:20rem"): +nav#_nav._no_print_href: +menu
     ._f_min._pa_x5r._nav_color._text_right._no_print: +changeThemeLink._navChangeThemeLink._link._nav_icon: +isvg(svgi.compare)
