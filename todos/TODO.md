@@ -1,5 +1,7 @@
 ## To do
 
+  - To add fixed and absolute panel.
+
   - To add layouts.
 
   - To improve template. See my notes on website building : https://drive.google.com/drive/folders/1zTCllyZYATKdoICxfwNkiUhPVYa6HJEC . and this video : https://youtu.be/OjEg0IBR_ak?si=0Tdo3evd1AkTD864 .
