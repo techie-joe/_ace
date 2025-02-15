@@ -64,7 +64,7 @@ mixin needjs
   style#_needjs.
     ._needjs { display: none !important; }
   script.
-      document.getElementById('_needjs').innerHTML='';
+    document.getElementById('_needjs').innerHTML='';
 
 mixin backlink(title='Back to previous page')
   a(href='' onclick=onclick(js.goBack) title=title)._needjs&attributes(attributes): block

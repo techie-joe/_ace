@@ -21,10 +21,11 @@ check : content
 [BUILDER__](README.md)  
 [SITE_____](../ace/README.md)  
 
-### Feb 14, 2025 - v0.1.24 b320.7
+### Feb 15, 2025 - v0.1.24 b321.7
 - improve: css colors and headings.
 - improve: refactor pug templates for better structure and readability.
 - improve: update navigation labels and structure for clarity.
+- improve: demo site.
 
 ### Feb 14, 2025 - v0.1.24 b320.6
 - improve: pug vars, nav builder.

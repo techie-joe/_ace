@@ -6,12 +6,12 @@ module.exports = {
   mode: 'production',
   entry: {
     // [output-file] : [input-file]
-    "script.min.js": path.resolve(__dirname, 'scripts/tjs/script.js'),
-    // "gulp.min.js": path.resolve(__dirname, 'scripts/gjs/gulp.js'),
-    // "story.min.js": path.resolve(__dirname, 'scripts/cjs/story.js')
+    // "ts.min.js"  : path.resolve(__dirname, 'scripts/ts_js/ts.js'),
+    // "gulp.min.js"    : path.resolve(__dirname, 'scripts/gulp_js/gulp.js'),
+    // "custom.min.js"  : path.resolve(__dirname, 'scripts/custom_js/custom.js'),
   },
   output: {
-    path: path.resolve(__dirname, '../ace/assets/js'),
+    path: path.resolve(__dirname, '../ace/assets/wpjs'),
     filename: '[name]'
   }
 };

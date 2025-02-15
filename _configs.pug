@@ -23,13 +23,22 @@
   let demoUrl        = '/ace/demo/';
   let templateUrl    = '/ace/templates/';
 
+  //- urls
   let url            = 'https://techie-joe.github.io/ace/'; // website url
   let sourceUrl      = 'https://github.com/techie-joe/ace'
   let builderUrl     = 'https://github.com/techie-joe/_ace'
   let authorUrl      = 'https://github.com/techie-joe/'
   let localUrl       = 'http://localhost/ace'
 
-  // en or en-US following the BCP 47 language tag standard
+  //- open graph metadata for social media sharing
+  let og_title       = title
+  let og_description = description
+  let og_url         = url+'?utm_source=homescreen'
+  let og_type        = 'website'
+  let og_image       = ''
+  let og_imageAlt    = ''
+
+  //- en or en-US following the BCP 47 language tag standard
   let lang           = 'en'
   let charset        = 'utf-8'
 
@@ -40,21 +49,19 @@
   let bodyClass      = ''
   let contentsClass  = ''
 
-  //- progressive web app metadata
-  let include_manifest = false
-
+  //- metadata
   let now            = new Date()
   let thisYear       = now.getFullYear()
   let copyright      = `&copy; Copyright ${thisYear} ${publisher}`
 
-  //- open graph metadata for social media sharing
+  //- progressive web app metadata
+  let include_manifest = false
 
-  let og_title       = title
-  let og_description = description
-  let og_url         = url+'?utm_source=homescreen'
-  let og_type        = 'website'
-  let og_image       = ''
-  let og_imageAlt    = ''
+  //- project
+  const LOCALHOST      = 'localhost';
+  const DEVELOPMENT    = 'DEVELOPMENT';
+  const PRODUCTION     = 'PRODUCTION'
+  const PROJECT_STATUS = DEVELOPMENT;
 
 //- =================================================================
 //- data update functions

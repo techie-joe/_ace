@@ -1,6 +1,8 @@
 // __TLDR : Styles for basic error page templates.
 
 @use "copyright";
+@use "mixins" as *;
+@use "color-values" as *;
 
 ._errorpage {
 
