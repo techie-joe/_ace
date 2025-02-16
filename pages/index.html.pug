@@ -91,6 +91,9 @@ block main
     mixin lia_template(ref='')
       +lia(templateUrl+ref)._link: block
 
+    mixin lia_basic(ref='')
+      +lia(basicUrl+ref)._link: block
+
     section._mv_2
       h2 Starter Templates
       nav.pages
@@ -115,17 +118,18 @@ block main
         ._flex
           ._f_12_4
             ul._no_margin
-              +lia("coming_soon.html","Quickly setup a page to go live real soon.")._link| Coming soon
-              +lia("closed.html","When you decide to temporarily close your website.")._link| Temporary closed
+              +lia_basic("starter.html")| Starter Page
+          ._f_12_4
+            ul._no_margin
+              +lia_basic("coming_soon.html","Quickly setup a page to go live real soon.")._link| Coming soon
+              +lia_basic("closed.html","When you decide to temporarily close your website.")._link| Temporary closed
           ._f_12_4
             ul._no_margin
               li
                 +a("404.html","When a browser lands on a missing page.")._link| 404 -- Not found
                 +_a("---","Simulate Real 404")._link._nav_icon._no_print: +middots
               +lia("500.html","When your server encounters an error.")._link| 500 -- Oops!
-          ._f_12_4
-            ul._no_margin
-              +lia("blank.html","Just a blank page to start building.")._link| Blank Page
+              +lia_basic("blank.html","Just a blank page to start building.")._link| Blank Page
 
     hr
 
@@ -157,7 +161,7 @@ block footer
       ._flex._gap
         ._f_fit
           p._small._mono(style="margin:0 -.3em;")
-            +a(url)._link._b|LIVE
+            +a(siteUrl)._link._b|LIVE
             ||
             +a(localUrl)._link._b|LOCAL
             if PROJECT_STATUS === DEVELOPMENT

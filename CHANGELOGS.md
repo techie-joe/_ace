@@ -5,7 +5,7 @@ Developer notes to track changes made to the template.
 ### Update files
 
 update : version & build  
-[CONFIG___](_configs.pug)  
+[CONFIG___](_CONFIGS.pug)  
 [CSS_COPY_](styles/gulp_css/_copyright.scss)  
 
 update : version  
@@ -20,6 +20,10 @@ update : content
 check : content  
 [BUILDER__](README.md)  
 [SITE_____](../ace/README.md)  
+
+### Feb 16, 2025 - v0.1.24 b322.8
+- rename: INCLUDE_MANIFEST var.
+- improve: update URLs to use siteUrl.
 
 ### Feb 15, 2025 - v0.1.24 b321.7
 - improve: css colors and headings.
