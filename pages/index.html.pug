@@ -88,29 +88,8 @@ block main
           ul._no_margin
             +lia_sample_1()| Sample #1 - Simple Home
 
-    mixin lia_template(ref='')
-      +lia(templateUrl+ref)._link: block
-
     mixin lia_basic(ref='')
       +lia(basicUrl+ref)._link: block
-
-    section._mv_2
-      h2 Starter Templates
-      nav.pages
-        ._flex
-          ._f_12_4
-            ul._no_margin
-              +lia_template("index.html")| Home Page
-              +lia_template('full_screen.html')| Full Screen
-              +lia_template('split_screen.html')| Split Screen
-          ._f_12_4
-            ul._no_margin
-              +lia_template('flex_gallery.html')| Flex Gallery
-              +lia_template('classic_page.html')| Classic Page
-              +lia_template('classic_list.html')| Classic List
-          ._f_12_4
-            ul._no_margin
-              +lia_template("starter.html")| Starter Page
 
     section._mv_2
       h2 Basic Templates
@@ -118,17 +97,23 @@ block main
         ._flex
           ._f_12_4
             ul._no_margin
-              +lia_basic("starter.html")| Starter Page
+              +lia_basic("index.html")| Home Page
+              +lia_basic('full_screen.html')| Full Screen
+              +lia_basic('split_screen.html')| Split Screen
+              +lia_basic('flex_gallery.html')| Flex Gallery
+              +lia_basic('classic_page.html')| Classic Page
+              +lia_basic('classic_list.html')| Classic List
           ._f_12_4
             ul._no_margin
+              +lia_basic("starter.html")| Starter Page
               +lia_basic("coming_soon.html","Quickly setup a page to go live real soon.")._link| Coming soon
               +lia_basic("closed.html","When you decide to temporarily close your website.")._link| Temporary closed
           ._f_12_4
             ul._no_margin
               li
-                +a("404.html","When a browser lands on a missing page.")._link| 404 -- Not found
+                +a(basicUrl+"404.html","When a browser lands on a missing page.")._link| 404 -- Not found
                 +_a("---","Simulate Real 404")._link._nav_icon._no_print: +middots
-              +lia("500.html","When your server encounters an error.")._link| 500 -- Oops!
+              +lia_basic("500.html","When your server encounters an error.")._link| 500 -- Oops!
               +lia_basic("blank.html","Just a blank page to start building.")._link| Blank Page
 
     hr

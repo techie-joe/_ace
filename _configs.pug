@@ -27,13 +27,14 @@
   let homeUrl        = '/ace/'
   let assetsUrl      = '/ace/assets/'
   let demoUrl        = '/ace/demo/'
-  let templateUrl    = '/ace/templates/'
   let basicUrl       = '/ace/basic/'
+
+  let templateUrl    = '/ace/templates/' // deprecated
 
   //- open graph metadata for social media sharing
   let og_title       = title
   let og_description = description
-  let og_url         = siteUrl+'?utm_source=homescreen'
+  let og_url         = siteUrl + '?utm_source=homescreen'
   let og_type        = 'website'
   let og_image       = ''
   let og_imageAlt    = ''
@@ -78,7 +79,7 @@
 
   function updateUrl( _value, _type='website' ){
     siteUrl = _value
-    og_url  = _value+'?utm_source=homescreen'
+    og_url  = _value + '?utm_source=homescreen'
     og_type = _type
   }
 
