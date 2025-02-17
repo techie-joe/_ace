@@ -1,0 +1,21 @@
+extends _html
+
+block append vars
+  - heading = `Intro`
+  - about   = `Intro page.`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `${about}` )
+  - updateUrl( siteUrl+"intro.html" )
+
+block append style
+  +cssv(assetsUrl+'gcss/style.css')
+
+block main
+  +main#_main: article
+
+    section#acelinks._p._no_print._nav_color._pa._radius_x5r
+      +backlink._link #[+itext|←]#[span._btnlabel Back]
+      +_a("---","Simulate Real 404")._link._nav_icon._no_print: +middots
+      +_a("404.html","When a browser lands on a missing page.")._link| 404
+      +_a("500.html","When your server encounters an error.")._link| 500
+      +_a("blank.html","Just a blank page to start building.")._link| Blank

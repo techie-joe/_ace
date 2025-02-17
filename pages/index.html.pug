@@ -113,17 +113,9 @@ block main
               +lia_basic("404.html","When a browser lands on a missing page.")._link| 404 -- Not found
               +lia_basic("500.html","When your server encounters an error.")._link| 500 -- Oops!
               +lia_basic("blank.html","Just a blank page to start building.")._link| Blank Page
-
-    section._mv_2
-      nav.pages
-        ._flex
-          ._f_12_4
-            ul._no_margin
-              li
-                +a("404.html","When a browser lands on a missing page.")._link| 404 -- Not found
-                +_a("---","Simulate Real 404")._link._nav_icon._no_print: +middots
-              +lia("500.html","When your server encounters an error.")._link| 500 -- Oops!
-              +lia("blank.html","Just a blank page to start building.")._link| Blank Page
+        //- flex
+      //- nav
+    //- section
 
     hr
 
@@ -147,6 +139,8 @@ block main
     //- flex
 
     hr
+
+    #acelinks
 
 block footer
   +footer#_footer
@@ -174,9 +168,20 @@ block footer
 block append script
   +needjs
   script.
-    (function(){ if( sourceref && window.location.hostname === '#{LOCALHOST}' ) {
-      sourceref.innerHTML = [
-        '|<a class="_link _b" href="#{sourceUrl}" target="page_source">SOURCE</a>',
-        '|<a class="_link _b" href="#{builderUrl}" target="page_builder">BUILDER</a>',
-      ].join('');
-    }})();
+    (function(w){
+      if( w.location.hostname === '#{LOCALHOST}' ) {
+        if( sourceref ) {
+          sourceref.innerHTML = [
+            '|<a class="_link _b" href="#{sourceUrl}" target="page_source">SOURCE</a>',
+            '|<a class="_link _b" href="#{builderUrl}" target="page_builder">BUILDER</a>',
+          ].join('');
+        }
+        if( acelinks ) {
+          acelinks.innerHTML = [
+            '<div class="_pa _nav_color _radius_x5r">',
+            '<a class="_link" href="intro.html">Intro</a> ',
+            '</div><hr/>',
+          ].join('');
+        }
+      }
+    })(window);
