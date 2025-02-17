@@ -2,9 +2,10 @@ extends ../../pugs/html
 
 block append vars
   include _vars
+  - layoutName += '/basic'
 
 block append style
-  +cssv(assetsUrl+'gcss/style.css')
+  +cssv(assetsUrl+'gcss/basic_style.css')
   //- style.
 
 block views
@@ -26,7 +27,10 @@ block views
       //- +main#_main: article| main article
       //- +pre._ma: +putData
       //- +pageData#_pageData._page_layout
-      +pageData#_pageData._page_layout
+      #_pageData._page_layout
+        div: +backlink._link #[+itext|←]#[span._btnlabel Back]
+        hr
+        +pre._scrollable._full_width: +putData
 
     block footer
       //- +footer#_footer

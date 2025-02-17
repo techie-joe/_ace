@@ -10,6 +10,7 @@ block main
   +main#_main: article
 
     section#acelinks._p
+      +_a('..',"Parent's Page")._link._nav_icon|&bull;
       +_a(homeUrl,"Back to Ace Template")._link| Home
       +_a("---","Simulate Real 404")._link._nav_icon._no_print: +middots
       +_a("404.html","When a browser lands on a missing page.")._link| 404

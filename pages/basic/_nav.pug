@@ -1,18 +1,17 @@
 //- +nav#_nav: ul: +lia
 
 mixin menu_link(ref='')
-  +_a(templateUrl+ref)._link: block
+  +_a(basicUrl+ref)._link: block
 
 mixin menu(n)
   -
     temp = [
-      ['index.html','Home'],
+      ['','Home'],
       ['full_screen.html','Full'],
       ['split_screen.html','Split'],
       ['flex_gallery.html','Flex'],
       ['classic_page.html','Page'],
       ['classic_list.html','List'],
-      ["starter.html",'Starter'],
     ];
   each v in temp
     +menu_link(v[0])=`${v[1]}`
@@ -21,5 +20,7 @@ include _logo
 mixin navbar
   #_navbar._flex
     ._f_min._nav_color._text_center: +logo
-    ._fill._nav_color(style="flex-basis:20rem"): +nav#_nav._no_print_href: +menu
+    ._fill._nav_color(style="flex-basis:20rem"): +nav#_nav._no_print_href
+      +menu
+      +_a('intro.html','More ...')._link._nav_icon: +bulls
     ._f_min._pa_x5r._nav_color._text_right: +changeThemeLink._navChangeThemeLink._link._nav_icon: +isvg(svgi.compare)

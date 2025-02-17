@@ -1,0 +1,60 @@
+extends _html
+
+block append vars
+  - heading = `Ace Basic`
+  - about   = `A versatile template with a clean layout.`
+  - updateTitle( `Ace Basic by ${author}` )
+  - updateDescription( `${about}` )
+  - updateUrl( siteUrl+"index.html" )
+
+block prepend views
+  aside#acelinks
+  //- +pageData#_pageData._page_layout
+
+
+block nav
+
+block append style
+  style.
+    #_html .pages ul { list-style-type: none; padding-inline-start: 0; }
+  //- style.
+
+block main
+  +main#_main: article
+
+    mixin lia_basic(ref='',title)
+      +lia(basicUrl+ref,title)._link: block
+
+    ._flex.pages._mv
+      ._f_12_4
+        ul._no_margin
+          +lia_basic("index.html")| Home Page
+          +lia_basic('full_screen.html')| Full Screen
+          +lia_basic('split_screen.html')| Split Screen
+          +lia_basic('flex_gallery.html')| Flex Gallery
+          +lia_basic('classic_page.html')| Classic Page
+          +lia_basic('classic_list.html')| Classic List
+      //- ._f_12_4
+        ul._no_margin
+      ._f_12_4
+        ul._no_margin
+          +lia_basic("coming_soon.html","Quickly setup a page to go live real soon.")._link| Coming soon
+          +lia_basic("closed.html","When you decide to temporarily close your website.")._link| Temporary closed
+          +lia_basic("404.html","When a browser lands on a missing page.")._link| 404 -- Not found
+          +lia_basic("500.html","When your server encounters an error.")._link| 500 -- Oops!
+          +lia_basic("blank.html","A blank page to start building.")._link| Blank Page
+    //- flex
+
+block append script
+  script.
+    (function(w){
+      if( w.location.hostname === '#{LOCALHOST}' ) {
+        if( acelinks ) {
+          acelinks.innerHTML = [
+            '<div class="_relative"><div class="_pa _absolute">',
+            '<a class="_link _nav_icon" href=".." title="Ace Template">&bull;</a> ',
+            '</div></div>',
+          ].join('');
+        }
+      }
+    })(window);

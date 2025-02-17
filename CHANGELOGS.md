@@ -15,6 +15,7 @@ update : version
 update : content  
 [BUILDER__](_BUILDER_vars.pug)  
 [INDEX____](pages/index.html.pug)  
+[BASIC____](pages/basic/index.html.pug)  
 [TODO_____](todos/TODO.md)  
 
 check : content  
