@@ -2,10 +2,12 @@ include _vars
 
 block vars
   //- variables for every html page
+  - layoutName  = 'html'
 
 //- block append vars
   include _vars
-  - updateTitle( `(untitled) | ${title}` )
+  - heading = `(untitled)`
+  - updateTitle( `${heading} | ${title}` )
   - updateDescription( `(undescribed)` )
 
 block entry
@@ -14,7 +16,7 @@ block entry
 doctype html
 html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
 
-  | <!-- layout:html/#{codeName} -->
+  | <!-- layout:#{layoutName} -->
  
   head
     meta(charset=charset)/
@@ -49,13 +51,12 @@ html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
               //- +main#_main: article| main article
               //- +pre._ma: +putData
               //- +pageData#_pageData._page_layout
-              #_pageData._page_layout
+              #_pageData._ma
                 h1._h7 !{description}
                 hr
                 div: +backlink._link #[+itext|←]#[span._btnlabel Back]
                 hr
-                +pre._scrollable._full_width
-                  +putData
+                +pre._scrollable._full_width: +putData
                 hr
 
             block footer
@@ -69,7 +70,9 @@ html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
 
     block script
       //- +jsv(src)
-      +jsv(assetsUrl+'cjs/thm.js')(defer)
+      +jsv(assetsUrl+'cjs/thm.js')
+      if INCLUDE_SERVICE_WORKERS
+        +jsv(assetsUrl+'sw.j')
 
     block last
       | <!-- IE needs 512+ bytes: https://techie-joe.github.io/library/html5/ie#ie-needs-512-bytes -->

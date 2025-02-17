@@ -163,9 +163,7 @@ mixin itext
 //- ==============================================================
 
 mixin pageData
-  aside&attributes(attributes)
-    +pre._scrollable._full_width
-      +putData
+  aside&attributes(attributes): +pre._scrollable._full_width: +putData
 
 //- ==============================================================
 //- php

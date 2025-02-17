@@ -1,10 +1,11 @@
 extends html
 
 block append vars
-  - codeName  = 'error'
-  - htmlClass = htmlClass+' _errorpage'
+  - layoutName  = 'error'
+  - htmlClass += ' _errorpage'
 
 //- block append vars
+  include _vars
   - heading = `(untitled)`
   - updateTitle( `${heading}` )
   - updateDescription( `(undescribed)` )

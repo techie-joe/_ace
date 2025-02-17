@@ -12,16 +12,15 @@
   let heading        = '(untitled)'
   let about          = '(undescribed)'
 
-  let brandName      = '(unknown)'
-  let codeName       = '(unknown)'
+  let layoutName     = '(undefined)'
   let author         = '(unknown)'
   let publisher      = 'Tidloo'
 
   //- urls
-  let siteUrl        = 'https://techie-joe.github.io/ace/'
+  let authorUrl      = 'https://github.com/techie-joe/'
   let sourceUrl      = 'https://github.com/techie-joe/ace/'
   let builderUrl     = 'https://github.com/techie-joe/_ace/'
-  let authorUrl      = 'https://github.com/techie-joe/'
+  let siteUrl        = 'https://techie-joe.github.io/ace/'
   let localUrl       = 'http://localhost/ace/'
 
   let homeUrl        = '/ace/'
@@ -32,9 +31,9 @@
   let templateUrl    = '/ace/templates/' // deprecated
 
   //- open graph metadata for social media sharing
+  let og_url         = siteUrl + '?utm_source=homescreen'
   let og_title       = title
   let og_description = description
-  let og_url         = siteUrl + '?utm_source=homescreen'
   let og_type        = 'website'
   let og_image       = ''
   let og_imageAlt    = ''
@@ -57,6 +56,7 @@
 
   //- progressive web app metadata
   let INCLUDE_MANIFEST = false
+  let INCLUDE_SERVICE_WORKERS = false
 
   //- project
   const LOCALHOST      = 'localhost';
@@ -77,9 +77,9 @@
     og_description = _description
   }
 
-  function updateUrl( _value, _type='website' ){
+  function updateUrl( _value='', _type='website' ){
     siteUrl = _value
-    og_url  = _value + '?utm_source=homescreen'
+    og_url  = _value? _value + '?utm_source=homescreen' : '';
     og_type = _type
   }
 
@@ -91,7 +91,7 @@
 //- =================================================================
 //- data mixins
 
-mixin putDataTitle
+mixin putData
   +l
   +join([
     `title            = ${title}`,
@@ -100,38 +100,22 @@ mixin putDataTitle
     `heading          = ${heading}`,
     `about            = ${about}`,
     ``,
-    `brandName        = ${brandName}`,
-    `codeName         = ${codeName}`,
+    `layoutName       = ${layoutName}`,
     `author           = ${author}`,
     `publisher        = ${publisher}`,
     ``,
     `version          = ${version}`,
     `build            = ${build}`,
     `now              = ${now}`,
-  ])
-  +l
-
-mixin putDataOg
-  +l
-  +join([
+    ``,
+    `authorUrl        = ${authorUrl}`,
+    `siteUrl          = ${siteUrl}`,
+    ``,
+    `og_url           = ${og_url}`,
     `og_title         = ${og_title}`,
     `og_description   = ${og_description}`,
     `og_type          = ${og_type}`,
-    `og_url           = ${og_url}`,
     `og_image         = ${og_image}`,
     `og_imageAlt      = ${og_imageAlt}`,
   ])
   +l
-
-mixin putDataUrl
-  +l
-  +join([
-    `siteUrl          = ${siteUrl}`,
-    `authorUrl        = ${authorUrl}`,
-  ])
-  +l
-
-mixin putData
-  +putDataTitle
-  +putDataOg
-  +putDataUrl

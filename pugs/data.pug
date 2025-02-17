@@ -2,16 +2,18 @@ include _vars
 
 block vars
   //- variables for every data page
+  - layoutName  = 'data'
 
 //- block append vars
   include _vars
-  - updateTitle( `(untitled)` )
+  - heading = `(untitled)`
+  - updateTitle( `${heading} | ${title}` )
   - updateDescription( `(undescribed)` )
 
 doctype html
 html#_html(lang=lang class=htmlClass)
 
-  |<!-- layout:data/#{codeName} -->
+  |<!-- layout:#{layoutName} -->
 
   head
     meta(charset=charset)/
