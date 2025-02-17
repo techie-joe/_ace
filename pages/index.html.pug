@@ -56,6 +56,8 @@ block append style
     .download, .viewdemo { min-width: 6em; margin: .5em .3em; }
 
 block header
+  #acelinks
+  //- +pageData._mh
   +header#_header
     #intro
       h1._hero_2 #[span.t1 Ace] #[span.t2._tc_primary Template]
@@ -140,8 +142,6 @@ block main
 
     hr
 
-    #acelinks
-
 block footer
   +footer#_footer
     ._pa._nav_color._radius_x5r
@@ -178,9 +178,9 @@ block append script
         }
         if( acelinks ) {
           acelinks.innerHTML = [
-            '<div class="_pa _nav_color _radius_x5r">',
-            '<a class="_link" href="intro.html">Intro</a> ',
-            '</div><hr/>',
+            '<div class="_relative"><div class="_pa _absolute">',
+            '<a class="_link _nav_icon" href="intro.html">&bull;</a> ',
+            '</div></div>',
           ].join('');
         }
       }

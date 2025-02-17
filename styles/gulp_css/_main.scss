@@ -176,8 +176,6 @@ hr,._hr {
   height: .05rem;
 }
 
-// ?? ace need to check this : _btnlabel ? _label ? ? _btnpad
-
 #_heading .__a { margin: 0 -.3em; line-height: 1; } // ??
 
 // #_html
@@ -349,7 +347,6 @@ hr { @extend ._hrt; @extend ._hrb; }
 
 ._btnlabel {
   display: inline-block;
-  vertical-align: top;
   padding: 0 .5em;
 }
 
