@@ -106,7 +106,7 @@ block append script
       if( w.location.hostname === '#{LOCALHOST}' ) {
         if( acelinks ) {
           acelinks.innerHTML = [
-            '<div class="_relative"><div class="_pa _absolute">',
+            '<div class="_relative"><div class="_pa _absolute" style="z-index:1;">',
             '<a class="_link _nav_icon" href=".." title="Back to Ace Template"><i class="_itext"><i class="itext">&larr;</i></i></a> ',
             '</div></div>',
           ].join('');
