@@ -266,7 +266,7 @@ hr,._hr {
 }
 
 ._itext { @extend ._icon; }
-._itext .itext { font-size: 1.5em; line-height: 0.9; } /* offset baseline for *most-icons */
+._itext .itext { font-size: 1.4em; } /* offset baseline for *most-icons */
 
 ._isvg { @extend ._icon; svg { vertical-align:top; } } /* fix spinning axis */
 

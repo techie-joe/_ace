@@ -58,7 +58,7 @@ block append style
 
 block header
   //- +pageData._mh
-  #acelinks
+  aside#acelinks
   +header#_header
     #intro
       h1._hero_2 #[span.t1 Ace] #[span.t2._tc_primary Template]
@@ -74,7 +74,7 @@ block main
 
       p._text_justify(style="min-height:5rem") This template comes with #[b._h7 pre-made components] and #[b._h7 helper classes], giving you an easy building experience. We have simplified web creation to make it accessible to everyone, even those without technical expertise. Dive in and start building your website right away. With a variety of customization options, you can create a professional and unique website tailored to your needs.
 
-      ._mv._nav_color._radius_x5r._pa_x5r._ph
+      ._mv._nav_color._radius_x5r._pa_x5r._ph._no_print
         +a('','Get the template')(onclick=onclick())._btnlink.download #[span._btnlabel Download]
         +a(demoUrl,'Explore demo')._btnlink.viewdemo #[span._btnlabel Explore]
 
@@ -87,7 +87,7 @@ block main
           ._f_12_4: ul._no_margin
             +lia("/ace/sample_1/")._link| Sample #1 - Simple Home
           ._f_12_4: ul._no_margin
-            +lia(basicUrl+'intro.html')._link| Ace Basic
+            +lia(basicUrl+'intro.html')._link| Basic Template
         //- flex
       //- nav
     //- section
@@ -135,7 +135,7 @@ block footer
         ._f_12_4
           div._smaller._text_justify
             | Some part of this site may come from external sources. Those files #[b._tc_contra may not be included] in the distributed packages of this template due to the original author's terms. References to obtain them directly from the author will be provided.
-            | #[span._no_wrap • Thanks to] Matt at #[a._no_color(href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/") SVGBackgrounds] for free SVG images.
+            | #[span._no_wrap &bull; Thanks to] Matt at #[a._no_color(href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/") SVGBackgrounds] for free SVG images.
 
     hr
     p._small._system !{copyright}
@@ -154,7 +154,7 @@ block append script
         if( acelinks ) {
           acelinks.innerHTML = [
             '<div class="_relative"><div class="_pa _absolute">',
-            '<a class="_link _nav_icon" href="info.html" title="Info page">&bull;</a> ',
+            '<a class="_link _nav_icon" href="info.html" title="Info page"><i class="_itext"><i class="itext">&middot;</i></i></a> ',
             '</div></div>',
           ].join('');
         }

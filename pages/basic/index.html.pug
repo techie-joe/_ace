@@ -1,9 +1,9 @@
 extends _html
 
 block append vars
-  - heading = `Ace Basic`
+  - heading = `Basic Template`
   - about   = `A versatile template with a clean layout.`
-  - updateTitle( `Ace Basic by ${author}` )
+  - updateTitle( `Basic Template by ${author}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+"index.html" )
 
@@ -44,4 +44,9 @@ block header
 
 block main
   +main#_main: article
+
+block footer
+  //- +footer#_footer
+  +footer#_footer
+    p._small._system !{copyright}
 
