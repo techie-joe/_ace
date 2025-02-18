@@ -40,3 +40,9 @@ block views
     
     block asides
       //- +aside#_aside
+
+//- block script
+  //- +jsv(src)
+  //- +jsv(assetsUrl+'cjs/thm.js')
+  //- if INCLUDE_SERVICE_WORKERS
+    +jsv(assetsUrl+'sw.j')

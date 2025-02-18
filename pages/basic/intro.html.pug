@@ -6,6 +6,7 @@ block append vars
   - updateTitle( `Basic Template by ${author}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+"index.html" )
+  - svgi.print = 'M18,3H6V7H18M19,12A1,1 0 0,1 18,11A1,1 0 0,1 19,10A1,1 0 0,1 20,11A1,1 0 0,1 19,12M16,19H8V14H16M19,8H5A3,3 0 0,0 2,11V17H6V21H18V17H22V11A3,3 0 0,0 19,8Z'; // printer
 
 //- block prepend views
   //- +pageData#_pageData._page_layout
@@ -100,13 +101,55 @@ block main
           +lia_basic("blank.html","A blank page to start building.")._link| Blank Page
     //- flex
 
+    hr
+
+    ._flex._gap_2
+
+      ._f_2_1
+        section._mb_2
+          h2 Available in light and dark
+
+          p._text_justify This template is readily available in both light and dark color schemes. You can easily switch between the two by using the keyboard shortcut #[code._code._no_wrap='Ctrl + Alt + T']. You may also use a button or a script to programmatically execute #[code._code._no_wrap='base.theme.change()'].
+
+          p._no_print._needjs: +changeThemeLink._btnlink #[+isvg(svgi.compare)] #[span._btnlabel Change Theme]
+
+      ._f_2_1
+        section._mb_2
+          h2 Good design, even in print
+          p._text_justify You will want a website that looks great when printed. This template excel on paper. Enjoy good design and functionality, viewed digitally or in print. Elevate your professionalism with a website that stand out in every medium.
+
+          p._no_print._needjs: +a()(title="Print Page (Ctrl+P)" onclick=onclick(js.print))._btnlink #[+isvg(svgi.print)] #[span._btnlabel Print Page]
+
+    //- flex
+
+    hr
+
+block footer
+  +footer#_footer
+    ._pa._nav_color._radius_x5r
+
+      ._flex._gap_a
+        ._f_fit
+          ._smaller._mono
+            |#{title} #[br/]
+            |Version: #{version} - #[span._no_wrap b#{build}]
+
+        ._f_12_4
+          div._smaller._text_justify
+            | Some part of this site may come from external sources. Those files #[b._tc_contra may not be included] in the distributed packages of this template due to the original author's terms. References to obtain them directly from the author will be provided.
+            //- | #[span._no_wrap &bull; Thanks to] Matt at #[a._no_color(href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/") SVGBackgrounds] for free SVG images.
+
+    hr
+    p._small._system !{copyright}
+
+
 block append script
   script.
     (function(w){
       if( w.location.hostname === '#{LOCALHOST}' ) {
         if( acelinks ) {
           acelinks.innerHTML = [
-            '<div class="_relative"><div class="_pa _absolute" style="z-index:1;">',
+            '<div class="_relative _no_print"><div class="_pa _absolute" style="z-index:1;">',
             '<a class="_link _nav_icon" href=".." title="Back to Ace Template"><i class="_itext"><i class="itext">&larr;</i></i></a> ',
             '</div></div>',
           ].join('');

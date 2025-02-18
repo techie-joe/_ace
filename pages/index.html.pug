@@ -52,8 +52,8 @@ block append style
 
     #_html .pages ul { list-style-type: none; padding-inline-start: 0; }
 
-    #_html       .download { background-color: #1b36b0; color:#fff; border-color: #3046a8; }
-    #_html._dark .download { background-color: #7a8eea; color:#000; border-color: #5f72c5; }
+    #_html       .viewdemo { background-color: #1b36b0; color:#fff; border-color: #3046a8; }
+    #_html._dark .viewdemo { background-color: #7a8eea; color:#000; border-color: #5f72c5; }
     .download, .viewdemo { min-width: 6em; margin: .5em .3em; }
 
 block header
@@ -75,8 +75,8 @@ block main
       p._text_justify(style="min-height:5rem") This template comes with #[b._h7 pre-made components] and #[b._h7 helper classes], giving you an easy building experience. We have simplified web creation to make it accessible to everyone, even those without technical expertise. Dive in and start building your website right away. With a variety of customization options, you can create a professional and unique website tailored to your needs.
 
       ._mv._nav_color._radius_x5r._pa_x5r._ph._no_print
-        +a('','Get the template')(onclick=onclick())._btnlink.download #[span._btnlabel Download]
-        +a(demoUrl,'Explore demo')._btnlink.viewdemo #[span._btnlabel Explore]
+        //- +a('','Get the template')(onclick=onclick())._btnlink.download #[span._btnlabel Download]
+        +a(demoUrl,'View Demo')._btnlink.viewdemo #[span._btnlabel View Demo]
 
     hr
 
@@ -153,7 +153,7 @@ block append script
         }
         if( acelinks ) {
           acelinks.innerHTML = [
-            '<div class="_relative"><div class="_pa _absolute" style="z-index:1;">',
+            '<div class="_relative _no_print"><div class="_pa _absolute" style="z-index:1;">',
             '<a class="_link _nav_icon" href="info.html" title="Info page"><i class="_itext"><i class="itext">&middot;</i></i></a> ',
             '</div></div>',
           ].join('');

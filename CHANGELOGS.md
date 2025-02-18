@@ -7,6 +7,8 @@ Developer notes to track changes made to the template.
 update : version & build  
 [CONFIG___](_CONFIGS.pug)  
 [CSS_COPY_](styles/gulp_css/_copyright.scss)  
+[BASIC___V](pages/basic/_vars.pug)  
+[BASIC___C](pages/basic/CHANGELOGS.md)  
 
 update : version  
 [PACKAGE__](package.json)  
@@ -14,16 +16,16 @@ update : version
 
 update : content  
 [BUILDER__](_BUILDER_vars.pug)  
-[INDEX____](pages/index.html.pug)  
-[BASIC____](pages/basic/index.html.pug)  
+[ACE_____I](pages/index.html.pug)  
+[BASIC___I](pages/basic/index.html.pug)  
 [TODO_____](todos/TODO.md)  
 
 check : content  
 [BUILDER__](README.md)  
 [SITE_____](../ace/README.md)  
 
-### Feb 18, 2025 - v0.1.24 b323.11
-- inprove: basic.
+### Feb 18, 2025 - v0.1.24 b323.12
+- improve: basic.
 
 ### Feb 16, 2025 - v0.1.24 b322.8
 - rename: INCLUDE_MANIFEST var.
