@@ -1,15 +1,15 @@
-extends _html
+extends ../../pugs/html
 
 block append vars
+  include _vars
+
   - heading = `Blank Page`
   - about   = `A blank page to start building.`
   - updateTitle( `${heading} | ${title}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+"blank.html" )
 
-block nav
-
 //- block main
   //- +main#_main: article| main article
   //- +pre._ma: +putData
-  +pageData#_pageData._page_layout
+  //- +pageData#_pageData._page_layout

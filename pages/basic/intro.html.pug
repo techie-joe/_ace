@@ -40,7 +40,9 @@ block main
         ul._no_margin
           +lia_basic("coming_soon.html","Quickly setup a page to go live real soon.")._link| Coming soon
           +lia_basic("closed.html","When you decide to temporarily close your website.")._link| Temporary closed
-          +lia_basic("404.html","When a browser lands on a missing page.")._link| 404 -- Not found
+          li
+            +a("404.html","When a browser lands on a missing page.")._link| 404 -- Not found
+            +_a("---","Simulate a real 404")._link._nav_icon._no_print: +middots
           +lia_basic("500.html","When your server encounters an error.")._link| 500 -- Oops!
           +lia_basic("blank.html","A blank page to start building.")._link| Blank Page
     //- flex
