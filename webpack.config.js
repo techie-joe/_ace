@@ -6,9 +6,9 @@ module.exports = {
   mode: 'production',
   entry: {
     // [output-file] : [input-file]
-    // "ts.min.js"  : path.resolve(__dirname, 'scripts/ts_js/ts.js'),
-    // "gulp.min.js"    : path.resolve(__dirname, 'scripts/gulp_js/gulp.js'),
-    // "custom.min.js"  : path.resolve(__dirname, 'scripts/custom_js/custom.js'),
+    "thm.js"  : path.resolve(__dirname, 'scripts/ts_js/thm.js'),
+    // "gulp.js"    : path.resolve(__dirname, 'scripts/gulp_js/gulp.js'),
+    // "custom.js"  : path.resolve(__dirname, 'scripts/custom_js/custom.js'),
   },
   output: {
     path: path.resolve(__dirname, '../ace/assets/wpjs'),
