@@ -11,6 +11,7 @@ block style
     ._inline { display:inline }
     ._small  { font-size:.9em }
     ._mono   { font-family: 'Consolas',monospace; }
+    ._pre    {  }
     #nav .icon { text-align:center }
     #nav ._link {
       text-decoration: none;
@@ -23,6 +24,10 @@ block style
       color:inherit;
     }
     #nav ._link:hover { outline: 2px solid #888; }
+    .h { color:#000 }
+    @media (prefers-color-scheme: dark) {
+      .h { color:#fff }
+    }
 
   +htmlPreset
   //- +cssv(assetsUrl+'gcss/ace.css')
@@ -40,9 +45,9 @@ block main
     hr
 
     section
-      h1._h7._small._mono !{heading}
-      ._p._mono._small._scrollable._full_width._text_left
-        #jsout
+      h1._h7.h._small._mono !{heading}
+      ._p._mono._scrollable._full_width._text_left
+        pre#jsout
     hr
 
 block script
