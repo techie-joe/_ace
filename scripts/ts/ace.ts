@@ -1,7 +1,7 @@
 /*! Ace Template | v0.1.24 b323.13 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
 "use strict";
 interface Window {
-  base: { theme: {} };
+  base: { theme: {}, ignore_keyboard: boolean };
 }
 (() => {
   const
@@ -26,23 +26,16 @@ interface Window {
     //     if (o && a(o) === OBJ) return o;
     //   } catch (e) { }
     // },
-    // append = (e:Node, t:any) => { if (t) return a(t) === STR ? e.appendChild(d.createTextNode(t)) : e.appendChild(t); },
+    // node = (e:Node, t:any) => { if (t) return a(t) === STR ? e.appendChild(d.createTextNode(t)) : e.appendChild(t); },
     // append = add nodes,
-    CLASSES = new RegExp('[\\.\\|\\s]+', 'g'),
-    fClass = (e: HTMLElement, t: string, n: string) => {
-      const
-        r = (e: string, t = "|") => e.replace(CLASSES, t).trim(),
-        o = n ? r(n, " ") : "",
-        a = r(o + "|" + t),
-        b = new RegExp("(^|\\s+)(" + a + ")\\s*(?=(\\s|$))", "g");
-      e.className = (e.className.replace(b, "") + (o.length ? " " + o : "")).trim();
-      return e
-    },
+    // listenTo = <K extends keyof WindowEventMap>(w: Window, t: K, n: (this: Window, ev: WindowEventMap[K]) => any, opt?: boolean | AddEventListenerOptions) => {
+    //   // todo
+    // },
     storage = (() => {
       const
         KEY = 'base',
-        { localStorage: S } = w;
-      if (S) {
+        { localStorage: storage } = w;
+      if (storage) {
         // todo
       }
       const
@@ -56,17 +49,27 @@ interface Window {
     theme = (() => {
       const
         KEY = "theme", // storage key
-        DARK = '_dark';
+        DARK = '_dark',
+        changeClass = (e: HTMLElement, c: string, n?: string) => {
+          const
+            SEPERATORS = new RegExp('[\\.\\|\\s]+', 'g'),
+            r = (s: string, r = "|") => s.replace(SEPERATORS, r).trim(),
+            o = n ? r(n, " ") : "",
+            a = r(o + "|" + c),
+            b = new RegExp("(^|\\s+)(" + a + ")\\s*(?=(\\s|$))", "g");
+          e.className = (e.className.replace(b, "") + (o.length ? " " + o : "")).trim();
+          return e
+        };
       var
         list = [DARK],
         current = ''; // current
       const
         set = (s = '') => {
-          fClass(DOC, current, s);
+          changeClass(DOC, current, s);
           storage.set(KEY, s);
           return current = s;
         },
-        change = (s: string | string[]) => {
+        change = (s?: string | string[]) => {
           s = s || list;
           isARR(s) ? (list = s, set(s[s.indexOf(current) + 1] || '')) : a(s) === STR ? set(s) : err('to change theme');
         };
@@ -81,5 +84,11 @@ interface Window {
     { base: b } = w;
 
   b = b || { theme: theme };
+
+  // b.ignore_keyboard || listenTo(w, "keyup", (
+  //   x = (e:Event) => { e.altKey && "KeyT" === e.code && theme.change() },
+  //   e => { C && e.isComposing || x(e) }
+  // ));
+    
   w.base = b;
 })()

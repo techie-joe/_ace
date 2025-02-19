@@ -28,7 +28,7 @@ html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
       include _meta
 
     block style
-      +htmlColor
+      +htmlPreset
       //- +cssv(href,media='all')
       +cssv(assetsUrl+'gcss/ace.css')
 
@@ -70,9 +70,9 @@ html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
 
     block script
       //- +jsv(src)
-      +jsv(assetsUrl+'cjs/thm.js')
+      +jsv(assetsUrl+'cjs/thm.js')(defer)
       if INCLUDE_SERVICE_WORKERS
-        +jsv(assetsUrl+'sw.j')
+        +jsv(assetsUrl+'sw.j')(defer)
 
     block last
       | <!-- IE needs 512+ bytes: https://techie-joe.github.io/library/html5/ie#ie-needs-512-bytes -->

@@ -1,0 +1,51 @@
+extends ../pugs/html
+
+block append vars
+  - heading = `Test CSS`
+  - updateTitle( `${heading}` )
+  - updateDescription( `Test page.` )
+  - updateUrl( siteUrl+"test_css.html" )
+
+block style
+  style.
+    ._inline { display:inline }
+    ._small  { font-size:.9em }
+    ._mono   { font-family: 'Consolas',monospace; }
+    #nav .icon { text-align:center }
+    #nav ._link {
+      text-decoration: none;
+      padding:.1em .3em;
+      border-radius: .2em;
+      display:inline-block;
+      min-width: 0.801em;
+      line-height: 1.2;
+      font-weight: bold;
+      color:inherit;
+    }
+    #nav ._link:hover { outline: 2px solid #888; }
+
+  +htmlPreset
+  //- +cssv(assetsUrl+'gcss/ace.css')
+  //- +cssv(assetsUrl+'gcss/style.css')
+
+block main
+  +main#_main: article
+
+    section._p
+      #nav._inline._mono
+        +backlink._link.icon|&larr;
+        +_a(homeUrl,"Back to Ace Template")._link| Home
+      ._inline._small
+        b: span#jstest(style="color:red;")='[JS KO]'
+    hr
+
+    section
+      h1._h7._small._mono !{heading}
+      ._p._mono._small._scrollable._full_width._text_left
+    hr
+
+block append script
+  script.
+    (function(){
+      jstest && (jstest.setAttribute('style','color:green;'),jstest.innerHTML = '[JS OK]');
+    })();
