@@ -1,8 +1,8 @@
-/*! Ace Template | v0.1.24 b323.16 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
+/*! Ace Template | v0.1.24 b323.17 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
 "use strict";
 interface Window {
   ace: {
-    ignore_keyboard: boolean,
+    ignoreKeyboard: boolean,
     fn: {},
     test: {},
     theme: {},
@@ -24,9 +24,6 @@ interface Window {
   // },
   // node = (e:Node, t:any) => { if (t) return A(t) === STR ? e.appendChild(D.createTextNode(t)) : e.appendChild(t); },
   // append = add nodes,
-  // listenTo = <K extends keyof WindowEventMap>(w: Window, t: K, n: (this: Window, ev: WindowEventMap[K]) => any, opt?: boolean | AddEventListenerOptions) => {
-  //   // todo
-  // },
   const
     W = window,
     D = document,
@@ -85,7 +82,48 @@ interface Window {
         set,
         get,
       }
-    })(),
+    })();
+
+  const
+    listenTo = (what: EventTarget, when: string, handler: EventListenerOrEventListenerObject, opt?: EventListenerOptions | boolean): { start:any, stop: any } | undefined => {
+      if ("addEventListener" in what && "removeEventListener" in what) {
+        what.addEventListener(when, handler, opt);
+        var h = handler;
+        return {
+          start: () => { handler = h },
+          stop: () => { handler = () => { } }, //silentTo(what, when, handler, opt),
+        }
+      }
+      if ("attachEvent" in what && "detachEvent" in what) {
+
+      }
+    };
+  //   w = (e, t, n, r) => {
+  //     y(e) ? e.removeEventListener(t, n, r) : E(e) ? e.detachEvent("on" + t, n) : g("Fail to remove event listener.")
+  // }
+  //   , b = (e, t, n, r) => {
+  //     if (y(e))
+  //         return e.addEventListener(t, n, r),
+  //         {
+  //             h: n,
+  //             stop: () => w(e, t, n, r)
+  //         };
+  //     if (E(e)) {
+  //         const o = a => {
+  //             n.apply(e, a),
+  //             r && r.once && e.detachEvent("on" + t, o)
+  //         }
+  //         ;
+  //         return e.attachEvent("on" + t, o),
+  //         {
+  //             h: o,
+  //             stop: () => e.detachEvent("on" + t, o)
+  //         }
+  //     }
+  //     g("Fail to add event listener.")
+  // }
+
+  const
     THEME = (() => {
       var
         current_list = ['_dark'],
@@ -100,28 +138,44 @@ interface Window {
         change = (new_theme?: string | string[]) => {
           var s = new_theme || current_list;
           isARR(s) ? (current_list = s, set(s[s.indexOf(current) + 1] || '')) : A(s) === STR ? set(s) : failTo('change theme');
+        },
+        enableShortcut = () => {
+          return shortcut = listenTo(W, "keyup", (e: Event) => {
+            ACE.ignoreKeyboard || 'altKey' in e && 'code' in e && e.altKey && "KeyT" === e.code && change();
+          });
+        },
+        disableShortcut = () => {
+          shortcut && shortcut.stop();
         };
+
+      var shortcut: { start:any, stop: any } | undefined = enableShortcut();
+
       return {
+        enableShortcut,
+        disableShortcut,
         set,
         change,
         current: () => current
       }
     })();
 
-  var { ace: B } = W;
-  B = B || {};
+  // =============================================================
 
-  B.theme = THEME;
-  B.storage = STORAGE;
+  var { ace: ACE } = W;
+  ACE = ACE || {};
 
-  B.fn = {};
+  // test ========================================================
 
-  // B.test = { invalid, failTo, };
 
-  // B.ignore_keyboard || listenTo(w, "keyup", (
-  //   x = (e:Event) => { e.altKey && "KeyT" === e.code && theme.change() },
-  //   e => { C && e.isComposing || x(e) }
-  // ));
 
-  W.ace = B;
+  // =============================================================
+
+  ACE.theme = THEME;
+  ACE.storage = STORAGE;
+  ACE.fn = {
+    // invalid, failTo,
+  };
+
+  // export ace ==================================================
+  W.ace = ACE;
 })()

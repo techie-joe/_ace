@@ -45,67 +45,65 @@
   if (TEST(W.ace, 'window.ace')) {
 
     log(W.ace)
-    const { fn, test, theme, storage } = W.ace;
+    const { fn, theme, storage } = W.ace;
 
-    // ====================================================== test
-    // if (TEST(test, 'window.ace.test')) {
-    //   test.invalid('err');
-    //   test.invalid('xxx', 'fff');
-    //   test.invalid('xxx', 'fff', 'yyy');
-    //   test.failTo('xxx');
-    // }
+    // ========================================== test updateClass
+
+    hr();
+    note('testing logic for updateClass', ORANGE);
+    const updateClass = (doc, del, add) => {
+
+      note([
+        `now = .${doc}.`,
+        `del = .${del}.`,
+        `add = .${add}.`,
+      ].join("\n"));
+
+      const
+        _ = '',
+        P = ' ',
+        I = '|',
+        X = 'g',
+        newRegex = (pattern, flags) => new RegExp(pattern, flags),
+        SEP = newRegex('[\\.\\|\\s]+', X),
+        TRIM = (s, sep = I) => s.trim().replace(SEP, sep).trim(),
+        NEW = add ? TRIM(add, P) : _,
+        DEL = del ? TRIM([del, NEW].join(P)).trim() : _,
+        SEL = newRegex('(^|\\s+)(' + DEL + ')(\\s*(' + DEL + '))*(\\s+|$)', X),
+        RES = doc.replace(SEL, P).trim() + (NEW.length ? P + NEW : _);
+        // (^|\s+)(DEL)(\s*(DEL))*(\s+|$)
+
+      note([
+        `NEW = .${NEW}.`,
+        `DEL = .${DEL}.`,
+        `SEL = .${SEL}.`,
+        `RES = .${RES}.`,
+      ].join("\n"));
+      hr();
+
+    };
+
+    updateClass(
+      '  a  _ox_  b  c  _oo_  d  ',
+      '  a  b  c  d  ',
+      '  e  f  '
+    );
+
+    updateClass(
+      'A _ox_ B C _oo D',
+      'A B C D',
+      'E F'
+    );
 
     // ======================================================== fn
     if (TEST(fn, 'window.ace.fn')) {
 
-
-      // updateClass
-      hr();
-      note('testing updateClass logic', ORANGE);
-      const updateClass = (doc, del, add) => {
-
-        note([
-          `now = .${doc}.`,
-          `del = .${del}.`,
-          `add = .${add}.`,
-        ].join("\n"));
-
-        const
-          _ = '',
-          P = ' ',
-          I = '|',
-          X = 'g',
-          newRegex = (pattern, flags) => new RegExp(pattern, flags),
-          SEP = newRegex('[\\.\\|\\s]+', X),
-          TRIM = (s, sep = I) => s.trim().replace(SEP, sep).trim(),
-          NEW = add ? TRIM(add, P) : _,
-          DEL = del ? TRIM([del, NEW].join(P)).trim() : _,
-          SEL = newRegex('(^|\\s+)(' + DEL + ')(\\s*(' + DEL + '))*(\\s+|$)', X),
-          RES = doc.replace(SEL, P).trim() + (NEW.length ? P + NEW : _);
-          // (^|\s+)(DEL)(\s*(DEL))*(\s+|$)
-
-        note([
-          `NEW = .${NEW}.`,
-          `DEL = .${DEL}.`,
-          `SEL = .${SEL}.`,
-          `RES = .${RES}.`,
-        ].join("\n"));
-        hr();
-
-      };
-
-      updateClass(
-        '  a  _ox_  b  c  _oo_  d  ',
-        '  a  b  c  d  ',
-        '  e  f  '
-      );
-
-      updateClass(
-        'A _ox_ B C _oo D',
-        'A B C D',
-        'E F'
-      );
-
+      // const { invalid, failTo } = fn;
+      // invalid('err');
+      // invalid('xxx', 'fff');
+      // invalid('xxx', 'fff', 'yyy');
+      // failTo('xxx');
+      
       // if (TEST(isFUN(fn.updateClass), 'window.ace.fn.updateClass')) { }
 
     }
@@ -148,6 +146,9 @@
           theme.change();
           note(`DOC.className = ${DOC.className}`);
         }
+
+        theme.change(['_dark']);
+        note(`DOC.className = ${DOC.className}`);
 
       }
 

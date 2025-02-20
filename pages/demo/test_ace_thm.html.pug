@@ -4,7 +4,7 @@ block append vars
   - heading = `Test AceJs`
   - updateTitle( `${heading}` )
   - updateDescription( `Test page.` )
-  - updateUrl( siteUrl+"test_acejs.html" )
+  - updateUrl( siteUrl+"test_ace_thm.html" )
 
 block style
   style.
@@ -76,8 +76,8 @@ block main
 
 block script
   //- +jsv(src)
-  +jsv('/_ace/scripts/ts_js/ace.js')(defer)
-  +jsv('/_ace/scripts/test_js/test_ace.js')(defer)
+  +jsv('/_ace/scripts/ts_js/ace_thm.js')(defer)
+  +jsv('/_ace/scripts/test_js/test_ace_thm.js')(defer)
 
   script.
     (function(){
