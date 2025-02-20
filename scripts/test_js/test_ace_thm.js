@@ -2,8 +2,8 @@
   const
     NOW = new Date().getMilliseconds(),
     RED = 'color:tomato;',
-    GREEN = 'color:lime;',
-    ORANGE = 'color:orange;',
+    GREEN = 'color:green;',
+    ORANGE = 'color:#975a00;',
     W = window,
     D = document,
     A = (a) => typeof a,
@@ -125,30 +125,30 @@
 
       if (TEST(isFUN(theme.set), 'window.ace.theme.set')) {
 
-        theme.set('AT');
-        note(`set           = AT`);
-        note(`current       = ${theme.current()}`);
-        note(`DOC.className = .${DOC.className}.`);
+        // theme.set('AT');
+        // note(`set           = AT`);
+        // note(`current       = ${theme.current()}`);
+        // note(`DOC.className = .${DOC.className}.`);
 
-        theme.set('BT');
-        note(`set           = BT`);
-        note(`current       = ${theme.current()}`);
-        note(`DOC.className = .${DOC.className}.`);
+        // theme.set('BT');
+        // note(`set           = BT`);
+        // note(`current       = ${theme.current()}`);
+        // note(`DOC.className = .${DOC.className}.`);
 
       }
 
       if (TEST(isFUN(theme.change), 'window.ace.theme.change')) {
 
-        theme.change(['pink','light','_dark']);
-        note(`DOC.className = ${DOC.className}`);
+        // theme.change(['pink','light','_dark']);
+        // note(`DOC.className = ${DOC.className}`);
 
-        for (var i = 0; i < 3; i++){
-          theme.change();
-          note(`DOC.className = ${DOC.className}`);
-        }
+        // for (var i = 0; i < 3; i++){
+        //   theme.change();
+        //   note(`DOC.className = ${DOC.className}`);
+        // }
 
-        theme.change(['_dark']);
-        note(`DOC.className = ${DOC.className}`);
+        // theme.change(['_dark']);
+        // note(`DOC.className = ${DOC.className}`);
 
       }
 

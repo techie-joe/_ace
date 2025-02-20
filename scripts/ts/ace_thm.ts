@@ -2,9 +2,7 @@
 "use strict";
 interface Window {
   ace: {
-    ignoreKeyboard: boolean,
     fn: {},
-    test: {},
     theme: {},
     storage: {},
   };
@@ -33,7 +31,7 @@ interface Window {
     ARR = TYPE([]),
     isARR = Array.isArray || (e => TYPE(e) === ARR),
     DOC = D.documentElement || D.body, // html or body
-    { log, error } = console,
+    { error } = console,
     invalid = (e: string, f?: string, t?: string) => error(`Invalid argument of (${e})${(f ? ` for ${f}` : '')}.${(t ? ` Expecting (${t})` : '')}`),
     failTo = (e: string) => error(`Fail to ${e}`),
     newRegex = (pattern: RegExp | string, flags?: string) => new RegExp(pattern, flags),
@@ -84,20 +82,19 @@ interface Window {
       }
     })();
 
-  const
-    listenTo = (what: EventTarget, when: string, handler: EventListenerOrEventListenerObject, opt?: EventListenerOptions | boolean): { start:any, stop: any } | undefined => {
-      if ("addEventListener" in what && "removeEventListener" in what) {
-        what.addEventListener(when, handler, opt);
-        var h = handler;
-        return {
-          start: () => { handler = h },
-          stop: () => { handler = () => { } }, //silentTo(what, when, handler, opt),
-        }
-      }
-      if ("attachEvent" in what && "detachEvent" in what) {
-
-      }
-    };
+  // const
+  //   listenTo = (what: EventTarget, when: string, handler: EventListenerOrEventListenerObject, opt?: EventListenerOptions | boolean): { start:any, stop: any } | undefined => {
+  //     if ("addEventListener" in what && "removeEventListener" in what) {
+  //       what.addEventListener(when, handler, opt);
+  //       var h = handler;
+  //       return {
+  //         start: () => { handler = h },
+  //         stop: () => { handler = () => { } }, //silentTo(what, when, handler, opt),
+  //       }
+  //     }
+  //     if ("attachEvent" in what && "detachEvent" in what) {
+  //     }
+  //   };
   //   w = (e, t, n, r) => {
   //     y(e) ? e.removeEventListener(t, n, r) : E(e) ? e.detachEvent("on" + t, n) : g("Fail to remove event listener.")
   // }
@@ -122,14 +119,22 @@ interface Window {
   //     }
   //     g("Fail to add event listener.")
   // }
+  // enableShortcut = () => {
+  //   return shortcut = listenTo(W, "keyup", (e: Event) => {
+  //     // 'altKey' in e && 'code' in e &&
+  //     e.altKey && "KeyT" === e.code && change();
+  //   });
+  // },
+  // disableShortcut = () => {
+  //   shortcut && shortcut.stop();
+  // };
+  // var shortcut: { start:any, stop: any } | undefined = enableShortcut();
 
   const
     THEME = (() => {
-      var
-        current_list = ['_dark'],
-        current = ''; // current
       const
-        KEY = "theme", // storage key
+        KEY = 'theme', // storage key
+        DARK = '_dark',
         set = (new_theme = '') => {
           updateClass(DOC, current, new_theme);
           STORAGE.set(KEY, new_theme);
@@ -139,20 +144,14 @@ interface Window {
           var s = new_theme || current_list;
           isARR(s) ? (current_list = s, set(s[s.indexOf(current) + 1] || '')) : A(s) === STR ? set(s) : failTo('change theme');
         },
-        enableShortcut = () => {
-          return shortcut = listenTo(W, "keyup", (e: Event) => {
-            ACE.ignoreKeyboard || 'altKey' in e && 'code' in e && e.altKey && "KeyT" === e.code && change();
-          });
-        },
-        disableShortcut = () => {
-          shortcut && shortcut.stop();
-        };
-
-      var shortcut: { start:any, stop: any } | undefined = enableShortcut();
-
+        media = W.matchMedia('(prefers-color-scheme: dark)');
+      var
+        current_list = [DARK],
+        current = '';
+      media.matches && set(DARK);
+      media.addEventListener('change',e => { e.matches ? set(DARK) : set() });
+      W.addEventListener('keyup', e => { e.altKey && 'KeyT' === e.code && change(); });
       return {
-        enableShortcut,
-        disableShortcut,
         set,
         change,
         current: () => current
