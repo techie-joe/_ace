@@ -1,10 +1,7 @@
 //- ==============================================================
-//- README for Ace Builder
+//- README for Basic Template
 //- ==============================================================
-extends ../pugs/text
-
-block append vars
-  include ../_BUILDER_vars
+extends _text
 
 block main
   .
@@ -17,10 +14,10 @@ block main
     Build    : #{build}  
     Author   : !{author}  
 
-    BUILDER  : #{siteUrl}  
+    WEBSITE  : #{siteUrl+'intro.html'}  
 
     AUTHOR   : #{authorUrl}  
 
     ----------------------------------------------------------------------------
 
-    Copyright (c) #{thisYear} -- !{publisher}
+    Copyright (c) #{thisYear} !{author}

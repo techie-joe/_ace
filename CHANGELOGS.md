@@ -5,28 +5,28 @@ Developer notes to track changes made to the template.
 ### Update files
 
 update : version & build  
-[CONFIG___](_CONFIGS.pug)  
-[CSS_COPY_](styles/gulp_css/_copyright.scss)  
-[BASIC___V](pages/basic/_vars.pug)  
-[BASIC___C](pages/basic/CHANGELOGS.md)  
-
+  [CONFIG___](_CONFIGS.pug)  
+  [CSS_COPY_](styles/gulp_css/_copyright.scss)  
 update : version  
-[PACKAGE__](package.json)  
-[PACKAGE_C](package-copy.json)  
-
-update : content  
-[BUILDER__](_BUILDER_vars.pug)  
-[ACE_____I](pages/index.html.pug)  
-[BASIC___I](pages/basic/index.html.pug)  
-[TODO_____](todos/TODO.md)  
-
+  [PACKAGE__](package.json)  
+  [PACKAGE_C](package-copy.json)  
 check : content  
-[BUILDER__](README.md)  
-[SITE_____](../ace/README.md)  
+  [BUILDER__](README.md)  
+  [SITE_____](../ace/README.md)  
+update : contents  
+  [BUILDER__](_BUILDER_vars.pug)  
+  [ACE_____I](pages/index.html.pug)  
+  [BASIC___I](pages/basic/index.html.pug)  
+  [TODO_____](todos/TODO.md)  
 
-### Feb 18, 2025 - v0.1.24 b323.14
-- test: acejs.
+update : version & build for ACE BASIC  
+  [BASIC___V](pages/basic/_vars.pug)  
+  [BASIC___C](pages/basic/CHANGELOGS.md)  
+
+### Feb 20, 2025 - v0.1.24 b323.15
+- build: acejs.
 - improve: basic.
+- update: demo navbar.
 
 ### Feb 16, 2025 - v0.1.24 b322.8
 - rename: INCLUDE_MANIFEST var.

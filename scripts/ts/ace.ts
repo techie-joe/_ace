@@ -3,6 +3,7 @@
 interface Window {
   ace: {
     ignore_keyboard: boolean,
+    fn: {},
     test: {},
     theme: {},
     storage: {},
@@ -38,6 +39,34 @@ interface Window {
     { log, error } = console,
     invalid = (e: string, f?: string, t?: string) => error(`Invalid argument of (${e})${(f ? ` for ${f}` : '')}.${(t ? ` Expecting (${t})` : '')}`),
     failTo = (e: string) => error(`Fail to ${e}`),
+    newRegex = (pattern: RegExp | string, flags?: string) => new RegExp(pattern, flags),
+    updateClass = (element: HTMLElement, del: string, add?: string) => {
+      if (element) {
+        const
+          _ = '',
+          P = ' ',
+          I = '|',
+          X = 'g',
+          SEP = newRegex('[\\.\\|\\s]+', X),
+          TRIM = (s: string, sep = I) => s.trim().replace(SEP, sep).trim(),
+          NEW = add ? TRIM(add, P) : _,
+          DEL = del ? TRIM([del, NEW].join(P)).trim() : _,
+          SEL = newRegex('(^|\\s+)(' + DEL + ')(\\s*(' + DEL + '))*(\\s+|$)', X),
+          RES = element.className.replace(SEL, P).trim() + (NEW.length ? P + NEW : _);
+
+        // (^|\s+)(DEL)(\s*(DEL))*(\s+|$)
+        // log([
+        //   `TRY = .${element.className.replace(SEL, P)}.`,
+        //   `NEW = .${NEW}.`,
+        //   `DEL = .${DEL}.`,
+        //   `SEL = .${SEL}.`,
+        //   `RES = .${RES}.`,
+        // ].join("\n"));
+
+        element.className = RES;
+        return element
+      } else { invalid(element, 'updateClass') }
+    },
     STORAGE = (() => {
       const
         KEY = 'ace',
@@ -59,55 +88,35 @@ interface Window {
     })(),
     THEME = (() => {
       var
-        list = ['_dark'],
+        current_list = ['_dark'],
         current = ''; // current
       const
         KEY = "theme", // storage key
-        updateClass = (element: HTMLElement, del_class: string, add_class?: string) => {
-          if (element) {
-            const
-              _ = '',
-              P = ' ',
-              I = '|',
-              X = 'g',
-              SEP = new RegExp('[\\.\\|\\s]+', X),
-              R = (s: string, sep = I) => s.trim().replace(SEP, sep).trim(),
-              NEW = add_class ? R(add_class, P) : _,
-              DEL = del_class ? R([NEW, del_class].join(P)).trim() : _,
-              SEL = new RegExp('\\s+(' + DEL + ')(\\s*(' + DEL + '))*\\s+', X),
-              ADD = (NEW.length ? P + NEW : _),
-              RES = element.className.replace(SEL, P).trim() + ADD;
-            element.className = RES;
-            return element
-          } else { invalid(element,'updateClass') }
+        set = (new_theme = '') => {
+          updateClass(DOC, current, new_theme);
+          STORAGE.set(KEY, new_theme);
+          current = new_theme;
         },
-        set = (s = '') => {
-          updateClass(DOC, current, s);
-          STORAGE.set(KEY, s);
-          return current = s;
-        },
-        change = (s?: string | string[]) => {
-          s = s || list;
-          isARR(s) ? (list = s, set(s[s.indexOf(current) + 1] || '')) : A(s) === STR ? set(s) : failTo('change theme');
+        change = (new_theme?: string | string[]) => {
+          var s = new_theme || current_list;
+          isARR(s) ? (current_list = s, set(s[s.indexOf(current) + 1] || '')) : A(s) === STR ? set(s) : failTo('change theme');
         };
       return {
-        updateClass,
         set,
         change,
         current: () => current
       }
     })();
 
-  const TEST = {
-    invalid, failTo,
-  };
-
   var { ace: B } = W;
-
   B = B || {};
-  B.test = TEST;
+
   B.theme = THEME;
   B.storage = STORAGE;
+
+  B.fn = {};
+
+  // B.test = { invalid, failTo, };
 
   // B.ignore_keyboard || listenTo(w, "keyup", (
   //   x = (e:Event) => { e.altKey && "KeyT" === e.code && theme.change() },

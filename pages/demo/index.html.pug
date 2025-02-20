@@ -11,6 +11,8 @@ block main
       b._label._system| Template Components : &nbsp;
       +menu
 
+    hr
+
     ._mv._nav_color._radius_x5r._pa
       b._label._system| Extras : &nbsp;
       -
@@ -20,3 +22,5 @@ block main
         ];
       each v in temp
         +menu_link(v[0])=`${v[1]}`
+      +_a("test_css.html","Test CSS")._link| CSS
+      +_a("test_acejs.html","Test AceJs")._link| AceJs

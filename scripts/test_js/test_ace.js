@@ -3,6 +3,7 @@
     NOW = new Date().getMilliseconds(),
     RED = 'color:tomato;',
     GREEN = 'color:lime;',
+    ORANGE = 'color:orange;',
     W = window,
     D = document,
     A = (a) => typeof a,
@@ -44,14 +45,69 @@
   if (TEST(W.ace, 'window.ace')) {
 
     log(W.ace)
-    const { test, theme, storage } = W.ace;
+    const { fn, test, theme, storage } = W.ace;
 
     // ====================================================== test
-    if (TEST(test, 'window.ace.test')) {
-      test.invalid('err');
-      test.invalid('xxx', 'fff');
-      test.invalid('xxx', 'fff', 'yyy');
-      test.failTo('xxx');
+    // if (TEST(test, 'window.ace.test')) {
+    //   test.invalid('err');
+    //   test.invalid('xxx', 'fff');
+    //   test.invalid('xxx', 'fff', 'yyy');
+    //   test.failTo('xxx');
+    // }
+
+    // ======================================================== fn
+    if (TEST(fn, 'window.ace.fn')) {
+
+
+      // updateClass
+      hr();
+      note('testing updateClass logic', ORANGE);
+      const updateClass = (doc, del, add) => {
+
+        note([
+          `now = .${doc}.`,
+          `del = .${del}.`,
+          `add = .${add}.`,
+        ].join("\n"));
+
+        const
+          _ = '',
+          P = ' ',
+          I = '|',
+          X = 'g',
+          newRegex = (pattern, flags) => new RegExp(pattern, flags),
+          SEP = newRegex('[\\.\\|\\s]+', X),
+          TRIM = (s, sep = I) => s.trim().replace(SEP, sep).trim(),
+          NEW = add ? TRIM(add, P) : _,
+          DEL = del ? TRIM([del, NEW].join(P)).trim() : _,
+          SEL = newRegex('(^|\\s+)(' + DEL + ')(\\s*(' + DEL + '))*(\\s+|$)', X),
+          RES = doc.replace(SEL, P).trim() + (NEW.length ? P + NEW : _);
+          // (^|\s+)(DEL)(\s*(DEL))*(\s+|$)
+
+        note([
+          `NEW = .${NEW}.`,
+          `DEL = .${DEL}.`,
+          `SEL = .${SEL}.`,
+          `RES = .${RES}.`,
+        ].join("\n"));
+        hr();
+
+      };
+
+      updateClass(
+        '  a  _ox_  b  c  _oo_  d  ',
+        '  a  b  c  d  ',
+        '  e  f  '
+      );
+
+      updateClass(
+        'A _ox_ B C _oo D',
+        'A B C D',
+        'E F'
+      );
+
+      // if (TEST(isFUN(fn.updateClass), 'window.ace.fn.updateClass')) { }
+
     }
 
     // =================================================== storage
@@ -64,68 +120,35 @@
 
       const DOC = D.documentElement || D.body; // html or body
 
-      // updateClass
-      if (TEST(isFUN(theme.updateClass), 'window.ace.theme.updateClass')) {
-
-        const
-          doc_class = '  _nojs   _light  _purple  _scrollbar _a  _dark  ',
-          del_class = '  _purple  ',
-          add_class = '  _dark   _light  ';
-
-        hr();
-        note([
-          `now = ${doc_class}`,
-          `del = ${del_class}`,
-          `add = ${add_class}`,
-        ].join("\n"));
-        hr();
-
-        ((doc_class, del_class, add_class) => {
-          const
-            _ = '',
-            P = ' ',
-            I = '|',
-            X = 'g',
-            SEP = new RegExp('[\\.\\|\\s]+', X),
-            R = (s, sep = I) => s.trim().replace(SEP, sep).trim(),
-            NEW = add_class ? R(add_class, P) : _,
-            DEL = del_class ? R([NEW, del_class].join(P)) : _,
-            SEL = new RegExp('\\s+(' + DEL + ')(\\s*(' + DEL + '))*\\s+', X),
-            ADD = NEW.length ? P + NEW : _,
-            RES = doc_class.replace(SEL, P).trim() + ADD;
-
-          note([
-            `NEW = ${NEW}`,
-            `DEL = ${DEL}`,
-            `ADD = ${ADD}`,
-            `RES = ${RES}`,
-            `SEL = ${SEL}`,
-            `SEP = ${SEP}`,
-          ].join("\n"));
-          hr();
-
-        })(doc_class, del_class, add_class);
-
-      }
-
       if (TEST(isFUN(theme.current), 'window.ace.theme.current')) {
         note(`current = ${theme.current()}`);
         note(`DOC.className = ${DOC.className}`);
       }
 
       if (TEST(isFUN(theme.set), 'window.ace.theme.set')) {
-        theme.set('_dark');
-        note(`set = _dark`);
-        note(`current = ${theme.current()}`);
-        note(`DOC.className = ${DOC.className}`);
+
+        theme.set('AT');
+        note(`set           = AT`);
+        note(`current       = ${theme.current()}`);
+        note(`DOC.className = .${DOC.className}.`);
+
+        theme.set('BT');
+        note(`set           = BT`);
+        note(`current       = ${theme.current()}`);
+        note(`DOC.className = .${DOC.className}.`);
+
       }
 
       if (TEST(isFUN(theme.change), 'window.ace.theme.change')) {
-        for (var i = 0; i < 3; i++) {
+
+        theme.change(['pink','light','_dark']);
+        note(`DOC.className = ${DOC.className}`);
+
+        for (var i = 0; i < 3; i++){
           theme.change();
-          note('theme.change()');
           note(`DOC.className = ${DOC.className}`);
         }
+
       }
 
     }
@@ -133,5 +156,6 @@
   } // if ( TEST(W.ace, 'window.ace') )
 
   // ==================================================== finished
+  hr();
   note(`Finished in ${new Date().getMilliseconds() - NOW}ms`);
 })();

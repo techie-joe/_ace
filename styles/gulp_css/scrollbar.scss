@@ -1,3 +1,9 @@
+// __TLDR: Styles for scrollbar.
+
+@use "copyright";
+@use "mixins" as *;
+@use "color-values" as *;
+
 ._scrollbar {
 
   ::-webkit-scrollbar {

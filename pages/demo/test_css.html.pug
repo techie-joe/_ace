@@ -1,4 +1,4 @@
-extends ../pugs/html
+extends _html
 
 block append vars
   - heading = `Test CSS`
@@ -24,9 +24,20 @@ block style
     }
     #nav ._link:hover { outline: 2px solid #888; }
 
+    .h { color:#000 }
+    @media (prefers-color-scheme: dark) {
+      .h { color:#fff }
+    }
+
+  //- style.
+
   +htmlPreset
   //- +cssv(assetsUrl+'gcss/ace.css')
   //- +cssv(assetsUrl+'gcss/style.css')
+
+block nav
+
+block header
 
 block main
   +main#_main: article
@@ -40,9 +51,10 @@ block main
     hr
 
     section
-      h1._h7._small._mono !{heading}
+      h1._h7.h._small._mono !{heading}
       ._p._mono._small._scrollable._full_width._text_left
-    hr
+
+  //- +main#_main: article
 
 block append script
   script.

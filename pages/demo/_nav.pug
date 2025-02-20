@@ -33,8 +33,8 @@ mixin menu(n)
 mixin navbar
   #_navbar._flex
     ._f_min._pa._nav_color._text_center._no_wrap
-      +a(homeUrl,'Back to Ace Template')._link Home
-      !=` | `
+      +a(homeUrl,'Go to Ace Template')._link._b #[span._tc_contra Ace]#[span._tc_blue Template]
+    ._fill._nav_color(style="flex-basis:20rem"): +nav#_nav._no_print_href
       +a(demoUrl,'Ace Template Demo')._link Demo
-    ._fill._nav_color(style="flex-basis:20rem"): +nav#_nav._no_print_href: +menu
+      +menu
     ._f_min._pa_x5r._nav_color._text_right._no_print: +changeThemeLink._navChangeThemeLink._link._nav_icon: +isvg(svgi.compare)

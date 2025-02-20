@@ -1,28 +1,27 @@
 extends _html
 
 block append vars
-  - heading = `Info`
-  - updateTitle( `${heading} | ${title}` )
-  - updateDescription( `Info page.` )
+  - heading = `Ace Template Info Page`
+  - updateTitle( `${heading}` )
+  - updateDescription( `An info page.` )
   - updateUrl( siteUrl+"info.html" )
 
 block main
   +main#_main: article
 
     section#acelinks._p
-      +_a('..',"Parent's Page")._link._nav_icon: +itext|&larr;
-      +_a(homeUrl,"Back to Ace Template")._link| Home
+      +backlink._link._nav_icon: +itext|&larr;
+      +_a('..',"Go to parent's page")._link._nav_icon: +itext|&middot;
+      +_a(homeUrl,"Go to Ace Template")._link| Ace Template
 
       +_a("---","Simulate a real 404")._link._nav_icon._no_print: +middots
       +_a("404.html","When a browser lands on a missing page.")._link| 404
       +_a("500.html","When your server encounters an error.")._link| 500
+      +_a(homeUrl+"demo/","View Ace Template Demo")._link| Demo
 
     hr
 
-    section
-      +_a(homeUrl+"demo/","View Demo")._link| Demo
-      +_a("test_css.html","Test CSS")._link| CSS
-      +_a("test_acejs.html","Test AceJs")._link| AceJs
+    h1._h7 !{heading}
 
     hr
 

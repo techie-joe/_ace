@@ -1,16 +1,15 @@
 extends _html
 
 block append vars
-  - heading = `Basic Template`
-  - about   = `A versatile template with a clean layout.`
+  - heading = title
+  - about   = description
   - updateTitle( `Basic Template by ${author}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+"index.html" )
+  - updateUrl( siteUrl+"intro.html" )
+
   - svgi.print = 'M18,3H6V7H18M19,12A1,1 0 0,1 18,11A1,1 0 0,1 19,10A1,1 0 0,1 20,11A1,1 0 0,1 19,12M16,19H8V14H16M19,8H5A3,3 0 0,0 2,11V17H6V21H18V17H22V11A3,3 0 0,0 19,8Z'; // printer
 
 //- block prepend views
-  //- +pageData#_pageData._page_layout
-
+  +pageData#_pageData._page_layout
 
 block nav
 
@@ -138,6 +137,12 @@ block footer
           div._smaller._text_justify
             | Some part of this site may come from external sources. Those files #[b._tc_contra may not be included] in the distributed packages of this template due to the original author's terms. References to obtain them directly from the author will be provided.
             //- | #[span._no_wrap &bull; Thanks to] Matt at #[a._no_color(href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/") SVGBackgrounds] for free SVG images.
+
+    hr
+    section._p._small
+      +_a("LICENSE.txt")(target='basic_license')._link| License
+      +_a("README.md")(target='basic_readme')._link| Readme
+      +_a("CHANGELOGS.md")(target='basic_changelogs')._link| Changes
 
     hr
     p._small._system !{copyright}

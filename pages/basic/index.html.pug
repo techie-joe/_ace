@@ -1,10 +1,9 @@
 extends _html
 
 block append vars
-  - heading = `Basic Template`
-  - about   = `A versatile template with a clean layout.`
+  - heading = title
+  - about   = description
   - updateTitle( `Basic Template by ${author}` )
-  - updateDescription( `${about}` )
   - updateUrl( siteUrl+"index.html" )
 
 //- block prepend views

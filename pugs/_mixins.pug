@@ -110,22 +110,22 @@ mixin heading
 //- ==============================================================
 //- navigations
 //- ==============================================================
-
+//- a link must have href for good SEO, so # default were considered best
 mixin a(href,title)
-  a(href=href||'' title=title)&attributes(attributes): block
+  a(href=href||'#' title=title)&attributes(attributes): block
 
 mixin _a(href,title)
   +_
-  a(href=href||'' title=title)&attributes(attributes): block
+  a(href=href||'#' title=title)&attributes(attributes): block
 
 mixin lia(href,title)
-  li: a(href=href||'' title=title)&attributes(attributes): block
+  li: a(href=href||'#' title=title)&attributes(attributes): block
 
 mixin backButton(href, label)
-  +a(href||'').nav_button._btnlink&attributes(attributes) #[+itext|←]#[span._btnlabel !{label}]
+  +a(href||'#').nav_button._btnlink&attributes(attributes) #[+itext|←]#[span._btnlabel !{label}]
 
 mixin nextButton(href, label)
-  +a(href||'').nav_button._btnlink&attributes(attributes) #[span._btnlabel !{label}]#[+itext|→]
+  +a(href||'#').nav_button._btnlink&attributes(attributes) #[span._btnlabel !{label}]#[+itext|→]
 
 //- ==============================================================
 //- images
