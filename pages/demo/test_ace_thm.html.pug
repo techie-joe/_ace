@@ -29,8 +29,8 @@ block style
 
     #jso {
       height:30em;
-      background-color: #eee;
-      color: #444;
+      background-color: #ccc;
+      color: #222;
       border-radius: .5rem;
       box-shadow: 0 0 10px #888 inset;
     }
@@ -64,11 +64,13 @@ block header
 block main
   +main#_main: article
 
+    //- ☀
     section._p
       #nav._inline._mono
         +backlink._link.icon|&larr;
         +_a(homeUrl,"Back to Ace Template")._link| Ace
         +_a(demoUrl,"Go to Ace Template Demo")._link| Demo
+        +_a()(onclick=onclick('ace.theme.change()') title="Change Theme (Ctrl+Alt+T)")._link.icon|&bull;
       ._inline._small
         b: span#jstest(style="color:red;")='[JS KO]'
     hr

@@ -68,10 +68,10 @@ mixin needjs
     document.getElementById('_needjs').innerHTML='';
 
 mixin backlink(title='Back to previous page')
-  a(href='' onclick=onclick(js.goBack) title=title)._needjs&attributes(attributes): block
+  a(href='#' onclick=onclick(js.goBack) title=title)._needjs&attributes(attributes): block
 
 mixin changeThemeLink(title='Change Theme (Ctrl+Alt+T)')
-  a(href='' onclick=onclick(js.themeChange) title=title)._needjs&attributes(attributes): block
+  a(href='#' onclick=onclick(js.themeChange) title=title)._needjs&attributes(attributes): block
 
 //- ==============================================================
 //- blocks

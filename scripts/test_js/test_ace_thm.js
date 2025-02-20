@@ -3,7 +3,7 @@
     NOW = new Date().getMilliseconds(),
     RED = 'color:tomato;',
     GREEN = 'color:green;',
-    ORANGE = 'color:#975a00;',
+    ORANGE = 'color:#916900;',
     W = window,
     D = document,
     A = (a) => typeof a,
