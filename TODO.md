@@ -29,6 +29,20 @@ BASIC update : version & build
 
 ## To do
 
+  - To add: ace.back; if history.length = 0 : back to homeUrl + href = homeUrl
+
+  - To add: ace.print dialog box to add css print.
+  - - option to display url or not.
+  - - option to single column or flex column.
+
+  - To add: settings dialog box.
+  - - to set theme collection. play with css, and local storage.
+
+  - To add: admin settings box. ?? where admin can get suggestion to what to edit.
+
+  - To style error template a bit.
+  - - add background :before, logo, and theme changer.
+
   - To improve gulp.
 
   - To add CSS Norm.

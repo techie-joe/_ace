@@ -55,37 +55,32 @@
     const THEN = now();
     hr();
 
-    // ================================================ test theme
     log('Testing AceJs Theme');
 
-    const { theme } = W;
+    const { ace, theme } = W;
 
+    // ===================================================== theme
     if (!TEST(theme, 'window.theme')) { return }
-
     log(theme)
-    note(`theme.o       = ${A(theme.o)}`);
     note(`theme.current = ${theme.current()}`);
-    note(`theme.list    = ${theme.list()}`);
+    note(`theme.list    = [${theme.list()}]`);
     note(`DOC.className = ${DOC.className}`);
 
-    // ======================================================== fn
-
-    const { fn } = theme;
-
-    if (!TEST(fn, 'window.theme.fn')) { return }
-
+    hr();
+    // ======================================================= ace
+    if (!TEST(ace, 'window.ace')) { return }
+    log(ace)
     // note(`Testing invalid and failTo. See console.`, ORANGE)
-    // const { invalid, failTo } = fn;
+    // const { invalid, failTo } = ace;
     // invalid('err');
     // invalid('xxx', 'fff');
     // invalid('xxx', 'fff', 'yyy');
     // failTo('xxx');
 
     // =================================================== storage
-    if (!TEST(fn.storage, 'window.theme.fn.storage')) { return }
-
-    fn.storage.set('cuba', 'simpan');
-
+    if (!TEST(ace.storage, 'window.ace.storage')) { return }
+    log(ace.storage);
+    ace.storage.set('cuba', 'simpan');
 
     // ===================================================== theme
 
@@ -98,7 +93,7 @@
   const run_check = () => {
     hr();
     note(`theme.current = ${theme.current()}`);
-    note(`theme.list    = ${theme.list()}`);
+    note(`theme.list    = [${theme.list()}]`);
     roll();
   }; // run_check
 
@@ -106,7 +101,7 @@
   const run_updateClass = () => {
     const THEN = now();
     hr();
-    const { fn } = theme;
+    const { ace } = W;
 
     note('testing logic for updateClass', ORANGE);
     const updateClass = (element, del, add) => {
@@ -156,12 +151,12 @@
     );
 
     // =============================================== updateClass
-    if (!TEST(isFUN(fn.updateClass), 'window.theme.fn.updateClass')) { return }
+    if (!TEST(isFUN(ace.updateClass), 'window.ace.updateClass')) { return }
 
     note(`DOC.className = ${DOC.className}`);
-    fn.updateClass(DOC, null, 'TEST');
+    ace.updateClass(DOC, null, 'TEST');
     note(`DOC.className = ${DOC.className}`);
-    fn.updateClass(DOC, 'TEST');
+    ace.updateClass(DOC, 'TEST');
     note(`DOC.className = ${DOC.className}`);
 
     hr();
@@ -183,15 +178,15 @@
       var after = theme.current() || 'none';
     }
 
-    if (n == 2) {
+    else if (n == 2) {
       note(`theme.set = ['_dark']`);
       theme.set(['_dark']);
       var after = theme.current() || 'none';
     }
 
     else if (n == 3) {
-      note(`theme.set = ['pink','light','_dark']`);
-      theme.set(['pink','light','_dark']);
+      note(`theme.set = ['pink','light','_dark'], begin with = light`);
+      theme.set(['pink', 'light', '_dark'], 'light');
       var after = theme.current() || 'none';
     }
 

@@ -1,10 +1,8 @@
 /*! Ace Template | v0.1.24 b325.19 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
 "use strict";
 interface Window {
-  theme: {
-    o: any,
-    fn: {}
-  }
+  ace: {},
+  theme: {}
 }
 (() => {
   const
@@ -12,19 +10,25 @@ interface Window {
     D = document,
     A = (a: any) => typeof a,
     TYPE = (e: any) => Object.prototype.toString.call(e),
-    STR = A(''),
+    _ = '',
+    STR = A(_),
     ARR = TYPE([]),
     isSTR = (v: any) => A(v) === STR,
     isARR = Array.isArray || (e => TYPE(e) === ARR),
     DOC = D.documentElement || D.body, // html or body
     { error } = console,
-    invalid = (e: string, f?: string, t?: string) => error(`Invalid argument of (${e})${(f ? ` for ${f}` : '')}.${(t ? ` Expecting (${t})` : '')}`),
+    invalid = (e: string, f?: string, t?: string) => error(`Invalid argument of (${e})${(f ? ` for ${f}` : _)}.${(t ? ` Expecting (${t})` : _)}`),
     failTo = (e: string) => error(`Fail to ${e}`),
+    listenTo = <K extends keyof HTMLElementEventMap>(
+      what: HTMLElement | MediaQueryList | Window,
+      type: K,
+      listener: (e: any) => any,
+      options?: boolean | AddEventListenerOptions
+    ): void => { what.addEventListener(type, listener) },
     newRegex = (pattern: RegExp | string, flags?: string) => new RegExp(pattern, flags),
     updateClass = (element: HTMLElement, del?: string, add?: string) => {
       if (!element) { invalid(element, 'updateClass'); return }
       const
-        _ = '',
         P = ' ',
         I = '|',
         X = 'g',
@@ -72,11 +76,11 @@ interface Window {
       const
         KEY = 'theme', // storage key
         DARK = '_dark',
-        set = (new_theme?: string | string[]) => {
+        set = (new_theme?: string | string[], begin?: string) => { // todo: add begin with.
           var old_theme = theme;
           if (isARR(new_theme)) {
             list = new_theme as string | string[];
-            theme = list[0];
+            theme = list[list.indexOf(begin || _)];
           }
           else if (isSTR(new_theme)) {
             theme = new_theme as string
@@ -88,29 +92,31 @@ interface Window {
           updateClass(DOC, old_theme, theme);
           STORE.set(KEY, theme);
         },
-        change = () => { set(list[list.indexOf(theme) + 1] || '') },
+        change = () => { set(list[list.indexOf(theme) + 1] || _) },
         media = W.matchMedia('(prefers-color-scheme: dark)');
       var
         list: string | string[] = [DARK],
-        theme: string = '';
+        theme: string = _;
       media.matches && set(DARK);
-      media.addEventListener('change', e => { e.matches ? set(DARK) : set() });
-      W.addEventListener('keyup', e => { e.altKey && 'KeyT' === e.code && change(); });
+      listenTo(media, 'change', e => { e.matches ? set(DARK) : set() });
+      listenTo(W, 'keyup', e => { e.altKey && 'KeyT' === e.code && change(); });
       return {
-        o: W.theme,
         set,
         change,
         list: () => list,
         current: () => theme,
-        fn: {
-          // invalid, failTo,
-          updateClass,
-          storage: STORE,
-        }
       }
-    })();
+    })(),
+    ACE = {
+      // A, TYPE, STR, ARR, isSTR, isARR, DOC,
+      // invalid, failTo,
+      // listenTo, newRegex,
+      updateClass,
+      storage: STORE,
+      // theme: THEME,
+    };
 
   // export theme ================================================
   W.theme = THEME;
-
+  W.ace = ACE;
 })()
