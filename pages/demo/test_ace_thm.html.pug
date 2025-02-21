@@ -81,14 +81,21 @@ block main
         b: span#jstest(style="color:red;")='[JS:OF]'
     hr
 
-    section.nav
+    section.nav._small
       ._inline._mono
         +_a()(onclick=onclick('test.clear();') title="Clear Test")._link.icon|Clear
         +_a()(onclick=onclick('test.run();') title="Run Test")._link.icon|Run &raquo;
-        +_a()(onclick=onclick('test.run_updateClass();') title="Run updateClass")._link.icon|updateClass
+
+        +_a()(onclick=onclick('test.run_check();') title="Run Check")._link.icon|Check
+
         +_a()(onclick=onclick('test.run_set();') title="Run Theme Set")._link.icon|Set
+        +a()(onclick=onclick('test.run_set(1);') title="Run Theme Set 1")._link.icon|1
+        +a()(onclick=onclick('test.run_set(2);') title="Run Theme Set 2")._link.icon|2
+        +a()(onclick=onclick('test.run_set(3);') title="Run Theme Set 3")._link.icon|3
+
         +_a()(onclick=onclick('test.run_change();') title="Run Theme Change")._link.icon|Change
-        +_a()(onclick=onclick('test.run_change_reset();') title="Reset Theme Change")._link.icon|=
+
+        +_a()(onclick=onclick('test.run_updateClass();') title="Run updateClass")._link.icon|updateClass
     hr
 
     section

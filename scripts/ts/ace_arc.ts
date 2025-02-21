@@ -9,8 +9,10 @@
   // OBJ = A({}),
   // STR = A(''),
   // ARR = TYPE([]),
-  // isARR = Array.isArray || (e => TYPE(e) === ARR),
   // isFUN = (v: any) => A(v) === FUN,
+  // isSTR = (v: any) => A(v) === STR,
+  // isARR = Array.isArray || (e => TYPE(e) === ARR),
+  // isARS = (e: any) => isARR(e) && e.length > 0,
   // isOBJ = (v: any) => A(v) === OBJ,
 
     

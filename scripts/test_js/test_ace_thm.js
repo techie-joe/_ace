@@ -63,8 +63,10 @@
     if (!TEST(theme, 'window.theme')) { return }
 
     log(theme)
-    note(`theme.o = ${A(theme.o)}`);
+    note(`theme.o       = ${A(theme.o)}`);
     note(`theme.current = ${theme.current()}`);
+    note(`theme.list    = ${theme.list()}`);
+    note(`DOC.className = ${DOC.className}`);
 
     // ======================================================== fn
 
@@ -87,15 +89,18 @@
 
     // ===================================================== theme
 
-    if (!TEST(isFUN(theme.current), 'window.theme.current')) { return }
-
-    note(`DOC.className = ${DOC.className}`);
-    note(`theme.current = ${theme.current()}`);
-
     hr();
     note(`Finished in ${now() - THEN}ms`);
     roll();
   }; // run
+
+  // ============================================= run_updateClass
+  const run_check = () => {
+    hr();
+    note(`theme.current = ${theme.current()}`);
+    note(`theme.list    = ${theme.list()}`);
+    roll();
+  }; // run_check
 
   // ============================================= run_updateClass
   const run_updateClass = () => {
@@ -165,17 +170,39 @@
   }; // run
 
   // ===================================================== run_set
-  const run_set = () => {
+  const run_set = (n) => {
     hr();
 
     if (!TEST(isFUN(theme.set), 'window.theme.set')) { return }
 
-    var new_theme = 'T'+now();
-    var before = theme.current()|| 'none';
-    theme.set(new_theme);
-    var after = theme.current() || 'none';
-    note(`theme.set = from ${before} to ${after}`);
-    note(`DOC.className =.${DOC.className}.`);
+    var before = theme.current() || 'none';
+
+    if (n == 1) {
+      note(`theme.set = []`);
+      theme.set([]);
+      var after = theme.current() || 'none';
+    }
+
+    if (n == 2) {
+      note(`theme.set = ['_dark']`);
+      theme.set(['_dark']);
+      var after = theme.current() || 'none';
+    }
+
+    else if (n == 3) {
+      note(`theme.set = ['pink','light','_dark']`);
+      theme.set(['pink','light','_dark']);
+      var after = theme.current() || 'none';
+    }
+
+    else {
+      var new_theme = 'T' + now();
+      note(`theme.set = ${new_theme}`);
+      theme.set(new_theme);
+      var after = theme.current() || 'none';
+    }
+
+    note(`theme changed from ${before} to ${after}`);
 
     roll();
   }; // run_set
@@ -186,28 +213,14 @@
 
     if (!TEST(isFUN(theme.change), 'window.theme.change')) { return }
 
-    var before = theme.current()|| 'none';
-    theme.change(['pink','light','_dark']);
+    var before = theme.current() || 'none';
+    theme.change();
     var after = theme.current() || 'none';
-    note(`theme.change ['pink','light','_dark'] = from ${before} to ${after}`);
+    note(`theme changed from ${before} to ${after}`);
 
     roll();
-  }; // run_theme
+  }; // run_change
 
-  // ================================================== run_change
-  const run_change_reset = () => {
-    hr();
-
-    if (!TEST(isFUN(theme.change), 'window.theme.change')) { return }
-
-    var before = theme.current()|| 'none';
-    theme.change(['_dark']);
-    var after = theme.current() || 'none';
-    note(`theme.change ['_dark'] = from ${before} to ${after}`);
-
-    roll();
-  }; // run_theme
-    
   // ==================================================== finished
 
   const clear = () => {
@@ -219,9 +232,10 @@
   W.test = {
     clear,
     run,
-    run_updateClass,
+    run_check,
     run_set,
-    run_change, run_change_reset,
+    run_change,
+    run_updateClass,
   };
 
 })();
