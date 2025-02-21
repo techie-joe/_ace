@@ -40,7 +40,7 @@
             var old_theme = theme;
             if (isARR(new_theme)) {
                 list = new_theme;
-                theme = list[list.indexOf(begin || _)];
+                theme = list[begin ? list.indexOf(begin || _) : 0];
             }
             else if (isSTR(new_theme)) {
                 theme = new_theme;
