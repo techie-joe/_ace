@@ -1,21 +1,23 @@
 extends _html
 
 block append vars
-  - heading = `Test AceJs`
+  - heading = `Testing AceJs Theme`
   - updateTitle( `${heading}` )
   - updateDescription( `Test page.` )
   - updateUrl( siteUrl+"test_ace_thm.html" )
 
 block style
   style.
+    ._hidden { display:none }
     ._inline { display:inline }
     ._small  { font-size:.9em }
     ._mono   { font-family: 'Consolas',monospace; }
     ._pre    {  }
     ._scrollable { overflow:auto; }
     ._m0 { margin:0 }
-    #nav .icon { text-align:center }
-    #nav ._link {
+
+    .nav .icon { text-align:center }
+    .nav ._link {
       text-decoration: none;
       padding:.1em .3em;
       border-radius: .2em;
@@ -25,7 +27,7 @@ block style
       font-weight: bold;
       color:inherit;
     }
-    #nav ._link:hover { outline: 2px solid #888; }
+    .nav ._link:hover { outline: 2px solid #888; }
 
     #jso {
       height:30em;
@@ -37,11 +39,12 @@ block style
 
     ._dark #jso {
       background-color: #181818;
-      color: #ddd;
+      color: #aaa;
       box-shadow: 0 0 10px #080808 inset;
     }
 
     #jsout { padding:.5rem; margin:0; }
+    #jsout * { line-height:1; }
 
     #jsout hr { border-color:#333; border-bottom:0; }
 
@@ -49,6 +52,9 @@ block style
     @media (prefers-color-scheme: dark) {
       .h { color:#fff }
     }
+
+    #_html.pink { background-color: pink; }
+    #_html.light { background-color: antiquewhite; }
 
   //- style.
 
@@ -65,20 +71,33 @@ block main
   +main#_main: article
 
     //- ☀
-    section._p
-      #nav._inline._mono
+    section.nav._p
+      ._inline._mono
         +backlink._link.icon|&larr;
         +_a(homeUrl,"Back to Ace Template")._link| Ace
         +_a(demoUrl,"Go to Ace Template Demo")._link| Demo
-        +_a()(onclick=onclick('ace.theme.change()') title="Change Theme (Ctrl+Alt+T)")._link.icon|&bull;
-      ._inline._small
-        b: span#jstest(style="color:red;")='[JS KO]'
+        +_a()(onclick=onclick('theme.change();') title="Change Theme (Ctrl+Alt+T)")._link.icon|&bull;
+      ._inline._mono._small
+        b: span#jstest(style="color:red;")='[JS:OF]'
+    hr
+
+    section.nav
+      ._inline._mono
+        +_a()(onclick=onclick('test.clear();') title="Clear Test")._link.icon|Clear
+        +_a()(onclick=onclick('test.run();') title="Run Test")._link.icon|Run &raquo;
+        +_a()(onclick=onclick('test.run_updateClass();') title="Run updateClass")._link.icon|updateClass
+        +_a()(onclick=onclick('test.run_set();') title="Run Theme Set")._link.icon|Set
+        +_a()(onclick=onclick('test.run_change();') title="Run Theme Change")._link.icon|Change
+        +_a()(onclick=onclick('test.run_change_reset();') title="Reset Theme Change")._link.icon|=
     hr
 
     section
       h1._h7.h._small._mono !{heading}
       #jso._mono._scrollable._full_width._text_left
-        pre#jsout
+        pre#jsout._smaller
+
+    section._hidden
+      #element
 
   //- +main#_main: article
 
@@ -91,12 +110,10 @@ block script
     (function(){
 
       var jstest = document.getElementById('jstest');
-      jstest && (jstest.setAttribute('style','color:green;'),jstest.innerHTML = '[JS OK]');
+      jstest && (jstest.setAttribute('style','color:green;'),jstest.innerHTML = '[JS:OK]');
 
       // Automatically scroll to the bottom of the page when the page loads
       var jso = document.getElementById('jso');
-      window.onload = function() {
-          jso.scrollTo(0, jso.scrollHeight);
-      };
+      window.onload = function() { test.run(); };
 
     })();

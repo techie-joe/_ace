@@ -7,13 +7,13 @@
 html   { box-shadow: 0 0 0 5px #f00 inset; }
 #_html { box-shadow: none } /* remove mark when #_html is in use */
 
-// ----------------------------------------------------- outline */
+// ---------------------------------------------------- outline */
 $outline_color: #f80;
 ._outline   { box-shadow: 0 0 0 1px $outline_color; }
 ._outline_1 { box-shadow: 0 0 0 2px $outline_color; }
 ._outline_2 { box-shadow: 0 0 0 4px $outline_color; }
 
-// ------------------------------------------------- ::selection */
+// ------------------------------------------------ ::selection */
 // - must follow this format. - will not work otherwise.
 // - each vendor specific must be seperately declared. - cant combine.
 // - use background-color not background.

@@ -48,7 +48,7 @@ block main
         +_a(homeUrl,"Back to Ace Template")._link| Ace
         +_a(demoUrl,"Go to Ace Template Demo")._link| Demo
       ._inline._small
-        b: span#jstest(style="color:red;")='[JS KO]'
+        b: span#jstest(style="color:#e22200;")='[JS:OF]'
     hr
 
     section
@@ -60,5 +60,5 @@ block main
 block append script
   script.
     (function(){
-      jstest && (jstest.setAttribute('style','color:green;'),jstest.innerHTML = '[JS OK]');
+      jstest && (jstest.setAttribute('style','color:#008800;'),jstest.innerHTML = '[JS:OK]');
     })();
