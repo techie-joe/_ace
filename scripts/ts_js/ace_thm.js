@@ -1,8 +1,14 @@
 /*! Ace Template | v0.1.24 b325.19 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
 "use strict";
 (() => {
-    const W = window, D = document, A = (a) => typeof a, TYPE = (e) => Object.prototype.toString.call(e), _ = '', STR = A(_), ARR = TYPE([]), isSTR = (v) => A(v) === STR, isARR = Array.isArray || (e => TYPE(e) === ARR), DOC = D.documentElement || D.body, // html or body
-    { error } = console, invalid = (e, f, t) => error(`Invalid argument of (${e})${(f ? ` for ${f}` : _)}.${(t ? ` Expecting (${t})` : _)}`), failTo = (e) => error(`Fail to ${e}`), listenTo = (what, type, listener, options) => { what.addEventListener(type, listener); }, newRegex = (pattern, flags) => new RegExp(pattern, flags), updateClass = (element, del, add) => {
+    const W = window, D = document, DOC = D.documentElement || D.body, // html or body
+    A = (a) => typeof a, TYPE = (e) => Object.prototype.toString.call(e), _ = '', STR = A(_), ARR = TYPE([]), isSTR = (v) => A(v) === STR, isARR = Array.isArray || (e => TYPE(e) === ARR), _throw = (e) => { throw e; }, 
+    // _try = (fn: any, ...a: any) => { try { fn(...a) } catch (e) { console.error(e) } },
+    invalid = (e, f, t) => {
+        _throw(`Invalid argument of (${e})${(f ? ` for ${f}` : _)}.${(t ? ` Expecting (${t})` : _)}`);
+    }, failTo = (e) => {
+        _throw(`Fail to ${e}`);
+    }, listenTo = (what, type, listener, options) => { what.addEventListener(type, listener, options); }, newRegex = (pattern, flags) => new RegExp(pattern, flags), updateClass = (element, del, add) => {
         if (!element) {
             invalid(element, 'updateClass');
             return;
@@ -64,7 +70,7 @@
         };
     })(), ACE = {
         // A, TYPE, STR, ARR, isSTR, isARR, DOC,
-        // invalid, failTo,
+        // _throw, _try, invalid, failTo,
         // listenTo, newRegex,
         updateClass,
         storage: STORE,

@@ -8,6 +8,7 @@ interface Window {
   const
     W = window,
     D = document,
+    DOC = D.documentElement || D.body, // html or body
     A = (a: any) => typeof a,
     TYPE = (e: any) => Object.prototype.toString.call(e),
     _ = '',
@@ -15,16 +16,20 @@ interface Window {
     ARR = TYPE([]),
     isSTR = (v: any) => A(v) === STR,
     isARR = Array.isArray || (e => TYPE(e) === ARR),
-    DOC = D.documentElement || D.body, // html or body
-    { error } = console,
-    invalid = (e: string, f?: string, t?: string) => error(`Invalid argument of (${e})${(f ? ` for ${f}` : _)}.${(t ? ` Expecting (${t})` : _)}`),
-    failTo = (e: string) => error(`Fail to ${e}`),
+    _throw = (e: string) => { throw e },
+    // _try = (fn: any, ...a: any) => { try { fn(...a) } catch (e) { console.error(e) } },
+    invalid = (e: string, f?: string, t?: string) => {
+      _throw(`Invalid argument of (${e})${(f ? ` for ${f}` : _)}.${(t ? ` Expecting (${t})` : _)}`)
+    },
+    failTo = (e: string) => {
+      _throw(`Fail to ${e}`)
+    },
     listenTo = <K extends keyof HTMLElementEventMap>(
       what: HTMLElement | MediaQueryList | Window,
       type: K,
       listener: (e: any) => any,
       options?: boolean | AddEventListenerOptions
-    ): void => { what.addEventListener(type, listener) },
+    ): void => { what.addEventListener(type, listener, options) },
     newRegex = (pattern: RegExp | string, flags?: string) => new RegExp(pattern, flags),
     updateClass = (element: HTMLElement, del?: string, add?: string) => {
       if (!element) { invalid(element, 'updateClass'); return }
@@ -109,7 +114,7 @@ interface Window {
     })(),
     ACE = {
       // A, TYPE, STR, ARR, isSTR, isARR, DOC,
-      // invalid, failTo,
+      // _throw, _try, invalid, failTo,
       // listenTo, newRegex,
       updateClass,
       storage: STORE,

@@ -31,7 +31,7 @@
       what ? note(label + ' ☑', GREEN) : note(label + ' ☒', RED);
       return what;
     },
-    { log } = console;
+    { log, error } = console;
 
   // ============================================= initializations
   const
@@ -70,12 +70,13 @@
     // ======================================================= ace
     if (!TEST(ace, 'window.ace')) { return }
     log(ace)
-    // note(`Testing invalid and failTo. See console.`, ORANGE)
-    // const { invalid, failTo } = ace;
-    // invalid('err');
-    // invalid('xxx', 'fff');
-    // invalid('xxx', 'fff', 'yyy');
-    // failTo('xxx');
+
+    // note(`Testing fail procedure. See console.`, ORANGE)
+    // const { _try, invalid, failTo } = ace;
+    // _try(invalid, 'err');
+    // _try(invalid, 'aaa', 'fff');
+    // _try(invalid, 'aaa', 'fff', 'ccc');
+    // _try(failTo, 'www');
 
     // =================================================== storage
     if (!TEST(ace.storage, 'window.ace.storage')) { return }
