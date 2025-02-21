@@ -1,4 +1,4 @@
-/*! Ace Template | v0.1.24 b323.17 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
+/*! Ace Template | v0.1.24 b324.18 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
 "use strict";
 interface Window {
   theme: {

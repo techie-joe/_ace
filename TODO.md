@@ -4,8 +4,6 @@
 
 BUILDER update : version & build  
   [BUILDER___](_BUILDER_vars.pug)  
-  [PACKAGE___](package.json)  
-  [PACKAGE__C](package-copy.json)  
   -- [README____](README.md)  
   -- [LICENSE___](LICENSE.txt)  
 
@@ -13,7 +11,9 @@ ACE update : version & build
   [CONFIG____](_CONFIGS.pug)  
   [CHANGELOGS](CHANGELOGS.md)  
   [CSS_CRIGHT](styles/gulp_css/_copyright.scss)  
-  [JS__CRIGHT](scripts/ts/ace.ts)  
+  [JS__CRIGHT](scripts/ts/ace_thm.ts)  
+  [PACKAGE___](package.json)  
+  [PACKAGE__C](package-copy.json)  
   -- [INDEX_____](pages/index.html.pug)  
   -- [README____](../ace/README.md)  
   -- [LICENSE___](../ace/LICENSE.txt)  
