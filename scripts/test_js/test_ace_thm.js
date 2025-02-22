@@ -80,8 +80,18 @@
 
     // =================================================== storage
     if (!TEST(ace.storage, 'window.ace.storage')) { return }
-    log(ace.storage);
-    ace.storage.set('cuba', 'simpan');
+    const { storage } = ace;
+    log(storage);
+    const KEY = 'cuba';
+    W.storage = {
+      set: () => {
+        var value = 'T' + now();
+        hr(); note('set ' + KEY + ' = ' + value); roll();
+        storage.set(KEY, value);
+      },
+      get: () => { hr(); note('get ' + KEY + ' = ' + storage.get(KEY)); roll(); },
+      remove: () => { hr(); note('remove ' + KEY + ' = ' + storage.remove(KEY)); roll(); },
+    };
 
     // ===================================================== theme
 
@@ -90,7 +100,7 @@
     roll();
   }; // run
 
-  // ============================================= run_updateClass
+  // =================================================== run_check
   const run_check = () => {
     hr();
     note(`theme.current = ${theme.current()}`);
@@ -222,6 +232,7 @@
   const clear = () => {
     console.clear();
     jsout.innerHTML = '';
+    jstest && (jstest.setAttribute('style', GREEN), jstest.innerHTML = '[JS:OK]');
     note('Initiate test.run() to begin.', ORANGE);
   }; // clear
 

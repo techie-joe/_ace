@@ -20,12 +20,12 @@
 
 // { log, error } = console,
 // _try = (fn:any, ...a:any) => { try { fn(...a) } catch (e) { console.error(e) } },
-// THROW = (e: string) => { throw e },
+// _throw = (e: string) => { throw e },
 // invalid = (e: string, f?: string, t?: string) => {
-//   THROW(`Invalid argument of (${e})${(f ? ` for ${f}` : _)}.${(t ? ` Expecting (${t})` : _)}`)
+//   _throw(['Invalid argument of (' + e + ')', f ? ' for ' + f : _, '.', t ? ' Expecting (' + t + ')' : _].join(_));
 // },
 // failTo = (e: string) => {
-//   THROW(`Fail to ${e}`)
+//   _throw('Fail to '+e);
 // },
 
 // ===============================================================
