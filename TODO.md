@@ -2,8 +2,8 @@
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
-> v0.1.24 b326.20
-> - update: ace_thm.
+v0.1.24 b326.21
+- update: ace_thm.
 
 BUILDER update : version & build  
   [BUILDER___](_BUILDER_vars.pug)  

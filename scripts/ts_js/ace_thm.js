@@ -20,12 +20,10 @@
 "use strict";
 (() => {
     const W = window, D = document, DOC = D.documentElement || D.body, // html or body
-    A = (a) => typeof a, TYPE = (e) => Object.prototype.toString.call(e), VOID = void 0, _ = '', STR = A(_), ARR = TYPE([]), isSTR = (v) => A(v) === STR, isARR = Array.isArray || (e => TYPE(e) === ARR), _throw = (e) => { throw e; }, invalid = (e, f, t) => {
-        _throw(['Invalid argument of (' + e + ')', f ? ' for ' + f : _, '.', t ? ' Expecting (' + t + ')' : _].join(_));
-    }, failTo = (e) => {
+    A = (a) => typeof a, TYPE = (e) => Object.prototype.toString.call(e), VOID = void 0, NULL = null, _ = '', STR = A(_), ARR = TYPE([]), isSTR = (v) => A(v) === STR, isARR = Array.isArray || (e => TYPE(e) === ARR), _throw = (e) => { throw e; }, failTo = (e) => {
         _throw('Fail to ' + e);
     }, listenTo = (what, type, listener, options) => { what.addEventListener(type, listener, options); }, newRegex = (pattern, flags) => new RegExp(pattern, flags), updateClass = (element, del, add) => {
-        if (element) {
+        try {
             const P = ' ', I = '|', X = 'g', SEP = newRegex('[\\.\\|\\s]+', X), TRIM = (s, sep = I) => s.trim().replace(SEP, sep).trim(), NEW = add ? TRIM(add, P) : _, DEL = del ? TRIM([del, NEW].join(P)).trim() : _, SEL = newRegex('(^|\\s+)(' + DEL + ')(\\s*(' + DEL + '))*(\\s+|$)', X), RES = element.className.replace(SEL, P).trim() + (NEW.length ? P + NEW : _);
             // (^|\s+)(DEL)(\s*(DEL))*(\s+|$)
             // log([
@@ -38,8 +36,8 @@
             element.className = RES;
             return element;
         }
-        else {
-            invalid(element, 'updateClass');
+        catch (e) {
+            failTo('updateClass');
         }
     }, 
     // S = (() => {
@@ -75,7 +73,7 @@
             // get key value
             return key ?
                 localStore.getItem(key)
-                : failTo('get ' + key);
+                : (failTo('get ' + key), NULL);
         }, remove = (key) => {
             // get key value
             key ?
@@ -101,13 +99,12 @@
             theme = isSTR(new_theme) ? new_theme : _;
             updateClass(DOC, old_theme, theme);
             STORE.set(KEY, theme);
-        }, change = () => { set(list[list.indexOf(theme || _) + 1] || _); }, media = W.matchMedia('(prefers-color-scheme: dark)');
-        var list = [DARK], theme;
-        // load theme
-        // stored = S.get(s); // load user preference
-        // stored ? use(stored) // use user preference
-        media.matches && set(DARK); // or decide using media
-        // else set(stored); // or decide for them (default)
+        }, change = () => { set(list[list.indexOf(theme || _) + 1] || _); }, media = W.matchMedia('(prefers-color-scheme: dark)'), preferDark = media.matches;
+        var stored_theme = STORE.get(KEY), // load user decided theme
+        stored_themes = STORE.get(KEYS), // load user decided list
+        list = stored_themes ? JSON.parse(stored_themes) : [DARK], // list: were decided by user or ace
+        theme = isSTR(stored_theme) ? stored_theme : preferDark ? DARK : _; // theme: were decided by user or refers to media matches.
+        updateClass(DOC, NULL, theme); // apply load theme
         // open to changes
         listenTo(media, 'change', e => { e.matches ? set(DARK) : set(); });
         listenTo(W, 'keyup', e => { e.altKey && 'KeyT' === e.code && change(); });

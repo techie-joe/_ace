@@ -82,7 +82,10 @@
     if (!TEST(ace.storage, 'window.ace.storage')) { return }
     const { storage } = ace;
     log(storage);
-    const KEY = 'cuba';
+    const
+      KEY = 'cuba',
+      TC = 'theme',
+      TL = 'themes';
     W.storage = {
       set: () => {
         var value = 'T' + now();
@@ -91,7 +94,16 @@
       },
       get: () => { hr(); note('get ' + KEY + ' = ' + storage.get(KEY)); roll(); },
       remove: () => { hr(); note('remove ' + KEY + ' = ' + storage.remove(KEY)); roll(); },
+      resetTheme: () => {
+        hr();
+        note('remove ' + TC + ' = ' + storage.remove(TC));
+        note('remove ' + TL + ' = ' + storage.remove(TL));
+        roll();
+      },
     };
+    note('get ' + KEY + '   = ' + storage.get(KEY));
+    note('get ' + TC + '  = ' + storage.get(TC));
+    note('get ' + TL + ' = ' + storage.get(TL));
 
     // ===================================================== theme
 
@@ -123,26 +135,31 @@
         `add =.${add}.`,
       ].join("\n"));
 
-      const
-        _ = '',
-        P = ' ',
-        I = '|',
-        X = 'g',
-        newRegex = (pattern, flags) => new RegExp(pattern, flags),
-        SEP = newRegex('[\\.\\|\\s]+', X),
-        TRIM = (s, sep = I) => s.trim().replace(SEP, sep).trim(),
-        NEW = add ? TRIM(add, P) : _,
-        DEL = del ? TRIM([del, NEW].join(P)).trim() : _,
-        SEL = newRegex('(^|\\s+)(' + DEL + ')(\\s*(' + DEL + '))*(\\s+|$)', X),
-        RES = element.className.replace(SEL, P).trim() + (NEW.length ? P + NEW : _);
-      // (^|\s+)(DEL)(\s*(DEL))*(\s+|$)
+      try {
+        const
+          P = ' ',
+          I = '|',
+          X = 'g',
+          SEP = newRegex('[\\.\\|\\s]+', X),
+          TRIM = (s, sep = I) => s.trim().replace(SEP, sep).trim(),
+          NEW = add ? TRIM(add, P) : _,
+          DEL = del ? TRIM([del, NEW].join(P)).trim() : _,
+          SEL = newRegex('(^|\\s+)(' + DEL + ')(\\s*(' + DEL + '))*(\\s+|$)', X),
+          RES = element.className.replace(SEL, P).trim() + (NEW.length ? P + NEW : _);
 
-      note([
-        `NEW =.${NEW}.`,
-        `DEL =.${DEL}.`,
-        `SEL =.${SEL}.`,
-        `RES =.${RES}.`,
-      ].join("\n"));
+        // (^|\s+)(DEL)(\s*(DEL))*(\s+|$)
+        log([
+          `TRY =.${element.className.replace(SEL, P)}.`,
+          `NEW =.${NEW}.`,
+          `DEL =.${DEL}.`,
+          `SEL =.${SEL}.`,
+          `RES =.${RES}.`,
+        ].join("\n"));
+
+        element.className = RES;
+        return element;
+      } catch(e) { error('updateClass'); }
+
       hr();
 
     };

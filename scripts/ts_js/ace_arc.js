@@ -90,6 +90,32 @@
 //     g("Fail to add event listener.")
 // }
 // ===============================================================
+// newRegex = (pattern: RegExp | string, flags?: string) => new RegExp(pattern, flags),
+// updateClass = (element: HTMLElement, del?: string | null, add?: string | null) => {
+//   if (element) {
+//     const
+//       P = ' ',
+//       I = '|',
+//       X = 'g',
+//       SEP = newRegex('[\\.\\|\\s]+', X),
+//       TRIM = (s: string, sep = I) => s.trim().replace(SEP, sep).trim(),
+//       NEW = add ? TRIM(add, P) : _,
+//       DEL = del ? TRIM([del, NEW].join(P)).trim() : _,
+//       SEL = newRegex('(^|\\s+)(' + DEL + ')(\\s*(' + DEL + '))*(\\s+|$)', X),
+//       RES = element.className.replace(SEL, P).trim() + (NEW.length ? P + NEW : _);
+//     // (^|\s+)(DEL)(\s*(DEL))*(\s+|$)
+//     // log([
+//     //   `TRY =.${element.className.replace(SEL, P)}.`,
+//     //   `NEW =.${NEW}.`,
+//     //   `DEL =.${DEL}.`,
+//     //   `SEL =.${SEL}.`,
+//     //   `RES =.${RES}.`,
+//     // ].join("\n"));
+//     element.className = RES;
+//     return element;
+//   } else { invalid(element, 'updateClass'); }
+// },
+// ===============================================================
 // enableShortcut = () => {
 //   return shortcut = listenTo(W, "keyup", (e: Event) => {
 //     // 'altKey' in e && 'code' in e &&

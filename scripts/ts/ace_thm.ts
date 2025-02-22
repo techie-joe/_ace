@@ -1,4 +1,4 @@
-/*! Ace Template | v0.1.24 b326.20 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
+/*! Ace Template | v0.1.24 b326.21 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
 /* ===============================================================
 // IMPORTANT: must compile to ES5 or above.
 // ECMAScript 5 (ES5) aka ECMAScript 2009,
@@ -30,15 +30,13 @@ interface Window {
     A = (a: any) => typeof a,
     TYPE = (e: any) => Object.prototype.toString.call(e),
     VOID = void 0,
+    NULL = null,
     _ = '',
     STR = A(_),
     ARR = TYPE([]),
     isSTR = (v: any) => A(v) === STR,
     isARR = Array.isArray || (e => TYPE(e) === ARR),
     _throw = (e: string) => { throw e },
-    invalid = (e: string, f?: string, t?: string) => {
-      _throw(['Invalid argument of (' + e + ')', f ? ' for ' + f : _, '.', t ? ' Expecting (' + t + ')' : _].join(_));
-    },
     failTo = (e: string) => {
       _throw('Fail to ' + e);
     },
@@ -49,8 +47,8 @@ interface Window {
       options?: boolean | AddEventListenerOptions
     ): void => { what.addEventListener(type, listener, options) },
     newRegex = (pattern: RegExp | string, flags?: string) => new RegExp(pattern, flags),
-    updateClass = (element: HTMLElement, del?: string, add?: string) => {
-      if (element) {
+    updateClass = (element: HTMLElement, del?: string | null, add?: string | null) => {
+      try {
         const
           P = ' ',
           I = '|',
@@ -73,7 +71,7 @@ interface Window {
 
         element.className = RES;
         return element;
-      } else { invalid(element, 'updateClass'); }
+      } catch(e) { failTo('updateClass'); }
     },
     // S = (() => {
     //   const
@@ -107,11 +105,11 @@ interface Window {
               : remove(key)
             : failTo('set ' + key);
         },
-        get = (key: string) => {
+        get = (key: string): string | null => {
           // get key value
           return key ?
             localStore.getItem(key)
-            : failTo('get ' + key);
+            : (failTo('get ' + key), NULL);
         },
         remove = (key: string) => {
           // get key value
@@ -143,15 +141,16 @@ interface Window {
           STORE.set(KEY, theme);
         },
         change = () => { set(list[list.indexOf(theme || _) + 1] || _) },
-        media = W.matchMedia('(prefers-color-scheme: dark)');
+        media = W.matchMedia('(prefers-color-scheme: dark)'),
+        preferDark = media.matches;
       var
-        list: string[] = [DARK],
-        theme: string | undefined | null;
-      // load theme
-      // stored = S.get(s); // load user preference
-      // stored ? use(stored) // use user preference
-      media.matches && set(DARK); // or decide using media
-      // else set(stored); // or decide for them (default)
+        stored_theme = STORE.get(KEY), // load user decided theme
+        stored_themes = STORE.get(KEYS), // load user decided list
+        list: string[] = stored_themes ? JSON.parse(stored_themes) : [DARK], // list: were decided by user or ace
+        theme: string | undefined | null = isSTR(stored_theme) ? stored_theme : preferDark ? DARK : _; // theme: were decided by user or refers to media matches.
+      
+      updateClass(DOC, NULL, theme); // apply load theme
+
       // open to changes
       listenTo(media, 'change', e => { e.matches ? set(DARK) : set() });
       listenTo(W, 'keyup', e => { e.altKey && 'KeyT' === e.code && change(); });
