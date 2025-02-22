@@ -92,28 +92,28 @@
 // ===============================================================
 // newRegex = (pattern: RegExp | string, flags?: string) => new RegExp(pattern, flags),
 // updateClass = (element: HTMLElement, del?: string | null, add?: string | null) => {
-//   if (element) {
-//     const
-//       P = ' ',
-//       I = '|',
-//       X = 'g',
-//       SEP = newRegex('[\\.\\|\\s]+', X),
-//       TRIM = (s: string, sep = I) => s.trim().replace(SEP, sep).trim(),
-//       NEW = add ? TRIM(add, P) : _,
-//       DEL = del ? TRIM([del, NEW].join(P)).trim() : _,
-//       SEL = newRegex('(^|\\s+)(' + DEL + ')(\\s*(' + DEL + '))*(\\s+|$)', X),
-//       RES = element.className.replace(SEL, P).trim() + (NEW.length ? P + NEW : _);
-//     // (^|\s+)(DEL)(\s*(DEL))*(\s+|$)
-//     // log([
-//     //   `TRY =.${element.className.replace(SEL, P)}.`,
-//     //   `NEW =.${NEW}.`,
-//     //   `DEL =.${DEL}.`,
-//     //   `SEL =.${SEL}.`,
-//     //   `RES =.${RES}.`,
-//     // ].join("\n"));
-//     element.className = RES;
-//     return element;
-//   } else { invalid(element, 'updateClass'); }
+// try {
+//   const
+//     P = ' ',
+//     I = '|',
+//     X = 'g',
+//     SEP = newRegex('[\\.\\|\\s]+', X),
+//     TRIM = (s: string, sep = I) => s.trim().replace(SEP, sep).trim(),
+//     NEW = add ? TRIM(add, P) : _,
+//     DEL = del ? TRIM([del, NEW].join(P)).trim() : _,
+//     SEL = newRegex('(^|\\s+)(' + DEL + ')(\\s*(' + DEL + '))*(\\s+|$)', X),
+//     RES = element.className.replace(SEL, P).trim() + (NEW.length ? P + NEW : _);
+//   // (^|\s+)(DEL)(\s*(DEL))*(\s+|$)
+//   // log([
+//   //   `TRY =.${element.className.replace(SEL, P)}.`,
+//   //   `NEW =.${NEW}.`,
+//   //   `DEL =.${DEL}.`,
+//   //   `SEL =.${SEL}.`,
+//   //   `RES =.${RES}.`,
+//   // ].join("\n"));
+//   element.className = RES;
+//   return element;
+// } catch(e) { failTo('updateClass'); }
 // },
 // ===============================================================
 // enableShortcut = () => {
@@ -126,4 +126,26 @@
 //   shortcut && shortcut.stop();
 // };
 // var shortcut: { start:any, stop: any } | undefined = enableShortcut();
+// ===============================================================
+// S = (() => {
+//   const
+//     // e = I,
+//     KEY = "base",
+//     json = e ? (e.validateJson(KEY), e.getJson(KEY)) : {},
+//     o = (r, o) => (
+//       json[r] = o,
+//       !!e && (e.setJson(KEY, json), true)
+//     );
+//   return e.onChange(
+//     () => { e.validateJson(KEY) || e.setJson(KEY, json) }
+//   ),
+//   {
+//     get: (val: string) => json[val],
+//     set: o,
+//     remove: (val: string) => {
+//       o(val, VOID)
+//     }
+//   }
+// }
+// )(),
 // ===============================================================

@@ -2,8 +2,8 @@
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
-v0.1.24 b326.21
-- update: ace_thm.
+v0.1.24 b327.22
+- update: ace_thm.v1.
 
 BUILDER update : version & build  
   [BUILDER___](_BUILDER_vars.pug)  
@@ -31,6 +31,8 @@ BASIC update : version & build
 </div>
 
 ## To do
+
+  - TODO: validate stored value.
 
   - To add: ace.back; if history.length = 0 : back to homeUrl + href = homeUrl
 

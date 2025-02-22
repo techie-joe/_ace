@@ -1,4 +1,4 @@
-/*! Ace Template | v0.1.24 b326.20 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
+/*! Ace Template | v0.1.24 b326.21 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
 /* ===============================================================
 // IMPORTANT: must compile to ES5 or above.
 // ECMAScript 5 (ES5) aka ECMAScript 2009,
@@ -20,7 +20,7 @@
 "use strict";
 (() => {
     const W = window, D = document, DOC = D.documentElement || D.body, // html or body
-    A = (a) => typeof a, TYPE = (e) => Object.prototype.toString.call(e), VOID = void 0, NULL = null, _ = '', STR = A(_), ARR = TYPE([]), isSTR = (v) => A(v) === STR, isARR = Array.isArray || (e => TYPE(e) === ARR), _throw = (e) => { throw e; }, failTo = (e) => {
+    A = (a) => typeof a, TYPE = (e) => Object.prototype.toString.call(e), NULL = null, _ = '', STR = A(_), ARR = TYPE([]), isSTR = (v) => A(v) === STR, isARR = Array.isArray || (e => TYPE(e) === ARR), _throw = (e) => { throw e; }, failTo = (e) => {
         _throw('Fail to ' + e);
     }, listenTo = (what, type, listener, options) => { what.addEventListener(type, listener, options); }, newRegex = (pattern, flags) => new RegExp(pattern, flags), updateClass = (element, del, add) => {
         try {
@@ -39,29 +39,7 @@
         catch (e) {
             failTo('updateClass');
         }
-    }, 
-    // S = (() => {
-    //   const
-    //     // e = I,
-    //     KEY = "base",
-    //     json = e ? (e.validateJson(KEY), e.getJson(KEY)) : {},
-    //     o = (r, o) => (
-    //       json[r] = o,
-    //       !!e && (e.setJson(KEY, json), true)
-    //     );
-    //   return e.onChange(
-    //     () => { e.validateJson(KEY) || e.setJson(KEY, json) }
-    //   ),
-    //   {
-    //     get: (val: string) => json[val],
-    //     set: o,
-    //     remove: (val: string) => {
-    //       o(val, VOID)
-    //     }
-    //   }
-    // }
-    // )(),
-    STORE = (() => {
+    }, STORE = (() => {
         const { localStorage: localStore } = W, set = (key, value) => {
             // store key value
             key ?
@@ -99,12 +77,22 @@
             theme = isSTR(new_theme) ? new_theme : _;
             updateClass(DOC, old_theme, theme);
             STORE.set(KEY, theme);
-        }, change = () => { set(list[list.indexOf(theme || _) + 1] || _); }, media = W.matchMedia('(prefers-color-scheme: dark)'), preferDark = media.matches;
-        var stored_theme = STORE.get(KEY), // load user decided theme
-        stored_themes = STORE.get(KEYS), // load user decided list
-        list = stored_themes ? JSON.parse(stored_themes) : [DARK], // list: were decided by user or ace
+        }, change = () => { set(list[list.indexOf(theme || _) + 1] || _); }, parseList = (stored_list) => {
+            try {
+                return stored_list && JSON.parse(stored_list);
+            }
+            catch (e) {
+                console.error('Fail to parse stored themes: ' + stored_list);
+            }
+            return NULL;
+        }, media = W.matchMedia('(prefers-color-scheme: dark)'), preferDark = media.matches;
+        // prepare presets
+        var stored_list = parseList(STORE.get(KEYS)), // load user decided list
+        stored_theme = STORE.get(KEY), // load user decided theme
+        list = stored_list || [DARK], // list: were decided by user or ace
         theme = isSTR(stored_theme) ? stored_theme : preferDark ? DARK : _; // theme: were decided by user or refers to media matches.
-        updateClass(DOC, NULL, theme); // apply load theme
+        // apply load theme
+        updateClass(DOC, NULL, theme);
         // open to changes
         listenTo(media, 'change', e => { e.matches ? set(DARK) : set(); });
         listenTo(W, 'keyup', e => { e.altKey && 'KeyT' === e.code && change(); });

@@ -4,7 +4,7 @@
 
 Title    : Ace Builder  
 Version  : 0.1.24  
-Build    : 326.21  
+Build    : 327.22  
 Author   : Techie Joe  
 
 BUILDER  : https://github.com/techie-joe/_ace/  

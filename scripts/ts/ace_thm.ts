@@ -1,4 +1,4 @@
-/*! Ace Template | v0.1.24 b326.21 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
+/*! Ace Template | v0.1.24 b327.22 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
 /* ===============================================================
 // IMPORTANT: must compile to ES5 or above.
 // ECMAScript 5 (ES5) aka ECMAScript 2009,
@@ -29,7 +29,6 @@ interface Window {
     DOC = D.documentElement || D.body, // html or body
     A = (a: any) => typeof a,
     TYPE = (e: any) => Object.prototype.toString.call(e),
-    VOID = void 0,
     NULL = null,
     _ = '',
     STR = A(_),
@@ -71,29 +70,8 @@ interface Window {
 
         element.className = RES;
         return element;
-      } catch(e) { failTo('updateClass'); }
+      } catch (e) { failTo('updateClass'); }
     },
-    // S = (() => {
-    //   const
-    //     // e = I,
-    //     KEY = "base",
-    //     json = e ? (e.validateJson(KEY), e.getJson(KEY)) : {},
-    //     o = (r, o) => (
-    //       json[r] = o,
-    //       !!e && (e.setJson(KEY, json), true)
-    //     );
-    //   return e.onChange(
-    //     () => { e.validateJson(KEY) || e.setJson(KEY, json) }
-    //   ),
-    //   {
-    //     get: (val: string) => json[val],
-    //     set: o,
-    //     remove: (val: string) => {
-    //       o(val, VOID)
-    //     }
-    //   }
-    // }
-    // )(),
     STORE = (() => {
       const
         { localStorage: localStore } = W,
@@ -141,15 +119,22 @@ interface Window {
           STORE.set(KEY, theme);
         },
         change = () => { set(list[list.indexOf(theme || _) + 1] || _) },
+        parseList = (stored_list: string | null): string[] | null => {
+          try { return stored_list && JSON.parse(stored_list) } catch (e) { console.error('Fail to parse stored themes: '+stored_list) }
+          return NULL;
+        },
         media = W.matchMedia('(prefers-color-scheme: dark)'),
         preferDark = media.matches;
+
+      // prepare presets
       var
+        stored_list = parseList(STORE.get(KEYS)), // load user decided list
         stored_theme = STORE.get(KEY), // load user decided theme
-        stored_themes = STORE.get(KEYS), // load user decided list
-        list: string[] = stored_themes ? JSON.parse(stored_themes) : [DARK], // list: were decided by user or ace
+        list: string[] = stored_list || [DARK], // list: were decided by user or ace
         theme: string | undefined | null = isSTR(stored_theme) ? stored_theme : preferDark ? DARK : _; // theme: were decided by user or refers to media matches.
-      
-      updateClass(DOC, NULL, theme); // apply load theme
+
+      // apply load theme
+      updateClass(DOC, NULL, theme);
 
       // open to changes
       listenTo(media, 'change', e => { e.matches ? set(DARK) : set() });
@@ -163,7 +148,7 @@ interface Window {
     })(),
     ACE = {
       // A, TYPE, STR, ARR, isSTR, isARR, DOC,
-      // _throw, _try, invalid, failTo,
+      // _throw, failTo,
       // listenTo, newRegex,
       updateClass,
       storage: STORE,

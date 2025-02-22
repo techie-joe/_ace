@@ -144,3 +144,27 @@
 // var shortcut: { start:any, stop: any } | undefined = enableShortcut();
 
 // ===============================================================
+
+// S = (() => {
+//   const
+//     // e = I,
+//     KEY = "base",
+//     json = e ? (e.validateJson(KEY), e.getJson(KEY)) : {},
+//     o = (r, o) => (
+//       json[r] = o,
+//       !!e && (e.setJson(KEY, json), true)
+//     );
+//   return e.onChange(
+//     () => { e.validateJson(KEY) || e.setJson(KEY, json) }
+//   ),
+//   {
+//     get: (val: string) => json[val],
+//     set: o,
+//     remove: (val: string) => {
+//       o(val, VOID)
+//     }
+//   }
+// }
+// )(),
+
+// ===============================================================
