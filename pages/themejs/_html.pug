@@ -1,0 +1,36 @@
+extends ../../pugs/html
+
+block append vars
+  include _vars
+
+block append style
+  +cssv(assetsUrl+'gcss/demo.css')
+  //- style.
+
+block views
+  +view
+
+    block nav
+      include _nav
+      //- +nav#_nav: ul: +lia
+      +navbar
+
+    block header
+      //- +header#_header: +heading#_heading
+      +header#_header
+        +heading#_heading !{heading}
+        p#_about !{description}
+        hr
+
+    block main
+      //- +main#_main: article| main article
+      +pageData#_pageData._page_layout
+
+    block footer
+      //- +footer#_footer
+      +footer#_footer
+        hr
+        p._small._system !{copyright}
+    
+    block asides
+      //- +aside#_aside

@@ -24,14 +24,17 @@ const _src = {
     md  : ["builder/**/*.md.pug"],
   },
   site : {
-    html  : ["pages/**/*.html.pug"],
-    php   : ["pages/**/*.php.pug"],
-    txt   : ["pages/**/*.txt.pug"],
-    md    : ["pages/**/*.md.pug"],      
+    html  : ["index/*.html.pug","pages/**/*.html.pug"],
+    php   : ["index/*.php.pug","pages/**/*.php.pug"],
+    txt   : ["index/*.txt.pug","pages/**/*.txt.pug"],
+    md    : ["index/*.md.pug","pages/**/*.md.pug"],      
   },
   files : ["files/**/*"],
   scss  : ["styles/gulp_css/**/*.scss"],
-  js    : ["scripts/gulp_js/**/*.js"],
+  js: [
+    "scripts/gulp_js/**/*.js",
+    "scripts/wp_js/**/*",
+  ],
 };
 
 const watchOpt = { ignoreInitial: false };

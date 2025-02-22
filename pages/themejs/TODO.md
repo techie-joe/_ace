@@ -1,0 +1,78 @@
+## ThemeJs to do
+
+### Feb 23, 2025 - v1.0.0 b327.23
+- initial release.
+
+<div style="font-family:Consolas,monospace;font-weight:bold;">
+
+update : version & build  
+  [VARS______](_vars.pug)  
+  [CHANGELOGS](CHANGELOGS.md)  
+source :  
+  [SCRIPT____](../../scripts/ts/theme.ts)  
+  [WEBPACK___](../../webpack.config.js)  
+test   :  
+  [TEST______](../../scripts/test_js/test_theme.js)  
+output :  
+  [TS_JS_____](../../scripts/ts_js/theme.js)  
+  [WP_JS_____](../../scripts/wp_js/theme.min.js)  
+  [LICENSE___](../../../ace/themejs/LICENSE.txt)  
+  [README____](../../../ace/themejs/README.md)  
+
+</div>
+
+### more..
+
+#### Time Based Dark Mode
+Easily schedule dark mode based on your preferences with Darkify. Benefit from the advanced time-based settings to effortlessly start and end dark mode on your website.
+
+#### Themed By Default
+Automatically set your website to dark mode as the default view, while allowing visitors the choice to disable it if they wish.
+
+#### Operating System Aware Dark Mode
+This feature intelligently identifies the user’s operating system preferences and adapts to dark mode automatically, ensuring a tailored viewing experience.
+
+#### Scheduled Dark Mode Activation
+This functionality enables automatic switching to dark mode according to the user’s local time, allowing for a time-sensitive adaptation of the interface.
+
+#### Easy Toggle Keyboard Shortcut
+Switch seamlessly between light and dark modes using Darkify. Use the simple keyboard shortcut Ctrl+Alt+T, or opt for automatic activation based on your device’s operating system settings.
+
+#### Various Floating Switch Styles
+Pick a switch style that fits your website. There are many floating switch styles to choose from, so you can find one that goes well with your site’s design.
+
+#### Adjustable Switch Design
+Align the switch with your brand identity. Personalize the look of the switch to complement your brand’s color scheme and style.
+
+#### Switcher using shortcode
+Display the switch at any location on your site. By using the shortcode, you can make the switch appear on any page or post, ensuring it’s accessible everywhere.
+
+#### Pre-Defined and Customizable Color Options
+Select from a variety of color presets or design your own. This feature allows you to choose preset colors or create a custom color scheme that aligns with your brand’s identity.
+
+#### Selective Customization
+Tailored experience by choosing specific elements to activate or deactivate. Use element tags, class names, or IDs for accurate and targeted adjustments.
+
+#### Personalized Style with Custom CSS
+Improve the look by adding your own custom CSS. This lets you style elements uniquely to perfectly fit your brand’s aesthetic.
+
+#### Compatible with site builders
+The plugin works well with popular page builders including WordPress, Fusion Builder for Avada Divi Builder, WP Bakery, Visual Composer, Beaver Builder, Oxygen Builder, and Elementor.
+
+#### Tested
+The plugin has been rigorously tested with a variety of top WordPress themes to ensure flawless integration and performance, guaranteeing a seamless experience across different website styles and layouts.
+
+## Key Features
+
+- Frontend darkmode.
+- Enabled dark mode by default.
+- enabled/disabled by default based on user device time.
+- enabled/disable by default based on user device operating system setting.
+- Can be used in dark mode with keyboard shortcuts. For mac: Ctrl + Opt|Start T d and for windows users Ctrl + Alt + T.
+
+- 8 color awesome presets for dark mode
+- 12 floating toggle switcher with lots of customize options
+- Shortcode for toggle switcher
+
+- Custom CSS option.
+- RTL and multi-language ready.

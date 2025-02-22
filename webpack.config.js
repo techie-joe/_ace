@@ -6,12 +6,12 @@ module.exports = {
   mode: 'production',
   entry: {
     // [output-file] : [input-file]
-    "ace_thm.js"  : path.resolve(__dirname, 'scripts/ts_js/ace_thm.js'),
+    "theme.min.js"  : path.resolve(__dirname, 'scripts/ts_js/theme.js'),
     // "gulp.js"    : path.resolve(__dirname, 'scripts/gulp_js/gulp.js'),
     // "custom.js"  : path.resolve(__dirname, 'scripts/custom_js/custom.js'),
   },
   output: {
-    path: path.resolve(__dirname, '../ace/assets/wpjs'),
+    path: path.resolve(__dirname, 'scripts/wp_js'),
     filename: '[name]'
   }
 };

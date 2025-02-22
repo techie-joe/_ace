@@ -1,4 +1,4 @@
-/*! Ace Template | v0.1.24 b326.21 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
+/*! ThemeJs | v1.0.0 b327.22 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
 /* ===============================================================
 // IMPORTANT: must compile to ES5 or above.
 // ECMAScript 5 (ES5) aka ECMAScript 2009,
@@ -104,7 +104,7 @@
         };
     })(), ACE = {
         // A, TYPE, STR, ARR, isSTR, isARR, DOC,
-        // _throw, _try, invalid, failTo,
+        // _throw, failTo,
         // listenTo, newRegex,
         updateClass,
         storage: STORE,

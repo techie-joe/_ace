@@ -74,8 +74,7 @@ block main
     section.nav._p
       ._inline._mono
         +backlink._link.icon|&larr;
-        +_a(homeUrl,"Back to Ace Template")._link| Ace
-        +_a(demoUrl,"Go to Ace Template Demo")._link| Demo
+        +_a(themejsUrl,"Back to ThemeJs home page")._link| ThemeJs
         +_a()(onclick=onclick('theme.change();') title="Change Theme (Ctrl+Alt+T)")._link.icon|&bull;
       ._inline._mono._small
         b: span#jstest(style="color:red;")='[JS:OF]'
@@ -115,8 +114,8 @@ block main
 
 block script
   //- +jsv(src)
-  +jsv('/_ace/scripts/ts_js/ace_thm.js')(defer)
-  +jsv('/_ace/scripts/test_js/test_ace_thm.js')(defer)
+  +jsv('/ace/assets/gjs/theme.min.js')(defer)
+  +jsv('/ace/assets/gjs/test_theme.js')(defer)
 
   script.
     (function(){

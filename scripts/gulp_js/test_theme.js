@@ -4,6 +4,7 @@
     RED = 'color:#e22200;',
     GREEN = 'color:#008800;',
     ORANGE = 'color:#916900;',
+    PURPLE = 'color:#9f40a9',
     W = window,
     D = document,
     A = a => typeof a,
@@ -49,6 +50,7 @@
   };
 
   note('Initiate test.run() to begin.', ORANGE);
+  note('Open developer console (Ctrl+Shift+J) for detailed info.', ORANGE);
 
   // ========================================================= run
   const run = () => {
@@ -89,7 +91,7 @@
     W.storage = {
       set: () => {
         var value = 'T' + now();
-        hr(); note('set ' + KEY + ' = ' + value); roll();
+        hr(); note('set ' + KEY + ' = ' + value, PURPLE); roll();
         storage.set(KEY, value);
       },
       get: () => { hr(); note('get ' + KEY + ' = ' + storage.get(KEY)); roll(); },
@@ -137,6 +139,7 @@
 
       try {
         const
+          newRegex = (pattern, flags) => new RegExp(pattern, flags),
           P = ' ',
           I = '|',
           X = 'g',
@@ -158,7 +161,7 @@
 
         element.className = RES;
         return element;
-      } catch(e) { error('updateClass'); }
+      } catch(e) { error('Error while executing updateClass : '+e); }
 
       hr();
 

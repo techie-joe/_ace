@@ -31,6 +31,7 @@ You'll need the following setup to use this project to build your web project.
 - builder : are used to create some files for this builder.
 - files : will be copied as is into deployment.
 - pages : will be gulped and deployed into production.
+- index : will be gulped and deployed into production.
 - pugs  : are shared pug files being referenced by pages.
 - scripts : are used to generate javascript assets for the project.
 - styles  : are used to generate css assets for the project.
