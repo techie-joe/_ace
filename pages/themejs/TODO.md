@@ -29,7 +29,7 @@ output :
 ```json
 mode: 'production',
 entry {  
-   "theme_v1.0.min.js"  : path.resolve(__dirname, 'scripts/ts_js/theme_v1.0.js'),  
+   "theme_v1.0.js"  : path.resolve(__dirname, 'scripts/ts_js/theme_v1.0.js'),  
 }
 ```  
 

@@ -85,15 +85,14 @@ block main
         +_a()(onclick=onclick('test.run();') title="Run Test")._link.icon|Run &raquo;
         +_a()(onclick=onclick('test.clear();') title="Clear Test Box")._link.icon|Clear
         =' | '        
-        +a()(onclick=onclick('test.run_check();') title="Theme Check")._link.icon|Check
+        +_a()(onclick=onclick('test.run_updateClass();') title="Theme updateClass")._link.icon|updateClass
+        +_a()(onclick=onclick('test.run_check();') title="Theme Check")._link.icon|Check
         +_a()(onclick=onclick('test.run_set();') title="Theme Set")._link.icon|Set
         +a()(onclick=onclick('test.run_set(1);') title="Theme Set 1")._link.icon|1
         +a()(onclick=onclick('test.run_set(2);') title="Theme Set 2")._link.icon|2
         +a()(onclick=onclick('test.run_set(3);') title="Theme Set 3")._link.icon|3
-        +_
-        +a()(onclick=onclick('storage.resetTheme();') title="Remove Theme")._link.icon|Reset
         +_a()(onclick=onclick('test.run_change();') title="Theme Change")._link.icon|Change
-        +_a()(onclick=onclick('test.run_updateClass();') title="Theme updateClass")._link.icon|updateClass
+        +_a()(onclick=onclick('test.run_reset();') title="Reset Theme")._link.icon|Reset
         =' | '
         +_a()(onclick=onclick('storage.set();') title="Storage Set")._link.icon|Set
         +_a()(onclick=onclick('storage.get();') title="Storage Get")._link.icon|Get

@@ -72,7 +72,7 @@
             if (isARR(new_theme)) {
                 list = new_theme;
                 STORE.set(KEYS, JSON.stringify(list));
-                new_theme = list[begin ? list.indexOf(begin || _) : 0];
+                new_theme = list[isSTR(begin) ? list.indexOf(begin || _) : 0];
             }
             theme = isSTR(new_theme) ? new_theme : _;
             updateClass(DOC, old_theme, theme);
@@ -85,18 +85,26 @@
                 console.error('Fail to parse stored themes: ' + stored_list);
             }
             return NULL;
-        }, media = W.matchMedia('(prefers-color-scheme: dark)'), preferDark = media.matches;
+        }, reset = () => {
+            list = [DARK];
+            var old_theme = theme || _;
+            theme = media.matches ? DARK : _;
+            updateClass(DOC, old_theme, theme);
+            STORE.remove(KEY);
+            STORE.remove(KEYS);
+        }, media = W.matchMedia('(prefers-color-scheme: dark)');
         // prepare presets
         var stored_list = parseList(STORE.get(KEYS)), // load user decided list
         stored_theme = STORE.get(KEY), // load user decided theme
         list = stored_list || [DARK], // list: were decided by user or ace
-        theme = isSTR(stored_theme) ? stored_theme : preferDark ? DARK : _; // theme: were decided by user or refers to media matches.
+        theme = isSTR(stored_theme) ? stored_theme : media.matches ? DARK : _; // theme: were decided by user or refers to media-matches.
         // apply load theme
         updateClass(DOC, NULL, theme);
         // open to changes
         listenTo(media, 'change', e => { e.matches ? set(DARK) : set(); });
         listenTo(W, 'keyup', e => { e.altKey && 'KeyT' === e.code && change(); });
         return {
+            reset,
             set,
             change,
             list: () => list,

@@ -57,6 +57,11 @@
   note('Open developer console for detailed info. (Ctrl+Shift+J).', ORANGE);
   note('Initiate test.run() to begin.', ORANGE);
 
+  const
+    KEY = 'cuba',
+    TC = 'theme',
+    TL = 'themes';
+
   // ========================================================= run
   const run = () => {
     const THEN = now();
@@ -69,43 +74,34 @@
     // 'localhost'.replace(/\w/g,v=>v.charCodeAt(0))
     // ((h)=>(h.split('').forEach((c)=>{c}),h))()
 
-    const { ace, theme } = W;
+    const { theme } = W;
 
     // ===================================================== theme
     if (!TEST(theme, 'window.theme')) { return }
     log(theme)
-    note(`theme.current = ${theme.current()}`);
-    note(`theme.list    = [${theme.list()}]`);
-    note(`DOC.className = ${DOC.className}`);
 
     // =================================================== storage
     if (!TEST(theme.fn.storage, 'window.theme.fn.storage')) { return }
-    const { storage } = theme.fn;
+    const { storage:store } = theme.fn;
     log(theme.fn.storage);
-    const
-      KEY = 'cuba',
-      TC = 'theme',
-      TL = 'themes';
     W.storage = {
       set: () => {
         var value = 'T' + now();
         hr(); note('set ' + KEY + ' = ' + value, PURPLE); roll();
-        storage.set(KEY, value);
+        store.set(KEY, value);
       },
-      get: () => { hr(); note('get ' + KEY + ' = ' + storage.get(KEY)); roll(); },
-      remove: () => { hr(); note('remove ' + KEY + ' = ' + storage.remove(KEY), BROWN); roll(); },
-      resetTheme: () => {
-        hr();
-        note('remove ' + TC + ' = ' + storage.remove(TC));
-        note('remove ' + TL + ' = ' + storage.remove(TL));
-        roll();
-      },
+      get: () => { hr(); note('get ' + KEY + ' = ' + store.get(KEY)); roll(); },
+      remove: () => { hr(); note('remove ' + KEY + ' = ' + store.remove(KEY), BROWN); roll(); },
     };
-    note('get ' + KEY + '   = ' + storage.get(KEY));
-    note('get ' + TC + '  = ' + storage.get(TC));
-    note('get ' + TL + ' = ' + storage.get(TL));
+    note('get ' + KEY + '   = ' + store.get(KEY));
+    note('get ' + TC + '  = ' + store.get(TC));
+    note('get ' + TL + ' = ' + store.get(TL));
 
     // ===================================================== theme
+
+    note(`theme.list    = [${theme.list()}]`);
+    note(`theme.current = ${theme.current()}`);
+    note(`DOC.className = ${DOC.className}`);
 
     note(`Finished in ${now() - THEN}ms`, ORANGE);
     roll();
@@ -115,11 +111,28 @@
   const run_check = () => {
     hr();
 
+    if (!TEST(isFUN(theme.list), 'window.theme.list')) { return }
     if (!TEST(isFUN(theme.current), 'window.theme.current')) { return }
+
+    note(`theme.list    = [${theme.list()}]`);
     note(`theme.current = ${theme.current()}`);
 
-    if (!TEST(isFUN(theme.list), 'window.theme.list')) { return }
+    roll();
+  }; // run_check
+
+  // =================================================== run_reset
+  const run_reset = () => {
+    hr();
+
+    if (!TEST(isFUN(theme.reset), 'window.theme.reset')) { return }
+    
+    const { storage:store } = theme.fn;
+
+    theme.reset();
+    note('remove ' + TC + ' = ' + store.remove(TC), BROWN);
+    note('remove ' + TL + ' = ' + store.remove(TL), BROWN);
     note(`theme.list    = [${theme.list()}]`);
+    note(`theme.current = ${theme.current()}`);
 
     roll();
   }; // run_check
@@ -262,6 +275,7 @@
     clear,
     run,
     run_check,
+    run_reset,
     run_set,
     run_change,
     run_updateClass,
