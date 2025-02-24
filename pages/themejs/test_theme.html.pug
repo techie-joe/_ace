@@ -3,7 +3,7 @@ extends _html
 block append vars
   - heading = `Testing ThemeJs`
   - updateTitle( `${heading}` )
-  - updateDescription( `Test page.` )
+  - updateDescription( `ThemeJs functionality test.` )
   - updateUrl( siteUrl+"test_theme.html" )
 
 block style
@@ -31,7 +31,7 @@ block style
     .nav ._link:hover { outline: 2px solid #888; }
 
     #jso {
-      height:30em;
+      height:25em;
       background-color: #ccc;
       color: #222;
       border-radius: .5rem;
@@ -86,16 +86,14 @@ block main
         +_a()(onclick=onclick('test.clear();') title="Clear Test Box")._link.icon|Clear
         =' | '        
         +a()(onclick=onclick('test.run_check();') title="Theme Check")._link.icon|Check
-        +_
-        +a()(onclick=onclick('test.run_set();') title="Theme Set")._link.icon|Set
+        +_a()(onclick=onclick('test.run_set();') title="Theme Set")._link.icon|Set
         +a()(onclick=onclick('test.run_set(1);') title="Theme Set 1")._link.icon|1
         +a()(onclick=onclick('test.run_set(2);') title="Theme Set 2")._link.icon|2
         +a()(onclick=onclick('test.run_set(3);') title="Theme Set 3")._link.icon|3
-        +a()(onclick=onclick('storage.resetTheme();') title="Remove Theme")._link.icon|Remove
         +_
-        +a()(onclick=onclick('test.run_change();') title="Theme Change")._link.icon|Change
-        +_
-        +a()(onclick=onclick('test.run_updateClass();') title="Run updateClass")._link.icon|updateClass
+        +a()(onclick=onclick('storage.resetTheme();') title="Remove Theme")._link.icon|Reset
+        +_a()(onclick=onclick('test.run_change();') title="Theme Change")._link.icon|Change
+        +_a()(onclick=onclick('test.run_updateClass();') title="Theme updateClass")._link.icon|updateClass
         =' | '
         +_a()(onclick=onclick('storage.set();') title="Storage Set")._link.icon|Set
         +_a()(onclick=onclick('storage.get();') title="Storage Get")._link.icon|Get
@@ -111,19 +109,17 @@ block main
     section._hidden
       #element
 
-  //- +main#_main: article
-
 block script
   //- +jsv(src)
 
   //- production -------------------------------------------------
-  //- +jsv(assetsUrl+'gjs/theme_v1.0.js')(defer)
-  //- +jsv(assetsUrl+'gjs/test_theme_v1.0.js')(defer)
+  +jsv(assetsUrl+'js/theme_v1.0.js')(defer)
+  +jsv(assetsUrl+'js/test_theme_v1.0.js')(defer)
   //- ------------------------------------------------------------
 
   //- dev --------------------------------------------------------
-  +jsv('/_ace/scripts/ts_js/theme_v1.0.js')(defer)
-  +jsv('/_ace/scripts/gulp_js/test_theme_v1.0.js')(defer)
+  //- +jsv('/_ace/scripts/ts_js/theme_v1.0.js')(defer)
+  //- +jsv('/_ace/scripts/gulp_js/test_theme_v1.0.js')(defer)
   //- ------------------------------------------------------------
 
   script.

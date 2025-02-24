@@ -17,8 +17,8 @@ test   :
   [TEST______](../../scripts/gulp_js/test_theme_v1.0.js)  
 output :  
   [TS_JS_____](../../scripts/ts_js/theme_v1.0.js)  
-  [WP_JS_____](../../scripts/wp_js/theme_v1.0.min.js)  
-  [WP_JS____L](../../scripts/wp_js/theme_v1.0.min.js.LICENSE.txt)
+  [WP_JS_____](../../scripts/wp_js/theme_v1.0.js)  
+  [WP_JS____L](../../scripts/wp_js/theme_v1.0.js.LICENSE.txt)
   [LICENSE___](../../../ace/themejs/LICENSE.txt)  
   [README____](../../../ace/themejs/README.md)  
 

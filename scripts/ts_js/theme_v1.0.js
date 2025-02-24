@@ -39,20 +39,44 @@
         catch (e) {
             failTo('updateClass');
         }
-    }, THEME = (() => {
-        const { localStorage: STORE } = W, KEY = 'theme', // storage key to store current theme
+    }, STORE = (() => {
+        const { localStorage: localStore } = W, set = (key, value) => {
+            // store key value
+            key ?
+                isSTR(value) ?
+                    localStore.setItem(key, value)
+                    : remove(key)
+                : failTo('set ' + key);
+        }, get = (key) => {
+            // get key value
+            return key ?
+                localStore.getItem(key)
+                : (failTo('get ' + key), NULL);
+        }, remove = (key) => {
+            // get key value
+            key ?
+                localStore.removeItem(key)
+                : failTo('remove ' + key);
+        };
+        return {
+            set,
+            get,
+            remove,
+        };
+    })(), THEME = (() => {
+        const KEY = 'theme', // storage key to store current theme
         KEYS = 'themes', // storage key to store current list
         DARK = '_dark', set = (new_theme, begin) => {
             // set & store current theme and list
             var old_theme = theme || _;
             if (isARR(new_theme)) {
                 list = new_theme;
-                STORE[KEYS] = JSON.stringify(list);
+                STORE.set(KEYS, JSON.stringify(list));
                 new_theme = list[begin ? list.indexOf(begin || _) : 0];
             }
             theme = isSTR(new_theme) ? new_theme : _;
             updateClass(DOC, old_theme, theme);
-            STORE[KEY] = theme;
+            STORE.set(KEY, theme);
         }, change = () => { set(list[list.indexOf(theme || _) + 1] || _); }, parseList = (stored_list) => {
             try {
                 return stored_list && JSON.parse(stored_list);
@@ -63,8 +87,8 @@
             return NULL;
         }, media = W.matchMedia('(prefers-color-scheme: dark)'), preferDark = media.matches;
         // prepare presets
-        var stored_list = parseList(STORE[KEYS]), // load user decided list
-        stored_theme = STORE[KEY], // load user decided theme
+        var stored_list = parseList(STORE.get(KEYS)), // load user decided list
+        stored_theme = STORE.get(KEY), // load user decided theme
         list = stored_list || [DARK], // list: were decided by user or ace
         theme = isSTR(stored_theme) ? stored_theme : preferDark ? DARK : _; // theme: were decided by user or refers to media matches.
         // apply load theme
@@ -82,6 +106,7 @@
                 // failTo,
                 // listenTo, newRegex,
                 updateClass,
+                storage: STORE,
             },
         };
     })();

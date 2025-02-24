@@ -13,8 +13,8 @@ const _dest_url = "/ace/";
 const _dest = {
   builder : "./",
   site    : "../ace",
-  css     : "../ace/assets/gcss",
-  js      : "../ace/assets/gjs",
+  css     : "../ace/assets/css",
+  js      : "../ace/assets/js",
 };
 
 const _src_manifest = './manifest.js';
