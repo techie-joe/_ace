@@ -1,4 +1,4 @@
-/*! ThemeJs | v1.0.0 b328.24 | Copyright 2025 - Techie Joe | https://github.com/techie-joe/ace */
+/*! ThemeJs | v1.0.0 b329.25 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
 /* ===============================================================
 // IMPORTANT: must compile to ES5 or above.
 // ECMAScript 5 (ES5) aka ECMAScript 2009,
@@ -19,7 +19,6 @@
 // ============================================================ */
 "use strict";
 interface Window {
-  ace: {},
   theme: {}
 }
 (() => {
@@ -35,9 +34,8 @@ interface Window {
     ARR = TYPE([]),
     isSTR = (v: any) => A(v) === STR,
     isARR = Array.isArray || (e => TYPE(e) === ARR),
-    _throw = (e: string) => { throw e },
     failTo = (e: string) => {
-      _throw('Fail to ' + e);
+      throw ('Fail to ' + e);
     },
     listenTo = <K extends keyof HTMLElementEventMap>(
       what: HTMLElement | MediaQueryList | Window,
@@ -72,37 +70,9 @@ interface Window {
         return element;
       } catch (e) { failTo('updateClass'); }
     },
-    STORE = (() => {
-      const
-        { localStorage: localStore } = W,
-        set = (key?: string, value?: string) => {
-          // store key value
-          key ?
-            isSTR(value) ?
-              localStore.setItem(key, value as string)
-              : remove(key)
-            : failTo('set ' + key);
-        },
-        get = (key: string): string | null => {
-          // get key value
-          return key ?
-            localStore.getItem(key)
-            : (failTo('get ' + key), NULL);
-        },
-        remove = (key: string) => {
-          // get key value
-          key ?
-            localStore.removeItem(key)
-            : failTo('remove ' + key);
-        };
-      return {
-        set,
-        get,
-        remove,
-      }
-    })(),
     THEME = (() => {
       const
+        { localStorage: STORE } = W,
         KEY = 'theme', // storage key to store current theme
         KEYS = 'themes', // storage key to store current list
         DARK = '_dark',
@@ -111,16 +81,16 @@ interface Window {
           var old_theme = theme || _;
           if (isARR(new_theme)) {
             list = new_theme;
-            STORE.set(KEYS, JSON.stringify(list));
+            STORE[KEYS] = JSON.stringify(list);
             new_theme = list[begin ? list.indexOf(begin || _) : 0];
           }
           theme = isSTR(new_theme) ? new_theme : _;
           updateClass(DOC, old_theme, theme);
-          STORE.set(KEY, theme);
+          STORE[KEY] = theme;
         },
         change = () => { set(list[list.indexOf(theme || _) + 1] || _) },
         parseList = (stored_list: string | null): string[] | null => {
-          try { return stored_list && JSON.parse(stored_list) } catch (e) { console.error('Fail to parse stored themes: '+stored_list) }
+          try { return stored_list && JSON.parse(stored_list) } catch (e) { console.error('Fail to parse stored themes: ' + stored_list) }
           return NULL;
         },
         media = W.matchMedia('(prefers-color-scheme: dark)'),
@@ -128,8 +98,8 @@ interface Window {
 
       // prepare presets
       var
-        stored_list = parseList(STORE.get(KEYS)), // load user decided list
-        stored_theme = STORE.get(KEY), // load user decided theme
+        stored_list = parseList(STORE[KEYS]), // load user decided list
+        stored_theme = STORE[KEY], // load user decided theme
         list: string[] = stored_list || [DARK], // list: were decided by user or ace
         theme: string | undefined | null = isSTR(stored_theme) ? stored_theme : preferDark ? DARK : _; // theme: were decided by user or refers to media matches.
 
@@ -144,18 +114,15 @@ interface Window {
         change,
         list: () => list,
         current: () => theme,
+        fn: {
+          // A, TYPE, STR, ARR, isSTR, isARR, DOC,
+          // failTo,
+          // listenTo, newRegex,
+          updateClass,
+        },
       }
-    })(),
-    ACE = {
-      // A, TYPE, STR, ARR, isSTR, isARR, DOC,
-      // _throw, failTo,
-      // listenTo, newRegex,
-      updateClass,
-      storage: STORE,
-      // theme: THEME,
-    };
+    })();
 
   // export theme ================================================
   W.theme = THEME;
-  W.ace = ACE;
 })()

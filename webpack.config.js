@@ -6,7 +6,7 @@ module.exports = {
   mode: 'production',
   entry: {
     // [output-file] : [input-file]
-    "theme_v1.0.min.js"  : path.resolve(__dirname, 'scripts/ts_js/theme_v1.0.js'),
+    "theme_v1.0.js"  : path.resolve(__dirname, 'scripts/ts_js/theme_v1.0.js'),
     // "gulp.js"    : path.resolve(__dirname, 'scripts/gulp_js/gulp.js'),
     // "custom.js"  : path.resolve(__dirname, 'scripts/custom_js/custom.js'),
   },

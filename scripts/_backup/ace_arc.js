@@ -168,3 +168,35 @@
 // )(),
 
 // ===============================================================
+
+// STORE = (() => {
+//   const
+//     { localStorage: localStore } = W,
+//     set = (key?: string, value?: string) => {
+//       // store key value
+//       key ?
+//         isSTR(value) ?
+//           localStore.setItem(key, value as string)
+//           : remove(key)
+//         : failTo('set ' + key);
+//     },
+//     get = (key: string): string | null => {
+//       // get key value
+//       return key ?
+//         localStore.getItem(key)
+//         : (failTo('get ' + key), NULL);
+//     },
+//     remove = (key: string) => {
+//       // get key value
+//       key ?
+//         localStore.removeItem(key)
+//         : failTo('remove ' + key);
+//     };
+//   return {
+//     set,
+//     get,
+//     remove,
+//   }
+// })(),
+
+// ===============================================================

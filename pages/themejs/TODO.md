@@ -1,6 +1,6 @@
 ## ThemeJs to do
 
-### Feb 23, 2025 - v1.0.0 b328.24
+### Feb 24, 2025 - v1.0.0 b329.25
 - ADD COLOR-SCHEME META
 - ADD SEED LOCK
 - initial release.

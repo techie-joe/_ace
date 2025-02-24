@@ -73,8 +73,8 @@ block main
     //- ☀
     section.nav._p
       ._inline._mono
-        +backlink._link.icon|&larr;
-        +_a('./',"Back to ThemeJs")._link| ThemeJs
+        //- +backlink._link.icon|&larr;
+        +a('./',"Back to ThemeJs")._link|#[+itext|&larr;]#[span._btnlabel #[span._tc_contra Theme]#[span._tc_blue Js]]
         +_a()(onclick=onclick('theme.change();') title="Change Theme (Ctrl+Alt+T)")._link.icon|&bull;
       ._inline._mono._small
         b: span#jstest(style="color:red;")='[JS:OF]'
@@ -82,16 +82,16 @@ block main
 
     section.nav._small
       ._inline._mono
-        +_a()(onclick=onclick('test.clear();') title="Clear Test Box")._link.icon|Clear
         +_a()(onclick=onclick('test.run();') title="Run Test")._link.icon|Run &raquo;
-        +_
-        +a()(onclick=onclick('test.run_check();') title="Run Check")._link.icon|Check
+        +_a()(onclick=onclick('test.clear();') title="Clear Test Box")._link.icon|Clear
+        =' | '        
+        +a()(onclick=onclick('test.run_check();') title="Theme Check")._link.icon|Check
         +_
         +a()(onclick=onclick('test.run_set();') title="Theme Set")._link.icon|Set
         +a()(onclick=onclick('test.run_set(1);') title="Theme Set 1")._link.icon|1
         +a()(onclick=onclick('test.run_set(2);') title="Theme Set 2")._link.icon|2
         +a()(onclick=onclick('test.run_set(3);') title="Theme Set 3")._link.icon|3
-        +a()(onclick=onclick('storage.resetTheme();') title="Theme Remove")._link.icon|Reset
+        +a()(onclick=onclick('storage.resetTheme();') title="Remove Theme")._link.icon|Remove
         +_
         +a()(onclick=onclick('test.run_change();') title="Theme Change")._link.icon|Change
         +_
@@ -115,8 +115,16 @@ block main
 
 block script
   //- +jsv(src)
-  +jsv(assetsUrl+'gjs/theme_v1.0.min.js')(defer)
-  +jsv(assetsUrl+'gjs/test_theme_v1.0.js')(defer)
+
+  //- production -------------------------------------------------
+  //- +jsv(assetsUrl+'gjs/theme_v1.0.js')(defer)
+  //- +jsv(assetsUrl+'gjs/test_theme_v1.0.js')(defer)
+  //- ------------------------------------------------------------
+
+  //- dev --------------------------------------------------------
+  +jsv('/_ace/scripts/ts_js/theme_v1.0.js')(defer)
+  +jsv('/_ace/scripts/gulp_js/test_theme_v1.0.js')(defer)
+  //- ------------------------------------------------------------
 
   script.
     (function(){
