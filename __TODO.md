@@ -1,7 +1,7 @@
 ## Update files
 
 ### Feb 23, 2025 - v0.1.24 b327.23
-- update: ace_thm.v1.
+- update: ace_thm.v1.0
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 

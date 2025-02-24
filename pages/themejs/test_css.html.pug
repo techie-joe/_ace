@@ -1,7 +1,7 @@
 extends _html
 
 block append vars
-  - heading = `Test CSS`
+  - heading = `Testing ThemeCSS`
   - updateTitle( `${heading}` )
   - updateDescription( `Test page.` )
   - updateUrl( siteUrl+"test_css.html" )
@@ -57,7 +57,11 @@ block main
 
   //- +main#_main: article
 
-block append script
+block script
+  //- +jsv(src)
+  +jsv(assetsUrl+'gjs/theme_v1.0.min.js')(defer)
+  +jsv(assetsUrl+'gjs/test_theme_v1.0.js')(defer)
+
   script.
     (function(){
       jstest && (jstest.setAttribute('style','color:#008800;'),jstest.innerHTML = '[JS:OK]');

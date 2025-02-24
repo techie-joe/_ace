@@ -1,6 +1,8 @@
 ## ThemeJs to do
 
-### Feb 23, 2025 - v1.0.0 b327.23
+### Feb 23, 2025 - v1.0.0 b328.24
+- ADD COLOR-SCHEME META
+- ADD SEED LOCK
 - initial release.
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
@@ -9,17 +11,27 @@ update : version & build
   [VARS______](_vars.pug)  
   [CHANGELOGS](CHANGELOGS.md)  
 source :  
-  [SCRIPT____](../../scripts/ts/theme.ts)  
+  [SCRIPT____](../../scripts/ts/theme_v1.0.ts)  
   [WEBPACK___](../../webpack.config.js)  
 test   :  
-  [TEST______](../../scripts/test_js/test_theme.js)  
+  [TEST______](../../scripts/gulp_js/test_theme_v1.0.js)  
 output :  
-  [TS_JS_____](../../scripts/ts_js/theme.js)  
-  [WP_JS_____](../../scripts/wp_js/theme.min.js)  
+  [TS_JS_____](../../scripts/ts_js/theme_v1.0.js)  
+  [WP_JS_____](../../scripts/wp_js/theme_v1.0.min.js)  
+  [WP_JS____L](../../scripts/wp_js/theme_v1.0.min.js.LICENSE.txt)
   [LICENSE___](../../../ace/themejs/LICENSE.txt)  
   [README____](../../../ace/themejs/README.md)  
 
 </div>
+
+### Webpack configuration
+
+```json
+mode: 'production',
+entry {  
+   "theme_v1.0.min.js"  : path.resolve(__dirname, 'scripts/ts_js/theme_v1.0.js'),  
+}
+```  
 
 ### more..
 

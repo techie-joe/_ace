@@ -1,10 +1,10 @@
 extends _html
 
 block append vars
-  - heading = `Testing AceJs Theme`
+  - heading = `Testing ThemeJs`
   - updateTitle( `${heading}` )
   - updateDescription( `Test page.` )
-  - updateUrl( siteUrl+"test_ace_thm.html" )
+  - updateUrl( siteUrl+"test_theme.html" )
 
 block style
   +htmlPreset
@@ -74,7 +74,7 @@ block main
     section.nav._p
       ._inline._mono
         +backlink._link.icon|&larr;
-        +_a(themejsUrl,"Back to ThemeJs home page")._link| ThemeJs
+        +_a('./',"Back to ThemeJs")._link| ThemeJs
         +_a()(onclick=onclick('theme.change();') title="Change Theme (Ctrl+Alt+T)")._link.icon|&bull;
       ._inline._mono._small
         b: span#jstest(style="color:red;")='[JS:OF]'
@@ -82,7 +82,7 @@ block main
 
     section.nav._small
       ._inline._mono
-        +_a()(onclick=onclick('test.clear();') title="Clear Test")._link.icon|Clear
+        +_a()(onclick=onclick('test.clear();') title="Clear Test Box")._link.icon|Clear
         +_a()(onclick=onclick('test.run();') title="Run Test")._link.icon|Run &raquo;
         +_
         +a()(onclick=onclick('test.run_check();') title="Run Check")._link.icon|Check
@@ -91,15 +91,16 @@ block main
         +a()(onclick=onclick('test.run_set(1);') title="Theme Set 1")._link.icon|1
         +a()(onclick=onclick('test.run_set(2);') title="Theme Set 2")._link.icon|2
         +a()(onclick=onclick('test.run_set(3);') title="Theme Set 3")._link.icon|3
-        +a()(onclick=onclick('storage.resetTheme();') title="Theme Remove")._link.icon|RT
+        +a()(onclick=onclick('storage.resetTheme();') title="Theme Remove")._link.icon|Reset
         +_
         +a()(onclick=onclick('test.run_change();') title="Theme Change")._link.icon|Change
         +_
         +a()(onclick=onclick('test.run_updateClass();') title="Run updateClass")._link.icon|updateClass
-
+        =' | '
         +_a()(onclick=onclick('storage.set();') title="Storage Set")._link.icon|Set
         +_a()(onclick=onclick('storage.get();') title="Storage Get")._link.icon|Get
         +_a()(onclick=onclick('storage.remove();') title="Storage Remove")._link.icon|Remove
+
     hr
 
     section
@@ -114,8 +115,8 @@ block main
 
 block script
   //- +jsv(src)
-  +jsv('/ace/assets/gjs/theme.min.js')(defer)
-  +jsv('/ace/assets/gjs/test_theme.js')(defer)
+  +jsv(assetsUrl+'gjs/theme_v1.0.min.js')(defer)
+  +jsv(assetsUrl+'gjs/test_theme_v1.0.js')(defer)
 
   script.
     (function(){

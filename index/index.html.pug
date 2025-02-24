@@ -10,7 +10,7 @@ block append vars
 block append style
   +cssv(assetsUrl+'gcss/basic_style.css')
   style.
-    #_header ._header_layout { padding: 2rem 3rem; margin-top:0; }
+    #_header ._header_layout { padding: 2rem 1rem; margin-top:0; }
     @media (max-width: 530px) {
     #_header ._header_layout { padding: 3rem 1rem 2rem; }
     }
@@ -100,7 +100,7 @@ block main
         section._mb_2
           h2 Available in light and dark
 
-          p._text_justify This template is readily available in both light and dark color schemes. You can easily switch between the two by using the keyboard shortcut #[code._code._no_wrap='Ctrl + Alt + T']. You may also use a button or a script to programmatically execute #[code._code._no_wrap='base.theme.change()'].
+          p._text_justify This template is readily available in both light and dark color schemes. You can easily switch between the two by using the keyboard shortcut #[code._code._no_wrap='Ctrl + Alt + T']. You may also use a button or a script to programmatically execute #[code._code._no_wrap='theme.change()'].
 
           p._no_print._needjs: +changeThemeLink._btnlink #[+isvg(svgi.compare)] #[span._btnlabel Change Theme]
 
