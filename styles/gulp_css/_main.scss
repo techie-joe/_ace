@@ -265,7 +265,7 @@ hr,._hr {
   text-rendering: auto;
 }
 
-._itext { @extend ._icon; }
+._itext { @extend ._icon; vertical-align:middle; }
 ._itext .itext { font-size: 1.4em; } /* offset baseline for *most-icons */
 
 ._isvg { @extend ._icon; svg { vertical-align:top; } } /* fix spinning axis */
@@ -348,6 +348,7 @@ hr { @extend ._hrt; @extend ._hrb; }
 ._btnlabel {
   display: inline-block;
   padding: 0 .5em;
+  vertical-align: middle;
 }
 
 #_html       ._hover_link:hover { @include color( $light_contra, $light_button_bg ); }

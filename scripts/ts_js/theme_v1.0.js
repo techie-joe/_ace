@@ -1,4 +1,4 @@
-/*! ThemeJs | v1.0.0 b329.25 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
+/*! ThemeJs | v1.0.0 b330.26 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
 /* ===============================================================
 // IMPORTANT: must compile to ES5 or above.
 // ECMAScript 5 (ES5) aka ECMAScript 2009,
@@ -22,7 +22,7 @@
     const W = window, D = document, DOC = D.documentElement || D.body, // html or body
     A = (a) => typeof a, TYPE = (e) => Object.prototype.toString.call(e), NULL = null, _ = '', STR = A(_), ARR = TYPE([]), isSTR = (v) => A(v) === STR, isARR = Array.isArray || (e => TYPE(e) === ARR), failTo = (e) => {
         throw ('Fail to ' + e);
-    }, listenTo = (what, type, listener, options) => { what.addEventListener(type, listener, options); }, newRegex = (pattern, flags) => new RegExp(pattern, flags), updateClass = (element, del, add) => {
+    }, nodeId = (id) => D.getElementById(id), listenTo = (what, type, listener, options) => { what.addEventListener(type, listener, options); }, newRegex = (pattern, flags) => new RegExp(pattern, flags), updateClass = (element, del, add) => {
         try {
             const P = ' ', I = '|', X = 'g', SEP = newRegex('[\\.\\|\\s]+', X), TRIM = (s, sep = I) => s.trim().replace(SEP, sep).trim(), NEW = add ? TRIM(add, P) : _, DEL = del ? TRIM([del, NEW].join(P)).trim() : _, SEL = newRegex('(^|\\s+)(' + DEL + ')(\\s*(' + DEL + '))*(\\s+|$)', X), RES = element.className.replace(SEL, P).trim() + (NEW.length ? P + NEW : _);
             // (^|\s+)(DEL)(\s*(DEL))*(\s+|$)
@@ -66,7 +66,25 @@
     })(), THEME = (() => {
         const KEY = 'theme', // storage key to store current theme
         KEYS = 'themes', // storage key to store current list
-        DARK = '_dark', set = (new_theme, begin) => {
+        DARK = '_dark', SCHEME = (() => {
+            const COLOR_SCHEME = 'color-scheme', set = (v) => { e === null || e === void 0 ? void 0 : e.setAttribute('content', v); };
+            var e = nodeId('_color_scheme');
+            if (!e) {
+                var a = D.getElementsByName(COLOR_SCHEME);
+                if (isARR(a)) {
+                    e = a[a.length - 1];
+                }
+            }
+            if (!e) {
+                e = D.createElement('meta');
+                var t = [['name', COLOR_SCHEME]];
+                for (var i in t) {
+                    e.setAttribute(t[i][0], t[i][1]);
+                }
+                D.head.appendChild(e);
+            }
+            return { set };
+        })(), set = (new_theme, begin) => {
             // set & store current theme and list
             var old_theme = theme || _;
             if (isARR(new_theme)) {
@@ -74,8 +92,9 @@
                 STORE.set(KEYS, JSON.stringify(list));
                 new_theme = list[isSTR(begin) ? list.indexOf(begin || _) : 0];
             }
-            theme = isSTR(new_theme) ? new_theme : _;
+            theme = isSTR(new_theme) ? (new_theme || _) : _;
             updateClass(DOC, old_theme, theme);
+            syncSheme(theme);
             STORE.set(KEY, theme);
         }, change = () => { set(list[list.indexOf(theme || _) + 1] || _); }, parseList = (stored_list) => {
             try {
@@ -90,9 +109,10 @@
             var old_theme = theme || _;
             theme = media.matches ? DARK : _;
             updateClass(DOC, old_theme, theme);
+            syncSheme(theme);
             STORE.remove(KEY);
             STORE.remove(KEYS);
-        }, media = W.matchMedia('(prefers-color-scheme: dark)');
+        }, isDark = (v) => v && v.substring(0, 5) === DARK, syncSheme = (v) => { isDark(v) ? SCHEME.set('dark') : SCHEME.set('light'); }, media = W.matchMedia('(prefers-color-scheme: dark)');
         // prepare presets
         var stored_list = parseList(STORE.get(KEYS)), // load user decided list
         stored_theme = STORE.get(KEY), // load user decided theme

@@ -1,15 +1,13 @@
 ## ThemeJs to do
 
-### Feb 24, 2025 - v1.0.0 b329.25
-- ADD COLOR-SCHEME META
-- ADD SEED LOCK
+### Feb 27, 2025 - v1.0.0 b330.26
 - initial release.
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
 update : version & build  
-  [VARS______](_vars.pug)  
   [CHANGELOGS](CHANGELOGS.md)  
+  [VARS______](_vars.pug)  
 source :  
   [SCRIPT____](../../scripts/ts/theme_v1.0.ts)  
   [WEBPACK___](../../webpack.config.js)  

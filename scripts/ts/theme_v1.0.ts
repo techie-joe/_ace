@@ -1,4 +1,4 @@
-/*! ThemeJs | v1.0.0 b329.25 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
+/*! ThemeJs | v1.0.0 b330.26 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
 /* ===============================================================
 // IMPORTANT: must compile to ES5 or above.
 // ECMAScript 5 (ES5) aka ECMAScript 2009,
@@ -37,6 +37,7 @@ interface Window {
     failTo = (e: string) => {
       throw ('Fail to ' + e);
     },
+    nodeId = (id: string) => D.getElementById(id),
     listenTo = <K extends keyof HTMLElementEventMap>(
       what: HTMLElement | MediaQueryList | Window,
       type: K,
@@ -104,6 +105,23 @@ interface Window {
         KEY = 'theme', // storage key to store current theme
         KEYS = 'themes', // storage key to store current list
         DARK = '_dark',
+        SCHEME = (() => {
+          const
+            COLOR_SCHEME = 'color-scheme',
+            set = (v: string) => { e?.setAttribute('content', v) };
+          var e = nodeId('_color_scheme');
+          if (!e) {
+            var a = D.getElementsByName(COLOR_SCHEME);
+            if (isARR(a)) { e = a[a.length - 1]; }
+          }
+          if (!e) {
+            e = D.createElement('meta');
+            var t = [['name', COLOR_SCHEME]];
+            for (var i in t) { e.setAttribute(t[i][0], t[i][1]) }
+            D.head.appendChild(e);
+          }
+          return { set }
+        })(),
         set = (new_theme?: string | string[], begin?: string) => {
           // set & store current theme and list
           var old_theme = theme || _;
@@ -112,8 +130,9 @@ interface Window {
             STORE.set(KEYS, JSON.stringify(list));
             new_theme = list[isSTR(begin) ? list.indexOf(begin || _) : 0];
           }
-          theme = isSTR(new_theme) ? new_theme : _;
+          theme = isSTR(new_theme) ? (new_theme || _) : _;
           updateClass(DOC, old_theme, theme);
+          syncSheme(theme);
           STORE.set(KEY, theme);
         },
         change = () => { set(list[list.indexOf(theme || _) + 1] || _) },
@@ -126,9 +145,12 @@ interface Window {
           var old_theme = theme || _;
           theme = media.matches ? DARK : _;
           updateClass(DOC, old_theme, theme);
+          syncSheme(theme);
           STORE.remove(KEY);
           STORE.remove(KEYS);
         },
+        isDark = (v: string | undefined) => v && v.substring(0, 5) === DARK,
+        syncSheme = (v: string) => { isDark(v) ? SCHEME.set('dark') : SCHEME.set('light'); },
         media = W.matchMedia('(prefers-color-scheme: dark)');
 
       // prepare presets
@@ -161,5 +183,5 @@ interface Window {
     })();
 
   // export theme ================================================
-  W.theme = THEME;
-})()
+  W.theme = THEME
+})();
