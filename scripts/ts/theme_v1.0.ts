@@ -1,4 +1,4 @@
-/*! ThemeJs | v1.0.0 b331.27 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
+/*! ThemeJs | v1.0.0 b332.28 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
 /* ===============================================================
 // IMPORTANT: must compile to ES5 or above.
 // ECMAScript 5 (ES5) aka ECMAScript 2009,
@@ -22,6 +22,7 @@ interface Window {
   themejsCode:string,
   theme: {}
 }
+window.themejsCode = 'bG9jYWxob3N0dGhlbWVqcy5wYWdlcy5kZXY=cHJldmlldy50aGVtZWpzLnBhZ2VzLmRldg==';
 (() => {
   const
     W = window,

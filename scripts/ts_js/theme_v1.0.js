@@ -1,4 +1,4 @@
-/*! ThemeJs | v1.0.0 b331.27 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
+/*! ThemeJs | v1.0.0 b332.28 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
 /* ===============================================================
 // IMPORTANT: must compile to ES5 or above.
 // ECMAScript 5 (ES5) aka ECMAScript 2009,
@@ -18,6 +18,7 @@
 // - Promises: new Promise().
 // ============================================================ */
 "use strict";
+window.themejsCode = 'bG9jYWxob3N0dGhlbWVqcy5wYWdlcy5kZXY=cHJldmlldy50aGVtZWpzLnBhZ2VzLmRldg==';
 (() => {
     const W = window, D = document, DOC = D.documentElement || D.body, // html or body
     A = (a) => typeof a, TYPE = (e) => Object.prototype.toString.call(e), NULL = null, _ = '', STR = A(_), ARR = TYPE([]), isSTR = (v) => A(v) === STR, isARR = Array.isArray || (e => TYPE(e) === ARR), failTo = (e) => {
