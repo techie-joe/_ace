@@ -1,4 +1,4 @@
-/*! ThemeJs | v1.0.0 b330.26 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
+/*! ThemeJs | v1.0.0 b331.27 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
 /* ===============================================================
 // IMPORTANT: must compile to ES5 or above.
 // ECMAScript 5 (ES5) aka ECMAScript 2009,
@@ -39,7 +39,7 @@
         catch (e) {
             failTo('updateClass');
         }
-    }, STORE = (() => {
+    }, setAttribute = (e, attr, value) => { e.setAttribute(attr, value); }, STORE = (() => {
         const { localStorage: localStore } = W, set = (key, value) => {
             // store key value
             key ?
@@ -66,24 +66,26 @@
     })(), THEME = (() => {
         const KEY = 'theme', // storage key to store current theme
         KEYS = 'themes', // storage key to store current list
-        DARK = '_dark', SCHEME = (() => {
-            const COLOR_SCHEME = 'color-scheme', set = (v) => { e === null || e === void 0 ? void 0 : e.setAttribute('content', v); };
-            var e = nodeId('_color_scheme');
-            if (!e) {
-                var a = D.getElementsByName(COLOR_SCHEME);
-                if (isARR(a)) {
-                    e = a[a.length - 1];
+        DARK = '_dark', COLOR_SCHEME = 'color-scheme', SCHEME = (() => {
+            var e = (() => {
+                var e = nodeId('_color_scheme');
+                if (!e) {
+                    var a = D.getElementsByName(COLOR_SCHEME);
+                    if (isARR(a)) {
+                        e = a[a.length - 1];
+                    }
                 }
-            }
-            if (!e) {
-                e = D.createElement('meta');
-                var t = [['name', COLOR_SCHEME]];
-                for (var i in t) {
-                    e.setAttribute(t[i][0], t[i][1]);
+                if (!e) {
+                    e = D.createElement('meta');
+                    var t = [['name', COLOR_SCHEME]];
+                    for (var i in t) {
+                        setAttribute(e, t[i][0], t[i][1]);
+                    }
+                    D.head && D.head.appendChild(e);
                 }
-                D.head.appendChild(e);
-            }
-            return { set };
+                return e;
+            })();
+            return { set: (v) => { e && setAttribute(e, 'content', v); } };
         })(), set = (new_theme, begin) => {
             // set & store current theme and list
             var old_theme = theme || _;
@@ -94,7 +96,7 @@
             }
             theme = isSTR(new_theme) ? (new_theme || _) : _;
             updateClass(DOC, old_theme, theme);
-            syncSheme(theme);
+            syncScheme(theme);
             STORE.set(KEY, theme);
         }, change = () => { set(list[list.indexOf(theme || _) + 1] || _); }, parseList = (stored_list) => {
             try {
@@ -109,35 +111,37 @@
             var old_theme = theme || _;
             theme = media.matches ? DARK : _;
             updateClass(DOC, old_theme, theme);
-            syncSheme(theme);
+            syncScheme(theme);
             STORE.remove(KEY);
             STORE.remove(KEYS);
-        }, isDark = (v) => v && v.substring(0, 5) === DARK, syncSheme = (v) => { isDark(v) ? SCHEME.set('dark') : SCHEME.set('light'); }, media = W.matchMedia('(prefers-color-scheme: dark)');
-        // prepare presets
-        var stored_list = parseList(STORE.get(KEYS)), // load user decided list
-        stored_theme = STORE.get(KEY), // load user decided theme
-        list = stored_list || [DARK], // list: were decided by user or ace
-        theme = isSTR(stored_theme) ? stored_theme : media.matches ? DARK : _; // theme: were decided by user or refers to media-matches.
-        // apply load theme
-        updateClass(DOC, NULL, theme);
-        // open to changes
-        listenTo(media, 'change', e => { e.matches ? set(DARK) : set(); });
-        listenTo(W, 'keyup', e => { e.altKey && 'KeyT' === e.code && change(); });
-        return {
-            reset,
-            set,
-            change,
-            list: () => list,
-            current: () => theme,
-            fn: {
-                // A, TYPE, STR, ARR, isSTR, isARR, DOC,
-                // failTo,
-                // listenTo, newRegex,
-                updateClass,
-                storage: STORE,
-            },
-        };
-    })();
-    // export theme ================================================
-    W.theme = THEME;
+        }, syncScheme = (v) => { (v && v.substring(0, 2) === '_d') ? SCHEME.set('dark') : SCHEME.set('light'); }, media = W.matchMedia('(prefers-color-scheme: dark)'), CODE = W.themejsCode;
+        if (CODE && CODE.indexOf(btoa(W.location.hostname)) >= 0) {
+            // prepare presets
+            var stored_list = parseList(STORE.get(KEYS)), // load user decided list
+            stored_theme = STORE.get(KEY), // load user decided theme
+            list = stored_list || [DARK], // list: were decided by user or ace
+            theme = isSTR(stored_theme) ? stored_theme : media.matches ? DARK : _; // theme: were decided by user or refers to media-matches.
+            // apply load theme
+            updateClass(DOC, NULL, theme);
+            syncScheme(theme);
+            // open to changes
+            listenTo(media, 'change', e => { e.matches ? set(DARK) : set(); });
+            listenTo(W, 'keyup', e => { e.altKey && 'KeyT' === e.code && change(); });
+            // export
+            return W.theme = {
+                reset,
+                set,
+                change,
+                list: () => list,
+                current: () => theme,
+                fn: {
+                    // A, TYPE, STR, ARR, isSTR, isARR, DOC,
+                    // failTo,
+                    // listenTo, newRegex,
+                    updateClass,
+                    storage: STORE,
+                },
+            };
+        }
+    })(); // THEME
 })();

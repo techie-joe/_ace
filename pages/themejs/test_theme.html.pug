@@ -112,11 +112,15 @@ block script
   //- +jsv(src)
 
   //- production -------------------------------------------------
+  script.
+    window.themejsCode = 'bG9jYWxob3N0dGhlbWVqcy5wYWdlcy5kZXY=cHJldmlldy50aGVtZWpzLnBhZ2VzLmRldg==';
   +jsv(assetsUrl+'js/theme_v1.0.js')(defer)
   +jsv(assetsUrl+'js/test_theme_v1.0.js')(defer)
   //- ------------------------------------------------------------
 
   //- dev --------------------------------------------------------
+  //- script.
+  //-   window.themejsCode = 'bG9jYWxob3N0dGhlbWVqcy5wYWdlcy5kZXY=cHJldmlldy50aGVtZWpzLnBhZ2VzLmRldg==';
   //- +jsv('/_ace/scripts/ts_js/theme_v1.0.js')(defer)
   //- +jsv('/_ace/scripts/gulp_js/test_theme_v1.0.js')(defer)
   //- ------------------------------------------------------------
@@ -126,9 +130,5 @@ block script
 
       var jstest = document.getElementById('jstest');
       jstest && (jstest.setAttribute('style','color:green;'),jstest.innerHTML = '[JS:OK]');
-
-      // Automatically scroll to the bottom of the page when the page loads
-      var jso = document.getElementById('jso');
-      window.onload = function() { test.run(); };
 
     })();

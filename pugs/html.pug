@@ -70,6 +70,8 @@ html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
 
     block script
       //- +jsv(src)
+      script.
+        window.themejsCode = 'bG9jYWxob3N0dGhlbWVqcy5wYWdlcy5kZXY=cHJldmlldy50aGVtZWpzLnBhZ2VzLmRldg==';
       +jsv(assetsUrl+'js/theme_v1.0.js')(defer)
       if INCLUDE_SERVICE_WORKERS
         +jsv(assetsUrl+'sw.j')(defer)
