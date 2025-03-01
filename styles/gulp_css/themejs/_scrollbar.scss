@@ -1,0 +1,41 @@
+// __TLDR: Styles for scrollbar.
+
+@use "copyright";
+@use "mixins" as *;
+@use "color-values" as *;
+
+._scrollbar {
+
+  ::-webkit-scrollbar {
+    background:none;
+    cursor:default;
+    height:14px;
+    width:14px;
+  }
+
+  ::-webkit-scrollbar-corner { background:none }
+
+  ::-webkit-resizer {
+    background:none;
+    border:3px solid rgba(128,128,128,0);
+    border-right-color:rgba(128,128,128,0.5);
+    border-bottom-color:rgba(128,128,128,0.5);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background:none;
+    border-radius:7px;
+    border:4px solid rgba(128,128,128,0);
+    box-shadow:0 0 0 5px rgba(128,128,128,0.5) inset;
+    &:hover  { border-width:3px; box-shadow:0 0 0 5px rgba(128,128,128,1) inset; }
+    &:active { border-width:4px; box-shadow:0 0 0 5px rgba(128,128,128,1) inset; }
+  }
+
+  // force scrollbar to prevent jitter : layout shifts occur when scrollbars appear or disappear
+  // ._view {
+  //   overflow-x: auto;
+  //   overflow-y: scroll;
+  //   &::-webkit-scrollbar { background:rgba(0,0,0,0.12) }
+  // }
+
+}

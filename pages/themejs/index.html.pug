@@ -13,6 +13,51 @@ block append vars
 
 block nav
 
+//- block style
+  +htmlPreset
+  style.
+
+    ._hidden { display:none !important; }
+    ._inline { display:inline }
+    ._small  { font-size:.9em }
+    ._mono   { font-family: 'Consolas',monospace; }
+    ._scrollable { overflow:auto; }
+    ._m0 { margin:0 }
+
+    ._itext {
+      width: 1em;
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .itext {
+      line-height: 1.1;
+      vertical-align: top;
+      font-style:normal;
+    }
+
+    .nav ._link {
+      text-decoration: none;
+      padding:.1em .3em;
+      border-radius: .2em;
+      display:inline-block;
+      min-width: 0.801em;
+      line-height: 1.2;
+      font-weight: bold;
+      color:inherit;
+    }
+    .nav ._link:hover { outline: 2px solid #888; }
+    .nav .icon { text-align:center }
+
+    ._btnlabel {
+      display: inline-block;
+      padding: 0 .5em;
+      vertical-align: middle;
+    }
+
+  //- style.
+
 block append style
   style.
     #_header ._header_layout { padding: 3rem 1rem 2rem 1rem; margin-top:0; }

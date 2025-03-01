@@ -3,13 +3,10 @@ extends ../../pugs/html
 block append vars
   include _vars
 
-block append style
-  +cssv(assetsUrl+'css/demo.css')
-  style.
-
-    #_html.pink { background-color: pink; }
-    #_html.light { background-color: antiquewhite; }
-
+block style
+  +htmlPreset
+  +cssv(assetsUrl+'css/themejs/style.css')
+  //- style.
   //- style.
 
 block views

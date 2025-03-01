@@ -3,35 +3,9 @@
 
 // ======================================================= base */
 
-/* mark red if you include ace.css but don't use #_html */
-html   { box-shadow: 0 0 0 5px #f00 inset; }
-#_html { box-shadow: none } /* remove mark when #_html is in use */
-
 // ---------------------------------------------------- outline */
 $outline_color: #f80;
 ._outline   { box-shadow: 0 0 0 1px $outline_color; }
-._outline_1 { box-shadow: 0 0 0 2px $outline_color; }
-._outline_2 { box-shadow: 0 0 0 4px $outline_color; }
-
-// ------------------------------------------------ ::selection */
-// - must follow this format. - will not work otherwise.
-// - each vendor specific must be seperately declared. - cant combine.
-// - use background-color not background.
-// - dont append or include other class.
-
-$select_color : #FFFF00;
-$select_bg    : #FFFF00CC;
-$select_tc    : #000;
-::selection {
-  background-color: $select_bg !important;
-  color: $select_tc !important;
-  text-shadow: none !important;
-}
-._select {
-  background-color: $select_color;
-  color: $select_tc;
-  text-shadow: none;
-}
 
 // ------------------------------------------------ line-height */
 
@@ -66,35 +40,9 @@ pre,._pre {
   @extend ._small;
 }
 
-// --------------------------------------------------- headings */
-
-._h7,._text_1 { font-size: 1.000rem; line-height: 1.5 }
-._h6,._text_2 { font-size: 1.083rem; line-height: 1.5 }
-._h5,._text_3 { font-size: 1.182rem; line-height: 1.4 }
-._h4,._text_4 { font-size: 1.300rem; line-height: 1.3 }
-._h3,._text_5 { font-size: 1.445rem; line-height: 1.2 }
-._h2,._text_6 { font-size: 1.625rem; line-height: 1.1 }
-._h1,._text_7 { font-size: 1.857rem; line-height: 1.0 }
-
-._hero_1        { font-size: 2.000rem }
-._hero_2      { font-size: 2.250rem }
-._hero_3      { font-size: 2.572rem }
-
 ._small       { font-size: .9em }
 ._smaller     { font-size: .8em }
 ._smallest    { font-size: .7em }
-
-._sup,
-._sub { font-size: 0.53em; line-height: 0.6em }
-
-._hero_3,
-._hero_2,
-._hero_1,
-._h7 { @extend ._b; }
-
-._hero_3,
-._hero_2,
-._hero_1 { @extend ._lh_1; }
 
 // ------------------------------------------------- containers */
 
@@ -127,10 +75,6 @@ pre,._pre {
 ._view {
   overflow-x: auto;
   overflow-y: scroll;
-}
-
-._scrollable {
-  overflow: auto;
 }
 
 @media print {
@@ -176,9 +120,6 @@ hr,._hr {
   height: .05rem;
 }
 
-#_heading .__a { margin: 0 -.3em; line-height: 1; } // ??
-
-// #_html
 ._btnlink {
   @extend ._numb;
   @extend ._radius_x25r;
@@ -250,8 +191,6 @@ hr,._hr {
   vertical-align: middle;
 }
 
-._fa { @extend ._icon; }
-
 .itext {
   @extend ._mono;
   line-height: 1;
@@ -276,13 +215,28 @@ hr,._hr {
   vertical-align: middle;
 }
 
-// ================================================== animation */
+/* ==================================================== customs */
 
-@keyframes __spin {
-  0%   { transform: rotate(0deg) }
-  100% { transform: rotate(360deg) }
+#_html { min-width:20rem }
+
+._nav_layout,
+._header_layout,
+._footer_layout,
+._main_layout,
+._page_layout { max-width:60rem }
+
+._nav_color { @include color( $tc_2_8, $bg_2_8 ); }
+
+._dark {
+._nav_color { @include color( $tc_1_2, $bg_1_2 ); }
 }
-.__spin { animation: 2s linear infinite __spin }
+
+/* ------------------------------------------------------ theme */
+
+$light_primary_tc : #1b36b0;
+$dark_primary_tc  : #7a8eea;
+html   ._tc_primary  { color: $light_primary_tc  }
+._dark ._tc_primary  { color: $dark_primary_tc  }
 
 // ================================================= transition */
 
@@ -356,21 +310,6 @@ hr { @extend ._hrt; @extend ._hrb; }
 
 /* ======================================================= flex */
 
-// @media (min-width: 20rem){/*    ≥ 320px   Mobile S   ._f_ms_* */}
-// @media (min-width: 23.4rem){/*  ≥ 375px   Mobile M   ._f_mm_* */}
-// @media (min-width: 26.6rem){/*  ≥ 425px   Mobile L   ._f_ml_* */}
-// @media (min-width: 35.5rem){/*  ≥ 568px              ._f_s_*  */}
-// @media (min-width: 48rem){/*    ≥ 768px    Laptop S  ._f_m_*  */}
-// @media (min-width: 60rem){/*    ≥ 960px    960gs     ._f_r_*  */}
-// @media (min-width: 64rem){/*    ≥ 1024px   Laptop M  ._f_l_*  */}
-// @media (min-width: 80rem){/*    ≥ 1280px             ._f_2l_* */}
-// @media (min-width: 90rem){/*    ≥ 1440px   Laptop L  ._f_3l_* */}
-// @media (min-width: 120rem){/*   ≥ 1920px             ._f_4l_* */}
-// @media (min-width: 160rem){/*   ≥ 2560px   4K        ._f_4k_* */}
-// @media (min-width: 240rem){/*   ≥ 3840px             ._f_5k_* */}
-
-// ?? ace need to test this
-
 $f_min: 4rem;
 $f_base: 12;
 
@@ -381,8 +320,6 @@ $f_base: 12;
   margin: 0 auto;
   min-width: $f_min;
 }
-
-._space-evenly { justify-content: space-evenly }
 
 // ._gaps
 $gaps: (
@@ -398,21 +335,7 @@ $gaps: (
   ._gap_a#{$x}   { gap: $value; }
 }
 
-._f {
-  display: inline-block;
-  vertical-align: top;
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-rendering: auto;
-  line-height: 0;
-  margin: 0 auto;
-}
-
-// 1,3,5,7
-// 2,4,6,8
-// 10,12,14,16
-
-$gs: 12,10;
+$gs: 12;
 @each $g in $gs {
   @for $i from 1 through $g - 1 {
     $width: calc($i / $g);
@@ -425,70 +348,10 @@ $gs: 12,10;
   }
 }
 
-// $g:8;
-// ._f_#{$g}   { @extend ._fill; }
-// ._f_#{$g}_2 { @extend ._f_12_3; }
-// ._f_#{$g}_4 { @extend ._f_12_6; }
-// @for $i from 1 through $g {
-//   @if( $i != $g and $i != 4 and $i != 2 ){
-//     ._f_#{$g}_#{$i} { @extend ._fill; width: calc(100% / $g * $i) }
-//   }
-// }
-
-$gs: 6,5;
-@each $g in $gs { @for $i from 1 through $g - 1 { ._f_#{$g}_#{$i} { @extend ._f_#{$g * 2}_#{$i * 2}; } } }
-
-$g: 4;
-._f_#{$g}_1 { @extend ._f_12_3; }
-._f_#{$g}_2 { @extend ._f_12_6; }
-._f_#{$g}_3 { @extend ._f_12_9; }
-
-$g:3;
-._f_#{$g}_1 { @extend ._f_12_4; }
-._f_#{$g}_2 { @extend ._f_12_8; }
-
 $g:2;
 ._f_#{$g}_1 { @extend ._f_12_6; }
 
-._fill  { @extend ._f; flex: $f_base 1 $f_min; }
-._full  { @extend ._f; flex: $f_base 1 100%; }
-._f_fit { @extend ._f; flex: 1 1 fit-content; }
-._f_max { @extend ._f; flex: $f_base 1 max-content; }
-._f_min { @extend ._f; flex: 1 1 min-content; }
-._f_content { @extend ._f; flex: 1 1 content; }
-
 /* ============================================== color helpers */
-
-._bg_1_1 { background-color: $bg_1_1 }
-._bg_1_2 { background-color: $bg_1_2 }
-._bg_1_3 { background-color: $bg_1_3 }
-._bg_1_4 { background-color: $bg_1_4 }
-._bg_1_5 { background-color: $bg_1_5 }
-._bg_1_6 { background-color: $bg_1_6 }
-
-._tc_1_1 { color: $tc_1_1 }
-._tc_1_2 { color: $tc_1_2 }
-._tc_1_3 { color: $tc_1_3 }
-._tc_1_4 { color: $tc_1_4 }
-._tc_1_5 { color: $tc_1_5 }
-._tc_1_6 { color: $tc_1_6 }
-
-._bc_1_1 { border-color: $bg_1_1 }
-._bc_1_2 { border-color: $bg_1_2 }
-._bc_1_3 { border-color: $bg_1_3 }
-._bc_1_4 { border-color: $bg_1_4 }
-._bc_1_5 { border-color: $bg_1_5 }
-._bc_1_6 { border-color: $bg_1_6 }
-
-._bg_2_1 { background-color: $bg_2_1 }
-._bg_2_2 { background-color: $bg_2_2 }
-._bg_2_3 { background-color: $bg_2_3 }
-._bg_2_4 { background-color: $bg_2_4 }
-._bg_2_5 { background-color: $bg_2_5 }
-._bg_2_6 { background-color: $bg_2_6 }
-._bg_2_7 { background-color: $bg_2_7 }
-._bg_2_8 { background-color: $bg_2_8 }
-._bg_2_9 { background-color: $bg_2_9 }
 
 ._tc_2_1 { color: $tc_2_1 }
 ._tc_2_2 { color: $tc_2_2 }
@@ -500,30 +363,10 @@ $g:2;
 ._tc_2_8 { color: $tc_2_8 }
 ._tc_2_9 { color: $tc_2_9 }
 
-._bc_2_1 { border-color: $bg_2_1 }
-._bc_2_2 { border-color: $bg_2_2 }
-._bc_2_3 { border-color: $bg_2_3 }
-._bc_2_4 { border-color: $bg_2_4 }
-._bc_2_5 { border-color: $bg_2_5 }
-._bc_2_6 { border-color: $bg_2_6 }
-._bc_2_7 { border-color: $bg_2_7 }
-._bc_2_8 { border-color: $bg_2_8 }
-._bc_2_9 { border-color: $bg_2_9 }
-
-._tc_blue   { color: $light_blue   }
-._tc_purple { color: $light_purple }
-._tc_orange { color: $light_orange }
-._tc_red    { color: $light_red    }
-._tc_green  { color: $light_green  }
 ._tc_contra { color: $light_contra }
 
 ._dark {
 
-  ._tc_blue   { color: $dark_blue   }
-  ._tc_purple { color: $dark_purple }
-  ._tc_orange { color: $dark_orange }
-  ._tc_red    { color: $dark_red    }
-  ._tc_green  { color: $dark_green  }
   ._tc_contra { color: $dark_contra }
 
 }
@@ -535,26 +378,14 @@ $g:2;
 ._font_2,._serif   { font-family: "Georgia", serif; }
 ._font_3,._mono    { font-family: "Consolas", monospace; }
 
-._b   { font-weight: bold }
-@for $i from 1 through 9 { ._b-#{$i} { font-weight: $i * 100; } }
-
-._i { font-style: italic }
-
-._u { text-decoration: underline }
-
 ._numb { user-select:none }
 
-._block   { display: block }
 ._inline  { display: inline }
 ._inblock { display: inline-block }
 
 ._relative { @include position-relative() }
 ._absolute { @include position-absolute(0,0) }
 ._fixed    { @include position-fixed(0,0) }
-
-._indent { text-indent: 2em }
-
-._uppercase { text-transform: uppercase }
 
 ._text_left    { text-align: left    }
 ._text_center  { text-align: center  }
@@ -611,25 +442,9 @@ $paddings: (
 ._pt0 { padding-top: 0 !important }
 ._pb0 { padding-bottom: 0 !important }
 
-._no_spad { padding-inline-start: 1em !important }
-
-// ._rotate
-$angles : 45, 90, 135, 180, 225, 270, 315;
-@each $angle in $angles { ._rotate-#{$angle} { transform: rotate(#{$angle}deg); } }
-
-._no_scroll,._no_scroll_x { overflow-x: hidden !important; }
-._no_scroll,._no_scroll_y { overflow-y: hidden !important; }
-
 ._no_wrap { white-space: nowrap !important }
 
 ._no_color { color: inherit !important }
-
-._no_u { text-decoration: none !important }
-
-._no_b { font-weight: normal !important }
-
-._no_bullet { list-style-type: none !important; }
-._no_bullet_pad { padding-inline-start: 0 !important; }
 
 /* ============================================== print helpers */
 

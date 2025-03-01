@@ -1,6 +1,6 @@
 ## ThemeJs to do
 
-### Feb 28, 2025 - v1.0.0 b332.28
+### March 1, 2025 - v1.0.0 b332.28
 - initial release.
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
@@ -8,6 +8,7 @@
 update : version & build  
   [CHANGELOGS](CHANGELOGS.md)  
   [VARS______](_vars.pug)  
+  [TEST_CSS__](../../styles/gulp_css/themejs/_copyright.scss)
 source :  
   [SCRIPT____](../../scripts/ts/theme_v1.0.ts)  
   [WEBPACK___](../../webpack.config.js)  
