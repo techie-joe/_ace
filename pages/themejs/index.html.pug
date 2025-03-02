@@ -139,6 +139,18 @@ block main
     ._flex._gap_2
 
       ._f_12_7: section._mb_2
+        h2._h2 Intuitively simple to use
+        p._text_justify ThemeJs registers a global #[code._code._no_wrap='theme'] interface for its functions, automatically detect user's preferences and register appropriate listeners. With a simple interaction to #[code._code._no_wrap='theme.set()'] or #[code._code._no_wrap='theme.change()'], you can create an interface that offers users the ability to switch between different themes.
+
+        ._p._no_print._needjs
+          +changeThemeLink._btnlink #[+isvg(svgi.compare)] #[span._btnlabel Change Theme]
+
+      ._f_12_5: section._mb_2
+
+
+    ._flex._gap_2
+
+      ._f_12_7: section._mb_2
         h2._h2 Available in light, dark and more ..
 
         p._text_justify This demo is readily available in both light and dark theme, as well as other configurable themes in the menu. You can easily switch through them by using the keyboard shortcut #[code._code._no_wrap='Ctrl + Alt + T'] or by clicking these buttons.
@@ -148,21 +160,11 @@ block main
           +_a()(onclick=onclick('theme.set("_dark");'))._btnlink Dark
           +_a()(onclick=onclick('theme.set("light");'))._btnlink Sephia
           +_a()(onclick=onclick('theme.set("pink");'))._btnlink Pink
-        ._p._no_print._needjs
-          +changeThemeLink._btnlink #[+isvg(svgi.compare)] #[span._btnlabel Change Theme]
 
       ._f_12_5: section._mb_2
         h2._h2 OS aware
         
         p._text_justify ThemeJs automatically identifies user's operating system preferences and adapts automatically. This feature can be seen in this demo. You can test it by changing your operating system theme preference.
-
-    ._flex._gap_2
-
-      ._f_12_7: section._mb_2
-        h2._h2 Properly coded with simplicity in mind
-        p._text_justify ThemeJs registers a global #[code._code._no_wrap='theme'] interface for its functions, automatically detect user's preferences and register appropriate listeners. In most cases, you would only need to interact with #[code._code._no_wrap='theme.set()'] and #[code._code._no_wrap='theme.change()'].
-
-      ._f_12_5: section._mb_2
 
     //- flex
 
