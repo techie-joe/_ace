@@ -13,51 +13,6 @@ block append vars
 
 block nav
 
-//- block style
-  +htmlPreset
-  style.
-
-    ._hidden { display:none !important; }
-    ._inline { display:inline }
-    ._small  { font-size:.9em }
-    ._mono   { font-family: 'Consolas',monospace; }
-    ._scrollable { overflow:auto; }
-    ._m0 { margin:0 }
-
-    ._itext {
-      width: 1em;
-      display: inline-block;
-      text-align: center;
-      vertical-align: middle;
-    }
-
-    .itext {
-      line-height: 1.1;
-      vertical-align: top;
-      font-style:normal;
-    }
-
-    .nav ._link {
-      text-decoration: none;
-      padding:.1em .3em;
-      border-radius: .2em;
-      display:inline-block;
-      min-width: 0.801em;
-      line-height: 1.2;
-      font-weight: bold;
-      color:inherit;
-    }
-    .nav ._link:hover { outline: 2px solid #888; }
-    .nav .icon { text-align:center }
-
-    ._btnlabel {
-      display: inline-block;
-      padding: 0 .5em;
-      vertical-align: middle;
-    }
-
-  //- style.
-
 block append style
   style.
     #_header ._header_layout { padding: 3rem 1rem 2rem 1rem; margin-top:0; }
@@ -87,7 +42,7 @@ block append style
 
     #intro ._hero_1 span { line-height:1 }
 
-    #topi { position: absolute; top: 3.3rem; right: 5rem; }
+    #topi { position: absolute; top: 3.3rem; right: 5rem; z-index:1; }
     #topi ._isvg { height: 2.5em; min-width: 2.5em; }
     @media (max-width: 530px) {
     #topi { top: 1rem; right: 1rem; }
@@ -98,6 +53,33 @@ block append style
     html   #_header { background: #ccc; }
     ._dark #_header { background: #111; }
 
+    #_html.pink .download { background-color: #ff4b6a; color:#fff; border-color:#ff2c4f; font-size: 1.2em; }
+    .pink  #_header { background: #ff4b6a; color:#ffd0db; }
+    .pink  #_header h1 { color: #5e101d; }
+    .pink  #_header ._tc_primary { color: #fff; }
+    .pink #_header ._header_layout:before { color:#fff }
+    .pink #acelinks ._link { color: #fff; }
+    .pink #cta {
+      margin:-1.8em -1.4em 0;
+      background-color:#ffc0cb;color: #7c3944;
+    }
+    .pink #intro { max-width: none; }
+    .pink #about {
+      font-size: 1.6em;
+      margin-top: -0.6em;
+      margin-bottom: 3em;
+    }
+    .pink #author {
+      position: absolute;
+      bottom: -6em;
+      right: 2em;
+    }
+    .pink #_header ._header_layout:before {
+      text-shadow: -0.015em 0 #840c20;
+    }
+    .pink #cta { border-radius: 1.7rem; }
+    .pink ._btnlink { border-radius: 3rem; }
+
     html   #_header h1 { color: #000; }
     ._dark #_header h1 { color: #fff; }
 
@@ -105,7 +87,11 @@ block append style
 
     #_html       .download { background-color: #1b36b0; color:#fff; border-color: #3046a8; }
     #_html._dark .download { background-color: #7a8eea; color:#000; border-color: #5f72c5; }
-    .download, .viewdemo { min-width: 6em; margin: .5em .3em; }
+    .download, .viewdemo { min-width: 6em; margin: .3em; }
+
+    @media (max-width: 425px) {
+      #cta { text-align:center; }
+    }
 
   //- style.
 
@@ -113,18 +99,18 @@ block header
   //- +pageData._mh
   aside#acelinks
   +header#_header
-    #intro
-      h1._hero_2 #[span.t1 Theme]#[span.t2._tc_primary Js]
-      p._smaller._system by #[+a(authorUrl)(target="page_author")._stay_fresh !{author}]
-      p._text_justify !{about}
+    #intro._relative
+      h1#heading._hero_2 #[span.t1 Theme]#[span.t2._tc_primary Js]
+      p#author._smaller._system by #[+a(authorUrl)(target="page_author")._stay_fresh !{author}]
+      p#about._text_justify !{about}
     #topi._no_print._needjs
       +changeThemeLink._link._nav_icon._hover_scale: +isvg(svgi.compare)
 
 block main
   +main#_main: article
 
-    ._mv._nav_color._radius_x5r._pa_x5r._ph._no_print
-      +a('','Get the template')(onclick=onclick())._btnlink.download #[span._btnlabel Download]
+    #cta._mv._nav_color._radius_x5r._pa_x5r._ph._no_print
+      +a(authorUrl,'Get the template')(target='page_download')._btnlink.download #[span._btnlabel Download]
       +a('test_theme.html','Go to the test page')._btnlink.viewdemo #[span._btnlabel Test It]
 
     //- mixin lia_basic(ref='',title)
@@ -145,20 +131,38 @@ block main
 
     ._flex._gap_2
 
-      ._f_2_1
-        section._mb_2
-          h2 Available in light, dark and more ..
+      ._f_12: section._mb_2
+        h2._h2 Open up new possibilities with ThemeJs
 
-          p._text_justify This template is readily available in both light and dark theme, as well as other configurable themes in the menu. You can easily toggle through them by using the keyboard shortcut #[code._code._no_wrap='Ctrl + Alt + T'] or by clicking a button to that execute #[code._code._no_wrap='theme.change()'].
+        p._text_justify #[b ThemeJs] is a lightweight, easy-to-use, and highly configurable theme switcher plugin for your website and web application. Built with the user experience in mind, it is designed to be simple, easy to use, with no external dependencies.  It is a perfect solution for those who want to give their users the ability to switch between different themes on their website. ThemeJs is fully customizable, compatible with all major browsers and devices, and can be easily integrated into any website and web application. 
 
-          p._no_print._needjs: +changeThemeLink._btnlink #[+isvg(svgi.compare)] #[span._btnlabel Change Theme]
+    ._flex._gap_2
 
-      ._f_2_1
-        section._mb_2
-          h2 Good design, even in print
-          p._text_justify You will want a website that looks great when printed. This template excel on paper. Enjoy good design and functionality, viewed digitally or in print. Elevate your professionalism with a website that stand out in every medium.
+      ._f_12_7: section._mb_2
+        h2._h2 Available in light, dark and more ..
 
-          p._no_print._needjs: +a()(title="Print Page (Ctrl+P)" onclick=onclick(js.print))._btnlink #[+isvg(svgi.print)] #[span._btnlabel Print Page]
+        p._text_justify This demo is readily available in both light and dark theme, as well as other configurable themes in the menu. You can easily switch through them by using the keyboard shortcut #[code._code._no_wrap='Ctrl + Alt + T'] or by clicking these buttons.
+
+        ._p._no_print._needjs._small
+          +_a()(onclick=onclick('theme.set();'))._btnlink Default
+          +_a()(onclick=onclick('theme.set("_dark");'))._btnlink Dark
+          +_a()(onclick=onclick('theme.set("light");'))._btnlink Sephia
+          +_a()(onclick=onclick('theme.set("pink");'))._btnlink Pink
+        ._p._no_print._needjs
+          +changeThemeLink._btnlink #[+isvg(svgi.compare)] #[span._btnlabel Change Theme]
+
+      ._f_12_5: section._mb_2
+        h2._h2 OS aware
+        
+        p._text_justify ThemeJs automatically identifies user's operating system preferences and adapts automatically. This feature can be seen in this demo. You can test it by changing your operating system theme preference.
+
+    ._flex._gap_2
+
+      ._f_12_7: section._mb_2
+        h2._h2 Properly coded with simplicity in mind
+        p._text_justify ThemeJs registers a global #[code._code._no_wrap='theme'] interface for its functions, automatically detect user's preferences and register appropriate listeners. In most cases, you would only need to interact with #[code._code._no_wrap='theme.set()'] and #[code._code._no_wrap='theme.change()'].
+
+      ._f_12_5: section._mb_2
 
     //- flex
 
@@ -168,14 +172,14 @@ block footer
   +footer#_footer
     ._pa._nav_color._radius_x5r
 
-      ._flex._gap_a
+      ._flex._gap_a._gap_h_2
         ._f_fit
           ._smaller._mono
             |#{title} #[br/]
             |Version: #{version} - #[span._no_wrap b#{build}]
 
-        ._f_12_4
-          div._smaller._text_justify
+        //- ._f_12_4
+          //- div._smaller._text_justify
             | Some part of this site may come from external sources. Those files #[b._tc_contra may not be included] in the distributed packages of this template due to the original author's terms. References to obtain them directly from the author will be provided.
             //- | #[span._no_wrap &bull; Thanks to] Matt at #[a._no_color(href="https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/") SVGBackgrounds] for free SVG images.
 
@@ -196,7 +200,7 @@ block append script
         if( acelinks ) {
           acelinks.innerHTML = [
             '<div class="_relative _no_print"><div class="_pa _absolute" style="z-index:1;">',
-            '<a class="_link _nav_icon" href=".." title="Go to parent\'s page"><i class="_itext"><i class="itext">&times;</i></i></a>',
+            '<a class="_link _nav_icon _tc_contra" href=".." title="Go to parent\'s page"><i class="_itext"><i class="itext">&times;</i></i></a>',
             '</div></div>',
           ].join('');
         }

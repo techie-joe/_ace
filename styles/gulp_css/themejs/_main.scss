@@ -7,6 +7,26 @@
 $outline_color: #f80;
 ._outline   { box-shadow: 0 0 0 1px $outline_color; }
 
+// ------------------------------------------------ ::selection */
+// - must follow this format. - will not work otherwise.
+// - each vendor specific must be seperately declared. - cant combine.
+// - use background-color not background.
+// - dont append or include other class.
+
+$select_color : #FFFF00;
+$select_bg    : #FFFF00CC;
+$select_tc    : #000;
+::selection {
+  background-color: $select_bg !important;
+  color: $select_tc !important;
+  text-shadow: none !important;
+}
+._select {
+  background-color: $select_color;
+  color: $select_tc;
+  text-shadow: none;
+}
+
 // ------------------------------------------------ line-height */
 
 * { line-height: 1.5 }
@@ -217,7 +237,7 @@ hr,._hr {
 
 /* ==================================================== customs */
 
-#_html { min-width:20rem }
+#_contents { min-width: 15rem; }
 
 ._nav_layout,
 ._header_layout,
@@ -237,6 +257,41 @@ $light_primary_tc : #1b36b0;
 $dark_primary_tc  : #7a8eea;
 html   ._tc_primary  { color: $light_primary_tc  }
 ._dark ._tc_primary  { color: $dark_primary_tc  }
+
+#_html._dark { background-color: #222; color: #999; }
+// #_html._dark hr { border-color: #3c3c3c; }
+
+#_html.pink  { background-color: #ffc0cb; color: #955353; }
+.pink ._nav_color { background: #7c3944; color:#ffd0db; ._tc_contra { color:#fff} }
+.pink._a a,.pink._a a._stay_fresh:visited { color: #5e101d; }
+.pink ._hero_2 {
+  font-size: 3em;
+  font-weight: 100;
+  font-family: system-ui, sans-serif;
+}
+.pink ._h1,.pink ._h2,.pink ._h3,.pink ._h4,.pink ._h5,.pink ._h6,.pink ._h7,
+.pink h1,.pink h2,.pink h3,.pink h4,.pink h5,.pink h6
+{ color: #7c3944; font-weight: 100; }
+.pink ._h2 {
+  &::after {
+    content: '';
+    height: 0.3rem;
+    background: #ff8ba0;
+    display: block;
+    width: 40%;
+    position: relative;
+    left: 15%;
+    border-radius: .2rem;    
+  }
+}
+.pink ._code { color: #7c3944; }
+.pink ._btnlink { color: #7c3944; border-color: #7c3944; }
+.pink hr { border-top-color: #cf7591; }
+.pink._a ._btnlink:hover,
+#_html.pink ._hover_link:hover,#_html.pink ._link:hover { color: #5e101d; background-color: #ffdee3;  }
+
+#_html.light { background-color: #faebd7; color: #7a7243; }
+// #_html.light hr { border-color: #a4937a; }
 
 // ================================================= transition */
 
@@ -348,8 +403,18 @@ $gs: 12;
   }
 }
 
-$g:2;
-._f_#{$g}_1 { @extend ._f_12_6; }
+._f {
+  display: inline-block;
+  vertical-align: top;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-rendering: auto;
+  line-height: 0;
+  margin: 0 auto;
+}
+
+._fill  { @extend ._f; flex: $f_base 1 $f_min; }
+._f_fit { @extend ._f; flex: 1 1 fit-content; }
 
 /* ============================================== color helpers */
 

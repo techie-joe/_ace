@@ -34,17 +34,19 @@ entry {
 
 ### more..
 
+#### CSS, fonts and resources dynamic load
+
 #### Time Based Dark Mode
 Easily schedule dark mode based on your preferences with Darkify. Benefit from the advanced time-based settings to effortlessly start and end dark mode on your website.
+
+#### Scheduled Dark Mode Activation
+This functionality enables automatic switching to dark mode according to the user’s local time, allowing for a time-sensitive adaptation of the interface.
 
 #### Themed By Default
 Automatically set your website to dark mode as the default view, while allowing visitors the choice to disable it if they wish.
 
 #### Operating System Aware Dark Mode
 This feature intelligently identifies the user’s operating system preferences and adapts to dark mode automatically, ensuring a tailored viewing experience.
-
-#### Scheduled Dark Mode Activation
-This functionality enables automatic switching to dark mode according to the user’s local time, allowing for a time-sensitive adaptation of the interface.
 
 #### Easy Toggle Keyboard Shortcut
 Switch seamlessly between light and dark modes using Darkify. Use the simple keyboard shortcut Ctrl+Alt+T, or opt for automatic activation based on your device’s operating system settings.
