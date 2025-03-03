@@ -319,6 +319,7 @@ hr { @extend ._hrt; @extend ._hrb; }
 }
 
 #_html       ._hover_link:hover { @include color( $light_contra, $light_button_bg ); }
+
 #_html._dark ._hover_link:hover { @include color( $dark_contra, $dark_button_bg); }
 
 // ------------------------------------------------------ theme */
@@ -360,8 +361,10 @@ html   ._tc_primary  { color: $light_primary_tc  }
   ._btnlink { color: #7c3944; border-color: #7c3944; }
   hr { border-top-color: #cf7591; }
 }
-.pink._a ._btnlink:hover,
-#_html.pink ._hover_link:hover,#_html.pink ._link:hover { color: #5e101d; background-color: #ffdee3;  }
+#_html.pink {
+  &._a ._btnlink:hover,
+  ._hover_link:hover,._link:hover { color: #5e101d; background-color: #ffdee3;  }
+}
 
 #_html.light { background-color: #faebd7; color: #574b3e; }
 .light {
@@ -388,6 +391,14 @@ html   ._tc_primary  { color: $light_primary_tc  }
     border-radius: .2rem;    
   }
 
+  ._btnlink { color: #3e362d; border-color: #3e362d; }
+  ._nav_color ._btnlink { color: #faebd7; border-color: #faebd7; }
+  hr { border-top-color: #494239; }
+
+}
+#_html.light {
+  &._a ._btnlink:hover,
+  ._hover_link:hover,._link:hover { color: #3e362d; background-color: #fff8ef;  }
 }
 
 /* ======================================================= flex */
