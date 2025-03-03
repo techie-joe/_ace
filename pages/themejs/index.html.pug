@@ -38,8 +38,6 @@ block append style
     #_main,
     #intro { position:relative; z-index:1 }
 
-    #intro { max-width: 16em; }
-
     #intro ._hero_1 span { line-height:1 }
 
     #topi { position: absolute; top: 3.3rem; right: 5rem; z-index:1; }
@@ -53,26 +51,35 @@ block append style
     html   #_header { background: #ccc; }
     ._dark #_header { background: #111; }
 
-    #_html.pink .download { background-color: #ff4b6a; color:#fff; border-color:#ff2c4f; font-size: 1.2em; }
+    html   #_header h1 { color: #000; }
+    ._dark #_header h1 { color: #fff; }
+
+    #heading { font-size: 2.8em; }
+    #intro   { max-width: 32em; }
+    #about {
+      font-size: 1.6em;
+      margin-top: -0.6em;
+      margin-bottom: 3em;
+      text-align: left;
+    }
+    #author {
+      position: absolute;
+      bottom: -6em;
+      right: 2em;
+    }
+
+    #_html.pink .download { background-color: #ff4b6a; color:#fff; border-color:#ff2c4f; font-size: 1.3em; }
     .pink  #_header { background: #ff4b6a; color:#ffd0db; }
     .pink  #_header h1 { color: #5e101d; }
     .pink  #_header ._tc_primary { color: #fff; }
     .pink #_header ._header_layout:before { color:#fff }
     .pink #acelinks ._link { color: #fff; }
+    .pink #heading { font-size: 3em; }
     .pink #cta {
-      margin:-1.8em -1.4em 0;
+      margin:0 -1rem;
       background-color:#ffc0cb;color: #7c3944;
-    }
-    .pink #intro { max-width: none; }
-    .pink #about {
-      font-size: 1.6em;
-      margin-top: -0.6em;
-      margin-bottom: 3em;
-    }
-    .pink #author {
-      position: absolute;
-      bottom: -6em;
-      right: 2em;
+      position: relative;
+      top: -1.5rem;
     }
     .pink #_header ._header_layout:before {
       text-shadow: -0.015em 0 #840c20;
@@ -80,8 +87,9 @@ block append style
     .pink #cta { border-radius: 1.7rem; }
     .pink ._btnlink { border-radius: 3rem; }
 
-    html   #_header h1 { color: #000; }
-    ._dark #_header h1 { color: #fff; }
+    #_html.light .download { background-color: #231a0f; color:#fff; border-color:#231a0f; }
+    .light  #_header { background: #dfd1be; color:#645d58; }
+    .light  #_header ._tc_primary { color: #645d58; }
 
     #_html .pages ul { list-style-type: none; padding-inline-start: 0; }
 
@@ -91,6 +99,11 @@ block append style
 
     @media (max-width: 425px) {
       #cta { text-align:center; }
+      .pink #about {
+        font-size: 1.1em;
+        margin-top: -0.6rem;
+        margin-bottom: 5rem;
+      }
     }
 
   //- style.
@@ -132,39 +145,36 @@ block main
     ._flex._gap_2
 
       ._f_12: section._mb_2
-        h2._h2 Open up new possibilities with ThemeJs
+        h2._h2 Open new possibilities with ThemeJs
 
         p._text_justify #[b ThemeJs] is a lightweight, easy-to-use, and highly configurable theme switcher plugin for your website and web application. Built with the user experience in mind, it is designed to be simple, easy to use, with no external dependencies.  It is a perfect solution for those who want to give their users the ability to switch between different themes on their website. ThemeJs is fully customizable, compatible with all major browsers and devices, and can be easily integrated into any website and web application. 
 
     ._flex._gap_2
 
-      ._f_12_7: section._mb_2
-        h2._h2 Coded with simplicity in mind
-        p._text_justify ThemeJs registers a global #[code._code._no_wrap='theme'] interface for its functions, automatically detect user's preferences and register appropriate listeners. With a simple use of #[code._code._no_wrap='theme.set()'] or #[code._code._no_wrap='theme.change()'], you can create an interface that offers users the ability to switch between different themes.
+      ._f_12_7
 
-        ._p._no_print._needjs
-          +changeThemeLink._btnlink #[+isvg(svgi.compare)] #[span._btnlabel Change Theme]
+        section._mb_2
+          h2._h2 Available in light, dark and more ..
 
-      ._f_12_5: section._mb_2
+          p._text_justify ThemeJs registers a global #[code._code._no_wrap='theme'] interface for its functions, automatically detect user's preferences and register appropriate listeners. With a simple use of #[code._code._no_wrap='theme.set()'] and #[code._code._no_wrap='theme.change()'], you can create an interface that offers users the ability to switch between different themes.
 
+          ._p._no_print._needjs._small
+            +_a()(onclick=onclick("theme.set(['_dark'],'');"))._btnlink Light
+            +_a()(onclick=onclick("theme.set(['_dark']);"))._btnlink Dark
+            +_a()(onclick=onclick("theme.set(['light','_dark']);"))._btnlink Sephia
+            +_a()(onclick=onclick("theme.set(['pink','_dark']);"))._btnlink Pink
 
-    ._flex._gap_2
+        section._mb_2
+          p._text_justify This demo is readily available in both light and dark theme, as well as other configurable themes in the menu. You can easily switch through them by using the keyboard shortcut #[code._code._no_wrap='Ctrl + Alt + T'] or by clicking a button.
 
-      ._f_12_7: section._mb_2
-        h2._h2 Available in light, dark and more ..
-
-        p._text_justify This demo is readily available in both light and dark theme, as well as other configurable themes in the menu. You can easily switch through them by using the keyboard shortcut #[code._code._no_wrap='Ctrl + Alt + T'] or by clicking these buttons.
-
-        ._p._no_print._needjs._small
-          +_a()(onclick=onclick("theme.set();"))._btnlink Default
-          +_a()(onclick=onclick("theme.set('_dark');"))._btnlink Dark
-          +_a()(onclick=onclick("theme.set('light');"))._btnlink Sephia
-          +_a()(onclick=onclick("theme.set('pink');"))._btnlink Pink
+          ._p._no_print._needjs._small
+            +changeThemeLink._btnlink #[+isvg(svgi.compare)] #[span._btnlabel Change Theme]
 
       ._f_12_5: section._mb_2
         h2._h2 OS aware
         
         p._text_justify ThemeJs automatically identifies user's operating system preferences and adapts automatically. This feature can be seen in this demo. You can test it by changing your operating system theme preference.
+
 
     //- flex
 
