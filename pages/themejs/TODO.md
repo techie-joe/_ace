@@ -1,6 +1,6 @@
 ## ThemeJs to do
 
-### March 3, 2025 - v1.0.0 b334.29
+### March 3, 2025 - v1.0.0 b335.31
 - initial release.
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
@@ -17,7 +17,7 @@ test   :
 output :  
   [TS_JS_____](../../scripts/ts_js/theme_v1.0.js)  
   [WP_JS_____](../../scripts/wp_js/theme_v1.0.js)  
-  [WP_JS____L](../../scripts/wp_js/theme_v1.0.js.LICENSE.txt)
+  [WP_JS____L](../../scripts/wp_js/theme_v1.0.js.LICENSE.txt)  
   [LICENSE___](../../../ace/themejs/LICENSE.txt)  
   [README____](../../../ace/themejs/README.md)  
 
