@@ -94,6 +94,9 @@
 mixin putData
   +l
   +join([
+    `version          = ${version}`,
+    `build            = ${build}`,
+    ``,
     `title            = ${title}`,
     `description      = ${description}`,
     ``,
@@ -103,9 +106,6 @@ mixin putData
     `layoutName       = ${layoutName}`,
     `author           = ${author}`,
     `publisher        = ${publisher}`,
-    ``,
-    `version          = ${version}`,
-    `build            = ${build}`,
     ``,
     `authorUrl        = ${authorUrl}`,
     `siteUrl          = ${siteUrl}`,

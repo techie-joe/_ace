@@ -179,19 +179,31 @@ function js() { return src(_src.js)
 //   .pipe(dest(_dep_site));
 // }
 
-/* ===============================================================
-
-To list available tasks, run: > gulp --tasks
-
-=============================================================== */
-
-// > gulp deploy
-// ---------------------------------------------------------------
 // exports.deploy = series( deploy );
 
+/* ===============================================================
+
+List of available commands:
+
+// > gulp deploy
+// > gulp
+// > gulp all
+// > gulp site
 
 // > gulp builder
-// ---------------------------------------------------------------
+// > gulp files
+// > gulp pages
+// > gulp css
+// > gulp js
+
+// > gulp watch
+// > gulp pagesw
+// > gulp cssw
+// > gulp jsw
+
+To list available tasks, try running: > gulp --tasks
+
+=============================================================== */
 
 exports.builder = parallel(
   
@@ -199,23 +211,12 @@ exports.builder = parallel(
 
 );
 
-// > gulp css
-// > gulp js
-// ---------------------------------------------------------------
-
-exports.html = series( html );
-exports.php  = series( php  );
-exports.txt  = series( txt  );
-exports.md   = series( md   );
-
-exports.css  = series(css   );
-exports.js   = series( js   );
-
-// > gulp files
-// > gulp pages
-// > gulp site
-// > gulp all
-// ---------------------------------------------------------------
+exports.html   = series( html );
+exports.php    = series( php );
+exports.txt    = series( txt );
+exports.md     = series( md );
+exports.css    = series( css );
+exports.js     = series( js );
 
 exports.files = parallel(
   
@@ -225,14 +226,15 @@ exports.files = parallel(
 
 exports.pages = parallel(
   
-  html, php, txt, md,
+  // htaccess, manifest, files,
+
+  html, php, txt, md
 
 );
 
 exports.site = parallel(
 
-  html, php, txt, md,
-  css, js,
+  html, php, txt, md, css, js,
 
 );
 
@@ -241,38 +243,37 @@ exports.all = parallel(
   builder_txt, builder_md,
 
   htaccess, manifest, files,
-  html, php, txt, md,  
-  css, js,
+
+  html, php, txt, md, css, js,
 
 );
 
-// > gulp watch
-// > gulp watch_pages
-// > gulp watch_css
-// > gulp watch_js
+// watch
 // ---------------------------------------------------------------
 
-function watch_pages() {
-  watch(_src.site.html, watchOpt, html );
-  watch(_src.site.php,  watchOpt, php  );
-  watch(_src.site.txt,  watchOpt, txt  );
-  watch(_src.site.md,   watchOpt, md   );
+function pagesw() {
+  watch(_src.site.html, watchOpt, html);
+  watch(_src.site.php,  watchOpt, php);
+  watch(_src.site.txt,  watchOpt, txt);
+  watch(_src.site.md,   watchOpt, md);
 }
-function watch_css() { watch(_src.scss, watchOpt, css ); }
-function watch_js()  { watch(_src.js,   watchOpt, js  ); }
-  
-exports.watch_pages = parallel( watch_pages );
-exports.watch_css   = parallel( watch_css );
-exports.watch_js    = parallel( watch_js  );
-exports.watch       = parallel(
 
-  watch_pages,
-  watch_css,
-  watch_js,
+function cssw() { watch(_src.scss, watchOpt, css); } 
+
+function jsw() { watch(_src.js, watchOpt, js); }
+
+
+exports.pagesw = parallel( pagesw );
+exports.cssw   = parallel( cssw );
+exports.jsw    = parallel( jsw );
+
+exports.watch = parallel(
+
+  pagesw, cssw, jsw,
 
 );
 
-// (default) > gulp
+// default
 // ---------------------------------------------------------------
 
 exports.default = exports.site;
