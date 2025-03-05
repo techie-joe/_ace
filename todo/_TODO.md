@@ -6,27 +6,27 @@
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
 BUILDER update : version & build  
-  [BUILDER___](_BUILDER_vars.pug)  
-  -- [README____](README.md)  
-  -- [LICENSE___](LICENSE.txt)  
+  [BUILDER___](../_BUILDER_vars.pug)  
+  -- [README____](../README.md)  
+  -- [LICENSE___](../LICENSE.txt)  
 
 ACE update : version & build  
-  [CONFIG____](_CONFIGS.pug)  
-  [CHANGELOGS](CHANGELOGS.md)  
-  [CSS_CRIGHT](styles/gulp_css/_copyright.scss)  
-  [JS__CRIGHT](scripts/ts/ace_thm.ts)  
-  [PACKAGE___](package.json)  
-  [PACKAGE__C](package-copy.json)  
-  -- [INDEX_____](pages/index.html.pug)  
-  -- [README____](../ace/README.md)  
-  -- [LICENSE___](../ace/LICENSE.txt)  
+  [CONFIG____](../_CONFIGS.pug)  
+  [CHANGELOGS](../CHANGELOGS.md)  
+  [CSS_CRIGHT](../styles/gulp_css/_copyright.scss)  
+  [JS__CRIGHT](../scripts/ts/ace_thm.ts)  
+  [PACKAGE___](../package.json)  
+  [PACKAGE__C](../package-copy.json)  
+  -- [INDEX_____](../pages/index.html.pug)  
+  -- [README____](../../ace/README.md)  
+  -- [LICENSE___](../../ace/LICENSE.txt)  
 
 BASIC update : version & build  
-  [VARS______](pages/basic/_vars.pug)  
-  [CHANGELOGS](pages/basic/CHANGELOGS.md)  
-  -- [INDEX_____](pages/basic/index.html.pug)  
-  -- [README____](../ace/basic/README.md)  
-  -- [LICENSE___](../ace/basic/LICENSE.txt)  
+  [VARS______](../pages/basic/_vars.pug)  
+  [CHANGELOGS](../pages/basic/CHANGELOGS.md)  
+  -- [INDEX_____](../pages/basic/index.html.pug)  
+  -- [README____](../../ace/basic/README.md)  
+  -- [LICENSE___](../../ace/basic/LICENSE.txt)  
 
 </div>
 
@@ -56,9 +56,9 @@ BASIC update : version & build
 
   - To add layouts.
 
-  - To use [pug filters](todos/pug-filters.md) on mixins and all.
+  - To use [pug filters](pug-filters.md) on mixins and all.
 
-  - To implement [service worker](todos/service-worker.md).
+  - To implement [service worker](service-worker.md).
 
   - To add more icons.
 

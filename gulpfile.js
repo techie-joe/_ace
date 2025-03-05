@@ -17,7 +17,7 @@ const _dest = {
   js      : "../ace/assets/js",
 };
 
-const _src_manifest = './manifest.js';
+const _src_manifest = './core/manifest.js';
 const _src = {
   builder : {
     txt : ["builder/**/*.txt.pug"],
@@ -37,22 +37,16 @@ const _src = {
   ],
 };
 
-const watchOpt = { ignoreInitial: false };
-const pagesOpt = { pretty: true };
-
 // IMPORTS
 // ===============================================================
 
-const { log } = console;
 const { src, dest, series, parallel, watch } = require('gulp');
-
-const pug         = require("gulp-pug");
-const gulp_rename = require('gulp-rename');
-const gulp_file   = require('gulp-file');
+const pug         = require('gulp-pug');
 
 // FUNCTIONS
 // ===============================================================
 
+const gulp_rename = require('gulp-rename');
 function ext(extname) {
   return gulp_rename( function (path) {
     path.basename = path.basename.substring(0, path.basename.lastIndexOf('.'));
@@ -74,7 +68,8 @@ function builder_txt() {
   .pipe(dest(_dest.builder));
 }
 
-function builder_md() { return src(_src.builder.md)
+function builder_md() {
+  return src(_src.builder.md)
   .pipe(pug())
   .pipe(ext('.md'))
   .pipe(dest(_dest.builder));
@@ -84,8 +79,9 @@ function builder_md() { return src(_src.builder.md)
 // ---------------------------------------------------------------
 // gulp site files
 
-// { src: true } indicates that the string provided as the second argument should be treated as file contents rather than a file path
-const gulp_as_file = { src: true };
+const gulp_file   = require('gulp-file');
+// { src: true } indicates that the string provided as the second
+// argument should be treated as file contents rather than a path
 
 // generate .htaccess file to _dest
 function htaccess() {
@@ -93,14 +89,14 @@ function htaccess() {
     `ErrorDocument 404 ${_dest_url}404.html`,
     `ErrorDocument 500 ${_dest_url}500.html`,
   ].join(`\n`);  
-  return gulp_file( '.htaccess', _htaccess, gulp_as_file )
+  return gulp_file( '.htaccess', _htaccess, { src: true } )
   .pipe(dest(_dest.site));
 }
 
 // generate manifest file from _src to _dest
 function manifest() {
   const _manifest = JSON.stringify(require(_src_manifest), null, 2);
-  return gulp_file( 'manifest.json', _manifest, gulp_as_file )
+  return gulp_file( 'manifest.json', _manifest, { src: true } )
   .pipe(dest(_dest.site));
 }
 
@@ -117,14 +113,14 @@ function files() {
 
 function html() {
   return src(_src.site.html)
-  .pipe(pug(pagesOpt))
+  .pipe(pug({ pretty: true }))
   .pipe(ext('.html'))
   .pipe(dest(_dest.site));
 }
 
 function php() {
   return src(_src.site.php)
-  .pipe(pug(pagesOpt))
+  .pipe(pug({ pretty: true }))
   .pipe(ext('.php'))
   .pipe(dest(_dest.site));
 }
@@ -152,7 +148,8 @@ const sass = require("gulp-sass")(require("sass"));
 const cleanCSS = require('gulp-clean-css');
 const sassOpt  = { outputStyle: 'compressed' };
 
-function css() { return src(_src.scss)
+function css() {
+  return src(_src.scss)
   .pipe(sass(sassOpt).on("error", sass.logError))
   .pipe(cleanCSS())
   .pipe(dest(_dest.css));
@@ -160,23 +157,21 @@ function css() { return src(_src.scss)
 
 // js
 // ---------------------------------------------------------------
-// to take js files from _src to _dest
 
-function js() { return src(_src.js)
+function js() {
+  return src(_src.js)
   .pipe(dest(_dest.js));
 }
 
 // deployment
 // ---------------------------------------------------------------
-// to copy every files from _src to _dest
-
+//
 // const _src_site = '_site/**/*';
 // const _dep_site = '../';
-
+//
 // function deploy() {
-//   log(`Deploying site to : ${_dep_site}`);
-//   return src(_src_site, { dot: true })
-//   .pipe(dest(_dep_site));
+//   return src(_src, { dot: true })
+//   .pipe(dest(_dest));
 // }
 
 /* ===============================================================
@@ -251,6 +246,7 @@ exports.all = parallel(
 // > gulp watch_css
 // > gulp watch_js
 // ---------------------------------------------------------------
+const watchOpt = { ignoreInitial: false };
 
 function watch_pages() {
   watch(_src.site.html, watchOpt, html );

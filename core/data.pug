@@ -1,0 +1,65 @@
+include _vars
+
+block vars
+  //- variables for every data page
+  - layoutName  = 'data'
+
+//- block append vars
+  include _vars
+  - heading = `(untitled)`
+  - updateTitle( `${heading} | ${title}` )
+  - updateDescription( `(undescribed)` )
+
+doctype html
+html#_html(lang=lang class=htmlClass)
+
+  |<!-- layout:#{layoutName} -->
+
+  head
+    meta(charset=charset)/
+
+    block seo
+      title !{title||'(untitled)'}
+      meta(name="description" content=description||'(undescribed)')/
+
+    block style
+      +htmlPreset
+      //- +cssv(href,media='all')
+
+  body#_body(class=bodyClass)
+
+    block contents
+      #_contents(class=contentsClass)
+
+        block views
+          +view
+
+            block header
+              //- +header#_header: +heading#_heading
+
+            block nav
+              //- include _nav
+              //- +nav#_nav: ul: +lia
+
+            block pre
+              //- +pre._ma: +putData
+              //- +pageData
+
+            block main
+              //- +main#_main: article| main article
+              +main#_main: article| main article
+
+            block footer
+              //- +footer#_footer
+            
+            block asides
+              //- +aside#_aside
+
+    block widgets
+      //- +widgets#_widgets: +widget#_widget
+
+    block scripts
+      //- +jsv(src)
+
+    block last
+      | <!-- IE needs 512+ bytes: https://techie-joe.github.io/library/html5/ie#ie-needs-512-bytes -->
