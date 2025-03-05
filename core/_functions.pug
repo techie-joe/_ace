@@ -1,8 +1,12 @@
 -
   function appendVersion ( _url ){
-    return [_url,"?v=",version,"&b=",build].join('')
+    return [_url,"?v=",version,"-",build.substring(0,build.indexOf('.')||build.length)].join('');
   }
 
-  function onclick(script){
-    return 'event.preventDefault();'+script;
+  function addClass ( _class, _newClass ){
+    return _class ? _class + ' ' + _newClass : _newClass;
+  }
+
+  function onclick( _script ){
+    return 'event.preventDefault();' + _script;
   }

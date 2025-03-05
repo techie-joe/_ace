@@ -1,123 +1,25 @@
 //- ==============================================================
-//- Project specific configurations
+//- Ace Template - Core configuration
 //- ==============================================================
+//- Project specific configurations
 //- Defaults can be overriden by pages as necessary.
 //- ==============================================================
 -
-  version        = '0.1.25' // please update package.json too
-  build          = '328.01' // check README to verify changes
+  name           = 'Ace Template';
+  author         = 'Techie Joe';
+  publisher      = 'Tidloo Digital';
+  copyright      = `Copyright ${thisYear} - ${author}`;
 
-//- ==============================================================
-
-  let title          = '(untitled)'
-  let description    = '(undescribed)'
-
-  let heading        = '(untitled)'
-  let about          = '(undescribed)'
-
-  let layoutName     = '(undefined)'
-  let author         = '(unknown)'
-  let publisher      = 'Tidloo Digital'
+  version        = '0.1.25'; // please update package.json too
+  build          = '10.301'; // check README to verify changes
 
   //- urls
-  let authorUrl      = 'https://github.com/techie-joe/'
-  let sourceUrl      = 'https://github.com/techie-joe/ace/'
-  let builderUrl     = 'https://github.com/techie-joe/_ace/'
-  let siteUrl        = 'https://techie-joe.github.io/ace/'
-  let localUrl       = 'http://localhost/ace/'
-
-  let homeUrl        = '/ace/'
-  let assetsUrl      = '/ace/assets/'
-  let demoUrl        = '/ace/demo/'
-  let basicUrl       = '/ace/basic/'
-
-  let templateUrl    = '/ace/templates/' // deprecated
-
-  //- open graph metadata for social media sharing
-  let og_url         = siteUrl + '?utm_source=homescreen'
-  let og_title       = title
-  let og_description = description
-  let og_type        = 'website'
-  let og_image       = ''
-  let og_imageAlt    = ''
-
-  //- en or en-US following the BCP 47 language tag standard
-  let lang           = 'en'
-  let charset        = 'utf-8'
-
-  //- styling
-  let colorScheme    = 'light dark'
-  let themeColor     = '#222222'
-  let htmlClass      = ''
-  let bodyClass      = ''
-  let contentsClass  = ''
-
-  //- metadata
-  let now            = new Date()
-  let thisYear       = now.getFullYear()
-  let copyright      = `&copy; Copyright ${thisYear} ${publisher}`
-
-  //- progressive web app metadata
-  let INCLUDE_MANIFEST = false
-  let INCLUDE_SERVICE_WORKERS = false
-
-  //- project
-  const LOCALHOST      = 'localhost';
-  const DEVELOPMENT    = 'DEVELOPMENT';
-  const PRODUCTION     = 'PRODUCTION'
-  const PROJECT_STATUS = DEVELOPMENT;
+  siteUrl        = 'https://techie-joe.github.io/ace/';
+  authorUrl      = 'https://github.com/techie-joe/';
+  sourceUrl      = 'https://github.com/techie-joe/ace/';
+  builderUrl     = 'https://github.com/techie-joe/_ace/';
+  localUrl       = 'http://localhost/ace/';
 
 //- ==============================================================
-//- data update functions
-  -
-  function updateTitle( _title ){
-    title    = _title
-    og_title = _title
-  }
 
-  function updateDescription( _description ){
-    description    = _description
-    og_description = _description
-  }
 
-  function updateUrl( _value='', _type='website' ){
-    siteUrl = _value
-    og_url  = _value? _value + '?utm_source=homescreen' : '';
-    og_type = _type
-  }
-
-  function updateImage( _image, _alt ){
-    og_image    = _image
-    og_imageAlt = _alt
-  }
-
-//- ==============================================================
-//- data mixins
-
-//- mixin putData
-  +l
-  +join([
-    `version          = ${version}`,
-    `build            = ${build}`,
-    ``,
-    `title            = ${title}`,
-    `description      = ${description}`,
-    ``,
-    `heading          = ${heading}`,
-    `about            = ${about}`,
-    ``,
-    `layoutName       = ${layoutName}`,
-    `author           = ${author}`,
-    `publisher        = ${publisher}`,
-    ``,
-    `authorUrl        = ${authorUrl}`,
-    `siteUrl          = ${siteUrl}`,
-    ``,
-    `og_url           = ${og_url}`,
-    `og_title         = ${og_title}`,
-    `og_description   = ${og_description}`,
-    `og_type          = ${og_type}`,
-    `og_image         = ${og_image}`,
-    `og_imageAlt      = ${og_imageAlt}`,
-  ])
-  +l

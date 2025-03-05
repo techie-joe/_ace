@@ -1,18 +1,12 @@
-extends html
+extends _html
 
 block append vars
-  - layoutName  = 'error'
-  - htmlClass += ' _errorpage'
-
-//- block append vars
-  include _vars
-  - heading = `(untitled)`
-  - updateTitle( `${heading}` )
-  - updateDescription( `(undescribed)` )
+  - layout  = 'core/error'
+  - htmlClass = addClass(htmlClass,'_errorpage')
 
 block seo
-  title !{title||'(untitled)'}
-  meta(name="description" content=description||'(undescribed)')/
+  title !{title||'[untitled]'}
+  meta(name="description" content!=description||'[undescribed]')/
 
 block append style
-  +cssv(assetsUrl+'css/errorpage.css')
+  +cssv(assetsUri+'css/errorpage.css')

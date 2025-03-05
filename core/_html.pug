@@ -4,59 +4,53 @@ block vars
   //- variables for every html page
   - layout = 'core/html';
 
-block doc
+block document
   doctype html
-  | <!-- layout:#{layout} -->
   html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
+    |
+    | <!-- #{name} v#{version} b#{build.substring(0,build.indexOf('.')||build.length)} | (c) #{copyright} -->
+    | <!-- layout:#{layout} -->
+    |
+    head
+      meta(charset=charset)/
 
-    block head
-      head
-        meta(charset=charset)/
+      block seo
+        include _seo
 
-        block seo
-          include _seo
+      block meta
+        include _meta
 
-        block meta
-          include _meta
+      block style
+        //- +cssv(href,media='all')
+        +cssv(assetsUri+'css/core/style.css')
 
-//- ==============================================================
+    //- head
 
-//- block append vars
-  include _vars
-  - heading = `(untitled)`
-  - updateTitle( `${heading} | ${title}` )
-  - updateDescription( `(undescribed)` )
-
-    block style
-      +htmlPreset
-      //- +cssv(href,media='all')
-      +cssv(assetsUrl+'css/ace.css')
-
-  body#_body(class=bodyClass)
-
-    block contents
-      #_contents(class=contentsClass)
-
-        block views
+    body#_body(class=bodyClass)
+    
+      block views
+        block view
           +view
 
             block header
-              //- +header#_header: +heading#_heading
+              +header#_header
+                +heading#_heading
 
             block nav
               //- include _nav
               //- +nav#_nav: ul: +lia
+              +nav#_nav: +backlink._link #[+itext|←]#[span._btnlabel Back]
 
             block main
-              //- +main#_main: article| main article
-              //- +pre._ma: +putData
-              //- +pageData#_pageData._page_layout
-              #_pageData._ma
-                div: +backlink._link #[+itext|←]#[span._btnlabel Back]
+              //- +main#_main: article._ma
+                +pre: +putData
+                +pageData#_pageData
+              +main#_main: article._ma
                 hr
-                h1._h7 !{description}
+                h1._h7 !{title}
+                p !{description}
                 hr
-                +pre._scrollable._full_width: +putData
+                +pageData#_pageData
                 hr
 
             block footer
@@ -65,14 +59,27 @@ block doc
             block asides
               //- +aside#_aside
 
-    block widgets
-      //- +widgets#_widgets: +widget#_widget
+        //- block view
+      //- block views
 
-    block script
-      //- +jsv(src)
-      +jsv(assetsUrl+'js/theme_v1.0.js')(defer)
-      if INCLUDE_SERVICE_WORKERS
-        +jsv(assetsUrl+'sw.j')(defer)
+      block widgets
+        //- +widgets#_widgets
+          +widget#_widget
 
-    block last
-      | <!-- IE needs 512+ bytes: https://techie-joe.github.io/library/html5/ie#ie-needs-512-bytes -->
+      block script
+        //- +jsv(src)
+        +jsv(assetsUri+'js/theme_v1.0.js')(defer)
+
+        if INCLUDE_SERVICE_WORKERS
+          +jsv(assetsUri+'js/sw.j')(defer)
+
+      block last
+        |
+        | <!-- IE needs 512+ bytes: https://techie-joe.github.io/library/html5/ie#ie-needs-512-bytes -->
+        |
+
+    //- body
+
+  //- html
+
+//- document

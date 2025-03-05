@@ -17,13 +17,36 @@ include _mixins
   let version        = '[version]';
   let build          = '[build]';
 
+  //- credit
+  let author         = '[unknown]';
+  let publisher      = '[unknown]';
+
   //- site
   let title          = '[untitled]';
   let description    = '[undescribed]';
 
-  //- credit
-  let author         = '[unknown]';
-  let publisher      = '[unknown]';
+  let heading        = '[untitled]';
+  let about          = '[undescribed]';
+
+  //- urls
+  let siteUrl        = '[site_url]';
+  let authorUrl      = '[author_url]';
+  let sourceUrl      = '[source_url]';
+  let builderUrl     = '[builder_url]';
+  let localUrl       = '[local_url]';
+
+  //- uris
+  let homeUri        = '/ace/';
+  let assetsUri      = '/ace/assets/';
+  let coreUri        = '/ace/core/';
+
+  //- open graph metadata for social media sharing
+  let og_url         = siteUrl + '?utm_source=homescreen';
+  let og_title       = title;
+  let og_description = description;
+  let og_type        = 'website';
+  let og_image       = '';
+  let og_imageAlt    = '';
 
   //- layout
   let layout         = '[n/a]';
@@ -31,7 +54,7 @@ include _mixins
   //- metadata
   let now            = new Date();
   let thisYear       = now.getFullYear();
-  let copyright      = `&copy; Copyright ${thisYear} ${publisher}`;
+  let copyright      = `Copyright ${thisYear} - ${author}`;
 
   //- en or en-US following the BCP 47 language tag standard
   let lang           = 'en';
@@ -44,20 +67,15 @@ include _mixins
   let bodyClass      = '';
   let contentsClass  = '';
 
-  //- urls
-  let siteUrl        = '[site_url]';
+  //- progressive web app metadata
+  let INCLUDE_MANIFEST = false;
+  let INCLUDE_SERVICE_WORKERS = false;
 
-  //- uris
-  let homeUri        = '/ace/';
-
-
-  //- open graph metadata for social media sharing
-  let og_url         = siteUrl + '?utm_source=homescreen';
-  let og_title       = title;
-  let og_description = description;
-  let og_type        = 'website';
-  let og_image       = '';
-  let og_imageAlt    = '';
+  //- project
+  const LOCALHOST      = 'localhost';
+  const DEVELOPMENT    = 'DEVELOPMENT';
+  const PRODUCTION     = 'PRODUCTION';
+  const PROJECT_STATUS = DEVELOPMENT;
 
 //- --------------------------------------------------------------
 -
@@ -79,3 +97,63 @@ include _mixins
 //- ==============================================================
 
 include _CONFIGS
+
+//- ==============================================================
+//- Update functions
+//- ==============================================================
+-
+  function updateTitle( _title ){
+    title    = _title
+    og_title = _title
+  }
+
+  function updateDescription( _description ){
+    description    = _description
+    og_description = _description
+  }
+
+  function updateUrl( _url='', _type='website' ){
+    siteUrl = _url
+    og_url  = _url? _url + '?utm_source=homescreen' : '';
+    og_type = _type
+  }
+
+  function updateImage( _uri, _alt ){
+    og_image    = _uri
+    og_imageAlt = _alt
+  }
+
+//- ==============================================================
+//- Data mixins
+//- ==============================================================
+
+mixin putData
+  +l
+  +join([
+    `name             = ${name}`,
+    `version          = ${version}`,
+    `build            = ${build}`,
+    ``,
+    `author           = ${author}`,
+    `publisher        = ${publisher}`,
+    ``,
+    `title            = ${title}`,
+    `description      = ${description}`,
+    ``,
+    `heading          = ${heading}`,
+    `about            = ${about}`,
+    ``,
+    `siteUrl          = ${siteUrl}`,
+    `og_url           = ${og_url}`,
+    `og_title         = ${og_title}`,
+    `og_description   = ${og_description}`,
+    `og_type          = ${og_type}`,
+    `og_image         = ${og_image}`,
+    `og_imageAlt      = ${og_imageAlt}`,
+    ``,
+    `homeUri          = ${homeUri}`,
+    `assetsUri        = ${assetsUri}`,
+    ``,
+    `layout           = ${layout}`,
+  ])
+  +l

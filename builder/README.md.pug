@@ -1,7 +1,7 @@
 //- ==============================================================
 //- README for Ace Builder
 //- ==============================================================
-extends ../pugs/text
+extends ../core/_text
 
 block append vars
   include _vars
@@ -17,10 +17,10 @@ block main
     Build    : #{build}  
     Author   : !{author}  
 
-    BUILDER  : #{siteUrl}  
+    BUILDER_URL  : #{builderUrl}  
 
-    AUTHOR   : #{authorUrl}  
+    AUTHOR_URL   : #{authorUrl}  
 
     ------------------------------------------------------------------
 
-    Copyright (c) #{thisYear} -- !{publisher}
+    Copyright (c) #{thisYear} -- !{author}
