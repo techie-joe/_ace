@@ -4,8 +4,20 @@ block vars
   //- variables for every html page
   - layout = 'core/html';
 
-doctype html
-| <!-- layout:#{layout} -->
+block doc
+  doctype html
+  | <!-- layout:#{layout} -->
+  html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
+
+    block head
+      head
+        meta(charset=charset)/
+
+        block seo
+          include _seo
+
+        block meta
+          include _meta
 
 //- ==============================================================
 
@@ -14,22 +26,6 @@ doctype html
   - heading = `(untitled)`
   - updateTitle( `${heading} | ${title}` )
   - updateDescription( `(undescribed)` )
-
-//- block entry
-  //- php entrypoint for variable setup & security check
-
-//- html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
-
-  | <!-- layout:#{layoutName} -->
- 
-  head
-    meta(charset=charset)/
-    
-    block seo
-      include _seo
-
-    block meta
-      include _meta
 
     block style
       +htmlPreset
@@ -65,7 +61,7 @@ doctype html
 
             block footer
               //- +footer#_footer
-            
+
             block asides
               //- +aside#_aside
 

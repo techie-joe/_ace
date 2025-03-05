@@ -1,10 +1,10 @@
 //- Basic SEO
-title !{title||'(untitled)'}
+title !{title||'[untitled]'}
 -
   temp = [
-    ["description",description||'(undescribed)'],
-    ["author",author||'(unknown)'],
-    ["publisher",publisher||'(unknown)'],
+    ["description",description||'[undescribed]'],
+    ["author",author||'[unknown]'],
+    ["publisher",publisher||'[unknown]'],
   ];
 each v in temp
   meta(name=v[0] content=v[1])/
@@ -12,10 +12,10 @@ each v in temp
 //- Open Graph protocol to optimize your web page for social media sharing.
 -
   temp = [
-    ["og:title",og_title||'(untitled)'],
-    ["og:description",og_description||'(undescribed)'],
-    ["og:type",og_type],
-    ["og:url",og_url],
+    ["og:title",og_title||'[untitled]'],
+    ["og:description",og_description||'[undescribed]'],
+    ["og:type",og_type||'[unknown]'],
+    ["og:url",og_url||'[unknown]'],
     ["og:image",og_image],
     ["og:image:alt",og_imageAlt],
   ];

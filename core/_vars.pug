@@ -17,6 +17,10 @@ include _mixins
   let version        = '[version]';
   let build          = '[build]';
 
+  //- site
+  let title          = '[untitled]';
+  let description    = '[undescribed]';
+
   //- credit
   let author         = '[unknown]';
   let publisher      = '[unknown]';
@@ -28,6 +32,32 @@ include _mixins
   let now            = new Date();
   let thisYear       = now.getFullYear();
   let copyright      = `&copy; Copyright ${thisYear} ${publisher}`;
+
+  //- en or en-US following the BCP 47 language tag standard
+  let lang           = 'en';
+  let charset        = 'utf-8';
+
+  //- styling
+  let colorScheme    = 'light dark';
+  let themeColor     = '#222222';
+  let htmlClass      = '';
+  let bodyClass      = '';
+  let contentsClass  = '';
+
+  //- urls
+  let siteUrl        = '[site_url]';
+
+  //- uris
+  let homeUri        = '/ace/';
+
+
+  //- open graph metadata for social media sharing
+  let og_url         = siteUrl + '?utm_source=homescreen';
+  let og_title       = title;
+  let og_description = description;
+  let og_type        = 'website';
+  let og_image       = '';
+  let og_imageAlt    = '';
 
 //- --------------------------------------------------------------
 -
