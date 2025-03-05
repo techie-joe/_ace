@@ -1,23 +1,51 @@
-//- __TLDR: Site configuration defaults.
-//- Defaults will be overriden by pages as necessary.
+//- ==============================================================
+//- Core functions
 //- ==============================================================
 
 include _functions
 include _mixins
-include ../_CONFIGS
 
+//- ==============================================================
+//- Core variables
+//- ==============================================================
 -
+  //- temporary variable for small operations
+  let temp = undefined;
+
+  //- project
+  let name           = '[project_name]';
+  let version        = '[version]';
+  let build          = '[build]';
+
+  //- credit
+  let author         = '[unknown]';
+  let publisher      = '[unknown]';
+
+  //- layout
+  let layout         = '[n/a]';
+
+  //- metadata
+  let now            = new Date();
+  let thisYear       = now.getFullYear();
+  let copyright      = `&copy; Copyright ${thisYear} ${publisher}`;
+
+//- --------------------------------------------------------------
+-
+
   let js   = {}; // javascripts
   let cssi = {}; // CSS images
   let svgi = {}; // SVG images
-  let temp = undefined; // temporary variables for small operations
 
-//- Commonly used vars
--
   js = {
     themeChange : 'theme.change();',
     goBack      : 'window.history.back();',
     print       : 'window.print();',
   };
 
-  svgi.compare = 'M19,3H14V5H19V18L14,12V21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10,18H5L10,12M10,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H10V23H12V1H10V3Z'; // for theme change
+  svgi.compare = 'M19,3H14V5H19V18L14,12V21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10,18H5L10,12M10,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H10V23H12V1H10V3Z'; // for theme switch
+
+//- ==============================================================
+//- Include project specific configurations
+//- ==============================================================
+
+include _CONFIGS

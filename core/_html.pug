@@ -2,7 +2,12 @@ include _vars
 
 block vars
   //- variables for every html page
-  - layoutName  = 'html'
+  - layout = 'core/html';
+
+doctype html
+| <!-- layout:#{layout} -->
+
+//- ==============================================================
 
 //- block append vars
   include _vars
@@ -10,11 +15,10 @@ block vars
   - updateTitle( `${heading} | ${title}` )
   - updateDescription( `(undescribed)` )
 
-block entry
+//- block entry
   //- php entrypoint for variable setup & security check
 
-doctype html
-html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
+//- html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
 
   | <!-- layout:#{layoutName} -->
  
