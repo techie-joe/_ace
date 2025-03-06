@@ -7,10 +7,8 @@
 
 // ------------------------------------------------------- */ html
 
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- */
+// 1. Correct the line height in all browsers.
+// 2. Prevent iOS font size adjustments after orientation changes.
 
 #_html {
   font-size: 1em;
@@ -51,10 +49,8 @@ $select_tc    : #000;
 // --------------------------------------------------------- */ hr
 /* better looking default horizontal rule */
 
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
+// 1. Add the correct box sizing in Firefox.
+// 2. Show the overflow in Edge and IE.
 
 hr {
   display: block;
@@ -68,37 +64,25 @@ hr {
   margin: .5rem 0;
 }
 
-// -------------------------------------- */ remove default margin
-
-body,
-._margin_0 { margin: 0 }
-
-// ------------------------------------------------- */ box-sizing
-/* use a more-intuitive box-sizing model */
-
-._border_box { &, &::before, &::after { box-sizing: border-box }}
-
-
 // ------------------------------------------------------ */ fonts
 
+// Correct font size inheritance and scaling in all browsers.
 ._mono { font-family: monospace, monospace }
 
-// ------------------------------------------------------ */ texts
-/* improve readability */
 
+// ------------------------------------------------------ */ texts
+
+// fix underline to improve readability
 a, u, abbr[title] { text-underline-offset: .12em }
 
-/* 1. Add the correct font weight in Chrome, Edge, and Safari. */
-
-._b, b, strong { font-weight: bolder } /* 1 */
+// Add the correct font weight in Chrome, Edge, and Safari.
+._b, b, strong { font-weight: bolder }
 
 
 // --------------------------------------------------- */ headings
 
-/**
- * Correct the font size and margin on header elements within
- * `section` and `article` contexts in Chrome, Firefox, and Safari.
- */
+// Correct the font size and margin on header elements within
+// `section` and `article` contexts in Chrome, Firefox, and Safari
 
 h1 { font-size: 2em }
 h1,h2,h3,h4,h5,h6 { @extend ._p; }
@@ -106,17 +90,13 @@ h1,h2,h3,h4,h5,h6 { @extend ._p; }
 
 // ------------------------------------------------------ */ links
 
-// ------------------------------------------------- */ paragraphs
-/* correct margins on all paragraphing elements */
 
+// ------------------------------------------------- */ paragraphs
+// correct margins on all paragraphing elements
 ._p,p,pre,ul,ol { margin-top: 1rem 0 }
 
-// -------------------------------------------------------- */ pre
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
+// 1. Correct font size inheritance and scaling in all browsers.
+// 2. Correct the odd `em` font sizing in all browsers.
 
 ._pre, pre {
   @extend ._p;
@@ -124,8 +104,20 @@ h1,h2,h3,h4,h5,h6 { @extend ._p; }
   font-size: 1em; /* 2 */
 }
 
+// --------------------------------------------------- */ sections
+
+// remove default margin
+body,
+._margin_0 { margin: 0 }
+
+// use a more-intuitive box-sizing model
+._border_box { &, &::before, &::after { box-sizing: border-box }}
+
+// Render the `main` element consistently in IE.
+main { display: block }
+
+
 // ------------------------------------------------------ */ media
-/* improve media defaults */
 
 // ------------------------------------------------------- */ form
 
@@ -138,7 +130,7 @@ h1,h2,h3,h4,h5,h6 { @extend ._p; }
 ._header_layout,
 ._footer_layout,
 ._main_layout {
-  margin: .5rem;
+  margin: .5rem; /* temp */
 }
 
 // ===============================================================
