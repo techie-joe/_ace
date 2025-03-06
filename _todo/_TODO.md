@@ -2,7 +2,7 @@
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
-### March 6, 2025 - v0.1.25 b10.302
+### March 6, 2025 - v0.1.25 b10.303
 - housekeep: core
 
 ---
