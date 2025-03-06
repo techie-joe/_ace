@@ -6,7 +6,7 @@ block vars
 
 block document
   doctype html
-  html#_html(lang=lang class=htmlClass)._nojs._scrollbar._a
+  html#_html._html._nojs._scrollbar._a(lang=lang class=htmlClass)
     |
     | <!-- #{name} v#{version} b#{build.substring(0,build.indexOf('.')||build.length)} | (c) #{copyright} -->
     | <!-- layout:#{layout} -->
@@ -26,7 +26,7 @@ block document
 
     //- head
 
-    body#_body(class=bodyClass)
+    body#_body._body(class=bodyClass)
     
       block views
         block view

@@ -2,8 +2,8 @@
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
-### March 6, 2025 - v0.1.25 b10.303
-- housekeep: core
+### March 6, 2025 - v0.1.25 b10.304
+- housekeep: core css
 
 ---
 
@@ -34,6 +34,8 @@ BASIC update : version & build
 </div>
 
 ## To do
+
+  - Try detach license tag to improve chances of passing Envato QC.
 
   - TODO: validate themejs stored value.
 

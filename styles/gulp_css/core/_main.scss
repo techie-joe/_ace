@@ -2,61 +2,76 @@
 @use "color-values" as *;
 
 // ===============================================================
-// Normalization styles for Ace Core
+// Resets
+// ===============================================================
+
+// for these elements:
+// html, body, div, span, applet, object, iframe,
+// h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+// a, abbr, acronym, address, big, cite, code,
+// del, dfn, em, img, ins, kbd, q, s, samp,
+// small, strike, strong, sub, sup, tt, var,
+// b, u, i, center,
+// dl, dt, dd, ol, ul, li,
+// fieldset, form, label, legend,
+// table, caption, tbody, tfoot, thead, tr, th, td,
+// article, aside, canvas, details, embed, 
+// figure, figcaption, footer, header, hgroup, 
+// menu, nav, output, ruby, section, summary,
+// time, mark, audio, video
+._reset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+// ===============================================================
+// Standardizations
 // ===============================================================
 
 // ------------------------------------------------------- */ html
-
-// 1. Correct the line height in all browsers.
-// 2. Prevent iOS font size adjustments after orientation changes.
-
-#_html {
+// 1. Standardize the line height in all browsers.
+// 2. Prevent iOS adjustments after orientation changes.
+._html {
   font-size: 1em;
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   -webkit-font-smoothing: antialiased;
 }
 
-#_html, ._c_base { @include color( $light_tc, $light_bg ); }
-#_html._dark,._dark ._c_base { @include color( $dark_tc, $dark_bg ); }
+._html,._c_base { @include color( $light_tc, $light_bg ); }
+._dark { &._html,._c_base { @include color( $dark_tc, $dark_bg ); } }
 
 // ------------------------------------------------ */ ::selection
 // - must follow this format. - will not work otherwise.
 // - each vendor specific must be seperately declared.
-// - cant combine.
+// - cant combine. so dont use entend.
 // - use background-color not background.
 // - dont append or include other class.
 // ---------------------------------------------------------------
-
 $select_bg    : #FFFF00CC;
 $select_tc    : #000;
-::-moz-selection {
+@mixin selection {
   background-color: $select_bg !important;
   color: $select_tc !important;
   text-shadow: none !important;
 }
-::selection {
-  background-color: $select_bg !important;
-  color: $select_tc !important;
-  text-shadow: none !important;
-}
-._select {
-  background-color: $select_bg;
-  color: $select_tc;
-  text-shadow: none;
-}
+::-moz-selection { @include selection; }
+::selection      { @include selection; }
+._select         { @include selection; }
 
 // --------------------------------------------------------- */ hr
 /* better looking default horizontal rule */
-
-// 1. Add the correct box sizing in Firefox.
-// 2. Show the overflow in Edge and IE.
-
+// 1. Fix box sizing in Firefox.
+// 2. Show overflow in Edge and IE.
 hr {
-  display: block;
   box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
   overflow: visible; /* 2 */
+  display: block;
   border: 0;
   border-top: 1px solid #888;
   border-bottom: 1px solid #888;
@@ -65,43 +80,70 @@ hr {
 }
 
 // ------------------------------------------------------ */ fonts
+// 1. Fix font size inheritance and scaling in all browsers.
+// 2. Fix the odd em font sizing in all browsers.
+._mono {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
 
-// Correct font size inheritance and scaling in all browsers.
-._mono { font-family: monospace, monospace }
-
+// Fix line height in all browsers.
+._lh_0   { line-height: 0 }
+._lh_1   { line-height: 1 }
+._lh_1x5 { line-height: 1.5 }
+._lh_2   { line-height: 2 }
 
 // ------------------------------------------------------ */ texts
+// 1. Remove the bottom border in Chrome 57-
+// 2. Fix text decoration in Chrome, Edge, IE, Opera, and Safari.
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
 
 // fix underline to improve readability
 a, u, abbr[title] { text-underline-offset: .12em }
 
-// Add the correct font weight in Chrome, Edge, and Safari.
+// fix font weight in Chrome, Edge, and Safari.
 ._b, b, strong { font-weight: bolder }
 
+code,
+kbd,
+samp { @extend ._mono; /* fix fonts */ }
+
+// fix font size in all browsers.
+small { font-size: 80% }
+
+// Prevent <sub> and <sup> from affecting line height.
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub { bottom: -0.25em }
+sup { top: -0.5em } 
 
 // --------------------------------------------------- */ headings
-
-// Correct the font size and margin on header elements within
-// `section` and `article` contexts in Chrome, Firefox, and Safari
-
-h1 { font-size: 2em }
+// fix font size and margin of headings inside
+// <section> and <article> in Chrome, Firefox, and Safari
 h1,h2,h3,h4,h5,h6 { @extend ._p; }
+h1 { font-size: 2em }
 
 
 // ------------------------------------------------------ */ links
+// fix: remove gray background on active links in IE 10.
+a { background-color: transparent }
 
 
 // ------------------------------------------------- */ paragraphs
-// correct margins on all paragraphing elements
-._p,p,pre,ul,ol { margin-top: 1rem 0 }
-
-// 1. Correct font size inheritance and scaling in all browsers.
-// 2. Correct the odd `em` font sizing in all browsers.
+// fix margins on all paragraphing elements
+._p,p,pre,ul,ol { margin-top: 1rem; margin-bottom: 1rem }
 
 ._pre, pre {
   @extend ._p;
-  @extend ._mono; /* 1 */
-  font-size: 1em; /* 2 */
+  @extend ._mono; /* fix fonts */
 }
 
 // --------------------------------------------------- */ sections
@@ -110,20 +152,38 @@ h1,h2,h3,h4,h5,h6 { @extend ._p; }
 body,
 ._margin_0 { margin: 0 }
 
-// use a more-intuitive box-sizing model
+// use intuitive box-sizing model
 ._border_box { &, &::before, &::after { box-sizing: border-box }}
 
-// Render the `main` element consistently in IE.
+// render the <main> consistently in IE.
 main { display: block }
+
+// 1. fix display in Edge, IE 10+, and Firefox.
+// 2. fix display in all browsers.
+details { display: block } /* 1 */
+summary { display: list-item } /* 2 */
+ 
+// fix display in IE 10+.
+template { display: none }
 
 
 // ------------------------------------------------------ */ media
+// remove border on images inside <a> links in IE 10.
+img { border-style: none }
+
+// Remove the gap between audio, canvas, iframes,
+// images, videos and the bottom of their containers:
+// https://github.com/h5bp/html5-boilerplate/issues/440
+audio, canvas, iframe, img, svg, video { vertical-align: middle }
+
+// modern media defaults
+picture { display: block; max-width: 100%; height: auto }
 
 // ------------------------------------------------------- */ form
 
 
 // ===============================================================
-// Main styles for Ace Core
+// Main styles
 // ===============================================================
 
 ._nav_layout,
@@ -134,10 +194,77 @@ main { display: block }
 }
 
 // ===============================================================
-// Helpers for Ace Core
+// Helpers
 // ===============================================================
 
-// ---------------------------------------------------- */ outline
-
+// outline
 $outline_color: #f80;
-._outline   { box-shadow: 0 0 0 1px $outline_color; }
+._outline   { box-shadow: 0 0 0 1px $outline_color }
+
+// for these elements: /* reset for older browsers */
+// article, aside, details, figcaption, figure, 
+// footer, header, hgroup, menu, nav, section
+._block { display: block }
+
+// for ol and ul
+._no_bullet { list-style: none }
+
+// for blockquote and q
+._no_quote { quotes: none; &:before, &:after { content: ''; content: none; }}
+
+// for table
+._collapse { border-collapse: collapse; border-spacing: 0 }
+
+// Hide visually and from screen readers
+._hide, ._hidden, [hidden] { display: none !important }
+
+// Hide visually and from screen readers, but maintain layout
+._invisible { visibility: hidden }
+
+// Hide only visually, but have it available for screen readers:
+// https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+//
+// 1. For long content, line feeds are not interpreted as spaces
+// and small width causes content to wrap 1 word per line:
+// https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+//
+// 2. Extends the ._clipped class to allow the element
+// to be focusable when navigated to via the keyboard:
+// https://www.drupal.org/node/897638
+
+._clipped {
+
+  /* 1 */
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+
+  /* 2 */
+  &._focusable {
+    &:active,
+    &:focus {
+      clip: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      position: static;
+      white-space: inherit;
+      width: auto;
+    }    
+  }
+
+}
+
+// ._clearfix to clear pass floating elements.
+// The use of 'table' rather than 'block' is only necessary if
+// using ::before to contain the top-margins of child elements.
+
+._clearfix {
+  &::before, &::after { content: ""; display: table; clear: both }  
+}

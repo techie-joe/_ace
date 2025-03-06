@@ -1,4 +1,7 @@
-/*! ThemeJs | v1.0.0 b335.31 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
+/* ===============================================================
+/* ThemeJs | v1.0.0 b335.31 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
+/* ===============================================================
+// Try detach license tag to improve chances of passing Envato QC.
 /* ===============================================================
 // IMPORTANT: must compile to ES5 or above.
 // ECMAScript 5 (ES5) aka ECMAScript 2009,
