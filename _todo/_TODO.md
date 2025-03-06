@@ -2,7 +2,7 @@
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
-### March 6, 2025 - v0.1.25 b10.301
+### March 6, 2025 - v0.1.25 b10.302
 - housekeep: core
 
 ---
@@ -10,7 +10,7 @@
 CORE update : version & build  
   [CONFIG____](../core/_CONFIGS.pug)  
   [CHANGELOGS](../CHANGELOGS.md)  
-  [CSS_CRIGHT](../styles/gulp_css/_copyright.scss)  
+  [CSS_CRIGHT](../styles/gulp_css/core/_copyright.scss)  
   [PACKAGE___](../package.json)  
   [PACKAGE__C](../package-copy.json)  
 

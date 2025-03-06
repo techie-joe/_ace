@@ -34,22 +34,22 @@ block document
 
             block header
               +header#_header
-                +heading#_heading
+                +heading#_heading !{heading}
+                p !{about}
+                hr
 
             block nav
               //- include _nav
               //- +nav#_nav: ul: +lia
-              +nav#_nav: +backlink._link #[+itext|←]#[span._btnlabel Back]
+              +nav#_nav
+                +backlink._link #[+itext|←]#[span._btnlabel Back]
+                hr
 
             block main
               //- +main#_main: article._ma
                 +pre: +putData
                 +pageData#_pageData
               +main#_main: article._ma
-                hr
-                h1._h7 !{title}
-                p !{description}
-                hr
                 +pageData#_pageData
                 hr
 

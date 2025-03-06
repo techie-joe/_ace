@@ -1,0 +1,151 @@
+@use "mixins" as *;
+@use "color-values" as *;
+
+// ===============================================================
+// Normalization styles for Ace Core
+// ===============================================================
+
+// ------------------------------------------------------- */ html
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+
+#_html {
+  font-size: 1em;
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-font-smoothing: antialiased;
+}
+
+#_html, ._c_base { @include color( $light_tc, $light_bg ); }
+#_html._dark,._dark ._c_base { @include color( $dark_tc, $dark_bg ); }
+
+// ------------------------------------------------ */ ::selection
+// - must follow this format. - will not work otherwise.
+// - each vendor specific must be seperately declared.
+// - cant combine.
+// - use background-color not background.
+// - dont append or include other class.
+// ---------------------------------------------------------------
+
+$select_bg    : #FFFF00CC;
+$select_tc    : #000;
+::-moz-selection {
+  background-color: $select_bg !important;
+  color: $select_tc !important;
+  text-shadow: none !important;
+}
+::selection {
+  background-color: $select_bg !important;
+  color: $select_tc !important;
+  text-shadow: none !important;
+}
+._select {
+  background-color: $select_bg;
+  color: $select_tc;
+  text-shadow: none;
+}
+
+// --------------------------------------------------------- */ hr
+/* better looking default horizontal rule */
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+  display: block;
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border: 0;
+  border-top: 1px solid #888;
+  border-bottom: 1px solid #888;
+  padding: 0;
+  margin: .5rem 0;
+}
+
+// -------------------------------------- */ remove default margin
+
+body,
+._margin_0 { margin: 0 }
+
+// ------------------------------------------------- */ box-sizing
+/* use a more-intuitive box-sizing model */
+
+._border_box { &, &::before, &::after { box-sizing: border-box }}
+
+
+// ------------------------------------------------------ */ fonts
+
+._mono { font-family: monospace, monospace }
+
+// ------------------------------------------------------ */ texts
+/* improve readability */
+
+a, u, abbr[title] { text-underline-offset: .12em }
+
+/* 1. Add the correct font weight in Chrome, Edge, and Safari. */
+
+._b, b, strong { font-weight: bolder } /* 1 */
+
+
+// --------------------------------------------------- */ headings
+
+/**
+ * Correct the font size and margin on header elements within
+ * `section` and `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 { font-size: 2em }
+h1,h2,h3,h4,h5,h6 { @extend ._p; }
+
+
+// ------------------------------------------------------ */ links
+
+// ------------------------------------------------- */ paragraphs
+/* correct margins on all paragraphing elements */
+
+._p,p,pre,ul,ol { margin-top: 1rem 0 }
+
+// -------------------------------------------------------- */ pre
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+._pre, pre {
+  @extend ._p;
+  @extend ._mono; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+// ------------------------------------------------------ */ media
+/* improve media defaults */
+
+// ------------------------------------------------------- */ form
+
+
+// ===============================================================
+// Main styles for Ace Core
+// ===============================================================
+
+._nav_layout,
+._header_layout,
+._footer_layout,
+._main_layout {
+  margin: .5rem;
+}
+
+// ===============================================================
+// Helpers for Ace Core
+// ===============================================================
+
+// ---------------------------------------------------- */ outline
+
+$outline_color: #f80;
+._outline   { box-shadow: 0 0 0 1px $outline_color; }

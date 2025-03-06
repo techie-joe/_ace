@@ -1,0 +1,97 @@
+@mixin position-absolute($top: null, $left: null, $bottom: null, $right: null) {
+  position: absolute;
+  @if $top { top: $top; }
+  @if $bottom { bottom: $bottom; }
+  @if $right { right: $right; }
+  @if $left { left: $left; }
+}
+
+@mixin position-relative($top: null, $left: null, $bottom: null, $right: null) {
+  position: relative;
+  @if $top { top: $top; }
+  @if $bottom { bottom: $bottom; }
+  @if $right { right: $right; }
+  @if $left { left: $left; }
+}
+
+@mixin position-fixed($top: null, $left: null, $bottom: null, $right: null) {
+  position: fixed;
+  @if $top { top: $top; }
+  @if $bottom { bottom: $bottom; }
+  @if $right { right: $right; }
+  @if $left { left: $left; }
+}
+
+@mixin color($color, $bg_color: null, $important: false) {
+  @if $important {
+    color: $color !important;
+    @if $bg_color { background-color: $bg_color !important; }
+  } @else {
+    color: $color;
+    @if $bg_color { background-color: $bg_color; }
+  }
+}
+
+@mixin mh($value) {
+  margin-left: $value;
+  margin-right: $value;
+}
+
+@mixin mv($value) {
+  margin-top: $value;
+  margin-bottom: $value;
+}
+
+@mixin ph($value) {
+  padding-left: $value;
+  padding-right: $value;
+}
+
+@mixin pv($value) {
+  padding-top: $value;
+  padding-bottom: $value;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin grid-layout($columns, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// @mixin button($bg-color, $text-color) {
+//   background-color: $bg-color;
+//   color: $text-color;
+//   padding: 10px 20px;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+
+//   &:hover {
+//     background-color: darken($bg-color, 10%);
+//   }
+// }
+
+// @media (min-width: 20rem){/*    ≥ 320px   Mobile S   ._f_ms_* */}
+// @media (min-width: 23.4rem){/*  ≥ 375px   Mobile M   ._f_mm_* */}
+// @media (min-width: 26.6rem){/*  ≥ 425px   Mobile L   ._f_ml_* */}
+// @media (min-width: 35.5rem){/*  ≥ 568px              ._f_s_*  */}
+// @media (min-width: 48rem){/*    ≥ 768px    Laptop S  ._f_m_*  */}
+// @media (min-width: 60rem){/*    ≥ 960px    960gs     ._f_r_*  */}
+// @media (min-width: 64rem){/*    ≥ 1024px   Laptop M  ._f_l_*  */}
+// @media (min-width: 80rem){/*    ≥ 1280px             ._f_2l_* */}
+// @media (min-width: 90rem){/*    ≥ 1440px   Laptop L  ._f_3l_* */}
+// @media (min-width: 120rem){/*   ≥ 1920px             ._f_4l_* */}
+// @media (min-width: 160rem){/*   ≥ 2560px   4K        ._f_4k_* */}
+// @media (min-width: 240rem){/*   ≥ 3840px             ._f_5k_* */}
+
+@mixin responsive-font($min-size, $max-size) {
+  font-size: $min-size;
+  @media (min-width: 48em) { font-size: $max-size; }
+}
+

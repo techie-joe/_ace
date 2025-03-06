@@ -1,11 +1,11 @@
 extends _html
 
 block append vars
-  - heading = `Core`
-  - about   = `The core structure of ${name}.`
+  - heading = `Basic Elements`
+  - about   = `Styles for basic HTML elements.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
-  - updateUrl( siteUrl+'index.html' )
+  - updateUrl( siteUrl+'basic.html' )
 
 block main
 
@@ -20,5 +20,5 @@ block footer
   +footer#_footer
     p &copy; !{copyright}
 
-//- block asides
+block asides
   //- +aside#_aside
