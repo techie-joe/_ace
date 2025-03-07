@@ -16,13 +16,16 @@
 ._scrollable { overflow: visible !important }
 
 ._view,
-._print_relative {
+._print_reset {
   position: relative !important;
   top: auto !important;
   left: auto !important;
   right: auto !important;
   bottom: auto !important;
 }
+
+._print_block  { display: block !important }
+._print_inline { display: inline !important }
 
 *::before{ content: none !important }
 *,
@@ -49,6 +52,7 @@ a[href^="javascript:"]::after { content: "" }
 // --------------------------------------------------- */ segments
 ._pre, pre {
   white-space: pre-wrap !important;
+  overflow: visible !important;
   padding: 1em !important;
 }
 ._pre, pre,
