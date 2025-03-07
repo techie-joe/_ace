@@ -1,0 +1,75 @@
+// ===============================================================
+// Print Styles
+// ===============================================================
+// 
+// Inlined to avoid the additional HTTP request:
+// https://www.phpied.com/delay-loading-your-print-css/
+// 
+// ===============================================================
+
+@media print {
+
+._view,
+._scroll,
+._scroll-x,
+._scroll-y,
+._scrollable { overflow: visible !important }
+
+._view,
+._print_relative {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+}
+
+*::before{ content: none !important }
+*,
+*::before,
+*::after {
+  background: #fff !important;
+  color: #000 !important;
+  /* Black prints faster */
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+// ------------------------------------------------------ */ links
+a, a:visited { text-decoration: underline }
+
+a[href]::after { content: " (" attr(href) ")" }
+abbr[title]::after { content: " (" attr(title) ")" }
+
+// * Don't show links that are fragment identifiers,
+// * or use the `javascript:` pseudo protocol
+a[href^="#"]::after,
+a[href^="javascript:"]::after { content: "" }
+
+// --------------------------------------------------- */ segments
+._pre, pre {
+  white-space: pre-wrap !important;
+  padding: 1em !important;
+}
+._pre, pre,
+._quote, blockquote {
+  border: 1px solid #999;
+  page-break-inside: avoid;
+}
+
+// ------------------------------------------------------- */ misc
+tr, img { page-break-inside: avoid }
+
+p, h1, h2, h3 { orphans: 3; widows: 3 }
+
+h1, h2, h3 { page-break-after: avoid }
+
+._no_print { display: none !important }
+._btnlink,
+._no_print_href a,
+._no_print_href { &[href]::after { content: none !important } }
+._no_print_bg { background: none !important; }
+._no_print_color { color: inherit !important; }
+._no_print_border { border: none !important; }
+
+} // ========================================================= EOF 

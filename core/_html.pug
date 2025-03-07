@@ -28,39 +28,37 @@ block document
 
     body#_body._body(class=bodyClass)
     
-      block views
-        block view
-          +view
+      block view
+        +view
 
-            block header
-              +header#_header
-                +heading#_heading !{heading}
-                p !{about}
-                hr
+          block header
 
-            block nav
-              //- include _nav
-              //- +nav#_nav: ul: +lia
-              +nav#_nav
-                +backlink._link #[+itext|←]#[span._btnlabel Back]
-                hr
+            +header#_header
+              +heading#_heading !{heading}
+              p !{about}
+              hr
 
-            block main
-              //- +main#_main: article._ma
-                +pre: +putData
-                +pageData#_pageData
-              +main#_main: article._ma
-                +pageData#_pageData
-                hr
+            //- include _nav
+            //- +nav#_nav: ul: +lia
+            +nav#_nav
+              +backlink._link #[+itext|←]#[span._btnlabel Back]
+              hr
 
-            block footer
-              //- +footer#_footer
+          block main
+            //- +main#_main: article._ma
+              +pre: +putData
+              +pageData#_pageData
+            +main#_main: article._ma
+              +pageData#_pageData
+              hr
+            
+            //- +aside#_aside
 
-            block asides
-              //- +aside#_aside
-
-        //- block view
-      //- block views
+          block footer
+            //- +footer#_footer
+          
+        //- +view
+      //- block view
 
       block widgets
         //- +widgets#_widgets
@@ -72,8 +70,9 @@ block document
 
         if INCLUDE_SERVICE_WORKERS
           +jsv(assetsUri+'js/sw.j')(defer)
+      //- script
 
-      block last
+      block finaly
         |
         | <!-- IE needs 512+ bytes: https://techie-joe.github.io/library/html5/ie#ie-needs-512-bytes -->
         |

@@ -11,13 +11,21 @@ block append style
     #_nav ._link:hover { text-decoration:underline; color:initial; }
   //- style.
 
-block nav
+block header
+
   //- include _nav
   //- +nav#_nav: ul: +lia
   +nav#_nav
     +_a._link(href='index.html') Core
     +_a._link(href='basic.html') Basic
     hr
+
+  +header#_header
+    +heading#_heading !{heading}
+    p !{about}
+    hr
+
+//- block main_header
 
 block footer
   +footer#_footer

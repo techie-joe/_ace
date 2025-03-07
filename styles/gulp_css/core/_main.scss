@@ -42,9 +42,6 @@
   -webkit-font-smoothing: antialiased;
 }
 
-._html,._c_base { @include color( $light_tc, $light_bg ); }
-._dark { &._html,._c_base { @include color( $dark_tc, $dark_bg ); } }
-
 // ------------------------------------------------ */ ::selection
 // - must follow this format. - will not work otherwise.
 // - each vendor specific must be seperately declared.
@@ -181,9 +178,15 @@ picture { display: block; max-width: 100%; height: auto }
 
 // ------------------------------------------------------- */ form
 
+// Remove default fieldset styles.
+fieldset { border: 0; margin: 0; padding: 0 }
+
+// Allow only vertical resizing of textareas.
+textarea { resize: vertical }
+
 
 // ===============================================================
-// Main styles
+// Main Styles
 // ===============================================================
 
 ._nav_layout,
@@ -192,6 +195,14 @@ picture { display: block; max-width: 100%; height: auto }
 ._main_layout {
   margin: .5rem; /* temp */
 }
+
+// ===============================================================
+// Main Themes
+// ===============================================================
+
+._html,._c_base { @include color( $light_tc, $light_bg ); }
+._dark { &._html,._c_base { @include color( $dark_tc, $dark_bg ); } }
+
 
 // ===============================================================
 // Helpers
