@@ -168,7 +168,7 @@ interface Window {
           theme: string | undefined | null = isSTR(stored_theme) ? stored_theme : media.matches ? DARK : _; // theme: were decided by user or refers to media-matches.
 
         // apply load theme
-        updateClass(DOC, NULL, theme);
+        updateClass(DOC, '_hidden', theme);
         syncScheme(theme);
 
         // open to changes

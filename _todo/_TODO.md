@@ -2,14 +2,14 @@
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
-### March 6, 2025 - v0.1.25 b10.306
+### March 9, 2025 - v0.1.25 b10.307
 - housekeep: core css
 
 ---
 
 CORE update : version & build  
-  [CONFIG____](../core/_CONFIGS.pug)  
   [CHANGELOGS](../CHANGELOGS.md)  
+  [CONFIG____](../core/_CONFIGS.pug)  
   [CSS_CRIGHT](../styles/gulp_css/core/_copyright.scss)  
   [PACKAGE___](../package.json)  
   [PACKAGE__C](../package-copy.json)  

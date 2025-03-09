@@ -1,0 +1,14 @@
+// Code: try
+@use "mixins" as *;
+@use "color-values" as *;
+
+// ===============================================================
+
+._c_base { @include color( $light_tc, $light_bg ); }
+
+._dark {
+  &._c_base { @include color( $dark_tc, $dark_bg ); }
+}
+
+// ------------------------------------------------- */ containers
+._html { @extend ._c_base; }

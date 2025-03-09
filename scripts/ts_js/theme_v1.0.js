@@ -1,4 +1,7 @@
-/*! ThemeJs | v1.0.0 b335.31 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
+/* ===============================================================
+/* ThemeJs | v1.0.0 b335.31 | Copyright 2025 - Techie Joe | https://themejs.pages.dev */
+/* ===============================================================
+// Try detach license tag to improve chances of passing Envato QC.
 /* ===============================================================
 // IMPORTANT: must compile to ES5 or above.
 // ECMAScript 5 (ES5) aka ECMAScript 2009,
@@ -122,7 +125,7 @@
             list = stored_list || [DARK], // list: were decided by user or ace
             theme = isSTR(stored_theme) ? stored_theme : media.matches ? DARK : _; // theme: were decided by user or refers to media-matches.
             // apply load theme
-            updateClass(DOC, NULL, theme);
+            updateClass(DOC, '_hidden', theme);
             syncScheme(theme);
             // open to changes
             listenTo(media, 'change', e => { e.matches ? set(DARK) : set(); });
