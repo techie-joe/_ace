@@ -2,9 +2,24 @@
 @use "color-values" as *;
 
 // ===============================================================
-// Resets
+// Standardizations
 // ===============================================================
-// for these elements: reset for all browsers.
+
+._reset_border { border: 0 }
+._reset_margin { margin: 0 }
+._reset_padding { padding: 0 }
+._reset_fontsize { font-size: 1em }
+
+._block { display: block }
+._table { display: table }
+._inline { display: inline }
+._inblock { display: inline-block }
+
+._relative { position: relative }
+._absolute { position: absolute; @include position(0,0) }
+._fixed    { position: fixed; @include position(0,0) }
+
+// ._reset can be used on these elements:
 // html, body, div, span, applet, object, iframe,
 // h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 // a, abbr, acronym, address, big, cite, code,
@@ -19,61 +34,42 @@
 // menu, nav, output, ruby, section, summary,
 // time, mark, audio, video,
 ._reset {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
+	@extend ._reset_margin;
+  @extend ._reset_padding;
+	@extend ._reset_border;
+	@extend ._reset_fontsize;
 	font: inherit;
 	vertical-align: baseline;
 }
 
-// for these elements: reset for older browsers.
+// reset these elements in older browsers.
 nav, main, article, section, header, footer, aside,
 figure, details, figcaption, hgroup, menu { @extend ._block; }
-
-// reset margins for all browsers.
-._reset_margin { margin: 0 }
-
-// reset padding for all browsers.
-._reset_padding { padding: 0 }
-
-// reset displays for all browsers.
-._block { display: block }
-._table { display: table }
-._inline { display: inline }
-._inblock { display: inline-block }
-
-// ._block   { display: block }
-// ._inline  { display: inline }
-// ._inblock { display: inline-block }
-
-// reset position for all browsers.
-._relative { position: relative }
-._absolute { position: absolute; @include position(0,0) }
-._fixed    { position: fixed; @include position(0,0) }
 
 // use intuitive box-sizing model.
 // ._border_box { &, &::before, &::after { box-sizing: border-box }}
 
-// fix what ??
-// ._full_width { width:100%; }
+// set simple initial border
+._border { border: 1px solid #888 }
 
-// ===============================================================
-// Standardizations
-// ===============================================================
 // 1. Standardize the line height in all browsers.
 // 2. Prevent iOS adjustments after orientation changes.
 html {
-  font-size: 1em;
+  @extend ._reset_fontsize;
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   -webkit-font-smoothing: antialiased;
 }
 
-// fix view in all browsers.
+// 1. remove margin in all browsers.
+// 2. contain marginal elements.
+body { @extend ._reset_margin; } /* 1 */
+._body { @extend ._clearfix; } /* 2 */
+._view { @extend ._clearfix; } /* 2 */
+
+// set view in all browsers.
 // ! all parents of _full_view must also be full.
-._html,
-._body,
+._html, ._body,
 ._full_view {
   display: block;
   width  : 100%;
@@ -81,20 +77,13 @@ html {
   margin : 0;
   padding: 0;
 }
-
-// fix to contain marginal elements.
-body { @extend ._reset_margin; }
-._body { @extend ._clearfix; }
-
-// fix to contain marginal elements.
-._view { @extend ._clearfix; }
+// ._full_width { width:100%; }
 
 // make way for browser status bar.
 ._footer_layout { margin-bottom: 1rem !important }
 
 // fix display in IE 10+.
 template { @extend ._hidden; }
-
 
 // ------------------------------------------------- */ paragraphs
 
@@ -104,37 +93,33 @@ li { @extend ._reset_margin; }
 // fix margins on all paragraphing elements.
 ul,ol,dl,li,
 ._pre, pre,
-._p, p { margin-top: 1rem; margin-bottom: 1rem }
+._p, p { margin: 1rem 0 }
 
 // 1. fix display in Edge, IE 10+, and Firefox.
 // 2. fix display in all browsers.
 details { @extend ._block; } /* 1 */
 summary { @extend ._cursor_pointer; display: list-item; /* 2 */ }
 
+
 // --------------------------------------------------------- */ hr
-/* better looking default horizontal rule */
+// better looking default horizontal rule.
 // 1. Fix box sizing in Firefox.
 // 2. Show overflow in Edge and IE.
 hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
+  box-sizing: content-box; height: 0; /* 1 */
   overflow: visible; /* 2 */
   @extend ._block;
-  border: 0;
-  border-top: 1px solid #888;
-  border-bottom: 1px solid #888;
   @extend ._reset_padding;
+  @extend ._border;
+  border-width: 1px 0;
   margin: .5rem 0;
 }
 
 // ------------------------------------------------------ */ fonts
 
-._font_0,._system  { font-family: system-ui, sans-serif; }
-._font_1,._sans    { font-family: "Arial", sans-serif; }
-._font_2,._serif   { font-family: "Georgia", serif; }
-._font_3 { @extend ._mono; }
-
-._html { @extend ._font_1; }
+._system  { font-family: system-ui, sans-serif; }
+._sans    { font-family: "Arial", sans-serif; }
+._serif   { font-family: "Georgia", serif; }
 
 // 1. Fix font size inheritance and scaling in all browsers.
 // 2. Fix the odd em font sizing in all browsers.
@@ -142,6 +127,9 @@ hr {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
+
+._html { @extend ._sans; }
+
 ._pre, pre { @extend ._mono; }
 
 // Fix line height in all browsers.
@@ -152,21 +140,24 @@ hr {
 
 // ------------------------------------------------------ */ texts
 
-// 1. Remove the bottom border in Chrome 57-
-// 2. Fix text decoration in Chrome, Edge, IE, Opera, and Safari.
-abbr[title] {
-  border-bottom: none; /* 1 */
-  text-decoration: underline; /* 2 */
-  @extend ._u_dot; /* 2 */
-  @extend ._cursor_help;
-}
-
-// fix underline to improve readability
-a, abbr[title], ._u_dot, ._u_dash,
-._u, u { text-underline-offset: .12em }
-
+// enforce correct font weight.
 // fix font weight in Chrome, Edge, and Safari.
-._b, b, strong { font-weight: bolder }
+b, strong { @extend ._b; }
+
+// enforce underline and improve readability.
+a, u { @extend ._u; }
+
+// remove gray background on active links in IE 10.
+a { background-color: transparent }
+
+// 1. remove the bottom border in Chrome 57-
+// 2. fix underline in Chrome, Edge, IE, Opera, and Safari.
+// 3. improve intuitivity.
+abbr[title] {
+  @extend ._reset_border; /* 1 */
+  @extend ._u_dot; /* 2 */
+  @extend ._cursor_help; /* 3 */
+}
 
 // fix fonts
 code, kbd, samp { @extend ._mono; }
@@ -211,10 +202,6 @@ h1 { @extend ._h1; }
 ._hero_2 { font-size: 2.250rem }
 ._hero_3 { font-size: 2.572rem }
 
-// ------------------------------------------------------ */ links
-// fix: remove gray background on active links in IE 10.
-a { background-color: transparent }
-
 // ------------------------------------------------------ */ media
 
 // remove border on images inside <a> links in IE 10.
@@ -232,16 +219,25 @@ picture { @extend ._block; max-width: 100%; height: auto }
 // ------------------------------------------------------ */ table
 
 table {
-  & { border-collapse: collapse; border-spacing: 0 }
-  &._table,
-  &._table_0 { th,td { border: 1px solid transparent; padding: .25em } }
-  &._table { th,td { border-color:#888 } }
+  // set default table
+  & {
+    @extend ._border;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  // set basic table
+  &._table { th,td { @extend ._border; padding: .25em } }
 }
 
 // ------------------------------------------------------- */ form
 
-// Remove default fieldset styles.
-._fieldset, fieldset { border: 0; margin: 0; padding: 0 }
+// reset fieldset in all browsers.
+fieldset {
+  @extend ._reset_border;
+  @extend ._reset_margin;
+  @extend ._reset_padding;
+}
+._fieldset { @extend ._border; }
 
 // Allow only vertical resizing of textareas.
 textarea { resize: vertical }
@@ -292,13 +288,13 @@ $select_tc    : #000;
 // ===============================================================
 
 ._a a {
-  &       { transition: color 0.5s, background-color 0.5s; }
-  &:hover { transition:none }
+  &       { transition: color 0.5s, background-color 0.5s }
+  &:hover { transition: none }
 }
 
 ._hover_scale_a a,
 ._hover_scale {
-  &       { transition: color 0.5s, background-color 0.5s, scale 0.2s; }
+  &       { transition: color 0.5s, background-color 0.5s, scale 0.2s }
   &:hover { transition: scale 0.3s; scale:1.1; }
 }
 
@@ -323,17 +319,17 @@ $select_tc    : #000;
 // Behaviors
 // ===============================================================
 
+// cursors
+._cursor_help { cursor: help }
+._cursor_pointer { cursor: pointer }
+
 // scrollable elements
-._html, ._body, ._view,
+._html, ._body,
 ._scrollable { scroll-behavior: smooth }
 ._scrollable { overflow: auto }
 
 // 1. prevent page width defferences.
-._view { overflow-y: scroll; /* 1 */ overflow-x: auto }
-
-// cursors
-._cursor_help { cursor: help }
-._cursor_pointer { cursor: pointer }
+._view { @extend ._scrollable; overflow-y: scroll /* 1 */ }
 
 // ===============================================================
 // Helpers
@@ -347,12 +343,16 @@ $outline_color: #f80;
 
 // ------------------------------------------------------ */ texts
 
-@for $i from 1 through 9 { ._b-#{$i} { font-weight: $i * 100; } }
-
 ._i { font-style: italic }
 
-._u { text-decoration: underline }
-._u_dot  { text-decoration: underline dotted }
+._b { font-weight: bolder }
+@for $i from 1 through 9 { ._b-#{$i} { font-weight: $i * 100; } }
+
+._u {
+  text-decoration: underline;
+  text-underline-offset: .12em; // improve readability
+}
+._u_dot { @extend ._u; text-decoration: underline dotted }
 
 ._striked { text-decoration: line-through }
 
@@ -374,7 +374,7 @@ $outline_color: #f80;
 ._text_center  { text-align: center  }
 ._text_justify { text-align: justify }
 
-// for ol and ul
+// for ul and ol
 ul,ol {
   &._no_bullet,
   &._plain { list-style-type: none !important; }
