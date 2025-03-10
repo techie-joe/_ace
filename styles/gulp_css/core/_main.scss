@@ -102,7 +102,7 @@ summary { @extend ._cursor_pointer; display: list-item; /* 2 */ }
 
 // improve intuitivity
 ._details {
-  & > summary { padding: .5em }
+  & > summary { padding: .25em .5em }
   & > ._detail { margin: .5em 1em }
 }
 
@@ -256,6 +256,17 @@ textarea { resize: vertical }
 ._footer_layout,
 ._main_layout { margin: .5rem /* temp */ }
 
+// ------------------------------------------------------ */ links
+
+._hover_link {
+  @extend ._cursor_pointer;
+  @extend ._no_deco;
+  border-radius: .3rem;
+}
+
+._link { padding: 0 .3em }
+// ._link { @extend ._label; }
+
 // ===============================================================
 // Themes
 // ===============================================================
@@ -288,18 +299,72 @@ $select_tc    : #000;
 // ------------------------------------------------- */ containers
 ._html { @extend ._c_base; }
 
+
+// --------------------------------------------------- */ headings
+
+h1,h2,h3,h4,h5,h6,
+._h1,._h2,._h3,._h4,._h5,._h6,._h7 { @include color( $tc_2_6 ); }
+
+._dark {
+  h1,h2,h3,h4,h5,h6,
+  ._h1,._h2,._h3,._h4,._h5,._h6,._h7 { @include color( $tc_2_4 ); }
+}
+
+// ------------------------------------------------- */ seperators
+
+._st { border-top-color: $light_shade }
+._sl { border-left-color: $light_shade }
+._sr { border-right-color: $light_shine }
+._sb { border-bottom-color: $light_shine }
+._dark {
+  ._st { border-top-color: $dark_shade }
+  ._sl { border-left-color: $dark_shade }
+  ._sr { border-right-color: $dark_shine }
+  ._sb { border-bottom-color: $dark_shine }
+}
+hr { @extend ._st; @extend ._sb; }
+
+// ------------------------------------------------------ */ links
+
+._a a {
+  &._fresh:visited,
+  &         { @include color( $light_link_tci ); }
+  &:visited { @include color( $light_link_tcv ); }
+  &:hover   { @include color( $light_link_tci ); }
+}
+
+._dark._a a {
+  &._fresh:visited,
+  &         { @include color( $dark_link_tci ); }
+  &:visited { @include color( $dark_link_tcv ); }
+  &:hover   { @include color( $dark_link_tci ); }
+}
+
+._a,._dark._a { ._link { &,&:visited { color: inherit } } }
+
 // ===============================================================
 // Transitions
 // ===============================================================
 
-._a a {
-  &       { transition: color 0.5s, background-color 0.5s }
+._a a,
+._hover_link {
+  & { transition: color 0.5s, background-color 0.5s }
   &:hover { transition: none }
 }
 
+._a ._hover_link {
+  &:hover { @include color( $light_contra, $light_button_bg ); }
+}
+._dark._a ._hover_link {
+  &:hover { @include color( $dark_contra, $dark_button_bg); }
+}
+
+._link,
+._details > summary { @extend ._hover_link; }
+
 ._hover_scale_a a,
 ._hover_scale {
-  &       { transition: color 0.5s, background-color 0.5s, scale 0.2s }
+  & { transition: color 0.5s, background-color 0.5s, scale 0.2s }
   &:hover { transition: scale 0.3s; scale:1.1; }
 }
 
@@ -533,28 +598,12 @@ $angles : 45, 90, 135, 180, 225, 270, 315;
   &:hover { text-decoration: none; }
 }
 
-._hover_link {
-  @extend ._no_wrap;
-  @extend ._cursor_pointer;
-  @extend ._no_deco;
-  padding: 0 .3em;
-  border-radius: .3rem;
-  vertical-align: middle;
-}
-
-._html ._hover_link { color: inherit }
-
 ._label {
   @extend ._inblock;
   padding: 0 .3em;
   margin: .05rem 0;
   border-radius: .3rem;
   vertical-align: middle;
-}
-
-._link {
-  @extend ._hover_link;
-  @extend ._label;
 }
 
 ._nav_icon {
@@ -601,37 +650,6 @@ $angles : 45, 90, 135, 180, 225, 270, 315;
 
 // ===============================================================
 
-h1,h2,h3,h4,h5,h6,
-._h1,._h2,._h3,._h4,._h5,._h6,._h7 { @include color( $tc_2_6 ); }
-
-._dark {
-h1,h2,h3,h4,h5,h6,
-._h1,._h2,._h3,._h4,._h5,._h6,._h7 { @include color( $tc_2_4 ); }
-}
-
-._a a {
-  &._stay_fresh:visited,
-  &         { @include color( $light_link_tci ); }
-  &:visited { @include color( $light_link_tcv ); }
-  // &._stay_fresh:hover,
-  &:hover   { @include color( $light_link_tci ); }
-}
-
-._dark._a a {
-  &._stay_fresh:visited,
-  &         { @include color( $dark_link_tci ); }
-  &:visited { @include color( $dark_link_tcv ); }
-  // &._stay_fresh:hover,
-  &:hover   { @include color( $dark_link_tci ); }
-}
-
-._hrt { border-top    : 1px solid $light_shade; }
-._hrb { border-bottom : 1px solid $light_shine; }
-._dark ._hrt { border-top    : 1px solid $dark_shade; }
-._dark ._hrb { border-bottom : 1px solid $dark_shine; }
-
-hr { @extend ._hrt; @extend ._hrb; }
-
 ._a ._btnlink {
   &:visited,
   &:active,
@@ -647,9 +665,6 @@ hr { @extend ._hrt; @extend ._hrb; }
     @include color( $dark_button_tc, $dark_button_bg );
   }
 }
-
-#_html       ._hover_link:hover { @include color( $light_contra, $light_button_bg ); }
-#_html._dark ._hover_link:hover { @include color( $dark_contra, $dark_button_bg); }
 
 /* ============================================== color helpers */
 

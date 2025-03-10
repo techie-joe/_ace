@@ -16,6 +16,7 @@ block main
       | #[u underlined]
       | #[a anchor]
       | #[a(href='' onclick=onclick())#newlink hyperlink]
+      | #[a(href='' onclick=onclick())._fresh fresh]
       | #[a(href='' onclick=onclick()) visited]
       | #[a(href='' onclick=onclick())._no_color no-color]
 
@@ -23,8 +24,8 @@ block main
       document.getElementById('newlink').setAttribute('href','?t='+new Date().getTime())
 
     ._p
-      | #[a._link link]
-      | #[a(href='' onclick=onclick())._link link]
+      | #[a._hover_link hyperlink]
+      | #[a._link hyperlink]
 
     hr
 
