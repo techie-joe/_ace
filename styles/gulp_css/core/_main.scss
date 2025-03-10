@@ -100,6 +100,11 @@ ul,ol,dl,li,
 details { @extend ._block; } /* 1 */
 summary { @extend ._cursor_pointer; display: list-item; /* 2 */ }
 
+// improve intuitivity
+._details {
+  & > summary { padding: .5em }
+  & > ._detail { margin: .5em 1em }
+}
 
 // --------------------------------------------------------- */ hr
 // better looking default horizontal rule.
@@ -330,6 +335,7 @@ $select_tc    : #000;
 
 // 1. prevent page width defferences.
 ._view { @extend ._scrollable; overflow-y: scroll /* 1 */ }
+
 
 // ===============================================================
 // Helpers

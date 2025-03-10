@@ -11,44 +11,35 @@ block main
 
   +main#_main: article
 
+    ._p
+      | normal
+      | #[u underlined]
+      | #[a anchor]
+      | #[a(href='' onclick=onclick())#newlink hyperlink]
+      | #[a(href='' onclick=onclick()) visited]
+      | #[a(href='' onclick=onclick())._no_color no-color]
+
+    script.
+      document.getElementById('newlink').setAttribute('href','?t='+new Date().getTime())
+
+    ._p
+      | #[a._link link]
+      | #[a(href='' onclick=onclick())._link link]
+
+    hr
+
     details
       summary The visible summary or title.
       div The collapsible content as used to create web pages.
+
+    hr
+
+    details._details
+      summary The visible summary or title.
+      ._detail The collapsible content as used to create web pages.
+
+    hr
     
-    hr
-
-    mixin table_example
-      table&attributes(attributes)
-        thead
-          tr
-            th Item
-            th Description
-            th Price
-        tbody
-          tr
-            td Apple
-            td A sweet red fruit
-            td $1.00
-          tr
-            td Banana
-            td A long yellow fruit
-            td $0.50
-          tr
-            td Cherry
-            td A small red fruit
-            td $0.20
-        tfoot
-          tr
-            td(colspan='2') Total
-            td $1.70
-      //- table
-    //- table_example
-
-    ._p: +table_example
-    ._p: +table_example._table
-
-    hr
-
     ._p
       | normal
       | #[span span]
@@ -67,14 +58,6 @@ block main
       | #[span._u_dot span-u-dot]
       | #[s strikethrough]
       | #[span._striked span-striked]
-
-    ._p
-      | #[a(href='' onclick=onclick())#newlink hyperlink]
-      | #[a(href='' onclick=onclick()) visited]
-      | #[a(href='' onclick=onclick())._no_color no-color]
-
-    script.
-      document.getElementById('newlink').setAttribute('href','?t='+new Date().getTime())
 
     ._p
       | normal
@@ -123,6 +106,38 @@ block main
     ol._no_bullet: li| no-bullet
     ol._no_pad: li| no-pad
     ol._plain: li| plain
+    
+    hr
+
+    mixin table_example
+      table&attributes(attributes)
+        thead
+          tr
+            th Item
+            th Description
+            th Price
+        tbody
+          tr
+            td Apple
+            td A sweet red fruit
+            td $1.00
+          tr
+            td Banana
+            td A long yellow fruit
+            td $0.50
+          tr
+            td Cherry
+            td A small red fruit
+            td $0.20
+        tfoot
+          tr
+            td(colspan='2') Total
+            td $1.70
+      //- table
+    //- table_example
+
+    ._p: +table_example
+    ._p: +table_example._table
 
     //- +pageData#_pageData
     hr

@@ -53,10 +53,10 @@ a[href^="javascript:"]::after { content: "" }
 ._pre, pre {
   white-space: pre-wrap !important;
   overflow: visible !important;
-  padding: 1em !important;
 }
 ._pre, pre,
 ._quote, blockquote {
+  padding: 1em !important;
   border: 1px solid #999;
   page-break-inside: avoid;
 }
