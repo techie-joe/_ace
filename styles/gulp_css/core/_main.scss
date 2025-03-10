@@ -219,14 +219,14 @@ picture { @extend ._block; max-width: 100%; height: auto }
 // ------------------------------------------------------ */ table
 
 table {
+
   // set default table
-  & {
-    @extend ._border;
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
+  & { border-collapse: collapse; border-spacing: 0 }
+  th,td { @extend ._reset_padding; }
+
   // set basic table
   &._table { th,td { @extend ._border; padding: .25em } }
+
 }
 
 // ------------------------------------------------------- */ form
@@ -339,8 +339,6 @@ $select_tc    : #000;
 $outline_color: #f80;
 ._outline   { box-shadow: 0 0 0 1px $outline_color inset }
 
-._numb { user-select:none }
-
 // ------------------------------------------------------ */ texts
 
 ._i { font-style: italic }
@@ -359,11 +357,11 @@ $outline_color: #f80;
 ._uppercase { text-transform: uppercase }
 ._capitalize { text-transform: capitalize }
 
-._no_color { color: inherit !important }
-
 ._no_b { font-weight: normal !important }
 
-._no_u { text-decoration: none !important }
+._no_u, ._no_deco { text-decoration: none !important }
+
+._no_color { color: inherit !important }
 
 // ----------------------------------------------- */ paragraphing
 
@@ -374,6 +372,8 @@ $outline_color: #f80;
 ._text_center  { text-align: center  }
 ._text_justify { text-align: justify }
 
+._no_wrap { white-space: nowrap !important }
+
 // for ul and ol
 ul,ol {
   &._no_bullet,
@@ -382,22 +382,81 @@ ul,ol {
   &._no_pad { padding-inline-start: 1em !important; }
 }
 
-._no_wrap { white-space: nowrap !important }
-
 // ------------------------------------------------------- */ misc
+
+// for non interactive elements just for display.
+._numb { user-select:none }
+
+// ._radius
+$radiuses: (
+  "_x25r" : .25rem,
+  "_x5r"  : .5rem,
+  ""      : 1em
+);
+@each $x, $value in $radiuses { ._radius#{$x}  { border-radius: $value; } }
+
+// ._margins
+$margins: (
+  "_x5r" : .5rem,
+  ""     : 1em,
+  "_2"   : 2em
+);
+@each $x, $value in $margins {
+  ._ma#{$x}  { margin: $value; }
+  ._mh#{$x} { @include mh($value); }
+  ._mv#{$x} { @include mv($value); }
+  ._ml#{$x} { margin-left: $value; }
+  ._mr#{$x} { margin-right: $value; }
+  ._mt#{$x} { margin-top: $value; }
+  ._mb#{$x} { margin-bottom: $value; }
+}
+
+._m0 { margin:0 !important }
+._mt0 { margin-top: 0 !important }
+._mb0 { margin-bottom: 0 !important }
+
+// ._paddings
+$paddings: (
+  "_x5r" : .5rem,
+  ""     : 1em,
+  "_2"   : 2em
+);
+@each $x, $value in $paddings {
+  ._pa#{$x} { padding: $value; }
+  ._ph#{$x} { @include ph($value); }
+  ._pv#{$x} { @include pv($value); }
+  ._pl#{$x} { padding-left: $value; }
+  ._pr#{$x} { padding-right: $value; }
+  ._pt#{$x} { padding-top: $value; }
+  ._pb#{$x} { padding-bottom: $value; }
+}
+
+._p0 { padding:0 !important }
+._pt0 { padding-top: 0 !important }
+._pb0 { padding-bottom: 0 !important }
+
+// ._rotate
+$angles : 45, 90, 135, 180, 225, 270, 315;
+@each $angle in $angles { ._rotate-#{$angle} { transform: rotate(#{$angle}deg); } }
 
 // for blockquote and q
 ._no_quote { quotes: none; &:before, &:after { content: ''; content: none; }}
 
-// Hide visually and from screen readers, but maintain layout
+// control overflow
+._no_overflow,
+._no_scroll { overflow: hidden !important }
+._no_scroll_x { overflow-x: hidden !important; }
+._no_scroll_y { overflow-y: hidden !important; }
+
+// hide from screen readers, but maintain visual layout
 ._invisible { visibility: hidden !important }
 
-// Hide visually and from screen readers
+// hide visually and from screen readers
 ._hide, ._hidden, [hidden] { display: none !important }
 
 // ---------------------------------------------------- */ clipped
 // 
-// Hide only visually, but have it available for screen readers:
+// ONLY hide visually, but have it available for screen readers:
 // https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
 //
 // 1. For long content, line feeds are not interpreted as spaces
@@ -411,15 +470,15 @@ ul,ol {
 ._clipped {
 
   /* 1 */
-  border: 0;
+  @extend ._reset_border;
+  @extend ._reset_padding;
+  @extend ._absolute;
+  @extend ._no_overflow;
+  @extend ._no_wrap;
   clip: rect(0, 0, 0, 0);
+  width: 1px;
   height: 1px;
   margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
 
   /* 2 */
   &._focusable {
@@ -452,36 +511,35 @@ ul,ol {
 ._btnlink {
   @extend ._numb;
   @extend ._radius_x25r;
-  cursor: pointer;
-  display: inline-block;
+  @extend ._no_overflow;
+  @extend ._no_wrap;
+  @extend ._cursor_pointer;
+  @extend ._inblock;
+  @extend ._border;
+  @extend ._text_center;
+  @extend ._lh_1;
+  @extend ._no_deco;
+  border-color: $tc_2_9;
   padding: .3em .6em;
-  border: 1px solid $tc_2_9;
-  text-decoration: none;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
   vertical-align: middle;
   min-width: 1em;
-  line-height: 1;
   margin: .05rem 0;
   &:hover { text-decoration: none; }
 }
 
 ._hover_link {
+  @extend ._no_wrap;
+  @extend ._cursor_pointer;
+  @extend ._no_deco;
   padding: 0 .3em;
   border-radius: .3rem;
-  text-decoration:none;
-  white-space: nowrap;
-  cursor: pointer;
   vertical-align: middle;
 }
 
-._html ._hover_link {
-  color: inherit;
-}
+._html ._hover_link { color: inherit }
 
 ._label {
-  display: inline-block;
+  @extend ._inblock;
   padding: 0 .3em;
   margin: .05rem 0;
   border-radius: .3rem;
@@ -495,15 +553,15 @@ ul,ol {
 
 ._nav_icon {
   padding: 0;
+  text-align: center;
   min-width: 1.7em;
   min-height: 1.7em;
-  text-align: center;
   font-weight: normal;
 }
 
 ._icon {
   @extend ._numb;
-  display: inline-block;
+  @extend ._inblock;
   height   : 1.5em;
   min-width: 1.5em;
   text-align: center;
@@ -514,24 +572,23 @@ ul,ol {
 
 .itext {
   @extend ._mono;
-  line-height: 1;
+  @extend ._lh_1;
+  @extend ._inblock;
   font-size: 1em;
   font-weight: normal;
   font-style: normal;
   font-variant: normal;
-  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  display: inline-block;
   text-rendering: auto;
 }
 
-._itext { @extend ._icon; overflow: hidden; }
+._itext { @extend ._icon; @extend ._no_overflow; }
 ._itext .itext { font-size: 1.4em; } /* offset baseline for *most-icons */
 
 ._isvg { @extend ._icon; svg { vertical-align:top; } } /* fix spinning axis */
 
 ._btnlabel {
-  display: inline-block;
+  @extend ._inblock;
   padding: 0 .5em;
   vertical-align: middle;
 }
@@ -659,61 +716,4 @@ hr { @extend ._hrt; @extend ._hrb; }
 
 }
 
-// ===============================================================
-
-// ._radius
-$radiuses: (
-  "_x25r" : .25rem,
-  "_x5r"  : .5rem,
-  ""      : 1em
-);
-@each $x, $value in $radiuses { ._radius#{$x}  { border-radius: $value; } }
-
-// ._margins
-$margins: (
-  "_x5r" : .5rem,
-  ""     : 1em,
-  "_2"   : 2em
-);
-@each $x, $value in $margins {
-  ._ma#{$x}  { margin: $value; }
-  ._mh#{$x} { @include mh($value); }
-  ._mv#{$x} { @include mv($value); }
-  ._ml#{$x} { margin-left: $value; }
-  ._mr#{$x} { margin-right: $value; }
-  ._mt#{$x} { margin-top: $value; }
-  ._mb#{$x} { margin-bottom: $value; }
-}
-
-._m0,
-._no_margin { margin:0 !important }
-._mt0 { margin-top: 0 !important }
-._mb0 { margin-bottom: 0 !important }
-
-// ._paddings
-$paddings: (
-  "_x5r" : .5rem,
-  ""     : 1em,
-  "_2"   : 2em
-);
-@each $x, $value in $paddings {
-  ._pa#{$x} { padding: $value; }
-  ._ph#{$x} { @include ph($value); }
-  ._pv#{$x} { @include pv($value); }
-  ._pl#{$x} { padding-left: $value; }
-  ._pr#{$x} { padding-right: $value; }
-  ._pt#{$x} { padding-top: $value; }
-  ._pb#{$x} { padding-bottom: $value; }
-}
-
-._p0,
-._no_pad { padding:0 !important }
-._pt0 { padding-top: 0 !important }
-._pb0 { padding-bottom: 0 !important }
-
-// ._rotate
-$angles : 45, 90, 135, 180, 225, 270, 315;
-@each $angle in $angles { ._rotate-#{$angle} { transform: rotate(#{$angle}deg); } }
-
-._no_scroll,._no_scroll_x { overflow-x: hidden !important; }
-._no_scroll,._no_scroll_y { overflow-y: hidden !important; }
+// ======================================================== */ EOF

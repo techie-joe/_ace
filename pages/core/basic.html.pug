@@ -52,8 +52,6 @@ block main
     ._p
       | normal
       | #[span span]
-      | #[span._outline outline]
-      | #[span._select select]
       | #[b bold]
       | #[span._b span-bold]
       | #[i italic]
@@ -71,10 +69,9 @@ block main
       | #[span._striked span-striked]
 
     ._p
-      | #[a anchor]
-      | #[a(href='')#newlink link]
-      | #[a(href='') visited]
-      | #[a(href='')._no_color no-color]
+      | #[a(href='' onclick=onclick())#newlink hyperlink]
+      | #[a(href='' onclick=onclick()) visited]
+      | #[a(href='' onclick=onclick())._no_color no-color]
 
     script.
       document.getElementById('newlink').setAttribute('href','?t='+new Date().getTime())
@@ -94,6 +91,17 @@ block main
     ._p
       | #[span._uppercase uppercase]
       | #[span._capitalize capitalized text]
+
+    ._p
+      | #[span._tc_blue blue]
+      | #[span._tc_purple purple]
+      | #[span._tc_orange orange]
+      | #[span._tc_red red]
+      | #[span._tc_green green]
+      | #[span._tc_contra contra]
+      | #[span normal]
+      | #[span._outline outline]
+      | #[span._select select]
 
     hr
 
