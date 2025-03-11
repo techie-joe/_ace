@@ -2,7 +2,7 @@ extends _html
 
 block append vars
   - heading = `Basic Elements`
-  - about   = `Styles for basic HTML elements.`
+  - about   = `Basic styles for ${name}.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'basic.html' )
@@ -22,10 +22,6 @@ block main
 
     script.
       document.getElementById('newlink').setAttribute('href','?t='+new Date().getTime())
-
-    ._p
-      | #[a._hover_link hyperlink]
-      | #[a._link hyperlink]
 
     hr
 
@@ -71,6 +67,9 @@ block main
       | text
       | #[sub sub]
       | #[sup sup]
+      | HTg_
+      | #[sub _gy]
+      | #[sup "T^"]
 
     ._p
       | #[span._uppercase uppercase]
@@ -91,22 +90,22 @@ block main
 
     p paragraph
     ._p paragraph-div
-    pre| pre is in mono
+    pre pre is in mono
     ._pre pre-div is also in mono
     dl| #[dt term]#[dd description]
     blockquote blockquote and #[q a quoted text] within a sentence.
 
     hr
 
-    ul: li| un-ordered list
-    ul._no_bullet: li| no-bullet
-    ul._no_pad: li| no-pad
-    ul._plain: li| plain
+    ul: li un-ordered list
+    ul._no_bullet: li no-bullet
+    ul._no_pad: li no-pad
+    ul._plain: li plain
 
-    ol: li| ordered list
-    ol._no_bullet: li| no-bullet
-    ol._no_pad: li| no-pad
-    ol._plain: li| plain
+    ol: li ordered list
+    ol._no_bullet: li no-bullet
+    ol._no_pad: li no-pad
+    ol._plain: li plain
     
     hr
 

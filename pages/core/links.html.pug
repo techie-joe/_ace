@@ -1,0 +1,81 @@
+extends _html
+
+block append vars
+  - heading = `Link Elements`
+  - about   = `Link styles for ${name}.`
+  - updateTitle( `${heading} | ${name}` )
+  - updateDescription( `${about}` )
+  - updateUrl( siteUrl+'links.html' )
+
+block main
+
+  +main#_main: article
+
+    ._p
+      | normal
+      | #[u underlined]
+      | #[a anchor]
+      | #[a(href='' onclick=onclick())#newlink hyperlink]
+      | #[a(href='' onclick=onclick())._fresh fresh]
+      | #[a(href='' onclick=onclick()) visited]
+      | #[a(href='' onclick=onclick())._no_color no-color]
+
+    script.
+      document.getElementById('newlink').setAttribute('href','?t='+new Date().getTime())
+
+    hr
+
+    ._p
+      a(href='' onclick=onclick()) anchor
+      a(href='' onclick=onclick()) anchor
+      br
+      a(href='' onclick=onclick()) anchor
+      a(href='' onclick=onclick()) anchor
+    
+    ._p
+      a._link link
+      a._link link
+      br
+      a._link link
+      a._link link
+
+    ._p
+      a._btnlink btnlink
+      a._btnlink btnlink
+      br
+      a._btnlink btnlink
+      a._btnlink btnlink
+
+    ._p
+      a._btnlink._L btnlink
+      a._btnlink._L btnlink
+      br
+      a._btnlink._L btnlink
+      a._btnlink._L btnlink
+
+    ._p
+      a._btnlink._XL btnlink
+      a._btnlink._XL btnlink
+      br
+      a._btnlink._XL btnlink
+      a._btnlink._XL btnlink
+
+    ._p._outline
+      | normal
+      a._link link
+      a._btnlink btnlink
+
+    ._p
+      | normal
+      | #[a._link link]
+      | #[a._hover_link hover_link]
+      | #[span._hover_scale hover_scale]
+      | #[span._hover_scale_a|#[a hover_scale]]
+      | #[a._hover_scale hover_scale]
+
+    hr
+
+  //- main
+
+//- block main
+

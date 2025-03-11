@@ -47,7 +47,10 @@ nav, main, article, section, header, footer, aside,
 figure, details, figcaption, hgroup, menu { @extend ._block; }
 
 // use intuitive box-sizing model.
-// ._border_box { &, &::before, &::after { box-sizing: border-box }}
+._border_box { &, &::before, &::after { box-sizing: border-box }}
+
+// reset vertical alignment
+._valign_middle { vertical-align: middle }
 
 // set simple initial border
 ._border { border: 1px solid #888 }
@@ -56,7 +59,7 @@ figure, details, figcaption, hgroup, menu { @extend ._block; }
 // 2. Prevent iOS adjustments after orientation changes.
 html {
   @extend ._reset_fontsize;
-  line-height: 1.15; /* 1 */
+  line-height: 1.4; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   -webkit-font-smoothing: antialiased;
 }
@@ -102,7 +105,7 @@ summary { @extend ._cursor_pointer; display: list-item; /* 2 */ }
 
 // improve intuitivity
 ._details {
-  & > summary { padding: .25em .5em }
+  & > summary { @extend ._hover_link; padding: .25em .5em }
   & > ._detail { margin: .5em 1em }
 }
 
@@ -181,7 +184,7 @@ sub, sup {
   vertical-align: baseline;
 }
 sub { bottom: -.2em }
-sup { top: -.3em }
+sup { top: -.4em }
 
 // --------------------------------------------------- */ headings
 // fix font size and margin of headings inside
@@ -216,7 +219,7 @@ img { border-style: none }
 // images, videos and the bottom of their containers:
 // https://github.com/h5bp/html5-boilerplate/issues/440
 // 
-audio, canvas, iframe, img, svg, video { vertical-align: middle }
+audio, canvas, iframe, img, svg, video { @extend ._valign_middle; }
 
 // modern media defaults
 picture { @extend ._block; max-width: 100%; height: auto }
@@ -264,8 +267,29 @@ textarea { resize: vertical }
   border-radius: .3rem;
 }
 
-._link { padding: 0 .3em }
+._link {
+  @extend ._hover_link;
+  @extend ._no_wrap;
+  padding: .1em .3em;
+  margin: .04em;
+}
 // ._link { @extend ._label; }
+
+._btnlink {
+  @extend ._link;
+  @extend ._border;
+  @extend ._radius_x25r;
+  @extend ._no_overflow;
+  @extend ._text_center;
+  border-color: $tc_2_9;
+  min-width: 1em;
+  display: inline-table;
+  margin: .02em;
+  padding: 0 .3em;
+  &:hover { text-decoration: none !important }
+  &._L { padding: .3em .6em }
+  &._XL { padding: .6em 1.2em }
+}
 
 // ===============================================================
 // Themes
@@ -290,10 +314,9 @@ $select_tc    : #000;
 ._select         { @include selection; }
 
 // ------------------------------------------------------ */ bases
-._c_base { @include color( $light_tc, $light_bg ); }
-
-._dark {
-  &._c_base { @include color( $dark_tc, $dark_bg ); }
+._c_base { 
+  & { @include color( $light_tc, $light_bg ); }
+  &._dark { @include color( $dark_tc, $dark_bg ); }
 }
 
 // ------------------------------------------------- */ containers
@@ -303,11 +326,9 @@ $select_tc    : #000;
 // --------------------------------------------------- */ headings
 
 h1,h2,h3,h4,h5,h6,
-._h1,._h2,._h3,._h4,._h5,._h6,._h7 { @include color( $tc_2_6 ); }
-
-._dark {
-  h1,h2,h3,h4,h5,h6,
-  ._h1,._h2,._h3,._h4,._h5,._h6,._h7 { @include color( $tc_2_4 ); }
+._h1,._h2,._h3,._h4,._h5,._h6,._h7 {
+  & { @include color( $tc_2_6 ); }
+  ._dark & { @include color( $tc_2_4 ); }
 }
 
 // ------------------------------------------------- */ seperators
@@ -326,21 +347,35 @@ hr { @extend ._st; @extend ._sb; }
 
 // ------------------------------------------------------ */ links
 
-._a a {
-  &._fresh:visited,
-  &         { @include color( $light_link_tci ); }
-  &:visited { @include color( $light_link_tcv ); }
-  &:hover   { @include color( $light_link_tci ); }
+._a {
+  a {
+    &._fresh:visited,
+    &         { @include color( $light_link_tci ); }
+    &:visited { @include color( $light_link_tcv ); }
+  }
+  ._link { &,&:visited { color: inherit } }
+  a {
+    &:hover   { @include color( $light_link_tci ); }
+  }
+  ._hover_link {
+    &:hover { @include color( $light_contra, $light_button_bg ); }
+  }
 }
 
-._dark._a a {
-  &._fresh:visited,
-  &         { @include color( $dark_link_tci ); }
-  &:visited { @include color( $dark_link_tcv ); }
-  &:hover   { @include color( $dark_link_tci ); }
+._dark._a {
+  a {
+    &._fresh:visited,
+    &         { @include color( $dark_link_tci ); }
+    &:visited { @include color( $dark_link_tcv ); }
+  }
+  ._link { &,&:visited { color: inherit } }
+  a {
+    &:hover   { @include color( $dark_link_tci ); }
+  }
+  ._hover_link {
+    &:hover { @include color( $dark_contra, $dark_button_bg); }
+  }
 }
-
-._a,._dark._a { ._link { &,&:visited { color: inherit } } }
 
 // ===============================================================
 // Transitions
@@ -352,19 +387,13 @@ hr { @extend ._st; @extend ._sb; }
   &:hover { transition: none }
 }
 
-._a ._hover_link {
-  &:hover { @include color( $light_contra, $light_button_bg ); }
-}
-._dark._a ._hover_link {
-  &:hover { @include color( $dark_contra, $dark_button_bg); }
-}
-
-._link,
-._details > summary { @extend ._hover_link; }
-
 ._hover_scale_a a,
+a._hover_scale,
 ._hover_scale {
-  & { transition: color 0.5s, background-color 0.5s, scale 0.2s }
+  & {
+    display: inline-block;
+    transition: color 0.5s, background-color 0.5s, scale 0.2s
+  }
   &:hover { transition: scale 0.3s; scale:1.1; }
 }
 
@@ -578,32 +607,12 @@ $angles : 45, 90, 135, 180, 225, 270, 315;
 
 // ===============================================================
 
-// ._html
-._btnlink {
-  @extend ._numb;
-  @extend ._radius_x25r;
-  @extend ._no_overflow;
-  @extend ._no_wrap;
-  @extend ._cursor_pointer;
-  @extend ._inblock;
-  @extend ._border;
-  @extend ._text_center;
-  @extend ._lh_1;
-  @extend ._no_deco;
-  border-color: $tc_2_9;
-  padding: .3em .6em;
-  vertical-align: middle;
-  min-width: 1em;
-  margin: .05rem 0;
-  &:hover { text-decoration: none; }
-}
-
 ._label {
   @extend ._inblock;
+  @extend ._valign_middle;
   padding: 0 .3em;
   margin: .05rem 0;
   border-radius: .3rem;
-  vertical-align: middle;
 }
 
 ._nav_icon {
@@ -617,10 +626,10 @@ $angles : 45, 90, 135, 180, 225, 270, 315;
 ._icon {
   @extend ._numb;
   @extend ._inblock;
+  @extend ._valign_middle;
   height   : 1.5em;
   min-width: 1.5em;
   text-align: center;
-  vertical-align: middle;
 }
 
 ._fa { @extend ._icon; }
@@ -644,26 +653,8 @@ $angles : 45, 90, 135, 180, 225, 270, 315;
 
 ._btnlabel {
   @extend ._inblock;
+  @extend ._valign_middle;
   padding: 0 .5em;
-  vertical-align: middle;
-}
-
-// ===============================================================
-
-._a ._btnlink {
-  &:visited,
-  &:active,
-  & { color: inherit; }
-  &:hover { @include color( $light_button_tc, $light_button_bg ); }
-}
-
-._dark._a ._btnlink {
-  &:visited,
-  &:active,
-  & { color: inherit; }
-  &:hover {
-    @include color( $dark_button_tc, $dark_button_bg );
-  }
 }
 
 /* ============================================== color helpers */

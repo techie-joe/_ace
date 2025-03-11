@@ -4,11 +4,14 @@
 
 // ===============================================================
 
-._c_base { @include color( $light_tc, $light_bg ); }
+// ._c_base { 
+//   & { @include color( $light_tc, $light_bg ); }
+//   &._dark { @include color( $dark_tc, $dark_bg ); }
+// }
 
-._dark {
-  &._c_base { @include color( $dark_tc, $dark_bg ); }
-}
+// h1,h2,h3,h4,h5,h6,
+// ._h1,._h2,._h3,._h4,._h5,._h6,._h7 {
+//   & { @include color( $tc_2_6 ); }
+//   ._dark & { @include color( $tc_2_4 ); }
+// }
 
-// ------------------------------------------------- */ containers
-._html { @extend ._c_base; }
