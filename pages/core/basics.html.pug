@@ -1,11 +1,11 @@
 extends _html
 
 block append vars
-  - heading = `Basic Elements`
-  - about   = `Styles for basic elements on ${name}.`
+  - heading = `Basic elements`
+  - about   = `Styles for basic elements are kept nice and tidy.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
-  - updateUrl( siteUrl+'basic.html' )
+  - updateUrl( siteUrl+'basics.html' )
 
 block main
 
@@ -91,14 +91,14 @@ block main
     hr
 
     ul: li un-ordered list
-    ul._no_bullet: li no-bullet
-    ul._no_pad: li no-pad
-    ul._plain: li plain
+    ul._no_bullet: li no-bullet list
+    ul._no_pad: li no-pad list
+    ul._plain: li plain list
 
     ol: li ordered list
-    ol._no_bullet: li no-bullet
-    ol._no_pad: li no-pad
-    ol._plain: li plain
+    ol._no_bullet: li no-bullet list
+    ol._no_pad: li no-pad list
+    ol._plain: li plain list
     
     hr
 

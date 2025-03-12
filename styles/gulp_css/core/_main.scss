@@ -278,7 +278,7 @@ textarea { resize: vertical }
   @extend ._no_wrap;
   border-radius: .3rem;
   padding: .1em .3em;
-  margin: .04em;
+  margin: .05em;
 }
 // ._link { @extend ._label; }
 
@@ -291,7 +291,6 @@ textarea { resize: vertical }
   border-color: $tc_2_9;
   min-width: 1em;
   display: inline-table;
-  margin: .02em;
   padding: 0 .3em;
   &:hover { text-decoration: none !important }
   &._L { padding: .3em .6em }
@@ -359,13 +358,19 @@ hr { @extend ._st; @extend ._sb; }
     &._fresh:visited,
     &         { @include color( $light_link_tci ); }
     &:visited { @include color( $light_link_tcv ); }
+    &:hover   { @include color( $light_link_tci ); outline: 1px solid #888 }
   }
-  ._link { &,&:visited { color: inherit } }
+  ._link {
+    &,&:visited { color: inherit }
+  }
+  ._hover_link { // brighter when hover
+    &:hover,&:active { @include color( $light_contra, $light_button_bg ); }
+  }
+  ._btnlink {
+    &:hover { outline: none }
+  }
   a {
-    &:hover   { @include color( $light_link_tci ); }
-  }
-  ._hover_link {
-    &:hover { @include color( $light_contra, $light_button_bg ); }
+    &:active  { @include color( $light_link_tca ); }
   }
 }
 
@@ -374,13 +379,16 @@ hr { @extend ._st; @extend ._sb; }
     &._fresh:visited,
     &         { @include color( $dark_link_tci ); }
     &:visited { @include color( $dark_link_tcv ); }
-  }
-  ._link { &,&:visited { color: inherit } }
-  a {
     &:hover   { @include color( $dark_link_tci ); }
   }
-  ._hover_link {
-    &:hover { @include color( $dark_contra, $dark_button_bg); }
+  ._link {
+    &,&:visited { color: inherit }
+  }
+  ._hover_link { // brighter when hover
+    &:hover,&:active { @include color( $dark_contra, $dark_button_bg); }
+  }
+  a {
+    &:active  { @include color( $dark_link_tca ); }
   }
 }
 

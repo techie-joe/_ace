@@ -2,9 +2,10 @@ extends _html
 
 block append vars
   - heading = `Icons`
-  - updateTitle( `${heading} | ${title}` )
-  - updateDescription( `Visual information that elevates user experience.` )
-  - updateUrl( siteUrl+"icons.html" )
+  - about   = `Elevate user experience with visual information.`
+  - updateTitle( `${heading} | ${name}` )
+  - updateDescription( `${about}` )
+  - updateUrl( siteUrl+'icons.html' )
   -
     svgi = {
       compare:'M19,3H14V5H19V18L14,12V21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10,18H5L10,12M10,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H10V23H12V1H10V3Z',
@@ -44,6 +45,7 @@ block append style
   //- style.
 
 block main
+
   +main#_main: article
 
     section._mb_2
@@ -65,6 +67,7 @@ block main
           font-size:1.5em;
         }
         .mbox i { min-width:1em;text-align:center; }
+      //- style.
 
       ._p
         each t in ['※','⊕','+','≡','«']
@@ -73,8 +76,10 @@ block main
             i.fas=t
             |H
           +_
+      //- ._p
 
       hr
+    //- section
 
     section._mb_2
 
@@ -82,18 +87,20 @@ block main
 
       style.
         ._icons ._isvg { min-width:2.25em; height:2.25em; }
-
+      //- style.
 
       ._mv._icons
         - let svgds = []; for (let key in svgi) { svgds.push(svgi[key]); }
         each d in svgds
           +isvg(d)
+      //- ._mv
 
       ._mv
         .ibox
           +isvg(svgi.bars)
           +isvg(svgi.compare)
           |H
+      //- ._mv
 
       ._mv
         - let i = 0
@@ -101,11 +108,13 @@ block main
           +isvg(svgi.angle)(class="_rotate-"+(-45+i*45))
         +isvg(svgi.cross).__spin
         +isvg(svgi.spin).__spin
+      //- ._mv
 
       //- https://pictogrammers.com/library/mdi/
       p._text_right._small: +a('https://pictogrammers.com/library/mdi/')(target="pictogrammers")._no_u More icons at Pictogrammers ...
 
       hr
+    //- section
 
     section._mb_2
 
@@ -126,14 +135,17 @@ block main
           ♪ ♫ ⌂ ♀ ♂ ☄
           ✉ ☁ ✈ ☎ ✂ ✎ ☑ ☒ #[br]
           ◍ ✆ ⊝ ⊕ ⊗ ⊘ ☯ ☢ © &copy;
+        //- .
 
       //- 1.5em : based on the size of ※ sign
       ._p(style="font-size: 1.5em"): i.itext
         +ichars
         |A TXT
+      //- ._p
 
       style.
         ._icons ._itext { font-size: 1.5em }
+      //- style.
 
       ._p._icons
         +itext|≡
@@ -148,11 +160,13 @@ block main
         +itext|»
         +itext|–
         +itext|+
+      //- ._p
 
       //- https://www.freeformatter.com/html-entities.html
       p._text_right._small: +a('https://www.freeformatter.com/html-entities.html')(target="freeformatter")._no_u More icons at Freeformatter ...
 
       hr
+    //- section
     
     section
 
@@ -178,9 +192,12 @@ block main
           ✉ ☁ ✈ ☎ ✂ ✎ ☑ ☒ #[br]
           ◍ ✆ ⊝ ⊕ ⊗ ⊘ ☯ ☢ © &copy;
           A TXT
+        //- .
+      //- ._p
       
       style.
         ._icons ._fa { font-size: 1.5em } /* 1.5em = 36px | 1em = 24px */
+      //- style.
 
       ._p._icons
         +fas.fa-bars
@@ -234,26 +251,29 @@ block main
         +fas.fa-ellipsis-vertical
         +fat|a
         +fat|txt
+      //- ._p
       
       //- https://fontawesome.com/v6/search?q=
       p._text_right._small: +a('https://fontawesome.com/v6/search?q=')(target="fontawesome")._no_u More icons at Font-Awesome ...
 
       hr
-    
+    //- section
+
     section
 
-      .g.demo.gridlines
+      mixin fag(x)
+        - var n = 0
+        while n < x
+          if(n%2==0)
+            .io2
+              +fas.fa-bars
+              |H
+          else
+            .io1 &nbsp;
+          - n++
+      //- mixin
 
-        mixin fag(x)
-          - var n = 0
-          while n < x
-            if(n%2==0)
-              .io2
-                +fas.fa-bars
-                |H
-            else
-              .io1 &nbsp;
-            - n++
+      .g.demo.gridlines
 
         .u._text_1: +fag(13)
         .u._text_2: +fag(12)
@@ -267,3 +287,11 @@ block main
         .u._hero_2: +fag(8)
         .u._hero_3: +fag(7)
 
+      //- g
+
+      hr
+    //- section
+
+  //- main
+
+//- block main

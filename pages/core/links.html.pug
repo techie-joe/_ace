@@ -1,8 +1,8 @@
 extends _html
 
 block append vars
-  - heading = `Link Elements`
-  - about   = `Styles for link elements on ${name}.`
+  - heading = `Link elements`
+  - about   = `Intuitively simple styles for link elements.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'links.html' )
@@ -16,8 +16,8 @@ block main
       | #[u underlined]
       | #[a anchor]
       | #[a(href='' onclick=onclick())#newlink hyperlink]
-      | #[a(href='' onclick=onclick())._fresh fresh]
       | #[a(href='' onclick=onclick()) visited]
+      | #[a(href='' onclick=onclick())._fresh fresh]
       | #[a(href='' onclick=onclick())._no_color no-color]
 
     script.
