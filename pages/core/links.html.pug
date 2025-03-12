@@ -2,7 +2,7 @@ extends _html
 
 block append vars
   - heading = `Link Elements`
-  - about   = `Link styles for ${name}.`
+  - about   = `Styles for link elements on ${name}.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'links.html' )
@@ -26,52 +26,67 @@ block main
     hr
 
     ._p
-      a(href='' onclick=onclick()) anchor
-      a(href='' onclick=onclick()) anchor
-      br
-      a(href='' onclick=onclick()) anchor
-      a(href='' onclick=onclick()) anchor
-    
-    ._p
-      a._link link
-      a._link link
-      br
-      a._link link
-      a._link link
+      +repeat(2)
+        a(href='' onclick=onclick()) anchor
+        a(href='' onclick=onclick()) anchor
+        br
 
     ._p
-      a._btnlink btnlink
-      a._btnlink btnlink
-      br
-      a._btnlink btnlink
-      a._btnlink btnlink
+      +repeat(2)
+        a._link link
+        a._link link
+        br
 
     ._p
-      a._btnlink._L btnlink
-      a._btnlink._L btnlink
-      br
-      a._btnlink._L btnlink
-      a._btnlink._L btnlink
+      +repeat(2)
+        a._btnlink btnlink
+        a._btnlink btnlink
+        br
 
     ._p
-      a._btnlink._XL btnlink
-      a._btnlink._XL btnlink
-      br
-      a._btnlink._XL btnlink
-      a._btnlink._XL btnlink
+      +repeat(2)
+        a._btnlink._L btnlink
+        a._btnlink._L btnlink
+        br
+
+    ._p
+      +repeat(2)
+        a._btnlink._XL btnlink
+        a._btnlink._XL btnlink
+        br
 
     ._p._outline
       | normal
       a._link link
       a._btnlink btnlink
+      a._btnlink._L btnlink
+      a._btnlink._XL btnlink
 
-    ._p
+    ._p._outline
       | normal
       | #[a._link link]
       | #[a._hover_link hover_link]
       | #[span._hover_scale hover_scale]
       | #[span._hover_scale_a|#[a hover_scale]]
       | #[a._hover_scale hover_scale]
+
+    hr
+
+    details
+      summary The visible summary or title.
+      div The collapsible content as used to create web pages.
+
+    hr
+
+    details._details
+      summary The visible summary or title.
+      ._detail The collapsible content as used to create web pages.
+
+    hr
+
+    details._details._border._radius_x25r
+      summary._radius_x25r The visible summary or title.
+      ._detail The collapsible content as used to create web pages.
 
     hr
 

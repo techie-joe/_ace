@@ -1,18 +1,29 @@
 extends _html
 
 block append vars
-  - heading = `Testing Elements`
-  - about   = `Testing styles for ${name}.`
+  - heading = `Testing ..`
+  - about   = `Brewing new styles for ${name}.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'test.html' )
+
+block style
+  //- +cssv(href,media='all')
+  +cssv(assetsUri+'css/core/html.css')
+  style.
+
+
+
+  //- style.
+    ._lh_0 { line-height:0 }
+    ._outline { box-shadow: 0 0 0 1px #f80 inset }
+    ._border { border: 1px solid #888; }
 
 block main
 
   +main#_main: article
 
 
-    hr
 
   //- main
 

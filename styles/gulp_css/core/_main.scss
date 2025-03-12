@@ -8,7 +8,8 @@
 ._reset_border { border: 0 }
 ._reset_margin { margin: 0 }
 ._reset_padding { padding: 0 }
-._reset_fontsize { font-size: 1em }
+._reset_fontsize { font-size: 1rem }
+._reset_lineheight { line-height: 1.4 }
 
 ._block { display: block }
 ._table { display: table }
@@ -55,11 +56,11 @@ figure, details, figcaption, hgroup, menu { @extend ._block; }
 // set simple initial border
 ._border { border: 1px solid #888 }
 
-// 1. Standardize the line height in all browsers.
-// 2. Prevent iOS adjustments after orientation changes.
+// 1. standard line height for paragraphs in all browsers.
+// 2. prevent iOS adjustments after orientation changes.
 html {
   @extend ._reset_fontsize;
-  line-height: 1.4; /* 1 */
+  @extend ._reset_lineheight; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   -webkit-font-smoothing: antialiased;
 }
@@ -83,7 +84,13 @@ body { @extend ._reset_margin; } /* 1 */
 // ._full_width { width:100%; }
 
 // make way for browser status bar.
-._footer_layout { margin-bottom: 1rem !important }
+._footer_layout { margin-bottom: 1.5rem !important }
+
+// set a special div that can display inline-blocks perfectly.
+._idiv {
+  & { @extend ._lh_0; font-size:0 }
+  * { @extend ._reset_lineheight; @extend ._reset_fontsize; }
+}
 
 // fix display in IE 10+.
 template { @extend ._hidden; }
@@ -94,9 +101,9 @@ template { @extend ._hidden; }
 li { @extend ._reset_margin; }
 
 // fix margins on all paragraphing elements.
-ul,ol,dl,li,
-._pre, pre,
-._p, p { margin: 1rem 0 }
+ul,ol,dl,li,blockquote,
+._pre,pre,
+._p,p { margin-top: 1rem; margin-bottom: 1rem }
 
 // 1. fix display in Edge, IE 10+, and Firefox.
 // 2. fix display in all browsers.
@@ -264,12 +271,12 @@ textarea { resize: vertical }
 ._hover_link {
   @extend ._cursor_pointer;
   @extend ._no_deco;
-  border-radius: .3rem;
 }
 
 ._link {
   @extend ._hover_link;
   @extend ._no_wrap;
+  border-radius: .3rem;
   padding: .1em .3em;
   margin: .04em;
 }
@@ -436,7 +443,7 @@ a._hover_scale,
 // ===============================================================
 
 // outline
-$outline_color: #f80;
+$outline_color: #ff880088;
 ._outline   { box-shadow: 0 0 0 1px $outline_color inset }
 
 // ------------------------------------------------------ */ texts

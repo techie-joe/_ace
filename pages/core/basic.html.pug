@@ -2,7 +2,7 @@ extends _html
 
 block append vars
   - heading = `Basic Elements`
-  - about   = `Basic styles for ${name}.`
+  - about   = `Styles for basic elements on ${name}.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'basic.html' )
@@ -11,32 +11,25 @@ block main
 
   +main#_main: article
 
-    ._p
-      | normal
-      | #[u underlined]
-      | #[a anchor]
-      | #[a(href='' onclick=onclick())#newlink hyperlink]
-      | #[a(href='' onclick=onclick())._fresh fresh]
-      | #[a(href='' onclick=onclick()) visited]
-      | #[a(href='' onclick=onclick())._no_color no-color]
 
-    script.
-      document.getElementById('newlink').setAttribute('href','?t='+new Date().getTime())
+    style.
+      .box {
+        display:inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+        width:100px;
+        height:50px;
+        padding:.25rem;
+      }
 
-    hr
-
-    details
-      summary The visible summary or title.
-      div The collapsible content as used to create web pages.
-
-    hr
-
-    details._details
-      summary The visible summary or title.
-      ._detail The collapsible content as used to create web pages.
+    ._idiv._outline
+      +repeat(2)
+        .box._outline outline
+        .box._border border
+        br
 
     hr
-    
+
     ._p
       | normal
       | #[span span]
