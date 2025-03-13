@@ -1,0 +1,106 @@
+extends _html
+
+block append vars
+  - heading = `View`
+  - about   = `View controls how user perceive a page.`
+  - updateTitle( `${heading} | ${name}` )
+  - updateDescription( `${about}` )
+  - updateUrl( siteUrl+'view.html' )
+
+block append widgets
+  +widgets#_widgets
+
+    style.
+
+      #nav-box {
+        position:absolute;
+        top:50%;
+        left:50%;
+      }
+
+      #nav {
+        border: 1px solid #888;
+        position: absolute;
+        z-index: 1000;
+        padding: .5rem;
+        margin: -7em 0 0 -3.8em;
+      }
+
+      #nav a { margin:.2rem; padding:.2em .4em }
+
+    //- style.
+
+    +widget#nav-box._no_print
+      nav#nav._c_base._radius_x25r
+        table: tbody
+          tr
+            td: +a('#view-1')._btnlink #[span._btnlabel 1]
+            td: +a('#view-2')._btnlink #[span._btnlabel 2]
+          tr
+            td: +a('#view-3')._btnlink #[span._btnlabel 3]
+            td: +a('#view-4')._btnlink #[span._btnlabel 4]
+    //- #nav-box
+
+block append style
+  style.
+    ._view { overflow: auto }
+    ._view h2 { text-align: center }
+  //- style.
+    ._view { box-shadow: 0 0 0 1px #f808 inset }
+  //- style.
+
+block view
+
+  ._views
+
+    - v = 1;
+    +view(id=`view-${v}`)._full_view
+
+      include _nav
+
+      +main#_main._text_center
+        h2._h7 View ##{v}
+        hr
+        p !{description}
+      //- main
+
+    //- view
+
+    - v = 3;
+    +view(id=`view-${v}`)._full_view
+
+      style.
+        #view-#{v} {
+          background-color: #20002255;
+          color:#222;
+        }
+        ._dark #view-#{v} { color:inherit }
+
+      h2._h7 View ##{v}
+      hr
+
+      +pre._ma: +putData
+    
+    //- view
+
+    style.
+      #view-2 {
+        background-color: #00220855;
+        position: absolute;
+        top: 0;
+        left: 100%;
+      }
+      #view-4 {
+        background-color: #00153d55;
+        position: absolute;
+        top: 100%;
+        left: 100%;
+      }
+    //- style.
+
+    each v in [2,4]
+      +view(id=`view-${v}`)._full_view
+        h2._h7 View ##{v}
+      //- view
+  
+  //- views

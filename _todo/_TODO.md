@@ -2,10 +2,12 @@
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
-### March 13, 2025 - v0.1.25 b10.311
+### March 13, 2025 - v0.1.25 b10.312
 - housekeep: core css
 
 ---
+
+START : [GO](../pages/core/test.html.pug)
 
 CORE update : version & build  
   [CHANGELOGS](../CHANGELOGS.md)  

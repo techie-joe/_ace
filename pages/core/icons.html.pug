@@ -20,6 +20,8 @@ block append vars
       download:'M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z',
       image:'M21,3H3C2,3 1,4 1,5V19A2,2 0 0,0 3,21H21C22,21 23,20 23,19V5C23,4 22,3 21,3M5,17L8.5,12.5L11,15.5L14.5,11L19,17H5Z',
     };
+  -
+    cssi.gridlines = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1px" height="10px"><rect width="1" height="1" fill="%23A9790688" /></svg>';
 
 block append style
   +css('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css')
@@ -27,17 +29,18 @@ block append style
 
     .gridlines {
       min-height: 100px;
-      padding-bottom: 3px;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="12"><rect width="1" height="1" fill="%23A9790688" /></svg>');
+      background-image: url('!{cssi.gridlines}');
       background-repeat: repeat;
     }
 
     .g{display:flex;flex-flow:row wrap;align-content:flex-start}
     .u{display:inline-block;vertical-align:top}
-    .demo .u { margin: 0 2px; padding-bottom: 10px; }
+    .demo .u { margin: 0 2px; padding-bottom: 20px; }
 
     .io1  { background: #66668844; box-shadow:0 1px orange; }
     .io2  { background: #66886644; box-shadow:0 1px orange; }
+
+    .selectable { user-select:auto }
 
   //- style.
     ._itext { margin:2px; outline:1px solid #888; border-radius: .25rem; }
@@ -50,77 +53,123 @@ block main
 
     section._mb_2
 
-      h2._h3._sans Matching size
-      p Icon size match text.
+      h2._h3._sans Mix and match
+      p You can combine different format together.
 
       style.
-        .mbox,
-        .ibox {
-          background:#0004;
-          box-shadow:0 0 0 1px #440 inset;
-          line-height:0;
-          display:inline-block;
-          padding-right:1em;
-          vertical-align:top;
-        }
         .mbox {
+          display:inline-block;
           font-size:1.5em;
+          box-shadow:0 0 0 1px #f808 inset;
         }
-        .mbox i { min-width:1em;text-align:center; }
       //- style.
 
       ._p
-        each t in ['※','⊕','+','≡','«']
+        .mbox
+          +isvg(svgi.bars)
+          +itext|≡
+          +fas.fa-bars
+          |H
+        each t in ['←','☚','+','«','•']
           .mbox
-            i.itext=t
-            i.fas=t
+            i._itext: i.itext=t
+            i._fa: i.fas=t
             |H
           +_
       //- ._p
 
-      hr
     //- section
+
+    hr
 
     section._mb_2
 
       h2._h3._sans SVG Icons
 
       style.
-        ._icons ._isvg { min-width:2.25em; height:2.25em; }
+        ._boxed_icons ._isvg,
+        ._icons ._isvg {
+          min-width:1.5em;
+          min-height:1.5em;
+        }
+        ._boxed_icons ._isvg {
+          margin: .5rem;
+          box-shadow: 0 0 0 1px #f808;
+        }
       //- style.
 
-      ._mv._icons
+      ._p._icons
         - let svgds = []; for (let key in svgi) { svgds.push(svgi[key]); }
         each d in svgds
           +isvg(d)
-      //- ._mv
+      //- ._p
 
-      ._mv
-        .ibox
-          +isvg(svgi.bars)
-          +isvg(svgi.compare)
-          |H
-      //- ._mv
-
-      ._mv
-        - let i = 0
+      ._p._icons
+        - i = 0;
         while 8 >= i++
           +isvg(svgi.angle)(class="_rotate-"+(-45+i*45))
         +isvg(svgi.cross).__spin
         +isvg(svgi.spin).__spin
-      //- ._mv
+      //- ._p
+
+      ._p._boxed_icons
+        - i = 0;
+        while 3 > i++
+          +isvg(svgds[i-1])
+      //- ._p
+
+      ._p: ._outline._inblock
+        +isvg(svgi.bars)
+        +isvg(svgi.compare)
+        |H
+      //- ._p
 
       //- https://pictogrammers.com/library/mdi/
       p._text_right._small: +a('https://pictogrammers.com/library/mdi/')(target="pictogrammers")._no_u More icons at Pictogrammers ...
 
-      hr
     //- section
+
+    hr
+
+    section
+
+      mixin rav(x)
+        - var n = 0
+        while n < x
+          if(n%2==0)
+            .io2
+              +isvg(svgi.bars)
+              |H
+          else
+            .io1 &nbsp;
+          - n++
+      //- mixin
+
+      .g.demo.gridlines
+
+        .u._t1: +rav(13)
+        .u._t2: +rav(12)
+        .u._t3: +rav(11)
+        .u._t4: +rav(10)
+        .u._t5: +rav(9)
+        .u._t6: +rav(8)
+        .u._t7: +rav(7)
+        .u._t8: +rav(6)
+        .u._t9: +rav(5)
+        .u._t10: +rav(4)
+
+      //- g
+
+    //- section
+
+    hr
 
     section._mb_2
 
       h2._h3._sans Text Icons
 
-      mixin ichars
+      //- 1.5em : based on the size of ※ sign
+      ._p(style="font-size:1.5em"): i._itext.selectable: i.itext._text_left(style="line-height: 1.25; font-size: 1.2em;")
         .
           ≡ = ≠ ≈ ~ ∿
           ☚ ☛ « » ← → ↑ ↓ ▲ ► ▼ ◄ ⇦ ⇧ ⇨ ⇩ ☜ ☞
@@ -133,21 +182,24 @@ block main
           ¤ ☼ ☀ ❊ ⁂ ※ ✰
           ◊ ♦ ♥ ♠ ♣
           ♪ ♫ ⌂ ♀ ♂ ☄
-          ✉ ☁ ✈ ☎ ✂ ✎ ☑ ☒ #[br]
+          ✉ ☁ ✈ ☎ ✂ ✎ ☑ ☒
           ◍ ✆ ⊝ ⊕ ⊗ ⊘ ☯ ☢ © &copy;
+          A TXT
         //- .
-
-      //- 1.5em : based on the size of ※ sign
-      ._p(style="font-size: 1.5em"): i.itext
-        +ichars
-        |A TXT
       //- ._p
 
       style.
-        ._icons ._itext { font-size: 1.5em }
+        ._boxed_icons ._itext,
+        ._icons ._itext {
+          font-size: 1.5em;
+        }
+        ._boxed_icons ._itext {
+          margin: .5rem;
+          box-shadow: 0 0 0 1px #f808;
+        }
       //- style.
 
-      ._p._icons
+      ._p._boxed_icons
         +itext|≡
         +itext|☚
         +itext|☛
@@ -162,41 +214,97 @@ block main
         +itext|+
       //- ._p
 
+      ._p: ._outline._inblock
+        +itext|≡
+        |H
+      //- ._p
+
       //- https://www.freeformatter.com/html-entities.html
       p._text_right._small: +a('https://www.freeformatter.com/html-entities.html')(target="freeformatter")._no_u More icons at Freeformatter ...
 
-      hr
     //- section
-    
+
+    hr
+
+    section
+
+      mixin rat(x)
+        - var n = 0
+        while n < x
+          if(n%2==0)
+            .io2
+              +itext|≡
+              |H
+          else
+            .io1 &nbsp;
+          - n++
+      //- mixin
+
+      .g.demo.gridlines
+
+        .u._t1: +rat(13)
+        .u._t2: +rat(12)
+        .u._t3: +rat(11)
+        .u._t4: +rat(10)
+        .u._t5: +rat(9)
+        .u._t6: +rat(8)
+        .u._t7: +rat(7)
+        .u._t8: +rat(6)
+        .u._t9: +rat(5)
+        .u._t10: +rat(4)
+
+      //- g
+
+    //- section
+
+    hr
+
     section
 
       h2._h3._sans Font Awesome Icons
 
       //- 1.5em : based on the size of + sign
-      ._p(style="font-size: 1.5em"): i.fas(style="font-weight:normal")
+      ._p(style="font-size: 1.5em; letter-spacing: 0.2em;"): i._fa.selectable: i.fas._text_left(style="font-weight:normal")
         .
-          ☑ ☒
-      ._p(style="font-size: 1.5em"): i.fas
-        .
-          ≡ = ≠ ≈ ~ ∿
-          ☚ ☛ « » ← → ↑ ↓ ▲ ► ▼ ◄ ⇦ ⇧ ⇨ ⇩
-          ― — ‒ – - + ÷ × ± ∗ *
-          ⁞ ‖ |
-          ! @ # % &amp; ?
-          ∞ π ψ ƒ ∂ µ μ η α ρ ᴥ
-          № § £ ¥ € ₩ ฿ $ ￠ ¢ Φ
+          ☚ ☛ #[br]
+          ▲ ► ▼ ◄ ⇦ ⇧ ⇨ ⇩ #[br]
+          @ # % ?
+          № $ #[br]
           · • ◦ ○ ● ∴
           ¤ ☼ ☀ ❊ ⁂ ※ ✰
           ◊ ♦ ♥ ♠ ♣
-          ♪ ♫ ⌂ ♀ ♂ ☄
-          ✉ ☁ ✈ ☎ ✂ ✎ ☑ ☒ #[br]
+          ♪ ♫ ⌂ ♀ ♂ ☄ #[br]
+          ☁ ✈ ☎ ✂ ✎ ✉ ☑ ☒
+          ◍ ✆ ⊝ ⊕ ⊗ ⊘ ☯ ☢ © &copy;
+          A TXT
+        //- .
+      ._p(style="font-size: 1.5em; letter-spacing: 0.2em;"): i._fa.selectable: i.fas._text_left
+        .
+          ≡ = ∿ #[br]
+          « » ▲ ► ▼ ◄ ← → ↑ ↓ #[br]
+          – + ÷ × *
+          ⁞ ‖ ! #[br]
+          @ # % ? ∞
+          № £ ¥ € ₩ $ #[br]
+          · • ◦ ○ ● ∴
+          ¤ ☼ ☀ ❊ ⁂ ※ ✰
+          ◊ ♦ ♥ ♠ ♣
+          ♪ ♫ ⌂ ♀ ♂ ☄ #[br]
+          ☁ ✈ ☎ ✂ ✎ ✉ ☑ ☒
           ◍ ✆ ⊝ ⊕ ⊗ ⊘ ☯ ☢ © &copy;
           A TXT
         //- .
       //- ._p
-      
+
       style.
-        ._icons ._fa { font-size: 1.5em } /* 1.5em = 36px | 1em = 24px */
+        ._boxed_icons ._fa,
+        ._icons ._fa {
+          font-size: 1.5em; /* 1.5em = 36px | 1em = 24px */
+          margin: .5rem;
+        }
+        ._boxed_icons ._fa {
+          box-shadow: 0 0 0 1px #f808;
+        }
       //- style.
 
       ._p._icons
@@ -252,16 +360,28 @@ block main
         +fat|a
         +fat|txt
       //- ._p
-      
+
+      ._p._boxed_icons
+        +fas.fa-bars
+        +fas.fa-house
+        +fas.fa-adjust
+      //- ._p
+
+      ._p: ._outline._inblock
+        +fas.fa-bars
+        |H
+      //- ._p
+
       //- https://fontawesome.com/v6/search?q=
       p._text_right._small: +a('https://fontawesome.com/v6/search?q=')(target="fontawesome")._no_u More icons at Font-Awesome ...
 
-      hr
     //- section
+
+    hr
 
     section
 
-      mixin fag(x)
+      mixin rag(x)
         - var n = 0
         while n < x
           if(n%2==0)
@@ -275,22 +395,22 @@ block main
 
       .g.demo.gridlines
 
-        .u._text_1: +fag(13)
-        .u._text_2: +fag(12)
-        .u._text_3: +fag(11)
-        .u._text_4: +fag(10)
-        .u._text_5: +fag(9)
-        .u._text_6: +fag(8)
-        .u._text_7: +fag(7)
-
-        .u._hero_1: +fag(9)
-        .u._hero_2: +fag(8)
-        .u._hero_3: +fag(7)
+        .u._t1: +rag(13)
+        .u._t2: +rag(12)
+        .u._t3: +rag(11)
+        .u._t4: +rag(10)
+        .u._t5: +rag(9)
+        .u._t6: +rag(8)
+        .u._t7: +rag(7)
+        .u._t8: +rag(6)
+        .u._t9: +rag(5)
+        .u._t10: +rag(4)
 
       //- g
 
-      hr
     //- section
+
+    hr
 
   //- main
 

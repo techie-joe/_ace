@@ -10,12 +10,14 @@
 @media print {
 
 ._view,
+._views,
 ._scroll,
 ._scroll-x,
 ._scroll-y,
 ._scrollable { overflow: visible !important }
 
 ._view,
+._views,
 ._print_reset {
   position: relative !important;
   top: auto !important;
@@ -23,6 +25,12 @@
   right: auto !important;
   bottom: auto !important;
 }
+
+._footer_layout,
+._header_layout,
+._main_layout,
+._nav_layout,
+._view_layout { margin:0 !important }
 
 ._print_block  { display: block !important }
 ._print_inline { display: inline !important }

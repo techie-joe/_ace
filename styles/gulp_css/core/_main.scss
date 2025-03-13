@@ -9,7 +9,7 @@
 ._reset_margin { margin: 0 }
 ._reset_padding { padding: 0 }
 ._reset_fontsize { font-size: 1rem }
-._reset_lineheight { line-height: 1.4 }
+._reset_lineheight { line-height: 1.3 }
 
 ._block { display: block }
 ._table { display: table }
@@ -82,6 +82,15 @@ body { @extend ._reset_margin; } /* 1 */
   padding: 0;
 }
 // ._full_width { width:100%; }
+
+// 1. set _views container.
+// 2. contain marginal elements.
+._views {
+  @extend ._relative;
+  @extend ._full_view;
+  @extend ._scrollable;
+  @extend ._clearfix;
+}
 
 // make way for browser status bar.
 ._footer_layout { margin-bottom: 1.5rem !important }
@@ -160,7 +169,7 @@ hr {
 b, strong { @extend ._b; }
 
 // enforce underline and improve readability.
-a, u { @extend ._u; }
+a[href], u { @extend ._u; }
 
 // remove gray background on active links in IE 10.
 a { background-color: transparent }
@@ -175,7 +184,7 @@ abbr[title] {
 }
 
 // fix fonts
-code, kbd, samp { @extend ._mono; }
+code, kbd, samp { @extend ._mono; @extend ._tc_purple; }
 
 // fix font size in all browsers.
 small,
@@ -196,26 +205,24 @@ sup { top: -.4em }
 // --------------------------------------------------- */ headings
 // fix font size and margin of headings inside
 // <section> and <article> in Chrome, Firefox, and Safari
+._hero_1,._hero_2,._hero_3,
 ._h1,._h2,._h3,._h4,._h5,._h6,._h7,
-h1,h2,h3,h4,h5,h6 { @extend ._p; }
+h1,h2,h3,h4,h5,h6 { @extend ._p; @extend ._lh_1; }
 h1 { @extend ._h1; }
 
-._hero_1,
-._hero_2,
-._hero_3,
-._h7 { @extend ._b; @extend ._lh_1; }
+._h7 { @extend ._b; }
 
-._h7,._t1 { font-size: 1rem;     line-height: 1.5 }
-._h6,._t2 { font-size: 1.083rem; line-height: 1.5 }
-._h5,._t3 { font-size: 1.182rem; line-height: 1.4 }
-._h4,._t4 { font-size: 1.300rem; line-height: 1.3 }
-._h3,._t5 { font-size: 1.445rem; line-height: 1.2 }
-._h2,._t6 { font-size: 1.625rem; line-height: 1.1 }
-._h1,._t7 { font-size: 1.857rem; line-height: 1.0 }
+._h7,._t1 { font-size: 1rem     }
+._h6,._t2 { font-size: 1.083rem }
+._h5,._t3 { font-size: 1.182rem }
+._h4,._t4 { font-size: 1.300rem }
+._h3,._t5 { font-size: 1.445rem }
+._h2,._t6 { font-size: 1.625rem }
+._h1,._t7 { font-size: 1.857rem }
 
-._hero_1 { font-size: 2rem     }
-._hero_2 { font-size: 2.250rem }
-._hero_3 { font-size: 2.572rem }
+._hero_1,._t8  { font-size: 2rem     }
+._hero_2,._t9  { font-size: 2.4rem   }
+._hero_3,._t10 { font-size: 3rem     }
 
 // ------------------------------------------------------ */ media
 
@@ -288,13 +295,14 @@ textarea { resize: vertical }
   @extend ._radius_x25r;
   @extend ._no_overflow;
   @extend ._text_center;
+  @extend ._inblock;
+  @extend ._valign_middle;
   border-color: $tc_2_9;
   min-width: 1em;
-  display: inline-table;
-  padding: 0 .3em;
+  padding: 0 .25em;
   &:hover { text-decoration: none !important }
-  &._L { padding: .3em .6em }
-  &._XL { padding: .6em 1.2em }
+  &._L { padding: .25em .5em }
+  &._XL { padding: .5em 1em }
 }
 
 // ===============================================================
@@ -322,7 +330,7 @@ $select_tc    : #000;
 // ------------------------------------------------------ */ bases
 ._c_base { 
   & { @include color( $light_tc, $light_bg ); }
-  &._dark { @include color( $dark_tc, $dark_bg ); }
+  &._dark,._dark & { @include color( $dark_tc, $dark_bg ); }
 }
 
 // ------------------------------------------------- */ containers
@@ -331,8 +339,9 @@ $select_tc    : #000;
 
 // --------------------------------------------------- */ headings
 
-h1,h2,h3,h4,h5,h6,
-._h1,._h2,._h3,._h4,._h5,._h6,._h7 {
+// ._hero_1,._hero_2,._hero_3,
+._h1,._h2,._h3,._h4,._h5,._h6,._h7,
+h1,h2,h3,h4,h5,h6 {
   & { @include color( $tc_2_6 ); }
   ._dark & { @include color( $tc_2_4 ); }
 }
@@ -360,7 +369,7 @@ hr { @extend ._st; @extend ._sb; }
     &:visited { @include color( $light_link_tcv ); }
     &:hover   { @include color( $light_link_tci ); outline: 1px solid #888 }
   }
-  ._link {
+  a._link {
     &,&:visited { color: inherit }
   }
   ._hover_link { // brighter when hover
@@ -381,7 +390,7 @@ hr { @extend ._st; @extend ._sb; }
     &:visited { @include color( $dark_link_tcv ); }
     &:hover   { @include color( $dark_link_tci ); }
   }
-  ._link {
+  a._link {
     &,&:visited { color: inherit }
   }
   ._hover_link { // brighter when hover
@@ -638,22 +647,23 @@ $angles : 45, 90, 135, 180, 225, 270, 315;
   font-weight: normal;
 }
 
+// ===============================================================
+
 ._icon {
   @extend ._numb;
   @extend ._inblock;
-  @extend ._valign_middle;
-  height   : 1.5em;
-  min-width: 1.5em;
-  text-align: center;
+  @extend ._text_center;
+  @extend ._lh_0;
+  height: 1em;
+  min-width: 1em;
+  vertical-align: baseline;
 }
 
 ._fa { @extend ._icon; }
 
 .itext {
   @extend ._mono;
-  @extend ._lh_1;
   @extend ._inblock;
-  font-size: 1em;
   font-weight: normal;
   font-style: normal;
   font-variant: normal;
@@ -661,10 +671,30 @@ $angles : 45, 90, 135, 180, 225, 270, 315;
   text-rendering: auto;
 }
 
-._itext { @extend ._icon; @extend ._no_overflow; }
-._itext .itext { font-size: 1.4em; } /* offset baseline for *most-icons */
+._itext {
+  @extend ._icon;
+  .itext {
+    font-size: 1.6em;
+    line-height: .625;
+    min-width: .625em;
+    @extend ._relative;
+    top: -0.07em;
+    vertical-align: -0.11em;
+  }
+}
 
-._isvg { @extend ._icon; svg { vertical-align:top; } } /* fix spinning axis */
+.isvg {
+  @extend ._inblock;
+}
+
+._isvg {
+  @extend ._icon;
+  .isvg {
+    height: 100%;
+    min-width: 100%;
+    vertical-align: .12em;
+  }
+}
 
 ._btnlabel {
   @extend ._inblock;

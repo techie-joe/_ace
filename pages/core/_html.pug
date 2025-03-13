@@ -19,12 +19,15 @@ block header
     +heading#_heading !{heading}
     p !{about}
     hr
+  //- header
 
-//- block main_header
+//- block header
 
 block footer
   +footer#_footer
     p &copy; !{copyright}
+  //- footer
+//- block footer
 
 block append widgets
 
@@ -57,6 +60,6 @@ block append widgets
     }
   //- style.
 
-  #topi: .abs
+  #topi._no_print: .abs._c_base._radius_x5r
     block styleSwitch
     +_a.link(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)") &bull;

@@ -1,0 +1,178 @@
+extends _html
+
+block append vars
+  include _color-functions
+
+  - heading = `Colors`
+  - about   = `Colors add personality and theme to your page.`
+  - updateTitle( `${heading} | ${name}` )
+  - updateDescription( `${about}` )
+  - updateUrl( siteUrl+'colors.html' )
+  - 
+    cssi = {
+      gridlines:'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="12"><rect width="1" height="1" fill="%23A9790688" /></svg>',
+      gridbox:{
+        light:'data:image/svg+xml;utf8,<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"><rect width="9" height="9" fill="none" stroke="none" /><line x1="10" y1="0" x2="10" y2="10" stroke="%23ddd" stroke-width="1" /><line x1="0" y1="10" x2="10" y2="10" stroke="%23ddd" stroke-width="1" /></svg>',
+        dark:'data:image/svg+xml;utf8,<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"><rect width="9" height="9" fill="none" stroke="none" /><line x1="10" y1="0" x2="10" y2="10" stroke="%23222" stroke-width="1" /><line x1="0" y1="10" x2="10" y2="10" stroke="%23222" stroke-width="1" /></svg>'
+      }
+    }
+
+block append style
+  style.
+
+    .line { border-top:1px solid #808080 }
+
+    .gridlines {
+      padding-top: 1px;
+      height:100%;
+      background-image: url('!{cssi.gridbox.light}');
+      background-repeat: repeat;
+      background-position: .1px .1px;
+    }
+    ._dark .gridlines {
+      background-image: url('!{cssi.gridbox.dark}');
+    }
+
+    #_main .section { width:960px;margin: 1em 0; }
+
+  //- style.
+
+    //-   |  |
+    //- 01234567
+    //- fedcba98
+    //-   |  |
+
+  //- style.
+
+block header
+
+  include _nav
+
+  +header#_header
+    +heading#_heading !{heading}
+    p
+      | !{description}
+      //- | See colors being applied to a #[+a('theme.html') theme].
+    hr
+
+block main
+
+  +main#_main: article: ._scrollable
+
+    .section.-rainbow-link
+
+      style.
+        #_html .colorlink {
+          font-size:14px;
+          color:#fff;
+          text-shadow: 1px 1px 1px #00000099;
+          padding:.2em .5em;
+          margin:1em .5em;
+          text-decoration:none;
+          border-radius:3px;
+        }
+      //- style.
+
+      ._mv._b._text_center._uppercase
+        each c in rainbow
+          +a('')(style=`background-color:#${c}`).colorlink #{c}
+
+    //- section
+
+    .section.-tables: +tables
+
+    .section.-grayscale
+
+      style.
+        .bg0 {
+          height:10px;
+          background:
+          linear-gradient(to right
+            , #000
+            , #fff
+          );
+        }
+      //- style.
+
+      div: +img(homeUri+"images/grayscale.svg","grayscale.svg","Gray Scale")(style="width:100%" width="960" height="30")
+      .bg0: .gridlines
+
+    //- section
+
+    .section.-grainbow
+      -
+        var grainbow =
+          [ '#ff0000'
+          , '#ff8000'
+          , '#ffff00'
+          , '#80ff00'
+          , '#00ff00'
+          , '#00ff80'
+          , '#00ffff'
+          , '#0080ff'
+          , '#0000ff'
+          , '#8000ff'
+          , '#ff00ff'
+          , '#ff0080'
+          , '#ff0000'
+          ];
+        var darkline  = 49;
+        var lightline = 100-darkline+.1;
+        var darkness  = intToHex(64);
+        var lightness = intToHex(64);
+
+      style.
+        .cg {
+          display:block;
+          height: 960px;
+          background:
+          linear-gradient(to right
+            , #000000ff
+            , #000000#{darkness} #{darkline}%
+            , #00000000 #{darkline}%
+            , #ffffff00 #{lightline}%
+            , #ffffff#{lightness} #{lightline}%
+            , #ffffffff
+          ),
+          linear-gradient(to bottom,#{grainbow.join(',')});
+        }
+      //- style.
+
+      ._relative
+        .cg: .gridlines
+        ._absolute(style="left:50%;margin-left:-15px;")
+          +img(homeUri+"images/colorscale-v.svg","colorscale-v.svg","Color Scale")(width="30" height="960")
+
+    //- section
+
+    .section.-rainbow-code
+      -
+        var primary_color   = 8; // blue 0066CC
+        var secondary_color = 3; // orange DD8811
+        var red_color       = 2; // red DD1111
+
+        var bg = colors[primary_color][0];
+        var tc = colors[primary_color][1];
+        var cbg = bg[ Math.ceil(bg.length/2)-1 ];
+        var ctc = tc[ Math.ceil(tc.length/2)-1 ];
+
+      style.
+        #_html .colorcode       { background:#ccc; }
+        #_html._dark .colorcode { background:#111; }
+        .codecolor { padding:0 1em }
+      //- style.
+
+      ._flex._gap
+        ._f_content: +colorCodes(primary_color)
+        ._f_content: +colorCodes(secondary_color)
+        ._f_content: +colorCodes(red_color)
+        ._f_content: +colorCodes(1)
+        ._f_content: +colorCodes(0)
+      //- flex
+
+    //- section
+
+    hr
+  //- main
+
+//- block main

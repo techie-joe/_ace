@@ -38,25 +38,32 @@ block document
               +heading#_heading !{heading}
               p !{about}
               hr
+            //- header
 
             //- include _nav
             //- +nav#_nav: ul: +lia
             +nav#_nav
               +backlink._link #[+itext|←]#[span._btnlabel Back]
               hr
+            //- nav
+          
+          //- block header
 
           block main
             //- +main#_main: article._ma
               +pre: +putData
               +pageData#_pageData
-            +main#_main: article._ma
+            //- +aside#_aside
+
+            +main#_main: article
               +pageData#_pageData
               hr
-            
-            //- +aside#_aside
+            //- main
+          //- block main
 
           block footer
             //- +footer#_footer
+          //- block footer
           
         //- +view
       //- block view
