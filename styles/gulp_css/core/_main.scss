@@ -288,7 +288,6 @@ textarea { resize: vertical }
   padding: .1em .3em;
   margin: .05em;
 }
-// ._link { @extend ._label; }
 
 ._btnlink {
   @extend ._link;
@@ -437,10 +436,10 @@ hr { @extend ._st; @extend ._sb; }
   a._link {
     &,&:visited { color: inherit }
   }
-  ._hover_link { // brighter when hover
+  a._hover_link { // brighter when hover
     &:hover,&:active { @include color( $light_contra, $light_button_bg ); }
   }
-  ._btnlink {
+  a._btnlink {
     &:hover { outline: none }
   }
   a {
@@ -458,7 +457,7 @@ hr { @extend ._st; @extend ._sb; }
   a._link {
     &,&:visited { color: inherit }
   }
-  ._hover_link { // brighter when hover
+  a._hover_link { // brighter when hover
     &:hover,&:active { @include color( $dark_contra, $dark_button_bg); }
   }
   a {
