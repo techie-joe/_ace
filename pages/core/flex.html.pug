@@ -1,0 +1,96 @@
+extends _html
+
+block append vars
+  - heading = `Flex`
+  - about   = `Flex arrange contents neatly and facilitate responsiveness.`
+  - updateTitle( `${heading} | ${name}` )
+  - updateDescription( `${about}` )
+  - updateUrl( siteUrl+"flex.html" )
+
+block append style
+  style.
+
+    ._html { min-width:0 }
+    ._html .o { background-color: #ccc }
+    ._dark .o { background-color: #333 }
+    .o { height:3em; font-size:.8em; font-weight:bold; box-shadow: 0 0 0 1px #f804 inset; padding:2px 5px; }
+    .o:hover { background-color: #8886 }
+
+  //- style.
+
+block main
+  +main#_main: article
+
+    mixin gen_grid(k)
+      - var k2 = Math.floor(k/2);
+      - var n = 0;
+      while n < k2
+        ._flex
+          div(class=`_f_${k}_${n + 1}`): .o #{k}_#{n + 1}
+          div(class=`_f_${k}_${k - n - 1}`): .o #{k}_#{k - n - 1}
+        - n++;
+
+    //- ._mv: ._flex
+      +repeat(3):  ._f_12_4: .o 12_4
+      +repeat(4):  ._f_12_3: .o 12_3
+      +repeat(6):  ._f_12_2: .o 12_2
+      +repeat(12): ._f_12_1: .o 12_1
+      +repeat(6):  ._f_6_1: .o._tc_orange 6_1
+      +repeat(4):  ._f_4_1: .o._tc_orange 4_1
+      +repeat(3):  ._f_3_1: .o._tc_orange 3_1
+      +repeat(2):  ._f_2_1: .o._tc_orange 2_1
+
+    ._mv: ._flex: ._full: .o FULL / FILL
+
+    ._mv: +gen_grid(2)
+
+    ._mv
+      +gen_grid(3)
+      ._flex: +repeat(3):  ._f_3_1: .o 3_1
+
+    ._mv
+      +gen_grid(4)
+      ._flex: +repeat(4):  ._f_4_1: .o 4_1
+      ._flex: +repeat(2):  ._f_2_1: .o._tc_orange 2_1
+
+    ._mv
+      +gen_grid(5)
+      ._flex: +repeat(5):  ._f_5_1: .o 5_1
+
+    ._mv
+      +gen_grid(6)
+      ._flex: +repeat(6):  ._f_6_1: .o 6_1
+      ._flex: +repeat(3):  ._f_3_1: .o._tc_orange 3_1
+      ._flex: +repeat(2):  ._f_2_1: .o._tc_orange 2_1
+
+    //- ._mv
+    //-   +gen_grid(8)
+    //-   ._flex: +repeat(8):  ._f_8_1: .o 8_1
+    //-   ._flex: +repeat(4):  ._f_4_1: .o._tc_orange 4_1
+    //-   ._flex: +repeat(2):  ._f_2_1: .o._tc_orange 2_1
+
+    ._mv
+      +gen_grid(10)
+      ._flex: +repeat(5):  ._f_10_2: .o 10_2
+      ._flex: +repeat(10): ._f_10_1: .o 10_1
+      ._flex: +repeat(5):  ._f_5_1: .o._tc_orange 5_1
+      ._flex: +repeat(2):  ._f_2_1: .o._tc_orange 2_1
+
+    ._mv
+      +gen_grid(12)
+      ._flex: +repeat(3):  ._f_12_4: .o 12_4
+      ._flex: +repeat(4):  ._f_12_3: .o 12_3
+      ._flex: +repeat(6):  ._f_12_2: .o 12_2
+      ._flex: +repeat(12): ._f_12_1: .o 12_1
+      ._flex: +repeat(6):  ._f_6_1: .o._tc_orange 6_1
+      ._flex: +repeat(4):  ._f_4_1: .o._tc_orange 4_1
+      ._flex: +repeat(3):  ._f_3_1: .o._tc_orange 3_1
+      ._flex: +repeat(2):  ._f_2_1: .o._tc_orange 2_1
+
+    //- ._mv
+      +gen_grid(16)
+      ._flex: +repeat(4):  ._f_16_4: .o 16_4
+      ._flex: +repeat(8):  ._f_16_2: .o 16_2
+      ._flex: +repeat(16): ._f_16_1: .o 16_1
+
+//- block main

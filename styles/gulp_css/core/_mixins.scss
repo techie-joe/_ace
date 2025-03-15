@@ -1,18 +1,23 @@
-@mixin position($top: null, $left: null, $bottom: null, $right: null) {
-  @if $top { top: $top; }
-  @if $bottom { bottom: $bottom; }
-  @if $right { right: $right; }
-  @if $left { left: $left; }
+@function important($important) {
+  @return if($important, ' !important', '');
+}
+
+@mixin inlinePadding($padding, $important: false) {
+  padding: 0 #{$padding}#{important($important)};
+  padding-inline-start: #{$padding}#{important($important)};
+  padding-inline-end: 0#{important($important)};
+}
+
+@mixin position($top: null, $left: null, $bottom: null, $right: null, $important: false) {
+  @if $top { top: #{$top}#{important($important)}; }
+  @if $bottom { bottom: #{$bottom}#{important($important)}; }
+  @if $right { right: #{$right}#{important($important)}; }
+  @if $left { left: #{$left}#{important($important)}; }
 }
 
 @mixin color($color, $bg_color: null, $important: false) {
-  @if $important {
-    color: $color !important;
-    @if $bg_color { background-color: $bg_color !important; }
-  } @else {
-    color: $color;
-    @if $bg_color { background-color: $bg_color; }
-  }
+  color: #{$color}#{important($important)};
+  @if $bg_color { background-color: #{$bg_color}#{important($important)}; }
 }
 
 @mixin mh($value) {

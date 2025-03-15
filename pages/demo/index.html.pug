@@ -10,11 +10,11 @@ block main
   +main#_main: article
 
     ._mv._nav_color._radius_x5r._pa
-      b._label._system| Components : &nbsp;
+      b._system| Components : &nbsp;
       +menu
 
     ._mv._nav_color._radius_x5r._pa
-      b._label._system| Extras : &nbsp;
+      b._system| Extras : &nbsp;
       -
         temp = [
           ['blank.html','Blank'],
@@ -26,5 +26,5 @@ block main
         +menu_link(v[0])=`${v[1]}`
 
     ._mv._nav_color._radius_x5r._pa
-      b._label._system| Plugins : &nbsp;
+      b._system| Plugins : &nbsp;
       +_a(homeUrl+'themejs/')(target="ace_themejs")._link| ThemeJs

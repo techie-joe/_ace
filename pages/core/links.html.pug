@@ -6,6 +6,10 @@ block append vars
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'links.html' )
+  -
+    svgi = {
+      bars:'M5,6H19V8H5V6M5,11H19V13H5V11M5,16H19V18H5V16Z',
+    };
 
 block main
 
@@ -27,32 +31,37 @@ block main
 
     ._p
       +repeat(2)
-        a(href='' onclick=onclick()) hyperlink
+        a(href='' onclick=onclick())|#[+isvg(svgi.bars)]hyperlink
+        a(href='' onclick=onclick())|#[+itext|≡]hyperlink
         a(href='' onclick=onclick()) hyperlink
         br
 
     ._p
       +repeat(2)
         a._link link
-        a._link link
+        a._link|#[+isvg(svgi.bars)]link
+        a._link|#[+itext|≡]link
         br
 
     ._p
       +repeat(2)
         a._btnlink btnlink
-        a._btnlink btnlink
+        a._btnlink|#[+isvg(svgi.bars)]btnlink
+        a._btnlink|#[+itext|≡]btnlink
         br
 
     ._p
       +repeat(2)
         a._btnlink._L btnlink
-        a._btnlink._L btnlink
+        a._btnlink._L|#[+isvg(svgi.bars)]btnlink
+        a._btnlink._L|#[+itext|≡]btnlink
         br
 
     ._p
       +repeat(2)
         a._btnlink._XL btnlink
-        a._btnlink._XL btnlink
+        a._btnlink._XL|#[+isvg(svgi.bars)]btnlink
+        a._btnlink._XL|#[+itext|≡]btnlink
         br
 
     ._p._outline
