@@ -46,7 +46,7 @@
   text-shadow: none !important;
 }
 
-// ------------------------------------------------------ */ links
+// ------------------------------------------------------ links */
 a, a:visited { text-decoration: underline }
 
 a[href]::after { content: " (" attr(href) ")" }
@@ -57,7 +57,7 @@ abbr[title]::after { content: " (" attr(title) ")" }
 a[href^="#"]::after,
 a[href^="javascript:"]::after { content: "" }
 
-// --------------------------------------------------- */ segments
+// --------------------------------------------------- segments */
 ._pre, pre {
   white-space: pre-wrap !important;
   overflow: visible !important;
@@ -69,7 +69,8 @@ a[href^="javascript:"]::after { content: "" }
   page-break-inside: avoid;
 }
 
-// ------------------------------------------------------- */ misc
+// ------------------------------------------------------- misc */
+
 tr, img { page-break-inside: avoid }
 
 p, h1, h2, h3 { orphans: 3; widows: 3 }
@@ -84,4 +85,6 @@ h1, h2, h3 { page-break-after: avoid }
 ._no_print_color { color: inherit !important; }
 ._no_print_border { border: none !important; }
 
-} // ========================================================= EOF 
+} 
+
+// ======================================================== EOF */
