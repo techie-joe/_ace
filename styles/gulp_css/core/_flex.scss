@@ -46,7 +46,7 @@ $gaps: (
 $g: 12;
 @for $i from 1 through $g - 1 {
   // $width: calc($i / $g);
-  ._f_#{$g}_#{$i} { flex: $i $i calc($i / $g  * 30rem); }
+  ._f_#{$g}_#{$i} { flex: $i $i calc($i / $g  * 30em); }
 }
 
 // $g: 10;
@@ -83,18 +83,11 @@ $factors: (3, 4, 6);
   }
 }
 
-._f { display: inline-block; box-sizing: border-box }
+._f { display: inline-block; box-sizing: border-box; flex: 1 }
 
-// 1. full width.
+// 1. force full width.
 // 2. fill available width.
-// 3. item size itself based on its content size, but it won’t grow beyond what fits the content.
-// 4. item based on the largest possible content size without wrapping or shrinking.
-// 5. item based on the smallest possible content size.
 ._full  { @extend ._f; flex: $gbase $gbase 100%; } /* 1 */
 ._fill  { @extend ._f; flex: $gbase $gbase 0; } /* 2 */
-._f_fit { @extend ._f; flex: $gbase $gbase fit-content; } /* 3 */
-._f_max { @extend ._f; flex: $gbase $gbase max-content; } /* 4 */
-._f_min { @extend ._f; flex: $gbase $gbase min-content; } /* 5 */
-
 
 // ======================================================== EOF */

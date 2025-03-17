@@ -14,7 +14,7 @@ block append style
     .o {
       box-shadow: 0 0 0 1px #f804 inset;
       padding:.25em 0;
-      text-indent:.5em;
+      text-indent: .5em;
       font-size:.8em;
       font-weight:bold;
     }
@@ -48,21 +48,8 @@ block main
 
     ._mv: ._flex
       ._full.o._tc_orange FULL
-      ._f_12_1.o 12_1
-      ._fill.o._tc_orange FILL
-      ._f_12_1.o 12_1
-    ._mv: ._flex
-      ._f_12_1.o 12_1
-      ._f_fit.o._tc_orange FIT
-      ._f_12_1.o 12_1
-    ._mv: ._flex
-      ._f_12_1.o 12_1
-      ._f_max.o._tc_orange MAX
-      ._f_12_1.o 12_1
-    ._mv: ._flex
-      ._f_12_1.o 12_1
-      ._f_min.o._tc_orange MIN
-      ._f_12_1.o 12_1
+      ._f.o._tc_orange DEFAULT ..
+      ._fill.o FILL
 
     ._mv: +gen_grid(2)
 
