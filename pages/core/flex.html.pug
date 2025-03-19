@@ -10,6 +10,9 @@ block append vars
 block append style
   style.
 
+    ._footer_layout, ._header_layout, ._main_layout { max-width:none }
+    ._main_layout { padding: 0 }
+
     ._html { min-width:0 }
     .o {
       box-shadow: 0 0 0 1px #f804 inset;
@@ -18,6 +21,7 @@ block append style
       font-size:.8em;
       font-weight:bold;
     }
+    .o.min { text-indent:0; padding-left:.5em; padding-right: .5em }
     ._html .o { background-color: #ccc }
     ._dark .o { background-color: #333 }
     .o:hover { background-color: #8886 }
@@ -48,8 +52,8 @@ block main
 
     ._mv: ._flex
       ._full.o._tc_orange FULL
-      ._f.o._tc_orange DEFAULT ..
-      ._fill.o FILL
+      ._f.o._tc_orange.min DEFAULT ..
+      ._fill.o.min FILL ..
 
     ._mv: +gen_grid(2)
 

@@ -93,7 +93,7 @@ body { @extend ._reset_margin; } /* 1 */
 }
 
 // make way for browser status bar.
-._footer_layout { margin-bottom: 1.5rem !important }
+#_footer { padding-bottom: 1rem }
 
 // set a special div that can display inline-blocks perfectly.
 ._idiv {
@@ -392,9 +392,14 @@ $select_tc    : #000;
 ._select         { @include selection; }
 
 // ------------------------------------------------------ bases */
-._c_base { 
+._c_base {
   & { @include color( $light_tc, $light_bg ); }
   &._dark,._dark & { @include color( $dark_tc, $dark_bg ); }
+}
+
+._c_bg_1 {
+  & { background-color: #ccc }
+  &._dark,._dark & { background-color: #111 }
 }
 
 // ------------------------------------------------- containers */

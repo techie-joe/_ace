@@ -1,0 +1,32 @@
+extends _html
+
+block append vars
+  - heading = `Containers`
+  - about   = `Containers group contents together.`
+  - updateTitle( `${heading} | ${name}` )
+  - updateDescription( `${about}` )
+  - updateUrl( siteUrl+'containers.html' )
+
+block append style
+  style.
+
+    .o { height:2rem }
+
+  //- style.
+
+block main
+  +main#_main: article
+
+    section
+      ._flex._gap_a
+        ._f: .o._outline
+        ._f: .o._border
+      //- flex
+      ._flex._gap_a
+        ._f: .o._border._radius_x25r._c_bg_1._ma._pa
+      //- flex
+    //- section
+
+    hr
+  //- main
+//- block main

@@ -7,7 +7,8 @@ block append vars
 
 block append style
   style.
-
+    ._footer_layout, ._header_layout, ._main_layout
+    { margin:auto; max-width:60em; padding:0 1rem }
   //- style.
 
 block header
@@ -25,7 +26,7 @@ block header
 
 block footer
   +footer#_footer
-    p &copy; !{copyright}
+    p._small._system &copy; !{copyright}
   //- footer
 //- block footer
 
@@ -60,6 +61,6 @@ block append widgets
     }
   //- style.
 
-  #topi._no_print: .abs._c_base._radius_x5r
+  #topi._no_print: .abs
     block styleSwitch
-    +_a.link(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)") &bull;
+    +_a.link._c_base(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)") &bull;

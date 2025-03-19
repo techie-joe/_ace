@@ -1,41 +1,42 @@
 extends _html
 
 block append vars
-  include _color-functions
   - heading = `Theme`
-  - updateTitle( `${heading} | ${title}` )
-  - updateDescription( `This is an example on how theme are implemented.` )
+  - about   = `This is an example on how theme are implemented.`
+  - updateTitle( `${heading} | ${name}` )
+  - updateDescription( `${about}` )
   - updateUrl( siteUrl+"theme.html" )
 
 block append style
   //- style.
+  //- style.
 
-block header
-  include _logo
-  +header#_header
-    ._flex: +logo
-    hr._no_margin
+mixin block_1(title)
+  div&attributes(attributes)._text_justify
+    h3._inline._h7 !{title}
+    p._inline: block
+
+mixin block_2(title)
+  h3._h6 !{title}
+  p._text_justify: block
+
+mixin block_3(title)
+  h3._h6 !{title}
+  p._text_justify: block
+
+mixin block_4(title)
+  ._radius._pa._bg_2_2._tc_2_2._mv
+    h3._h6._tc_2_4 !{title}
+    p._text_justify: block
 
 block main
+  include _logo
+
   +main#_main: article
 
-    mixin block_1(title)
-      div&attributes(attributes)._text_justify
-        h3._inline._h7 !{title}
-        p._inline: block
+    ._flex: ._f: +logo
 
-    mixin block_2(title)
-      h3._h6 !{title}
-      p._text_justify: block
-
-    mixin block_3(title)
-      h3._h6 !{title}
-      p._text_justify: block
-
-    mixin block_4(title)
-      ._radius._pa._bg_2_2._tc_2_2._mv
-        h3._h6._tc_2_4 !{title}
-        p._text_justify: block
+    hr
 
     section
 
@@ -103,7 +104,7 @@ block main
           document.getElementById('normalink').href+=(new Date().getTime());
 
 block footer
-  +footer#_footer._bg_1_2._tc_1_2
+  +footer#_footer._c_bg_1._tc_1_2
 
     ._flex._gap_2
 
