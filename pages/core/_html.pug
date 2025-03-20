@@ -13,8 +13,10 @@ block append style
 
 block header
 
-  include _nav
-  //- +nav#_nav: ul: +lia
+  block nav
+    include _nav
+    +navbar
+    //- +nav#_nav: ul: +lia
 
   +header#_header
     +heading#_heading !{heading}
@@ -22,18 +24,14 @@ block header
     hr
   //- header
 
-//- block header
-
 block footer
   +footer#_footer
     p._small._system &copy; !{copyright}
   //- footer
-//- block footer
 
 block append widgets
 
   style.
-    ._nav_layout { margin-right: 2.5rem }
     #topi { position:absolute;top:0;right:0;width:100% }
     #topi .abs {
       position:absolute;

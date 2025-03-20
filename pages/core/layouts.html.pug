@@ -1,0 +1,19 @@
+extends _html
+
+block append vars
+  - heading = `Layouts`
+  - about   = `Various layouts can be implemented.`
+  - updateTitle( `${heading} | ${name}` )
+  - updateDescription( `${about}` )
+  - updateUrl( siteUrl+'layouts.html' )
+
+block append style
+  //- style.
+  //- style.
+
+block main
+  +main#_main: article
+
+    hr
+  //- main
+//- block main

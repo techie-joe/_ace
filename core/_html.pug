@@ -28,11 +28,18 @@ block document
     //- head
 
     body#_body._body(class=bodyClass)
-    
+
       block view
         +view._full_view
 
           block header
+
+            block nav
+              //- +nav#_nav: ul: +lia
+              +nav#_nav
+                +backlink._link #[+itext|←]#[span._btnlabel Back]
+                hr
+              //- nav
 
             +header#_header
               +heading#_heading !{heading}
@@ -40,13 +47,6 @@ block document
               hr
             //- header
 
-            //- include _nav
-            //- +nav#_nav: ul: +lia
-            +nav#_nav
-              +backlink._link #[+itext|←]#[span._btnlabel Back]
-              hr
-            //- nav
-          
           //- block header
 
           block main
@@ -59,14 +59,11 @@ block document
               +pageData#_pageData
               hr
             //- main
-          //- block main
 
           block footer
             //- +footer#_footer
-          //- block footer
-          
+
         //- +view
-      //- block view
 
       block widgets
         //- +widgets#_widgets

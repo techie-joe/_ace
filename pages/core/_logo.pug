@@ -18,11 +18,11 @@ mixin logo(href)
     #_text_logo ._part_1,
     #_text_logo ._part_2 { line-height:1 }
 
-  //-
+  //- style.
     #_tagline { font-size:.7rem; letter-spacing: 0.05em; }
 
-  //-
+  //- style.
 
-  +a(href)#_logo._numb
-      #_text_logo #[span._part_1 LO]#[span._part_2 GO]
-      //- #_tagline._uppercase._b Your tagline
+  +a(onclick=onclick())#_logo._numb
+    #_text_logo #[span._part_1 LO]#[span._part_2 GO]
+    //- #_tagline._uppercase._b Your tagline
