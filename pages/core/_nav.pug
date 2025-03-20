@@ -1,7 +1,8 @@
 mixin navbar
 
   style.
-    #_nav ._nav_layout { margin:0;padding:.5rem;line-height: 2em }
+    #_nav ._nav_layout { margin:0;padding:.5rem }
+    #_nav ._nav_layout a._link { line-height: 2em }
   //- style.
 
   +nav#_nav._c_bg_1
@@ -12,10 +13,10 @@ mixin navbar
     +_a._link(href='icons.html') Icons
     +_a._link(href='links.html') Links
     +_a._link(href='colors.html') Colors
+    +_a._link(href='containers.html') Containers
     +_a._link(href='view.html') View
     +_a._link(href='flex.html') Flex
     +_a._link(href='layouts.html') Layouts
-    +_a._link(href='containers.html') Containers
     +_a._link(href='menu.html') Menu
     +_a._link(href='theme.html') Theme
     +_a._link(href='test.html') Test

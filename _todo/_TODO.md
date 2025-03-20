@@ -2,8 +2,8 @@
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
-### March 17, 2025 - v0.1.25 b11.316
-- housekeep: core flex
+### March 21, 2025 - v0.1.25 b11.317
+- housekeep: core menu
 
 ---
 

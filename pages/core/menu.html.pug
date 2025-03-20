@@ -7,77 +7,69 @@ block append vars
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+"menu.html" )
   - svgi.ellipsis = 'M16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14A2,2 0 0,1 16,12M10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12M4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14A2,2 0 0,1 4,12Z'; // ··· for menu
+  include _logo
 
 block append style
   style.
 
-    ._view {
-      overflow-x: auto;
-      overflow-y: auto;
-    }
-
+    ._view { overflow: auto }
+    #menu1 a#_logo:hover { outline:none }
   //- style.
 
 mixin samples
   p
     +_a('#menu_')._btnlink Menu
     +_a('#menu1')._btnlink Menu 1
-    +_a('#menu2')._btnlink Menu 2
 
 block view
-  +view#menu_
+  ._views
 
-    include _nav
-    +navbar
+    +view#menu_._full_view
 
-    +header#_header
-      +heading#_heading !{heading}
-      p#_about !{description}
-      hr
+      include _nav
+      +navbar
 
-    +main#_main: article
+      +header#_header
+        +heading#_heading !{heading}
+        p#_about !{description}
+        hr
 
-      +samples
+      +main#_main: article
 
-    //- main: article
+        section: ._c_bg_1._radius_x5r: +nav._clearfix
+          +a()._btnlink| Buttons
+          +_a()._link| Links
+          +_a()._link._nav_icon| &amp;
+          +_a()._link| Icons
+          +_a()._link._nav_icon._b: +bulls
+          +_a()._link._nav_icon: +isvg(svgi.ellipsis)
+          +_a()._link._nav_icon: +isvg(svgi.compare)
+        //- section
 
-    +footer#_footer
-      hr
-      p._small._system !{copyright}
+        +samples
 
-  //- view#intro
+      //- main: article
 
-  +view#menu1
+      +footer#_footer
+        hr
+        p._small._system !{copyright}
 
-    section._page_layout._mv_2: ._nav_color._radius_x5r: +nav#_nav
-      +a()._btnlink| Buttons
-      +_a()._link| Links
-      +_a()._link._nav_icon| &amp;
-      +_a()._link| Icons
-      +_a()._link._nav_icon._b: +bulls
-      +_a()._link._nav_icon: +isvg(svgi.ellipsis)
-      +_a()._link._nav_icon: +isvg(svgi.compare)
-    //- section
+    //- view#menu_
 
-    ._page_layout: +samples
+    +view#menu1._full_view
 
-  //- view#menu
-  
-  +view#menu2
-    mixin sampleMenu_1
-      +_a()._link| Product
-      +_a()._link| Services
-      +_a()._link| Blog
-      +_a()._link| Gallery
-      +_a()._link| Contact
+      mixin sampleMenu_1
+        +_a()._link| Product
+        +_a()._link| Services
+        +_a()._link| Blog
+        +_a()._link| Gallery
+        +_a()._link| Contact
 
-    include _logo
-    section: #_navbar._flex
-      ._f_min._nav_color._text_center: +logo
-      ._fill._nav_color(style="flex-basis:20rem"): +nav#_nav: +sampleMenu_1
-      ._f_min._text_right._pa_x5r._nav_color: +_a._navChangeThemeLink._link._nav_icon: +isvg(svgi.compare)
-    //- section
+      section#_navbar._flex._c_bg_1
+        ._f._text_center: +logo
+        ._fill(style="flex-basis:20rem"): +nav._pa: +sampleMenu_1
+      //- section
 
-    ._page_layout: +samples
+      #view_1: ._main_layout: +samples
 
-  //- view#menu
+    //- view#menu1
