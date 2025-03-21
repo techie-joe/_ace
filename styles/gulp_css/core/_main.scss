@@ -353,6 +353,7 @@ textarea { resize: vertical }
   vertical-align: bottom;
   min-width: 1em;
   @extend ._border;
+  @extend ._text_center;
   border-color: $tc_2_9;
   &._l { padding: .25em .5em }
   &._xl { padding: .5em 1em }
