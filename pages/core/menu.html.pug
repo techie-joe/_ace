@@ -18,8 +18,8 @@ block append style
 
 mixin samples
   p
-    +_a('#menu_')._btnlink Menu
-    +_a('#menu1')._btnlink Menu 1
+    +_a('#menu_')._btnlink._xl Menu
+    +_a('#menu1')._btnlink._xl Menu 1
 
 block view
   ._views
@@ -39,11 +39,11 @@ block view
         section: ._c_bg_1._radius_x5r: +nav._clearfix
           +a()._btnlink| Buttons
           +_a()._link| Links
-          +_a()._link._nav_icon| &amp;
           +_a()._link| Icons
-          +_a()._link._nav_icon._b: +bulls
-          +_a()._link._nav_icon: +isvg(svgi.ellipsis)
-          +_a()._link._nav_icon: +isvg(svgi.compare)
+          +_a()._link.__icon| &amp;
+          +_a()._link.__icon| &bull;
+          +_a()._link.__icon: +isvg(svgi.ellipsis)
+          +_a()._link.__icon: +isvg(svgi.compare)
         //- section
 
         +samples
@@ -67,7 +67,7 @@ block view
 
       section#_navbar._flex._c_bg_1
         ._f._text_center: +logo
-        ._fill(style="flex-basis:20rem"): +nav._pa: +sampleMenu_1
+        ._fill(style="flex-basis:20rem"): +nav(style="padding:0.75rem"): +sampleMenu_1
       //- section
 
       #view_1: ._main_layout: +samples

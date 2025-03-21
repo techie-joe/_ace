@@ -274,38 +274,6 @@ textarea { resize: vertical }
 ._footer_layout,
 ._main_layout { margin: .5rem /* temp */ }
 
-// ------------------------------------------------------ links */
-
-._hover_link {
-  @extend ._cursor_pointer;
-  @extend ._no_deco;
-}
-
-._link {
-  @extend ._cursor_pointer;
-  @extend ._no_deco;
-  @extend ._no_wrap;
-  border-radius: .3rem;
-  padding: .1em .3em;
-  margin: .1em;
-}
-
-._btnlink {
-  @extend ._link;
-  @extend ._border;
-  @extend ._radius_x25r;
-  @extend ._no_overflow;
-  @extend ._text_center;
-  @extend ._inblock;
-  @extend ._valign_middle;
-  border-color: $tc_2_9;
-  min-width: 1em;
-  padding: 0 .25em;
-  &:hover { text-decoration: none !important }
-  &._L { padding: .25em .5em }
-  &._XL { padding: .5em 1em }
-}
-
 // ------------------------------------------------------ icons */
 
 ._icon {
@@ -317,14 +285,6 @@ textarea { resize: vertical }
   min-width: 1em;
   vertical-align: baseline;
 }
-
-._icon_label {
-  ._link & { margin-left: -.125em }
-  ._btnlink._L & { margin-left: -.25em }
-  ._btnlink._XL & { margin-left: -.5em }
-}
-
-._nav_icon { padding: .1em }
 
 ._fa { @extend ._icon; }
 
@@ -360,8 +320,68 @@ textarea { resize: vertical }
   .isvg {
     height: 100%;
     min-width: 100%;
-    vertical-align: .12em;
+    vertical-align: .11em;
   }
+}
+
+
+// ------------------------------------------------------ links */
+
+._hover_link {
+  @extend ._cursor_pointer;
+  @extend ._no_deco;
+}
+
+._link {
+  @extend ._cursor_pointer;
+  @extend ._no_deco;
+  @extend ._no_wrap;
+  @extend ._radius_x25r;
+  padding: 0 .25em;
+  margin: .1em;
+}
+
+._btnlink {
+  @extend ._cursor_pointer;
+  @extend ._no_deco;
+  @extend ._no_wrap;
+  @extend ._border;
+  @extend ._radius_x25r;
+  @extend ._no_overflow;
+  @extend ._text_center;
+  @extend ._inblock;
+  @extend ._lh_1;
+  border-color: $tc_2_9;
+  min-width: 1em;
+  padding: 0 .25em;
+  margin: .1em;
+  vertical-align: bottom;
+  &:hover { text-decoration: none !important }
+  &._l { padding: .25em .5em }
+  &._xl { padding: .5em 1em }
+}
+
+._btnlink,
+._link {
+  ._isvg,
+  ._itext { margin-left:-.2em }
+  ._fa { margin-left: -0.1em; margin-right: 0.1em }
+  &._l {
+    ._isvg { margin-right:.2em }
+    ._itext { margin-right:.3em }
+    ._fa { margin-right:.4em }
+  }
+  &._xl {
+    ._isvg { margin-left:-.4em;margin-right:.4em }
+    ._itext { margin-left:-.2em;margin-right:.6em }
+    ._fa { margin-left:-.1em;margin-right:.8em }
+  }
+}
+
+._btnlink.__icon,
+._link.__icon {
+  & { @extend ._p0; }
+  ._icon { @extend ._m0; }
 }
 
 // ===============================================================
@@ -430,8 +450,8 @@ hr { @extend ._st; @extend ._sb; }
   &._fresh:visited,
   &         { @include color( $light_link_tci ); }
   &:visited { @include color( $light_link_tcv ); }
-  &:hover   { @include color( $light_link_tci ); outline: 1px solid #888 }
-  &._btnlink:hover { outline: none }
+  &:hover   { @include color( $light_link_tci ); }
+  // &._btnlink:active,
   // &._link:active,
   &:active  { @include color( $light_link_tca ); }
 }
@@ -440,19 +460,26 @@ hr { @extend ._st; @extend ._sb; }
   &         { @include color( $dark_link_tci ); }
   &:visited { @include color( $dark_link_tcv ); }
   &:hover   { @include color( $dark_link_tci ); }
+  // &._btnlink:active,
   // &._link:active,
   &:active  { @include color( $dark_link_tca ); }
 }
 
+._a ._link_icon,
 ._a ._btnlink,
 ._a ._link,
+._link_icon,
+._btnlink,
 ._link {
   &,&:visited { color: inherit }
   &:hover { @include color( $light_contra, $light_button_bg ); }
 }
 
+._dark._a ._link_icon,
 ._dark._a ._btnlink,
 ._dark._a ._link,
+._dark ._link_icon,
+._dark ._btnlink,
 ._dark ._link {
   &,&:visited { color: inherit }
   &:hover { @include color( $dark_contra, $dark_button_bg); }

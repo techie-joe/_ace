@@ -11,6 +11,12 @@ block append vars
       bars:'M5,6H19V8H5V6M5,11H19V13H5V11M5,16H19V18H5V16Z',
     };
 
+block append style
+  +css('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css')
+
+mixin ba(href='',_onclick)
+  a(href=href onclick=onclick(_onclick))&attributes(attributes): block
+
 block main
 
   +main#_main: article
@@ -19,64 +25,83 @@ block main
       | normal
       | #[u underlined]
       | #[a anchor]
-      | #[a(href='' onclick=onclick())#newlink hyperlink]
-      | #[a(href='' onclick=onclick()) visited]
-      | #[a(href='' onclick=onclick())._fresh fresh]
-      | #[a(href='' onclick=onclick())._no_color no-color]
+      | #[+ba._fresh fresh]
+      | #[+ba#normalink hyperlink]
+      | #[+ba visited]
+      | #[+ba._no_color no-color]
 
     script.
-      document.getElementById('newlink').setAttribute('href','?t='+new Date().getTime())
+      document.getElementById('normalink').href+='?t='+(new Date().getTime());
 
     hr
 
     ._p
       +repeat(2)
-        a(href='' onclick=onclick())|#[+isvg(svgi.bars)]hyperlink
-        a(href='' onclick=onclick())|#[+itext|≡]hyperlink
-        a(href='' onclick=onclick()) hyperlink
+        +ba|#[+isvg(svgi.bars)]hyperlink
+        +ba|#[+itext|≡]hyperlink
+        +ba|#[+fas.fa-bars]hyperlink
+        +ba hyperlink
         br
+
+    ._p._outline
+      | normal
+      a._link link
+      a._link.__icon|#[+isvg(svgi.bars)]
+      a._link.__icon|#[+itext|≡]
+      a._link.__icon|#[+fas.fa-bars]
 
     ._p
       +repeat(2)
         a._link link
-        a._link|#[+isvg(svgi.bars)._icon_label]link
-        a._link|#[+itext._icon_label|≡]link
+        a._link|#[+isvg(svgi.bars)]link
+        a._link|#[+itext|≡]link
+        a._link|#[+fas.fa-bars]link
         br
+
+    ._p._outline
+      | normal
+      a._link link
+      a._btnlink.__icon|#[+isvg(svgi.bars)]
+      a._btnlink.__icon|#[+itext|≡]
+      a._btnlink.__icon|#[+fas.fa-bars]
 
     ._p
       +repeat(2)
         a._btnlink btnlink
-        a._btnlink|#[+isvg(svgi.bars)._icon_label]btnlink
-        a._btnlink|#[+itext._icon_label|≡]btnlink
+        a._btnlink|#[+isvg(svgi.bars)]btnlink
+        a._btnlink|#[+itext|≡]btnlink
+        a._btnlink|#[+fas.fa-bars]btnlink
         br
 
     ._p
       +repeat(2)
-        a._btnlink._L btnlink
-        a._btnlink._L|#[+isvg(svgi.bars)._icon_label]btnlink
-        a._btnlink._L|#[+itext._icon_label|≡]btnlink
+        a._btnlink._l btnlink
+        a._btnlink._l|#[+isvg(svgi.bars)]btnlink
+        a._btnlink._l|#[+itext|≡]btnlink
+        a._btnlink._l|#[+fas.fa-bars]btnlink
         br
 
     ._p
       +repeat(2)
-        a._btnlink._XL btnlink
-        a._btnlink._XL|#[+isvg(svgi.bars)._icon_label]btnlink
-        a._btnlink._XL|#[+itext._icon_label|≡]btnlink
+        a._btnlink._xl btnlink
+        a._btnlink._xl|#[+isvg(svgi.bars)]btnlink
+        a._btnlink._xl|#[+itext|≡]btnlink
+        a._btnlink._xl|#[+fas.fa-bars]btnlink
         br
 
     ._p._outline
       | normal
       a._link link
       a._btnlink btnlink
-      a._btnlink._L btnlink
-      a._btnlink._XL btnlink
+      a._btnlink._l btnlink
+      a._btnlink._xl btnlink
 
     ._p._outline
       | normal
-      | #[a._link link]
+      a._link link
       | #[a._hover_link hover_link]
       | #[span._hover_scale hover_scale]
-      | #[span._hover_scale_a|#[a hover_scale]]
+      | #[span._hover_scale_a: a hover_scale]
       | #[a._hover_scale hover_scale]
 
     hr

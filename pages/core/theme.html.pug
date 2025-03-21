@@ -11,6 +11,12 @@ block append style
   //- style.
   //- style.
 
+mixin ba(href='',_onclick)
+  a(href=href onclick=onclick(_onclick))&attributes(attributes): block
+
+mixin liba(href='',_onclick)
+  li: a(href=href onclick=onclick(_onclick))&attributes(attributes): block
+
 mixin block_1(title)
   div&attributes(attributes)._text_justify
     h3._inline._h7 !{title}
@@ -64,11 +70,11 @@ block main
 
         +block_4('Optimize for Responsiveness')| Your website should look and function well on all devices, including desktops, tablets, and smartphones. Use responsive design techniques to ensure your theme adapts seamlessly to different screen sizes. Test your design on multiple devices to identify and fix any issues.
 
-        +block_4('Use High-Quality Images and Graphics')| Visual elements like images, icons, and graphics add depth and interest to your theme. Invest in high-quality visuals that align with your brand’s style. Use tools like Unsplash or Pexels for free stock photos, and tools like Canva for creating custom graphics.
+        +block_4('Use High-Quality Images and Graphics')| Visual elements like images, icons, and graphics add depth and interest to your theme. Invest in high-quality visuals that align with your brand's style. Use tools like Unsplash or Pexels for free stock photos, and tools like Canva for creating custom graphics.
 
     section
 
-      +block_1('Consistent Branding')._p| : Maintain consistency in your branding elements, such as logos, colors, fonts, and styles. Consistent branding helps build brand recognition and trust. Create a style guide that outlines your brand’s visual identity and design principles.
+      +block_1('Consistent Branding')._p| : Maintain consistency in your branding elements, such as logos, colors, fonts, and styles. Consistent branding helps build brand recognition and trust. Create a style guide that outlines your brand's visual identity and design principles.
 
       +block_1('Ensure Fast Loading Times')._p| : A slow website can frustrate visitors and lead to high bounce rates. Optimize your theme for speed by minimizing the use of large images, leveraging browser caching, and using a content delivery network (CDN). Tools like GTmetrix or Google PageSpeed Insights can help you identify and fix performance issues.
 
@@ -100,10 +106,10 @@ block main
         h3 Texts and Hyperlinks
         .links: p._text_justify
           | Texts may appear in #[span._tc_blue blue], #[span._tc_purple purple], #[span._tc_orange orange] or #[span._tc_red red].
-          | Standard color were used on #[+a("#xt")#normalink._stay_fresh._no_wrap normal hyperlinks] and #[+a("")._no_wrap visited links].
-          | You can remove color from a hyperlink using the #[code._code._no_wrap _no_color] class, to make a #[+a("")._no_color._no_wrap plain hyperlinks].
-        //- script.
-          document.getElementById('normalink').href+=(new Date().getTime());
+          | Standard color were used on #[+ba#normalink._stay_fresh._no_wrap normal hyperlinks] and #[+ba._no_wrap visited links].
+          | You can remove color from a hyperlink using the #[code._code._no_wrap _no_color] class, to make a #[+ba._no_color._no_wrap plain hyperlinks].
+        script.
+          document.getElementById('normalink').href+='?t='+(new Date().getTime());
 
 block footer
   +footer#_footer._c_bg_1._tc_1_2
@@ -124,15 +130,15 @@ block footer
       ._f_12_5: ._mv
         h6._h7._no_margin Primary Segment
         ul._no_bullet._no_pad
-          +lia('#')._stay_fresh._no_u Put some links
-          +lia('#')._stay_fresh._no_u To some posts
-          +lia('#')._stay_fresh._no_u Or some pages
+          +liba._stay_fresh._no_u Put some links
+          +liba._stay_fresh._no_u To some posts
+          +liba._stay_fresh._no_u Or some pages
 
       ._f_12_5: ._mv
         h6._h7._no_margin Secondary Segment
         ul._no_bullet._no_pad
-          +lia('#')._stay_fresh._no_u Put some links
-          +lia('#')._stay_fresh._no_u To some posts
-          +lia('#')._stay_fresh._no_u Or some pages
+          +liba._stay_fresh._no_u Put some links
+          +liba._stay_fresh._no_u To some posts
+          +liba._stay_fresh._no_u Or some pages
 
     p._small._system !{copyright}
