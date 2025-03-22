@@ -110,7 +110,7 @@ template { @extend ._hidden; }
 li { @extend ._reset_margin; }
 
 // fix margins on all paragraphing elements.
-ul,ol,dl,li,blockquote,
+ul,ol,dl,blockquote,
 ._pre,pre,
 ._p,p { margin-top: 1rem; margin-bottom: 1rem }
 
@@ -306,8 +306,8 @@ textarea { resize: vertical }
     font-size: 1.7em;
     line-height: .6;
     min-width: .6em;
-    top: -0.06em;
-    vertical-align: -0.07em;
+    top: -0.07em;
+    vertical-align: -0.086em;
   }
 }
 
@@ -320,7 +320,7 @@ textarea { resize: vertical }
   .isvg {
     height: 100%;
     min-width: 100%;
-    vertical-align: .11em;
+    vertical-align: .115em;
   }
 }
 
@@ -348,13 +348,17 @@ textarea { resize: vertical }
   @extend ._radius_x25r;
   padding: 0 .25em;
   margin: .1em;
+
   @extend ._inblock;
   @extend ._lh_1;
   vertical-align: bottom;
   min-width: 1em;
+
   @extend ._border;
-  @extend ._text_center;
   border-color: $tc_2_9;
+
+  @extend ._text_center;
+
   &._l { padding: .25em .5em }
   &._xl { padding: .5em 1em }
 }
@@ -789,14 +793,12 @@ $angles : 45, 90, 135, 180, 225, 270, 315;
 ._tc_contra { color: $light_contra }
 
 ._dark {
-
-  ._tc_blue   { color: $dark_blue   }
-  ._tc_purple { color: $dark_purple }
-  ._tc_orange { color: $dark_orange }
-  ._tc_red    { color: $dark_red    }
-  ._tc_green  { color: $dark_green  }
-  ._tc_contra { color: $dark_contra }
-
+._tc_blue   { color: $dark_blue   }
+._tc_purple { color: $dark_purple }
+._tc_orange { color: $dark_orange }
+._tc_red    { color: $dark_red    }
+._tc_green  { color: $dark_green  }
+._tc_contra { color: $dark_contra }
 }
 
 // ======================================================== EOF */
