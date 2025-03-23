@@ -14,18 +14,6 @@ block style
   style.
   //- style.
 
-block main
-
-  +main#_main: article
-
-    section._small._i // sorry, nothing at the moment tho.
-
-    hr
-
-  //- main
-
-//- block main
-
 block styleSwitch
   +_a.link._c_base(onclick=onclick('window.test.disableStyle();') title="Toggle Style") s
   style.
@@ -40,3 +28,13 @@ block styleSwitch
       window.test = { disableStyle };
     })();
   //- script.
+
+block main
+
+  +main#_main: article
+
+    section._small._i // sorry, nothing at the moment tho.
+
+  //- main
+
+//- block main

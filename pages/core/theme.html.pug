@@ -11,10 +11,10 @@ block append style
   //- style.
   //- style.
 
-mixin ba(href='',_onclick)
+mixin ba(href='#',_onclick)
   a(href=href onclick=onclick(_onclick))&attributes(attributes): block
 
-mixin liba(href='',_onclick)
+mixin liba(href='#',_onclick)
   li: a(href=href onclick=onclick(_onclick))&attributes(attributes): block
 
 mixin block_1(title)
@@ -31,8 +31,8 @@ mixin block_3(title)
   p._text_justify: block
 
 mixin block_4(title)
-  ._radius._pa._bg_2_2._tc_2_2._mv
-    h3._h6._tc_2_4 !{title}
+  ._radius_x5r._pa._c_bg_2._mv
+    h3._h6 !{title}
     p._text_justify: block
 
 block main
@@ -92,9 +92,9 @@ block main
         .buttons ._btnlink { min-width:5em }
       //- style.
 
-      ._f_12_8._f_max: ._mb_2
+      ._f_12_9._f_max: ._mb_2
         h3 Buttons
-        .buttons._small
+        .buttons
           div
             +a._btnlink._xl Primary
             +a._btnlink._xl Secondary
@@ -107,14 +107,13 @@ block main
       ._fill: ._mb_2
         h3 Texts and Hyperlinks
         .links: p._text_justify
-          | Texts may appear in #[span._tc_blue blue], #[span._tc_purple purple], #[span._tc_orange orange] or #[span._tc_red red].
-          | Standard color were used on #[+ba#normalink._stay_fresh._no_wrap normal hyperlinks] and #[+ba._no_wrap visited links].
-          | You can remove color from a hyperlink using the #[code._code._no_wrap _no_color] class, to make a #[+ba._no_color._no_wrap plain hyperlinks].
+          | Standard color were used on #[+ba#normalink._stay_fresh._no_wrap normal hyperlinks] and #[+ba('')._no_wrap visited hyperlinks].
+          | You can remove color from texts by using the #[code._code._no_wrap _no_color] helper class.  Use it to make a #[+ba._no_color._no_wrap colorless hyperlinks].
         script.
           document.getElementById('normalink').href+='?t='+(new Date().getTime());
 
 block footer
-  +footer#_footer._c_bg_1._tc_1_2
+  +footer#_footer._pt._c_bg_1
 
     ._flex._gap_2
 

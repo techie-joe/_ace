@@ -14,7 +14,7 @@ block append vars
 block append style
   +css('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css')
 
-mixin ba(href='',_onclick)
+mixin ba(href='#',_onclick)
   a(href=href onclick=onclick(_onclick))&attributes(attributes): block
 
 block main
@@ -27,7 +27,7 @@ block main
       | #[a anchor]
       | #[+ba._fresh fresh]
       | #[+ba#normalink hyperlink]
-      | #[+ba visited]
+      | #[+ba('') visited]
       | #[+ba._no_color no-color]
 
     script.
@@ -45,10 +45,10 @@ block main
 
     ._p._outline
       | normal
-      a._link link
-      a._link.__icon|#[+isvg(svgi.bars)]
-      a._link.__icon|#[+itext|≡]
-      a._link.__icon|#[+fas.fa-bars]
+      +ba._link link
+      +ba._link.__icon|#[+isvg(svgi.bars)]
+      +ba._link.__icon|#[+itext|≡]
+      +ba._link.__icon|#[+fas.fa-bars]
 
     ._p
       +repeat(2)
@@ -135,8 +135,6 @@ block main
     details._details._border._radius_x25r
       summary._radius_x25r The visible summary or title.
       ._detail The collapsible content as used to create web pages.
-
-    hr
 
   //- main
 

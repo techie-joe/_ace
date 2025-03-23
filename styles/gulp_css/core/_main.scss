@@ -207,7 +207,7 @@ sup { top: -.4em }
 // <section> and <article> in Chrome, Firefox, and Safari
 ._hero_1,._hero_2,._hero_3,
 ._h1,._h2,._h3,._h4,._h5,._h6,._h7,
-h1,h2,h3,h4,h5,h6 { @extend ._p; @extend ._lh_1; }
+h1,h2,h3,h4,h5,h6 { @extend ._p; }
 h1 { @extend ._h1; }
 
 ._h7 { @extend ._b; }
@@ -334,32 +334,28 @@ textarea { resize: vertical }
 
 ._btnlink,
 ._link {
-  @extend ._cursor_pointer;
-  @extend ._no_deco;
-  @extend ._no_wrap;
-  @extend ._radius_x25r;
-  padding: 0 .25em;
-  margin: .1em;
 
-  @extend ._inblock;
-  @extend ._lh_1;
-  @extend ._text_center;
-  min-width: 1em;
+  & {
+    @extend ._cursor_pointer;
+    @extend ._no_deco;
+    @extend ._no_wrap;
+    @extend ._radius_x25r;
+    padding: 0 .25em;
+    margin: .1em;
+  
+    @extend ._inblock;
+    @extend ._lh_1;
+    @extend ._text_center;
+    min-width: 1em;
+  }
 
-  &._l { padding: .25em .5em }
+  &._l  { padding: .25em .5em }
   &._xl { padding: .5em 1em }
-}
 
-._btnlink {
-  @extend ._border;
-  border-color: $tc_2_9;
-}
-
-._btnlink,
-._link {
   ._isvg,
   ._itext { margin-left:-.2em }
-  ._fa { margin-left: -0.1em; margin-right: 0.1em }
+  ._fa { margin-left:-0.1em;margin-right:0.1em }
+  
   &._l {
     ._isvg { margin-right:.2em }
     ._itext { margin-right:.3em }
@@ -370,18 +366,24 @@ textarea { resize: vertical }
     ._itext { margin-left:-.2em;margin-right:.6em }
     ._fa { margin-left:-.1em;margin-right:.8em }
   }
+
+  &.__icon {
+    & { padding:0; }
+    &._l { padding: .25em }
+    &._xl { padding: .5em }
+    ._icon { @extend ._m0; }
+  }  
+
 }
 
-._btnlink.__icon,
-._link.__icon {
-  & { padding:0; }
-  ._icon { @extend ._m0; }
-  &._l { padding: .25em }
-  &._xl { padding: .5em }
-}
+._btnlink {
 
-._btnlink.__icon {
-  & { line-height:0; margin-top:0; margin-bottom:0 }
+  & { @extend ._border; }
+
+  &.__disabled { opacity: .5; cursor: default !important; }
+
+  &.__icon { line-height:0; margin-top:0; margin-bottom:0 }
+
 }
 
 // ===============================================================
@@ -413,8 +415,13 @@ $select_tc    : #000;
 }
 
 ._c_bg_1 {
-  & { background-color: #ccc }
-  &._dark,._dark & { background-color: #111 }
+  & { background-color: $bg_2_8 }
+  &._dark,._dark & { background-color: $bg_1_2 }
+}
+
+._c_bg_2 {
+  & { background-color: $bg_1_5 }
+  &._dark,._dark & { background-color: $bg_2_2 }
 }
 
 // ------------------------------------------------- containers */
@@ -465,30 +472,45 @@ hr { @extend ._st; @extend ._sb; }
   &:active  { @include color( $dark_link_tca ); }
 }
 
+// glow when hover
+._a ._hover_link {
+  &:hover { @include color( $light_contra, $light_button_bg ); }
+}
+._dark._a ._hover_link {
+  &:hover { @include color( $dark_contra, $dark_button_bg); }
+}
+
 ._a ._btnlink,
-._btnlink,
 ._a ._link,
-._link {
+._dark._a ._btnlink,
+._dark._a ._link {
   &,&:visited { color: inherit }
+}
+
+._a ._btnlink {
+  &.__primary { &,&:hover { @include color(white,$bg_9_5); } }
+  &.__secondary { background-color: $bg_2_8 }
+}
+
+._dark._a ._btnlink {
+  &.__primary { &,&:hover { @include color(white,$bg_9_5); } }
+  &.__secondary { background-color: $bg_2_2 }
+}
+
+._a ._btnlink,
+._a ._link {
   &:hover { @include color( $light_contra, $light_button_bg ); }
 }
 
 ._dark._a ._btnlink,
-._dark ._btnlink,
-._dark._a ._link,
-._dark ._link {
-  &,&:visited { color: inherit }
+._dark._a ._link {
   &:hover { @include color( $dark_contra, $dark_button_bg); }
 }
 
-// glow when hover
-._hover_link {
-  &:hover { @include color( $light_contra, $light_button_bg ); }
+._a ._btnlink,
+._a ._link {
+  &.__disabled { color:inherit !important; background: none !important }
 }
-._dark ._hover_link {
-  &:hover { @include color( $dark_contra, $dark_button_bg); }
-}
-
 
 // ===============================================================
 // Transitions
