@@ -1,0 +1,39 @@
+-
+  function range(n,min,max) { return Math.min(Math.max(n, min),max) }
+  function colorRange(n,min=0,max=255) { return range(n,min,max) }
+  function hexToInt(hex) { return colorRange(parseInt(hex, 16)); }
+  function intToHex(int) { return colorRange(Math.floor(int)).toString(16).padStart(2, '0'); }
+  function hexColor(c) { return intToHex(c[0])+intToHex(c[1])+intToHex(c[2]) }
+  function rgbColor(hex) {
+    if (hex.length === 6) {
+      const r = hexToInt(hex.substring(0, 2));
+      const g = hexToInt(hex.substring(2, 4));
+      const b = hexToInt(hex.substring(4, 6));
+      return [r, g, b];
+    } else {
+      throw new Error('Invalid hex color code');
+    }
+  }
+
+  /* ======== REFERENCE ==========================================
+                |   |
+              0123-4567
+              fedc-ba98
+                | - |
+  ============================================================= */
+
+  var rainbow = [
+    '222222',
+    'DDDDDD',
+    'eecc00',
+    '88AA00',
+    '008800',
+    '0088AA',
+    '0066CC',
+    '2244DD',
+    '8822ee',
+    '992299',
+    'CC0066',
+    'DD0000',
+    'DD7700',
+  ];
