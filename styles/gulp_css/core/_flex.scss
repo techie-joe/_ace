@@ -88,6 +88,6 @@ $factors: (3, 4, 6);
 // 1. force full width.
 // 2. fill available width.
 ._full  { @extend ._f; flex: $gbase $gbase 100%; } /* 1 */
-._fill  { @extend ._f; flex: $gbase $gbase 0; } /* 2 */
+._fill  { @extend ._f; flex: $gbase*10 $gbase 0; } /* 2 */
 
 // ======================================================== EOF */

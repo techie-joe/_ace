@@ -88,21 +88,23 @@ block main
 
     section: ._flex._gap_2
 
-      ._fill._f_max: ._mb_2
-        style.
-          .buttons ._btnlink { min-width:5em; margin: .2rem; }
+      style.
+        .buttons ._btnlink { min-width:5em }
+      //- style.
+
+      ._f_12_8._f_max: ._mb_2
         h3 Buttons
         .buttons._small
           div
-            +a._btnlink Primary
-            +a._btnlink Secondary
-            +a._btnlink Ordinary
+            +a._btnlink._xl Primary
+            +a._btnlink._xl Secondary
+            +a._btnlink._xl Ordinary
           div
-            +a._btnlink Primary
-            +a._btnlink Secondary
-            +a._btnlink Ordinary
+            +a._btnlink._xl Primary
+            +a._btnlink._xl Secondary
+            +a._btnlink._xl Ordinary
 
-      ._f_12_11: ._mb_2
+      ._fill: ._mb_2
         h3 Texts and Hyperlinks
         .links: p._text_justify
           | Texts may appear in #[span._tc_blue blue], #[span._tc_purple purple], #[span._tc_orange orange] or #[span._tc_red red].

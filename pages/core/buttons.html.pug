@@ -1,0 +1,36 @@
+extends _html
+
+block append vars
+  - heading = `Buttons`
+  - about   = `Button styles for ${name}.`
+  - updateTitle( `${heading} | ${name}` )
+  - updateDescription( `${about}` )
+  - updateUrl( siteUrl+'buttons.html' )
+
+block append style
+  style.
+
+    .o { height:2rem }
+
+  //- style.
+  style.
+    .buttons ._btnlink { min-width:5em }
+  //- style.
+
+block main
+  +main#_main: article
+
+    section._mv.buttons._small
+      div
+        +a._btnlink._xl Primary
+        +a._btnlink._xl Secondary
+        +a._btnlink._xl Ordinary
+      div
+        +a._btnlink._xl Primary
+        +a._btnlink._xl Secondary
+        +a._btnlink._xl Ordinary
+    //- section
+
+    hr
+  //- main
+//- block main
