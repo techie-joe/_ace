@@ -303,11 +303,11 @@ textarea { resize: vertical }
   @extend ._icon;
   .itext {
     @extend ._relative;
-    font-size: 1.7em;
+    font-size: 1.6em;
     line-height: .6;
     min-width: .6em;
-    top: -0.07em;
-    vertical-align: -0.086em;
+    top: -0.04em;
+    vertical-align: -0.05em;
   }
 }
 
@@ -332,16 +332,8 @@ textarea { resize: vertical }
   @extend ._no_deco;
 }
 
+._btnlink,
 ._link {
-  @extend ._cursor_pointer;
-  @extend ._no_deco;
-  @extend ._no_wrap;
-  @extend ._radius_x25r;
-  padding: 0 .25em;
-  margin: .1em;
-}
-
-._btnlink {
   @extend ._cursor_pointer;
   @extend ._no_deco;
   @extend ._no_wrap;
@@ -351,16 +343,16 @@ textarea { resize: vertical }
 
   @extend ._inblock;
   @extend ._lh_1;
-  vertical-align: bottom;
-  min-width: 1em;
-
-  @extend ._border;
-  border-color: $tc_2_9;
-
   @extend ._text_center;
+  min-width: 1em;
 
   &._l { padding: .25em .5em }
   &._xl { padding: .5em 1em }
+}
+
+._btnlink {
+  @extend ._border;
+  border-color: $tc_2_9;
 }
 
 ._btnlink,
@@ -380,16 +372,16 @@ textarea { resize: vertical }
   }
 }
 
+._btnlink.__icon,
 ._link.__icon {
-  & { padding:0 }
-  ._icon { @extend ._m0; }
-}
-
-._btnlink.__icon {
-  & { padding:0; @extend ._lh_0; }
+  & { padding:0; }
   ._icon { @extend ._m0; }
   &._l { padding: .25em }
   &._xl { padding: .5em }
+}
+
+._btnlink.__icon {
+  & { line-height:0; margin-top:0; margin-bottom:0 }
 }
 
 // ===============================================================
