@@ -81,7 +81,7 @@ body { @extend ._reset_margin; } /* 1 */
   margin : 0;
   padding: 0;
 }
-// ._full_width { width:100%; }
+._full_width { width:100%; }
 
 // 1. set _views container.
 // 2. contain marginal elements.
@@ -472,14 +472,6 @@ hr { @extend ._st; @extend ._sb; }
   &:active  { @include color( $dark_link_tca ); }
 }
 
-// glow when hover
-._a ._hover_link {
-  &:hover { @include color( $light_contra, $light_button_bg ); }
-}
-._dark._a ._hover_link {
-  &:hover { @include color( $dark_contra, $dark_button_bg); }
-}
-
 ._a ._btnlink,
 ._a ._link,
 ._dark._a ._btnlink,
@@ -497,11 +489,13 @@ hr { @extend ._st; @extend ._sb; }
   &.__secondary { background-color: $bg_2_2 }
 }
 
+// glow when hover
+._a ._hover_link,
 ._a ._btnlink,
 ._a ._link {
   &:hover { @include color( $light_contra, $light_button_bg ); }
 }
-
+._dark._a ._hover_link,
 ._dark._a ._btnlink,
 ._dark._a ._link {
   &:hover { @include color( $dark_contra, $dark_button_bg); }
