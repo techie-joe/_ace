@@ -78,16 +78,20 @@ block view
     +view(id=`view-${v}`)._full_view
 
       style.
-        #view-#{v} {
+        ._html #view-#{v} {
           background-color: #20002255;
           color:#222;
         }
         ._dark #view-#{v} { color:inherit }
 
-      h2._h7 View ##{v}
-      hr
+      ._page_layout
+  
+        h2._h7 View ##{v}
+        hr
 
-      +pre._ma: +putData
+        +pre._ma: +putData
+
+      //- _page_layout
     
     //- view
 

@@ -10,7 +10,7 @@ mixin navbar
       temp = [
         ['index.html','Core'],
         ['basics.html','Basics'],
-        ['text.html','Text'],
+        ['texts.html','Texts'],
         ['icons.html','Icons'],
         ['links.html','Links'],
         ['buttons.html','Buttons'],
@@ -20,9 +20,6 @@ mixin navbar
         ['view.html','View'],
         ['menu.html','Menu'],
         ['layouts.html','Layouts'],
-        ['theme.html','Theme'],
-        ['blank.html','Blank'],
-        ['test.html','Test'],
       ];
     each v in temp
       +_a._link(href=v[0]) #{v[1]}

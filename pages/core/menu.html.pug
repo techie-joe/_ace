@@ -41,7 +41,7 @@ mixin sample_1
       ['','Contact'],
     ];
   each v in temp
-    +_a._link(href=v[0]) #{v[1]}
+    +_a._link._l(href=v[0]) #{v[1]}
 
 mixin sample_2
   -
@@ -74,7 +74,7 @@ block view
 
         hr
 
-        section: ._c_bg_1._radius_x5r: +nav._clearfix
+        section._mv: ._c_bg_1._radius_x5r: +nav._clearfix
           +a()._btnlink| Buttons
           +_a()._link| Links
           +_a()._link.__icon| &bull;
@@ -86,9 +86,7 @@ block view
           +_a()._link.__icon: +isvg(svgi.image)
         //- section
 
-        hr
-
-        section: ._c_bg_1._radius_x5r: +nav._clearfix
+        section._mv: ._c_bg_1._radius_x5r: +nav._clearfix
           +sample_2
           +a()._btnlink._l.btn.__icon: +isvg(svgi.ellipsis)
           +a()._btnlink._l.btn.__icon: +isvg(svgi.compare)
@@ -98,9 +96,7 @@ block view
           +a()._btnlink._l.btn.__icon: +isvg(svgi.image)
         //- section
 
-        hr
-
-        section.flatmenu: ._c_bg_1._radius_x5r: +nav._clearfix
+        section._mv.flatmenu: ._c_bg_1._radius_x5r: +nav._clearfix
           +sample_2
           +a()._btnlink._l.btn.__icon: +isvg(svgi.ellipsis)
           +a()._btnlink._l.btn.__icon: +isvg(svgi.compare)
@@ -122,7 +118,7 @@ block view
 
       section#_navbar._flex._c_bg_1
         ._f._text_center: +logo
-        ._fill(style="flex-basis:20rem"): +nav(style="padding:0.75rem"): +sample_1
+        ._fill(style="flex-basis:20rem"): +nav(style="padding:0.55rem 0.75rem"): +sample_1
       //- section
 
       #view_1: ._main_layout: ._p: +examples

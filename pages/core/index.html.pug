@@ -2,7 +2,7 @@ extends _html
 
 block append vars
   - heading = `Core`
-  - about   = `The main structure of ${name}.`
+  - about   = `Lets explore the main structure and features of our template.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'index.html' )
@@ -11,10 +11,50 @@ block append style
   //- style.
   //- style.
 
-//- block main
+block header
+
+  +header#_header
+    +heading#_heading !{heading}
+    p
+      | !{description}
+      | 
+    hr
+
+block main
 
   +main#_main: article
-    +pageData#_pageData
+
+    ._mv._c_bg_1._radius_x5r._pa
+      -
+        temp = [
+          ['basics.html','Basics'],
+          ['texts.html','Texts'],
+          ['icons.html','Icons'],
+          ['links.html','Links'],
+          ['buttons.html','Buttons'],
+          ['colors.html','Colors'],
+          ['containers.html','Containers'],
+          ['flex.html','Flex'],
+          ['view.html','View'],
+          ['menu.html','Menu'],
+          ['layouts.html','Layouts'],
+        ];
+      each v in temp
+        +a._link._l(href=v[0]) #{v[1]}
+
+    ._mv._c_bg_1._radius_x5r._pa
+      -
+        temp = [
+          ['theme.html','Theme'],
+          ['blank.html','Blank'],
+          ['test.html','Test'],
+        ];
+      each v in temp
+        +a._link._l(href=v[0]) #{v[1]}
+
+    ._mv._c_bg_1._radius_x5r._pa
+      +a(homeUri+'themejs/')(target="ace_themejs")._link._l| ThemeJs
+
   //- main
 
 //- block main

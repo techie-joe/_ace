@@ -2,7 +2,7 @@ extends _html
 
 block append vars
   - heading = `Links`
-  - about   = `Intuitively simple styles for link elements.`
+  - about   = `Link elements use simple and intuitive styles.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'links.html' )
@@ -110,7 +110,7 @@ block main
       | normal
       a._link link
       a._btnlink btnlink
-      a._hover_link hover_link
+      +_a._hover_link hover_link
 
     ._p._outline
       | normal

@@ -2,11 +2,23 @@ extends _html
 
 block append vars
   - heading = `Colors`
-  - about   = `Colors add personality and theme to your page.`
+  - about   = `Colors adds personality to your site.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'colors.html' )
   include _color_functions
+
+block header
+
+  include _nav
+  +navbar
+
+  +header#_header
+    +heading#_heading !{heading}
+    p
+      | !{description}
+      | See colors being applied as a #[+a('theme.html') theme].
+    hr
 
 block append style
   style.
@@ -28,7 +40,6 @@ block append style
   //- style.
 
 //- ☯
-
 mixin theme(_b,f1)
   .atheme._flex
     - n = 0;
