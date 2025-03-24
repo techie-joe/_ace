@@ -14,30 +14,35 @@ block append style
 
     }
     .atheme ._f {
-      padding: 5px;
+      padding: 5px 2px;
       text-align: center;
     }
     .i {
       display: inline-block;
-      font-size: 1.5em;
+      font-size: 2rem;
       line-height: 1;
       text-align: center;
       cursor: default;
+      user-select: none;
     }
   //- style.
 
 //- ☯
-mixin theme(_b,f)
+
+mixin theme(_b,f1)
   .atheme._flex
     - n = 0;
     while n <= 255
       - c = [n,n,n];
       - b = rgbColor(_b);
       - bg = hexColor(c);
-      - fg = hexColor(f(b,c));
+      - fg = hexColor(f1(b,c));
       ._f(
         style="background-color:#"+bg+";color:#"+fg+";"
-      ): span.i|☯
+      )
+        .i|☯
+        ._smallest._uppercase._b._mono|#{bg}
+        ._smallest._uppercase._b._mono|#{fg}
       - n+=17;
 
 block main
@@ -46,13 +51,13 @@ block main
 
     section
       -
-        v1 = (b,c)=>(255-c);
+        v1 = (b,c)=>(255-c)*(b/255);
         f1 = (b,c)=>[
           v1(b[0],c[0]),
           v1(b[1],c[1]),
           v1(b[2],c[2]),
         ];
-      +theme('222222',f1)
+      +theme('FFFFFF',f1)
 
   //- main
 

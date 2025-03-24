@@ -1,4 +1,4 @@
-extends _html
+extends ../../core/_html
 
 block append vars
   - heading = `Blank`
@@ -8,8 +8,9 @@ block append vars
   - updateUrl( siteUrl+'blank.html' )
 
 //- block main
+
   +main#_main: article
     +pageData#_pageData
-    hr
   //- main
+
 //- block main

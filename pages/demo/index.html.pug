@@ -14,17 +14,5 @@ block main
       +menu
 
     ._mv._nav_color._radius_x5r._pa
-      b._system| Extras : &nbsp;
-      -
-        temp = [
-          ['blank.html','Blank'],
-          ['starter.html','Starter'],
-          ['theme.html','Theme'],
-          ['menu.html','Menu'],
-        ];
-      each v in temp
-        +menu_link(v[0])=`${v[1]}`
-
-    ._mv._nav_color._radius_x5r._pa
       b._system| Plugins : &nbsp;
       +_a(homeUrl+'themejs/')(target="ace_themejs")._link| ThemeJs
