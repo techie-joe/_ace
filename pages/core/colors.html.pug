@@ -7,6 +7,27 @@ block append vars
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'colors.html' )
   include _color_functions
+  -
+    /* ======== REFERENCE ========================================
+                  |   |
+                0123-4567
+                fedc-ba98
+                  | - |
+    =========================================================== */
+
+    var rainbow = [
+      'eecc00',
+      '88AA00',
+      '008800',
+      '0088AA',
+      '0066CC',
+      '2244DD',
+      '8822ee',
+      '992299',
+      'CC0066',
+      'DD0000',
+      'DD7700',
+    ];
 
 block header
 
@@ -31,7 +52,7 @@ block append style
     }
     .i {
       display: inline-block;
-      font-size: 2rem;
+      font-size: 2.8rem;
       line-height: 1;
       text-align: center;
       cursor: default;
@@ -40,20 +61,25 @@ block append style
   //- style.
 
 //- ☯
-mixin theme(_b,f1)
+mixin theme(_b,_c,_f)
   .atheme._flex
+    -
+      mix = (c,s,f)=>[
+        f(s[0],c[0]),
+        f(s[1],c[1]),
+        f(s[2],c[2]),
+      ];
     - n = 0;
     while n <= 255
-      - c = [n,n,n];
+      - s = [n,n,n];
       - b = rgbColor(_b);
-      - bg = hexColor(c);
-      - fg = hexColor(f1(b,c));
-      ._f(
-        style="background-color:#"+bg+";color:#"+fg+";"
-      )
+      - c = rgbColor(_c);
+      - bg = hexColor(mix(b,s,_f[0]));
+      - fg = hexColor(mix(c,s,_f[1]));
+      ._f(style="background-color:#"+bg+";color:#"+fg+";")
         .i|☯
-        ._smallest._uppercase._b._mono|#{bg}
-        ._smallest._uppercase._b._mono|#{fg}
+        ._smaller._uppercase._b._mono|#{bg}
+        ._smaller._uppercase._b._mono|#{fg}
       - n+=17;
 
 block main
@@ -61,14 +87,19 @@ block main
   +main#_main: article
 
     section
-      -
-        v1 = (b,c)=>(255-c)*(b/255);
-        f1 = (b,c)=>[
-          v1(b[0],c[0]),
-          v1(b[1],c[1]),
-          v1(b[2],c[2]),
-        ];
-      +theme('FFFFFF',f1)
+      - o_w = (s,c)=>(s);
+      - w_o = (s,c)=>(255-s);
+      - o_c = (s,c)=>(c/255)*(s);
+      - c_o = (s,c)=>(c/255)*(255-s);
+      - c_w = (s,c)=>(c/255)*(255-s)+(s);
+      - c__ = (s,c)=>(c/255)*(255-s)+(s+s);
+      +theme('FFFFFF','FFFFFF',[o_w,w_o])
+
+      each c in rainbow
+        +theme(c,c,[o_c,c_o])
+        +theme(c,c,[o_c,c_w])
+
+      //- +theme('2244DD','2244DD',[o_c,c_o])
 
   //- main
 

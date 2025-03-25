@@ -44,13 +44,16 @@ block append widgets
       width:1.5rem;
       height:1.5rem;
       margin:.1rem;
+      padding:0;
       border:1px solid #888;
       line-height:1;
       font-weight:normal;
       border-radius:.3rem;
+      vertical-align: middle;
     }
+    #topi .ticon { font-size:1.45rem }
   //- style.
 
   #topi._absolute._full_width._no_print: .abs
     block styleSwitch
-    +_a.link._link._c_base(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)") &bull;
+    +_a.link._link._c_base.ticon(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)")|☯
