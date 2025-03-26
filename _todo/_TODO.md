@@ -2,8 +2,8 @@
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
-### March 24, 2025 - v0.1.25 b12.321
-- housekeep: core menu
+### March 24, 2025 - v0.1.25 b12.322
+- housekeep: core color
 
 ---
 

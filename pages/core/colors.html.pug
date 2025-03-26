@@ -7,27 +7,6 @@ block append vars
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'colors.html' )
   include _color_functions
-  -
-    /* ======== REFERENCE ========================================
-                  |   |
-                0123-4567
-                fedc-ba98
-                  | - |
-    =========================================================== */
-
-    var rainbow = [
-      'eecc00',
-      '88AA00',
-      '008800',
-      '0088AA',
-      '0066CC',
-      '2244DD',
-      '8822ee',
-      '992299',
-      'CC0066',
-      'DD0000',
-      'DD7700',
-    ];
 
 block header
 
@@ -38,18 +17,12 @@ block header
     +heading#_heading !{heading}
     p
       | !{description}
-      | See colors being applied as a #[+a('theme.html') theme].
+      | See colors being applied to a #[+a('theme.html') theme].
     hr
 
 block append style
   style.
-    .atheme {
-
-    }
-    .atheme ._f {
-      padding: 5px 2px;
-      text-align: center;
-    }
+    .atheme ._f { text-align: center; padding:2px }
     .i {
       display: inline-block;
       font-size: 2.8rem;
@@ -77,8 +50,8 @@ mixin theme(_b,_c,_f)
       - bg = hexColor(mix(b,s,_f[0]));
       - fg = hexColor(mix(c,s,_f[1]));
       ._f(style="background-color:#"+bg+";color:#"+fg+";")
-        .i|☯
-        ._smaller._uppercase._b._mono|#{bg}
+        //- .i|☯
+        ._smaller._uppercase._mono|#{bg}
         ._smaller._uppercase._b._mono|#{fg}
       - n+=17;
 
@@ -86,20 +59,61 @@ block main
 
   +main#_main: article
 
-    section
-      - o_w = (s,c)=>(s);
-      - w_o = (s,c)=>(255-s);
-      - o_c = (s,c)=>(c/255)*(s);
-      - c_o = (s,c)=>(c/255)*(255-s);
-      - c_w = (s,c)=>(c/255)*(255-s)+(s);
-      - c__ = (s,c)=>(c/255)*(255-s)+(s+s);
-      +theme('FFFFFF','FFFFFF',[o_w,w_o])
+    -
+      /* ======== REFERENCE ========================================
+                    |   |
+                  0123-4567
+                  fedc-ba98
+                    | - |
+      =========================================================== */
 
-      each c in rainbow
-        +theme(c,c,[o_c,c_o])
-        +theme(c,c,[o_c,c_w])
+      var rainbow = [
+        'FF7700',
+        'FFAA00',
+        '99AA00',
+        '00AA00',
+        '0099AA',
+        '0077ff',
+        'AA55EE',
+        'EE33EE',
+        'DD33AA',
+        'DD3333',
+      ];
 
-      //- +theme('2244DD','2244DD',[o_c,c_o])
+    - o_w = (s,c)=>(s);
+    - w_o = (s,c)=>(255-s);
+    - o_c = (s,c)=>(c/255)*(s);
+    - c_o = (s,c)=>(c/255)*(255-s);
+    - c_w = (s,c)=>(c/255)*(255-s)+(s);
+    - w_c = (s,c)=>(255-s)+(c);
+
+    section._scrollable
+
+      div(style="min-width:60em")
+
+        +theme('FFFFFF','FFFFFF',[o_w,w_o])
+
+        each c in rainbow
+          +theme('FFFFFF',c,[o_c,o_c])
+
+        each c in rainbow
+          +theme('FFFFFF',c,[o_w,c_o])
+
+        each c in rainbow
+          +theme('FFFFFF',c,[o_w,c_w])
+
+        each c in rainbow
+          +theme(c,c,[o_c,c_w])
+
+        each c in rainbow
+          +theme(c,c,[o_c,c_o])
+
+        each c in rainbow
+          +theme(c,c,[w_c,c_o])
+
+      //- div
+
+    //- section
 
   //- main
 
