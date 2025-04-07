@@ -2,7 +2,7 @@ extends _html
 
 block append vars
   - heading = `Texts`
-  - about   = `Text size and spacing were refined for better adaptability.`
+  - about   = `Texts have been optimized to enhance adaptability.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'texts.html' )
@@ -57,32 +57,34 @@ block main
 
     hr
 
-    section.gridlinesx._text_center
+    section.gridlinesx
 
-      p Helper classes allow you to customize the visual appearance of individual headings. They helps separate visual appearance from semantics, giving you better control over both. Use #[code._code _hero_1] to #[code._code _hero_3] or #[code._code _h1] to #[code._code _h7] to style your headings, and #[code._code _t1] to #[code._code _t10] for other texts.
+      p Use helper class to customize the visual appearance of headings and texts. They helps separate visual appearance from semantics, giving you better control over both. Use #[code._code _hero_1] to #[code._code _hero_3] for large texts, #[code._code _h1] to #[code._code _h7] for headings, and #[code._code _t1] to #[code._code _t10] for other texts.
 
       - var heros     = 'Text Sample';
       - var headings  = 'Text Sample';
-      p._hero_3 #{heros} 3
-      p._hero_2 #{heros} 2
-      p._hero_1 #{heros} 1
-      h1._h1 #{headings} 1
-      h2._h2 #{headings} 2
-      h3._h3 #{headings} 3
-      h4._h4 #{headings} 4
-      h5._h5 #{headings} 5
-      h6._h6 #{headings} 6
-      div._h7 #{headings} 7
-      p Normal Text
-      p
-        span Normal
-        +_
-        span._small Small
-        +_
-        span._smaller Smaller
-        +_
-        span._smallest Smallest
-      //- p
+
+      ._text_center
+        p._hero_3 #{heros} 3
+        p._hero_2 #{heros} 2
+        p._hero_1 #{heros} 1
+        h1._h1 #{headings} 1
+        h2._h2 #{headings} 2
+        h3._h3 #{headings} 3
+        h4._h4 #{headings} 4
+        h5._h5 #{headings} 5
+        h6._h6 #{headings} 6
+        div._h7 #{headings} 7
+        p Normal Text
+        p
+          span Normal
+          +_
+          span._small Small
+          +_
+          span._smaller Smaller
+          +_
+          span._smallest Smallest
+        //- p
 
     //- section
 

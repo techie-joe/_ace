@@ -27,14 +27,14 @@ block header
 block append widgets
 
   style.
-    #topi .abs {
+    #topSwitch .abs {
       position:absolute;
       top:0;
       right:15px;
       padding:.6rem;
     }
-    #topi .link i { font-style:normal }
-    #topi .link {
+    #topSwitch .link i { font-style:normal }
+    #topSwitch .link {
       font-family:monospace,monospace;
       font-size:1.3rem;
       text-decoration:none;
@@ -51,9 +51,9 @@ block append widgets
       border-radius:.3rem;
       vertical-align: middle;
     }
-    #topi .ticon { font-size:1.45rem }
+    #topSwitch .ticon { font-size:1.45rem }
   //- style.
 
-  #topi._absolute._full_width._no_print: .abs
-    block styleSwitch
-    +_a.link._link._c_base.ticon(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)")|☯
+  #topSwitch._absolute._full_width._no_print: .abs
+    block topSwitch
+      +_a.link._link._color.ticon(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)")|☯

@@ -24,7 +24,7 @@ block main
 
   +main#_main: article
 
-    ._mv._c_bg_1._radius_x5r._pa
+    ._mv._color_1._radius_x5r._pa
       -
         temp = [
           ['basics.html','Basics'],
@@ -42,17 +42,17 @@ block main
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}
 
-    ._mv._c_bg_1._radius_x5r._pa
+    ._mv._color_1._radius_x5r._pa
       -
         temp = [
-          ['theme.html','Theme'],
           ['blank.html','Blank'],
           ['test.html','Test'],
+          ['theme.html','Theme'],
         ];
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}
 
-    ._mv._c_bg_1._radius_x5r._pa
+    ._mv._color_1._radius_x5r._pa
       +a(homeUri+'themejs/')(target="ace_themejs")._link._l| ThemeJs
 
   //- main

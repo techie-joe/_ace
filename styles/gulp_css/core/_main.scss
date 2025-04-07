@@ -305,8 +305,8 @@ textarea { resize: vertical }
     @extend ._relative;
     font-size: 1.6em;
     line-height: .6;
-    min-width: .6em;
-    top: -0.04em;
+    min-width: .625em;
+    top: -0.05em;
     vertical-align: -0.066em;
   }
 }
@@ -380,7 +380,7 @@ textarea { resize: vertical }
 
   & { @extend ._border; }
 
-  &.__disabled { opacity: .5; cursor: default !important; }
+  &.__disabled { opacity: .4; cursor: default !important; }
 
   &.__icon { line-height:0; margin-top:0; margin-bottom:0 }
 
@@ -409,32 +409,33 @@ $select_tc    : #000;
 ._select         { @include selection; }
 
 // ------------------------------------------------------ bases */
-._c_base {
+._color {
   & { @include color( $light_tc, $light_bg ); }
   &._dark,._dark & { @include color( $dark_tc, $dark_bg ); }
 }
 
-._c_bg_1 {
-  & { background-color: $bg_2_8 }
-  &._dark,._dark & { background-color: $bg_1_2 }
+._color_1 {
+  & { background-color: #ccc }
+  &._dark,._dark & { background-color: #111 }
 }
 
-._c_bg_2 {
-  & { background-color: $bg_1_5 }
-  &._dark,._dark & { background-color: $bg_2_2 }
+._color_2 {
+  & { background-color: #eee }
+  &._dark,._dark & { background-color: #333 }
 }
 
 // ------------------------------------------------- containers */
-._html { @extend ._c_base; }
+._html { @extend ._color; }
 
 
 // --------------------------------------------------- headings */
 
 // ._hero_1,._hero_2,._hero_3,
+th,
 ._h1,._h2,._h3,._h4,._h5,._h6,._h7,
 h1,h2,h3,h4,h5,h6 {
-  & { @include color( $tc_2_6 ); }
-  ._dark & { @include color( $tc_2_4 ); }
+  & { @include color( #000 ); }
+  ._dark & { @include color( #FFF ); }
 }
 
 // ------------------------------------------------- seperators */
@@ -453,57 +454,89 @@ hr { @extend ._st; @extend ._sb; }
 
 // ------------------------------------------------------ links */
 
-._a a {
-  &._fresh:visited,
-  &         { @include color( $light_link_tci ); }
-  &:visited { @include color( $light_link_tcv ); }
-  &:hover   { @include color( $light_link_tci ); }
-  // &._btnlink:active,
-  // &._link:active,
-  &:active  { @include color( $light_link_tca ); }
-}
-._dark._a a {
-  &._fresh:visited,
-  &         { @include color( $dark_link_tci ); }
-  &:visited { @include color( $dark_link_tcv ); }
-  &:hover   { @include color( $dark_link_tci ); }
-  // &._btnlink:active,
-  // &._link:active,
-  &:active  { @include color( $dark_link_tca ); }
+._a {
+  a {
+    &._fresh:visited,
+    &         { color: $light_link_tci }
+    &:visited { color: $light_link_tcv }
+    &:hover   { color: $light_link_tci }
+    &:active  { color: $light_link_tca }
+  }
 }
 
-._a ._btnlink,
-._a ._link,
-._dark._a ._btnlink,
-._dark._a ._link {
-  &,&:visited { color: inherit }
+._a._dark {
+  a {
+    &._fresh:visited,
+    &         { color: $dark_link_tci }
+    &:visited { color: $dark_link_tcv }
+    &:hover   { color: $dark_link_tci }
+    &:active  { color: $dark_link_tca }
+  }
 }
 
-._a ._btnlink {
-  &.__primary { &,&:hover { @include color(white,$bg_9_5); } }
-  &.__secondary { background-color: $bg_2_8 }
+// ------------------------------------------ cancel link color */
+
+._a,._a._dark {
+  ._link,
+  ._btnlink { &,&:visited { color: inherit } }
 }
 
-._dark._a ._btnlink {
-  &.__primary { &,&:hover { @include color(white,$bg_9_5); } }
-  &.__secondary { background-color: $bg_2_2 }
+// -------------------------------------------- glow when hover */
+
+._a {
+  ._link,
+  ._btnlink,
+  ._hover_link { &:hover { @include color( $light_contra, #eee ); } }
 }
 
-// glow when hover
-._a ._hover_link,
-._a ._btnlink,
-._a ._link {
-  &:hover { @include color( $light_contra, $light_button_bg ); }
-}
-._dark._a ._hover_link,
-._dark._a ._btnlink,
-._dark._a ._link {
-  &:hover { @include color( $dark_contra, $dark_button_bg); }
+._a._dark {
+  ._link,
+  ._btnlink,
+  ._hover_link { &:hover { @include color( $dark_contra, #444); } }
 }
 
-._a ._btnlink,
-._a ._link {
-  &.__disabled { color:inherit !important; background: none !important }
+// -------------------------------------------- dim when active */
+
+._a,._a._dark {
+  ._link,
+  ._btnlink,
+  ._hover_link { &:active { background-color: unset } }
+}
+
+// --------------------------------------------------- btnlinks */
+
+._a {
+  ._btnlink {
+    &.__primary:hover  { background-color:#0044ee }
+    &.__primary,
+    &.__primary:active { @include color(#fff,#4477ee); }
+
+    &.__secondary:hover  { background-color: #FFF }
+    &.__secondary,
+    &.__secondary:active { background-color: #EEE }
+  }
+}
+
+._a._dark{
+  ._btnlink {
+    &.__primary:hover  { background-color:#0044ee }
+    &.__primary,
+    &.__primary:active { @include color(#fff,#4477ee); }
+
+    &.__secondary:hover  { background-color: #666 }
+    &.__secondary,
+    &.__secondary:active { background-color: #444 }
+  }
+}
+
+// --------------------------------------------------- disabled */
+
+._link,
+._btnlink {
+  &.__disabled {
+    color:inherit !important;
+    background: none !important;
+  }
 }
 
 // ===============================================================

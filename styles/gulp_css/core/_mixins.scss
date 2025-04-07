@@ -15,8 +15,8 @@
   @if $left { left: #{$left}#{important($important)}; }
 }
 
-@mixin color($color, $bg_color: null, $important: false) {
-  color: #{$color}#{important($important)};
+@mixin color($color: null, $bg_color: null, $important: false) {
+  @if $color { color: #{$color}#{important($important)}; }
   @if $bg_color { background-color: #{$bg_color}#{important($important)}; }
 }
 

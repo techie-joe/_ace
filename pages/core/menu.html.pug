@@ -41,7 +41,7 @@ mixin sample_1
       ['','Contact'],
     ];
   each v in temp
-    +_a._link._l(href=v[0]) #{v[1]}
+    +_a._link._l(href=v[0] onclick=onclick()) #{v[1]}
 
 mixin sample_2
   -
@@ -53,7 +53,7 @@ mixin sample_2
       ['','Contact'],
     ];
   each v in temp
-    +a._btnlink._l.btn(href=v[0]) #{v[1]}
+    +a._btnlink._l.btn(href=v[0] onclick=onclick()) #{v[1]}
 
 block view
   ._views
@@ -74,36 +74,36 @@ block view
 
         hr
 
-        section._mv: ._c_bg_1._radius_x5r: +nav._clearfix
-          +a()._btnlink| Buttons
-          +_a()._link| Links
-          +_a()._link.__icon| &bull;
-          +_a()._link.__icon: +isvg(svgi.ellipsis)
-          +_a()._link.__icon: +isvg(svgi.compare)
-          +_a()._link.__icon: +isvg(svgi.bars)
-          +_a()._link.__icon: +isvg(svgi.home)
-          +_a()._link.__icon: +isvg(svgi.download)
-          +_a()._link.__icon: +isvg(svgi.image)
+        section._mv: ._color_1._radius_x5r: +nav._clearfix
+          +a._btnlink| Buttons
+          +a._link| Links
+          +a._link.__icon| &bull;
+          +a._link.__icon: +isvg(svgi.ellipsis)
+          +a._link.__icon: +isvg(svgi.compare)
+          +a._link.__icon: +isvg(svgi.bars)
+          +a._link.__icon: +isvg(svgi.home)
+          +a._link.__icon: +isvg(svgi.download)
+          +a._link.__icon: +isvg(svgi.image)
         //- section
 
-        section._mv: ._c_bg_1._radius_x5r: +nav._clearfix
+        section._mv: ._color_1._radius_x5r: +nav._clearfix
           +sample_2
-          +a()._btnlink._l.btn.__icon: +isvg(svgi.ellipsis)
-          +a()._btnlink._l.btn.__icon: +isvg(svgi.compare)
-          +a()._btnlink._l.btn.__icon: +isvg(svgi.bars)
-          +a()._btnlink._l.btn.__icon: +isvg(svgi.home)
-          +a()._btnlink._l.btn.__icon: +isvg(svgi.download)
-          +a()._btnlink._l.btn.__icon: +isvg(svgi.image)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.ellipsis)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.compare)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.bars)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.home)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.download)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.image)
         //- section
 
-        section._mv.flatmenu: ._c_bg_1._radius_x5r: +nav._clearfix
+        section._mv.flatmenu: ._color_1._radius_x5r: +nav._clearfix
           +sample_2
-          +a()._btnlink._l.btn.__icon: +isvg(svgi.ellipsis)
-          +a()._btnlink._l.btn.__icon: +isvg(svgi.compare)
-          +a()._btnlink._l.btn.__icon: +isvg(svgi.bars)
-          +a()._btnlink._l.btn.__icon: +isvg(svgi.home)
-          +a()._btnlink._l.btn.__icon: +isvg(svgi.download)
-          +a()._btnlink._l.btn.__icon: +isvg(svgi.image)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.ellipsis)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.compare)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.bars)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.home)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.download)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.image)
         //- section
 
       //- main: article
@@ -116,7 +116,7 @@ block view
 
     +view#example_1._full_view
 
-      section#_navbar._flex._c_bg_1
+      section#_navbar._flex._color_1
         ._f._text_center: +logo
         ._fill(style="flex-basis:20rem"): +nav(style="padding:0.55rem 0.75rem"): +sample_1
       //- section

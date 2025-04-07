@@ -2,7 +2,7 @@ extends _html
 
 block append vars
   - heading = `Test page`
-  - about   = `We keep brewing new styles from time to time.`
+  - about   = `We try new things from time to time.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'test.html' )
@@ -13,8 +13,18 @@ block append style
     { max-width:none;padding:0;margin:.5rem }
   //- style.
 
-block styleSwitch
-  +_a.link._link._c_base(onclick=onclick('window.test.disableStyle();') title="Toggle Style") s
+block header
+
+  +header#_header
+    ._p #[b._h7 !{heading} : ] !{about}
+    hr
+  //- header
+
+block append topSwitch
+  +a.link._link._color(onclick=onclick('window.test.disableStyle();') title="Toggle Style") s
+  +backlink.link._link._color(title="Close Test Page") &times;
+
+block append script
   script.
     (()=>{
       var
@@ -29,7 +39,7 @@ block main
 
   +main#_main: article
 
-    section._small._i // sorry, nothing at the moment tho.
+    section._small._i // but, nothing at the moment tho.
 
   //- main
 

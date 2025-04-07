@@ -5,7 +5,7 @@ mixin navbar
     #_nav ._nav_layout a._link { line-height: 1.7em }
   //- style.
 
-  +nav#_nav._c_bg_1._no_print
+  +nav#_nav._color_1._no_print
     -
       temp = [
         ['index.html','Core'],
@@ -16,10 +16,10 @@ mixin navbar
         ['buttons.html','Buttons'],
         ['colors.html','Colors'],
         ['containers.html','Containers'],
-        ['flex.html','Flex'],
         ['view.html','View'],
-        ['menu.html','Menu'],
+        ['flex.html','Flex'],
         ['layouts.html','Layouts'],
+        ['menu.html','Menu'],
       ];
     each v in temp
       +_a._link(href=v[0]) #{v[1]}
