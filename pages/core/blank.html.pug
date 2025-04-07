@@ -1,4 +1,4 @@
-extends ../../core/_html
+extends _html
 
 block append vars
   - heading = `Blank`
@@ -6,6 +6,11 @@ block append vars
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'blank.html' )
+
+block nav
+
+block append topSwitch
+  +topClose
 
 //- block main
 

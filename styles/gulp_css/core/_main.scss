@@ -456,26 +456,23 @@ hr { @extend ._st; @extend ._sb; }
 
 ._a {
   a {
-    &._fresh:visited,
-    &         { color: $light_link_tci }
     &:visited { color: $light_link_tcv }
-    &:hover   { color: $light_link_tci }
+    &._fresh,
+    &,&:hover { color: $light_link_tci }
     &:active  { color: $light_link_tca }
   }
 }
 
 ._a._dark {
   a {
-    &._fresh:visited,
-    &         { color: $dark_link_tci }
     &:visited { color: $dark_link_tcv }
-    &:hover   { color: $dark_link_tci }
+    &._fresh,
+    &,&:hover { color: $dark_link_tci }
     &:active  { color: $dark_link_tca }
   }
 }
 
 // ------------------------------------------ cancel link color */
-
 ._a,._a._dark {
   ._link,
   ._btnlink { &,&:visited { color: inherit } }
@@ -508,24 +505,20 @@ hr { @extend ._st; @extend ._sb; }
 ._a {
   ._btnlink {
     &.__primary:hover  { background-color:#0044ee }
-    &.__primary,
-    &.__primary:active { @include color(#fff,#4477ee); }
+    &.__primary { @include color(#fff,#4477ee); }
 
     &.__secondary:hover  { background-color: #FFF }
-    &.__secondary,
-    &.__secondary:active { background-color: #EEE }
+    &.__secondary { background-color: #EEE }
   }
 }
 
 ._a._dark{
   ._btnlink {
     &.__primary:hover  { background-color:#0044ee }
-    &.__primary,
-    &.__primary:active { @include color(#fff,#4477ee); }
+    &.__primary { @include color(#fff,#4477ee); }
 
     &.__secondary:hover  { background-color: #666 }
-    &.__secondary,
-    &.__secondary:active { background-color: #444 }
+    &.__secondary { background-color: #444 }
   }
 }
 
