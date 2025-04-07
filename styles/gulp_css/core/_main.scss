@@ -505,20 +505,24 @@ hr { @extend ._st; @extend ._sb; }
 ._a {
   ._btnlink {
     &.__primary:hover  { background-color:#0044ee }
-    &.__primary { @include color(#fff,#4477ee); }
+    &.__primary,
+    &.__primary:active { @include color(#fff,#4477ee); }
 
     &.__secondary:hover  { background-color: #FFF }
-    &.__secondary { background-color: #EEE }
+    &.__secondary,
+    &.__secondary:active { background-color: #EEE }
   }
 }
 
 ._a._dark{
   ._btnlink {
     &.__primary:hover  { background-color:#0044ee }
-    &.__primary { @include color(#fff,#4477ee); }
+    &.__primary,
+    &.__primary:active { @include color(#fff,#4477ee); }
 
     &.__secondary:hover  { background-color: #666 }
-    &.__secondary { background-color: #444 }
+    &.__secondary,
+    &.__secondary:active { background-color: #444 }
   }
 }
 
