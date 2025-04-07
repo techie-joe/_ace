@@ -6,7 +6,22 @@ block append vars
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'colors.html' )
-  include _color_functions
+  -
+    function range(n,min,max) { return Math.min(Math.max(n, min),max) }
+    function colorRange(n,min=0,max=255) { return range(n,min,max) }
+    function hexToInt(hex) { return colorRange(parseInt(hex, 16)); }
+    function intToHex(int) { return colorRange(Math.floor(int)).toString(16).padStart(2, '0'); }
+    function hexColor(c) { return intToHex(c[0])+intToHex(c[1])+intToHex(c[2]) }
+    function rgbColor(hex) {
+      if (hex.length === 6) {
+        const r = hexToInt(hex.substring(0, 2));
+        const g = hexToInt(hex.substring(2, 4));
+        const b = hexToInt(hex.substring(4, 6));
+        return [r, g, b];
+      } else {
+        throw new Error('Invalid hex color code');
+      }
+    }  
 
 block header
 
@@ -68,16 +83,16 @@ block main
       =========================================================== */
 
       var rainbow = [
-        'FF7700',
-        'FFAA00',
-        '99AA00',
-        '00AA00',
-        '0099AA',
-        '0077ff',
-        'AA55EE',
-        'EE33EE',
-        'DD33AA',
-        'DD3333',
+        'EE7733',
+        'EEAA33',
+        '99AA33',
+        '339933',
+        '3399AA',
+        '4477EE',
+        'AA44FF',
+        'DD44DD',
+        'DD44AA',
+        'EE3333',
       ];
 
     - o_w = (s,c)=>(s);
@@ -97,10 +112,9 @@ block main
           +theme('FFFFFF',c,[o_c,o_c])
 
         each c in rainbow
-          +theme('FFFFFF',c,[o_w,c_o])
-
-        each c in rainbow
           +theme('FFFFFF',c,[o_w,c_w])
+
+        //- o_c
 
         each c in rainbow
           +theme(c,c,[o_c,c_w])
@@ -108,8 +122,13 @@ block main
         each c in rainbow
           +theme(c,c,[o_c,c_o])
 
+        //- c_w
+
         each c in rainbow
-          +theme(c,c,[w_c,c_o])
+          +theme(c,c,[c_w,o_c])
+
+        each c in rainbow
+          +theme(c,c,[c_w,w_c])
 
       //- div
 

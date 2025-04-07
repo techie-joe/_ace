@@ -2,7 +2,7 @@
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
-### March 24, 2025 - v0.1.25 b12.322
+### April 7, 2025 - v0.1.25 b12.323
 - housekeep: core color
 
 ---
