@@ -15,9 +15,10 @@
   @if $left { left: #{$left}#{important($important)}; }
 }
 
-@mixin color($color: null, $bg_color: null, $important: false) {
+@mixin color($color: null, $bg_color: null, $bc_color: null, $important: false) {
   @if $color { color: #{$color}#{important($important)}; }
   @if $bg_color { background-color: #{$bg_color}#{important($important)}; }
+  @if $bc_color { border-color: #{$bc_color}#{important($important)}; }
 }
 
 @mixin mh($value) {

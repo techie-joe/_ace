@@ -130,7 +130,7 @@ summary { @extend ._cursor_pointer; display: list-item; /* 2 */ }
 // 1. Fix box sizing in Firefox.
 // 2. Show overflow in Edge and IE.
 hr {
-  box-sizing: content-box; height: 0; /* 1 */
+  box-sizing: content-box; height: .05rem; /* 1 */
   overflow: visible; /* 2 */
   @extend ._block;
   @extend ._reset_padding;
@@ -303,10 +303,10 @@ textarea { resize: vertical }
   @extend ._icon;
   .itext {
     @extend ._relative;
-    font-size: 1.6em;
+    font-size: 1.625em;
     line-height: .6;
     min-width: .625em;
-    top: -0.05em;
+    top: -0.025em;
     vertical-align: -0.066em;
   }
 }
@@ -327,17 +327,18 @@ textarea { resize: vertical }
 
 // ------------------------------------------------------ links */
 
+._link,
+._btnlink,
 ._hover_link {
   @extend ._cursor_pointer;
   @extend ._no_deco;
 }
 
-._btnlink,
-._link {
+._link,
+._btnlink {
 
   & {
-    @extend ._cursor_pointer;
-    @extend ._no_deco;
+    @extend ._numb;
     @extend ._no_wrap;
     @extend ._radius_x25r;
     padding: 0 .25em;
@@ -380,9 +381,9 @@ textarea { resize: vertical }
 
   & { @extend ._border; }
 
-  &.__disabled { opacity: .4; cursor: default !important; }
+  &.__disabled { opacity: .4 !important; cursor: default !important; }
 
-  &.__icon { line-height:0; margin-top:0; margin-bottom:0 }
+  &.__icon { line-height: .9 }
 
 }
 
@@ -452,7 +453,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 hr { @extend ._st; @extend ._sb; }
 
-// ------------------------------------------------------ links */
+// -------------------------------------------------- all links */
 
 ._a {
   a {
@@ -472,13 +473,16 @@ hr { @extend ._st; @extend ._sb; }
   }
 }
 
-// ----------------------------------------------- cancel color */
+// ---------------------------------------------- special links */
+// reset color
+
 ._a,._a._dark {
   ._link,
-  ._btnlink { &,&:visited { color: inherit } }
+  ._btnlink,
+  ._hover_link { &,&:visited { color: inherit } }
 }
 
-// -------------------------------------------- glow when hover */
+// glow when :hover
 
 ._a {
   ._link,
@@ -489,37 +493,37 @@ hr { @extend ._st; @extend ._sb; }
 ._a._dark {
   ._link,
   ._btnlink,
-  ._hover_link { &:hover { @include color( $dark_contra, #444); } }
+  ._hover_link { &:hover { @include color( $dark_contra, #444 ); } }
 }
 
-// -------------------------------------------- dim when active */
+// dim when :active
 
 ._a,._a._dark {
   ._link,
   ._btnlink,
-  ._hover_link { &:active { background-color: unset } }
+  ._hover_link { &:active { @include color( inherit, unset ); opacity: .5 } }
 }
 
 // --------------------------------------------------- btnlinks */
 
+._a,._a._dark {
+  ._btnlink {
+    &.__primary:hover  { background-color:#0044ff }
+    &.__primary,
+    &.__primary:active { @include color( #fff, #4477ee, #4477ee ); }
+  }
+}
+
 ._a {
   ._btnlink {
-    &.__primary:hover  { background-color:#0044ee }
-    &.__primary,
-    &.__primary:active { @include color(#fff,#4477ee); }
-
     &.__secondary:hover  { background-color: #FFF }
     &.__secondary,
     &.__secondary:active { background-color: #EEE }
   }
 }
 
-._a._dark{
+._a._dark {
   ._btnlink {
-    &.__primary:hover  { background-color:#0044ee }
-    &.__primary,
-    &.__primary:active { @include color(#fff,#4477ee); }
-
     &.__secondary:hover  { background-color: #666 }
     &.__secondary,
     &.__secondary:active { background-color: #444 }
@@ -530,10 +534,7 @@ hr { @extend ._st; @extend ._sb; }
 
 ._link,
 ._btnlink {
-  &.__disabled {
-    color:inherit !important;
-    background: none !important;
-  }
+  &.__disabled { @include color( inherit, unset, #888, true ); }
 }
 
 // ===============================================================
