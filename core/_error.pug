@@ -9,4 +9,19 @@ block seo
   meta(name="description" content!=description||'[undescribed]')/
 
 block append style
-  +cssv(assetsUri+'css/errorpage.css')
+  +cssv(assetsUri+'/css/core/errorpage.css')
+
+block view
+  +view._full_view
+
+    block main
+
+      +main#_main: article
+
+        h1#_h1 !{heading}
+        p#_p !{description}
+        nav#_nav: +backlink._btnlink._xl #[span._btnlabel Back]
+
+      //- main
+
+  //- +view

@@ -2,8 +2,8 @@
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
-### April 8, 2025 - v0.1.25 b12.325
-- housekeep: core color
+### April 9, 2025 - v0.1.25 b12.327
+- housekeep: core theme, color and layout
 
 ---
 

@@ -2,10 +2,11 @@ extends _html
 
 block append vars
   - heading = `Menu`
-  - about   = `There are many options of menus available for use.`
+  - about   = `Many options for menus are available.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+"menu.html" )
+  - INCLUDE_BACKSWITCH = true
   -
     svgi = {
       compare:'M19,3H14V5H19V18L14,12V21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10,18H5L10,12M10,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H10V23H12V1H10V3Z',
@@ -28,8 +29,14 @@ block append style
 
 mixin examples
   div
-    +a('#intro')._btnlink._l Menu
-    +a('#example_1')._btnlink._l Example 1
+    -
+      temp = [
+        ['#intro','Back to Top'],
+        ['#example_1','Example 1'],
+        ['#example_2','Example 2'],
+      ];
+    each v in temp
+      +a(v[0])._btnlink._l #{v[1]}
 
 mixin sample_1
   -
@@ -41,7 +48,7 @@ mixin sample_1
       ['','Contact'],
     ];
   each v in temp
-    +_a._link._l(href=v[0] onclick=onclick()) #{v[1]}
+    +a._link._l(href=v[0] onclick=onclick()) #{v[1]}
 
 mixin sample_2
   -
@@ -60,9 +67,6 @@ block view
 
     +view#intro._full_view
 
-      include _nav
-      +navbar
-
       +header#_header
         +heading#_heading !{heading}
         p#_about !{description}
@@ -75,15 +79,16 @@ block view
         hr
 
         section._mv: ._color_1._radius_x5r: +nav._clearfix
-          +a._btnlink| Buttons
-          +a._link| Links
-          +a._link.__icon| &bull;
+          +a._link| Link
           +a._link.__icon: +isvg(svgi.ellipsis)
-          +a._link.__icon: +isvg(svgi.compare)
           +a._link.__icon: +isvg(svgi.bars)
           +a._link.__icon: +isvg(svgi.home)
           +a._link.__icon: +isvg(svgi.download)
           +a._link.__icon: +isvg(svgi.image)
+          =' | '
+          +a._btnlink| Button
+          +a._btnlink.__icon| &bull;
+          +a._btnlink.__icon: +isvg(svgi.compare)
         //- section
 
         section._mv: ._color_1._radius_x5r: +nav._clearfix
@@ -116,11 +121,23 @@ block view
 
     +view#example_1._full_view
 
+      style.
+        #nav_1 ._nav_layout { margin:0;padding:.5rem }
+      //- style.
+
+      +nav#nav_1._color_1._no_print: +sample_1
+
+      #view_1: ._main_layout: ._p: +examples
+
+    //- view
+
+    +view#example_2._full_view
+
       section#_navbar._flex._color_1
         ._f._text_center: +logo
         ._fill(style="flex-basis:20rem"): +nav(style="padding:0.55rem 0.75rem"): +sample_1
       //- section
 
-      #view_1: ._main_layout: ._p: +examples
+      #view_2: ._main_layout: ._p: +examples
 
-    //- view#menu1
+    //- view

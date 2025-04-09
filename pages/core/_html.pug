@@ -14,18 +14,32 @@ block append style
 block header
 
   block nav
-    include _nav
-    +navbar
-    //- +nav#_nav: ul: +lia
+    if INCLUDE_NAV
+      include _nav
+      +navbar
+      //- +nav#_nav: ul: +lia
 
   +header#_header
-    +heading#_heading !{heading}
-    p !{about}
-    hr
+    if HEADER_TYPE === 'SIMPLE'
+      ._p #[b._h7 !{heading} &mdash; ] !{about}
+      hr
+    else
+      +heading#_heading !{heading}
+      p !{about}
+      hr
   //- header
 
 mixin topClose
-  +backlink.link._link._color(title="Close Test Page")|&times;
+  +backlink.link._link._color(title="Close this page")|&times;
+
+mixin topBack
+  +a('./').link._link._color(title="Close this page")|&times;
+
+mixin topStyleSwitch
+  +a.link._link._color(onclick=onclick('window.test.disableStyle();') title="Toggle Style") s
+
+mixin topThemeSwitch
+  +_a.link._link._color.ticon(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)")|☯
 
 block append widgets
 
@@ -59,4 +73,6 @@ block append widgets
 
   #topSwitch._absolute._full_width._no_print: .abs
     block topSwitch
-      +_a.link._link._color.ticon(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)")|☯
+      +topThemeSwitch
+    if INCLUDE_BACKSWITCH
+      +topBack

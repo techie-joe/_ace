@@ -67,13 +67,15 @@ html {
 
 // 1. remove margin in all browsers.
 // 2. contain marginal elements.
+// 3. set relative position for child elements.
 body { @extend ._reset_margin; } /* 1 */
 ._body { @extend ._clearfix; } /* 2 */
 ._view { @extend ._clearfix; } /* 2 */
+._view { @extend ._relative; } /* 3 */
 
 // set view in all browsers.
 // ! all parents of _full_view must also be full.
-._html, ._body,
+._html,._body,._views,
 ._full_view {
   display: block;
   width  : 100%;
@@ -87,7 +89,6 @@ body { @extend ._reset_margin; } /* 1 */
 // 2. contain marginal elements.
 ._views {
   @extend ._relative;
-  @extend ._full_view;
   @extend ._scrollable;
   @extend ._clearfix;
 }

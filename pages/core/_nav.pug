@@ -2,7 +2,6 @@ mixin navbar
 
   style.
     #_nav ._nav_layout { margin:0;padding:.5rem }
-    #_nav ._nav_layout a._link { line-height: 1.7em }
   //- style.
 
   +nav#_nav._color_1._no_print
@@ -16,12 +15,15 @@ mixin navbar
         ['buttons.html','Buttons'],
         ['colors.html','Colors'],
         ['containers.html','Containers'],
-        ['view.html','View'],
         ['flex.html','Flex'],
-        ['layouts.html','Layouts'],
-        ['menu.html','Menu'],
+        //- ['layouts.html','Layouts'],
+        //- ['menu.html','Menu'],
+        //- ['view.html','View'],
+        //- ['blank.html','Blank'],
+        //- ['test.html','Test'],
+        //- ['theme.html','Theme'],
       ];
     each v in temp
-      +_a._link(href=v[0]) #{v[1]}
+      +a._link._l(href=v[0]) #{v[1]}
 
   //- nav

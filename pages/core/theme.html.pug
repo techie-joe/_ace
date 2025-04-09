@@ -6,9 +6,13 @@ block append vars
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+"theme.html" )
+  - INCLUDE_BACKSWITCH = true
 
 block append style
-  //- style.
+  style.
+    ._nav_layout { max-width:60em; }
+    ._main_layout { margin:.5rem auto }
+
   //- style.
 
 mixin ba(href='#',_onclick)
@@ -35,13 +39,29 @@ mixin block_4(title)
     h3._h6 !{title}
     p._text_justify: block
 
+mixin sample_1
+  -
+    temp = [
+      ['','Product'],
+      ['','Services'],
+      ['','Blog'],
+      ['','Gallery'],
+      ['','Contact'],
+    ];
+  each v in temp
+    +a._link._l(href=v[0] onclick=onclick()) #{v[1]}
+
 block header
 
-block append topSwitch
-  +topClose
+  style.
+    #nav_1 ._nav_layout { margin:0 auto;padding:.5rem }
+  //- style.
+
+  +nav#nav_1._color_1._no_print: +sample_1
+
+  include _logo
 
 block main
-  include _logo
 
   +main#_main: article
 
@@ -122,11 +142,12 @@ block footer
 
     ._flex._gap_2
 
-      ._f_12_5: ._mv
+      ._f_12_8: ._mv
         h6._h7._no_margin Official Address
         //- |#[b Company Name]#[br]
-        div._mv
+        div._mv._small
           .
+            #[b Company Name],#[br]
             101 Suite, ABC Street,#[br]
             ZIP County, State,#[br]
             Country, CC#[br]
@@ -136,15 +157,15 @@ block footer
       ._f_12_5: ._mv
         h6._h7._no_margin Primary Segment
         ul._plain
-          +liba._stay_fresh._no_u Put some links
-          +liba._stay_fresh._no_u To some posts
-          +liba._stay_fresh._no_u Or some pages
+          +liba._link This segment
+          +liba._link Will have links
+          +liba._link To some pages
 
       ._f_12_5: ._mv
         h6._h7._no_margin Secondary Segment
         ul._plain
-          +liba._stay_fresh._no_u Put some links
-          +liba._stay_fresh._no_u To some posts
-          +liba._stay_fresh._no_u Or some pages
+          +liba._link Put some links
+          +liba._link To your posts
+          +liba._link And pages
 
     p._small._system !{copyright}

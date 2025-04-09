@@ -2,10 +2,22 @@ extends _html
 
 block append vars
   - heading = `View`
-  - about   = `View controls how user perceive a page.`
+  - about   = `View controls the view-pane of a page.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'view.html' )
+  - INCLUDE_BACKSWITCH = true
+
+block append style
+  style.
+
+    ._view { overflow: auto }
+
+    ._footer_layout, ._header_layout, ._main_layout
+    { max-width:none;padding:0;margin:0 }
+
+  //- style.    
+    ._view { box-shadow: 0 0 0 1px #f808 inset }
 
 block append widgets
   +widgets#_widgets
@@ -44,38 +56,33 @@ block append widgets
             td: +a('#view-4')._btnlink #[span._btnlabel 4]
     //- #nav-box
 
-block append style
-  style.
 
-    ._footer_layout, ._header_layout, ._main_layout
-    { max-width:none;margin:0;padding:0 }
-    
-    ._view { overflow: auto }
-    ._view h2 { text-align: center }
-  //- style.
-    ._view { box-shadow: 0 0 0 1px #f808 inset }
-  //- style.
+mixin viewBlock(name)
+  +view(id=`view-${name}`)._full_view: block
 
 block view
 
   ._views
 
-    - v = 1;
-    +view(id=`view-${v}`)._full_view
+    - v = 1
+    +viewBlock(v)
 
-      include _nav
-      +navbar
-
-      +main#_main._text_center
-        h2._h7 View ##{v}
+      +header#_header
+        ._ph: p #[b._h7 View ##{v} &mdash; ] !{description}
         hr
-        p !{description}
+      //- header
+
+      +main#_main
       //- main
+
+      +footer#_footer
+        ._ph: p._small._system &copy; !{copyright}
+      //- footer
 
     //- view
 
-    - v = 3;
-    +view(id=`view-${v}`)._full_view
+    - v = 3
+    +viewBlock(v)
 
       style.
         ._html #view-#{v} {
@@ -85,8 +92,7 @@ block view
         ._dark #view-#{v} { color:inherit }
 
       ._page_layout
-  
-        h2._h7 View ##{v}
+        ._ph: h2._h7 View ##{v}
         hr
 
         +pre._ma: +putData
@@ -111,8 +117,8 @@ block view
     //- style.
 
     each v in [2,4]
-      +view(id=`view-${v}`)._full_view
-        h2._h7 View ##{v}
+      +viewBlock(v)
+        ._ph: h2._h7 View ##{v}
       //- view
   
   //- views

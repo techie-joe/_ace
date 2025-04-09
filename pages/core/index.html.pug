@@ -1,7 +1,7 @@
 extends _html
 
 block append vars
-  - heading = `Core`
+  - heading = `Template Core`
   - about   = `Lets explore the main structure and features of our template.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
@@ -35,9 +35,6 @@ block main
           ['colors.html','Colors'],
           ['containers.html','Containers'],
           ['flex.html','Flex'],
-          ['view.html','View'],
-          ['menu.html','Menu'],
-          ['layouts.html','Layouts'],
         ];
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}
@@ -47,7 +44,11 @@ block main
         temp = [
           ['blank.html','Blank'],
           ['test.html','Test'],
+          ['view.html','View'],
+          ['layouts.html','Layouts'],
+          ['menu.html','Menu'],
           ['theme.html','Theme'],
+          ['error.html','Error'],
         ];
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}

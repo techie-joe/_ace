@@ -6,6 +6,8 @@ block append vars
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'test.html' )
+  - INCLUDE_NAV = false
+  - HEADER_TYPE = 'SIMPLE'
 
 block append style
   style.
@@ -13,16 +15,9 @@ block append style
     { max-width:none;padding:0;margin:.5rem }
   //- style.
 
-block header
-
-  +header#_header
-    ._p #[b._h7 !{heading} : ] !{about}
-    hr
-  //- header
-
 block append topSwitch
-  +a.link._link._color(onclick=onclick('window.test.disableStyle();') title="Toggle Style") s
-  +topClose
+  +topStyleSwitch
+  +topBack
 
 block append script
   script.
