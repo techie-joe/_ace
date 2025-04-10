@@ -23,6 +23,9 @@ block append style
 mixin layblock
   .block._outline&attributes(attributes): ._pa: block
 
+mixin layblock_B
+  .block_B._outline&attributes(attributes): ._pa: block
+
 mixin viewBlock(name)
   +view(id=`view-${name}`)._full_view: block
 
@@ -39,13 +42,28 @@ block view
 
       style.
 
-        .block { text-align:center }
-
-        .A_layout { margin:.5rem }
+        .A_layout { margin:.5rem; }
 
         .B_layout { max-width:60rem;margin:auto }
 
+        .C_layout { max-width:300px }
+
+        .D_layout { min-width:300px }
+
+        .block { margin-top:.5rem; margin-bottom:.5rem; text-align:center }
+
+        .block_B { text-align:center }
+
       //- style.
+
+      ._flex
+        +layblock._f.C_layout #[b C_layout ] #[code { max-width:300px }]
+        +layblock._f.D_layout #[b D_layout ] #[code { min-width:300px }]
+        +layblock._f.C_layout #[b C_layout ] #[code { max-width:300px }]
+
+      ._flex
+        +layblock._f.D_layout #[b D_layout ] #[code { min-width:300px }]
+        +layblock._f.C_layout #[b C_layout ] #[code { max-width:300px }]
 
       +layblock.B_layout #[b B_layout ] #[code { max-width:60rem; margin:auto }]
 
@@ -54,11 +72,11 @@ block view
       +layblock.DEFAULT_layout #[b DEFAULT_layout ] #[code { full-width, auto-height, no-margin }]
 
       hr
-      #menu._ma: +nav._clearfix
+      #menu._ph: +nav._clearfix
         -
           temp = [
-            ['#view-2','Full'],
-            ['#view-3','Float'],
+            ['#view-2','Float'],
+            ['#view-3','Full'],
           ];
         each v in temp
           +a(v[0])._btnlink._l #{v[1]}
@@ -73,7 +91,22 @@ block view
     //- view
 
     +viewBlock(2)
-      
+
+      style.
+
+        .FLOAT_layout {
+          position:absolute;
+          top:5rem;left:5rem;bottom:5rem;right:5rem;
+        }
+
+      //- style.
+
+      +layblock_B.FLOAT_layout #[b FLOAT_layout ] #[code { absolute-float }]
+
+    //- view
+
+    +viewBlock(3)
+
       style.
 
         .FULL_layout {
@@ -84,22 +117,7 @@ block view
 
       //- style.
 
-      +layblock.FULL_layout #[b FULL_layout ] #[code { absolute-full }]
-
-    //- view
-
-    +viewBlock(3)
-      
-      style.
-
-        .FLOAT_layout {
-          position:absolute;
-          top:10em;left:10em;bottom:10em;right:10em;
-        }
-
-      //- style.
-
-      +layblock.FLOAT_layout #[b FLOAT_layout ] #[code { absolute-float }]
+      +layblock_B.FULL_layout #[b FULL_layout ] #[code { absolute-full }]
 
     //- view
 
