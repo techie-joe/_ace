@@ -13,6 +13,7 @@
 
 ._block { display: block }
 ._table { display: table }
+._cell { display: table-cell }
 ._inline { display: inline }
 ._inblock { display: inline-block }
 
@@ -49,9 +50,6 @@ figure, details, figcaption, hgroup, menu { @extend ._block; }
 
 // use intuitive box-sizing model.
 ._border_box { &, &::before, &::after { box-sizing: border-box }}
-
-// reset vertical alignment
-._valign_middle { vertical-align: middle }
 
 // set simple initial border
 ._border { border: 1px solid #888 }
@@ -632,6 +630,11 @@ $outline_color: #ff880088;
 ._text_right   { text-align: right   }
 ._text_center  { text-align: center  }
 ._text_justify { text-align: justify }
+
+._valign_top { vertical-align: top }
+._valign_middle { vertical-align: middle }
+._valign_bottom { vertical-align: bottom }
+
 
 ._no_wrap { white-space: nowrap !important }
 

@@ -1,0 +1,73 @@
+extends _html
+
+block append vars
+  - heading = `Alignment`
+  - about   = `Align content easily.`
+  - updateTitle( `${heading} | ${name}` )
+  - updateDescription( `${about}` )
+  - updateUrl( siteUrl+'alignment.html' )
+  - INCLUDE_NAV = false
+  - INCLUDE_BACKSWITCH = true
+
+block append style
+  style.
+
+    .a { height:5rem;position:relative }
+    .o { display:inline-block;width:1.3em }
+
+    .table { display:table; width:100% }
+
+    .FLOAT_layout {
+      position: relative;
+      top: 10%;
+      left: 10%;
+      width: 80%;
+      height: 80%;
+    }
+
+  //- style.
+
+mixin o
+  .o._outline&attributes(attributes) &bull;
+
+mixin oo
+  ._outline&attributes(attributes) &bull;
+
+block main
+  +main#_main: article
+
+    section
+      ._mv: ._flex._gap_a
+
+        ._f_4_1: .a._outline: +o
+        ._f_4_1: .a._outline._text_left: +o
+        ._f_4_1: .a._outline._text_center: +o
+        ._f_4_1: .a._outline._text_right: +o
+
+      ._mv: ._flex._gap_a
+
+        ._f_4_1: .a._outline: +o
+        ._f_4_1: .a._outline._text_left: +o(style="position:absolute;top:0")
+        ._f_4_1: .a._outline._text_center: +o(style="position:absolute;top:50%;margin-top:-.5em;left:50%;margin-left:-.5em;")
+        ._f_4_1: .a._outline._text_right: +o(style="position:absolute;bottom:0;right:0")
+
+      ._mv: ._flex._gap_a
+
+        ._f_4_1: .a._outline.table: +oo._cell
+        ._f_4_1: .a._outline.table: +oo._cell._text_left._valign_top
+        ._f_4_1: .a._outline.table: +oo._cell._text_center._valign_middle
+        ._f_4_1: .a._outline.table: +oo._cell._text_right._valign_bottom
+
+      ._mv: ._flex._gap_a
+
+        ._f_4_1: .a._outline: +o.FLOAT_layout
+        ._f_4_1: .a._outline: +o.FLOAT_layout._text_left
+        ._f_4_1: .a._outline: +o.FLOAT_layout._text_center
+        ._f_4_1: .a._outline: +o.FLOAT_layout._text_right
+
+      //- flex
+    //- section
+
+  //- main
+
+//- block main
