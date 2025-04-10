@@ -3,6 +3,7 @@
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
 ### April 10, 2025 - v0.1.25 b12.328
+- overflow and content alignment.
 - housekeep: core theme, color and layout
 
 ---

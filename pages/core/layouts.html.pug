@@ -46,7 +46,7 @@ block view
 
         .B_layout { max-width:60rem;margin:auto }
 
-        .C_layout { max-width:300px }
+        .C_layout { max-width: 300px; flex-basis: 300px; }
 
         .D_layout { min-width:300px }
 
@@ -57,26 +57,21 @@ block view
       //- style.
 
       ._flex
-        +layblock._f.C_layout #[b C_layout ] #[code { max-width:300px }]
-        +layblock._f.D_layout #[b D_layout ] #[code { min-width:300px }]
-        +layblock._f.C_layout #[b C_layout ] #[code { max-width:300px }]
+        +layblock._f.C_layout #[b C_layout ]#[br]#[code { max-width:300px }]
+        +layblock._fill.D_layout #[b D_layout ]#[br]#[code { min-width:300px }]
+        +layblock._f.C_layout #[b C_layout ]#[br]#[code { max-width:300px }]
 
       ._flex
-        +layblock._f.D_layout #[b D_layout ] #[code { min-width:300px }]
-        +layblock._f.C_layout #[b C_layout ] #[code { max-width:300px }]
-
-      +layblock.B_layout #[b B_layout ] #[code { max-width:60rem; margin:auto }]
-
-      +layblock.A_layout #[b A_layout ] #[code { margin:.5rem }]
-
-      +layblock.DEFAULT_layout #[b DEFAULT_layout ] #[code { full-width, auto-height, no-margin }]
+        +layblock._fill.D_layout #[b D_layout ]#[br]#[code { min-width:300px }]
+        +layblock._f.C_layout #[b C_layout ]#[br]#[code { max-width:300px }]
 
       hr
       #menu._ph: +nav._clearfix
         -
           temp = [
-            ['#view-2','Float'],
-            ['#view-3','Full'],
+            ['#view-2','Common'],
+            ['#view-3','Float'],
+            ['#view-4','Full'],
           ];
         each v in temp
           +a(v[0])._btnlink._l #{v[1]}
@@ -92,6 +87,17 @@ block view
 
     +viewBlock(2)
 
+      +layblock.B_layout #[b B_layout ] #[code { max-width:60rem; margin:auto }]
+
+      +layblock.A_layout #[b A_layout ] #[code { margin:.5rem }]
+
+      +layblock.DEFAULT_layout #[b DEFAULT_layout ] #[code { full-width, auto-height, no-margin }]
+
+
+    //- view
+
+    +viewBlock(3)
+
       style.
 
         .FLOAT_layout {
@@ -105,7 +111,7 @@ block view
 
     //- view
 
-    +viewBlock(3)
+    +viewBlock(4)
 
       style.
 
