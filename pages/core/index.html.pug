@@ -1,8 +1,8 @@
 extends _html
 
 block append vars
-  - heading = `Core`
-  - about   = `Lets explore the main structure and features of our template.`
+  - heading = `Core Elements`
+  - about   = `Lets explore the main elements of our template.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'index.html' )
@@ -13,7 +13,6 @@ block append style
 
 block header
 
-  include _nav
   +navbar(false)
 
   +header#_header
@@ -33,9 +32,7 @@ block main
           ['icons.html','Icons'],
           ['links.html','Links'],
           ['buttons.html','Buttons'],
-          ['colors.html','Colors'],
           ['containers.html','Containers'],
-          ['flex.html','Flex'],
         ];
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}
@@ -44,10 +41,10 @@ block main
       -
         temp = [
           ['view.html','View'],
+          ['flex.html','Flex'],
           ['layouts.html','Layouts'],
           ['alignment.html','Alignment'],
           ['overflow.html','Overflow'],
-          ['menu.html','Menu'],
         ];
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}
@@ -57,7 +54,7 @@ block main
         temp = [
           ['test.html','Test'],
           ['blank.html','Blank'],
-          ['error.html','Error'],
+          ['menu.html','Menu'],
           ['theme.html','Theme'],
         ];
       each v in temp
@@ -66,7 +63,16 @@ block main
     +nav._color_1._radius_x5r._clearfix._mv
       -
         temp = [
+          ['error.html','Error'],
+        ];
+      each v in temp
+        +a._link._l(href=v[0]) #{v[1]}
+
+    +nav._color_1._radius_x5r._clearfix._mv
+      -
+        temp = [
           [homeUri+'themejs/','ThemeJs'],
+          ['colors.html','Colors'],
         ];
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}

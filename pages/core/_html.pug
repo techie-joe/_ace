@@ -4,6 +4,7 @@ block append vars
   //- variables for every html page
   - layout = 'pages/core/html';
   include _vars
+  include _nav
 
 block append style
   style.
@@ -14,10 +15,8 @@ block append style
 block header
 
   block nav
-    if INCLUDE_NAV
-      include _nav
-      +navbar
-      //- +nav#_nav: ul: +lia
+    +navbar
+    //- +nav#_nav: ul: +lia
 
   +header#_header
     if HEADER_TYPE === 'SIMPLE'

@@ -6,7 +6,6 @@ block append vars
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'test.html' )
-  - INCLUDE_NAV = false
   - HEADER_TYPE = 'SIMPLE'
 
 block append style
@@ -18,6 +17,8 @@ block append style
 block append topSwitch
   +topStyleSwitch
   +topBack
+
+block nav
 
 block append script
   script.
@@ -34,7 +35,7 @@ block main
 
   +main#_main: article
 
-    section._small._i // hi, there!
+    section._small._i // test goes here ..
 
   //- main
 
