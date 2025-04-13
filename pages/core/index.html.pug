@@ -1,7 +1,7 @@
 extends _html
 
 block append vars
-  - heading = `Template Core`
+  - heading = `Core`
   - about   = `Lets explore the main structure and features of our template.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
@@ -13,18 +13,19 @@ block append style
 
 block header
 
+  include _nav
+  +navbar(false)
+
   +header#_header
     +heading#_heading !{heading}
-    p
-      | !{description}
-      | 
+    p !{description}
     hr
 
 block main
 
   +main#_main: article
 
-    ._mv._color_1._radius_x5r._pa
+    +nav._color_1._radius_x5r._clearfix._mv
       -
         temp = [
           ['basics.html','Basics'],
@@ -39,24 +40,36 @@ block main
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}
 
-    ._mv._color_1._radius_x5r._pa
+    +nav._color_1._radius_x5r._clearfix._mv
       -
         temp = [
-          ['blank.html','Blank'],
-          ['test.html','Test'],
           ['view.html','View'],
           ['layouts.html','Layouts'],
-          ['menu.html','Menu'],
-          ['theme.html','Theme'],
-          ['overflow.html','Overflow'],
           ['alignment.html','Alignment'],
-          ['error.html','Error'],
+          ['overflow.html','Overflow'],
+          ['menu.html','Menu'],
         ];
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}
 
-    ._mv._color_1._radius_x5r._pa
-      +a(homeUri+'themejs/')(target="ace_themejs")._link._l| ThemeJs
+    +nav._color_1._radius_x5r._clearfix._mv
+      -
+        temp = [
+          ['test.html','Test'],
+          ['blank.html','Blank'],
+          ['error.html','Error'],
+          ['theme.html','Theme'],
+        ];
+      each v in temp
+        +a._link._l(href=v[0]) #{v[1]}
+
+    +nav._color_1._radius_x5r._clearfix._mv
+      -
+        temp = [
+          [homeUri+'themejs/','ThemeJs'],
+        ];
+      each v in temp
+        +a._link._l(href=v[0]) #{v[1]}
 
   //- main
 

@@ -2,7 +2,7 @@ extends _html
 
 block append vars
   - heading = `Menu`
-  - about   = `Many options for menus are available.`
+  - about   = `Build any type of menus.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+"menu.html" )
@@ -22,7 +22,7 @@ block append style
   style.
     ._view { overflow: auto }
     .btn { border:0 }
-    .flatmenu ._nav_layout { margin:0 .6em }
+    .flatmenu ._nav_layout { margin:0 .5rem }
     .flatmenu .btn { border-radius:0;margin:0;vertical-align:top;line-height:2 }
     .flatmenu .btn.__icon { padding:0 .5em; font-size:1.25em }
   //- style.
@@ -31,9 +31,9 @@ mixin examples
   div
     -
       temp = [
-        ['#intro','Back to Top'],
-        ['#example_1','Example 1'],
-        ['#example_2','Example 2'],
+        ['#common','Common'],
+        ['#type_1','Type 1'],
+        ['#type_2','Type 2'],
       ];
     each v in temp
       +a(v[0])._btnlink._l #{v[1]}
@@ -65,7 +65,7 @@ mixin sample_2
 block view
   ._views
 
-    +view#intro._full_view
+    +view#common._full_view
 
       +header#_header
         +heading#_heading !{heading}
@@ -78,7 +78,9 @@ block view
 
         hr
 
-        section._mv: ._color_1._radius_x5r: +nav._clearfix
+        h2._h4 Common
+
+        +nav._color_1._radius_x5r._clearfix._mv(style="padding:0 .25rem")
           +a._link| Link
           +a._link.__icon: +isvg(svgi.ellipsis)
           +a._link.__icon: +isvg(svgi.bars)
@@ -89,9 +91,8 @@ block view
           +a._btnlink| Button
           +a._btnlink.__icon| &bull;
           +a._btnlink.__icon: +isvg(svgi.compare)
-        //- section
 
-        section._mv: ._color_1._radius_x5r: +nav._clearfix
+        +nav._color_1._radius_x5r._clearfix._mv
           +sample_2
           +a._btnlink._l.btn.__icon: +isvg(svgi.ellipsis)
           +a._btnlink._l.btn.__icon: +isvg(svgi.compare)
@@ -99,9 +100,8 @@ block view
           +a._btnlink._l.btn.__icon: +isvg(svgi.home)
           +a._btnlink._l.btn.__icon: +isvg(svgi.download)
           +a._btnlink._l.btn.__icon: +isvg(svgi.image)
-        //- section
 
-        section._mv.flatmenu: ._color_1._radius_x5r: +nav._clearfix
+        +nav._color_1._radius_x5r._mv.flatmenu
           +sample_2
           +a._btnlink._l.btn.__icon: +isvg(svgi.ellipsis)
           +a._btnlink._l.btn.__icon: +isvg(svgi.compare)
@@ -109,7 +109,6 @@ block view
           +a._btnlink._l.btn.__icon: +isvg(svgi.home)
           +a._btnlink._l.btn.__icon: +isvg(svgi.download)
           +a._btnlink._l.btn.__icon: +isvg(svgi.image)
-        //- section
 
       //- main: article
 
@@ -119,24 +118,27 @@ block view
 
     //- view#menu_
 
-    +view#example_1._full_view
+    +view#type_1._full_view
 
-      style.
-        #nav_1 ._nav_layout { margin:0;padding:.5rem }
+      //- style.
+        #nav_1 ._nav_layout { margin:0;padding:.6rem }
       //- style.
 
-      +nav#nav_1._color_1._no_print: +sample_1
+      +nav._color_1(style="padding:.1rem 0"): +sample_1
 
       #view_1: ._main_layout: ._p: +examples
 
     //- view
 
-    +view#example_2._full_view
+    +view#type_2._full_view
 
-      section#_navbar._flex._color_1
-        ._f._text_center: +logo
-        ._fill(style="flex-basis:20rem"): +nav(style="padding:0.55rem 0.75rem"): +sample_1
-      //- section
+      style.
+        .flexmenu ._nav_layout { margin:0 }
+      //- style
+
+      +nav._color_1.flexmenu: ._flex
+        ._f: +logo
+        ._fill(style="flex-basis:20rem"): div(style="margin:1rem .6rem"): +sample_1
 
       #view_2: ._main_layout: ._p: +examples
 

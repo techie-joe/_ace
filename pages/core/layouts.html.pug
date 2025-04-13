@@ -2,7 +2,7 @@ extends _html
 
 block append vars
   - heading = `Layouts`
-  - about   = `Arrange contents with any of these layouts.`
+  - about   = `Arrange layouts easily.`
   - updateTitle( `${heading} | ${name}` )
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+'layouts.html' )
@@ -12,19 +12,12 @@ block append vars
 
 block append style
   style.
-
-    ._view { overflow: auto }
-
     ._footer_layout, ._header_layout
     { max-width:none;padding:0;margin:0 }
-
   //- style.
 
 mixin layblock
   .block._outline&attributes(attributes): ._pa: block
-
-mixin layblock_B
-  .block_B._outline&attributes(attributes): ._pa: block
 
 mixin viewBlock(name)
   +view(id=`view-${name}`)._full_view: block
@@ -41,36 +34,28 @@ block view
       //- header
 
       style.
-
-        .A_layout { margin:.5rem; }
-
-        .B_layout { max-width:60rem;margin:auto }
-
-        .C_layout { max-width: 300px; flex-basis: 300px; }
-
-        .D_layout { min-width:300px }
-
-        .block { margin-top:.5rem; margin-bottom:.5rem; text-align:center }
-
-        .block_B { text-align:center }
-
+        .block { text-align:center }
       //- style.
 
       ._flex
-        +layblock._f.C_layout #[b C_layout ]#[br]#[code { max-width:300px }]
-        +layblock._fill.D_layout #[b D_layout ]#[br]#[code { min-width:300px }]
-        +layblock._f.C_layout #[b C_layout ]#[br]#[code { max-width:300px }]
-
+        +layblock._f(style="flex:1 1 300px") #[b E_layout ]#[br]#[code { flex:1 1 300px }]
+        +layblock._fill(style="flex:100 1 300px") #[b D_layout ]#[br]#[code { flex:100 1 300px }]
+ 
       ._flex
-        +layblock._fill.D_layout #[b D_layout ]#[br]#[code { min-width:300px }]
-        +layblock._f.C_layout #[b C_layout ]#[br]#[code { max-width:300px }]
+        +layblock._f(style="flex:0 0 300px") #[b C_layout ]#[br]#[code { flex:0 0 300px }]
+        +layblock._fill(style="flex:1 1 300px") #[b D_layout ]#[br]#[code { flex:1 1 300px }]
 
-      hr
-      #menu._ph: +nav._clearfix
+      +layblock(style="max-width:60rem;margin:auto") #[b B_layout ]#[br]#[code { max-width:60rem; margin:auto }]
+
+      +layblock(style="margin:0 5%") #[b A_layout ]#[br]#[code { margin:10% }]
+
+      +layblock.DEFAULT_layout #[b DEFAULT_layout ]#[br]#[code { full-width, auto-height, no-margin }]
+
+
+      //- #menu._ph: +nav._clearfix
         -
           temp = [
-            ['#view-2','Common'],
-            ['#view-3','Float'],
+            ['#view-2','Float'],
             ['#view-4','Full'],
           ];
         each v in temp
@@ -85,18 +70,7 @@ block view
 
     //- view
 
-    +viewBlock(2)
-
-      +layblock.B_layout #[b B_layout ] #[code { max-width:60rem; margin:auto }]
-
-      +layblock.A_layout #[b A_layout ] #[code { margin:.5rem }]
-
-      +layblock.DEFAULT_layout #[b DEFAULT_layout ] #[code { full-width, auto-height, no-margin }]
-
-
-    //- view
-
-    +viewBlock(3)
+    //- +viewBlock(2)
 
       style.
 
@@ -111,7 +85,7 @@ block view
 
     //- view
 
-    +viewBlock(4)
+    //- +viewBlock(4)
 
       style.
 

@@ -2,7 +2,8 @@
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
-### April 10, 2025 - v0.1.25 b12.328
+### April 13, 2025 - v0.1.26 b13.329
+- new header blocks
 - overflow and content alignment.
 - housekeep: core theme, color and layout
 

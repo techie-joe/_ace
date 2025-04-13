@@ -7,10 +7,12 @@ block append vars
   - updateDescription( `${about}` )
   - updateUrl( siteUrl+"theme.html" )
   - INCLUDE_BACKSWITCH = true
+  include _logo
 
 block append style
   style.
-    ._nav_layout { max-width:60em; }
+    ._nav_layout { max-width:60em;margin:auto;padding:.6rem }
+    ._header_layout,
     ._main_layout { margin:.5rem auto }
 
   //- style.
@@ -53,23 +55,18 @@ mixin sample_1
 
 block header
 
-  style.
-    #nav_1 ._nav_layout { margin:0 auto;padding:.5rem }
-  //- style.
+  +nav._color_1._no_print: +sample_1
 
-  +nav#nav_1._color_1._no_print: +sample_1
-
-  include _logo
-
-block main
-
-  +main#_main: article
-
+  +header#_header
     ._flex
       ._f: +logo
       ._fill
 
     hr
+
+block main
+
+  +main#_main: article
 
     section
 
