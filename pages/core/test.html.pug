@@ -1,35 +1,9 @@
-extends _html
+extends _test
 
 block append vars
-  - heading = `Test page`
-  - about   = `Try new things from time to time.`
-  - updateTitle( `${heading} | ${name}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+'test.html' )
-  - HEADER_TYPE = 'SIMPLE'
-
-block append style
-  style.
-    ._footer_layout, ._header_layout, ._main_layout
-    { max-width:none;padding:0;margin:.5rem }
-  //- style.
-
-block append topSwitch
-  +topStyleSwitch
-  +topBack
-
-block nav
-
-block append script
-  script.
-    (()=>{
-      var
-      e = document.getElementById("_core_style"),
-      m = e.getAttribute("media"),
-      disableStyle = ()=>{ e.setAttribute("media",e.getAttribute("media")==='x'?m:'x') };
-      window.test = { disableStyle };
-    })();
-  //- script.
+  - filename = 'test.html'
+  - heading  = 'Test page'
+  - about    = 'Try new things from time to time.'
 
 block main
 

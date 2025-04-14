@@ -107,12 +107,13 @@ mixin widget
   aside&attributes(attributes): block
 
 mixin heading
-  h1._h1&attributes(attributes): block
+  h1&attributes(attributes): block
 
 //- ==============================================================
 //- navigations
 //- ==============================================================
 //- a link must have href for good SEO, so # default were considered best
+
 mixin a(href,title)
   a(href=href||'#' title=title)&attributes(attributes): block
 
@@ -160,13 +161,6 @@ mixin fat
 
 mixin itext
   i._itext: i.itext&attributes(attributes): block
-
-//- ==============================================================
-//- data
-//- ==============================================================
-
-mixin pageData
-  ._scrollable._full_width._text_left&attributes(attributes): +pre: +putData
 
 //- ==============================================================
 //- php

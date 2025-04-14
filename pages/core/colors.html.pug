@@ -1,11 +1,9 @@
-extends _html
+extends _html3
 
 block append vars
-  - heading = `Colors`
-  - about   = `Adds personality to your site using colors.`
-  - updateTitle( `${heading} | ${name}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+'colors.html' )
+  - filename = 'colors.html'
+  - heading  = 'Colors'
+  - about    = 'Adds personality to your site using colors.'
   -
     function range(n,min,max) { return Math.min(Math.max(n, min),max) }
     function colorRange(n,min=0,max=255) { return range(n,min,max) }
@@ -23,20 +21,32 @@ block append vars
       }
     }  
 
-block append topSwitch
-  +topBack
 
-block header
+block navmenu
+  -
+    var links = [
+      ['index.html','Core'],
+      ['colors.html','Colors'],
+      ['color_tables.html','Color Tables'],
+    ]
+  div(style="margin: .6rem"): +navmenu(links)
 
-  +header#_header
-    +heading#_heading !{heading}
-    p
-      | !{description}
+block pageHeader
+
+  ._pageHeader._simpleHeader
+    +heading#_heading._h1 !{heading}
+    p#_about
+      | !{about}
       | See colors being applied to a #[+a('theme.html') theme].
     hr
 
 block append style
   style.
+
+    ._pageHeader,
+    #_navbar ._nav_layout { max-width:60em;margin:auto }
+    ._pageHeader { padding:0 1rem }
+
     .atheme ._f { text-align: center; padding:2px }
     .i {
       display: inline-block;

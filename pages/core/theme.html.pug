@@ -1,17 +1,17 @@
-extends _html
+extends _html3
 
 block append vars
-  - heading = `Theme`
-  - about   = `This is an example of theme implimentation.`
-  - updateTitle( `${heading} | ${name}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+"theme.html" )
-  - INCLUDE_BACKSWITCH = true
+  - filename = 'view.html'
+  - heading  = 'Theme'
+  - about    = 'This is an example of theme implimentation.'
   include _logo
 
 block append style
   style.
-    ._nav_layout { max-width:60em;margin:auto;padding:.6rem }
+    #_navbar ._nav_layout {
+      max-width:60em;
+      margin:.6rem auto;
+    }
     ._header_layout,
     ._main_layout { margin:.5rem auto }
 
@@ -54,7 +54,12 @@ mixin sample_1
 
 block header
 
-  +nav._color_1._no_print: +sample_1
+  +nav#_topRightNav._absolute._no_print
+    block topRightNav_content
+      +topThemeSwitch
+      +topHomeButton(coreUri)
+
+  +nav#_navbar._color_1._no_print: +sample_1
 
   +header#_header
     ._flex

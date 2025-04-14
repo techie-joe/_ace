@@ -25,28 +25,29 @@ include _mixins
   let heading        = '[untitled]';
   let about          = '[undescribed]';
 
+  //- layout
+  let layout         = '[undefined]';
+
   //- urls
+  let filename       = '[undefined]';
   let siteUrl        = '[site_url]';
   let authorUrl      = '[author_url]';
   let sourceUrl      = '[source_url]';
   let builderUrl     = '[builder_url]';
   let localUrl       = '[local_url]';
 
+  //- open graph metadata for social media sharing
+  let og_url         = siteUrl + '?utm_source=homescreen';
+  let og_type        = 'website';
+  let og_title       = title;
+  let og_description = description;
+  let og_image       = '';
+  let og_imageAlt    = '';
+
   //- uris
   let homeUri        = '/ace/';
   let assetsUri      = '/ace/assets/';
   let coreUri        = '/ace/core/';
-
-  //- open graph metadata for social media sharing
-  let og_url         = siteUrl + '?utm_source=homescreen';
-  let og_title       = title;
-  let og_description = description;
-  let og_type        = 'website';
-  let og_image       = '';
-  let og_imageAlt    = '';
-
-  //- layout
-  let layout         = '[n/a]';
 
   //- metadata
   let now            = new Date();
@@ -90,10 +91,43 @@ include _mixins
   svgi.compare = 'M19,3H14V5H19V18L14,12V21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10,18H5L10,12M10,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H10V23H12V1H10V3Z'; // for theme switch
 
 //- ==============================================================
-//- Include project specific configurations
+//- page data mixins
 //- ==============================================================
 
-include _CONFIGS
+mixin pageData
+  ._scrollable._full_width._text_left&attributes(attributes): +pre: +putData
+
+mixin putData
+  +l
+  +join([
+    `title            = ${title}`,
+    `description      = ${description}`,
+    ``,
+    `heading          = ${heading}`,
+    `about            = ${about}`,
+    ``,
+    `layout           = ${layout}`,
+    `filename         = ${filename}`,
+    `siteUrl          = ${siteUrl}`,
+    ``,
+    `og_url           = ${og_url}`,
+    `og_type          = ${og_type}`,
+    `og_title         = ${og_title}`,
+    `og_description   = ${og_description}`,
+    `og_image         = ${og_image}`,
+    `og_imageAlt      = ${og_imageAlt}`,
+    ``,
+    `homeUri          = ${homeUri}`,
+    `assetsUri        = ${assetsUri}`,
+    ``,
+    `name             = ${name}`,
+    `version          = ${version}`,
+    `build            = ${build}`,
+    ``,
+    `author           = ${author}`,
+    `publisher        = ${publisher}`,
+  ])
+  +l
 
 //- ==============================================================
 //- Update functions
@@ -121,36 +155,9 @@ include _CONFIGS
   }
 
 //- ==============================================================
-//- Data mixins
+//- Include project specific configurations
 //- ==============================================================
 
-mixin putData
-  +l
-  +join([
-    `name             = ${name}`,
-    `version          = ${version}`,
-    `build            = ${build}`,
-    ``,
-    `author           = ${author}`,
-    `publisher        = ${publisher}`,
-    ``,
-    `title            = ${title}`,
-    `description      = ${description}`,
-    ``,
-    `heading          = ${heading}`,
-    `about            = ${about}`,
-    ``,
-    `siteUrl          = ${siteUrl}`,
-    `og_url           = ${og_url}`,
-    `og_title         = ${og_title}`,
-    `og_description   = ${og_description}`,
-    `og_type          = ${og_type}`,
-    `og_image         = ${og_image}`,
-    `og_imageAlt      = ${og_imageAlt}`,
-    ``,
-    `homeUri          = ${homeUri}`,
-    `assetsUri        = ${assetsUri}`,
-    ``,
-    `layout           = ${layout}`,
-  ])
-  +l
+include _CONFIGS
+
+//- ========================================================== EOF

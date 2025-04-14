@@ -1,13 +1,10 @@
-extends _html
+extends _html3
 
 block append vars
-  - heading = `Menu`
-  - about   = `Build any type of menus.`
-  - updateTitle( `${heading} | ${name}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+"menu.html" )
-  - INCLUDE_BACKSWITCH = true
-  - HEADER_TYPE = 'SIMPLE'
+  - filename = 'menu.html'
+  - heading  = 'Menu'
+  - about    = 'Build all types of menus.'
+
   -
     svgi = {
       compare:'M19,3H14V5H19V18L14,12V21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10,18H5L10,12M10,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H10V23H12V1H10V3Z',
@@ -17,15 +14,18 @@ block append vars
       download:'M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z',
       image:'M21,3H3C2,3 1,4 1,5V19A2,2 0 0,0 3,21H21C22,21 23,20 23,19V5C23,4 22,3 21,3M5,17L8.5,12.5L11,15.5L14.5,11L19,17H5Z',
     };
+
   include _logo
 
 block append style
   style.
+
     ._view { overflow: auto }
     .btn { border:0 }
     .flatmenu ._nav_layout { margin:0 .5rem }
     .flatmenu .btn { border-radius:0;margin:0;vertical-align:top;line-height:2 }
     .flatmenu .btn.__icon { padding:0 .5em; font-size:1.25em }
+
   //- style.
 
 mixin menu_types
@@ -66,9 +66,11 @@ block view
 
     +view#common._full_view
 
-      +header#_header
-        ._p #[b._h7 !{heading} &mdash; ] !{about}
-        hr
+      +nav#_topRightNav._absolute._no_print
+        +topThemeSwitch
+        +topHomeButton(coreUri)
+
+      +header#_header: +simpleHeader
 
       +main#_main: article
 

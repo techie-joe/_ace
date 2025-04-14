@@ -1,24 +1,21 @@
-extends _html
+extends _html3
 
 block append vars
-  - heading = `Core Elements`
-  - about   = `Lets explore the main elements of our template.`
-  - updateTitle( `${heading} | ${name}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+'index.html' )
+  - filename = 'index.html'
+  - heading  = 'Core Elements'
+  - about    = 'Lets explore the main elements of our template.'
+
+block topRightNav_content
+  +topThemeSwitch
+  +topHomeButton
 
 block append style
+  style.
+    #_navbar ._nav_layout { max-width:60em;margin:auto }
   //- style.
-  //- style.
 
-block header
-
-  +navbar(false)
-
-  +header#_header
-    +heading#_heading !{heading}
-    p !{description}
-    hr
+block navmenu
+  //- show nothing
 
 block main
 
@@ -52,10 +49,11 @@ block main
     +nav._color_1._radius_x5r._clearfix._mv
       -
         temp = [
-          ['test.html','Test'],
+          ['html.html','Html'],
           ['blank.html','Blank'],
           ['menu.html','Menu'],
           ['theme.html','Theme'],
+          ['test.html','Test'],
         ];
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}
@@ -73,6 +71,7 @@ block main
         temp = [
           [homeUri+'themejs/','ThemeJs'],
           ['colors.html','Colors'],
+          ['color_tables.html','Color-Tables'],
         ];
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}

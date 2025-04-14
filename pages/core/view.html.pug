@@ -1,23 +1,14 @@
-extends _html
+extends _html2
 
 block append vars
-  - heading = `View`
-  - about   = `Better controls over the view-pane.`
-  - updateTitle( `${heading} | ${name}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+'view.html' )
-  - INCLUDE_BACKSWITCH = true
+  - filename = 'view.html'
+  - heading  = 'View'
+  - about    = 'Better controls over the view-pane.'
 
 block append style
   style.
-
     ._view { overflow: auto }
-
-    ._footer_layout, ._header_layout, ._main_layout
-    { max-width:none;padding:0;margin:0 }
-
-  //- style.    
-    ._view { box-shadow: 0 0 0 1px #f808 inset }
+  //- style.
 
 block append widgets
   +widgets#_widgets
@@ -60,18 +51,21 @@ block append widgets
 mixin viewBlock(name)
   +view(id=`view-${name}`)._full_view: block
 
+mixin heading3(v)
+  ._ph._p #[h3#_heading._inblock._h7._m0 View ##{v} ]
+
 block view
 
   ._views
 
+    +topRightNav
+
     - v = 1
     +viewBlock(v)
 
-      +header#_header
-        ._ph: p #[b._h7 View ##{v} &mdash; ] !{description}
-        hr
+      +header#_header: +simpleHeader._ph
       //- header
-
+  
       +main#_main
       //- main
 
@@ -86,16 +80,15 @@ block view
 
       style.
         ._html #view-#{v} {
-          background-color: #20002255;
+          background-color: #494c8e55;
           color:#222;
         }
         ._dark #view-#{v} { color:inherit }
 
-      ._page_layout
-        ._ph: h2._h7 View ##{v}
-        hr
-
-        +pre._ma: +putData
+      +heading3(v)
+      hr
+      article._page_layout
+        +pageData
 
       //- _page_layout
     
@@ -103,13 +96,13 @@ block view
 
     style.
       #view-2 {
-        background-color: #00220855;
+        background-color: #3d804d55;
         position: absolute;
         top: 0;
         left: 100%;
       }
       #view-4 {
-        background-color: #00153d55;
+        background-color: #997e4555;
         position: absolute;
         top: 100%;
         left: 100%;
@@ -118,7 +111,7 @@ block view
 
     each v in [2,4]
       +viewBlock(v)
-        ._ph: h2._h7 View ##{v}
-      //- view
+        +heading3(v)
+        article._page_layout
   
   //- views

@@ -1,18 +1,18 @@
-extends _html
+extends _html2
 
 block append vars
-  - heading = `Layouts`
-  - about   = `Arrange layouts easily.`
-  - updateTitle( `${heading} | ${name}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+'layouts.html' )
-  - INCLUDE_BACKSWITCH = true
-  - HEADER_TYPE = 'SIMPLE'
+  - filename = 'layouts.html'
+  - heading  = 'Layouts'
+  - about    = 'Arrange layouts easily.'
+
+  - headerType = 'simple'
+  - pageLayout = 'full-width'
 
 block append style
   style.
     ._footer_layout, ._header_layout
-    { max-width:none;padding:0;margin:0 }
+    { padding:0 }
+    ._pageHeader { padding:0 1rem }
   //- style.
 
 mixin layblock
@@ -25,10 +25,14 @@ block view
 
   ._views
 
+    +topRightNav
+
     +viewBlock(1)
 
       +header#_header
-        ._ph: p #[b._h7 !{heading} &mdash; ] !{about}
+        ._pageHeader._simpleHeader
+          +heading#_heading._h1 !{heading}
+          p#_about !{about}
         hr
       //- header
 
@@ -69,7 +73,7 @@ block view
 
     //- view
 
-    //- +viewBlock(2)
+    +viewBlock(2)
 
       style.
 
@@ -80,11 +84,11 @@ block view
 
       //- style.
 
-      +layblock_B.FLOAT_layout #[b FLOAT_layout ] #[code { absolute-float }]
+      +layblock.FLOAT_layout #[b FLOAT_layout ] #[code { absolute-float }]
 
     //- view
 
-    //- +viewBlock(4)
+    +viewBlock(4)
 
       style.
 
@@ -96,7 +100,7 @@ block view
 
       //- style.
 
-      +layblock_B.FULL_layout #[b FULL_layout ] #[code { absolute-full }]
+      +layblock.FULL_layout #[b FULL_layout ] #[code { absolute-full }]
 
     //- view
 

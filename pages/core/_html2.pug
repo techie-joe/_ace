@@ -1,0 +1,66 @@
+extends ../../core/html
+
+block append vars
+  //- variables for every html page
+  include _vars
+  include _nav
+  - layout = 'pages/core/html';
+
+  - navbar = false
+  - headerType = 'default'
+  - pageLayout = 'default'
+
+block updatePageData
+  - updateTitle( `${heading} | ${name}` )
+  - updateDescription( `${about}` )
+  - updateUrl( siteUrl + filename, og_type )
+  - updateImage( og_image, og_imageAlt )
+
+block append style
+  if pageLayout === 'flex-to-max'
+    style.
+      ._header_layout {
+        padding: 0;
+        margin: 0;
+      }
+      ._pageHeader,
+      ._footer_layout, ._main_layout
+      { 
+        margin-left:auto;
+        margin-right:auto;
+        max-width:60em;
+      }
+      ._pageHeader {
+        padding: 0 1rem;
+      }
+      #_navbar ._nav_layout {
+        margin:0;
+        padding:0;
+      }
+    //- style.
+  else if pageLayout === 'full-width'
+    style.
+      ._footer_layout, ._header_layout
+      { max-width:none;margin:0 }
+    //- style
+//- block style
+
+block nav
+  
+  block topRightNav
+    if topRightNav
+      +nav#_topRightNav._fixed._no_print
+        block topRightNav_content
+          +topThemeSwitch
+          +topHomeButton(coreUri)
+
+  block navbar
+    if navbar
+      +nav#_navbar._color_1._no_print
+        ._flex
+          ._f: +navlogo(['Ace','Template'])
+          ._fill(style="flex-basis:20rem")
+            block navmenu
+              div(style="margin: .6rem"): +navmenu
+
+//- block nav

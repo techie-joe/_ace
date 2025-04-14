@@ -1,16 +1,13 @@
-extends _html
+extends _html3
 
 block append vars
-  - heading = `Basics`
-  - about   = `Basic elements are kept nice and tidy.`
-  - updateTitle( `${heading} | ${name}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+'basics.html' )
+  - filename = 'basics.html'
+  - heading  = 'Basics'
+  - about    = 'Basic elements are kept nice and tidy.'
 
 block main
 
   +main#_main: article
-
 
     style.
       .box {

@@ -1,15 +1,12 @@
-extends _html
+extends _html3
 
 block append vars
-  - heading = `Alignment`
-  - about   = `Align content easily.`
-  - updateTitle( `${heading} | ${name}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+'alignment.html' )
-  - INCLUDE_BACKSWITCH = true
-  - HEADER_TYPE = 'SIMPLE'
+  - filename = 'alignment.html'
+  - heading  = 'Alignment'
+  - about    = 'Align content easily.'
 
-block nav
+  - navbar = false
+  - headerType = 'simple'
 
 block append style
   style.
@@ -48,10 +45,10 @@ block main
 
       ._mv: ._flex._gap_a
 
-        ._f_4_1: .a._outline: +o
-        ._f_4_1: .a._outline._text_left: +o(style="position:absolute;top:0")
-        ._f_4_1: .a._outline._text_center: +o(style="position:absolute;top:50%;margin-top:-.5em;left:50%;margin-left:-.5em;")
-        ._f_4_1: .a._outline._text_right: +o(style="position:absolute;bottom:0;right:0")
+        ._f_4_1: .a._outline: +o._text_center
+        ._f_4_1: .a._outline: +o._text_center(style="position:absolute;top:0")
+        ._f_4_1: .a._outline: +o._text_center(style="position:absolute;top:50%;left:50%;transform: translateX(-50%) translateY(-50%);")
+        ._f_4_1: .a._outline: +o._text_center(style="position:absolute;bottom:0;right:0")
 
       ._mv: ._flex._gap_a
 
@@ -63,9 +60,9 @@ block main
       ._mv: ._flex._gap_a
 
         ._f_4_1: .a._outline: +o.FLOAT_layout
-        ._f_4_1: .a._outline: +o.FLOAT_layout._text_left
-        ._f_4_1: .a._outline: +o.FLOAT_layout._text_center
-        ._f_4_1: .a._outline: +o.FLOAT_layout._text_right
+        ._f_4_1: .a._outline: +o.FLOAT_layout._text_left(style="align-content:start")
+        ._f_4_1: .a._outline: +o.FLOAT_layout._text_center(style="align-content:center")
+        ._f_4_1: .a._outline: +o.FLOAT_layout._text_right(style="align-content:end")
 
       //- flex
     //- section

@@ -1,0 +1,138 @@
+include _vars
+block vars
+  //- variables for every html page
+  - layout = 'core/html';
+  - INCLUDE_THEMEJS = true
+  - INCLUDE_SERVICE_WORKERS = false
+  - topRightNav = true
+  - navbar = false
+  - headerType = 'default'
+
+block updatePageData
+  - updateTitle( heading )
+  - updateDescription( about )
+  - updateUrl( siteUrl + filename, og_type )
+  - updateImage( og_image, og_imageAlt )
+
+mixin topCloseButton
+  +backlink._link._color(title="Close this page")|&times;
+
+mixin topHomeButton(url=homeUri)
+  +a(url)._link._color(title="Back to parent page")|&times;
+
+mixin topThemeSwitch
+  +a._link._color.ticon(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)")|☯
+
+mixin simpleHeader
+  ._pageHeader._simpleHeader&attributes(attributes)
+    +heading#_heading._h1 !{heading}
+    p#_about !{about}
+    hr
+
+mixin defaultHeader
+  ._pageHeader._defaultHeader&attributes(attributes)
+    ._p
+      +heading#_heading._h7._inblock._m0 !{heading}
+      +l
+      span#_about &mdash; !{about}
+    hr
+
+block document
+  doctype html
+  html#_html._html._nojs._scrollbar._a._hidden(lang=lang class=htmlClass)
+    |
+    | <!-- #{name} v#{version} b#{build.substring(0,build.indexOf('.')||build.length)} | (c) #{copyright} -->
+    | <!-- layout:#{layout} -->
+    |
+    head
+      meta(charset=charset)/
+
+      block seo
+        include _seo
+
+      block meta
+        include _meta
+
+      block style
+        +htmlPreset
+        //- +cssv(href,media='all')
+        +cssv(assetsUri+'css/core/html.css')#_core_style
+
+    //- head
+
+    body#_body._body(class=bodyClass)
+
+      block view
+        +view._full_view
+
+          block header
+            +header#_header
+
+              block nav
+                
+                block topRightNav
+                  if topRightNav
+                    +nav#_topRightNav._fixed._no_print
+                      block topRightNav_content
+                        +topThemeSwitch
+                        +topCloseButton
+                //- block topRightNav
+
+                block navbar
+                  if navbar
+                    +nav#_navbar._color_1._no_print
+                      block navbar_content
+                //- block navbar
+              
+              //- block nav
+
+              block pageHeader
+                if headerType === 'simple'
+                  +simpleHeader
+                else
+                  +defaultHeader
+              //- block pageHeader
+
+            //- header
+          //- block header
+
+          block main
+            +main#_main: article
+              block pageData
+                +pageData#_pageData
+
+          block aside
+            +aside#_aside
+
+          block footer
+            +footer#_footer
+              hr
+              p._small._system &copy; !{copyright}
+            //- footer
+
+        //- +view
+
+      block widgets
+        //- +widgets#_widgets
+          +widget#_widget
+
+      block script
+        //- +jsv(src)
+
+        if INCLUDE_THEMEJS
+          +jsv(assetsUri+'js/theme_v1.0.js')(defer)
+        if INCLUDE_SERVICE_WORKERS
+          +jsv(assetsUri+'js/sw.j')(defer)
+
+      //- script
+
+      block lastBlock
+        |
+        | <!-- IE needs 512+ bytes: https://techie-joe.github.io/library/html5/ie#ie-needs-512-bytes -->
+        |
+
+    //- body
+
+  //- html
+
+//- document

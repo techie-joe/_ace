@@ -92,7 +92,7 @@ body { @extend ._reset_margin; } /* 1 */
 }
 
 // make way for browser status bar.
-#_footer { padding-bottom: 1rem }
+#_footer { padding-bottom: 1.5rem }
 
 // set a special div that can display inline-blocks perfectly.
 ._idiv {
@@ -268,10 +268,11 @@ textarea { resize: vertical }
 // Styles
 // ===============================================================
 
-._nav_layout,
+._page_layout,
 ._header_layout,
 ._footer_layout,
-._main_layout { margin: .5rem /* temp */ }
+._main_layout { margin: .5rem auto; padding:0 1rem; }
+._nav_layout  { margin: .5rem }
 
 // ------------------------------------------------------ icons */
 

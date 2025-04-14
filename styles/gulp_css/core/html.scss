@@ -8,3 +8,39 @@
 @use "_main";
 @use "_flex";
 @use "_print";
+
+// ===============================================================
+
+#_navbar {
+  @extend ._clearfix;
+  ._nav_layout {
+    min-height: 1.5em;
+    margin: .6rem auto;
+    padding: 0 .6rem;
+  }
+  ._btnlink.__active { border:0 }
+}
+
+#_topRightNav {
+  ._nav_layout { margin: .6rem 1rem }
+  & { left:auto; right:15px; z-index:1000 }
+  ._link {
+    font-family:monospace,monospace;
+    font-size:1.3rem;
+    text-decoration:none;
+    text-align:center;
+    display:inline-block;
+    box-sizing:border-box;
+    width:1.5rem;
+    height:1.5rem;
+    margin:.1rem;
+    padding:0;
+    border:1px solid #888;
+    line-height:1;
+    font-weight:normal;
+    border-radius:.3rem;
+    vertical-align: middle;
+    i { font-style:normal }
+  }
+  .ticon { font-size:1.5em }
+}

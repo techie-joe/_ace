@@ -1,6 +1,25 @@
-mixin navmenu
+mixin navlogo(text=['Your','Logo'],url=homeUri)
+  block append style
+    style.
+      #_navlogo {
+        border: 0;
+        padding: .25em 1em;
+        border-radius: 0;
+        margin: 0;
+        line-height: 2;
+        font-size: 1.2em;
+        box-sizing: border-box;
+        width: 100%;
+      }
+    //- style.
+
+  +a(url)#_navlogo._btnlink
+    b._tc_contra !{text[0]}
+    b._tc_blue !{text[1]}
+
+block append vars
   -
-    temp = [
+    var navbar_menu = [
       ['index.html','Core'],
       ['basics.html','Basics'],
       ['texts.html','Texts'],
@@ -9,35 +28,29 @@ mixin navmenu
       ['buttons.html','Buttons'],
       ['containers.html','Containers'],
     ];
-  each v in temp
-    +a._link._l(href=v[0]) #{v[1]}
 
-mixin navbar(INCLUDE_MENU = true)
+mixin navmenu(links=navbar_menu)
+  each v in links
+    if filename === v[0]
+      +a._btnlink._l.__secondary.__active(href=v[0]) #{v[1]}
+    else
+      +a._link._l(href=v[0]) #{v[1]}
 
-  style.
-    .flexmenu ._nav_layout { margin:0 }
-    #_nav ._nav_layout { margin:0 }
-    #navlogo {
-      border: 0;
-      padding: .25em 1em;
-      border-radius: 0;
-      margin: 0;
-      line-height: 2;
-      font-size: 1.2em;
-      box-sizing: border-box;
-      width: 100%;
-    }
+mixin navbar(links=navbar_menu)
+  +nav#_navbar._color_1._no_print&attributes(attributes)
+    if block
+      block
+    else
+      ._flex
+        ._f: +navlogo(['Ace','Template'])
+        ._fill(style="flex-basis:20rem")
+          block navmenu
+            div(style="margin: .6rem"): +navmenu(links)
 
-  //- style.
-
-  +nav._color_1.flexmenu._no_print: ._flex
-
-    ._f
-      +a('../')#navlogo._btnlink
-        b._tc_contra Ace
-        b._tc_blue Template
-
-    ._fill(style="flex-basis:20rem")
-      if INCLUDE_MENU
-        div(style="margin: .6rem .6rem"): +navmenu
-          
+mixin topRightNav
+  +nav#_topRightNav._fixed._no_print
+    if block
+      block
+    else
+      +topThemeSwitch
+      +topHomeButton(coreUri)

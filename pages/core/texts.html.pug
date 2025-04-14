@@ -1,11 +1,10 @@
-extends _html
+extends _html3
 
 block append vars
-  - heading = `Texts`
-  - about   = `Texts is optimized for better adaptability.`
-  - updateTitle( `${heading} | ${name}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+'texts.html' )
+  - filename = 'texts.html'
+  - heading  = 'Texts'
+  - about    = 'Texts is optimized for better adaptability.'
+
   -
     cssi.gridlines = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1px" height="10px"><rect width="1" height="1" fill="%23A9790688" /></svg>';
 

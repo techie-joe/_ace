@@ -1,17 +1,13 @@
-extends _html
+extends _html3
 
 block append vars
-  - heading = `Containers`
-  - about   = `Group contents together using containers.`
-  - updateTitle( `${heading} | ${name}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+'containers.html' )
+  - filename = 'containers.html'
+  - heading  = 'Containers'
+  - about    = 'Group contents together using containers.'
 
 block append style
   style.
-
-    .o { height:12rem }
-
+    .o { height:12rem;height:15vw; }
   //- style.
 
 block main

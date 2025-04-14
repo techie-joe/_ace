@@ -1,20 +1,6 @@
-extends _html
+extends _html2
 
 block append vars
-  - heading = `Blank`
-  - about   = `A blank page to start building.`
-  - updateTitle( `${heading} | ${name}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+'blank.html' )
-  - INCLUDE_BACKSWITCH = true
-  - HEADER_TYPE = 'SIMPLE'
-
-block nav
-
-//- block main
-
-  +main#_main: article
-    +pageData#_pageData
-  //- main
-
-//- block main
+  - filename = 'blank.html'
+  - heading  = 'Blank'
+  - about    = 'A blank page to start building.'

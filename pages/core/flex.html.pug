@@ -1,21 +1,15 @@
-extends _html
+extends _html2
 
 block append vars
-  - heading = `Flex`
-  - about   = `Arrange contents neatly and facilitate responsiveness with flex elements.`
-  - updateTitle( `${heading} | ${name}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+"flex.html" )
-  - INCLUDE_BACKSWITCH = true
-  - HEADER_TYPE = 'SIMPLE'
+  - filename = 'flex.html'
+  - heading  = 'Flex'
+  - about    = 'Arrange contents neatly and facilitate responsiveness with flex elements.'
 
-block nav
+  - headerType = 'simple'
+  - pageLayout = 'full-width'
 
 block append style
   style.
-
-    ._footer_layout, ._header_layout, ._main_layout
-    { max-width:none;padding:0;margin:.5rem }
 
     ._html { min-width:0 }
     .o {

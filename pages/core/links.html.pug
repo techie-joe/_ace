@@ -1,11 +1,10 @@
-extends _html
+extends _html3
 
 block append vars
-  - heading = `Links`
-  - about   = `Intuitive styles for link elements.`
-  - updateTitle( `${heading} | ${name}` )
-  - updateDescription( `${about}` )
-  - updateUrl( siteUrl+'links.html' )
+  - filename = 'links.html'
+  - heading  = 'Links'
+  - about    = 'Intuitive styles for link elements.'
+
   -
     svgi = {
       bars:'M5,6H19V8H5V6M5,11H19V13H5V11M5,16H19V18H5V16Z',
