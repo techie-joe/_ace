@@ -1,0 +1,178 @@
+extends _html
+
+block append vars
+  - filename = 'theme.html'
+  - heading  = 'Theme'
+  - about    = 'This is an example of a theme.'
+
+  - pageLayout = 'flex-to-max'
+
+  include _logo
+
+block append style
+  //- style.
+  //- style.
+
+mixin sample_1
+  -
+    temp = [
+      ['','About'],
+      ['','Services'],
+      ['','Gallery'],
+      ['','Contact'],
+    ];
+  each v in temp
+    +a._link._l(href=v[0] onclick=onclick()) #{v[1]}
+
+block navbar
+  +nav#_navbar._color_1._no_print
+    ._flex
+      ._f: +navlogo(['Ace','Template'])
+      ._fill(style="flex-basis:20rem")
+        block navmenu
+          div(style="margin: .6rem")
+            //- ._small._i // navigation goes here ...
+            //- +navmenu
+            +a._link._l(href='./') Elements
+            +sample_1
+
+block pageHeader
+
+  #articleHeader._pageHeader
+    ._flex
+      ._f: +logo
+      ._fill
+    hr
+
+  +defaultHeader
+
+mixin ba(href='#',_onclick)
+  a(href=href onclick=onclick(_onclick))&attributes(attributes): block
+
+mixin liba(href='#',_onclick)
+  li: a(href=href onclick=onclick(_onclick))&attributes(attributes): block
+
+mixin block_1(title)
+  div&attributes(attributes)._text_justify
+    h3._inline._h7 !{title}
+    p._inline: block
+
+mixin block_2(title)
+  h3._h6 !{title}
+  p._text_justify: block
+
+mixin block_3(title)
+  h3._h6 !{title}
+  p._text_justify: block
+
+mixin block_4(title)
+  ._radius_x5r._pa._color_2._mv
+    h3._h6 !{title}
+    p._text_justify: block
+
+block article
+
+  article._article
+
+    section
+
+      +block_1('Building a Good Theme for a Website')._p| : Creating a cohesive and visually appealing theme for your website is crucial for attracting and retaining visitors. A well-designed theme enhances user experience, reflects your brand's identity, and helps convey your message effectively. Here is a comprehensive guide on how to build a good theme for your website.
+
+      +block_1('Define Your Purpose and Audience')._p| : Before diving into design, clarify the purpose of your website. Is it a blog, an e-commerce site, a portfolio, or a corporate page? Understanding your target audience's preferences and needs will guide your design choices and help you create a theme that resonates with them.
+
+    section: ._flex._gap_2
+
+      ._f_3_1
+
+        +block_2('Choose the Right Color Palette')| Colors evoke emotions and set the tone for your website. Select a color palette that aligns with your brand's identity and appeals to your audience. Use tools like Adobe Color or Coolors to experiment with different color schemes. Ensure your chosen colors provide enough contrast for readability and accessibility.
+        
+        +block_3('Typography Matters')| Fonts play a significant role in your website's readability and aesthetic appeal. Choose fonts that complement your brand’s personality and maintain consistency throughout the site. Use a combination of a primary font for headings and a secondary font for body text. Tools like Google Fonts offer a wide range of web-safe fonts to choose from.
+
+      ._f_3_1
+        
+        +block_2('Create a Layout Grid')| A layout grid helps organize your content and ensures a balanced and structured design. It provides a framework for placing elements like text, images, and buttons in a visually appealing way. Tools like Sketch or Figma can help you create and implement a layout grid.
+
+        +block_3('Focus on Navigation')| User-friendly navigation is essential for a positive user experience. Design a clear and intuitive navigation menu that allows visitors to find information easily. Use descriptive labels and consider implementing a sticky menu that remains visible as users scroll down the page.
+
+      ._f_12_5
+
+        +block_4('Optimize for Responsiveness')| Your website should look and function well on all devices, including desktops, tablets, and smartphones. Use responsive design techniques to ensure your theme adapts seamlessly to different screen sizes. Test your design on multiple devices to identify and fix any issues.
+
+        +block_4('Use High-Quality Images and Graphics')| Visual elements like images, icons, and graphics add depth and interest to your theme. Invest in high-quality visuals that align with your brand's style. Use tools like Unsplash or Pexels for free stock photos, and tools like Canva for creating custom graphics.
+
+    section
+
+      +block_1('Consistent Branding')._p| : Maintain consistency in your branding elements, such as logos, colors, fonts, and styles. Consistent branding helps build brand recognition and trust. Create a style guide that outlines your brand's visual identity and design principles.
+
+      +block_1('Ensure Fast Loading Times')._p| : A slow website can frustrate visitors and lead to high bounce rates. Optimize your theme for speed by minimizing the use of large images, leveraging browser caching, and using a content delivery network (CDN). Tools like GTmetrix or Google PageSpeed Insights can help you identify and fix performance issues.
+
+      +block_1('Incorporate Interactive Elements')._p| : Interactive elements like animations, hover effects, and micro-interactions enhance user engagement. Use them sparingly to draw attention to important elements and improve the overall user experience. Ensure that these interactions are smooth and don't hinder usability.
+
+      +block_1('Test and Iterate')._p| : Once your theme is designed, test it thoroughly to identify any issues or areas for improvement. Gather feedback from users and make necessary adjustments. Regularly update your theme to keep it fresh and aligned with current design trends.
+
+      +block_1('Conclusion')._p| : Building a good theme for your website involves a blend of creativity, strategic planning, and technical know-how. By focusing on elements like color, typography, layout, navigation, and responsiveness, you can create a theme that not only looks great but also provides an exceptional user experience. Remember to stay consistent with your branding, optimize for performance, and continuously test and improve your design. With these steps, you'll be well on your way to creating a visually appealing and highly functional website theme. Happy designing!
+
+    hr
+
+    section: ._flex._gap_2
+
+      style.
+        .buttons ._btnlink { min-width:5em }
+      //- style.
+
+      ._f_max: ._mb_2
+        h3 Buttons
+        .buttons
+          ._p
+            +a._btnlink._xl.__primary Primary
+            +a._btnlink._xl.__secondary Secondary
+            +a._btnlink._xl Ordinary
+          ._p
+            +a._btnlink._xl.__disabled.__primary Primary
+            +a._btnlink._xl.__disabled.__secondary Secondary
+            +a._btnlink._xl.__disabled Ordinary
+
+      ._fill: ._mb_2
+        h3 Texts and Hyperlinks
+        .links: p._text_justify
+          | Standard color were used on #[+ba#normalink._stay_fresh._no_wrap normal hyperlinks] and #[+ba('')._no_wrap visited hyperlinks].
+          | You can remove color from texts by using the #[code._code._no_wrap _no_color] helper class.  Use it to make a #[+ba._no_color._no_wrap colorless hyperlinks].
+        script.
+          document.getElementById('normalink').href+='?t='+(new Date().getTime());
+
+block footer
+  +footer#_footer._pt._color_1
+
+    ._pageFooter
+
+      ._flex._gap_2
+
+        ._f_12_8: ._mv
+          h6._h7._no_margin Official Address
+          //- |#[b Company Name]#[br]
+          div._mv._small
+            .
+              #[b Company Name],#[br]
+              101 Suite, ABC Street,#[br]
+              ZIP County, State,#[br]
+              Country, CC#[br]
+          div._tc_contra._no_wrap #[b._b + 012 345 6789]
+          div._small._no_wrap #[span your-email@your-domain.com]
+
+        ._f_12_5: ._mv
+          h6._h7._no_margin Primary Segment
+          ul._plain
+            +liba._link This segment
+            +liba._link Will have links
+            +liba._link To some pages
+
+        ._f_12_5: ._mv
+          h6._h7._no_margin Secondary Segment
+          ul._plain
+            +liba._link Put some links
+            +liba._link To your posts
+            +liba._link And pages
+
+      //- flex
+
+      p._small._system &copy; !{copyright}

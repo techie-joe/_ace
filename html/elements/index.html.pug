@@ -1,0 +1,97 @@
+extends _html
+
+block append vars
+  - filename = 'index.html'
+  - heading  = 'Core Elements'
+  - about    = 'Lets explore the building blocks of our templates.'
+
+  - navbar   = true
+  - pageLayout = 'flex-to-max'
+
+block topRightNav_content
+  +topThemeSwitch
+  +topHomeButton
+
+block pageHeader
+  +simpleHeader
+
+block navmenu
+  //- nothing
+
+block append style
+  //- style.
+  //- style.
+
+block article
+  article._article
+
+    +nav._color_1._radius_x5r._clearfix._mv
+      -
+        temp = [
+          ['basics.html','Basics'],
+          ['texts.html','Texts'],
+          ['icons.html','Icons'],
+          ['links.html','Links'],
+          ['buttons.html','Buttons'],
+          ['containers.html','Containers'],
+        ];
+      each v in temp
+        +a._link._l(href=v[0]) #{v[1]}
+
+    +nav._color_1._radius_x5r._clearfix._mv
+      -
+        temp = [
+          ['view.html','View'],
+          ['flex.html','Flex'],
+          ['layouts.html','Layouts'],
+          ['alignment.html','Alignment'],
+          ['menu.html','Menu'],
+        ];
+      each v in temp
+        +a._link._l(href=v[0]) #{v[1]}
+
+    +nav._color_1._radius_x5r._clearfix._mv
+      -
+        temp = [
+          ['html.html','Html'],
+          ['blank.html','Blank'],
+          ['starter.html','Starter'],
+        ];
+      each v in temp
+        +a._link._l(href=v[0]) #{v[1]}
+
+    +nav._color_1._radius_x5r._clearfix._mv
+      -
+        temp = [
+          ['error.html','Error'],
+        ];
+      each v in temp
+        +a._link._l(href=v[0]) #{v[1]}
+
+    +nav._color_1._radius_x5r._clearfix._mv
+      -
+        temp = [
+          ['test.html','Test'],
+          ['theme.html','Theme'],
+          ['overflow.html','Overflow'],
+        ];
+      each v in temp
+        +a._link._l(href=v[0]) #{v[1]}
+
+    +nav._color_1._radius_x5r._clearfix._mv
+      -
+        temp = [
+          [homeUri+'themejs/','ThemeJs'],
+          ['colors.html','Colors'],
+          ['color_tables.html','Color-Tables'],
+        ];
+      each v in temp
+        +a._link._l(href=v[0]) #{v[1]}
+
+    //- hr
+
+    //- +pageData
+
+  //- article
+
+//- block article

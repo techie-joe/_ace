@@ -1,0 +1,47 @@
+// ===============================================================
+// Styles for Ace Core
+// ===============================================================
+
+@use "copyright";
+@use "_normalize"; // todo
+// @use "_scrollbar";
+@use "_main";
+@use "_flex";
+@use "_print";
+
+// ===============================================================
+
+#_navbar {
+  @extend ._clearfix;
+  @extend ._color_1;
+  ._nav_layout {
+    min-height: 1.7em;
+    margin: .6rem auto;
+    padding: 0 1rem;
+  }
+  ._btnlink.__active { @extend ._no_border; }
+}
+
+#_topRightNav {
+  ._nav_layout { margin: .6rem 1rem }
+  & { @extend ._fixed; left:auto; right:15px; z-index:1000 }
+  ._link {
+    font-family:monospace,monospace;
+    font-size:1.3rem;
+    text-decoration:none;
+    text-align:center;
+    display:inline-block;
+    box-sizing:border-box;
+    width:1.5rem;
+    height:1.5rem;
+    margin:.1rem;
+    padding:0;
+    border:1px solid #888;
+    line-height:1;
+    font-weight:normal;
+    border-radius:.3rem;
+    vertical-align: middle;
+    i { font-style:normal }
+  }
+  ._ticon { font-size:1.5em }
+}

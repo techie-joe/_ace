@@ -1,0 +1,8 @@
+-
+  function appendVersion ( _url ){
+    return [_url,"?v=",version,"-",build.substring(0,build.indexOf('.')||build.length)].join('');
+  }
+
+  function onclick( _script='' ){
+    return 'event.preventDefault();' + _script;
+  }

@@ -1,5 +1,8 @@
 ## Change logs
 
+### April 15, 2025 - v0.1.27 b14.332
+- dev core_2
+
 ### April 13, 2025 - v0.1.26 b13.331
 - new header blocks
 - overflow and content alignment.

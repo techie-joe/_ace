@@ -1,0 +1,35 @@
+extends _html
+
+block append vars
+  - filename = 'starter.html'
+  - heading  = 'Starter'
+  - about    = 'Starter page with minimum setup.'
+
+  - pageLayout = 'flex-to-max'
+
+block navbar
+  +nav#_navbar._color_1._no_print
+    //- ._small._i // navigation goes here ...
+    ._flex
+      ._f: +navlogo(['Ace','Template'])
+      ._fill(style="flex-basis:20rem")
+        block navmenu
+          div(style="margin: .6rem"): +navmenu
+
+block pageHeader
+  +simpleHeader
+
+block append style
+  style.
+  //- style.
+
+block article
+  article._article
+
+    //- hr
+
+    +pageData
+
+  //- article
+
+//- block article

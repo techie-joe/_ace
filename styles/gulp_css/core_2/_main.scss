@@ -1,0 +1,850 @@
+@use "mixins" as *;
+@use "color-values" as *;
+
+// ===============================================================
+// Standardizations
+// ===============================================================
+
+._reset_border { border: 0 }
+._reset_margin { margin: 0 }
+._reset_padding { padding: 0 }
+._reset_fontsize { font-size: 1rem }
+._reset_lineheight { line-height: 1.3 }
+
+._block { display: block }
+._table { display: table }
+._cell { display: table-cell }
+._inline { display: inline }
+._inblock { display: inline-block }
+
+._relative { position: relative }
+._absolute { position: absolute; @include position(0,0) }
+._fixed    { position: fixed; @include position(0,0) }
+
+// ._reset can be used on these elements:
+// html, body, div, span, applet, object, iframe,
+// h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+// a, abbr, acronym, address, big, cite, code,
+// del, dfn, em, img, ins, kbd, q, s, samp,
+// small, strike, strong, sub, sup, tt, var,
+// b, u, i, center,
+// dl, dt, dd, ol, ul, li,
+// fieldset, form, label, legend,
+// table, caption, tbody, tfoot, thead, tr, th, td,
+// article, aside, canvas, details, embed, 
+// figure, figcaption, footer, header, hgroup, 
+// menu, nav, output, ruby, section, summary,
+// time, mark, audio, video,
+._reset {
+	@extend ._reset_margin;
+  @extend ._reset_padding;
+	@extend ._reset_border;
+	@extend ._reset_fontsize;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+// reset these elements in older browsers.
+nav, main, article, section, header, footer, aside,
+figure, details, figcaption, hgroup, menu { @extend ._block; }
+
+// use intuitive box-sizing model.
+._border_box { &, &::before, &::after { box-sizing: border-box }}
+
+// set simple initial border
+._border { border: 1px solid #888 }
+
+// 1. standard line height for paragraphs in all browsers.
+// 2. prevent iOS adjustments after orientation changes.
+html {
+  @extend ._reset_fontsize;
+  @extend ._reset_lineheight; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-font-smoothing: antialiased;
+}
+
+// 1. remove margin in all browsers.
+// 2. contain marginal elements.
+// 3. set relative position for child elements.
+body { @extend ._reset_margin; } /* 1 */
+._body { @extend ._clearfix; } /* 2 */
+._view { @extend ._clearfix; } /* 2 */
+._view { @extend ._relative; } /* 3 */
+
+// set view in all browsers.
+// ! all parents of _full_view must also be full.
+._html,._body,._views,
+._full_view {
+  display: block;
+  width  : 100%;
+  height : 100%;
+  margin : 0;
+  padding: 0;
+}
+._full_width { width:100%; }
+
+// 1. set _views container.
+// 2. contain marginal elements.
+._views {
+  @extend ._relative;
+  @extend ._scrollable;
+  @extend ._clearfix;
+}
+
+// make way for browser status bar.
+#_footer { padding-bottom: 1.5rem }
+
+// set a special div that can display inline-blocks perfectly.
+._idiv {
+  & { @extend ._lh_0; font-size:0 }
+  * { @extend ._reset_lineheight; @extend ._reset_fontsize; }
+}
+
+// fix display in IE 10+.
+template { @extend ._hidden; }
+
+// ------------------------------------------------- paragraphs */
+
+// improve responsive consistency
+li { @extend ._reset_margin; }
+
+// fix margins on all paragraphing elements.
+ul,ol,dl,blockquote,
+._pre,pre,
+._p,p { margin-top: 1rem; margin-bottom: 1rem }
+
+// 1. fix display in Edge, IE 10+, and Firefox.
+// 2. fix display in all browsers.
+details { @extend ._block; } /* 1 */
+summary { @extend ._cursor_pointer; display: list-item; /* 2 */ }
+
+// improve intuitivity
+._details {
+  & > summary { @extend ._hover_link; padding: .25em .5em }
+  & > ._detail { margin: .5em 1em }
+}
+
+// --------------------------------------------------------- hr */
+// better looking default horizontal rule.
+// 1. Fix box sizing in Firefox.
+// 2. Show overflow in Edge and IE.
+hr {
+  box-sizing: content-box; height: .05rem; /* 1 */
+  overflow: visible; /* 2 */
+  @extend ._block;
+  @extend ._reset_padding;
+  @extend ._border;
+  border-width: 1px 0;
+  margin: .5rem 0;
+}
+
+// ------------------------------------------------------ fonts */
+
+._system  { font-family: system-ui, sans-serif; }
+._sans    { font-family: "Arial", sans-serif; }
+._serif   { font-family: "Georgia", serif; }
+
+// 1. Fix font size inheritance and scaling in all browsers.
+// 2. Fix the odd em font sizing in all browsers.
+._mono {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+._html { @extend ._sans; }
+
+._pre, pre { @extend ._mono; }
+
+// Fix line height in all browsers.
+._lh_0   { line-height: 0 }
+._lh_1   { line-height: 1 }
+._lh_1x5 { line-height: 1.5 }
+._lh_2   { line-height: 2 }
+
+// ------------------------------------------------------ texts */
+
+// enforce correct font weight.
+// fix font weight in Chrome, Edge, and Safari.
+b, strong { @extend ._b; }
+
+// enforce underline and improve readability.
+a[href], u { @extend ._u; }
+
+// remove gray background on active links in IE 10.
+a { background-color: transparent }
+
+// 1. remove the bottom border in Chrome 57-
+// 2. fix underline in Chrome, Edge, IE, Opera, and Safari.
+// 3. improve intuitivity.
+abbr[title] {
+  @extend ._reset_border; /* 1 */
+  @extend ._u_dot; /* 2 */
+  @extend ._cursor_help; /* 3 */
+}
+
+// fix fonts
+code, kbd, samp { @extend ._mono; @extend ._tc_purple; }
+
+// fix font size in all browsers.
+small,
+._small    { font-size: 86% }
+._smaller  { font-size: 73% }
+._smallest { font-size: 60% }
+
+// prevent <sub> and <sup> from affecting line height.
+sub, sup {
+  font-size: 75%;
+  @extend ._lh_0;
+  @extend ._relative;
+  vertical-align: baseline;
+}
+sub { bottom: -.2em }
+sup { top: -.4em }
+
+// --------------------------------------------------- headings */
+// fix font size and margin of headings inside
+// <section> and <article> in Chrome, Firefox, and Safari
+._hero_1,._hero_2,._hero_3,
+._h1,._h2,._h3,._h4,._h5,._h6,._h7,
+h1,h2,h3,h4,h5,h6 { @extend ._p; }
+h1 { @extend ._h1; }
+
+._h7 { @extend ._b; }
+
+._h7,._t1 { font-size: 1rem     }
+._h6,._t2 { font-size: 1.083rem }
+._h5,._t3 { font-size: 1.182rem }
+._h4,._t4 { font-size: 1.300rem }
+._h3,._t5 { font-size: 1.445rem }
+._h2,._t6 { font-size: 1.625rem }
+._h1,._t7 { font-size: 1.857rem }
+
+._hero_1,._t8  { font-size: 2rem     }
+._hero_2,._t9  { font-size: 2.4rem   }
+._hero_3,._t10 { font-size: 3rem     }
+
+// ------------------------------------------------------ media */
+
+// remove border on images inside <a> links in IE 10.
+img { border-style: none }
+
+// Remove the gap between audio, canvas, iframes,
+// images, videos and the bottom of their containers:
+// https://github.com/h5bp/html5-boilerplate/issues/440
+// 
+audio, canvas, iframe, img, svg, video { @extend ._valign_middle; }
+
+// modern media defaults
+picture { @extend ._block; max-width: 100%; height: auto }
+
+// ------------------------------------------------------ table */
+
+table {
+
+  // set default table
+  & { border-collapse: collapse; border-spacing: 0 }
+  th,td { @extend ._reset_padding; }
+
+  // set basic table
+  &._table { th,td { @extend ._border; padding: .25em } }
+
+}
+
+// ------------------------------------------------------- form */
+
+// reset fieldset in all browsers.
+fieldset {
+  @extend ._reset_border;
+  @extend ._reset_margin;
+  @extend ._reset_padding;
+}
+._fieldset { @extend ._border; }
+
+// Allow only vertical resizing of textareas.
+textarea { resize: vertical }
+
+
+// ===============================================================
+// Styles
+// ===============================================================
+
+._page_layout,
+._header_layout,
+._footer_layout,
+._main_layout { margin: .5rem auto; padding:0 1rem; }
+._nav_layout  { margin: .5rem }
+
+// ------------------------------------------------------ icons */
+
+._icon {
+  @extend ._numb;
+  @extend ._inblock;
+  @extend ._text_center;
+  @extend ._lh_0;
+  height: 1em;
+  min-width: 1em;
+  vertical-align: baseline;
+}
+
+._fa { @extend ._icon; }
+
+.itext {
+  @extend ._mono;
+  @extend ._inblock;
+  @extend ._no_overflow;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: auto;
+}
+
+._itext {
+  @extend ._icon;
+  .itext {
+    @extend ._relative;
+    font-size: 1.625em;
+    line-height: .6;
+    min-width: .625em;
+    top: -0.025em;
+    vertical-align: -0.066em;
+  }
+}
+
+.isvg {
+  @extend ._inblock;
+}
+
+._isvg {
+  @extend ._icon;
+  .isvg {
+    height: 100%;
+    min-width: 100%;
+    vertical-align: .09em;
+  }
+}
+
+
+// ------------------------------------------------------ links */
+
+._link,
+._btnlink,
+._hover_link {
+  @extend ._cursor_pointer;
+  @extend ._no_deco;
+}
+
+._link,
+._btnlink {
+
+  & {
+    @extend ._numb;
+    @extend ._no_wrap;
+    @extend ._radius_x25r;
+    padding: 0 .25em;
+    margin: .1em;
+  
+    @extend ._inblock;
+    @extend ._lh_1;
+    @extend ._text_center;
+    min-width: 1em;
+  }
+
+  &._l  { padding: .25em .5em }
+  &._xl { padding: .5em 1em }
+
+  ._isvg,
+  ._itext { margin-left:-.2em }
+  ._fa { margin-left:-0.1em;margin-right:0.1em }
+  
+  &._l {
+    ._isvg { margin-right:.2em }
+    ._itext { margin-right:.3em }
+    ._fa { margin-right:.4em }
+  }
+  &._xl {
+    ._isvg { margin-left:-.4em;margin-right:.4em }
+    ._itext { margin-left:-.2em;margin-right:.6em }
+    ._fa { margin-left:-.1em;margin-right:.8em }
+  }
+
+  &.__icon {
+    & { padding:0; }
+    &._l { padding: .25em }
+    &._xl { padding: .5em }
+    ._icon { @extend ._m0; }
+  }  
+
+}
+
+._btnlink {
+
+  & { @extend ._border; }
+
+  &.__disabled { opacity: .4 !important; cursor: default !important; }
+
+  &.__icon { line-height: .9 }
+
+}
+
+// ===============================================================
+// Themes
+// ===============================================================
+
+// ------------------------------------------------ ::selection */
+// - must follow this format. - will not work otherwise.
+// - each vendor specific must be seperately declared.
+// - cant combine. so dont use entend.
+// - use background-color not background.
+// - dont append or include other class.
+// 
+$select_bg    : #FFFF00AA;
+$select_tc    : #000;
+@mixin selection {
+  background-color: $select_bg !important;
+  color: $select_tc !important;
+  text-shadow: none !important;
+}
+::-moz-selection { @include selection; }
+::selection      { @include selection; }
+._select         { @include selection; }
+
+// ------------------------------------------------------ bases */
+._color {
+  & { @include color( $light_tc, $light_bg ); }
+  &._dark,._dark & { @include color( $dark_tc, $dark_bg ); }
+}
+
+._color_1 {
+  & { background-color: #ccc }
+  &._dark,._dark & { background-color: #111 }
+}
+
+._color_2 {
+  & { background-color: #eee }
+  &._dark,._dark & { background-color: #333 }
+}
+
+// ------------------------------------------------- containers */
+._html { @extend ._color; }
+
+
+// --------------------------------------------------- headings */
+
+// ._hero_1,._hero_2,._hero_3,
+th,
+._h1,._h2,._h3,._h4,._h5,._h6,._h7,
+h1,h2,h3,h4,h5,h6 {
+  & { @include color( #000 ); }
+  ._dark & { @include color( #FFF ); }
+}
+
+// ------------------------------------------------- seperators */
+
+._st { border-top-color: $light_shade }
+._sl { border-left-color: $light_shade }
+._sr { border-right-color: $light_shine }
+._sb { border-bottom-color: $light_shine }
+._dark {
+  ._st { border-top-color: $dark_shade }
+  ._sl { border-left-color: $dark_shade }
+  ._sr { border-right-color: $dark_shine }
+  ._sb { border-bottom-color: $dark_shine }
+}
+hr { @extend ._st; @extend ._sb; }
+
+// -------------------------------------------------- all links */
+
+._a {
+  a {
+    &:visited { color: $light_link_tcv }
+    &._fresh,
+    &,&:hover { color: $light_link_tci }
+    &:active  { color: $light_link_tca }
+  }
+}
+
+._a._dark {
+  a {
+    &:visited { color: $dark_link_tcv }
+    &._fresh,
+    &,&:hover { color: $dark_link_tci }
+    &:active  { color: $dark_link_tca }
+  }
+}
+
+// ---------------------------------------------- special links */
+// reset color
+
+._a,._a._dark {
+  ._link,
+  ._btnlink,
+  ._hover_link { &,&:visited { color: inherit } }
+}
+
+// glow when :hover
+
+._a {
+  ._link,
+  ._btnlink,
+  ._hover_link { &:hover { @include color( $light_contra, #eee ); } }
+}
+
+._a._dark {
+  ._link,
+  ._btnlink,
+  ._hover_link { &:hover { @include color( $dark_contra, #444 ); } }
+}
+
+// dim when :active
+
+._a,._a._dark {
+  ._link,
+  ._btnlink,
+  ._hover_link { &:active { @include color( inherit, unset ); opacity: .5 } }
+}
+
+// --------------------------------------------------- btnlinks */
+
+._a,._a._dark {
+  ._btnlink {
+    &.__primary:hover  { background-color:#0044ff }
+    &.__primary,
+    &.__primary:active { @include color( #fff, #4477ee, #4477ee ); }
+  }
+}
+
+._a {
+  ._btnlink {
+    &.__secondary:hover  { background-color: #FFF }
+    &.__secondary,
+    &.__secondary:active { background-color: #EEE }
+  }
+}
+
+._a._dark {
+  ._btnlink {
+    &.__secondary:hover  { background-color: #666 }
+    &.__secondary,
+    &.__secondary:active { background-color: #444 }
+  }
+}
+
+// --------------------------------------------------- disabled */
+
+._link,
+._btnlink {
+  &.__disabled { @include color( inherit, unset, #888, true ); }
+}
+
+// ===============================================================
+// Transitions
+// ===============================================================
+
+._a a,
+._hover_link {
+  & { transition: color 0.5s, background-color 0.5s }
+  &:hover { transition: none }
+}
+
+._hover_scale_a a,
+a._hover_scale,
+._hover_scale {
+  & {
+    display: inline-block;
+    transition: color 0.5s, background-color 0.5s, scale 0.2s
+  }
+  &:hover { transition: scale 0.3s; scale:1.1; }
+}
+
+// ===============================================================
+// Animation
+// ===============================================================
+
+@keyframes __fadeIn {
+  0%   { opacity: 0 }
+  100% { opacity: 1 }
+}
+.__fadeIn { animation: .2s linear __fadeIn }
+
+@keyframes __spin {
+  0%   { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+.__spin { animation: 2s linear infinite __spin }
+
+
+// ===============================================================
+// Behaviors
+// ===============================================================
+
+// cursors
+._cursor_help { cursor: help }
+._cursor_pointer { cursor: pointer }
+
+// scrollable elements
+._html, ._body,
+._scrollable { scroll-behavior: smooth }
+._scrollable { overflow: auto }
+
+// 1. prevent page width defferences.
+._view { @extend ._scrollable; overflow-y: scroll /* 1 */ }
+
+
+// ===============================================================
+// Helpers
+// ===============================================================
+
+// outline
+$outline_color: #ff880088;
+._outline   { box-shadow: 0 0 0 1px $outline_color inset }
+
+// ------------------------------------------------------ texts */
+
+._i { font-style: italic }
+
+._b { font-weight: bolder }
+@for $i from 1 through 9 { ._b-#{$i} { font-weight: $i * 100; } }
+
+._u {
+  text-decoration: underline;
+  text-underline-offset: .12em; // improve readability
+}
+._u_dot { @extend ._u; text-decoration: underline dotted }
+
+._striked { text-decoration: line-through }
+
+._uppercase { text-transform: uppercase }
+._capitalize { text-transform: capitalize }
+
+._no_b { font-weight: normal !important }
+
+._no_u, ._no_deco { text-decoration: none !important }
+
+._no_color { color: inherit !important }
+
+// ----------------------------------------------- paragraphing */
+
+._indent { text-indent: 2em }
+
+._text_left    { text-align: left    }
+._text_right   { text-align: right   }
+._text_center  { text-align: center  }
+._text_justify { text-align: justify }
+
+._valign_top    { vertical-align: top }
+._valign_middle { vertical-align: middle }
+._valign_bottom { vertical-align: bottom }
+
+._no_wrap { white-space: nowrap !important }
+
+// for ul and ol
+ul,ol {
+  &._no_bullet,
+  &._plain { list-style-type: none !important }
+  &._plain { padding-left: 0 !important; padding-inline-start: 0 !important }
+  &._no_pad { padding-left: 1em !important; padding-inline-start: 1em !important }
+}
+
+// ------------------------------------------------------- misc */
+
+// for non interactive elements just for display.
+._numb { user-select:none }
+
+// borders
+._no_border { border: 0 !important }
+
+// ._radius
+$radiuses: (
+  "_x25r" : .25rem,
+  "_x5r"  : .5rem,
+  ""      : 1em
+);
+@each $x, $value in $radiuses { ._radius#{$x}  { border-radius: $value; } }
+
+// ._margins
+$margins: (
+  "_x5r" : .5rem,
+  ""     : 1em,
+  "_2"   : 2em
+);
+@each $x, $value in $margins {
+  ._ma#{$x}  { margin: $value; }
+  ._mh#{$x} { @include mh($value); }
+  ._mv#{$x} { @include mv($value); }
+  ._ml#{$x} { margin-left: $value; }
+  ._mr#{$x} { margin-right: $value; }
+  ._mt#{$x} { margin-top: $value; }
+  ._mb#{$x} { margin-bottom: $value; }
+}
+
+._m0 { margin:0 !important }
+._mt0 { margin-top: 0 !important }
+._mb0 { margin-bottom: 0 !important }
+
+// ._paddings
+$paddings: (
+  "_x5r" : .5rem,
+  ""     : 1em,
+  "_2"   : 2em
+);
+@each $x, $value in $paddings {
+  ._pa#{$x} { padding: $value; }
+  ._ph#{$x} { @include ph($value); }
+  ._pv#{$x} { @include pv($value); }
+  ._pl#{$x} { padding-left: $value; }
+  ._pr#{$x} { padding-right: $value; }
+  ._pt#{$x} { padding-top: $value; }
+  ._pb#{$x} { padding-bottom: $value; }
+}
+
+._p0 { padding:0 !important }
+._pt0 { padding-top: 0 !important }
+._pb0 { padding-bottom: 0 !important }
+
+// ._rotate
+$angles : 45, 90, 135, 180, 225, 270, 315;
+@each $angle in $angles { ._rotate-#{$angle} { transform: rotate(#{$angle}deg); } }
+
+// for blockquote and q
+._no_quote { quotes: none; &:before, &:after { content: ''; content: none; }}
+
+// control overflow
+._no_overflow,
+._no_scroll { overflow: hidden !important }
+._no_scroll_x { overflow-x: hidden !important; }
+._no_scroll_y { overflow-y: hidden !important; }
+
+// hide from screen readers, but maintain visual layout
+._invisible { visibility: hidden !important }
+
+// hide visually and from screen readers
+._hide, ._hidden, [hidden] { display: none !important }
+
+// ---------------------------------------------------- clipped */
+// 
+// ONLY hide visually, but have it available for screen readers:
+// https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+//
+// 1. For long content, line feeds are not interpreted as spaces
+// and small width causes content to wrap 1 word per line:
+// https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+//
+// 2. Extends the ._clipped class to allow the element
+// to be focusable when navigated to via the keyboard:
+// https://www.drupal.org/node/897638
+// 
+._clipped {
+
+  /* 1 */
+  @extend ._reset_border;
+  @extend ._reset_padding;
+  @extend ._absolute;
+  @extend ._no_overflow;
+  @extend ._no_wrap;
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+
+  /* 2 */
+  &._focusable {
+    &:active,
+    &:focus {
+      clip: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      position: static;
+      white-space: inherit;
+      width: auto;
+    }    
+  }
+
+}
+
+// --------------------------------------------------- clearfix */
+// to clear pass floating elements.
+// The use of 'table' rather than 'block' is only necessary if
+// using ::before to contain the top-margins of child elements.
+// 
+._clearfix {
+  &::before, &::after { content: ""; display: table; clear: both }  
+}
+
+// ===============================================================
+// Color helpers
+// ===============================================================
+
+/*
+
+._bg_1_1 { background-color: $bg_1_1 }
+._bg_1_2 { background-color: $bg_1_2 }
+._bg_1_3 { background-color: $bg_1_3 }
+._bg_1_4 { background-color: $bg_1_4 }
+._bg_1_5 { background-color: $bg_1_5 }
+._bg_1_6 { background-color: $bg_1_6 }
+
+._tc_1_1 { color: $tc_1_1 }
+._tc_1_2 { color: $tc_1_2 }
+._tc_1_3 { color: $tc_1_3 }
+._tc_1_4 { color: $tc_1_4 }
+._tc_1_5 { color: $tc_1_5 }
+._tc_1_6 { color: $tc_1_6 }
+
+._bc_1_1 { border-color: $bg_1_1 }
+._bc_1_2 { border-color: $bg_1_2 }
+._bc_1_3 { border-color: $bg_1_3 }
+._bc_1_4 { border-color: $bg_1_4 }
+._bc_1_5 { border-color: $bg_1_5 }
+._bc_1_6 { border-color: $bg_1_6 }
+
+._bg_2_1 { background-color: $bg_2_1 }
+._bg_2_2 { background-color: $bg_2_2 }
+._bg_2_3 { background-color: $bg_2_3 }
+._bg_2_4 { background-color: $bg_2_4 }
+._bg_2_5 { background-color: $bg_2_5 }
+._bg_2_6 { background-color: $bg_2_6 }
+._bg_2_7 { background-color: $bg_2_7 }
+._bg_2_8 { background-color: $bg_2_8 }
+._bg_2_9 { background-color: $bg_2_9 }
+
+._tc_2_1 { color: $tc_2_1 }
+._tc_2_2 { color: $tc_2_2 }
+._tc_2_3 { color: $tc_2_3 }
+._tc_2_4 { color: $tc_2_4 }
+._tc_2_5 { color: $tc_2_5 }
+._tc_2_6 { color: $tc_2_6 }
+._tc_2_7 { color: $tc_2_7 }
+._tc_2_8 { color: $tc_2_8 }
+._tc_2_9 { color: $tc_2_9 }
+
+._bc_2_1 { border-color: $bg_2_1 }
+._bc_2_2 { border-color: $bg_2_2 }
+._bc_2_3 { border-color: $bg_2_3 }
+._bc_2_4 { border-color: $bg_2_4 }
+._bc_2_5 { border-color: $bg_2_5 }
+._bc_2_6 { border-color: $bg_2_6 }
+._bc_2_7 { border-color: $bg_2_7 }
+._bc_2_8 { border-color: $bg_2_8 }
+._bc_2_9 { border-color: $bg_2_9 }
+
+*/
+
+._tc_blue   { color: $light_blue   }
+._tc_purple { color: $light_purple }
+._tc_orange { color: $light_orange }
+._tc_red    { color: $light_red    }
+._tc_green  { color: $light_green  }
+._tc_contra { color: $light_contra }
+
+._dark {
+._tc_blue   { color: $dark_blue   }
+._tc_purple { color: $dark_purple }
+._tc_orange { color: $dark_orange }
+._tc_red    { color: $dark_red    }
+._tc_green  { color: $dark_green  }
+._tc_contra { color: $dark_contra }
+}
+
+// ======================================================== EOF */

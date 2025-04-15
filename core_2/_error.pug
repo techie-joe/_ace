@@ -1,0 +1,37 @@
+extends _html
+
+//- ==============================================================
+//- variables for every error page
+//- ==============================================================
+block append vars
+  - layout  = 'core_2/error'
+  - htmlClass.push('_errorpage')
+
+block meta
+  meta(charset=charset)/
+  title !{title||'[untitled]'}
+  meta(name="description" content!=description||'[undescribed]')/
+  include _meta
+
+block append style
+  +cssv(assetsUri+'/css/core/errorpage.css')
+
+block views
+  #_views._views: +view._full_view
+
+    block main
+      +main#_main
+        block article
+          article._article
+            h1#_h1 !{heading}
+            p#_p !{description}
+            nav#_nav: +backlink._btnlink._xl #[span._btnlabel Back]
+
+        block pageData
+          if show_pageData
+            hr
+            +pageData#_pageData
+
+    //- main
+
+//- views

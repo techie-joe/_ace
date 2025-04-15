@@ -1,0 +1,123 @@
+//- ==============================================================
+//- variables for every html page
+//- ==============================================================
+include _vars
+block vars
+  - layout = 'core_2/_html';
+  - topRightNav = true
+  - navbar = false
+
+block updatePageData
+  - updateTitle( heading )
+  - updateDescription( about )
+  - updateUrl( siteUrl + filename, og_type )
+  - updateImage( og_image, og_imageAlt )
+
+mixin topCloseButton
+  +backlink._link._color(title="Close this page")|&times;
+
+mixin topHomeButton(url=homeUri)
+  +a(url)._link._color(title="Back to parent page")|&times;
+
+mixin topThemeSwitch
+  +a._link._color._ticon(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)")|☯
+
+mixin simpleHeader
+  ._pageHeader._simpleHeader&attributes(attributes)
+    +heading#_heading._h1 !{heading}
+    p#_about !{about}
+    hr
+
+mixin defaultHeader
+  ._pageHeader._defaultHeader&attributes(attributes)
+    ._p
+      +heading#_heading._h7._inblock._m0 !{heading}
+      +l
+      span#_about &mdash; !{about}
+    hr
+
+mixin defaultFooter
+  ._pageFooter._defaultFooter
+    hr
+    p._small._system &copy; !{copyright}
+
+block document
+  doctype html
+  html#_html._html._nojs._scrollbar._a(lang=lang class=htmlClass.join(' '))
+    |
+    | <!-- #{name} v#{version} b#{build.substring(0,build.indexOf('.')||build.length)} | (c) #{copyright} -->
+    | <!-- layout:#{layout} -->
+    |
+    block head
+      head
+
+        block meta
+          meta(charset=charset)/
+          include _seo
+          include _meta
+
+        block style
+          include _styles
+
+    block body
+      body#_body._body(class=bodyClass.join(' '))
+
+        block views
+          #_views._views: +view._full_view
+
+            block header
+              +header#_header
+
+                block topRightNav
+                  if topRightNav
+                    +nav#_topRightNav._no_print
+                      block topRightNav_content
+                        +topThemeSwitch
+                        +topCloseButton
+
+                block navbar
+                  if navbar
+                    +nav#_navbar._no_print
+                      block navbar_content
+
+                block pageHeader
+                  +defaultHeader
+
+            block main
+              +main#_main
+                block article
+                  article
+                    block pageData
+                      +pageData#_pageData
+
+            block aside
+              +aside#_aside
+
+            block footer
+              +footer#_footer
+
+                block pageFooter
+                  +defaultFooter
+
+        block widgets
+          #_widgets._widgets
+            //- +widget
+
+        block script
+          //- +jsv(src)
+
+          if INCLUDE_THEMEJS
+            +jsv(assetsUri+'js/theme_v1.0.js')(defer)
+
+          if INCLUDE_SERVICE_WORKERS
+            +jsv(assetsUri+'js/sw.j')(defer)
+
+        |
+        | <!-- IE needs 512+ bytes: https://techie-joe.github.io/library/html5/ie#ie-needs-512-bytes -->
+        |
+
+    //- body
+
+  //- html
+
+//- document

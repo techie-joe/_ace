@@ -1,0 +1,64 @@
+// ===================================================== REFERENCE
+/* 
+                  |   |
+                0123-4567
+                fedc-ba98
+                  | - |
+*/
+// ===============================================================
+ 
+// color names
+
+$light_blue   : #1b36b0;
+$light_purple : #992299;
+$light_orange : #DD7700;
+$light_red    : #DD0000;
+$light_green  : #008800;
+$light_contra : #000000;
+
+$dark_blue   : #7a8eea;
+$dark_purple : #c17ac1;
+$dark_orange : #e39f40;
+$dark_red    : #ff4d4d;
+$dark_green  : #00aa00;
+$dark_contra : #ffffff;
+
+
+// base color
+
+$light_tc        : #444;
+$light_bg        : #ddd;
+
+$dark_tc         : #BBB;
+$dark_bg         : #222;
+
+// groove
+
+$light_shine     : #FFF;
+$light_shade     : #888;
+
+$dark_shine      : #444;
+$dark_shade      : #000;
+
+// button
+
+$light_button_tc : #444;
+$light_button_bg : #BBB;
+
+$dark_button_tc  : #BBB;
+$dark_button_bg  : #444;
+
+
+// link colors
+
+$light_link_tci  : $light_blue;
+$light_link_tcv  : $light_purple;
+$light_link_tch  : $light_orange;
+$light_link_tca  : $light_red;
+
+$dark_link_tci   : $dark_blue;
+$dark_link_tcv   : $dark_purple;
+$dark_link_tch   : $dark_orange;
+$dark_link_tca   : $dark_red;
+
+// ============================================================ */

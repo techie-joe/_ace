@@ -1,0 +1,147 @@
+extends _html
+
+block append vars
+  - filename = 'menu.html'
+  - heading  = 'Menu Elements'
+  - about    = 'Build all types of menus with us.'
+
+  -
+    svgi = {
+      compare:'M19,3H14V5H19V18L14,12V21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10,18H5L10,12M10,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H10V23H12V1H10V3Z',
+      bars:'M5,6H19V8H5V6M5,11H19V13H5V11M5,16H19V18H5V16Z',
+      home:'M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z',
+      ellipsis:'M16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14A2,2 0 0,1 16,12M10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12M4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14A2,2 0 0,1 4,12Z',
+      download:'M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z',
+      image:'M21,3H3C2,3 1,4 1,5V19A2,2 0 0,0 3,21H21C22,21 23,20 23,19V5C23,4 22,3 21,3M5,17L8.5,12.5L11,15.5L14.5,11L19,17H5Z',
+    };
+
+  include _logo
+
+block append style
+  style.
+
+    ._pageFooter,
+    #common ._main_layout
+    { max-width:60em;margin:auto }
+
+    ._view { overflow:auto }
+
+    .btn { border:0 }
+    .flatmenu ._nav_layout { margin:0 .5rem }
+    .flatmenu .btn { border-radius:0;margin:0;vertical-align:top;line-height:2 }
+    .flatmenu .btn.__icon { padding:0 .5em; font-size:1.25em }
+
+  //- style.
+
+mixin menu_types
+  div
+    -
+      temp = [
+        ['#common','Common'],
+        ['#type_1','Type 1'],
+        ['#type_2','Type 2'],
+      ];
+    each v in temp
+      +a(v[0])._btnlink._l #{v[1]}
+
+mixin sample_1
+  -
+    temp = [
+      ['','About'],
+      ['','Services'],
+      ['','Gallery'],
+      ['','Contact'],
+    ];
+  each v in temp
+    +a._link._l(href=v[0] onclick=onclick()) #{v[1]}
+
+mixin sample_2
+  -
+    temp = [
+      ['','About'],
+      ['','Services'],
+      ['','Gallery'],
+      ['','Contact'],
+    ];
+  each v in temp
+    +a._btnlink._l.btn(href=v[0] onclick=onclick()) #{v[1]}
+
+block views
+  #_views._views
+
+    +view#common._full_view
+
+      +nav#_topRightNav._no_print
+        +topThemeSwitch
+        +topHomeButton(elementsUri)
+
+      +header#_header
+        +simpleHeader
+        +menu_types
+        hr
+
+      +main#_main: article
+
+        h2._h2 Common Menu
+
+        +nav._color_1._radius_x5r._clearfix._mv(style="padding:0 .25rem")
+          +a._link| Link
+          +a._link.__icon: +isvg(svgi.ellipsis)
+          +a._link.__icon: +isvg(svgi.bars)
+          +a._link.__icon: +isvg(svgi.home)
+          +a._link.__icon: +isvg(svgi.download)
+          +a._link.__icon: +isvg(svgi.image)
+          =' | '
+          +a._btnlink| Button
+          +a._btnlink.__icon| &bull;
+          +a._btnlink.__icon: +isvg(svgi.compare)
+
+        +nav._color_1._radius_x5r._clearfix._mv
+          +sample_2
+          +a._btnlink._l.btn.__icon: +isvg(svgi.ellipsis)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.compare)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.bars)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.home)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.download)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.image)
+
+        +nav._color_1._radius_x5r._mv.flatmenu
+          +sample_2
+          +a._btnlink._l.btn.__icon: +isvg(svgi.ellipsis)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.compare)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.bars)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.home)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.download)
+          +a._btnlink._l.btn.__icon: +isvg(svgi.image)
+
+      //- main: article
+
+      +footer#_footer: +defaultFooter
+
+    //- view#menu_
+
+    +view#type_1._full_view
+
+      //- style.
+        #nav_1 ._nav_layout { margin:0;padding:.6rem }
+      //- style.
+
+      +nav._color_1(style="padding:.1rem 0"): +sample_1
+
+      #view_1: ._main_layout: ._p: +menu_types
+
+    //- view
+
+    +view#type_2._full_view
+
+      style.
+        .flexmenu ._nav_layout { margin:0 }
+      //- style
+
+      +nav._color_1.flexmenu: ._flex
+        ._f: +logo
+        ._fill(style="flex-basis:20rem"): div(style="margin:1rem .6rem"): +sample_1
+
+      #view_2: ._main_layout: ._p: +menu_types
+
+    //- view

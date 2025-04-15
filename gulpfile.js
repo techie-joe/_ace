@@ -17,25 +17,46 @@ const _dest = {
   js      : "../ace/assets/js",
 };
 
-const _src_manifest = './core/manifest.js';
+const _src_manifest = './manifest.js';
 const _src = {
   builder : {
-    txt : ["builder/**/*.txt.pug"],
-    md  : ["builder/**/*.md.pug"],
+    txt : ["builder"],
+    md  : ["builder"],
   },
   site : {
-    html  : ["index/*.html.pug","pages/**/*.html.pug"],
-    php   : ["index/*.php.pug","pages/**/*.php.pug"],
-    txt   : ["index/*.txt.pug","pages/**/*.txt.pug"],
-    md    : ["index/*.md.pug","pages/**/*.md.pug"],      
+    html: [
+      "index",
+      "html",
+    ],
+    php: [
+      "index",
+    ],
+    txt: [
+      "index",
+    ],
+    md: [
+      "index",
+    ],      
   },
-  files : ["files/**/*"],
-  scss  : ["styles/gulp_css/**/*.scss"],
+  files : ["files"],
+  scss  : ["styles/gulp_css"],
   js: [
-    "scripts/gulp_js/**/*.js",
-    "scripts/wp_js/**/*",
+    "scripts/gulp_js",
+    "scripts/wp_js",
   ],
 };
+
+// MAP _src
+// ===============================================================
+_src.site.html = _src.site.html.map(v => v + "/**/*.html.pug");
+_src.site.php  = _src.site.php.map(v  => v + "/**/*.php.pug");
+_src.site.txt  = _src.site.txt.map(v  => v + "/**/*.txt.pug");
+_src.site.md   = _src.site.md.map(v   => v + "/**/*.md.pug");
+_src.builder.txt = _src.builder.txt.map(v => v + "/**/*.txt.pug");
+_src.builder.md = _src.builder.md.map(v => v + "/**/*.md.pug");
+_src.files = _src.files.map(v => v + "/**/*");
+_src.scss = _src.scss.map(v => v + "/**/*.scss");
+_src.js = _src.js.map(v => v + "/**/*.js");
 
 // IMPORTS
 // ===============================================================

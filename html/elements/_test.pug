@@ -1,0 +1,48 @@
+extends _html
+
+block append style
+  //- style.
+    ._view { position:relative }
+
+  style.
+
+    #_topRightNav { position:fixed; top:0; left:auto; right:15px }
+    #_topRightNav ._link {
+      font-family:monospace,monospace;
+      font-size:1.3rem;
+      text-decoration:none;
+      text-align:center;
+      display:inline-block;
+      box-sizing:border-box;
+      width:1.5rem;
+      height:1.5rem;
+      margin:.1rem;
+      padding:0;
+      border:1px solid #888;
+      line-height:1;
+      font-weight:normal;
+      border-radius:.3rem;
+      vertical-align: middle;
+    }
+    #_topRightNav ._link i { font-style:normal }
+    #_topRightNav ._nav_layout { margin: .6rem 1rem }
+    #_topRightNav ._ticon { font-size:1.5rem }
+
+  //- style.
+
+mixin topStyleSwitch
+  +a._link._color(onclick=onclick('window.test.disableStyle();') title="Toggle Style") s
+
+block prepend topRightNav_content
+  +topStyleSwitch
+
+block append script
+  script.
+    (()=>{
+      var
+      e = document.getElementById("_core_style"),
+      m = e.getAttribute("media"),
+      disableStyle = ()=>{ e.setAttribute("media",e.getAttribute("media")==='x'?m:'x') };
+      window.test = { disableStyle };
+    })();
+  //- script.

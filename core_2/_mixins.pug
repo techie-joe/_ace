@@ -1,0 +1,175 @@
+//- ==============================================================
+//- mixers
+//- ==============================================================
+
+mixin join(a,s)
+  !=a.join(s||`\n`)
+
+mixin repeat(a,b)
+  - b = b||0;
+  - let diff = Math.abs(a-b)+(b?1:0);
+  - let n = 0;
+  while n < diff
+    block
+    - n++;
+
+//- ==============================================================
+//- spaces
+//- ==============================================================
+
+mixin _
+  =` `
+
+mixin nbsp
+  !=`&nbsp;`
+
+mixin middots
+  !=`&middot;&middot;&middot;`
+
+mixin bulls
+  !=`&bull;&bull;&bull;`
+
+mixin l
+  !=`\n`
+
+mixin l_
+  !=`\n&nbsp;`
+
+//- ==============================================================
+//- css mixins
+//- ==============================================================
+
+mixin css(href,media)
+  link(rel="stylesheet" media=media||'all' href=href)&attributes(attributes)/
+
+mixin cssv(href,media)
+  link(rel="stylesheet" media=media||'all' href!=appendVersion(href))&attributes(attributes)/
+
+//- ==============================================================
+//- javascripts
+//- ==============================================================
+
+mixin js(src)
+  script(type="text/javascript" src=src)&attributes(attributes)
+
+mixin jsv(src)
+  script(type="text/javascript" src!=appendVersion(src))&attributes(attributes)
+
+mixin backlink(title='Back to previous page')
+  a(href='#' onclick=onclick(js.goBack) title=title)._needjs&attributes(attributes): block
+
+mixin changeThemeLink(title='Change Theme (Ctrl+Alt+T)')
+  a(href='#' onclick=onclick(js.themeChange) title=title)._needjs&attributes(attributes): block
+
+//- use ._needjs on elements that need js enabled
+mixin needjs
+  style#_needjs.
+    ._needjs { display: none !important; }
+  script.
+    document.getElementById('_needjs').remove();
+
+//- ==============================================================
+//- blocks
+//- ==============================================================
+
+mixin view
+  div._view&attributes(attributes): ._view_layout: block
+
+mixin main
+  main&attributes(attributes): ._main_layout: block
+
+mixin header
+  header&attributes(attributes): ._header_layout: block
+
+mixin footer
+  footer&attributes(attributes): ._footer_layout: block
+
+mixin nav
+  nav&attributes(attributes): ._nav_layout: block
+
+mixin pre
+  aside&attributes(attributes)._pre_layout: pre._pre: block
+
+mixin aside
+  aside&attributes(attributes): ._aside_layout: block
+
+mixin widget
+  div._widget&attributes(attributes): block
+
+mixin heading
+  h1&attributes(attributes): block
+
+//- ==============================================================
+//- navigations
+//- ==============================================================
+//- a link must have href for good SEO, so # default were considered best
+
+mixin a(href,title)
+  a(href=href||'#' title=title)&attributes(attributes): block
+
+mixin _a(href,title)
+  +l
+  a(href=href||'#' title=title)&attributes(attributes): block
+
+mixin lia(href,title)
+  li: a(href=href||'#' title=title)&attributes(attributes): block
+
+mixin backButton(href, label)
+  +a(href||'#')._nav_button._btnlink&attributes(attributes) #[+itext|←]#[span._btnlabel !{label}]
+
+mixin nextButton(href, label)
+  +a(href||'#')._nav_button._btnlink&attributes(attributes) #[span._btnlabel !{label}]#[+itext|→]
+
+//- ==============================================================
+//- images
+//- ==============================================================
+
+mixin img(src,alt,title)
+  img(src=src alt=alt title=title)&attributes(attributes)/
+
+mixin svgi(d,viewBox,opacity,fill)
+  svg(viewBox=viewBox||"0 0 24 24")&attributes(attributes): path(d=d fill=fill||'currentColor' fill-opacity=opacity||'1')
+
+//- ==============================================================
+//- icons
+//- ==============================================================
+
+mixin isvg(d)
+  i._isvg: i.isvg&attributes(attributes): +svgi(d)
+
+mixin fas
+  i._fa: i.fas&attributes(attributes)
+
+mixin far
+  i._fa: i.far&attributes(attributes)
+
+mixin fab
+  i._fa: i.fab&attributes(attributes)
+
+mixin fat
+  i._fa: i.fas&attributes(attributes): block
+
+mixin itext
+  i._itext: i.itext&attributes(attributes): block
+
+//- ==============================================================
+//- php
+//- ==============================================================
+
+mixin include_php(uri)
+  !=`<?php include "${uri}" ?>`
+
+mixin php
+  !=`<?php `
+  block
+  !=` ?>`
+
+//- try this filter
+//- see : https://pugjs.org/language/filters.html
+
+//- mixin include_php(file)
+  include:php #{file}
+
+//- mixin php(file)
+  :php
+    include #{file}

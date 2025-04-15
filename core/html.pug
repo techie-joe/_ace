@@ -2,8 +2,6 @@ include _vars
 block vars
   //- variables for every html page
   - layout = 'core/html';
-  - INCLUDE_THEMEJS = true
-  - INCLUDE_SERVICE_WORKERS = false
   - topRightNav = true
   - navbar = false
   - headerType = 'default'
@@ -21,7 +19,7 @@ mixin topHomeButton(url=homeUri)
   +a(url)._link._color(title="Back to parent page")|&times;
 
 mixin topThemeSwitch
-  +a._link._color.ticon(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)")|☯
+  +a._link._color._ticon(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)")|☯
 
 mixin simpleHeader
   ._pageHeader._simpleHeader&attributes(attributes)
