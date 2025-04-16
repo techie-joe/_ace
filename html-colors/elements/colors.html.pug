@@ -1,0 +1,146 @@
+extends _html
+
+block append vars
+  - filename = 'colors.html'
+  - heading  = 'Colors'
+  - about    = 'Add personality to your site using colors.'
+
+  - navbar = true
+  - pageLayout = 'flex-to-max'
+  - navbarLayout = 'flex-to-max'
+
+  -
+    function range(n,min,max) { return Math.min(Math.max(n, min),max) }
+    function colorRange(n,min=0,max=255) { return range(n,min,max) }
+    function hexToInt(hex) { return colorRange(parseInt(hex, 16)); }
+    function intToHex(int) { return colorRange(Math.floor(int)).toString(16).padStart(2, '0'); }
+    function hexColor(c) { return intToHex(c[0])+intToHex(c[1])+intToHex(c[2]) }
+    function rgbColor(hex) {
+      if (hex.length === 6) {
+        const r = hexToInt(hex.substring(0, 2));
+        const g = hexToInt(hex.substring(2, 4));
+        const b = hexToInt(hex.substring(4, 6));
+        return [r, g, b];
+      } else {
+        throw new Error('Invalid hex color code');
+      }
+    }
+
+block pageHeader
+
+  ._pageHeader._simpleHeader
+    +heading#_heading._h1 !{heading}
+    p#_about
+      | !{about}
+      | See colors being applied to a #[+a('theme.html') theme].
+    hr
+
+block append style
+  //- style.
+
+    ._pageHeader,
+    #_navbar ._nav_layout { max-width:60em;margin:auto }
+    ._pageHeader { padding:0 1rem }
+
+  style.
+
+    .atheme ._f { text-align: center; padding:2px }
+    .i {
+      display: inline-block;
+      font-size: 2.8rem;
+      line-height: 1;
+      text-align: center;
+      cursor: default;
+      user-select: none;
+    }
+  //- style.
+
+//- ☯
+mixin theme(_b,_c,_f)
+  .atheme._flex
+    -
+      mix = (c,s,f)=>[
+        f(s[0],c[0]),
+        f(s[1],c[1]),
+        f(s[2],c[2]),
+      ];
+    - n = 0;
+    while n <= 255
+      - s = [n,n,n];
+      - b = rgbColor(_b);
+      - c = rgbColor(_c);
+      - bg = hexColor(mix(b,s,_f[0]));
+      - fg = hexColor(mix(c,s,_f[1]));
+      ._f(style="background-color:#"+bg+";color:#"+fg+";")
+        //- .i|☯
+        ._smaller._uppercase._mono|#{bg}
+        ._smaller._uppercase._b._mono|#{fg}
+      - n+=17;
+
+block article
+
+  article._article
+
+    -
+      /* ======== REFERENCE ======================================
+                    |   |
+                  0123-4567
+                  fedc-ba98
+                    | - |
+      ========================================================= */
+
+      var rainbow = [
+        'EE7733',
+        'EEAA33',
+        '99AA33',
+        '339933',
+        '3399AA',
+        '4477EE',
+        'AA44FF',
+        'DD44DD',
+        'DD44AA',
+        'EE3333',
+      ];
+
+    - o_w = (s,c)=>(s);
+    - w_o = (s,c)=>(255-s);
+    - o_c = (s,c)=>(c/255)*(s);
+    - c_o = (s,c)=>(c/255)*(255-s);
+    - c_w = (s,c)=>(c/255)*(255-s)+(s);
+    - w_c = (s,c)=>(255-s)+(c);
+
+    section._scrollable
+
+      div(style="min-width:60em")
+
+        +theme('FFFFFF','FFFFFF',[o_w,w_o])
+
+        each c in rainbow
+          +theme('FFFFFF',c,[o_c,o_c])
+
+        each c in rainbow
+          +theme('FFFFFF',c,[o_w,c_w])
+
+        //- o_c
+
+        each c in rainbow
+          +theme(c,c,[o_c,c_w])
+
+        //- each c in rainbow
+          +theme(c,c,[o_c,c_o])
+
+        //- c_w
+
+        each c in rainbow
+          +theme(c,c,[c_w,o_c])
+
+        //- each c in rainbow
+          +theme(c,c,[c_w,w_c])
+
+      //- div
+
+    //- section
+
+  //- article
+
+//- block article

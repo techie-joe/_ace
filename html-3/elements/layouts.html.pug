@@ -1,0 +1,108 @@
+extends _html
+
+block append vars
+  - filename = 'layouts.html'
+  - heading  = 'Layouts'
+  - about    = 'Arrange layouts easily.'
+
+  - pageLayout = 'full-width'
+
+block append style
+  style.
+    ._footer_layout, ._header_layout
+    { padding:0 }
+    ._pageHeader { padding:0 1rem }
+  //- style.
+
+mixin layblock
+  .block._outline&attributes(attributes): ._pa: block
+
+mixin viewBlock(name)
+  +view(id=`view-${name}`)._full_view: block
+
+block views
+
+  #_views._views
+
+    +topRightNav
+
+    +viewBlock(1)
+
+      +header#_header
+        ._pageHeader._simpleHeader
+          +heading#_heading._h1 !{heading}
+          p#_about !{about}
+        hr
+      //- header
+
+      style.
+        .block { text-align:center }
+      //- style.
+
+      ._flex
+        +layblock._f(style="flex:1 1 300px") #[b E_layout ]#[br]#[code { flex:1 1 300px }]
+        +layblock._fill(style="flex:100 1 300px") #[b D_layout ]#[br]#[code { flex:100 1 300px }]
+ 
+      ._flex
+        +layblock._f(style="flex:0 0 300px") #[b C_layout ]#[br]#[code { flex:0 0 300px }]
+        +layblock._fill(style="flex:1 1 300px") #[b D_layout ]#[br]#[code { flex:1 1 300px }]
+
+      +layblock(style="max-width:60rem;margin:auto") #[b B_layout ]#[br]#[code { max-width:60rem; margin:auto }]
+
+      +layblock(style="margin:0 5%") #[b A_layout ]#[br]#[code { margin:10% }]
+
+      +layblock.DEFAULT_layout #[b DEFAULT_layout ]#[br]#[code { full-width, auto-height, no-margin }]
+
+
+      //- #menu._ph: +nav._clearfix
+        -
+          temp = [
+            ['#view-2','Float'],
+            ['#view-4','Full'],
+          ];
+        each v in temp
+          +a(v[0])._btnlink._l #{v[1]}
+
+      //- menu
+
+      +footer#_footer
+        hr
+        ._ph: p._small._system &copy; !{copyright}
+      //- footer
+
+    //- view
+
+    +viewBlock(2)
+
+      style.
+
+        .FLOAT_layout {
+          position:absolute;
+          top:5rem;left:5rem;bottom:5rem;right:5rem;
+        }
+
+      //- style.
+
+      +layblock.FLOAT_layout #[b FLOAT_layout ] #[code { absolute-float }]
+
+    //- view
+
+    +viewBlock(4)
+
+      style.
+
+        .FULL_layout {
+          position:absolute;
+          top:0;left:0;bottom:0;right:0;
+          width:100%;height:100%;
+        }
+
+      //- style.
+
+      +layblock.FULL_layout #[b FULL_layout ] #[code { absolute-full }]
+
+    //- view
+
+  //- views
+
+//- block main

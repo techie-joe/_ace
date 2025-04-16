@@ -1,0 +1,27 @@
+extends _html
+
+block append vars
+  - filename = 'containers.html'
+  - heading  = 'Containers'
+  - about    = 'Group contents together using containers.'
+
+block append style
+  style.
+    .o { height:12rem;height:15vw; }
+  //- style.
+
+block article
+  article._article
+
+    section._mv
+      ._flex._gap_a
+        ._f: .o._outline
+        ._f: .o._border
+        ._f: .o._radius_x25r._color_1
+        ._f: .o._radius_x25r._color_2
+      //- flex
+    //- section
+
+  //- article
+
+//- block article

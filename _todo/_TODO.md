@@ -2,7 +2,7 @@
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
-### April 15, 2025 - v0.1.27 b14.332
+### April 15, 2025 - v0.1.27 b14.333
 - dev core_2
 
 ---
@@ -12,7 +12,7 @@ START : [GO](../pages/core/test.html.pug)
 CORE update : version & build  
   [CHANGELOGS](../CHANGELOGS.md)  
   [CONFIG____](../core_2/_CONFIGS.pug)  
-  [CSS_CRIGHT](../styles/gulp_css/core/_copyright.scss)  
+  [CSS_CRIGHT](../styles/gulp_css/core_2/_copyright.scss)  
   [PACKAGE___](../package.json)  
   [PACKAGE__C](../package-copy.json)  
 

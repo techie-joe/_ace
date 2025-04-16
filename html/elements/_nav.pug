@@ -1,4 +1,4 @@
-mixin navlogo(text=['Your','Logo'],url=homeUri)
+mixin navlogo(text=['Your','Logo'],url=homeUri,className=['_tc_contra','_tc_blue'])
   block append style
     style.
       #_navlogo {
@@ -14,8 +14,8 @@ mixin navlogo(text=['Your','Logo'],url=homeUri)
     //- style.
 
   +a(url)#_navlogo._btnlink
-    b._tc_contra !{text[0]}
-    b._tc_blue !{text[1]}
+    b(class=className[0]) !{text[0]}
+    b(class=className[1]) !{text[1]}
 
 block append vars
   -
@@ -27,6 +27,8 @@ block append vars
       ['links.html','Links'],
       ['buttons.html','Buttons'],
       ['containers.html','Containers'],
+      ['alignment.html','Alignment'],
+      ['flex.html','Flex'],
     ];
 
 mixin navmenu(links=navbar_menu)
@@ -53,4 +55,4 @@ mixin topRightNav
       block
     else
       +topThemeSwitch
-      +topHomeButton(coreUri)
+      +topHomeButton(elementsUri)

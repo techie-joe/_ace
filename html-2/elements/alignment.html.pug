@@ -1,0 +1,69 @@
+extends _html
+
+block append vars
+  - filename = 'alignment.html'
+  - heading  = 'Alignment'
+  - about    = 'Align content easily.'
+
+block append style
+  style.
+
+    .a { height:5rem;position:relative }
+    .o { display:inline-block;width:1.3em }
+
+    .table { display:table; width:100% }
+
+    .FLOAT_layout {
+      position: relative;
+      top: 10%;
+      left: 10%;
+      width: 80%;
+      height: 80%;
+    }
+
+  //- style.
+
+mixin o
+  .o._outline&attributes(attributes) &bull;
+
+mixin oo
+  ._outline&attributes(attributes) &bull;
+
+block article
+  article._article
+
+    section
+      ._mv: ._flex._gap_a
+
+        ._f_4_1: .a._outline: +o
+        ._f_4_1: .a._outline._text_left: +o
+        ._f_4_1: .a._outline._text_center: +o
+        ._f_4_1: .a._outline._text_right: +o
+
+      ._mv: ._flex._gap_a
+
+        ._f_4_1: .a._outline: +o._text_center
+        ._f_4_1: .a._outline: +o._text_center(style="position:absolute;top:0")
+        ._f_4_1: .a._outline: +o._text_center(style="position:absolute;top:50%;left:50%;transform: translateX(-50%) translateY(-50%);")
+        ._f_4_1: .a._outline: +o._text_center(style="position:absolute;bottom:0;right:0")
+
+      ._mv: ._flex._gap_a
+
+        ._f_4_1: .a._outline.table: +oo._cell
+        ._f_4_1: .a._outline.table: +oo._cell._text_left._valign_top
+        ._f_4_1: .a._outline.table: +oo._cell._text_center._valign_middle
+        ._f_4_1: .a._outline.table: +oo._cell._text_right._valign_bottom
+
+      ._mv: ._flex._gap_a
+
+        ._f_4_1: .a._outline: +o.FLOAT_layout
+        ._f_4_1: .a._outline: +o.FLOAT_layout._text_left(style="align-content:start")
+        ._f_4_1: .a._outline: +o.FLOAT_layout._text_center(style="align-content:center")
+        ._f_4_1: .a._outline: +o.FLOAT_layout._text_right(style="align-content:end")
+
+      //- flex
+    //- section
+
+  //- article
+
+//- block article

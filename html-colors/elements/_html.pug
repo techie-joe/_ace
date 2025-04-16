@@ -1,0 +1,15 @@
+extends ../../html/elements/_html
+
+//- ==============================================================
+//- variables for every html page
+//- ==============================================================
+block append vars
+  -
+    var navlinks = [
+      ['./','Elements'],
+      ['colors.html','Colors'],
+      ['color_tables.html','Color Tables'],
+    ];
+
+block navmenu
+  div(style="margin: .65rem"): +navmenu(navlinks)

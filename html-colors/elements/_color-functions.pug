@@ -1,0 +1,196 @@
+-
+  function range(n,min,max) { return Math.min(Math.max(n, min),max) }
+  function colorRange(n,min=0,max=255) { return range(n,min,max) }
+  function hexToInt(hex) { return colorRange(parseInt(hex, 16)); }
+  function intToHex(int) { return colorRange(Math.floor(int)).toString(16).padStart(2, '0'); }
+
+  function getRGB(hex) {
+    var rgb = [
+      hexToInt(hex.substring(0, 2)),
+      hexToInt(hex.substring(2, 4)),
+      hexToInt(hex.substring(4, 6))
+    ];
+    return rgb
+  }
+
+  function changeHex(hex,lighten=0) {
+    var rgb  = getRGB(hex);
+    var lit  = range( lighten, 0, 100 )/100;
+    var c = [];
+    rgb.forEach(function(v, i, a) {
+      if (lit < 0.5) {
+        v = v *( 2 * lit )
+      } else {
+        v = v +( 255 - v ) * ( 2 * ( lit - 0.5 ) )
+      }
+      c[i] = intToHex ( colorRange(v) )
+    });
+    return c.join('');
+  }
+
+  function getColors(i,tc=0,z=['222222','dddddd']) {
+    var bg = [
+      z[0],
+      changeHex( i, 20 ),
+      changeHex( i, 30 ),
+      changeHex( i, 40 ),
+      i,
+      changeHex( i, 60 ),
+      changeHex( i, 70 ),
+      changeHex( i, 80 ),
+      z[1],
+    ];
+    var tc = [
+      bg[5],
+      bg[6],
+      bg[7],
+      changeHex( i, 90 ),
+      'FFFFFF',
+      changeHex( i, 20 +tc ),
+      changeHex( i, 30 +tc ),
+      changeHex( i, 40 +tc ),
+      changeHex( i, 50 +tc ),
+    ];
+
+    return [ bg, tc ];
+  }
+
+  /* ======== REFERENCE ==========================================
+                |   |
+              0123-4567
+              fedc-ba98
+                | - |
+  ============================================================= */
+
+  var rainbow =
+    [ 'DD0000'
+    , 'DD7700'
+    , 'eecc00'
+    , '88AA00'
+    , '008800'
+    , '0088AA'
+    , '0066CC'
+    , '2244DD'
+    , '8822ee'
+    , '992299'
+    , 'CC0066'
+    ];
+  
+  var colors = [
+    [
+      ['000000','111111','222222','dddddd','eeeeee','ffffff'],
+      ['444444','888888','cccccc','333333','666666','999999']
+    ],
+    getColors('808080',-10),
+  ];
+
+  rainbow.forEach(function(v, i, a) {
+    colors.push( getColors(v) );
+  });
+
+//- ==============================================================
+mixin colorCodes(r)
+  -
+    var bg = colors[r][0];
+    var tc = colors[r][1];
+    var cbg = bg[ Math.ceil(bg.length/2)-1 ];
+    var ctc = tc[ Math.ceil(tc.length/2)-1 ];
+  .codecolor._mt_2._small(style=`background-color: #${cbg}; color:#${ctc};`)|// #[span._uppercase ##{cbg}]
+  ._flex._gap_a_x5
+    ._
+      pre.colorcode._radius_x5r._pa._mv_x5r
+        each v,i in bg
+          = `$bg_${r+1}_${i+1} : #${v};`
+          +l
+        +nbsp
+    ._
+      pre.colorcode._radius_x5r._pa._mv_x5r
+        each v,i in tc
+          = `$tc_${r+1}_${i+1} : #${v};`
+          +l
+        +nbsp
+    //- ._
+      pre.colorcode._radius_x5r._pa._mv_x5r
+        each v,i in bg
+          = `._bg_${r+1}_${i+1} { background-color: $bg_${r+1}_${i+1} }`
+          +l
+        +nbsp
+    //- ._
+      pre.colorcode._radius_x5r._pa._mv_x5r
+        each v,i in bg
+          = `._bc_${r+1}_${i+1} { border-color: $bg_${r+1}_${i+1} }`
+          +l
+        +nbsp
+    //- ._
+      pre.colorcode._radius_x5r._pa._mv_x5r
+        each v,i in tc
+          = `._tc_${r+1}_${i+1} { color: $tc_${r+1}_${i+1} }`
+          +l
+        +nbsp
+
+//- ==============================================================
+mixin tables
+  style.
+    #table .grid { display:grid; }
+    #table .i { padding: .4rem .5rem; font-size: .8em; }
+    #table .c { border-radius: .5rem; }
+  #table._text_center._uppercase
+    - var r = 0;
+    while r < colors.length
+      div
+        +table(r)
+        +gradientColor(r)
+      - r++
+
+//- ==============================================================
+mixin table(r)
+  - var cols = colors[r][0].length;
+  .grid(style=`grid-template-columns: repeat(${cols}, 1fr);`)
+    - var c = 0;
+    while c < cols
+      - var bg = colors[r][0][c];
+      - var tc = colors[r][1][c];
+      .i(style=`background:#${bg};color:#${tc};`)
+        .c(style=`border:1px solid #${tc}`) #[b #{bg}]#[br]#{tc}
+      - c++;
+    //- while
+  //- grid
+
+//- ==============================================================
+mixin gradientColor(r)
+  -
+    var cols = colors[r][0].length;
+    var _darkline  = 49;
+    var _lightline = 100-_darkline;
+    var _darkness  = intToHex(32);
+    var _lightness = intToHex(32);
+    var bgc = `bgc-${r}`;
+  style.
+    .#{bgc} {
+      margin:0 auto;
+      height: 10px;
+    }
+    .#{bgc} .gc {
+      height:100%;
+      background:
+      linear-gradient(to right
+        , #000000#{_darkness}
+        , #000000#{_darkness} #{_darkline}%
+        , #00000000 #{_darkline}%
+        , #ffffff00 #{_lightline}%
+        , #ffffff#{_lightness} #{_lightline}%
+        , #ffffff#{_darkness}
+      ),
+      linear-gradient(to right
+        , #000
+        , ##{colors[r][0][ Math.ceil(cols/2)-1 ]} #{_darkline}%
+        , ##{colors[r][0][ Math.floor(cols/2)  ]} #{_lightline}%
+        , #fff
+      );
+    }
+  //- 
+  div(class=bgc): .gc
+
+//- var sat = Math.floor( 255 *saturation /100 );
+//- var _grayscale = Math.floor( (rgb[0] + rgb[1] + rgb[2]) / 3 );
+//- var gra = Math.floor( ( 765-_grayscale ) *grayscale /1000 );

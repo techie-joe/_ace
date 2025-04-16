@@ -1,0 +1,30 @@
+extends _html
+
+block append vars
+  - filename = 'buttons.html'
+  - heading  = 'Buttons'
+  - about    = 'Functional styles for action buttons.'
+
+block append style
+  style.
+    .o { height:2rem }
+    .buttons ._btnlink { min-width:5em }
+  //- style.
+
+block article
+  article._article
+
+    section.buttons
+      ._p
+        +a(onclick=onclick())._btnlink._xl.__primary Primary
+        +a(onclick=onclick())._btnlink._xl.__secondary Secondary
+        +a(onclick=onclick())._btnlink._xl Ordinary
+      ._p
+        +a(onclick=onclick())._btnlink._xl.__disabled.__primary Primary
+        +a(onclick=onclick())._btnlink._xl.__disabled.__secondary Secondary
+        +a(onclick=onclick())._btnlink._xl.__disabled Ordinary
+    //- section
+
+  //- article
+
+//- block article

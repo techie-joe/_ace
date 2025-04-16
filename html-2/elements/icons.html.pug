@@ -1,0 +1,414 @@
+extends _html
+
+block append vars
+  - filename = 'icons.html'
+  - heading  = 'Icons'
+  - about    = 'Provide visual cues with icons.'
+
+  -
+    svgi = {
+      compare:'M19,3H14V5H19V18L14,12V21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10,18H5L10,12M10,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H10V23H12V1H10V3Z',
+      bars:'M5,6H19V8H5V6M5,11H19V13H5V11M5,16H19V18H5V16Z',
+      home:'M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z',
+      ellipsis:'M16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14A2,2 0 0,1 16,12M10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12M4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14A2,2 0 0,1 4,12Z',
+      caret:'M10,17L15,12L10,7V17Z',
+      angle:'M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z',
+      arrow:'M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z',
+      cross:'M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z',
+      spin:'M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z',
+      download:'M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z',
+      image:'M21,3H3C2,3 1,4 1,5V19A2,2 0 0,0 3,21H21C22,21 23,20 23,19V5C23,4 22,3 21,3M5,17L8.5,12.5L11,15.5L14.5,11L19,17H5Z',
+    };
+  -
+    cssi.gridlines = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1px" height="10px"><rect width="1" height="1" fill="%23A9790688" /></svg>';
+
+block append style
+  +css('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css')
+  style.
+
+    .gridlines {
+      min-height: 100px;
+      background-image: url('!{cssi.gridlines}');
+      background-repeat: repeat;
+    }
+
+    .g{display:flex;flex-flow:row wrap;align-content:flex-start}
+    .u{display:inline-block;vertical-align:top}
+    .demo .u { margin: 0 2px; padding-bottom: 20px; }
+
+    .io1  { background: #66668844; box-shadow:0 1px orange; }
+    .io2  { background: #66886644; box-shadow:0 1px orange; }
+
+    .selectable { user-select:auto }
+
+  //- style.
+    ._itext { margin:2px; outline:1px solid #888; border-radius: .25rem; }
+
+  //- style.
+
+block article
+  article._article
+
+    section._mb_2
+
+      h2._h3._sans Mix and match
+      p You can combine different format together.
+
+      style.
+        .mbox {
+          display:inline-block;
+          font-size:1.5em;
+          box-shadow:0 0 0 1px #f808 inset;
+        }
+      //- style.
+
+      ._p
+        .mbox
+          +isvg(svgi.bars)
+          +itext|≡
+          +fas.fa-bars
+          |H
+        each t in ['←','☚','+','«','•']
+          .mbox
+            i._itext: i.itext=t
+            i._fa: i.fas=t
+            |H
+          +_
+      //- ._p
+
+      ._p
+        .mbox|#[+isvg(svgi.bars)]#[span._btnlabel label]
+        .mbox|#[+itext|≡]#[span._btnlabel label]
+        .mbox|#[+fas.fa-bars]#[span._btnlabel label]
+      //- ._p
+
+    //- section
+
+    hr
+
+    section._mb_2
+
+      h2._h3._sans SVG Icons
+
+      style.
+        ._boxed_icons ._isvg,
+        ._icons ._isvg {
+          min-width:1.5em;
+          min-height:1.5em;
+        }
+        ._boxed_icons ._isvg {
+          margin: .5rem;
+          box-shadow: 0 0 0 1px #f808;
+        }
+      //- style.
+
+      ._p._icons
+        - let svgds = []; for (let key in svgi) { svgds.push(svgi[key]); }
+        each d in svgds
+          +isvg(d)
+      //- ._p
+
+      ._p._icons
+        - i = 0;
+        while 8 >= i++
+          +isvg(svgi.angle)(class="_rotate-"+(-45+i*45))
+        +isvg(svgi.cross).__spin
+        +isvg(svgi.spin).__spin
+      //- ._p
+
+      ._p._boxed_icons
+        - i = 0;
+        while 3 > i++
+          +isvg(svgds[i-1])
+      //- ._p
+
+      ._p: ._outline._inblock
+        +isvg(svgi.bars)
+        +isvg(svgi.compare)
+        |H
+      //- ._p
+
+      //- https://pictogrammers.com/library/mdi/
+      p._text_right._small: +a('https://pictogrammers.com/library/mdi/')(target="pictogrammers")._no_u More icons at Pictogrammers ...
+
+    //- section
+
+    hr
+
+    section
+
+      mixin rav(x)
+        - var n = 0
+        while n < x
+          if(n%2==0)
+            .io2
+              +isvg(svgi.bars)
+              |H
+          else
+            .io1 &nbsp;
+          - n++
+      //- mixin
+
+      .g.demo.gridlines
+
+        .u._t1: +rav(13)
+        .u._t2: +rav(12)
+        .u._t3: +rav(11)
+        .u._t4: +rav(10)
+        .u._t5: +rav(9)
+        .u._t6: +rav(8)
+        .u._t7: +rav(7)
+        .u._t8: +rav(6)
+        .u._t9: +rav(5)
+        .u._t10: +rav(4)
+
+      //- g
+
+    //- section
+
+    hr
+
+    section._mb_2
+
+      h2._h3._sans Text Icons
+
+      //- 1.5em : based on the size of ※ sign
+      ._p(style="font-size:1.5em"): i._itext.selectable: i.itext._text_left(style="line-height: 1.25; font-size: 1.2em;")
+        .
+          ≡ = ≠ ≈ ~ ∿
+          ☚ ☛ « » ← → ↑ ↓ ▲ ► ▼ ◄ ⇦ ⇧ ⇨ ⇩ ☜ ☞
+          ― — ‒ – - + ÷ × ± ∗ *
+          ⁞ ‖ |
+          ! @ # % &amp; ?
+          ∞ π ψ ƒ ∂ µ μ η α ρ ᴥ
+          № § £ ¥ € ₩ ฿ $ ￠ ¢ Φ
+          · • ◦ ○ ● ∴
+          ¤ ☼ ☀ ❊ ⁂ ※ ✰
+          ◊ ♦ ♥ ♠ ♣
+          ♪ ♫ ⌂ ♀ ♂ ☄
+          ✉ ☁ ✈ ☎ ✂ ✎ ☑ ☒
+          ◍ ✆ ⊝ ⊕ ⊗ ⊘ ☯ ☢ © &copy;
+          A TXT
+        //- .
+
+      style.
+        ._boxed_icons ._itext,
+        ._icons ._itext {
+          font-size: 1.5em;
+        }
+        ._boxed_icons ._itext {
+          margin: .5rem;
+          box-shadow: 0 0 0 1px #f808;
+        }
+      //- style.
+
+      ._p._boxed_icons
+        +itext|≡
+        +itext|☚
+        +itext|☛
+        +itext|×
+        +itext|←
+        +itext|→
+        +itext|↑
+        +itext|↓
+        +itext|«
+        +itext|»
+        +itext|–
+        +itext|+
+      //- ._p
+
+      ._p: ._outline._inblock
+        +itext|≡
+        |H
+      //- ._p
+
+      //- https://www.freeformatter.com/html-entities.html
+      p._text_right._small: +a('https://www.freeformatter.com/html-entities.html')(target="freeformatter")._no_u More icons at Freeformatter ...
+
+    //- section
+
+    hr
+
+    section
+
+      mixin rat(x)
+        - var n = 0
+        while n < x
+          if(n%2==0)
+            .io2
+              +itext|≡
+              |H
+          else
+            .io1 &nbsp;
+          - n++
+      //- mixin
+
+      .g.demo.gridlines
+
+        .u._t1: +rat(13)
+        .u._t2: +rat(12)
+        .u._t3: +rat(11)
+        .u._t4: +rat(10)
+        .u._t5: +rat(9)
+        .u._t6: +rat(8)
+        .u._t7: +rat(7)
+        .u._t8: +rat(6)
+        .u._t9: +rat(5)
+        .u._t10: +rat(4)
+
+      //- g
+
+    //- section
+
+    hr
+
+    section
+
+      h2._h3._sans Font Awesome Icons
+
+      //- 1.5em : based on the size of + sign
+      ._p(style="font-size: 1.5em; letter-spacing: 0.2em;"): i._fa.selectable: i.fas._text_left(style="font-weight:normal")
+        .
+          ▲ ► ▼ ◄ ☚ ☛ #[br]
+          @ # % ?
+          № $ #[br]
+          · • ◦ ○ ● ∴
+          ¤ ☼ ☀ ❊ ⁂ ※
+          ◊ ♦ ♥ ♀ ♂ ☄ #[br]
+          ☁ ✈ ☎ ✂ ✎ ✉ ☑ ☒
+          ◍ ✆ ⊝ ⊕ ⊗ ⊘ ☯ ☢ © &copy;
+          A TXT
+        //- .
+
+      ._p(style="font-size: 1.5em; letter-spacing: 0.2em;"): i._fa.selectable: i.fas._text_left
+        .
+          ▲ ► ▼ ◄ ← → ↑ ↓ « » #[br]
+          ≡ = – + ÷ × *
+          ⁞ ‖ ! ∿ ∞ #[br]
+          @ # % ?
+          № £ ¥ € ₩ $ #[br]
+          · • ◦ ○ ● ∴
+          ¤ ☼ ☀ ❊ ⁂ ※
+          ◊ ♦ ♥ ♀ ♂ ☄ #[br]
+          ☁ ✈ ☎ ✂ ✎ ✉ ☑ ☒
+          ◍ ✆ ⊝ ⊕ ⊗ ⊘ ☯ ☢ © &copy;
+          A TXT
+        //- .
+
+      style.
+        ._boxed_icons ._fa,
+        ._icons ._fa {
+          font-size: 1.5em; /* 1.5em = 36px | 1em = 24px */
+          margin: .5rem;
+        }
+        ._boxed_icons ._fa {
+          box-shadow: 0 0 0 1px #f808;
+        }
+      //- style.
+
+      ._p._icons
+        +fas.fa-bars
+        +fas.fa-list
+        +fas.fa-house
+        +fas.fa-adjust
+        +far.fa-circle-user
+        +fas.fa-angle-left
+        +fas.fa-angles-left
+        +fas.fa-arrow-left
+        +fas.fa-caret-left
+        +fas.fa-rotate-left
+        +fas.fa-share.fa-flip-horizontal
+        +fas.fa-hand-point-left
+        +fas.fa-magnifying-glass
+        +far.fa-comment
+        +far.fa-message
+        +fas.fa-inbox
+        +fas.fa-question
+        +fas.fa-circle-info
+        +fas.fa-location-dot
+        +fas.fa-phone
+        +far.fa-envelope
+        +far.fa-credit-card
+        +far.fa-image
+        +far.fa-address-card
+        +fas.fa-border-all
+        +far.fa-square
+        +far.fa-square-minus
+        +far.fa-square-check._tc_contra
+        +far.fa-star
+        +fas.fa-star._tc_orange
+        +far.fa-heart
+        +fas.fa-heart._tc_red
+        +far.fa-thumbs-up
+        +fas.fa-thumbs-up._tc_blue
+        +fas.fa-pen
+        +fas.fa-arrow-right-to-bracket.fa-rotate-90
+        +fas.fa-download
+        +fas.fa-print
+        +far.fa-floppy-disk
+        +fas.fa-code
+        +fas.fa-plus
+        +fas.fa-minus
+        +fas.fa-minus.fa-rotate-90
+        +fas.fa-check._tc_green
+        +fas.fa-xmark._tc_red
+        +fas.fa-asterisk
+        +fas.fa-gear
+        +fas.fa-ellipsis
+        +fas.fa-ellipsis-vertical
+        +fat|a
+        +fat|txt
+      //- ._p
+
+      ._p._boxed_icons
+        +fas.fa-bars
+        +fas.fa-house
+        +fas.fa-adjust
+      //- ._p
+
+      ._p: ._outline._inblock
+        +fas.fa-bars
+        |H
+      //- ._p
+
+      //- https://fontawesome.com/v6/search?q=
+      p._text_right._small: +a('https://fontawesome.com/v6/search?q=')(target="fontawesome")._no_u More icons at Font-Awesome ...
+
+    //- section
+
+    hr
+
+    section
+
+      mixin rag(x)
+        - var n = 0
+        while n < x
+          if(n%2==0)
+            .io2
+              +fas.fa-bars
+              |H
+          else
+            .io1 &nbsp;
+          - n++
+      //- mixin
+
+      .g.demo.gridlines
+
+        .u._t1: +rag(13)
+        .u._t2: +rag(12)
+        .u._t3: +rag(11)
+        .u._t4: +rag(10)
+        .u._t5: +rag(9)
+        .u._t6: +rag(8)
+        .u._t7: +rag(7)
+        .u._t8: +rag(6)
+        .u._t9: +rag(5)
+        .u._t10: +rag(4)
+
+      //- g
+
+    //- section
+
+  //- article
+
+//- block article

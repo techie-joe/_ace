@@ -1,0 +1,116 @@
+extends _html
+
+block append vars
+  - filename = 'view.html'
+  - heading  = 'View'
+  - about    = 'Better controls over the view-pane.'
+
+  - pageLayout = 'full-view'
+
+block append style
+  style.
+    ._view { overflow: auto }
+  //- style.
+
+block append widgets
+  #_widgets._widgets
+
+    style.
+
+      #nav-box {
+        position:absolute;
+        top:50%;
+        left:50%;
+      }
+
+      #nav {
+        border: 1px solid #888;
+        position: absolute;
+        z-index: 1000;
+        padding: .5rem;
+        margin: -6em 0 0 -4.5em;
+      }
+
+      #nav a {
+        margin: 0.4rem;
+        padding: 0.4em 0.8em;
+      }
+
+    //- style.
+
+    +widget#nav-box._no_print
+      nav#nav._color._radius_x25r
+        table: tbody
+          tr
+            td: +a('#view-1')._btnlink #[span._btnlabel 1]
+            td: +a('#view-2')._btnlink #[span._btnlabel 2]
+          tr
+            td: +a('#view-3')._btnlink #[span._btnlabel 3]
+            td: +a('#view-4')._btnlink #[span._btnlabel 4]
+    //- #nav-box
+
+
+mixin viewBlock(name)
+  +view(id=`view-${name}`)._full_view: block
+
+mixin heading3(v)
+  ._ph._p #[h3#_heading._inblock._h7._m0 View ##{v} ]
+
+block views
+  #_views._views
+
+    +topRightNav
+
+    - v = 1
+    +viewBlock(v)
+
+      +header#_header: +simpleHeader
+  
+      +main#_main
+        +heading3(v)
+      //- main
+
+      +footer#_footer: +defaultFooter
+
+    //- view
+
+    - v = 3
+    +viewBlock(v)
+
+      style.
+        ._html #view-#{v} {
+          background-color: #494c8e55;
+          color:#222;
+        }
+        ._dark #view-#{v} { color:inherit }
+
+      +heading3(v)
+      hr
+      article._article._page_layout
+        +pageData
+    
+    //- view
+
+    style.
+      #view-2 {
+        background-color: #3d804d55;
+        position: absolute;
+        top: 0;
+        left: 100%;
+      }
+      #view-4 {
+        background-color: #997e4555;
+        position: absolute;
+        top: 100%;
+        left: 100%;
+      }
+    //- style.
+
+    each v in [2,4]
+      +viewBlock(v)
+        +heading3(v)
+        article._article._page_layout
+          | // hi there!
+  
+  //- views
+//- block views

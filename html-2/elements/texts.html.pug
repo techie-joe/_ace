@@ -1,0 +1,120 @@
+extends _html
+
+block append vars
+  - filename = 'texts.html'
+  - heading  = 'Texts'
+  - about    = 'Texts is optimized for better adaptability.'
+
+  -
+    cssi.gridlines = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1px" height="10px"><rect width="1" height="1" fill="%23A9790688" /></svg>';
+
+block append style
+  style.
+    .gridlines {
+      min-height: 100px;
+      background-image: url('!{cssi.gridlines}');
+      background-repeat: repeat;
+    }
+
+    .g{display:flex;flex-flow:row wrap;align-content:flex-start}
+    .u{display:inline-block;vertical-align:top}
+    .demo .u { margin: 0 2px; padding-bottom: 20px; }
+
+    .io1  { background: #66668844; box-shadow:0 1px orange; }
+    .io2  { background: #66886644; box-shadow:0 1px orange; }
+
+  //- style.
+
+block article
+  article._article
+
+    mixin rag(x)
+      - var n = 0
+      while n < x
+        if(n%2==0)
+          .io2 T_#[sup._sup T]#[sub._sub _]
+        else
+          .io1 &nbsp;
+        - n++
+    //- mixin
+
+    section.g.demo.gridlines
+
+      .u._t1: +rag(13)
+      .u._t2: +rag(12)
+      .u._t3: +rag(11)
+      .u._t4: +rag(10)
+      .u._t5: +rag(9)
+      .u._t6: +rag(8)
+      .u._t7: +rag(7)
+      .u._t8: +rag(6)
+      .u._t9: +rag(5)
+      .u._t10: +rag(4)
+
+    //- section
+
+    hr
+
+    section.gridlinesx
+
+      p Use helper class to customize the visual appearance of headings and texts. They helps separate visual appearance from semantics, giving you better control over both. Use #[code._code _hero_1] to #[code._code _hero_3] for large texts, #[code._code _h1] to #[code._code _h7] for headings, and #[code._code _t1] to #[code._code _t10] for other texts.
+
+      - var heros     = 'Text Sample';
+      - var headings  = 'Text Sample';
+
+      ._text_center
+        p._hero_3 #{heros} 3
+        p._hero_2 #{heros} 2
+        p._hero_1 #{heros} 1
+        h1._h1 #{headings} 1
+        h2._h2 #{headings} 2
+        h3._h3 #{headings} 3
+        h4._h4 #{headings} 4
+        h5._h5 #{headings} 5
+        h6._h6 #{headings} 6
+        div._h7 #{headings} 7
+        p Normal Text
+        p
+          span Normal
+          +_
+          span._small Small
+          +_
+          span._smaller Smaller
+          +_
+          span._smallest Smallest
+        //- p
+
+    //- section
+
+    hr
+
+    section
+
+      ._flex._gap_2
+        ._f-1
+          h2._sans._h2 System Font
+          p._system._text_justify.
+            System font is the default set of fonts used by an operating system for displaying text across the user interface. The primary goal is to provide a seamless experience for users as they interact with different applications and system elements. Common examples includes "Segoe UI" on Windows, "San Francisco" on macOS, and "Roboto" on Android. They are an integral part of the overall design language and contribute to the visual identity of the operating system.
+
+        ._f_3_1
+          h2._sans._h2 Sans
+          p._sans._text_justify.
+            Sans fonts, such as Arial and Helvetica, are known for their clean and modern look, lacking the small decorative strokes at the ends of letters. They are widely used for digital media due to their readability on screens.
+
+        ._f_3_1
+          h2._serif._h2 Serif
+          p._serif._text_justify.
+            Serif fonts, like Times New Roman, Garamond and Georgia, feature small lines or strokes attached to the ends of letters, giving a more traditional and formal appearance. These fonts are often used in print media for their elegant look.
+
+        ._f_3_1
+          h2._mono._h2 Monospace
+          p._mono._text_justify.
+            Monospace fonts, such as Courier New and Consolas, have characters that occupy the same horizontal space. This uniform spacing makes them ideal for coding, as they enhance readability.
+
+      //- flex
+
+    //- section
+
+  //- article
+
+//- block article

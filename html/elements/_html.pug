@@ -37,6 +37,19 @@ block append style
       #_main ._article
       { max-width:60em;margin:.5rem auto }
 
+    //- style.
+
+  if navbarLayout === 'flex-to-max'
+    style.
+
+      #_navbar ._nav_layout
+      { max-width:60em;margin:auto }
+
+    //- style.
+
+  else if navbarLayout === 'full-width'
+    style.
+
       #_navbar ._nav_layout
       { margin:0;padding-left:0;min-height:2.9rem }
 

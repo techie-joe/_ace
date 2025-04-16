@@ -6,14 +6,13 @@ block append vars
   - about    = 'This is an example of a theme.'
 
   - pageLayout = 'flex-to-max'
-
-  include _logo
+  - navbarLayout = 'flex-to-max'
 
 block append style
   //- style.
   //- style.
 
-mixin sample_1
+mixin sample_menu
   -
     temp = [
       ['','About'],
@@ -27,22 +26,17 @@ mixin sample_1
 block navbar
   +nav#_navbar._color_1._no_print
     ._flex
-      ._f: +navlogo(['Ace','Template'])
+      ._f: +navlogo(['Your','Logo'],'',['_tc_contra','_tc_orange'])
       ._fill(style="flex-basis:20rem")
         block navmenu
           div(style="margin: .6rem")
             //- ._small._i // navigation goes here ...
             //- +navmenu
             +a._link._l(href='./') Elements
-            +sample_1
+            +a._btnlink._l(href='').__active.__secondary Theme
+            +sample_menu
 
 block pageHeader
-
-  #articleHeader._pageHeader
-    ._flex
-      ._f: +logo
-      ._fill
-    hr
 
   +defaultHeader
 

@@ -1,0 +1,136 @@
+extends _html
+
+block append vars
+  - filename = 'basics.html'
+  - heading  = 'Basics'
+  - about    = 'Basic elements are kept nice and tidy.'
+
+block article
+  article._article
+
+    style.
+      .box {
+        display:inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+        width:100px;
+        height:50px;
+        padding:.25rem;
+      }
+
+    ._idiv._outline
+      +repeat(2)
+        .box._outline outlined
+        .box._border bordered
+        br
+
+    hr
+
+    ._p
+      | normal
+      | #[span span]
+      | #[b bold]
+      | #[span._b span-bold]
+      | #[i italic]
+      | #[span._i span-italic]
+      | #[code code]
+      | #[samp samp]
+      | #[kbd keyboard]
+
+    ._p
+      | #[u underlined]
+      | #[span._u span-underlined]
+      | #[abbr(title="abbreviation") abbr]
+      | #[span._u_dot span-u-dot]
+      | #[s strikethrough]
+      | #[span._striked span-striked]
+
+    ._p
+      | normal
+      | #[small small]
+      | #[span._small span-small]
+      | #[span._smaller smaller]
+      | #[span._smallest smallest]
+    
+    ._p
+      | text
+      | #[sub sub]
+      | #[sup sup]
+      | HTg_
+      | #[sub g_]
+      | #[sup T^"]
+
+    ._p
+      | #[span._uppercase uppercase]
+      | #[span._capitalize capitalized text]
+
+    ._p
+      | #[span._tc_blue blue]
+      | #[span._tc_purple purple]
+      | #[span._tc_orange orange]
+      | #[span._tc_red red]
+      | #[span._tc_green green]
+      | #[span._tc_contra contra]
+      | #[span normal]
+      | #[span._outline outline]
+      | #[span._select select]
+
+    hr
+
+    p paragraph
+    ._p paragraph-div
+    pre pre is in mono
+    ._pre pre-div is also in mono
+    dl| #[dt term]#[dd description]
+    blockquote blockquote and #[q a quoted text] within a sentence.
+
+    hr
+
+    ul: li un-ordered list
+    ul._no_bullet: li no-bullet list
+    ul._no_pad: li no-pad list
+    ul._plain: li plain list
+
+    ol: li ordered list
+    ol._no_bullet: li no-bullet list
+    ol._no_pad: li no-pad list
+    ol._plain: li plain list
+    
+    hr
+
+    mixin table_example
+      table&attributes(attributes)
+        thead
+          tr
+            th Item
+            th Description
+            th Price
+        tbody
+          tr
+            td Apple
+            td A sweet red fruit
+            td $1.00
+          tr
+            td Banana
+            td A long yellow fruit
+            td $0.50
+          tr
+            td Cherry
+            td A small red fruit
+            td $0.20
+        tfoot
+          tr
+            td(colspan='2') Total
+            td $1.70
+      //- table
+    //- table_example
+
+    ._p: +table_example
+    ._p: +table_example._table
+
+    //- +pageData#_pageData
+
+  //- article
+
+//- block article
+

@@ -7,6 +7,7 @@ block append vars
 
   - navbar   = true
   - pageLayout = 'flex-to-max'
+  - navbarLayout = 'flex-to-max'
 
 block topRightNav_content
   +topThemeSwitch
@@ -34,6 +35,8 @@ block article
           ['links.html','Links'],
           ['buttons.html','Buttons'],
           ['containers.html','Containers'],
+          ['alignment.html','Alignment'],
+          ['flex.html','Flex'],
         ];
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}
@@ -42,9 +45,8 @@ block article
       -
         temp = [
           ['view.html','View'],
-          ['flex.html','Flex'],
           ['layouts.html','Layouts'],
-          ['alignment.html','Alignment'],
+          ['overflow.html','Overflow'],
           ['menu.html','Menu'],
         ];
       each v in temp
@@ -64,16 +66,17 @@ block article
       -
         temp = [
           ['error.html','Error'],
+          ['404','--','Simulate real 404'],
+          ['e404.html','404'],
+          ['e500.html','500'],
         ];
       each v in temp
-        +a._link._l(href=v[0]) #{v[1]}
+        +a._link._l(href=v[0] title=v[2]) #{v[1]}
 
     +nav._color_1._radius_x5r._clearfix._mv
       -
         temp = [
           ['test.html','Test'],
-          ['theme.html','Theme'],
-          ['overflow.html','Overflow'],
         ];
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}
@@ -82,6 +85,7 @@ block article
       -
         temp = [
           [homeUri+'themejs/','ThemeJs'],
+          ['theme.html','Theme'],
           ['colors.html','Colors'],
           ['color_tables.html','Color-Tables'],
         ];
