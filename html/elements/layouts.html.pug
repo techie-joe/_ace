@@ -9,10 +9,30 @@ block append vars
 
 block append style
   style.
-    ._footer_layout, ._header_layout
+
+    ._footer_layout,
+    ._header_layout,
+    ._main_layout
     { padding:0 }
-    ._pageHeader { padding:0 1rem }
+    
+    ._pageHeader,
+    ._pageFooter
+    { padding:0 1rem }
+
+    .block { text-align:center }
+
   //- style.
+
+block pageHeader
+  ._pageHeader._simpleHeader
+    +heading#_heading._h1 !{heading}
+    p#_about !{about}
+  hr
+
+block pageFooter
+  hr
+  ._pageFooter._defaultFooter
+    ._ph: p._small._system &copy; !{copyright}
 
 mixin layblock
   .block._outline&attributes(attributes): ._pa: block
@@ -20,7 +40,72 @@ mixin layblock
 mixin viewBlock(name)
   +view(id=`view-${name}`)._full_view: block
 
-block views
+block article
+  article._article
+
+    #_top._absolute
+
+    +nav#menu._text_center._color_2._pa_x5r._ma._radius_x5r._fixed(style="top:auto;bottom:2rem;z-index:1000")
+      -
+        temp = [
+          ['#_top','Common'],
+          ['#FULL_layout','Full'],
+          ['#FLOAT_layout','Float'],
+        ];
+      each v in temp
+        +a(v[0])._btnlink._xl #{v[1]}
+
+    //- menu
+
+    section#COMMON_layout._full_view
+
+      ._flex
+        +layblock._f(style="flex:1 1 300px") #[b E_layout ]#[br]#[code { flex:1 1 300px }]
+        +layblock._fill(style="flex:100 1 300px") #[b D_layout ]#[br]#[code { flex:100 1 300px }]
+
+      ._flex
+        +layblock._f(style="flex:0 0 300px") #[b C_layout ]#[br]#[code { flex:0 0 300px }]
+        +layblock._fill(style="flex:1 1 300px") #[b D_layout ]#[br]#[code { flex:1 1 300px }]
+
+      +layblock(style="max-width:60rem;margin:auto") #[b B_layout ]#[br]#[code { max-width:60rem; margin:auto }]
+
+      +layblock(style="margin:0 5%") #[b A_layout ]#[br]#[code { margin:10% }]
+
+      +layblock.DEFAULT_layout #[b DEFAULT_layout ]#[br]#[code { full-width, auto-height, no-margin }]
+
+
+    hr
+    section#FULL_layout
+
+
+      style.
+
+        .FULL_layout
+        { position:relative; width:100%;height:100vh }
+
+      //- style.
+
+      +layblock.FULL_layout #[b FULL_layout ]#[br]#[code { absolute-full }]
+
+
+    hr
+    section#FLOAT_layout
+  
+
+      style.
+
+        .FLOAT_layout
+        { position:absolute;top:5rem;left:5rem;bottom:5rem;right:5rem; }
+
+      //- style.
+
+      .FULL_layout
+        +layblock.FLOAT_layout #[b FLOAT_layout ]#[br] #[code { absolute-float }]
+
+  //- article
+//- block article
+
+//- block views
 
   #_views._views
 
@@ -34,10 +119,6 @@ block views
           p#_about !{about}
         hr
       //- header
-
-      style.
-        .block { text-align:center }
-      //- style.
 
       ._flex
         +layblock._f(style="flex:1 1 300px") #[b E_layout ]#[br]#[code { flex:1 1 300px }]
