@@ -47,7 +47,6 @@ block article
           ['view.html','View'],
           ['layouts.html','Layouts'],
           ['overflow.html','Overflow'],
-          ['collapsibles.html','Collapsibles'],
           ['menu.html','Menu'],
         ];
       each v in temp
@@ -78,6 +77,7 @@ block article
       -
         temp = [
           ['test.html','Test'],
+          ['collapsibles.html','Collapsibles'],
         ];
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}
