@@ -138,8 +138,8 @@ mixin menu_sample
     +a._btnlink._l.btn(href=v[0] onclick=onclick()) #{v[1]}
 
 mixin m2
-  #m2._hover_show.__absolute
-    +a._trigger._btnlink._l.btn.__absolute(href='#' onclick=onclick()) Menu #[+fas.fa-caret-down]
+  span#m2._hover_show.__absolute
+    +a._btnlink._l.btn(href='#' onclick=onclick()) Menu #[+fas.fa-caret-down]
     ._item: ._content._color_1(style="width:300px;"): ._pa: .s
       | // more menues ...
     //- 
@@ -166,6 +166,7 @@ block article
 
       +nav._color_1.flatmenu
         a(onclick=onclick('toggleMainMenu();'))._btnlink._l.btn.__icon: +isvg(svgi.bars)
+        +a._btnlink._l.btn.__icon: +isvg(svgi.home)
         +m2
         +a._btnlink._l.btn.__icon: +isvg(svgi.ellipsis)
         //- +menu_sample
