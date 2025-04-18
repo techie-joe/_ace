@@ -31,6 +31,7 @@ const _src = {
       // "html-2",
       // "html-3",
       // "html-colors",
+      // "vanamir",
     ],
     php: [
       "index",

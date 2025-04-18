@@ -1,0 +1,21 @@
+extends _html
+
+block append vars
+  - filename = 'index.html'
+  - heading  = 'Van Amir'
+  - about    = 'Perkhidmatan logistik pelajar sekolah.'
+
+block append pageHeader
+  ._pageHeader: .intro(style="max-width:600px"): p
+      | Kami merupakan penyedia perkhidmatan logistik dan transit
+      | bagi pelajar-pelajar sekolah yang beroperasi di kawasan
+      | <b>Sungai Merab Luar</b>
+      | dan <b>Kampung Dato Abu Bakar Baginda,</b>
+      | <b>Kajang, Selangor</b>.
+
+block article
+  article._article
+    nav._color_1._pa._radius_x5r
+      +a('routes.html')._btnlink._xl.__primary| Lihat Jadual Perjalanan
+
+//- block article

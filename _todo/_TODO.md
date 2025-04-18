@@ -3,6 +3,7 @@
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
 ### April 15, 2025 - v0.1.27 b14.333
+- dev menu
 - dev core_2
 
 ---

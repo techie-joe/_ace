@@ -6,7 +6,8 @@ extends ../../core_2/_html
 block append vars
   include _vars
   include _nav
-  - layout = 'elements/_html'
+  - layout = 'vanamir/_html';
+  - pageLayout = 'flex-to-max'
 
 block updatePageData
   - updateTitle( `${heading} | ${name}` )
@@ -16,11 +17,6 @@ block updatePageData
 
 block topRightNav_content
   +topThemeSwitch
-  +topHomeButton(elementsUri)
-
-block navbar
-  if navbar
-    +navbar
 
 block append style
   style.

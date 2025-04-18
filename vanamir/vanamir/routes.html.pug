@@ -1,0 +1,30 @@
+extends _html
+
+block append vars
+  - filename = 'routes.html'
+  - heading  = 'Jadual Perjalanan'
+  - about    = 'Perkhidmatan logistik pelajar sekolah.'
+
+block append pageHeader
+  ._pageHeader.mainmenu
+    nav._color_1._pa_x5r._radius_x5r
+      +a('./')._btnlink._l| Laman utama
+      +a('')._btnlink._l.__secondary.__active._no_border| Jadual Perjalanan
+    hr
+
+block append style
+  style.
+    #triplist ._btnlink {
+      min-width: 300px;
+      margin:.5em 0;
+      padding:.5em;
+    }
+  //- style.
+
+block article
+  article._article
+    nav#triplist: ul
+      li: +a('routes/trip_a.html')._btnlink._l Trip A @ 06:30AM - 08:00AM
+      li: +a('routes/trip_b.html')._btnlink._l Trip B @ 11:00AM - 02:00PM
+      li: +a('routes/trip_c.html')._btnlink._l Trip C @ 04:30PM - 07:00PM
+//- block article

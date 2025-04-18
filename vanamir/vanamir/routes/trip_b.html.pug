@@ -1,0 +1,72 @@
+extends _html
+
+block append vars
+  - filename = 'routes/trip_b.html'
+  - heading  = 'Trip B'
+  - about    = '@ 11:00AM - 02:00PM'
+
+  -
+    svgi = {
+      caret:'M10,17L15,12L10,7V17Z',
+    }
+
+  include _data
+  -
+    let rendered = 0;
+    const checkpoints = data.checkpoints;
+
+block append style
+  +css('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css')
+  style.
+    ._float_left { float:left }
+    .checkpoint {
+      min-height:20px;
+      padding:1rem;
+    }
+    .description {
+      margin:.25rem 0;
+      padding-left:1rem;
+    }
+    .links { text-align:right }
+    .links ._btnlink {
+      border:0;
+      padding:.2em .4em;
+      margin:.2rem;
+    }
+    .col-1 { min-width:300px }
+    .col-2 {}
+  //- style.
+
+mixin renderCheckpoint(x)
+  - index = rendered;
+  - id = '#checkpoint-'+(rendered+1);
+  div(id=id).checkpoint._mv_x5r._color_2._radius_x25r
+    ._flex
+      .col-1._fill
+        .location
+          div
+            +fas.fa-location-dot
+            +_
+            span._b._tc_contra #{x.location.name}
+        .description
+          div(class=(x.task.icon=='up'?'_tc_green':'_tc_orange'))| #[+fas(class=`fa-angles-${x.task.icon}`)] #{x.task.name}
+          div._small| #{x.location.details}
+          div.task-details._small| #{x.task.details}
+      .col-2._f_12_4
+        div.links
+          +a._btnlink.__secondary| #[+fas.fa-map] Map
+          +a._btnlink.__secondary| #[+fas.fa-square-check] Checklist
+  - rendered++
+
+block article
+  article._article
+
+    p| Terdapat #[b._tc_contra #{checkpoints.length} lokasi] kesemuanya.
+
+    each x in checkpoints
+      +renderCheckpoint(x)
+    
+    //- p| #{rendered} points
+
+  //- article
+//- block article
