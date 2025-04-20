@@ -1,0 +1,164 @@
+extends _html
+
+block append vars
+  - filename = 'index.html'
+  - heading = name
+  - about = 'A power-tool for building websites and web applications.'
+
+  - pageLayout = 'flex-to-max'
+  - navbarLayout = 'flex-to-max'
+
+  - svgi.print = 'M18,3H6V7H18M19,12A1,1 0 0,1 18,11A1,1 0 0,1 19,10A1,1 0 0,1 20,11A1,1 0 0,1 19,12M16,19H8V14H16M19,8H5A3,3 0 0,0 2,11V17H6V21H18V17H22V11A3,3 0 0,0 19,8Z'; // printer
+
+  - let demoUrl = '/ace/components/'
+
+block append updatePageData
+  - title = name
+
+block header
+  +header#_header._color_1
+    +aceLinks
+
+    block topRightNav
+      if topRightNav
+        +nav#_topRightNav._no_print
+          block topRightNav_content
+            +topThemeSwitch
+
+    block pageHeader
+      ._pageHeader._simpleHeader
+        #intro(style="margin-top:3em;margin-bottom:2em")
+          h1#_heading._hero_3._mb0 #[span.t1 Ace] #[span.t2._tc_blue Builder]
+          p#_about._t5._mt0 !{about}
+          p._smaller._system by #[+a(authorUrl)(target="page_author")._stay_fresh !{author}]
+
+block append style
+  style.
+
+    #_heading { margin-top:0 }
+    #_about { margin-bottom:2em }
+    ._simpleHeader { margin:-.5rem auto 0;padding:3rem 0 2rem }
+    #_header ._pageHeader { position:relative }
+    #_header ._pageHeader:before {
+      content: 'A';
+      font-family: serif;
+      font-weight: bold;
+      font-size: 45rem;
+      display: block;
+      line-height: 0.7;
+      position: absolute;
+      top: -50%;
+      right: 4%;
+      opacity: 0.1;
+      user-select: none;
+    }
+
+  //- style.
+  //- style.
+
+block article
+  article._article
+
+    section._mv_2
+
+      p._text_justify(style="min-height:5rem") Our builder comes with #[b._h7 pre-made components] and #[b._h7 helper classes], giving you an easy building experience. We have simplified web creation to make it accessible to everyone, even those without technical expertise. Dive in and start building your website right away. With a variety of customization options, you can create a professional and unique website tailored to your needs.
+
+      ._mv._color_1._radius_x5r._pa_x5r._ph._no_print
+        //- +a('','Get the template')(onclick=onclick())._btnlink.download #[span._btnlabel Download]
+        +a(demoUrl,'Explore Core Components')._btnlink._xl.__primary.viewdemo Explore
+
+    hr
+
+    section._mv_2
+      h2 Web Projects
+      nav.pages
+        ._flex
+          ._f_12_4: ul._no_margin
+            +lia("/ace/sample_1/")._link| Sample #1 - Simple Home
+          ._f_12_4: ul._no_margin
+            +lia(basicUrl+'intro.html')._link| Basic Template
+        //- flex
+
+    hr
+
+    ._flex._gap_2
+
+      ._f_2_1
+        section._mb_2
+          h2 Available in light and dark
+
+          p._text_justify Make your website readily available in both light and dark color schemes. Our tools helps switch between the two by using the keyboard shortcut #[code._code._no_wrap='Ctrl + Alt + T']. You may also use a button or a script to programmatically execute #[code._code._no_wrap='theme.change()'].
+
+          p._no_print._needjs: +changeThemeLink._btnlink._l #[+isvg(svgi.compare)] Change Theme
+
+      ._f_2_1
+        section._mb_2
+          h2 Good design, even in print
+          p._text_justify You will want a website that looks great when printed. Our websites excel on paper. Enjoy good design and functionality, viewed digitally or in print. Elevate your professionalism with a website that stand out in every medium.
+
+          p._no_print._needjs: +a()(title="Print Page (Ctrl+P)" onclick=onclick(js.print))._btnlink._l #[+isvg(svgi.print)] Print Page
+
+    //- flex
+
+    //- hr
+    //- +pageData
+
+  //- article
+
+//- block article
+
+mixin aceLinks
+  if PROJECT_STATUS === DEVELOPMENT
+    div#__acelinks
+
+mixin developmentLinks
+  if PROJECT_STATUS === DEVELOPMENT
+    div._mono._text_right
+      hr
+      ._p._small
+        +a(localUrl)._link._b|LOCAL
+        ||
+        +a(siteUrl)._link._b|LIVE
+        span#__sourceref
+
+block footer
+  +footer#_footer
+    section._pageFooter
+      +developmentLinks
+      hr
+      ._p._small
+        ._flex._gap
+          ._f(style="flex: 0 6 14em")
+            | #{title} &mdash;
+            | #[span._no_wrap v#{version} - b#{build}]
+          ._f_2_1
+            +_a("README.md")(target='ace_readme')| Readme
+            +_a("LICENSE.txt")(target='ace_license')| License
+            +_a("CHANGELOGS.md")(target='ace_changelogs')| Changes
+
+    +defaultFooter  
+
+block append script
+  +needjs
+  if PROJECT_STATUS === DEVELOPMENT
+    script.
+      (function(w){
+
+        if( __sourceref && w.location.hostname === '#{LOCALHOST}' ) {
+          __sourceref.innerHTML = [
+            '|<a class="_link _b" href="#{sourceUrl}" target="page_source">SOURCE</a>',
+            '|<a class="_link _b" href="#{builderUrl}" target="page_builder">BUILDER</a>',
+          ].join('');
+        }
+
+        if( __acelinks && w.location.hostname === '#{LOCALHOST}' ) {
+          __acelinks.innerHTML = [
+            '<div class="_relative _no_print" style="left:-1rem"><div class="_absolute" style="z-index:1;margin:.6rem 1rem">',
+            '<a class="_btnlink _l __icon" href="../" title="Back to parent page"><span class="_itextx">&middot;&middot;</span></a> ',
+            '<a class="_btnlink _l __icon" href="info.html" title="Info page"><span class="_itextx _mono">i</span></a> ',
+            '</div></div>',
+          ].join('');
+        }
+
+      })(window);
+    //- script.

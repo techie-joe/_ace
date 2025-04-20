@@ -25,7 +25,7 @@ const _src = {
   },
   site : {
     html: [
-      "index",
+      "index_2",
       "html",
       // "html-1",
       // "html-2",
@@ -34,13 +34,13 @@ const _src = {
       // "vanamir",
     ],
     php: [
-      "index",
+      "index_2",
     ],
     txt: [
-      "index",
+      "index_2",
     ],
     md: [
-      "index",
+      "index_2",
     ],      
   },
   files : ["files"],

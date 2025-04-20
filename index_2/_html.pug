@@ -1,4 +1,4 @@
-extends ../../core_2/_html
+extends ../core_2/_html
 
 //- ==============================================================
 //- variables for every html page
@@ -6,7 +6,7 @@ extends ../../core_2/_html
 block append vars
   include _vars
   include _nav
-  - layout = 'components/_html'
+  - layout = 'index_2/_html'
 
 block updatePageData
   - updateTitle( `${heading} | ${name}` )
@@ -16,7 +16,7 @@ block updatePageData
 
 block topRightNav_content
   +topThemeSwitch
-  +topHomeButton(componentsUri)
+  +topHomeButton(elementsUri)
 
 block navbar
   if navbar

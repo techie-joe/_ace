@@ -40,7 +40,7 @@
   //- uris
   let homeUri        = '/ace/';
   let assetsUri      = '/ace/assets/';
-  let elementsUri    = '/ace/elements/';
+  let componentsUri  = '/ace/components/';
 
   //- metadata
   let now            = new Date();
@@ -63,10 +63,12 @@
   let INCLUDE_SERVICE_WORKERS = false;
 
   //- project status
-  const LOCALHOST      = 'LOCALHOST';
   const DEVELOPMENT    = 'DEVELOPMENT';
   const PRODUCTION     = 'PRODUCTION';
   let   PROJECT_STATUS = DEVELOPMENT;
+
+  // localhost name (case sensitive)
+  const LOCALHOST      = 'localhost';
 
 //- ==============================================================
 //- Process vars

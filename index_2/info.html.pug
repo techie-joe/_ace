@@ -1,0 +1,22 @@
+extends _html
+
+block append vars
+  - filename = 'info.html'
+  - heading = 'Ace Builder (Info)'
+  - about = 'Info page.'
+
+block article
+  article._article
+
+    section#acelinks._p
+      +backlink._link._l.__icon: +itext|&larr;
+      +a(homeUri,"Go to Ace Template Home")._link._l| Ace Builder
+      =' | '
+      +a("---","Simulate a real 404")._link._l.__icon._no_print: +middots
+      +a("404.html","When a browser lands on a missing page.")._link._l| 404
+      +a("500.html","When your server encounters an error.")._link._l| 500
+
+    hr
+
+    section
+      +pageData
