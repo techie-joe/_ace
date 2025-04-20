@@ -2,9 +2,9 @@
 // manifest.json file are PWA metadata used to install your web application on users devices.
 
 const manifest = {
-  short_name        : "Ace",
-  name              : "Ace",
-  description       : "Ace Web Application",
+  short_name        : "Ace Builder",
+  name              : "Ace Builder",
+  description       : "A power-tool for building websites and web applications.",
   background_color  : "#222222",
   theme_color       : "#222222",
   display           : "standalone",

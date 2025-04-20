@@ -27,7 +27,7 @@ block header
 
     block pageHeader
       ._pageHeader._simpleHeader
-        #intro(style="margin-top:3em;margin-bottom:2em")
+        #intro
           h1#_heading._hero_3._mb0 #[span.t1 Ace] #[span.t2._tc_blue Builder]
           p#_about._t5._mt0 !{about}
           p._smaller._system by #[+a(authorUrl)(target="page_author")._stay_fresh !{author}]
@@ -35,6 +35,7 @@ block header
 block append style
   style.
 
+    #intro { position:relative;z-index:1;margin-top:3em;margin-bottom:2em }
     #_heading { margin-top:0 }
     #_about { margin-bottom:2em }
     ._simpleHeader { margin:-.5rem auto 0;padding:3rem 0 2rem }
