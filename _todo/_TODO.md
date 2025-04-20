@@ -8,8 +8,6 @@
 
 ---
 
-START : [GO](../pages/core/test.html.pug)
-
 CORE update : version & build  
   [CHANGELOGS](../CHANGELOGS.md)  
   [CONFIG____](../core_2/_CONFIGS.pug)  

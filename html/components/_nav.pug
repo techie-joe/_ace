@@ -15,6 +15,7 @@ mixin navlogo(text=['Your','Logo'],url=homeUri,className=['_tc_contra','_tc_blue
 
   +a(url)#_navlogo._btnlink
     b(class=className[0]) !{text[0]}
+    +_
     b(class=className[1]) !{text[1]}
 
 block append vars
@@ -44,7 +45,7 @@ mixin navbar(links=navbar_menu)
       block
     else
       ._flex
-        ._f: +navlogo(['Ace','Template'])
+        ._f: +navlogo(['Ace','Builder'])
         ._fill(style="flex-basis:20rem")
           block navmenu
             div(style="margin: .6rem"): +navmenu(links)

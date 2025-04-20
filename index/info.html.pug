@@ -1,7 +1,7 @@
 extends _html
 
 block append vars
-  - heading = `Ace Template Info Page`
+  - heading = `Ace Builder (Info)`
   - updateTitle( `${heading}` )
   - updateDescription( `An info page.` )
   - updateUrl( siteUrl+"info.html" )
@@ -11,9 +11,7 @@ block main
 
     section#acelinks._p
       +backlink._link._nav_icon: +itext|&larr;
-      +_a('..',"Go to parent's page")._link._nav_icon: +itext|&times;
-      +_a(homeUrl,"Go to Ace Template Home")._link| Ace Template
-      +_a(homeUrl+"demo/","Go to Ace Template Demo")._link| Demo
+      +_a(homeUrl,"Go to Ace Template Home")._link| Ace Builder
       =' | '
       +_a("---","Simulate a real 404")._link._nav_icon._no_print: +middots
       +_a("404.html","When a browser lands on a missing page.")._link| 404
