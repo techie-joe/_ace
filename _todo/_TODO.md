@@ -2,7 +2,7 @@
 
 <div style="font-family:Consolas,monospace;font-weight:bold;">
 
-### April 20, 2025 - v0.2.0 b1.0
+### April 20, 2025 - v0.2.0 b1.1
 - rewrite Ace Builder
 
 ---
