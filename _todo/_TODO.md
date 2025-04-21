@@ -1,11 +1,13 @@
 ## Ace Builder Updates
 
-### April 21, 2025 - v0.2.0 b1.2
+### April 21, 2025 - v0.2.0 b1.3
+- optimize gulper
 - rewrite Ace Builder
 
 ------------------------------------------------------------------
 
 CORE update : version & build  
+[GULP______](../gulpfile.js)
 [CHANGELOGS](../CHANGELOGS.md)  
 [CONFIG____](../core_2/_CONFIGS.pug)  
 [CSS_CRIGHT](../styles/gulp_css/core_2/_copyright.scss)  

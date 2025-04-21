@@ -26,11 +26,15 @@ const _src = {
   site : {
     html: [
       "index_2",
-      "html",
-      // "html-1",
-      // "html-2",
-      // "html-3",
-      // "html-colors",
+      "html_active",
+      "html_starter", 
+      "html-core_2",
+      "html-core_2-view",
+      "html-colors",
+    ],
+    html_w: [
+      // "index_2",
+      "html_active",
     ],
     php: [
       "index_2",
@@ -140,6 +144,13 @@ function files() {
 
 function html() {
   return src(_src.site.html)
+  .pipe(pug({ pretty: true }))
+  .pipe(ext('.html'))
+  .pipe(dest(_dest.site));
+}
+
+function html_w() {
+  return src(_src.site.html_w)
   .pipe(pug({ pretty: true }))
   .pipe(ext('.html'))
   .pipe(dest(_dest.site));
@@ -276,7 +287,7 @@ exports.all = parallel(
 const watchOpt = { ignoreInitial: false };
 
 function watch_pages() {
-  watch(_src.site.html, watchOpt, html );
+  watch(_src.site.html_w, watchOpt, html_w );
   watch(_src.site.php,  watchOpt, php  );
   watch(_src.site.txt,  watchOpt, txt  );
   watch(_src.site.md,   watchOpt, md   );
