@@ -4,7 +4,7 @@
 
   "name"        : "ace-builder",
   "description" : "Ace Builder",
-  "version"     : "0.1.25",
+  "version"     : "0.2.0",
   "author"      : "Techie Joe",
   "license"     : "SEE LICENSE IN LICENSE.txt",
   "main"        : "gulpfile.js",
