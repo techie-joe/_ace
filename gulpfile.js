@@ -35,6 +35,10 @@ const _src = {
     html_w: [
       // "index_2",
       "html_active",
+      // "html_starter", 
+      // "html-core_2",
+      // "html-core_2-view",
+      // "html-colors",
     ],
     php: [
       "index_2",
@@ -47,7 +51,9 @@ const _src = {
     ],      
   },
   files : ["files"],
-  scss  : ["styles/gulp_css"],
+  scss: [
+    "styles/gulp_css"
+  ],
   js: [
     "scripts/gulp_js",
     "scripts/wp_js",

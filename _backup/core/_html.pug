@@ -1,77 +1,91 @@
-extends ../../core/_html
+include _vars
 
-block append vars
+block vars
   //- variables for every html page
-  - layout = 'pages/core/html';
-  include _vars
-  include _nav
+  - layout = 'core/html';
 
-block append style
-  style.
-    ._footer_layout, ._header_layout, ._main_layout
-    { margin:auto; max-width:60em; padding:0 1rem }
-  //- style.
+block document
+  doctype html
+  html#_html._html._nojs._scrollbar._a._hidden(lang=lang class=htmlClass)
+    |
+    | <!-- #{name} v#{version} b#{build.substring(0,build.indexOf('.')||build.length)} | (c) #{copyright} -->
+    | <!-- layout:#{layout} -->
+    |
+    head
+      meta(charset=charset)/
 
-block header
+      block seo
+        include _seo
 
-  block nav
-    +navbar
-    //- +nav#_nav: ul: +lia
+      block meta
+        include _meta
 
-  +header#_header
-    if HEADER_TYPE === 'SIMPLE'
-      ._p #[b._h7 !{heading} &mdash; ] !{about}
-      hr
-    else
-      +heading#_heading !{heading}
-      p !{about}
-      hr
-  //- header
+      block style
+        +htmlPreset
+        //- +cssv(href,media='all')
+        +cssv(assetsUri+'css/core/html.css')#_core_style
 
-mixin topClose
-  +backlink.link._link._color(title="Close this page")|&times;
+    //- head
 
-mixin topBack
-  +a('./').link._link._color(title="Close this page")|&times;
+    body#_body._body(class=bodyClass)
 
-mixin topStyleSwitch
-  +a.link._link._color(onclick=onclick('window.test.disableStyle();') title="Toggle Style") s
+      block view
+        +view._full_view
 
-mixin topThemeSwitch
-  +_a.link._link._color.ticon(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)")|☯
+          block header
 
-block append widgets
+            block nav
+              //- +nav#_nav: ul: +lia
+              +nav#_nav
+                +backlink._link._l.__icon|#[+itext|←] Back
+                hr
+              //- nav
 
-  style.
-    #topSwitch .abs {
-      position:absolute;
-      top:0;
-      right:15px;
-      padding:.6rem;
-    }
-    #topSwitch .link i { font-style:normal }
-    #topSwitch .link {
-      font-family:monospace,monospace;
-      font-size:1.3rem;
-      text-decoration:none;
-      text-align:center;
-      display:inline-block;
-      box-sizing:border-box;
-      width:1.5rem;
-      height:1.5rem;
-      margin:.1rem;
-      padding:0;
-      border:1px solid #888;
-      line-height:1;
-      font-weight:normal;
-      border-radius:.3rem;
-      vertical-align: middle;
-    }
-    #topSwitch .ticon { font-size:1.45rem }
-  //- style.
+            +header#_header
+              +heading#_heading !{heading}
+              p !{about}
+              hr
+            //- header
 
-  #topSwitch._absolute._full_width._no_print: .abs
-    block topSwitch
-      +topThemeSwitch
-    if INCLUDE_BACKSWITCH
-      +topBack
+          //- block header
+
+          block main
+            //- +main#_main: article._ma
+              +pre: +putData
+              +pageData#_pageData
+            //- +aside#_aside
+
+            +main#_main: article
+              +pageData#_pageData
+            //- main
+
+          block footer
+            +footer#_footer
+              hr
+              p._small._system &copy; !{copyright}
+            //- footer
+
+        //- +view
+
+      block widgets
+        //- +widgets#_widgets
+          +widget#_widget
+
+      block script
+        //- +jsv(src)
+        +jsv(assetsUri+'js/theme_v1.0.js')(defer)
+
+        if INCLUDE_SERVICE_WORKERS
+          +jsv(assetsUri+'js/sw.j')(defer)
+      //- script
+
+      block finaly
+        |
+        | <!-- IE needs 512+ bytes: https://techie-joe.github.io/library/html5/ie#ie-needs-512-bytes -->
+        |
+
+    //- body
+
+  //- html
+
+//- document

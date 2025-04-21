@@ -23,7 +23,7 @@
 }
 
 #_topRightNav {
-  ._nav_layout { margin: .6rem 1rem }
+  ._nav_layout { padding: .65rem 1rem;margin:0 }
   & { @extend ._fixed; left:auto; right:15px; z-index:1000 }
   ._link {
     font-family:monospace,monospace;
@@ -44,4 +44,8 @@
     i { font-style:normal }
   }
   ._ticon { font-size:1.5em }
+}
+
+@media (max-width: 426px){
+  #_topRightNav { right:0 }
 }

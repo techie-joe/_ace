@@ -1,0 +1,77 @@
+extends ../../core/_html
+
+block append vars
+  //- variables for every html page
+  - layout = 'pages/core/html';
+  include _vars
+  include _nav
+
+block append style
+  style.
+    ._footer_layout, ._header_layout, ._main_layout
+    { margin:auto; max-width:60em; padding:0 1rem }
+  //- style.
+
+block header
+
+  block nav
+    +navbar
+    //- +nav#_nav: ul: +lia
+
+  +header#_header
+    if HEADER_TYPE === 'SIMPLE'
+      ._p #[b._h7 !{heading} &mdash; ] !{about}
+      hr
+    else
+      +heading#_heading !{heading}
+      p !{about}
+      hr
+  //- header
+
+mixin topClose
+  +backlink.link._link._color(title="Close this page")|&times;
+
+mixin topBack
+  +a('./').link._link._color(title="Close this page")|&times;
+
+mixin topStyleSwitch
+  +a.link._link._color(onclick=onclick('window.test.disableStyle();') title="Toggle Style") s
+
+mixin topThemeSwitch
+  +_a.link._link._color.ticon(onclick=onclick(js.themeChange) title="Change Theme (Ctrl+Alt+T)")|☯
+
+block append widgets
+
+  style.
+    #topSwitch .abs {
+      position:absolute;
+      top:0;
+      right:15px;
+      padding:.6rem;
+    }
+    #topSwitch .link i { font-style:normal }
+    #topSwitch .link {
+      font-family:monospace,monospace;
+      font-size:1.3rem;
+      text-decoration:none;
+      text-align:center;
+      display:inline-block;
+      box-sizing:border-box;
+      width:1.5rem;
+      height:1.5rem;
+      margin:.1rem;
+      padding:0;
+      border:1px solid #888;
+      line-height:1;
+      font-weight:normal;
+      border-radius:.3rem;
+      vertical-align: middle;
+    }
+    #topSwitch .ticon { font-size:1.45rem }
+  //- style.
+
+  #topSwitch._absolute._full_width._no_print: .abs
+    block topSwitch
+      +topThemeSwitch
+    if INCLUDE_BACKSWITCH
+      +topBack
