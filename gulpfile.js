@@ -163,6 +163,10 @@ function php() {
   .pipe(dest(_dest.site));
 }
 
+function html_w() {
+  return html(_src.site.html_w,_dest.site);
+}
+
 function txt() {
   return src(_src.site.txt)
   .pipe(pug())
@@ -232,38 +236,35 @@ exports.builder = parallel(
 
 );
 
+// > gulp html
+// > gulp php
+// > gulp txt
+// > gulp md
 // > gulp css
 // > gulp js
 // ---------------------------------------------------------------
 
-exports.html = series( html );
-exports.php  = series( php  );
-exports.txt  = series( txt  );
-exports.md   = series( md   );
-
-exports.css  = series(css   );
-exports.js   = series( js   );
+exports.html = html;
+exports.php  = php;
+exports.txt  = txt;
+exports.md   = md;
+exports.css  = css;
+exports.js   = js;
 
 // > gulp files
 // > gulp pages
-// > gulp site
 // > gulp all
 // ---------------------------------------------------------------
 
 exports.files = parallel(
   
+  builder_txt, builder_md,
   htaccess, manifest, files,
 
 );
 
 exports.pages = parallel(
   
-  html, php, txt, md,
-
-);
-
-exports.site = parallel(
-
   html, php, txt, md,
   css, js,
 
@@ -272,7 +273,6 @@ exports.site = parallel(
 exports.all = parallel(
 
   builder_txt, builder_md,
-
   htaccess, manifest, files,
   html, php, txt, md,  
   css, js,
@@ -280,33 +280,21 @@ exports.all = parallel(
 );
 
 // > gulp watch
-// > gulp watch_pages
-// > gulp watch_css
-// > gulp watch_js
 // ---------------------------------------------------------------
 const watchOpt = { ignoreInitial: false };
 
 function watch_pages() {
   watch(_src.site.html_w, watchOpt, html_w );
-  watch(_src.site.php,  watchOpt, php  );
-  watch(_src.site.txt,  watchOpt, txt  );
-  watch(_src.site.md,   watchOpt, md   );
+  watch(_src.site.php,    watchOpt, php );
+  watch(_src.site.txt,    watchOpt, txt );
+  watch(_src.site.md,     watchOpt, md );
+  watch(_src.scss,        watchOpt, css );
+  watch(_src.js,          watchOpt, js );
 }
-function watch_css() { watch(_src.scss, watchOpt, css ); }
-function watch_js()  { watch(_src.js,   watchOpt, js  ); }
   
-exports.watch_pages = parallel( watch_pages );
-exports.watch_css   = parallel( watch_css );
-exports.watch_js    = parallel( watch_js  );
-exports.watch       = parallel(
-
-  watch_pages,
-  watch_css,
-  watch_js,
-
-);
+exports.watch = watch_pages;
 
 // (default) > gulp
 // ---------------------------------------------------------------
 
-exports.default = exports.site;
+exports.default = exports.all;

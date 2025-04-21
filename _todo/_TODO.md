@@ -1,12 +1,12 @@
 ## Ace Builder Updates
 
 ### April 21, 2025 - v0.2.0 b1.3
-- optimize gulper
+- update gulper watch
 - rewrite Ace Builder
 
 ------------------------------------------------------------------
-
-CORE update : version & build  
+**< UPDATE >**
+CORE : version & build  
 [GULP______](../gulpfile.js)
 [CHANGELOGS](../CHANGELOGS.md)  
 [CONFIG____](../core_2/_CONFIGS.pug)  
@@ -14,17 +14,19 @@ CORE update : version & build
 [PACKAGE___](../package.json)  
 [PACKAGE__C](../package-copy.json)  
 
-BUILDER update : version & build  
+**< CHECK >**
+BUILDER : version & build  
 [README____](../README.md)  
 [LICENSE___](../LICENSE.txt)  
 
-ACE update : version & build  
-[CONFIG____](../_CONFIGS.pug)  
--- [INDEX_____](../pages/index.html.pug)  
--- [README____](../../ace/README.md)  
--- [LICENSE___](../../ace/LICENSE.txt)  
+**< CHECK >**
+ACE : version & build  
+[README____](../../ace/README.md)  
+[LICENSE___](../../ace/LICENSE.txt)  
+[CHANGELOGS](../../ace/CHANGELOGS.md)
 
-BASIC update : version & build  
+**< UPDATE >**
+BASIC : version & build  
 [VARS______](../pages/basic/_vars.pug)  
 [CHANGELOGS](../pages/basic/CHANGELOGS.md)  
 -- [INDEX_____](../pages/basic/index.html.pug)  
