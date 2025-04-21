@@ -1,6 +1,8 @@
-## README scripts
+## README : scripts
+
 - scripts : are used to generate javascript assets for the project.
----
+
+------------------------------------------------------------------
 
 - _backup: backup scripts.
 

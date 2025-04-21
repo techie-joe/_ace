@@ -5,6 +5,7 @@
 - rewrite Ace Builder
 
 ------------------------------------------------------------------
+
 **< UPDATE >**
 CORE : version & build  
 [GULP______](../gulpfile.js)
@@ -32,6 +33,29 @@ BASIC : version & build
 -- [INDEX_____](../pages/basic/index.html.pug)  
 -- [README____](../../ace/basic/README.md)  
 -- [LICENSE___](../../ace/basic/LICENSE.txt)  
+
+------------------------------------------------------------------
+
+### Deprecation Notice
+
+Following files will be deprecated soon
+
+> Right now `pages` still use `pugs` and `_CONFIGS.pug`.  
+> Will update to `core_2`. 
+```
+_CONFIGS.pug
+/ pugs / **
+/ pages / **
+/ vanamir / **
+```
+
+Following files has been deprecated
+
+```
+/ core / **
+/ index / **
+/ pages / core / **
+```
 
 ------------------------------------------------------------------
 
