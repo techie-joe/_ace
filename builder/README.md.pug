@@ -1,26 +1,25 @@
 //- ==============================================================
 //- README for Ace Builder
 //- ==============================================================
-extends ../core/_text
+include ../core_2/_vars
+include _vars_2
+.
+  # !{title}
+  > !{description}
+  ------------------------------------------------------------------
+  
+  Title     : !{title}  
+  Version   : #{version}  
+  Build     : #{build}  
+  Author    : !{author}  
+  Publisher : !{publisher}  
 
-block append vars
-  include _vars
+  BUILDER   : #{builderUrl}  
 
-block main
-  .
-    # !{title}
-    > !{description}
-    ------------------------------------------------------------------
-    
-    Title    : !{title}  
-    Version  : #{version}  
-    Build    : #{build}  
-    Author   : !{author}  
+  WEBSITE   : #{siteUrl}  
 
-    BUILDER_URL  : #{builderUrl}  
+  AUTHOR    : #{authorUrl}  
 
-    AUTHOR_URL   : #{authorUrl}  
+  ------------------------------------------------------------------
 
-    ------------------------------------------------------------------
-
-    Copyright (c) #{thisYear} -- !{author}
+  Copyright (c) #{thisYear} - !{author}

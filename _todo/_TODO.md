@@ -1,39 +1,37 @@
-## Update files
+## Ace Builder Updates
 
-<div style="font-family:Consolas,monospace;font-weight:bold;">
-
-### April 20, 2025 - v0.2.0 b1.1
+### April 21, 2025 - v0.2.0 b1.2
 - rewrite Ace Builder
 
----
+------------------------------------------------------------------
 
 CORE update : version & build  
-  [CHANGELOGS](../CHANGELOGS.md)  
-  [CONFIG____](../core_2/_CONFIGS.pug)  
-  [CSS_CRIGHT](../styles/gulp_css/core_2/_copyright.scss)  
-  [PACKAGE___](../package.json)  
-  [PACKAGE__C](../package-copy.json)  
+[CHANGELOGS](../CHANGELOGS.md)  
+[CONFIG____](../core_2/_CONFIGS.pug)  
+[CSS_CRIGHT](../styles/gulp_css/core_2/_copyright.scss)  
+[PACKAGE___](../package.json)  
+[PACKAGE__C](../package-copy.json)  
 
 BUILDER update : version & build  
-  [README____](../README.md)  
-  [LICENSE___](../LICENSE.txt)  
+[README____](../README.md)  
+[LICENSE___](../LICENSE.txt)  
 
 ACE update : version & build  
-  [CONFIG____](../_CONFIGS.pug)  
-  -- [INDEX_____](../pages/index.html.pug)  
-  -- [README____](../../ace/README.md)  
-  -- [LICENSE___](../../ace/LICENSE.txt)  
+[CONFIG____](../_CONFIGS.pug)  
+-- [INDEX_____](../pages/index.html.pug)  
+-- [README____](../../ace/README.md)  
+-- [LICENSE___](../../ace/LICENSE.txt)  
 
 BASIC update : version & build  
-  [VARS______](../pages/basic/_vars.pug)  
-  [CHANGELOGS](../pages/basic/CHANGELOGS.md)  
-  -- [INDEX_____](../pages/basic/index.html.pug)  
-  -- [README____](../../ace/basic/README.md)  
-  -- [LICENSE___](../../ace/basic/LICENSE.txt)  
+[VARS______](../pages/basic/_vars.pug)  
+[CHANGELOGS](../pages/basic/CHANGELOGS.md)  
+-- [INDEX_____](../pages/basic/index.html.pug)  
+-- [README____](../../ace/basic/README.md)  
+-- [LICENSE___](../../ace/basic/LICENSE.txt)  
 
-</div>
+------------------------------------------------------------------
 
-## To do
+### Next To Do
 
   - Try detach license tag to improve chances of passing Envato QC.
 

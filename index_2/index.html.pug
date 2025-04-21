@@ -77,9 +77,8 @@ block article
       nav.pages
         ._flex
           ._f_12_4: ul._no_margin
-            +lia("/ace/sample_1/")._link| Sample #1 - Simple Home
-          ._f_12_4: ul._no_margin
-            +lia(basicUrl+'intro.html')._link| Basic Template
+            +lia("/ace/basic/"+'intro.html')._link| Basic Template
+          //- ._f_12_4: ul._no_margin
         //- flex
 
     hr
@@ -134,7 +133,7 @@ block footer
           ._f(style="flex: 0 6 14em")
             | #{title} &mdash;
             | #[span._no_wrap v#{version} - b#{build}]
-          ._f_2_1
+          ._f_2_1._text_right
             +_a("README.md")(target='ace_readme')| Readme
             +_a("LICENSE.txt")(target='ace_license')| License
             +_a("CHANGELOGS.md")(target='ace_changelogs')| Changes

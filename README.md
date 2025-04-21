@@ -2,15 +2,18 @@
 > A power-tool for building websites and web applications.
 ------------------------------------------------------------------
 
-Title    : Ace Builder  
-Version  : 0.1.26  
-Build    : 13.331  
-Author   : Techie Joe  
+Title     : Ace Builder  
+Version   : 0.2.0  
+Build     : 1.2  
+Author    : Techie Joe  
+Publisher : Tidloo Digital  
 
-BUILDER_URL  : https://github.com/techie-joe/_ace/  
+BUILDER   : https://github.com/techie-joe/_ace/  
 
-AUTHOR_URL   : https://github.com/techie-joe/  
+WEBSITE   : https://techie-joe.github.io/ace/  
+
+AUTHOR    : https://github.com/techie-joe/  
 
 ------------------------------------------------------------------
 
-Copyright (c) 2025 -- Techie Joe
+Copyright (c) 2025 - Techie Joe

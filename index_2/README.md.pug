@@ -1,26 +1,25 @@
 //- ==============================================================
 //- README for Ace Builder Website
 //- ==============================================================
-extends _text
+include ../core_2/_vars
+include _vars_2
+.
+  # !{title}
+  > !{description}
+  ------------------------------------------------------------------
+  
+  Title     : !{title}  
+  Version   : #{version}  
+  Build     : #{build}  
+  Author    : !{author}  
+  Publisher : !{publisher}  
 
-block document
-  .
-    # !{title}
-    > !{description}
-    ------------------------------------------------------------------
-    
-    Title     : !{title}  
-    Version   : #{version}  
-    Build     : #{build}  
-    Author    : !{author}  
-    Publisher : !{publisher}  
+  WEBSITE   : #{siteUrl}  
 
-    WEBSITE   : #{siteUrl}  
+  SOURCE    : #{sourceUrl}  
 
-    SOURCE    : #{sourceUrl}  
+  AUTHOR    : #{authorUrl}  
 
-    AUTHOR    : #{authorUrl}  
+  ------------------------------------------------------------------
 
-    ------------------------------------------------------------------
-
-    Copyright (c) #{thisYear} !{publisher}
+  Copyright (c) #{thisYear} - !{author}
