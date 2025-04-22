@@ -62,18 +62,18 @@ block document
     block body
       body#_body._body(class=bodyClass.join(' '))
 
+        block topRightNav
+          if topRightNav
+            +nav#_topRightNav._no_print
+              block topRightNav_content
+                +topThemeSwitch
+                +topCloseButton
+
         block views
           #_views._views: +view._full_view
 
             block header
               +header#_header
-
-                block topRightNav
-                  if topRightNav
-                    +nav#_topRightNav._no_print
-                      block topRightNav_content
-                        +topThemeSwitch
-                        +topCloseButton
 
                 block navbar
                   if navbar

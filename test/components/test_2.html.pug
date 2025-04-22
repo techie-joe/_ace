@@ -1,0 +1,60 @@
+extends ../../core_2/_html
+
+block append vars
+  - filename = 'test_2.html'
+  - heading  = 'Test #2'
+  - about    = 'Testing mobile full view scrolling.'
+
+block append style
+  style.
+    .o1 { box-shadow: 0 0 0 5px #ff880088 inset; }
+    .o2 { box-shadow: 0 0 0 5px #88008888 inset;background-color:#8883 }
+    .o3 { box-shadow: 0 0 0 5px #005f88 inset;background-color:#8883 }
+    .o4 { box-shadow: 0 0 0 5px #328800 inset;background-color:#8883 }
+    #contents { width:50%;height:30rem;margin:auto }
+    .top { position:absolute;top:0 }
+    .bottom { position:absolute;bottom:0 }
+    .fullScreen #view { height:auto;min-height:100%;overflow:auto }
+    .fullScreen #btnT { outline:3px solid #880088;outline-offset:5px; }
+  //- style.
+
+block views
+
+  block topRightNav
+    if topRightNav
+      +nav#_topRightNav._no_print
+        block topRightNav_content
+          +topThemeSwitch
+          +topCloseButton
+
+  #_views._views: +view#view._full_view.o1
+
+    #contents._relative.o2
+      .top._pa
+      .content._pa
+        +defaultHeader
+        +a#btnT._btnlink._l(onclick=onclick('toggleFullScreen()')) Full Screen
+        hr
+        p
+          | On mobile, top navigation bar adapts to scrolling behavior.
+          | The top navigation bar will be hidden when user start scrolling.
+          | You can decide whether to allow view controls to manage the behavior or not.
+      .bottom._pa // bottom content
+    #contents._relative.o3
+      .top._pa // top content
+      .bottom._pa // bottom content
+    #contents._relative.o4
+      .top._pa // top content
+      .bottom._pa // bottom content
+
+block append script
+  script.
+    var isFullScreen = false;
+    var eid = '_body';
+    var eclass = '_body';
+    function toggleFullScreen(){
+      var e = document.getElementById(eid);
+      if(!isFullScreen){ e.setAttribute('class',eclass+' fullScreen');isFullScreen=true; }
+      else{ e.setAttribute('class',eclass);isFullScreen=false; }
+    }
+  //- script.

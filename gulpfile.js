@@ -68,6 +68,7 @@ const _ace = (() => {
         "html-core_2",
         "html-core_2-view",
         "html-colors",
+        "test",
       ],
       html_w: [
         // "index_2",
@@ -237,13 +238,15 @@ const _ace = (() => {
   // watchers
   // -------------------------------------------------------------
   const watchOpt = { ignoreInitial: false };
-
-  function watch_html(){  watch(_src.site.html_w, watchOpt, html_w  ) };
-  function watch_php(){   watch(_src.site.php,    watchOpt, php     ) };
-  function watch_txt(){   watch(_src.site.txt,    watchOpt, txt     ) };
-  function watch_md(){    watch(_src.site.md,     watchOpt, md      ) };
-  function watch_scss(){  watch(_src.scss,        watchOpt, css     ) };
-  function watch_js(){    watch(_src.js,          watchOpt, js      ) };
+  
+  function _watch() {
+    watch(_src.site.html_w, watchOpt, html_w  )
+    watch(_src.site.php,    watchOpt, php     )
+    watch(_src.site.txt,    watchOpt, txt     )
+    watch(_src.site.md,     watchOpt, md      )
+    watch(_src.scss,        watchOpt, css     )
+    watch(_src.js,          watchOpt, js      )
+  }
 
   return {
     files:parallel(
@@ -252,29 +255,30 @@ const _ace = (() => {
     ),
     pages:parallel(
       html, php, txt, md,
+    ),
+    assets:parallel(
       css, js,
     ),
-    watch:parallel(
-      watch_html, watch_php, watch_txt, watch_md,
-      watch_scss, watch_js,
-    ),
+    watch:_watch,
   };
 
 })();
 
-exports.ace_files = _ace.files;
-exports.ace_pages = _ace.pages;
+exports.ace_files  = _ace.files;
+exports.ace_pages  = _ace.pages;
+exports.ace_assets = _ace.assets;
 
 const ace = exports.ace = parallel(
   _ace.files,
   _ace.pages,
+  _ace.assets,
 );
 
 // ---------------------------------------------------------------
 // > gulp all
 // ---------------------------------------------------------------
 exports.all = parallel(
-  ace,
+  ace
 );
 
 // ---------------------------------------------------------------
