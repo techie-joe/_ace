@@ -56,7 +56,6 @@ const _src = {
   ],
   js: [
     "scripts/gulp_js",
-    "scripts/wp_js",
   ],
 };
 

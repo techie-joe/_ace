@@ -1,5 +1,6 @@
-// __TLDR: pack all entry to output folder.
-
+// ===============================================================
+// pack all entry to output folder.
+// ===============================================================
 const path = require('path');
 
 module.exports = {
@@ -11,7 +12,7 @@ module.exports = {
     // "custom.js"  : path.resolve(__dirname, 'scripts/custom_js/custom.js'),
   },
   output: {
-    path: path.resolve(__dirname, 'scripts/wp_js'),
+    path: path.resolve(__dirname, '../ace/assets/js'),
     filename: '[name]'
   }
 };
