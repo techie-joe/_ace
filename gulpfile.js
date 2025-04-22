@@ -77,6 +77,7 @@ const _ace = (() => {
         // "html-core_2",
         // "html-core_2-view",
         // "html-colors",
+        "test",
       ],
       php: [
         "index_2",
@@ -239,13 +240,16 @@ const _ace = (() => {
   // -------------------------------------------------------------
   const watchOpt = { ignoreInitial: false };
   
-  function _watch() {
+  function _watch_assets() {
+    watch(_src.scss,        watchOpt, css     )
+    watch(_src.js,          watchOpt, js      )
+  }
+
+  function _watch_pages() {
     watch(_src.site.html_w, watchOpt, html_w  )
     watch(_src.site.php,    watchOpt, php     )
     watch(_src.site.txt,    watchOpt, txt     )
     watch(_src.site.md,     watchOpt, md      )
-    watch(_src.scss,        watchOpt, css     )
-    watch(_src.js,          watchOpt, js      )
   }
 
   return {
@@ -259,7 +263,8 @@ const _ace = (() => {
     assets:parallel(
       css, js,
     ),
-    watch:_watch,
+    watch_assets:_watch_assets,
+    watch_pages:_watch_pages,
   };
 
 })();
@@ -291,7 +296,10 @@ exports.default = exports.all;
 // ---------------------------------------------------------------
 // > gulp watch
 // ---------------------------------------------------------------
-exports.watch = _ace.watch;
+exports.watch = parallel(
+  _ace.watch_pages,
+  // _ace.watch_assets,
+);
 
 
 // ===============================================================

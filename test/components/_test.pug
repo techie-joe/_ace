@@ -1,10 +1,9 @@
 extends _html
 
 block append style
-  //- style.
-    ._view { position:relative }
-
   style.
+
+    #_header ._pageHeader ._p { margin-right:100px }
 
     #_topRightNav { position:fixed; top:0; left:auto; right:15px }
     #_topRightNav ._link {
@@ -27,6 +26,10 @@ block append style
     #_topRightNav ._link i { font-style:normal }
     #_topRightNav ._nav_layout { margin:0;padding:.65rem 1rem }
     #_topRightNav ._ticon { font-size:1.5rem }
+
+    @media (max-width: 426px){
+      #_topRightNav { right:0 }
+    }
 
   //- style.
 

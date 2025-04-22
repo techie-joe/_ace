@@ -1,6 +1,7 @@
 ## Ace Builder Updates
 
-### April 22, 2025 - v0.2.0 b1.5
+### April 22, 2025 - v0.2.0 b1.6
+- prepare for Header-A
 - add test: Full-Scroll
 - housekeep gulp, typescript and webpack compiler
 - update gulper watch

@@ -1,0 +1,59 @@
+mixin navlogo(text=['Your','Logo'],url=homeUri,className=['_tc_contra','_tc_blue'])
+  block append style
+    style.
+      #_navlogo {
+        border: 0;
+        padding: .25em 1em;
+        border-radius: 0;
+        margin: 0;
+        line-height: 2;
+        font-size: 1.2em;
+        box-sizing: border-box;
+        width: 100%;
+      }
+    //- style.
+
+  +a(url)#_navlogo._btnlink
+    b(class=className[0]) !{text[0]}
+    +_
+    b(class=className[1]) !{text[1]}
+
+block append vars
+  -
+    var navbar_menu = [
+      ['./','Components'],
+      ['basics.html','Basics'],
+      ['texts.html','Texts'],
+      ['icons.html','Icons'],
+      ['links.html','Links'],
+      ['buttons.html','Buttons'],
+      ['containers.html','Containers'],
+      ['alignment.html','Alignment'],
+      ['flex.html','Flex'],
+    ];
+
+mixin navmenu(links=navbar_menu)
+  each v in links
+    if filename === v[0]
+      +a._btnlink._l.__secondary.__active(href=v[0]) #{v[1]}
+    else
+      +a._link._l(href=v[0]) #{v[1]}
+
+mixin navbar(links=navbar_menu)
+  +nav#_navbar._color_1._no_print&attributes(attributes)
+    if block
+      block
+    else
+      ._flex
+        ._f: +navlogo(['Ace','Builder'])
+        ._fill(style="flex-basis:20rem")
+          block navmenu
+            div(style="margin: .6rem"): +navmenu(links)
+
+mixin topRightNav
+  +nav#_topRightNav._fixed._no_print
+    if block
+      block
+    else
+      +topThemeSwitch
+      +topHomeButton(componentsUri)

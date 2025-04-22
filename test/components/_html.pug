@@ -1,0 +1,56 @@
+extends ../../core_2/_html
+
+//- ==============================================================
+//- variables for every html page
+//- ==============================================================
+block append vars
+  include _vars
+  include _nav
+  - layout = 'components/_html'
+
+block updatePageData
+  - updateTitle( `${heading} | ${name}` )
+  - updateDescription( about )
+  - updateUrl( siteUrl + filename, og_type )
+  - updateImage( og_image, og_imageAlt )
+
+block topRightNav_content
+  +topThemeSwitch
+  +topHomeButton(componentsUri)
+
+block navbar
+  if navbar
+    +navbar
+
+block append style
+  style.
+
+    #_navbar { margin: -.5rem -1rem 0 }
+
+  //- style.
+
+  if pageLayout === 'flex-to-max'
+    style.
+
+      ._pageHeader,
+      ._pageFooter,
+      #_main ._article
+      { max-width:60em;margin:.5rem auto }
+
+    //- style.
+
+  if navbarLayout === 'flex-to-max'
+    style.
+
+      #_navbar ._nav_layout
+      { max-width:60em;margin:auto }
+
+    //- style.
+
+  else if navbarLayout === 'full-width'
+    style.
+
+      #_navbar ._nav_layout
+      { margin:0;padding-left:0;min-height:2.9rem }
+
+    //- style.
