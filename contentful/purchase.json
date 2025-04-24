@@ -1,0 +1,413 @@
+{
+  "name": "Purchase",
+  "description": "Record user's purchases.",
+  "displayField": "title",
+  "fields": [
+    {
+      "id": "id",
+      "name": "ID",
+      "type": "Integer",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "unique": true
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "slug",
+      "name": "SLUG",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [
+        {
+          "unique": true
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "title",
+      "name": "Title",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "description",
+      "name": "Description",
+      "type": "Text",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "category",
+      "name": "Category",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "tags",
+      "name": "Tags",
+      "type": "Array",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false,
+      "items": {
+        "type": "Symbol",
+        "validations": []
+      }
+    },
+    {
+      "id": "status",
+      "name": "Status",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "in": [
+            "pending",
+            "canceled",
+            "completed",
+            "failed"
+          ]
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "isUpdating",
+      "name": "Is Updating",
+      "type": "Boolean",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "defaultValue": {
+        "en-US": false
+      },
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "isDeleted",
+      "name": "Is Deleted",
+      "type": "Boolean",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "defaultValue": {
+        "en-US": false
+      },
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "createdBy",
+      "name": "Created By",
+      "type": "Link",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "linkContentType": [
+            "user"
+          ]
+        }
+      ],
+      "disabled": false,
+      "omitted": false,
+      "linkType": "Entry"
+    },
+    {
+      "id": "createdAt",
+      "name": "Created At",
+      "type": "Date",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "updatedBy",
+      "name": "Updated By",
+      "type": "Link",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "linkContentType": [
+            "user"
+          ]
+        }
+      ],
+      "disabled": false,
+      "omitted": false,
+      "linkType": "Entry"
+    },
+    {
+      "id": "updatedAt",
+      "name": "Updated At",
+      "type": "Date",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "additionalNote",
+      "name": "Additional Note",
+      "type": "Text",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "purchasedBy",
+      "name": "Purchased By",
+      "type": "Link",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "linkContentType": [
+            "user"
+          ]
+        }
+      ],
+      "disabled": false,
+      "omitted": false,
+      "linkType": "Entry"
+    },
+    {
+      "id": "purchasedAt",
+      "name": "Purchased At",
+      "type": "Date",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "purchasedProducts",
+      "name": "Purchased Products",
+      "type": "Array",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false,
+      "items": {
+        "type": "Link",
+        "validations": [
+          {
+            "linkContentType": [
+              "product"
+            ]
+          }
+        ],
+        "linkType": "Entry"
+      }
+    },
+    {
+      "id": "purchasedContents",
+      "name": "Purchased Contents",
+      "type": "Object",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "billedAmount",
+      "name": "Billed Amount",
+      "type": "Number",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "range": {
+            "min": 0
+          }
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "paidAmount",
+      "name": "Paid Amount",
+      "type": "Number",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "range": {
+            "min": 0
+          }
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "currencyUsed",
+      "name": "Currency Used",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "in": [
+            "MYR",
+            "USD"
+          ]
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "exchangeRate",
+      "name": "Exchange Rate",
+      "type": "Number",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "paymentStatus",
+      "name": "Payment Status",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "in": [
+            "pending",
+            "canceled",
+            "completed",
+            "failed"
+          ]
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "transactions",
+      "name": "Transactions",
+      "type": "Array",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false,
+      "items": {
+        "type": "Link",
+        "validations": [],
+        "linkType": "Entry"
+      }
+    },
+    {
+      "id": "isFlagged",
+      "name": "Is Flagged",
+      "type": "Boolean",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "defaultValue": {
+        "en-US": false
+      },
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "flags",
+      "name": "Flags",
+      "type": "Array",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false,
+      "items": {
+        "type": "Symbol",
+        "validations": []
+      }
+    }
+  ],
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "2z5psxsgehpn"
+      }
+    },
+    "id": "purchase",
+    "type": "ContentType",
+    "createdAt": "2025-04-23T15:42:25.382Z",
+    "updatedAt": "2025-04-24T06:07:14.916Z",
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    },
+    "publishedVersion": 61,
+    "publishedAt": "2025-04-24T06:07:14.916Z",
+    "firstPublishedAt": "2025-04-23T15:42:25.946Z",
+    "createdBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "4ke1QXgQJqNjM6Q9GAo8IY"
+      }
+    },
+    "updatedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "4ke1QXgQJqNjM6Q9GAo8IY"
+      }
+    },
+    "publishedCounter": 31,
+    "version": 62,
+    "publishedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "4ke1QXgQJqNjM6Q9GAo8IY"
+      }
+    },
+    "urn": "crn:contentful:::content:spaces/2z5psxsgehpn/environments/master/content_types/purchase"
+  }
+}

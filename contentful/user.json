@@ -1,0 +1,524 @@
+{
+  "name": "User",
+  "description": "User account information.",
+  "displayField": "title",
+  "fields": [
+    {
+      "id": "id",
+      "name": "ID",
+      "type": "Integer",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "unique": true
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "slug",
+      "name": "SLUG",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [
+        {
+          "unique": true
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "title",
+      "name": "Title",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "description",
+      "name": "Description",
+      "type": "Text",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "category",
+      "name": "Category",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "tags",
+      "name": "Tags",
+      "type": "Array",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false,
+      "items": {
+        "type": "Symbol",
+        "validations": []
+      }
+    },
+    {
+      "id": "status",
+      "name": "Status",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "in": [
+            "pending",
+            "canceled",
+            "completed",
+            "failed"
+          ]
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "isUpdating",
+      "name": "Is Updating",
+      "type": "Boolean",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "defaultValue": {
+        "en-US": false
+      },
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "isDeleted",
+      "name": "Is Deleted",
+      "type": "Boolean",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "defaultValue": {
+        "en-US": false
+      },
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "createdAt",
+      "name": "Created At",
+      "type": "Date",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "updatedAt",
+      "name": "Updated At",
+      "type": "Date",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "additionalNote",
+      "name": "Additional Note",
+      "type": "Text",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "username",
+      "name": "Username",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "unique": true
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "passwordHash",
+      "name": "Password Hash",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": true
+    },
+    {
+      "id": "fullName",
+      "name": "Full Name",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "phoneNumber",
+      "name": "Phone Number",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "email",
+      "name": "Email",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "regexp": {
+            "pattern": "^\\w[\\w.-]*@([\\w-]+\\.)+[\\w-]+$",
+            "flags": null
+          }
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "role",
+      "name": "Role",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "in": [
+            "user",
+            "admin",
+            "master"
+          ]
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "permissions",
+      "name": "Permissions",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "profilePicture",
+      "name": "Profile Picture",
+      "type": "Link",
+      "localized": false,
+      "required": false,
+      "validations": [
+        {
+          "linkMimetypeGroup": [
+            "image"
+          ]
+        },
+        {
+          "assetImageDimensions": {
+            "width": {
+              "min": 40,
+              "max": 400
+            },
+            "height": {
+              "min": 40,
+              "max": 400
+            }
+          }
+        },
+        {
+          "assetFileSize": {
+            "min": null,
+            "max": 307200
+          }
+        }
+      ],
+      "disabled": false,
+      "omitted": false,
+      "linkType": "Asset"
+    },
+    {
+      "id": "isEmailVerified",
+      "name": "Is Email Verified",
+      "type": "Boolean",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "defaultValue": {
+        "en-US": false
+      },
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "emailVerifiedAt",
+      "name": "Email Verified At",
+      "type": "Date",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "isPhoneNumberVerified",
+      "name": "Is Phone Number Verified",
+      "type": "Boolean",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "defaultValue": {
+        "en-US": false
+      },
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "phoneNumberVerifiedAt",
+      "name": "Phone Number Verified At",
+      "type": "Date",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "isActive",
+      "name": "Is Active",
+      "type": "Boolean",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "defaultValue": {
+        "en-US": true
+      },
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "isAllowed",
+      "name": "Is Allowed",
+      "type": "Boolean",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "defaultValue": {
+        "en-US": false
+      },
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "isOnline",
+      "name": "Is Online",
+      "type": "Boolean",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "defaultValue": {
+        "en-US": false
+      },
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "isFlagged",
+      "name": "Is Flagged",
+      "type": "Boolean",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "defaultValue": {
+        "en-US": false
+      },
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "flags",
+      "name": "Flags",
+      "type": "Array",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false,
+      "items": {
+        "type": "Symbol",
+        "validations": []
+      }
+    },
+    {
+      "id": "lastLogin",
+      "name": "Last Login",
+      "type": "Date",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "lastActive",
+      "name": "Last Active",
+      "type": "Date",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "availableCredits",
+      "name": "Available Credits",
+      "type": "Number",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "totalSpent",
+      "name": "Total Spent",
+      "type": "Number",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "currencyUsed",
+      "name": "Currency Used",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "in": [
+            "MYR",
+            "USD"
+          ]
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "exchangeRate",
+      "name": "Exchange Rate",
+      "type": "Number",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "ratings",
+      "name": "Ratings",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "scores",
+      "name": "Scores",
+      "type": "Object",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    }
+  ],
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "2z5psxsgehpn"
+      }
+    },
+    "id": "user",
+    "type": "ContentType",
+    "createdAt": "2025-04-24T03:25:28.567Z",
+    "updatedAt": "2025-04-24T15:56:52.599Z",
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    },
+    "publishedVersion": 45,
+    "publishedAt": "2025-04-24T15:56:52.599Z",
+    "firstPublishedAt": "2025-04-24T03:25:29.213Z",
+    "createdBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "4ke1QXgQJqNjM6Q9GAo8IY"
+      }
+    },
+    "updatedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "4ke1QXgQJqNjM6Q9GAo8IY"
+      }
+    },
+    "publishedCounter": 23,
+    "version": 46,
+    "publishedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "4ke1QXgQJqNjM6Q9GAo8IY"
+      }
+    },
+    "urn": "crn:contentful:::content:spaces/2z5psxsgehpn/environments/master/content_types/user"
+  }
+}

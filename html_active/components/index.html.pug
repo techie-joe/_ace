@@ -44,20 +44,8 @@ block article
     +nav._color_1._radius_x5r._clearfix._mv
       -
         temp = [
-          ['view.html','View'],
-          ['layouts.html','Layouts'],
-          ['overflow.html','Overflow'],
-          ['menu.html','Menu'],
-        ];
-      each v in temp
-        +a._link._l(href=v[0]) #{v[1]}
-
-    +nav._color_1._radius_x5r._clearfix._mv
-      -
-        temp = [
           ['html.html','Html'],
           ['blank.html','Blank'],
-          ['starter.html','Starter'],
         ];
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}
@@ -83,12 +71,23 @@ block article
         ];
       each v in temp
         +a._link._l(href=v[0]) #{v[1]}
+      hr
+      -
+        temp = [
+          ['view.html','View'],
+          ['layouts.html','Layouts'],
+          ['overflow.html','Overflow'],
+          ['menu.html','Menu'],
+          ['theme.html','Theme'],
+          ['starter.html','Starter'],
+        ];
+      each v in temp
+        +a._link._l(href=v[0]) #{v[1]}
 
     +nav._color_1._radius_x5r._clearfix._mv
       -
         temp = [
           [homeUri+'themejs/','ThemeJs'],
-          ['theme.html','Theme'],
           ['colors.html','Colors'],
           ['color_tables.html','Color-Tables'],
         ];
