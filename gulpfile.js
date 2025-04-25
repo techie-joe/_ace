@@ -68,15 +68,7 @@ const _ace = (() => {
         "html-core_2",
         "html-core_2-view",
         "html-colors",
-        "test",
-      ],
-      html_w: [
-        // "index_2",
-        "html_active",
-        // "html_starter", 
-        // "html-core_2",
-        // "html-core_2-view",
-        // "html-colors",
+        "sheety",
         "test",
       ],
       php: [
@@ -87,33 +79,73 @@ const _ace = (() => {
       ],
       md: [
         "index_2",
-      ],      
+      ],
     },
-    scss: [
-      "styles/gulp_css"
-    ],
-    js: [
-      "scripts/gulp_js",
-    ],
+    assets: {
+      scss: [
+        "styles/gulp_css"
+      ],
+      js: [
+        "scripts/gulp_js",
+      ],
+    },
     files: [
       "files"
     ],
   };
 
+  const _srcw = {
+    site : {
+      html: [
+        // "index_2",
+        // "html_active",
+        // "html_starter", 
+        // "html-core_2",
+        // "html-core_2-view",
+        // "html-colors",
+        "sheety",
+        // "test",
+      ],
+      php: [
+        // "index_2",
+      ],
+      txt: [
+        // "index_2",
+      ],
+      md: [
+        // "index_2",
+      ],
+    },
+    assets: {
+      scss: [
+        // "styles/gulp_css"
+      ],
+      js: [
+        // "scripts/gulp_js",
+      ],
+    },
+  };
+
   // -------------------------------------------------------------
   // MAP _src
   // -------------------------------------------------------------
-  ['html', 'php', 'txt', 'md'].forEach(type => {
-    _src.site[type] = _src.site[type].map(v => v + `/**/*.${type}.pug`);
-  });
   ['txt', 'md'].forEach(type => {
-    _src.builder[type] = _src.builder[type].map(v => v + `/**/*.${type}.pug`);
+    var m = v => v + `/**/*.${type}.pug`;
+    _src.builder[type] = _src.builder[type].map(m);
+  });
+  ['html', 'php', 'txt', 'md'].forEach(type => {
+    var m = v => v + `/**/*.${type}.pug`;
+    _src.site[type] = _src.site[type].map(m);
+    _srcw.site[type] = _srcw.site[type].map(m);
   });
   ['scss','js'].forEach(type => {
-    _src[type] = _src[type].map(v => v + "/**/*."+type);  
+    var m = v => v + "/**/*." + type;
+    _src.assets[type] = _src.assets[type].map(m);
+    _srcw.assets[type] = _srcw.assets[type].map(m);
   });
   ['files'].forEach(type => {
-    _src[type] = _src[type].map(v => v + "/**/*");
+    var m = v => v + "/**/*";
+    _src[type] = _src[type].map(m);
   });
 
   // -------------------------------------------------------------
@@ -180,22 +212,11 @@ const _ace = (() => {
     .pipe(dest(_dest.site));
   }
 
-  function html_w() {
-    return src(_src.site.html_w)
-    .pipe(pug({ pretty: true }))
-    .pipe(ext('.html'))
-    .pipe(dest(_dest.site));
-  }
-
   function php() {
     return src(_src.site.php)
     .pipe(pug({ pretty: true }))
     .pipe(ext('.php'))
     .pipe(dest(_dest.site));
-  }
-
-  function html_w() {
-    return html(_src.site.html_w,_dest.site);
   }
 
   function txt() {
@@ -212,6 +233,34 @@ const _ace = (() => {
     .pipe(dest(_dest.site));
   }
 
+  function html_w() {
+    return src(_srcw.site.html)
+    .pipe(pug({ pretty: true }))
+    .pipe(ext('.html'))
+    .pipe(dest(_dest.site));
+  }
+
+  function php_w() {
+    return src(_srcw.site.php)
+    .pipe(pug({ pretty: true }))
+    .pipe(ext('.php'))
+    .pipe(dest(_dest.site));
+  }
+
+  function txt_w() {
+    return src(_srcw.site.txt)
+    .pipe(pug())
+    .pipe(ext('.txt'))
+    .pipe(dest(_dest.site));
+  }
+
+  function md_w() {
+    return src(_srcw.site.md)
+    .pipe(pug())
+    .pipe(ext('.md'))
+    .pipe(dest(_dest.site));
+  }
+
   // -------------------------------------------------------------
   // css
   // -------------------------------------------------------------
@@ -220,18 +269,30 @@ const _ace = (() => {
   const sassOpt  = { outputStyle: 'compressed' };
   
   function css() {
-    return src(_src.scss)
+    return src(_src.assets.scss)
       .pipe(sass(sassOpt).on("error", sass.logError))
       .pipe(cleanCSS())
       .pipe(dest(_dest.css));
   }
-  
+
+  function css_w() {
+    return src(_srcw.assets.scss)
+      .pipe(sass(sassOpt).on("error", sass.logError))
+      .pipe(cleanCSS())
+      .pipe(dest(_dest.css));
+  }
+
   // -------------------------------------------------------------
   // js
   // -------------------------------------------------------------
   // to copy js files from _src to _dest
   function js() {
-    return src(_src.js)
+    return src(_src.assets.js)
+      .pipe(dest(_dest.js));
+  }
+
+  function js_w() {
+    return src(_srcw.assets.js)
       .pipe(dest(_dest.js));
   }
   
@@ -239,17 +300,21 @@ const _ace = (() => {
   // watchers
   // -------------------------------------------------------------
   const watchOpt = { ignoreInitial: false };
+
+  function _watch(__src, opt, fn) {
+    if (__src && __src.length > 0) { watch(__src, opt, fn); }
+  }
   
   function _watch_assets() {
-    watch(_src.scss,        watchOpt, css     )
-    watch(_src.js,          watchOpt, js      )
+    _watch(_srcw.assets.scss, watchOpt, css_w );
+    _watch(_srcw.assets.js,   watchOpt, js_w  );
   }
 
   function _watch_pages() {
-    watch(_src.site.html_w, watchOpt, html_w  )
-    watch(_src.site.php,    watchOpt, php     )
-    watch(_src.site.txt,    watchOpt, txt     )
-    watch(_src.site.md,     watchOpt, md      )
+    _watch(_srcw.site.html, watchOpt, html_w  );
+    _watch(_srcw.site.php,  watchOpt, php_w   );
+    _watch(_srcw.site.txt,  watchOpt, txt_w   );
+    _watch(_srcw.site.md,   watchOpt, md_w    );
   }
 
   return {
@@ -298,7 +363,7 @@ exports.default = exports.all;
 // ---------------------------------------------------------------
 exports.watch = parallel(
   _ace.watch_pages,
-  // _ace.watch_assets,
+  _ace.watch_assets,
 );
 
 
