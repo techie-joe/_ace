@@ -12,13 +12,13 @@ const { src, dest, series, parallel, watch } = require('gulp');
 const pug = require('gulp-pug'); // pug
 const gulp_file   = require('gulp-file'); // to generate files
 const sass = require("gulp-sass")(require("sass")); // sass
-const cleanCSS = require('gulp-clean-css'); // sass
+const cleanCSS = require('gulp-clean-css'); // clean css
+const gulp_rename = require('gulp-rename'); // name file extension
 
 // ===============================================================
 // FUNCTIONS
 // ===============================================================
 
-const gulp_rename = require('gulp-rename');
 function ext(extname) {
   return gulp_rename( function (path) {
     path.basename = path.basename.substring(0, path.basename.lastIndexOf('.'));
@@ -39,7 +39,43 @@ function ext(extname) {
 const _ace = (() => {
 
   // -------------------------------------------------------------
-  // CONFIGS
+  // WATCH ITEMS
+  // -------------------------------------------------------------
+
+  const _srcw = {
+    site : {
+      html: [
+        // "index_2",
+        // "html_active",
+        // "html_starter", 
+        // "html-core_2",
+        // "html-core_2-view",
+        // "html-colors",
+        "sheety",
+        // "test",
+      ],
+      php: [
+        // "index_2",
+      ],
+      txt: [
+        // "index_2",
+      ],
+      md: [
+        // "index_2",
+      ],
+    },
+    assets: {
+      scss: [
+        // "styles/gulp_css"
+      ],
+      js: [
+        // "scripts/gulp_js",
+      ],
+    },
+  };
+
+  // -------------------------------------------------------------
+  // BUILD ITEMS
   // -------------------------------------------------------------
 
   const _dest_url = "/ace/";
@@ -92,38 +128,6 @@ const _ace = (() => {
     files: [
       "files"
     ],
-  };
-
-  const _srcw = {
-    site : {
-      html: [
-        // "index_2",
-        // "html_active",
-        // "html_starter", 
-        // "html-core_2",
-        // "html-core_2-view",
-        // "html-colors",
-        "sheety",
-        // "test",
-      ],
-      php: [
-        // "index_2",
-      ],
-      txt: [
-        // "index_2",
-      ],
-      md: [
-        // "index_2",
-      ],
-    },
-    assets: {
-      scss: [
-        // "styles/gulp_css"
-      ],
-      js: [
-        // "scripts/gulp_js",
-      ],
-    },
   };
 
   // -------------------------------------------------------------
