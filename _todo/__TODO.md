@@ -1,9 +1,3 @@
-## Menu Makan Updates
-
-### April 25, 2025 - v1.0.0 b0.1
-- dev menumakan
-
-
 ## Ace Builder Updates
 
 ### April 22, 2025 - v0.2.0 b1.6
@@ -21,10 +15,6 @@ DEV : builds
 [GULP______](../gulpfile.js)
 [TYPESCRIPT](../tsconfig.json)
 [WEBPACK___](../webpack.config.js)
-
-**< UPDATE >**
-MENUMAKAN : version & build  
-[VARS______](../sheety/menumakan/_vars.pug)  
 
 **< UPDATE >**
 CORE : version & build  
