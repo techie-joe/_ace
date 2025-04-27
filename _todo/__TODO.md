@@ -12,36 +12,36 @@
 
 **< DEV >**
 DEV : builds
-[GULP______](../gulpfile.js)
-[TYPESCRIPT](../tsconfig.json)
-[WEBPACK___](../webpack.config.js)
+[GULP______](/gulpfile.js)
+[TYPESCRIPT](/tsconfig.json)
+[WEBPACK___](/webpack.config.js)
 
 **< UPDATE >**
 CORE : version & build  
-[CHANGELOGS](../CHANGELOGS.md)  
-[CONFIG____](../core_2/_CONFIGS.pug)  
-[CSS_CRIGHT](../styles/gulp_css/core_2/_copyright.scss)  
-[PACKAGE___](../package.json)  
-[PACKAGE__C](../package-copy.json)  
+[CHANGELOGS](/CHANGELOGS.md)  
+[CONFIG____](/core_2/_CONFIGS.pug)  
+[CSS_CRIGHT](/styles/gulp_css/core_2/_copyright.scss)  
+[PACKAGE___](/package.json)  
+[PACKAGE__C](/package-copy.json)  
 
 **< CHECK >**
 BUILDER : version & build  
-[README____](../README.md)  
-[LICENSE___](../LICENSE.txt)  
+[README____](/README.md)  
+[LICENSE___](/LICENSE.txt)  
 
 **< CHECK >**
 ACE : version & build  
-[README____](../../ace/README.md)  
-[LICENSE___](../../ace/LICENSE.txt)  
-[CHANGELOGS](../../ace/CHANGELOGS.md)
+[README____](/../ace/README.md)  
+[LICENSE___](/../ace/LICENSE.txt)  
+[CHANGELOGS](/../ace/CHANGELOGS.md)
 
 **< UPDATE >**
 BASIC : version & build  
-[VARS______](../pages/basic/_vars.pug)  
-[CHANGELOGS](../pages/basic/CHANGELOGS.md)  
--- [INDEX_____](../pages/basic/index.html.pug)  
--- [README____](../../ace/basic/README.md)  
--- [LICENSE___](../../ace/basic/LICENSE.txt)  
+[VARS______](/pages/basic/_vars.pug)  
+[CHANGELOGS](/pages/basic/CHANGELOGS.md)  
+-- [INDEX_____](/pages/basic/index.html.pug)  
+-- [README____](/../ace/basic/README.md)  
+-- [LICENSE___](/../ace/basic/LICENSE.txt)  
 
 ------------------------------------------------------------------
 

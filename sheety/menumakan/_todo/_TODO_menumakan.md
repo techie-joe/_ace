@@ -7,12 +7,12 @@
 
 **< UPDATE >**
 MENUMAKAN : version & build  
-[VARS______](../sheety/menumakan/_vars.pug)  
+[VARS______](/sheety/menumakan/_vars.pug)  
 
 **< DEV >**
 DEV : builds
-[GULP______](../gulpfile.js)
-[TYPESCRIPT](../tsconfig.json)
-[WEBPACK___](../webpack.config.js)
+[GULP______](/gulpfile.js)
+[TYPESCRIPT](/tsconfig.json)
+[WEBPACK___](/webpack.config.js)
 
 ------------------------------------------------------------------

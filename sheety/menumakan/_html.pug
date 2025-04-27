@@ -18,10 +18,19 @@ block append style
   +css("https://fonts.googleapis.com/css2?family=Pacifico&display=swap")
   +cssv(assetsUri+'css/menumakan/html.css')#_menumakan_style
 
+block script
+  //- +jsv(src)
+
+  if INCLUDE_THEMEJS
+    +jsv(assetsUri+'js/theme_v1.0.js')(defer)
+
+  if INCLUDE_SERVICE_WORKERS
+    +jsv(assetsUri+'js/sw.j')(defer)
+
 block append script
   +js('https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js')
   +js('https://cdn.jsdelivr.net/npm/underscore@1.11.0/underscore-min.js')
   +js(assetsUri+'js/menumakan/main.js')
 
 block header
-  //- nothing
+  +header#header
