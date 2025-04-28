@@ -1,5 +1,8 @@
 ## Ace Builder Updates
 
+### April 28, 2025 - v0.2.0 b3.0
+- new json loading
+
 ### April 22, 2025 - v0.2.0 b1.6
 - optimize gulp watch
 - prepare for Header-A

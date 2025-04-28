@@ -51,8 +51,8 @@ const _ace = (() => {
         // "html-core_2",
         // "html-core_2-view",
         // "html-colors",
-        "sheety",
-        // "test",
+        // "sheety",
+        "test",
       ],
       php: [
         // "index_2",

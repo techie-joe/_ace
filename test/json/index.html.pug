@@ -1,0 +1,65 @@
+extends ../components/_test
+
+block append vars
+  - filename = 'index.html'
+  - heading  = 'Json'
+  - about    = 'Loading json data at runtime.'
+
+  - root = '/ace/json'
+  -
+    let navlinks = [
+      [root,'Reset'],
+    ];
+
+block navbar
+  +nav#_navbar._color_1._no_print
+    div(style="margin: .6rem"): +navmenu(navlinks)
+
+block article
+  article._article
+
+    section: +pre#pre._small
+
+    hr
+
+    section: ul
+      -
+        let links = [
+          [root,'/'],
+          ['?p=','?p='],
+          ['?p=http://localhost/1','?p=http://localhost/1'],
+          [filename+'?p=http://localhost/2','index.html?p=http://localhost/2'],
+          ['ok3','ok3'],
+          ['p/ok4','p/ok4'],
+        ];
+      each v in links
+        li: +a._link._l(href=v[0]) #{v[1]}
+
+  //- article
+//- block article
+
+block append script
+  script.
+    (()=>{
+      const
+        w = window,
+        d = document,
+        eid = (id)=>document.getElementById(id),
+        pre = eid('pre'),
+        urlParams = new URLSearchParams(w.location.search),
+        path = urlParams.get('p');
+
+      if(path){
+        pre.innerHTML = [
+          path
+        ].join('');
+      }
+      else {
+        pre.innerHTML = [
+          '<div class="_i _tc_orange">No path requested</div>',
+          path,
+        ].join('');
+      }
+
+    })();
+  //- script.
