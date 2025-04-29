@@ -5,11 +5,15 @@ block append vars
   - heading  = 'Json'
   - about    = 'Loading json data at runtime.'
 
-  - root = '/ace/json'
+  - root = '/ace/json/'
   -
     let navlinks = [
       [root,'Reset'],
     ];
+
+block topRightNav_content
+  +topThemeSwitch
+  +topHomeButton(componentsUri)
 
 block navbar
   +nav#_navbar._color_1._no_print
@@ -18,23 +22,19 @@ block navbar
 block article
   article._article
 
-    section: +pre#path._small
-
-    hr
-
-    section: ul._small
-      -
-        let links = [
-          [root,'/'],
-          [root+'?p=','?p='],
-          [root+'?p=localhost/1','?p=localhost/1'],
-          [filename+'?p=localhost/2','index.html?p=localhost/2'],
-          [root+'/localhost/3','localhost/3'],
-          [root+'/localhost/ace/assets/js/menumakan/settings.json','menumakan/settings.json'],
-          [root+'/localhost/ace/assets/js/menumakan/menuItems.json','menumakan/menuItems.json'],
-        ];
-      each v in links
-        li: +a._link._l(href=v[0]) #{v[1]}
+    section
+      details()
+        summary._color_1._pa_x5r: ._inblock#path._small: div._i._tc_orange| Select path
+        div: ul._m0._small(style="padding-left:1.8em")
+          -
+            let links = [
+              [root+'localhost/3','localhost/3'],
+              [root+'localhost/ace/assets/js/menumakan/settings.json','menumakan/settings.json'],
+              [root+'localhost/ace/assets/js/menumakan/menuItems.json','menumakan/menuItems.json'],
+              [root+'api.sheety.co/phill/cluckerRestaurant/menuItems?protocol=https','cluckerRestaurant/menuItems'],
+            ];
+          each v in links
+            li: +a._link._l(href=v[0]) #{v[1]}
 
     hr
 
@@ -51,39 +51,41 @@ block append script
         w = window,
         d = document,
         eid = (id)=>document.getElementById(id),
-        pathPre = eid('path'),
-        urlParams = new URLSearchParams(w.location.search);
-      var
-        path = urlParams.get('p');
+        pathPre = eid('path');
 
       function renderJson(url){
-          const
-            jsonPre = eid('json');
+        const
+          jsonPre = eid('json');
 
-          fetchJson(url)
-          .then((json)=>{
-            jsonPre.innerHTML = JSON.stringify(json);
-          })
-          .catch(error => {
-            console.error("Fetch error:", error.message); // Handle errors here
-            jsonPre.innerHTML = '<div class="_i _tc_orange">Missing or invalid data</div>';
-          });
+        jsonPre.innerHTML = 'Loading ...'
+
+        fetchJson(url)
+        .then((json)=>{
+          jsonPre.innerHTML = JSON.stringify(json);
+        })
+        .catch(error => {
+          console.error("Fetch error:", error.message); // Handle errors here
+          jsonPre.innerHTML = `<div class="_i _tc_orange">Invalid path, no data returned by : ${url}</div>`;
+        });
       }
 
       function fetchJson(url) {
         return fetch(url).then((response)=>response.json())
       }
 
-      if(!path){
-        path = w.location.pathname.substring('/ace/json/'.length);
-      }
+      const
+        aceJson = '/ace/json/',
+        urlParams = new URLSearchParams(w.location.search),
+        protocol = urlParams.get('protocol') || 'http';
+      var
+        path = w.location.pathname;
 
-      if(path){
+      if(path.substring(0,aceJson.length)==aceJson){ path = path.substring(aceJson.length) }
+
+      if(path && path.length > 0){
+        path = protocol+'://'+path;
         pathPre.innerHTML = path;
-        renderJson('http://'+path);
-      }
-      else {
-        pathPre.innerHTML = '<div class="_i _tc_orange">No path requested</div>';
+        renderJson(path);
       }
 
     })();
