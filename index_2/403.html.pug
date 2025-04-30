@@ -1,0 +1,10 @@
+extends _error
+
+block append vars
+  - filename = '403.html'
+  - heading = 'Forbidden'
+  - about   = 'Sorry, you don\'t have permission to access this location.'
+
+block append style
+  style.
+    #_body:before { content:'#{layout}/403' }

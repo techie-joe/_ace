@@ -5,9 +5,23 @@ block append vars
   - heading  = 'Menu Makan &trade;'
   - about    = 'Menus Made Easy, Choices Made Delicious!'
 
+block append style
+  style.
+    .input {
+      margin:auto;
+      max-width:25em;
+      border:1px solid #8886;
+    }
+    .input .txt-input {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 8px 10px;
+    }
+  //- style.
+
 block article
   article._article#menu.container
-    #loadingMsg._text_center(style="margin:5rem auto;")| Loading your menu ...
 
 mixin template
   script(type="text/x-handlebars-template")&attributes(attributes): block
@@ -19,7 +33,27 @@ block pageFooter
 
 block append script
 
-  //- +template#list-template
+  +template#intro-template
+    -
+      let _examples = [
+        ['localhost/ace/menumakan', '(Demo A)'],
+        ['localhost/ace/menu_A', '(Demo B)'],
+        //- 'api.sheety.co/phill/cluckerRestaurant',
+        //- 'api.sheety.co/ed6904a0d8a396880b2772c9bf093d33/restaurantMenu',
+      ];
+
+    form._text_center(style="margin:5rem auto;" onsubmit="event.preventDefault();findMenu();")
+      h3| Open your menu &#128269;
+      ._color_1._radius_x5r.input: input#menuLocation.txt-input(type='text' placeholder="Menu location ...")
+      ._tc_orange._p
+        |{{#if error}}
+        |{{error.message}}
+        |{{/if}}
+      .suggestions: ._mv_2._i
+        b| Suggestions
+        each menu in _examples
+          div(style="margin:.5em;")
+            +a(homeUrl+menu[0])._no_u| #[u #{menu[0]}] #{menu[1]||''}
 
   +template#header-template
     style.
