@@ -3,25 +3,23 @@ extends _html
 block append vars
   - filename = 'index.html'
   - heading  = 'Menu Makan &trade;'
-  - about    = 'Senarai makanan anda.'
-
-block prepend style
-  +css("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")(integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous")
-
-block append style
-  +css("https://fonts.googleapis.com/css2?family=Pacifico&display=swap")
-  +cssv(assetsUri+'css/menumakan/html.css')#_menumakan_style
+  - about    = 'Menus Made Easy, Choices Made Delicious!'
 
 block article
   article._article#menu.container
-    #loading_message._text_center._i(style="margin:5rem")| Loading ...
+    #loadingMsg._text_center(style="margin:5rem auto;")| Loading your menu ...
 
 mixin template
   script(type="text/x-handlebars-template")&attributes(attributes): block
 
+block pageFooter
+  ._pageFooter._defaultFooter
+    hr
+    p._small._system: +a(homeUrl)._link._l &copy; !{copyright}
+
 block append script
 
-  +template#list-template
+  //- +template#list-template
 
   +template#header-template
     style.
@@ -29,9 +27,9 @@ block append script
         border-top-color: {{primary-color.value}};
         border-bottom-color: {{secondary-color.value}};
       }
-      #header { background-color: #EEE }
-      ._dark #header { background-color: #111 }
-      #header .logo {
+      #_header { background-color: #EEEEEE }
+      ._dark #_header { background-color: #282828 }
+      #_header .logo {
         color: {{header-primary-color.value}};
         text-shadow: 4px 4px 0px {{header-secondary-color.value}}, 5px 5px 8px #0006;
       }
@@ -43,7 +41,7 @@ block append script
           br
           span.headerB|{{safe header-b.value}}
         p._tc_contra|{{safe description.value}}
-      ._color_1._pa._text_center
+      ._color_1._pa._text_center(style="margin:0 -1rem")
         p|{{safe about.value}}
 
   +template#menu-template
@@ -71,3 +69,10 @@ block append script
   +js('https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js')
   +js('https://cdn.jsdelivr.net/npm/underscore@1.11.0/underscore-min.js')
   +js(assetsUri+'js/menumakan/main.js')
+
+block prepend style
+  +css("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")(integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous")
+
+block append style
+  +cssv(assetsUri+'css/menumakan/html.css')#_menumakan_style
+  +css("https://fonts.googleapis.com/css2?family=Pacifico&display=swap")
