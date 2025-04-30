@@ -4,6 +4,7 @@ block append vars
   include _vars
   - layout = 'menumakan/_html'
   - topRightNav = false
+  - navbar = false
 
 //- block updatePageData
   - updateTitle( heading )
@@ -11,12 +12,8 @@ block append vars
   - updateUrl( siteUrl + filename, og_type )
   - updateImage( og_image, og_imageAlt )
 
-block prepend style
-  +css("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")(integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous")
-
-block append style
-  +css("https://fonts.googleapis.com/css2?family=Pacifico&display=swap")
-  +cssv(assetsUri+'css/menumakan/html.css')#_menumakan_style
+block header
+  +header#header
 
 block script
   //- +jsv(src)
@@ -26,11 +23,3 @@ block script
 
   if INCLUDE_SERVICE_WORKERS
     +jsv(assetsUri+'js/sw.j')(defer)
-
-block append script
-  +js('https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js')
-  +js('https://cdn.jsdelivr.net/npm/underscore@1.11.0/underscore-min.js')
-  +js(assetsUri+'js/menumakan/main.js')
-
-block header
-  +header#header

@@ -3,25 +3,16 @@ extends _html
 block append vars
   - filename = 'index.html'
   - heading  = 'Menu Makan &trade;'
-  - about    = 'Senarai makanan anda.'
-
-block prepend style
-  +css("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")(integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous")
-
-block append style
-  +css("https://fonts.googleapis.com/css2?family=Pacifico&display=swap")
-  +cssv(assetsUri+'css/menumakan/html.css')#_menumakan_style
+  - about    = 'Senarai makanan menarik untuk anda.'
 
 block article
   article._article#menu.container
-    #loading_message._text_center._i(style="margin:5rem")| Loading ...
+    #loading_message._text_center._b._i(style="margin-bottom:5rem")| Loading our menu ...
 
 mixin template
   script(type="text/x-handlebars-template")&attributes(attributes): block
 
 block append script
-
-  +template#list-template
 
   +template#header-template
     style.
@@ -67,7 +58,3 @@ block append script
           </div>
         </div>
       |{{/each}}
-
-  +js('https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js')
-  +js('https://cdn.jsdelivr.net/npm/underscore@1.11.0/underscore-min.js')
-  +js(assetsUri+'js/menumakan/main.js')
