@@ -1,6 +1,7 @@
 ## Ace Builder Updates
 
-### April 28, 2025 - v0.2.0 b3.0
+### April 30, 2025 - v0.2.0 b3.1
+- restructure gulp styles
 - new json loading
 
 ### April 22, 2025 - v0.2.0 b1.6

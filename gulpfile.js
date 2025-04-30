@@ -51,8 +51,8 @@ const _ace = (() => {
         // "html-core_2",
         // "html-core_2-view",
         // "html-colors",
-        // "sheety",
-        "test",
+        "sheety",
+        // "test",
       ],
       php: [
         // "index_2",
@@ -66,7 +66,8 @@ const _ace = (() => {
     },
     assets: {
       scss: [
-        // "styles/gulp_css"
+        // "styles",
+        "sheety-styles",
       ],
       js: [
         // "scripts/gulp_js",
@@ -119,7 +120,9 @@ const _ace = (() => {
     },
     assets: {
       scss: [
-        "styles/gulp_css"
+        "styles-old",
+        "styles",
+        "sheety-styles",
       ],
       js: [
         "scripts/gulp_js",
