@@ -5,23 +5,12 @@ block append vars
   - heading  = 'Menu Makan &trade;'
   - about    = 'Menus Made Easy, Choices Made Delicious!'
 
-block append style
+//- block append style
   style.
-    .input {
-      margin:auto;
-      max-width:25em;
-      border:1px solid #8886;
-    }
-    .input .txt-input {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 8px 10px;
-    }
   //- style.
 
-block article
-  article._article#menu.container
+block main
+  +main#_main: article._article#menu
 
 mixin template
   script(type="text/x-handlebars-template")&attributes(attributes): block
@@ -42,18 +31,20 @@ block append script
         //- 'api.sheety.co/ed6904a0d8a396880b2772c9bf093d33/restaurantMenu',
       ];
 
-    form._text_center(style="margin:5rem auto;" onsubmit="event.preventDefault();findMenu();")
-      h3| Open your menu &#128269;
-      ._color_1._radius_x5r.input: input#menuLocation.txt-input(type='text' placeholder="Menu location ...")
+    form#menuLocator._p(onsubmit="event.preventDefault();findMenu();")
+      h3.title._no_wrap| Open your menu
+      .input._color_1._radius_x5r._flex
+        input#menuLocation.input-txt._radius_x5r(type='text' placeholder="Type in the menu location ...")
+        button(onclick="findMenu()").submit._btnlink|&#128269;
       ._tc_orange._p
         |{{#if error}}
         |{{error.message}}
         |{{/if}}
-      .suggestions: ._mv_2._i
-        b| Suggestions
-        each menu in _examples
-          div(style="margin:.5em;")
-            +a(homeUrl+menu[0])._no_u| #[u #{menu[0]}] #{menu[1]||''}
+    #suggestions._p
+      ._b._i| Suggestions
+      each menu in _examples
+        div.item._i
+          +a(homeUrl+menu[0])._no_u|#{menu[1]||''} #[u #{menu[0]}]
 
   +template#header-template
     style.
@@ -108,5 +99,6 @@ block prepend style
   +css("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")(integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous")
 
 block append style
-  +cssv(assetsUri+'css/menumakan/html.css')#_menumakan_style
+  +cssv(assetsUri+'css/menumakan/html.css')#_html_style
+  +cssv(assetsUri+'css/menumakan/menu.css')#_menu_style
   +css("https://fonts.googleapis.com/css2?family=Pacifico&display=swap")
