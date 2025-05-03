@@ -1,6 +1,7 @@
 ## Menu Makan Updates
 
-### April 25, 2025 - v1.0.0 b0.4
+### April 25, 2025 - v1.0.0 b0.5
+- improve main.js
 - improve intro uix
 - menu building
 - path reading complete

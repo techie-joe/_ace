@@ -2,12 +2,20 @@ extends _html
 
 block append vars
   - filename = 'index.html'
-  - heading  = 'Menu Makan &trade;'
+  - heading  = name+' &trade;'
   - about    = 'Menus Made Easy, Choices Made Delicious!'
 
 //- block append style
   style.
   //- style.
+
+block pageHeader
+  +defaultHeader
+
+block pageFooter
+  ._pageFooter._defaultFooter
+    hr
+    p._small._system: +a(homeUrl)._link._l &copy; !{copyright}
 
 block main
   +main#_main: article._article#menu
@@ -15,20 +23,18 @@ block main
 mixin template
   script(type="text/x-handlebars-template")&attributes(attributes): block
 
-block pageFooter
-  ._pageFooter._defaultFooter
-    hr
-    p._small._system: +a(homeUrl)._link._l &copy; !{copyright}
-
 block append script
 
   +template#intro-template
     -
       let _examples = [
-        ['localhost/ace/menumakan', '(Demo A)'],
-        ['localhost/ace/menu_A', '(Demo B)'],
-        //- 'api.sheety.co/phill/cluckerRestaurant',
-        //- 'api.sheety.co/ed6904a0d8a396880b2772c9bf093d33/restaurantMenu',
+        ['localhost/ace/menu_A', '(Demo A)'],
+        ['localhost/ace/menumakan', '(Demo B)'],
+        ['localhost/menumakan/menu_A', '(Demo C)'],
+        ['localhost/menumakan', '(Demo D)'],
+        ['none', '(Test X)'],
+        ['api.sheety.co/phill/cluckerRestaurant'],
+        ['api.sheety.co/ed6904a0d8a396880b2772c9bf093d33/restaurantMenu'],
       ];
 
     form#menuLocator._p(onsubmit="event.preventDefault();findMenu();")
@@ -36,15 +42,14 @@ block append script
       .input._color_1._radius_x5r._flex
         input#menuLocation.input-txt._radius_x5r(type='text' placeholder="Type in the menu location ...")
         button(onclick="findMenu()").submit._btnlink|&#128269;
-      ._tc_orange._p
+      .message._tc_orange._p._small
         |{{#if error}}
         |{{error.message}}
         |{{/if}}
     #suggestions._p
       ._b._i| Suggestions
       each menu in _examples
-        div.item._i
-          +a(homeUrl+menu[0])._no_u|#{menu[1]||''} #[u #{menu[0]}]
+        div.item._i: +a(menu[0])(onclick!=onclick(`findMenu('${menu[0]}')`))._no_u|#{menu[1]||''} #[u #{menu[0]}]
 
   +template#header-template
     style.
@@ -91,14 +96,16 @@ block append script
         </div>
       |{{/each}}
 
-  +js('https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js')
-  +js('https://cdn.jsdelivr.net/npm/underscore@1.11.0/underscore-min.js')
-  +js(assetsUri+'js/menumakan/main.js')
 
 block prepend style
   +css("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")(integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous")
 
+block append script
+  +js('https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js')
+  +js('https://cdn.jsdelivr.net/npm/underscore@1.11.0/underscore-min.js')
+  +js(assetsUri+'js/menumakan/main.js')
+
 block append style
+  +css("https://fonts.googleapis.com/css2?family=Pacifico&display=swap")
   +cssv(assetsUri+'css/menumakan/html.css')#_html_style
   +cssv(assetsUri+'css/menumakan/menu.css')#_menu_style
-  +css("https://fonts.googleapis.com/css2?family=Pacifico&display=swap")

@@ -6,11 +6,35 @@ block append vars
   - topRightNav = false
   - navbar = false
 
-//- block updatePageData
-  - updateTitle( heading )
-  - updateDescription( about )
-  - updateUrl( siteUrl + filename, og_type )
-  - updateImage( og_image, og_imageAlt )
+block views
+  #_views._views: +view._full_view
+
+    block header
+      +header#_header
+
+        block navbar
+          if navbar
+            +nav#_navbar._no_print
+              block navbar_content
+
+        block pageHeader
+          +defaultHeader
+
+    block main
+      +main#_main
+        block article
+          article._article
+            block pageData
+              +pageData#_pageData
+
+    block aside
+      +aside#_aside
+
+    block footer
+      +footer#_footer
+
+        block pageFooter
+          +defaultFooter
 
 block script
   //- +jsv(src)
