@@ -1,6 +1,6 @@
 ## EasyMenu Updates
 
-### April 25, 2025 - v1.0.0 b0.8
+### April 25, 2025 - v1.0.0 b0.9
 - improve seo
 - add dev section
 - improve main.js

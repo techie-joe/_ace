@@ -51,22 +51,22 @@ block main
             ];
           each menu in _demolinks
             .item
-              div: +a('./'+menu[0])._no_u|#[span._tc_contra._b #{menu[1]||''}] #[u._smaller #{menu[0]}]
+              div: +a(homeUri+menu[0])._no_u|#[span._tc_contra._b #{menu[1]||''}] #[u._smaller #{menu[0]}]
               p._small._mt0|!{menu[2]}
         ._f: ._p
           h2._b._i._p._t1._mb_2| How does it works?
           ._text_justifyx
             p.
               #{name} transforms your data, into a user-friendly menu.
-              All we need is the location of your menu, and we will do the rest.
+              All we need is the location of your data and we will do the rest.
+              See sample data: 
+              #[a(href=homeUri+"settings" target="menu_settings") settings],
+              #[a(href=homeUri+"menuItems" target="menu_menuItems") menuItems].
             p.
-              1. Type in the menu location (URL) above, and click find.
+              Type in the menu location (URL) above, and click find.
+              When found, your menu will be displayed here.
             p.
-              2. If found, your menu will be displayed here.
-            p.
-              See sample data:#[br]
-              #[a(href="./settings" target="menu_settings") settings],
-              #[a(href="./menuItems" target="menu_menuItems") menuItems]
+              #[a(href=homeUri+'docs') Read the documentation] for more details on building and publishing your menu.
 
       ._pa._mv_2
 

@@ -38,7 +38,7 @@ block main
       h3| Test Links
       each menu in _testlinks
         .item
-          div: +a('../'+menu[0])._no_u|#{menu[1]||''} #[u #{menu[0]}]
+          div: +a(homeUri+menu[0])._no_u|#{menu[1]||''} #[u #{menu[0]}]
           p._small._mt0|!{menu[2]}
 
 block append style
