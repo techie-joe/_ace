@@ -15,32 +15,33 @@ block pageFooter
 
 block main
   +main#_main
+    article._article#menu
     article._article#main
 
       section#menuLocator: form._p(onsubmit="event.preventDefault();menu.find();")
         h3.title._no_wrap| Open your menu
         .input._color_1._radius_x5r._flex
-          input#menuLocation.input-txt._radius_x5r(type='text' placeholder="Type in the menu location ...")
+          input#menuLocation.input-txt._radius_x5r(type='text' placeholder="Enter the menu location ...")
           button(onclick="findMenu()" title="Find menu").submit._btnlink|&#128269;
         #menuLocatorMessage.message._tc_red._p._small
 
-      section#intro._flex._gap_2
-        ._f(style="flex:0 12 330px"): ._p
-          h2._b._t1._i._p._mb_2| What is this about?
-          ._text_justifyx
-            p: strong.
-              Effortless Online Menus for Your Business
-            p.
-              Make your business stand out with a sleek, digital menu.
-              #{name} simplifies menu creation, helping businesses craft
-              professional, accessible online menus in just a few clicks.
-            p.
-              Whether you are a bustling café, a local bakery, or a service provider,
-              #{name} ensures your customers find what they need, anytime, anywhere.
-            p.
-              Create a professional digital menu in minutes.
-              No coding or design skills required.
+      section#intro._flex._gap_a_2
 
+        //- ------------------------------------------------------
+        ._f(style="flex:1 12 310px;max-width:400px"): ._p
+          h2._b._t1._i._p._mb_2| What is it about?
+          ._text_justifyx
+            p: strong| Effortless Online Menus for Businesses
+            p.
+              #{name} simplifies menu creation, helping businesses craft
+              a sleek, professional, online menus within minutes.
+            p.
+              Suitable for business of all kind. Cafes, bakery, restaurants, shops, services and more.
+            p.
+              No coding or design skills required.
+              Configure some preferences and you are ready to go!
+
+        //- ------------------------------------------------------
         ._f#suggestions: ._p
           h2._b._t1._i._p._mb_2| Menu Suggestions
           -
@@ -53,24 +54,26 @@ block main
             .item
               div: +a(homeUri+menu[0])._no_u|#[span._tc_contra._b #{menu[1]||''}] #[u._smaller #{menu[0]}]
               p._small._mt0|!{menu[2]}
-        ._f: ._p
+
+        //- ------------------------------------------------------
+        ._f(style="flex:1 12 275px;max-width:400px"): ._p
           h2._b._i._p._t1._mb_2| How does it works?
           ._text_justifyx
             p.
-              #{name} transforms your data, into a user-friendly menu.
-              All we need is the location of your data and we will do the rest.
-              See sample data: 
+              #{name} transforms a set of data,
+              and turned it into a beautiful menu.
+            p.
+              Simply #[a(href=homeUri+'build') setup an entry point] for your menu,
+              
+              then use #{name} to access it.
+            p.
+              See examples :
               #[a(href=homeUri+"settings" target="menu_settings") settings],
               #[a(href=homeUri+"menuItems" target="menu_menuItems") menuItems].
             p.
-              Type in the menu location (URL) above, and click find.
-              When found, your menu will be displayed here.
-            p.
-              #[a(href=homeUri+'docs') Read the documentation] for more details on building and publishing your menu.
+              #[a(href=homeUri+'docs') Find out more] ways to interact with #{name}.
 
       ._pa._mv_2
-
-    article._article#menu
 
 mixin template
   script(type="text/x-handlebars-template")&attributes(attributes): block
