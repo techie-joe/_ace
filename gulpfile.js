@@ -117,9 +117,11 @@ const _ace = (() => {
       ],
       txt: [
         "index_2",
+        "sheety",
       ],
       md: [
         "index_2",
+        "sheety",
       ],
     },
     assets: {

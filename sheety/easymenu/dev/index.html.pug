@@ -1,0 +1,45 @@
+extends ../_html
+
+block append vars
+  include ../_vars_2
+  - siteUrl += 'dev/'
+  - filename = 'index.html'
+  - heading  = name+'&trade; (Development)'
+  - about    = description
+
+//- block append style
+  style.
+  //- style.
+
+block pageFooter
+  ._pageFooter._defaultFooter
+    hr
+    p._small._system: +a(homeUri)._link._l &copy; !{copyright}
+
+mixin template
+  script(type="text/x-handlebars-template")&attributes(attributes): block
+
+block main
+  +main#_main: article._article#menu
+    //- +pageData
+    //- test links
+    #testlinks._p
+      -
+        let _testlinks = [
+          ['localhost/ace/easymenu', '(Demo 01)', '&#128020; Yer Brand! - Restaurant Menu. This menu is at the root of the site. Serves as the main demo.'],
+          ['?p=localhost/ace/easymenu', '', 'Another route to the same menu.'],
+          ['settings', '', 'The settings json data.'],
+          ['menuItems', '', 'The menuItems json data.'],
+          ['localhost/ace/easymenu/menu_A', '(Demo A)', '&#129412; Unique Brand! - Store Menu'],
+          ['localhost/ace/easymenu/menu_B', '(Demo B)', 'This menu is missing its menuItems.'],
+          ['localhost/ace/easymenu/menu_C', '(Demo C)', 'This menu is missing its settings.'],
+          ['none', '(Test None)', 'Testing a missing menu.'],
+        ];
+      h3| Test Links
+      each menu in _testlinks
+        .item
+          div: +a('../'+menu[0])._no_u|#{menu[1]||''} #[u #{menu[0]}]
+          p._small._mt0|!{menu[2]}
+
+block append style
+  +cssv(assetsUri+'css/easymenu/html-dev.css')#_html_style

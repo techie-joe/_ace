@@ -5,49 +5,77 @@ block append vars
   - heading  = name+'&trade;'
   - about    = 'Menus Made Easy, Choices Made Delicious!'
 
-//- block append style
-  style.
-  //- style.
-
 block pageHeader
   +defaultHeader
 
 block pageFooter
   ._pageFooter._defaultFooter
     hr
-    p._small._system: +a(homeUrl)._link._l &copy; !{copyright}
+    p._small._system: +a(homeUri)._link._l &copy; !{copyright}
 
 block main
-  +main#_main: article._article#menu
+  +main#_main
+    article._article#main
+
+      section#menuLocator: form._p(onsubmit="event.preventDefault();menu.find();")
+        h3.title._no_wrap| Open your menu
+        .input._color_1._radius_x5r._flex
+          input#menuLocation.input-txt._radius_x5r(type='text' placeholder="Type in the menu location ...")
+          button(onclick="findMenu()" title="Find menu").submit._btnlink|&#128269;
+        #menuLocatorMessage.message._tc_red._p._small
+
+      section#intro._flex._gap_2
+        ._f(style="flex:0 12 330px"): ._p
+          h2._b._t1._i._p._mb_2| What is this about?
+          ._text_justifyx
+            p: strong.
+              Effortless Online Menus for Your Business
+            p.
+              Make your business stand out with a sleek, digital menu.
+              #{name} simplifies menu creation, helping businesses craft
+              professional, accessible online menus in just a few clicks.
+            p.
+              Whether you are a bustling café, a local bakery, or a service provider,
+              #{name} ensures your customers find what they need, anytime, anywhere.
+            p.
+              Create a professional digital menu in minutes.
+              No coding or design skills required.
+
+        ._f#suggestions: ._p
+          h2._b._t1._i._p._mb_2| Menu Suggestions
+          -
+            let _demolinks = [
+              ['localhost/ace/easymenu', '(Demo 01)', '&#128020; Yer Brand! - Restaurant Menu.'],
+              ['localhost/ace/easymenu/menu_A', '(Demo 02)', '&#129412; Unique Brand! - Store Menu.'],
+              ['localhost/ace/easymenu/menu_C', '(Demo 03)', 'A simple menu.'],
+            ];
+          each menu in _demolinks
+            .item
+              div: +a('./'+menu[0])._no_u|#[span._tc_contra._b #{menu[1]||''}] #[u._smaller #{menu[0]}]
+              p._small._mt0|!{menu[2]}
+        ._f: ._p
+          h2._b._i._p._t1._mb_2| How does it works?
+          ._text_justifyx
+            p.
+              #{name} transforms your data, into a user-friendly menu.
+              All we need is the location of your menu, and we will do the rest.
+            p.
+              1. Type in the menu location (URL) above, and click find.
+            p.
+              2. If found, your menu will be displayed here.
+            p.
+              See sample data:#[br]
+              #[a(href="./settings" target="menu_settings") settings],
+              #[a(href="./menuItems" target="menu_menuItems") menuItems]
+
+      ._pa._mv_2
+
+    article._article#menu
 
 mixin template
   script(type="text/x-handlebars-template")&attributes(attributes): block
 
 block append script
-
-  +template#intro-template
-    -
-      let _examples = [
-        ['localhost/ace/easymenu', '(Demo 01)'],
-        ['localhost/ace/easymenu/menu_A', '(Demo A)'],
-        ['localhost/ace/easymenu/menu_B', '(Demo B)'],
-        ['localhost/ace/easymenu/menu_C', '(Demo C)'],
-        ['none', '(Test None)'],
-      ];
-
-    form#menuLocator._p(onsubmit="event.preventDefault();menu.find();")
-      h3.title._no_wrap| Open your menu
-      .input._color_1._radius_x5r._flex
-        input#menuLocation.input-txt._radius_x5r(type='text' placeholder="Type in the menu location ...")
-        button(onclick="findMenu()").submit._btnlink|&#128269;
-      .message._tc_red._p._small
-        |{{#if error}}
-        |{{error.message}}
-        |{{/if}}
-    #suggestions._p
-      ._b._i| Suggestions
-      each menu in _examples
-        div.item._i: +a(menu[0])(onclick!=onclick(`menu.locate('${menu[0]}')`))._no_u|#{menu[1]||''} #[u #{menu[0]}]
 
   +template#header-template
     style.
