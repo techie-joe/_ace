@@ -2,7 +2,7 @@ extends _html
 
 block append vars
   - filename = 'index.html'
-  - heading  = name+' &trade;'
+  - heading  = name+'&trade;'
   - about    = 'Menus Made Easy, Choices Made Delicious!'
 
 //- block append style
@@ -28,28 +28,26 @@ block append script
   +template#intro-template
     -
       let _examples = [
-        ['localhost/ace/menu_A', '(Demo A)'],
-        ['localhost/ace/menumakan', '(Demo B)'],
-        ['localhost/menumakan/menu_A', '(Demo C)'],
-        ['localhost/menumakan', '(Demo D)'],
-        ['none', '(Test X)'],
-        ['api.sheety.co/phill/cluckerRestaurant'],
-        ['api.sheety.co/ed6904a0d8a396880b2772c9bf093d33/restaurantMenu'],
+        ['localhost/ace/easymenu', '(Demo 01)'],
+        ['localhost/ace/easymenu/menu_A', '(Demo A)'],
+        ['localhost/ace/easymenu/menu_B', '(Demo B)'],
+        ['localhost/ace/easymenu/menu_C', '(Demo C)'],
+        ['none', '(Test None)'],
       ];
 
-    form#menuLocator._p(onsubmit="event.preventDefault();findMenu();")
+    form#menuLocator._p(onsubmit="event.preventDefault();menu.find();")
       h3.title._no_wrap| Open your menu
       .input._color_1._radius_x5r._flex
         input#menuLocation.input-txt._radius_x5r(type='text' placeholder="Type in the menu location ...")
         button(onclick="findMenu()").submit._btnlink|&#128269;
-      .message._tc_orange._p._small
+      .message._tc_red._p._small
         |{{#if error}}
         |{{error.message}}
         |{{/if}}
     #suggestions._p
       ._b._i| Suggestions
       each menu in _examples
-        div.item._i: +a(menu[0])(onclick!=onclick(`findMenu('${menu[0]}')`))._no_u|#{menu[1]||''} #[u #{menu[0]}]
+        div.item._i: +a(menu[0])(onclick!=onclick(`menu.locate('${menu[0]}')`))._no_u|#{menu[1]||''} #[u #{menu[0]}]
 
   +template#header-template
     style.
@@ -103,9 +101,9 @@ block prepend style
 block append script
   +js('https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js')
   +js('https://cdn.jsdelivr.net/npm/underscore@1.11.0/underscore-min.js')
-  +js(assetsUri+'js/menumakan/main.js')
+  +js(assetsUri+'js/easymenu/main.js')
 
 block append style
   +css("https://fonts.googleapis.com/css2?family=Pacifico&display=swap")
-  +cssv(assetsUri+'css/menumakan/html.css')#_html_style
-  +cssv(assetsUri+'css/menumakan/menu.css')#_menu_style
+  +cssv(assetsUri+'css/easymenu/html.css')#_html_style
+  +cssv(assetsUri+'css/easymenu/menu.css')#_menu_style
