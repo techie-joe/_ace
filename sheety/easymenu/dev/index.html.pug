@@ -25,20 +25,23 @@ block main
     //- test links
     #testlinks._p
       -
-        let _testlinks = [
-          ['localhost/ace/easymenu', '(Demo 01)', '&#128020; Yer Brand! - Restaurant Menu. This menu is at the root of the site. Serves as the main demo.'],
+        let _links = [
+          ['localhost/ace/easymenu', 'Demo 01', '&#128020; Yer Brand! - Restaurant Menu. This menu is at the root of the site. Serves as the main demo.'],
           ['?p=localhost/ace/easymenu', '', 'Another route to the same menu.'],
           ['settings', '', 'The settings json data.'],
           ['menuItems', '', 'The menuItems json data.'],
-          ['localhost/ace/easymenu/menu_A', '(Demo A)', '&#129412; Unique Brand! - Store Menu'],
-          ['localhost/ace/easymenu/menu_B', '(Demo B)', 'This menu is missing its menuItems.'],
-          ['localhost/ace/easymenu/menu_C', '(Demo C)', 'This menu is missing its settings.'],
-          ['none', '(Test None)', 'Testing a missing menu.'],
+          ['localhost/ace/easymenu/menu_A', 'Demo A', '&#129412; Unique Brand! - Store Menu'],
+          ['localhost/ace/easymenu/menu_B', 'Demo B', 'This menu is missing its menuItems.'],
+          ['localhost/ace/easymenu/menu_C', 'Demo C', 'This menu is missing its settings.'],
+          ['none', 'Test (none)', 'Testing a missing menu.'],
+          ['docs', 'Documentation', 'Contains all the information you need to know to use this site.'],
+          ['README.md', 'Read me notes', 'Information about this site.'],
+          ['LICENSE.txt', 'License Agreement', 'Usage license, terms of use, and copyright notice.'],
         ];
-      h3| Test Links
-      each menu in _testlinks
+      h3| Links
+      each menu in _links
         .item
-          div: +a(homeUri+menu[0])._no_u|#{menu[1]||''} #[u #{menu[0]}]
+          div: +a(homeUri+menu[0])._no_u|#[span._mr #{menu[1]||''}] #[u._smaller #{menu[0]}]
           p._small._mt0|!{menu[2]}
 
 block append style
