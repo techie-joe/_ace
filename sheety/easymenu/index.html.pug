@@ -4,6 +4,7 @@ block append vars
   - filename = 'index.html'
   - heading  = name+'&trade;'
   - about    = 'Menus Made Easy, Choices Made Delicious!'
+  - topRightNav = true
 
 block pageHeader
   +defaultHeader
@@ -25,13 +26,42 @@ block main
           button(onclick="findMenu()" title="Find menu").submit._btnlink|&#128269;
         #menuLocatorMessage.message._tc_red._p._small
 
+      section#suggestions
+ 
+        ._text_center: h2._b._t1._i._p| Menu Suggestions
+
+        mixin demoLinks(_demolinks)
+          each menu in _demolinks
+            .item._color_2._pa._radius_x5r
+              div: +a(homeUri+menu[0])._no_u|#[span._tc_contra._b #{menu[1]||''}] #[u._smaller #{menu[0]}]
+              div|!{menu[2]}
+
+        ._flex
+          //- ------------------------------------------------------
+          ._f
+            +demoLinks([
+              ['localhost/ace/easymenu', '(Demo 01)', '&#128020; Yer Brand! - Restaurant Menu.'],
+            ])
+          //- ------------------------------------------------------
+          ._f
+            +demoLinks([
+              ['localhost/ace/easymenu/menu_A', '(Demo 02)', '&#129412; Unique Brand! - Store Menu.'],
+            ])
+          //- ------------------------------------------------------
+          ._f
+            +demoLinks([
+              ['localhost/ace/easymenu/menu_C', '(Demo 03)', 'A simple menu.'],
+            ])
+
+      hr._mv_2
+
       section#intro._flex._gap_a_2
 
         //- ------------------------------------------------------
-        ._f(style="flex:1 12 310px;max-width:400px"): ._p
+        ._f_2_1: ._p
           h2._b._t1._i._p._mb_2| What is it about?
           ._text_justifyx
-            p: strong| Effortless Online Menus for Businesses
+            p: strong| Instant Online Menus for Businesses
             p.
               #{name} simplifies menu creation, enabling businesses to craft
               sleek, professional online menus in minutes.
@@ -42,21 +72,7 @@ block main
               Just configure your preferences, and you're ready to go!
 
         //- ------------------------------------------------------
-        ._f#suggestions: ._p
-          h2._b._t1._i._p._mb_2| Menu Suggestions
-          -
-            let _demolinks = [
-              ['localhost/ace/easymenu', '(Demo 01)', '&#128020; Yer Brand! - Restaurant Menu.'],
-              ['localhost/ace/easymenu/menu_A', '(Demo 02)', '&#129412; Unique Brand! - Store Menu.'],
-              ['localhost/ace/easymenu/menu_C', '(Demo 03)', 'A simple menu.'],
-            ];
-          each menu in _demolinks
-            .item
-              div: +a(homeUri+menu[0])._no_u|#[span._tc_contra._b #{menu[1]||''}] #[u._smaller #{menu[0]}]
-              p._small._mt0|!{menu[2]}
-
-        //- ------------------------------------------------------
-        ._f(style="flex:1 12 275px;max-width:400px"): ._p
+        ._f_2_1: ._p
           h2._b._i._p._t1._mb_2| How does it works?
           ._text_justifyx
             p.
@@ -70,7 +86,7 @@ block main
               #[a._i._small(href=homeUri+"settings" target="menu_settings") settings],
               #[a._i._small(href=homeUri+"menuItems" target="menu_menuItems") menuItems].
 
-      ._pa._mv_2
+      ._pa
 
 mixin template
   script(type="text/x-handlebars-template")&attributes(attributes): block

@@ -3,8 +3,11 @@ extends ../../core_2/_html
 block append vars
   include _vars
   - layout = 'easymenu/_html'
-  - topRightNav = false
   - navbar = false
+
+block topRightNav_content
+  +topThemeSwitch
+  +topHomeButton(homeUri)
 
 block views
   #_views._views: +view._full_view

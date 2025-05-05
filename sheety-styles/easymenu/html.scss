@@ -48,14 +48,15 @@
 	}
 }
 
-#intro { margin:auto;max-width:960px }
-
 #suggestions .item {
-	margin:.5em;
+	margin:.5rem;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+
+#suggestions,
+#intro { margin:auto;max-width:960px }
 
 #menuLocator { min-width: 15em; max-width: 30em }
 
