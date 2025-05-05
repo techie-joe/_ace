@@ -1,7 +1,7 @@
 ## EasyMenu Updates
 
-### April 25, 2025 - v1.0.0 b0.10
-- improve texts and more.
+### April 25, 2025 - v1.0.0 b0.11
+- improve writeups.
 - improve seo
 - add dev section
 - improve main.js
@@ -59,7 +59,7 @@ DEV : builds
 - theme switch button.
 - add theme switcher links under a cog menu.
 - place intro on a seperate section.
-- add CTA - Lets build a menu.
+- add CTA - Set up a menu.
 
 - create your own menu.
 - write some docs.
