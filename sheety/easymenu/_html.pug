@@ -37,7 +37,9 @@ block views
       +footer#_footer
 
         block pageFooter
-          +defaultFooter
+          ._pageFooter._defaultFooter
+            hr
+            p._small._system: +a(homeUri)._link._l &copy; !{copyright}
 
 block script
   //- +jsv(src)
