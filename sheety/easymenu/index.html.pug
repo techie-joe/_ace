@@ -1,10 +1,10 @@
 extends _html
 
 block append vars
-  - filename = 'index.html'
+  - filename = 'menu.html'
   - heading  = name+'&trade;'
   - about    = 'Menus Made Easy, Choices Made Delicious!'
-  - topRightNav = true
+  - topRightNav = false
 
 block pageHeader
   +defaultHeader
@@ -21,9 +21,9 @@ block main
 
       section#menuLocator: form._p(onsubmit="event.preventDefault();menu.find();")
         h3.title._no_wrap| Open your menu
-        .input._color_1._radius_x5r._flex
+        .input._color_1._radius_x5r
           input#menuLocation.input-txt._radius_x5r(type='text' placeholder="Enter the menu location ...")
-          button(onclick="findMenu()" title="Find menu").submit._btnlink|&#128269;
+          button(onclick="menu.find()" title="Find menu").submit._btnlink|&#128269;
         #menuLocatorMessage.message._tc_red._p._small
 
       section#suggestions
