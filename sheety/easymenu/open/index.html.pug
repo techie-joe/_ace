@@ -28,13 +28,13 @@ block main
         #menuLocatorMessage.message._tc_red._p._small
 
       section#suggestions
- 
+      
         ._text_center: h2._b._t1._i._p| Menu Suggestions
 
         mixin demoLinks(_demolinks)
           each menu in _demolinks
             .item._color_2._pa._radius_x5r
-              div: +a(homeUri+'open/'+menu[0])(target="_blank")._no_u|#[span._tc_contra._b #{menu[1]||''}] #[u._smaller #{menu[0]}]
+              div: +a(menu[0])(target="_blank")._no_u|#[span._tc_contra._b #{menu[1]||''}] #[u._smaller #{menu[0]}]
               div|!{menu[2]}
 
         ._flex
