@@ -8,7 +8,7 @@
 
   js = {
     themeChange : 'theme.change();',
-    goBack      : 'window.opener?window.close():window.history.length>1?window.history.back():window.location.href="/";',
+    goBack      : '(function(w){{h:history}=w;w.opener?w.close():h.length>1?h.back():w.location.href="/";})(window)',
     print       : 'window.print();',
   };
 
