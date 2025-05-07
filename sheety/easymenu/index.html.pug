@@ -6,16 +6,22 @@ block append vars
   - heading  = name+'&trade;'
   - about    = description
 
-//- block append style
+block append style
   style.
+    ._pageHeader { margin-top: 2rem }
+    #_heading { font-size: 3em }
+    @media (min-width: 760px) {
+      ._pageHeader { margin-top: 0 }
+      #_heading { font-size: 5em }
+    }
   //- style.
 
 block topRightNav_content
   +topThemeSwitch
 
 block pageHeader
-  ._pageHeader._defaultHeader
-    ._pa: +heading#_heading._h7._inblock._m0(style="font-size:6em") !{heading}
+  ._pageHeader._defaultHeader._text_center
+    ._pv: +heading#_heading._h7._inblock._m0 !{heading}
     hr
 
 block main
@@ -54,6 +60,8 @@ block main
             p.
               3. Share the menu with your friends.
             p.
+              Enjoy!
+            //- 
               Explore details in the #[a(href=homeUri+'docs') documents].
             //- p.
               Check out these examples: 
@@ -62,7 +70,7 @@ block main
 
       ._pa
 
-      section#cta._text_center._mv_2
+      section#cta._text_center
         +nav
           +a('open')._btnlink._xl.__primary| Open Menu
           span._inblock._mh_x5r

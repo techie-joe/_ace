@@ -1,10 +1,13 @@
-._pageHeader { text-align:center }
-._pageFooter { text-align:center }
 
-._pageFooter ._link { line-height:inherit }
+#_topRightNav ._nav_layout { padding:1.55rem 2rem }
+
+._pageFooter {
+	text-align:center;
+	._link { line-height:inherit }
+}
 
 #menuLocator {
-	margin:3rem auto 4rem;
+	margin:2rem auto 4rem;
 	text-align: center;
 
 	.input {
