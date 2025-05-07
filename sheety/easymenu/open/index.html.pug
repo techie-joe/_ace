@@ -33,7 +33,7 @@ block main
         mixin demoLinks(_demolinks)
           each menu in _demolinks
             .item._color_2._pa._radius_x5r
-              div: +a(menu[0])(target="_blank")._no_u|#[span._tc_contra._b #{menu[1]||''}] #[u._smaller #{menu[0]}]
+              div: +a(menu[0])._no_u|#[span._tc_contra._b #{menu[1]||''}] #[u._smaller #{menu[0]}]
               div|!{menu[2]}
 
         ._flex
@@ -75,9 +75,9 @@ block main
           h2._b._i._p._t1._mb_2| How does it works?
           ._text_justifyx
             p.
-              1. #[a(href=homeUri+'create') Create a menu] with the tools provided.
+              1. #[a(href=homeUri+'create') Create a menu] using the tools provided.
             p.
-              2. Use #{name} to #[a(href=homeUri+'open') open the menu].
+              2. #[a(href=homeUri+'open') Open the menu] with #{name}.
             p.
               3. Share the menu with your friends.
             p.

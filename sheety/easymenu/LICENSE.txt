@@ -1,0 +1,20 @@
+----------------------------------------------------------------------------
+LICENSE AGREEMENT (Terms of Use)
+----------------------------------------------------------------------------
+
+By accessing  or using this software,  you agree to be bound by these terms.
+
+All content of this software is the property of the authors unless otherwise
+stated. Unauthorized use, reproduction, distribution, or modification of any
+content without written permission is strictly prohibited.
+
+----------------------------------------------------------------------------
+
+THE SOFTWARE IS PROVIDED  "AS IS",  WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED,  INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, OR
+FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN RELATION TO THE SOFTWARE, OR THE USE OR OTHER DEALINGS WITH THE SOFTWARE.
+
+----------------------------------------------------------------------------

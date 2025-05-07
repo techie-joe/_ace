@@ -21,7 +21,7 @@ block topRightNav_content
 
 block pageHeader
   ._pageHeader._defaultHeader._text_center
-    ._pv: +heading#_heading._h7._inblock._m0 !{heading}
+    ._pv: +heading#_heading._h7._inblock._m0|#{name}#[sup._smallest|&trade;]
     hr
 
 block main
@@ -54,9 +54,9 @@ block main
           h2._b._i._p._t1._mb_2| How does it works?
           ._text_justifyx
             p.
-              1. #[a(href=homeUri+'create') Create a menu] with the tools provided.
+              1. #[a(href=homeUri+'create') Create a menu] using the tools provided.
             p.
-              2. Use #{name} to #[a(href=homeUri+'open') open the menu].
+              2. #[a(href=homeUri+'open') Open the menu] with #{name}.
             p.
               3. Share the menu with your friends.
             p.
@@ -70,16 +70,19 @@ block main
 
       ._pa
 
-      section#cta._text_center
-        +nav
-          +a('open')._btnlink._xl.__primary| Open Menu
-          span._inblock._mh_x5r
-          +a('create')._btnlink._xl| Create Menu
+      section#cta: +nav._text_center
+        +a('open')._btnlink._xl.__primary._ma_x5r| Open Menu
+        +a('create')._btnlink._xl._ma_x5r| Create Menu
 
       ._pa
 
       //- hr
       //- section: +pageData
+
+      hr
+      section#footer._text_center._small
+        +_a(homeUri+'README.md')._link._l| Read me
+        +_a(homeUri+'LICENSE.txt')._link._l| License
 
 block append style
   +cssv(assetsUri+'css/easymenu/html.css')#_html_style
