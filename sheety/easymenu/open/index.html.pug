@@ -13,6 +13,7 @@ block topRightNav_content
 block pageHeader
   ._pageHeader._defaultHeader
     ._pv: +a(homeUri)._link._l: +heading#_heading._h7._inblock._m0 !{heading}
+    hr
 
 block main
   +main#_main
@@ -27,31 +28,6 @@ block main
         #menuLocatorMessage.message._tc_red._p._small
 
       section#suggestions
-      
-        ._text_center: h2._b._t1._i._p| Menu Suggestions
-
-        mixin demoLinks(_demolinks)
-          each menu in _demolinks
-            .item._color_2._pa._radius_x5r
-              div: +a(menu[0])._no_u|#[span._tc_contra._b #{menu[1]||''}] #[u._smaller #{menu[0]}]
-              div|!{menu[2]}
-
-        ._flex
-          //- ------------------------------------------------------
-          ._f
-            +demoLinks([
-              ['localhost/ace/easymenu', '(Demo 01)', '&#128020; Your Brand! - Restaurant Menu.'],
-            ])
-          //- ------------------------------------------------------
-          ._f
-            +demoLinks([
-              ['localhost/ace/easymenu/menu_A', '(Demo 02)', '&#129412; Unique Shop! - Store Menu.'],
-            ])
-          //- ------------------------------------------------------
-          ._f
-            +demoLinks([
-              ['localhost/ace/easymenu/menu_C', '(Demo 03)', 'A simple menu.'],
-            ])
 
       hr._mv_2
 
@@ -84,10 +60,6 @@ block main
               Enjoy!
             //- 
               Explore details in the #[a(href=homeUri+'docs') documents].
-            //- p.
-              Check out these examples: 
-              #[a._i._small(href=homeUri+"settings" target="menu_settings") settings],
-              #[a._i._small(href=homeUri+"menuItems" target="menu_menuItems") menuItems].
 
       ._pa
 
@@ -95,6 +67,15 @@ mixin template
   script(type="text/x-handlebars-template")&attributes(attributes): block
 
 block append script
+
+  +template#suggestions-template
+    ._text_center: h2._b._t1._i._p| Menu Suggestions
+    ._flex
+      |{{#each this as |item|}}
+      ._f_12_3.item._color_2._pa._radius_x5r
+        div: +a('{{item.menupath}}')._no_u|#[span._tc_contra._b|{{item.title}}] #[u._smaller|{{item.menupath}}]
+        div|{{safe item.description}}
+      |{{/each}}
 
   +template#header-template
     style.
@@ -120,9 +101,8 @@ block append script
         p|{{safe about.value}}
 
   +template#menu-template
-    .row
-      |{{#each this as |category|}}
-      .
+    .row.
+      {{#each this as |category|}}
         <div class="col-md-6 _mv">
           <div class="category">
             <h3 class="mb-4 mt-2">{{@key}}</h3>
@@ -139,7 +119,7 @@ block append script
             </ul>
           </div>
         </div>
-      |{{/each}}
+      {{/each}}
 
 
 block prepend style
