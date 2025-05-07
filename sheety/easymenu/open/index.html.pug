@@ -73,7 +73,7 @@ block append script
     ._flex
       |{{#each this as |item|}}
       ._f_12_3.item._color_2._pa._radius_x5r
-        div: +a('{{item.menupath}}')._no_u|#[span._tc_contra._b|{{item.title}}] #[u._smaller|{{item.menupath}}]
+        div: +a('{{item.url}}')._no_u|#[span._tc_contra._b|{{item.title}}] #[u._smaller|{{item.path}}]
         div|{{safe item.description}}
       |{{/each}}
 
