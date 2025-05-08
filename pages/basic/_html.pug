@@ -5,7 +5,7 @@ block append vars
   - layoutName += '/basic'
 
 block append style
-  +cssv(assetsUrl+'css/basic_style.css')
+  +cssv(assetsUrl+'css/old/basic_style.css')
   //- style.
 
 block views
@@ -40,9 +40,3 @@ block views
     
     block asides
       //- +aside#_aside
-
-//- block script
-  //- +jsv(src)
-  //- +jsv(assetsUrl+'cjs/thm.js')
-  //- if INCLUDE_SERVICE_WORKERS
-    +jsv(assetsUrl+'sw.j')

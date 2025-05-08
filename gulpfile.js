@@ -103,6 +103,7 @@ const _ace = (() => {
     },
     site : {
       html: [
+        "pages",
         "index_2",
         "html_active",
         "html_starter", 
