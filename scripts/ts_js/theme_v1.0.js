@@ -1,6 +1,15 @@
 "use strict";
-((CODE = '') => {
-    const VERIFIED = (code) => CODE.indexOf(btoa(code).substring(0, 5)) >= 0, W = window, D = document, DOC = D.documentElement || D.body, A = (a) => typeof a, TYPE = (e) => Object.prototype.toString.call(e), NULL = null, _ = '', STR = A(_), ARR = TYPE([]), isSTR = (v) => A(v) === STR, isARR = Array.isArray || (e => TYPE(e) === ARR), failTo = (e) => {
+(() => {
+    const ALLOWED_DOMAINS = [
+        'localhost',
+        'techie-joe.github.io',
+        'themejs.pages.dev',
+        'preview.themejs.pages.dev',
+    ];
+    if (!(ALLOWED_DOMAINS.indexOf(window.location.hostname) >= 0)) {
+        return;
+    }
+    const W = window, D = document, DOC = D.documentElement || D.body, A = (a) => typeof a, TYPE = (e) => Object.prototype.toString.call(e), NULL = null, _ = '', STR = A(_), ARR = TYPE([]), isSTR = (v) => A(v) === STR, isARR = Array.isArray || (e => TYPE(e) === ARR), failTo = (e) => {
         throw ('Fail to ' + e);
     }, nodeId = (id) => D.getElementById(id), listenTo = (what, type, listener, options) => { what.addEventListener(type, listener, options); }, newRegex = (pattern, flags) => new RegExp(pattern, flags), updateClass = (element, del, add) => {
         try {
@@ -81,23 +90,23 @@
             STORE.remove(KEY);
             STORE.remove(KEYS);
         }, syncScheme = (v) => { (v && v.substring(0, 2) === '_d') ? SCHEME.set('dark') : SCHEME.set('light'); }, media = W.matchMedia('(prefers-color-scheme: dark)');
-        if (VERIFIED(W.location.hostname)) {
-            var stored_list = parseList(STORE.get(KEYS)), stored_theme = STORE.get(KEY), list = stored_list || [DARK], theme = isSTR(stored_theme) ? stored_theme : media.matches ? DARK : _;
+        var stored_list = parseList(STORE.get(KEYS)), stored_theme = STORE.get(KEY), list = stored_list || [DARK], theme = isSTR(stored_theme) ? stored_theme : media.matches ? DARK : _;
+        D.addEventListener('DOMContentLoaded', () => {
             updateClass(DOC, '_hidden', theme);
             syncScheme(theme);
-            listenTo(media, 'change', e => { e.matches ? set(DARK) : set(); });
-            listenTo(W, 'keyup', e => { e.altKey && 'KeyT' === e.code && change(); });
-            return W.theme = {
-                reset,
-                set,
-                change,
-                list: () => list,
-                current: () => theme,
-                fn: {
-                    updateClass,
-                    storage: STORE,
-                },
-            };
-        }
+        });
+        listenTo(media, 'change', e => { e.matches ? set(DARK) : set(); });
+        listenTo(W, 'keyup', e => { e.altKey && 'KeyT' === e.code && change(); });
+        return W.theme = {
+            reset,
+            set,
+            change,
+            list: () => list,
+            current: () => theme,
+            fn: {
+                updateClass,
+                storage: STORE,
+            },
+        };
     })();
-})('bG9jY dGVja dGhlb cHJld');
+})();

@@ -1,0 +1,20 @@
+extends _html
+
+block append vars
+  - filename = 'index.html'
+  - heading  = 'A1 : Test page'
+  - about    = 'Try new things from time to time.'
+
+block article
+  article
+
+    section._small._i // test goes here ..
+
+    hr
+    
+    section: +pageData
+
+  //- article
+//- block article
+
+//- block footer

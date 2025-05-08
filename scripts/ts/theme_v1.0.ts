@@ -26,9 +26,18 @@
 interface Window {
   theme: {}
 }
-((CODE='') => {
+(() => {
+
+  // can only be used on these domains
+  const ALLOWED_DOMAINS = [
+    'localhost',
+    'techie-joe.github.io',
+    'themejs.pages.dev',
+    'preview.themejs.pages.dev',
+  ];
+  if (!(ALLOWED_DOMAINS.indexOf(window.location.hostname) >= 0)) { return }
+  
   const
-    VERIFIED = (code:string) => CODE.indexOf(btoa(code).substring(0,5)) >= 0,
     W = window,
     D = document,
     DOC = D.documentElement || D.body, // html or body
@@ -45,7 +54,7 @@ interface Window {
     },
     nodeId = (id: string) => D.getElementById(id),
     listenTo = <K extends keyof HTMLElementEventMap>(
-      what: HTMLElement | MediaQueryList | Window,
+      what: HTMLElement | MediaQueryList | Window | Document,
       type: K,
       listener: (e: any) => any,
       options?: boolean | AddEventListenerOptions
@@ -160,40 +169,39 @@ interface Window {
         syncScheme = (v: string | undefined | null) => { (v && v.substring(0, 2) === '_d') ? SCHEME.set('dark') : SCHEME.set('light'); },
         media = W.matchMedia('(prefers-color-scheme: dark)');
 
-      if (VERIFIED(W.location.hostname)) {
+      // prepare presets
+      var
+        stored_list = parseList(STORE.get(KEYS)), // load user decided list
+        stored_theme = STORE.get(KEY), // load user decided theme
+        list: string[] = stored_list || [DARK], // list: were decided by user or ace
+        theme: string | undefined | null = isSTR(stored_theme) ? stored_theme : media.matches ? DARK : _; // theme: were decided by user or refers to media-matches.
 
-        // prepare presets
-        var
-          stored_list = parseList(STORE.get(KEYS)), // load user decided list
-          stored_theme = STORE.get(KEY), // load user decided theme
-          list: string[] = stored_list || [DARK], // list: were decided by user or ace
-          theme: string | undefined | null = isSTR(stored_theme) ? stored_theme : media.matches ? DARK : _; // theme: were decided by user or refers to media-matches.
-
-        // apply load theme
+      // apply load theme
+      D.addEventListener('DOMContentLoaded', () => {
         updateClass(DOC, '_hidden', theme);
         syncScheme(theme);
+      });
 
-        // open to changes
-        listenTo(media, 'change', e => { e.matches ? set(DARK) : set() });
-        listenTo(W, 'keyup', e => { e.altKey && 'KeyT' === e.code && change(); });
+      // open to changes
+      listenTo(media, 'change', e => { e.matches ? set(DARK) : set() });
+      listenTo(W, 'keyup', e => { e.altKey && 'KeyT' === e.code && change(); });
 
-        // export
-        return W.theme = {
-          reset,
-          set,
-          change,
-          list: () => list,
-          current: () => theme,
-          fn: {
-            // A, TYPE, STR, ARR, isSTR, isARR, DOC,
-            // failTo,
-            // listenTo, newRegex,
-            updateClass,
-            storage: STORE,
-          },
-        }
+      // export
+      return W.theme = {
+        reset,
+        set,
+        change,
+        list: () => list,
+        current: () => theme,
+        fn: {
+          // A, TYPE, STR, ARR, isSTR, isARR, DOC,
+          // failTo,
+          // listenTo, newRegex,
+          updateClass,
+          storage: STORE,
+        },
       }
 
     })(); // THEME
 
-})('bG9jY dGVja dGhlb cHJld');
+})();
