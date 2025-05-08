@@ -1,5 +1,8 @@
 ## ThemeJs to do
 
+### May 8, 2025 - v1.0.0 b336.01
+- fix themejs verification
+
 ### March 3, 2025 - v1.0.0 b335.31
 - initial release.
 
@@ -8,7 +11,7 @@
 update : version & build  
   [CHANGELOGS](CHANGELOGS.md)  
   [VARS______](_vars.pug)  
-  [TEST_CSS__](../../styles/gulp_css/themejs/_copyright.scss)
+  [TEST_CSS__](../../styles/themejs/_copyright.scss)
 source :  
   [SCRIPT____](../../scripts/ts/theme_v1.0.ts)  
   [WEBPACK___](../../webpack.config.js)  
