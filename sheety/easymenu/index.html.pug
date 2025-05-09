@@ -54,9 +54,9 @@ block main
           h2._b._i._p._t1._mb_2| How does it works?
           ._text_justifyx
             p.
-              1. #[a(href=homeUri+'create') Create a menu] using the tools provided.
+              1. #[+a('create') Create a menu] using the tools provided.
             p.
-              2. #[a(href=homeUri+'open') Open the menu] with #{name}.
+              2. #[+a('open') Open the menu] with #{name}.
             p.
               3. Share the menu with your friends.
             p.
@@ -81,8 +81,8 @@ block main
 
       hr
       section#footer._text_center._small
-        +_a(homeUri+'README.md')._link._l| Read me
-        +_a(homeUri+'LICENSE.txt')._link._l| License
+        +_a('README.md')._link._l| Read me
+        +_a('LICENSE.txt')._link._l| License
 
 block append style
   +cssv(assetsUri+'css/easymenu/html.css')#_html_style
