@@ -4,9 +4,8 @@
         'localhost',
         'techie-joe.github.io',
         'themejs.pages.dev',
-        'preview.themejs.pages.dev',
     ];
-    if (!(ALLOWED_DOMAINS.indexOf(window.location.hostname) >= 0)) {
+    if (!(ALLOWED_DOMAINS.find(ends => window.location.host.endsWith(ends)))) {
         return;
     }
     const W = window, D = document, DOC = D.documentElement || D.body, A = (a) => typeof a, TYPE = (e) => Object.prototype.toString.call(e), NULL = null, _ = '', STR = A(_), ARR = TYPE([]), isSTR = (v) => A(v) === STR, isARR = Array.isArray || (e => TYPE(e) === ARR), failTo = (e) => {

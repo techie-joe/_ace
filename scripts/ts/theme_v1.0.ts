@@ -33,9 +33,8 @@ interface Window {
     'localhost',
     'techie-joe.github.io',
     'themejs.pages.dev',
-    'preview.themejs.pages.dev',
   ];
-  if (!(ALLOWED_DOMAINS.indexOf(window.location.hostname) >= 0)) { return }
+  if (!(ALLOWED_DOMAINS.find(ends => window.location.host.endsWith(ends)))) { return }
   
   const
     W = window,
