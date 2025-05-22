@@ -29,8 +29,7 @@
   },
 
   "scripts": {
-    "build": "webpack",
-    "test": "exit 1"
+    "build": "webpack"
   },
 
   "devDependencies": {
